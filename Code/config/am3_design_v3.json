@@ -1,0 +1,204 @@
+{
+ "version": "v3 (2026-10-25), direct end-effector wall contact; supersedes v2 (33 cm probe, unconnected mount)",
+ "status": "candidate: centred supplied mount (continuous, no added mass), beta 20 deg, pad 12 mm; from results/am3_design/ (scan.json, patch_clearance.txt)",
+ "wall_x_m": 0.8,
+ "mount_x_m": 0.0,
+ "wrist_beta_deg": 20.0,
+ "pad": {
+  "radius_m": 0.012,
+  "centre_hand_m": [
+   0.0,
+   0.0,
+   -0.064
+  ],
+  "note": "rubber contact button between the finger tips, centred on the supplied ee site, 12 mm radius (protrudes 12 mm beyond the finger faces; it overlaps the finger inner faces by 2 mm, same body); mass is part of the supplied 0.10 kg hand"
+ },
+ "yaw_housing": {
+  "mass_kg": 0.082,
+  "centre_B_m": [
+   0.0,
+   0.0,
+   -0.022
+  ],
+  "size_m": [
+   0.02,
+   0.014
+  ],
+  "note": "ASSUMPTION: XM430-class servo mass; the supplied drone inertial (1.05 kg) is taken to include it (only matters if the mount is moved)"
+ },
+ "bracket": {
+  "thickness_m": 0.003,
+  "width_m": 0.05,
+  "density_kg_m3": 1600,
+  "z_B_m": -0.0165,
+  "note": "carbon plate under the airframe core, only present when mount_x_m > 0"
+ },
+ "supplied": {
+  "drone": {
+   "mass_kg": 1.05,
+   "com_m": [
+    0,
+    0,
+    0
+   ],
+   "I_diag": [
+    0.0017969,
+    0.0017969,
+    0.003454
+   ]
+  },
+  "link1": {
+   "mass_kg": 0.12,
+   "com_m": [
+    0,
+    0,
+    -0.025
+   ],
+   "I_diag": [
+    5e-05,
+    5e-05,
+    5e-05
+   ]
+  },
+  "link2": {
+   "mass_kg": 0.15,
+   "com_m": [
+    0,
+    0,
+    -0.08
+   ],
+   "I_diag": [
+    0.0003321,
+    0.0003321,
+    2.43e-05
+   ]
+  },
+  "link3": {
+   "mass_kg": 0.1,
+   "com_m": [
+    0,
+    0,
+    -0.07
+   ],
+   "I_diag": [
+    0.000169,
+    0.000169,
+    1.13e-05
+   ]
+  },
+  "hand": {
+   "mass_kg": 0.1,
+   "com_m": [
+    0,
+    0,
+    -0.025
+   ],
+   "I_diag": [
+    3.42e-05,
+    3.42e-05,
+    2.67e-05
+   ]
+  }
+ },
+ "chain_m": {
+  "mount_to_shoulder": 0.05,
+  "upper_arm": 0.16,
+  "forearm": 0.14,
+  "hand_to_pad_centre": 0.064,
+  "root_below_base": 0.035
+ },
+ "joint_limits_deg": {
+  "mechanical": {
+   "q1": [
+    -90,
+    90
+   ],
+   "q2": [
+    -120,
+    120
+   ],
+   "q3": [
+    -150,
+    150
+   ]
+  },
+  "operational": {
+   "q1": [
+    -35,
+    35
+   ],
+   "q2": [
+    -80,
+    -5
+   ],
+   "q3": [
+    -125,
+    -30
+   ]
+  }
+ },
+ "joint_damping_Nms_per_rad": 0.01,
+ "servo": {
+  "model": "ROBOTIS DYNAMIXEL XM430-W210 class",
+  "stall_torque_Nm": 3.0,
+  "no_load_speed_rad_s": 8.06,
+  "continuous_torque_Nm": 1.0,
+  "source": "RobotShop listing and ROBOTIS brochure (3.0 N m, 77 rpm, 82 g @12 V); continuous 1/3 stall is an ASSUMPTION"
+ },
+ "propulsion": {
+  "rotor_xy_m": [
+   [
+    0.1,
+    0.1
+   ],
+   [
+    0.1,
+    -0.1
+   ],
+   [
+    -0.1,
+    -0.1
+   ],
+   [
+    -0.1,
+    0.1
+   ]
+  ],
+  "rotor_z_m": 0.01,
+  "spin_reaction_sign": [
+   1,
+   -1,
+   1,
+   -1
+  ],
+  "prop_radius_m": 0.089,
+  "f_max_N": 10.0,
+  "f_min_N": 0.1,
+  "omega_max_rad_s": 1800.0,
+  "km_over_kf_m": 0.016,
+  "tau_up_s": 0.04,
+  "tau_down_s": 0.06,
+  "source": "SIMULATION ASSUMPTION (unchanged from v2): 7-inch-class prop, D = 0.178 m, static Ct ~ 0.11 -> 10 N at ~16 krpm (1700 rad/s); no published table for the supplied vehicle. kf = f_max / omega_max^2. Sensitivity +-20 % is part of the mismatch suite."
+ },
+ "contact": {
+  "mu": 0.15,
+  "k_N_m": 600.0,
+  "c_Ns_m": 8.0,
+  "c_pred_Ns_m": 8.0,
+  "F_max_N": 4.0,
+  "note": "pad compression stands in for the elastic rubber pad: 600 N/m, 6 mm of compression (50 % of the 12 mm pad radius) gives 3.6 N, so F_max = 4 N. mu = 0.15 (PTFE-capped pad): friction force x pad lever (0.28 m) is a yaw moment the rotors can only cancel through the 0.016 m drag arm, see Findings/Codebase/aerial_manipulator_design_v3.md; mu = 0.3 is a robustness case.",
+  "mu_robustness": [
+   0.3
+  ]
+ },
+ "task": {
+  "standoff_pad_from_base_m": 0.28,
+  "pad_below_base_m": 0.16,
+  "patch_half_extent_m": {
+   "y": 0.05,
+   "z": 0.04
+  },
+  "indentation_ref_m": 0.001,
+  "note": "patch limited by yaw authority (normal force x lateral offset) and by finger/wall clearance, results/am3_design/"
+ }
+}

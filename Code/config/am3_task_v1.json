@@ -1,0 +1,136 @@
+{
+ "version": "task v1 DRAFT (2026-10-25) - development values, frozen copy goes to am3_acceptance_v1.json before any comparison",
+ "control_period_s": 0.02,
+ "horizon_N": 10,
+ "hover_s": 1.0,
+ "base_ref_world": [
+  0.508,
+  0.0,
+  1.2
+ ],
+ "patch_centre_world_yz_m": [
+  0.0,
+  1.04
+ ],
+ "contact_policy": {
+  "indentation_ref_m": 0.001,
+  "approach_gap0_m": 0.04,
+  "v_approach_m_s": 0.02,
+  "seek_floor_m": -0.003,
+  "F_on_N": 0.15,
+  "T_on_samples": 3,
+  "F_off_N": 0.08,
+  "T_off_samples": 5,
+  "F_max_N": 4.0,
+  "settle_s": 0.5,
+  "recover_max_s": 3.0,
+  "progress_slew_s": 0.5,
+  "release_s": 0.5,
+  "retreat_m": 0.06,
+  "retreat_speed_m_s": 0.03,
+  "v_final_m_s": 0.01,
+  "v_seek_m_s": 0.002,
+  "settle_ramp_s": 0.3,
+  "acquire_max_s": 8.0,
+  "release_gap_m": 0.003,
+  "retreat_accel_m_s2": 0.05,
+  "recover_gap_max_m": 0.02
+ },
+ "endhold_s": 1.0,
+ "paths": {
+  "line": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0.0
+   ],
+   "b": [
+    0.04,
+    0.0
+   ],
+   "T_s": 4.0
+  },
+  "line_fast": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0.0
+   ],
+   "b": [
+    0.04,
+    0.0
+   ],
+   "T_s": 2.5
+  },
+  "circle": {
+   "kind": "circle",
+   "centre": [
+    0.0,
+    0.0
+   ],
+   "radius": 0.025,
+   "T_s": 10.0
+  },
+  "rounded_triangle": {
+   "kind": "polygon",
+   "vertices": [
+    [
+     -0.04,
+     -0.02
+    ],
+    [
+     0.04,
+     -0.02
+    ],
+    [
+     0.0,
+     0.03
+    ]
+   ],
+   "fillet_m": 0.01,
+   "T_s": 10.0
+  },
+  "line_T1": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0.0
+   ],
+   "b": [
+    0.04,
+    0.0
+   ],
+   "T_s": 1.0
+  },
+  "circle_T4": {
+   "kind": "circle",
+   "centre": [
+    0.0,
+    0.0
+   ],
+   "radius": 0.025,
+   "T_s": 4.0
+  },
+  "rounded_triangle_T5": {
+   "kind": "polygon",
+   "vertices": [
+    [
+     -0.04,
+     -0.02
+    ],
+    [
+     0.04,
+     -0.02
+    ],
+    [
+     0.0,
+     0.03
+    ]
+   ],
+   "fillet_m": 0.01,
+   "T_s": 5.0
+  }
+ },
+ "position_s": 2.0,
+ "free_segment_s": 1.5
+}

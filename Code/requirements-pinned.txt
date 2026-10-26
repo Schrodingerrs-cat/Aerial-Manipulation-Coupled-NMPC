@@ -1,0 +1,10 @@
+casadi==3.8.1
+gymnasium==1.2.3
+matplotlib==3.10.9
+mujoco==3.10.0
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+torch==2.5.1+cu121
+stable-baselines3==2.7.0
+# acados: Code/third_party/acados @ 8ff7c2a17e235d6cad6671538e923ccb7428dc3e (v0.6.0-59), built with cmake -DACADOS_WITH_QPOASES=ON Release; python: pip install -e Code/third_party/acados/interfaces/acados_template; export ACADOS_SOURCE_DIR and LD_LIBRARY_PATH to third_party/acados{,/lib}

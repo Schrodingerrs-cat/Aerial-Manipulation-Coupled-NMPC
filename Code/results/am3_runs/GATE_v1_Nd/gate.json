@@ -1,0 +1,473 @@
+{
+ "criteria_file": "config/am3_acceptance_v1.json",
+ "stat": {
+  "n": 30,
+  "solver_hang_stubs": 3,
+  "joint_successes": 0,
+  "completed": 0,
+  "failed_criteria": {
+   "no_abort": 27,
+   "base_max": 27,
+   "tilt": 27,
+   "no_unexpected_contact": 16,
+   "rotor_reserve": 21,
+   "solver": 1
+  },
+  "base_max_mm": {
+   "median": 146.26738852000094,
+   "max": 248.31621452644833
+  },
+  "trace_track_rms_mm": null,
+  "peak_Fn_N_max": 0.0,
+  "timing": {
+   "median_ms": 19.287231501948554,
+   "max_ms": 130.95275100204162,
+   "over_period_fraction_mean": 0.48852779893065873
+  }
+ },
+ "scenarios": [
+  {
+   "id": "heldout_00",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact"
+   ],
+   "abort": [
+    0.5999999999999617,
+    "loss of control (failsafe): tilt 41 deg, base error 105 mm"
+   ]
+  },
+  {
+   "id": "heldout_01",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt"
+   ],
+   "abort": [
+    0.8399999999999352,
+    "loss of control (failsafe): tilt 16 deg, base error 261 mm"
+   ]
+  },
+  {
+   "id": "heldout_02",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.3400000000000312,
+    "loss of control (failsafe): tilt 40 deg, base error 144 mm"
+   ]
+  },
+  {
+   "id": "heldout_03",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.4600000000000712,
+    "loss of control (failsafe): tilt 42 deg, base error 108 mm"
+   ]
+  },
+  {
+   "id": "heldout_04",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt"
+   ],
+   "abort": [
+    0.7999999999999396,
+    "loss of control (failsafe): tilt 40 deg, base error 83 mm"
+   ]
+  },
+  {
+   "id": "heldout_05",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.3800000000000445,
+    "loss of control (failsafe): tilt 42 deg, base error 116 mm"
+   ]
+  },
+  {
+   "id": "heldout_06",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt"
+   ],
+   "abort": [
+    0.7199999999999485,
+    "loss of control (failsafe): tilt 17 deg, base error 253 mm"
+   ]
+  },
+  {
+   "id": "heldout_07",
+   "path": "free",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.4000000000000512,
+    "loss of control (failsafe): tilt 43 deg, base error 88 mm"
+   ]
+  },
+  {
+   "id": "heldout_08",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.4400000000000646,
+    "loss of control (failsafe): tilt 41 deg, base error 131 mm"
+   ]
+  },
+  {
+   "id": "heldout_09",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    0.6999999999999507,
+    "loss of control (failsafe): tilt 43 deg, base error 162 mm"
+   ]
+  },
+  {
+   "id": "heldout_10",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    0.7999999999999396,
+    "loss of control (failsafe): tilt 41 deg, base error 129 mm"
+   ]
+  },
+  {
+   "id": "heldout_11",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.3800000000000445,
+    "loss of control (failsafe): tilt 45 deg, base error 184 mm"
+   ]
+  },
+  {
+   "id": "heldout_12",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    0.7999999999999396,
+    "loss of control (failsafe): tilt 41 deg, base error 133 mm"
+   ]
+  },
+  {
+   "id": "heldout_13",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact"
+   ],
+   "abort": [
+    1.5200000000000913,
+    "loss of control (failsafe): tilt 46 deg, base error 87 mm"
+   ]
+  },
+  {
+   "id": "heldout_14",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt"
+   ],
+   "abort": [
+    0.47999999999997484,
+    "loss of control (failsafe): tilt 46 deg, base error 201 mm"
+   ]
+  },
+  {
+   "id": "heldout_16",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "rotor_reserve"
+   ],
+   "abort": [
+    0.7799999999999419,
+    "loss of control (failsafe): tilt 41 deg, base error 62 mm"
+   ]
+  },
+  {
+   "id": "heldout_17",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.6200000000001247,
+    "loss of control (failsafe): tilt 41 deg, base error 82 mm"
+   ]
+  },
+  {
+   "id": "heldout_18",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.5200000000000913,
+    "loss of control (failsafe): tilt 44 deg, base error 127 mm"
+   ]
+  },
+  {
+   "id": "heldout_20",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.3200000000000245,
+    "loss of control (failsafe): tilt 44 deg, base error 215 mm"
+   ]
+  },
+  {
+   "id": "heldout_21",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "rotor_reserve"
+   ],
+   "abort": [
+    0.8799999999999308,
+    "loss of control (failsafe): tilt 42 deg, base error 80 mm"
+   ]
+  },
+  {
+   "id": "heldout_22",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.2600000000000044,
+    "loss of control (failsafe): tilt 40 deg, base error 247 mm"
+   ]
+  },
+  {
+   "id": "heldout_23",
+   "path": "free",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    0.7199999999999485,
+    "loss of control (failsafe): tilt 42 deg, base error 157 mm"
+   ]
+  },
+  {
+   "id": "heldout_24",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.159999999999971,
+    "loss of control (failsafe): tilt 43 deg, base error 31 mm"
+   ]
+  },
+  {
+   "id": "heldout_25",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.3400000000000312,
+    "loss of control (failsafe): tilt 44 deg, base error 67 mm"
+   ]
+  },
+  {
+   "id": "heldout_26",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.540000000000098,
+    "loss of control (failsafe): tilt 41 deg, base error 116 mm"
+   ]
+  },
+  {
+   "id": "heldout_27",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "rotor_reserve"
+   ],
+   "abort": [
+    1.0199999999999243,
+    "loss of control (failsafe): tilt 45 deg, base error 140 mm"
+   ]
+  },
+  {
+   "id": "heldout_29",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "rotor_reserve",
+    "solver"
+   ],
+   "abort": [
+    0.7399999999999463,
+    "loss of control (failsafe): tilt 40 deg, base error 101 mm"
+   ]
+  }
+ ]
+}

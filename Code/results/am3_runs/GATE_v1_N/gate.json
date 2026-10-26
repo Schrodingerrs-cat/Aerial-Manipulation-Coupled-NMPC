@@ -1,0 +1,265 @@
+{
+ "criteria_file": "config/am3_acceptance_v1.json",
+ "stat": {
+  "n": 30,
+  "joint_successes": 30,
+  "completed": 30,
+  "failed_criteria": {},
+  "base_max_mm": {
+   "median": 0.6170245882197983,
+   "max": 1.309795889682991
+  },
+  "trace_track_rms_mm": {
+   "median": 0.4256175251588001,
+   "max": 0.8648111772772692
+  },
+  "peak_Fn_N_max": 0.7288577230761761,
+  "timing": {
+   "median_ms": 17.82046900189016,
+   "max_ms": 189.00928299990483,
+   "over_period_fraction_mean": 0.2095473256293236
+  }
+ },
+ "scenarios": [
+  {
+   "id": "heldout_00",
+   "path": "line",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_01",
+   "path": "line_fast",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_02",
+   "path": "line_T1",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_03",
+   "path": "circle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_04",
+   "path": "circle_T4",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_05",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_06",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_07",
+   "path": "free",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_08",
+   "path": "line",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_09",
+   "path": "line_fast",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_10",
+   "path": "line_T1",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_11",
+   "path": "circle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_12",
+   "path": "circle_T4",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_13",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_14",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_15",
+   "path": "free",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_16",
+   "path": "line",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_17",
+   "path": "line_fast",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_18",
+   "path": "line_T1",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_19",
+   "path": "circle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_20",
+   "path": "circle_T4",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_21",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_22",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_23",
+   "path": "free",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_24",
+   "path": "line",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_25",
+   "path": "line_fast",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_26",
+   "path": "line_T1",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_27",
+   "path": "circle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_28",
+   "path": "circle_T4",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "heldout_29",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  }
+ ]
+}

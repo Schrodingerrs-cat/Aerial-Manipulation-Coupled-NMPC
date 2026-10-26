@@ -1,0 +1,86 @@
+<mujoco model="aerial_manipulator_custom">
+  <compiler angle="radian"/>
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+
+  <asset>
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="256" height="256"/>
+    <texture name="floortex" type="2d" builtin="checker" width="512" height="512" rgb1="0.7 0.7 0.75" rgb2="0.35 0.35 0.4"/>
+    <material name="grid" texture="floortex" texrepeat="6 6" reflectance="0.15"/>
+    <texture name="carbon" type="2d" builtin="checker" width="128" height="128" rgb1="0.18 0.19 0.24" rgb2="0.26 0.27 0.33"/>
+    <material name="link_mat" texture="carbon" texrepeat="8 3" reflectance="0.25" shininess="0.4" specular="0.6"/>
+    <material name="motor_mat" rgba="0.12 0.12 0.14 1" reflectance="0.35" shininess="0.6" specular="0.8"/>
+    <material name="hand_mat" rgba="0.85 0.35 0.1 1" reflectance="0.2" shininess="0.3" specular="0.5"/>
+    <material name="joint_mat" rgba="0.9 0.75 0.1 1" reflectance="0.3"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0.5 0.5 3" dir="-0.2 -0.2 -1" directional="true" diffuse="0.8 0.8 0.8"/>
+    <geom name="floor" type="plane" size="10 10 0.1" material="grid"/>
+
+    <body name="drone" pos="0 0 1.0">
+      <freejoint name="base"/>
+      <inertial pos="0 0 0" mass="1.05" diaginertia="0.0017969 0.0017969 0.003454"/>
+      <geom name="drone_core" type="box" size="0.035 0.035 0.015" rgba="1 0.9 0.1 1" density="0"/>
+      <geom name="a00" type="box" pos=".071 .071 0" size="0.05 0.01 0.0025" quat=".924 0 0 .383" rgba="1 .5 0 1" density="0"/>
+      <geom name="a10" type="box" pos=".071 -.071 0" size="0.05 0.01 0.0025" quat=".383 0 0 .924" rgba="1 .5 0 1" density="0"/>
+      <geom name="a20" type="box" pos="-.071 -.071 0" size="0.05 0.01 0.0025" quat="-.383 0 0 .924" rgba="1 .5 0 1" density="0"/>
+      <geom name="a30" type="box" pos="-.071 .071 0" size="0.05 0.01 0.0025" quat=".924 0 0 -.383" rgba="1 .5 0 1" density="0"/>
+      <geom name="t00" type="cylinder" pos=".1 .1 .01" size="0.03 0.0025" rgba="0.1 0.1 0.1 1" density="0"/>
+      <geom name="t10" type="cylinder" pos=".1 -.1 .01" size="0.03 0.0025" rgba="0.1 0.1 0.1 1" density="0"/>
+      <geom name="t20" type="cylinder" pos="-.1 -.1 .01" size="0.03 0.0025" rgba="0.1 0.1 0.1 1" density="0"/>
+      <geom name="t30" type="cylinder" pos="-.1 .1 .01" size="0.03 0.0025" rgba="0.1 0.1 0.1 1" density="0"/>
+      <site name="imu" pos="0 0 0"/>
+
+      <!-- J1 yaw motor sits on the drone base -->
+      <geom name="yaw_motor" type="cylinder" pos="0 0 -0.022" size="0.02 0.014" material="motor_mat" density="0"/>
+
+      <!-- Link 1: small box, spun by yaw motor -->
+      <body name="link1" pos="0 0 -0.035">
+        <joint name="q1" type="hinge" axis="0 0 1"/>
+        <inertial pos="0 0 -0.025" mass="0.12" diaginertia="5.0e-5 5.0e-5 5.0e-5"/>
+        <geom name="l1_box" type="box" pos="0 0 -0.025" size="0.025 0.025 0.025" material="link_mat" density="0"/>
+        <!-- J2 shoulder-pitch motor at the bottom of the box -->
+        <geom name="m2" type="cylinder" pos="0 0 -0.05" euler="1.5708 0 0" size="0.018 0.022" material="motor_mat" density="0"/>
+
+        <!-- Link 2: upper arm -->
+        <body name="link2" pos="0 0 -0.05">
+          <joint name="q2" type="hinge" axis="0 1 0"/>
+          <inertial pos="0 0 -0.08" mass="0.15" diaginertia="3.321e-4 3.321e-4 2.43e-5"/>
+          <geom name="l2" type="cylinder" fromto="0 0 0  0 0 -0.16" size="0.018" material="link_mat" density="0"/>
+          <!-- J3 elbow motor at the bottom -->
+          <geom name="m3" type="cylinder" pos="0 0 -0.16" euler="1.5708 0 0" size="0.016 0.02" material="motor_mat" density="0"/>
+
+          <!-- Link 3: forearm -->
+          <body name="link3" pos="0 0 -0.16">
+            <joint name="q3" type="hinge" axis="0 1 0"/>
+            <inertial pos="0 0 -0.07" mass="0.10" diaginertia="1.69e-4 1.69e-4 1.13e-5"/>
+            <geom name="l3" type="cylinder" fromto="0 0 0  0 0 -0.14" size="0.015" material="link_mat" density="0"/>
+            <!-- J4 wrist motor -->
+            <geom name="m4" type="cylinder" pos="0 0 -0.14" euler="1.5708 0 0" size="0.014 0.018" material="motor_mat" density="0"/>
+
+            <!-- Hand module on the wrist -->
+            <body name="hand" pos="0 0 -0.14">
+              <joint name="q4" type="hinge" axis="0 1 0"/>
+              <inertial pos="0 0 -0.025" mass="0.10" diaginertia="3.42e-5 3.42e-5 2.67e-5"/>
+              <geom name="hand_body" type="box" pos="0 0 -0.02" size="0.02 0.02 0.02" material="hand_mat" density="0"/>
+              <geom name="finger_l" type="box" pos="0.014 0 -0.05" size="0.004 0.012 0.014" material="hand_mat" density="0"/>
+              <geom name="finger_r" type="box" pos="-0.014 0 -0.05" size="0.004 0.012 0.014" material="hand_mat" density="0"/>
+              <site name="ee" pos="0 0 -0.064"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor site="imu" name="thrust" gear="0 0 1 0 0 0" ctrllimited="true" ctrlrange="0 40"/>
+    <motor site="imu" name="mx" gear="0 0 0 1 0 0" ctrllimited="true" ctrlrange="-2 2"/>
+    <motor site="imu" name="my" gear="0 0 0 0 1 0" ctrllimited="true" ctrlrange="-2 2"/>
+    <motor site="imu" name="mz" gear="0 0 0 0 0 1" ctrllimited="true" ctrlrange="-2 2"/>
+    <motor joint="q1" name="tau1" gear="1" ctrllimited="true" ctrlrange="-3 3"/>
+    <motor joint="q2" name="tau2" gear="1" ctrllimited="true" ctrlrange="-3 3"/>
+    <motor joint="q3" name="tau3" gear="1" ctrllimited="true" ctrlrange="-3 3"/>
+    <motor joint="q4" name="tau4" gear="1" ctrllimited="true" ctrlrange="-3 3"/>
+  </actuator>
+</mujoco>

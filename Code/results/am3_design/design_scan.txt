@@ -1,0 +1,26 @@
+(1) wrist angle x pad radius; patch y in +-0.10, z below base -0.10..-0.26, standoff 0.28, 2 mm indentation
+  pad r 0.010 beta  0: max hand-axis angle 33.1 deg, min non-pad gap to wall  -3.8 mm
+  pad r 0.010 beta 10: max hand-axis angle 28.9 deg, min non-pad gap to wall  -2.3 mm
+  pad r 0.010 beta 20: max hand-axis angle 34.9 deg, min non-pad gap to wall  -4.4 mm
+  pad r 0.010 beta 30: max hand-axis angle 42.1 deg, min non-pad gap to wall  -6.5 mm
+  pad r 0.012 beta  0: max hand-axis angle 33.1 deg, min non-pad gap to wall  -1.8 mm
+  pad r 0.012 beta 10: max hand-axis angle 28.9 deg, min non-pad gap to wall  -0.3 mm
+  pad r 0.012 beta 20: max hand-axis angle 34.9 deg, min non-pad gap to wall  -2.4 mm
+  pad r 0.012 beta 30: max hand-axis angle 42.1 deg, min non-pad gap to wall  -4.5 mm
+  pad r 0.015 beta  0: max hand-axis angle 33.1 deg, min non-pad gap to wall   1.2 mm
+  pad r 0.015 beta 10: max hand-axis angle 28.9 deg, min non-pad gap to wall   2.7 mm
+  pad r 0.015 beta 20: max hand-axis angle 34.9 deg, min non-pad gap to wall   0.6 mm
+  pad r 0.015 beta 30: max hand-axis angle 42.1 deg, min non-pad gap to wall  -1.5 mm
+(2) gap map of non-pad geoms to the wall [mm] (hand-axis angle) for the chosen design, rows z below base, columns y = -0.10 .. 0.10
+  -0.12    8.5(22)   10.9(15)   13.2(13)   10.9(15)    8.5(22)
+  -0.16    7.0(20)    9.3(10)   11.5( 3)    9.3(10)    7.0(20)
+  -0.20    3.9(22)    6.4(13)    8.7( 7)    6.4(13)    3.9(22)
+(3) quasi-static rotor force range [N] over y in +-0.05, z in zc +-0.04 (limits 0.1 .. 10) for preload Fn and friction mu
+  |y| <= 0.05  Fn 0.6 N  mu 0.15: [ 1.37,  5.75]
+  |y| <= 0.05  Fn 0.6 N  mu 0.30: [ 1.04,  6.16]
+  |y| <= 0.05  Fn 0.9 N  mu 0.15: [ 0.85,  6.31]
+  |y| <= 0.05  Fn 0.9 N  mu 0.30: [ 0.34,  6.92]
+  |y| <= 0.10  Fn 0.6 N  mu 0.15: [ 0.71,  5.98]
+  |y| <= 0.10  Fn 0.6 N  mu 0.30: [ 0.38,  6.39]
+  |y| <= 0.10  Fn 0.9 N  mu 0.15: [-0.03,  6.74]
+  |y| <= 0.10  Fn 0.9 N  mu 0.30: [-0.52,  7.35]

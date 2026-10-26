@@ -1,0 +1,53 @@
+mmdev_B {
+ "n": 20,
+ "solver_hang_stubs": 0,
+ "joint_successes": 0,
+ "completed": 12,
+ "failed_criteria": {
+  "no_abort": 8,
+  "base_max": 17,
+  "tilt": 11,
+  "path_tracking_rms": 16,
+  "coverage": 8,
+  "endpoint": 12,
+  "force_peak": 7,
+  "recovery": 7,
+  "rotor_reserve": 9,
+  "no_unexpected_contact": 5,
+  "contact_fraction": 5
+ },
+ "base_max_mm": {
+  "median": 39.37541061641653,
+  "max": 133.56116654900595
+ },
+ "trace_track_rms_mm": {
+  "median": 14.348674801360438,
+  "max": 41.14809621402199
+ },
+ "peak_Fn_N_max": 9.112141664446757,
+ "timing": {
+  "median_ms": 1.2212450019433163,
+  "max_ms": 11.154916999657871,
+  "over_period_fraction_mean": 9.318645500183841e-05
+ }
+}
+ FAIL mm_dev_000 line ['no_abort', 'base_max', 'tilt', 'path_tracking_rms', 'coverage', 'endpoint', 'force_peak', 'recovery', 'rotor_reserve'] [13.499999999991212, 'loss of control (failsafe): tilt 40 deg, base error 62 mm']
+ FAIL mm_dev_001 line ['base_max', 'tilt', 'path_tracking_rms', 'endpoint'] None
+ FAIL mm_dev_002 line ['base_max', 'tilt', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL mm_dev_003 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL mm_dev_004 rounded_triangle ['no_abort', 'base_max', 'tilt', 'path_tracking_rms', 'coverage', 'endpoint', 'force_peak', 'no_unexpected_contact', 'recovery', 'rotor_reserve'] [10.78499999999754, 'loss of control (failsafe): tilt 41 deg, base error 86 mm']
+ FAIL mm_dev_005 rounded_triangle ['no_abort', 'base_max', 'tilt', 'contact_fraction', 'force_peak', 'no_unexpected_contact', 'rotor_reserve'] [6.045000000001642, 'loss of control (failsafe): tilt 40 deg, base error 63 mm']
+ FAIL mm_dev_006 circle ['no_abort', 'base_max', 'tilt', 'path_tracking_rms', 'coverage', 'endpoint', 'recovery', 'rotor_reserve'] [13.279999999991725, 'loss of control (failsafe): tilt 40 deg, base error 31 mm']
+ FAIL mm_dev_007 circle ['no_abort', 'base_max', 'tilt', 'contact_fraction', 'force_peak', 'no_unexpected_contact', 'recovery', 'rotor_reserve'] [7.23000000000309, 'loss of control (failsafe): tilt 41 deg, base error 134 mm']
+ FAIL mm_dev_008 line ['base_max', 'tilt', 'path_tracking_rms', 'endpoint'] None
+ FAIL mm_dev_009 rounded_triangle ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL mm_dev_010 line ['no_abort', 'base_max', 'tilt', 'contact_fraction', 'force_peak', 'no_unexpected_contact', 'recovery', 'rotor_reserve'] [5.645000000001153, 'loss of control (failsafe): tilt 40 deg, base error 19 mm']
+ FAIL mm_dev_011 line ['path_tracking_rms'] None
+ FAIL mm_dev_012 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint', 'force_peak', 'rotor_reserve'] None
+ FAIL mm_dev_013 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL mm_dev_014 line ['path_tracking_rms'] None
+ FAIL mm_dev_015 rounded_triangle ['no_abort', 'base_max', 'tilt', 'path_tracking_rms', 'coverage', 'endpoint', 'contact_fraction', 'force_peak', 'no_unexpected_contact', 'recovery', 'rotor_reserve'] [9.839999999999742, 'loss of control (failsafe): tilt 41 deg, base error 126 mm']
+ FAIL mm_dev_016 line ['path_tracking_rms'] None
+ FAIL mm_dev_017 circle ['no_abort', 'base_max', 'tilt', 'contact_fraction', 'recovery', 'rotor_reserve'] [8.145000000003693, 'loss of control (failsafe): tilt 40 deg, base error 36 mm']
+ FAIL mm_dev_018 line ['base_max', 'path_tracking_rms'] None
+ FAIL mm_dev_019 rounded_triangle ['base_max', 'path_tracking_rms', 'endpoint'] None

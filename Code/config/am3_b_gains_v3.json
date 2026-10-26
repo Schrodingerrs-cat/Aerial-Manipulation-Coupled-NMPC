@@ -1,0 +1,55 @@
+{
+ "version": "B gains v3 (2026-10-25)",
+ "selected_from": "results/am3_b_tuning/random_search2.json (120 samples, scored on free/line/circle/rounded_triangle), after random_search.json and free_arm_grid*.json; v2 (config/am3_b_gains_v2.json) diverged on 5/16 development scenarios",
+ "score": 16.297072139647852,
+ "per_scenario": [
+  {
+   "sc": "free",
+   "ok": true,
+   "base_rms": 9.399319414763399,
+   "pad_rms": 10.717586377070795
+  },
+  {
+   "sc": "line",
+   "ok": true,
+   "base_rms": 5.822568007743446,
+   "pad_rms": 14.123202170889547
+  },
+  {
+   "sc": "circle",
+   "ok": true,
+   "base_rms": 10.777951951336043,
+   "pad_rms": 20.628003876957195
+  },
+  {
+   "sc": "rounded_triangle",
+   "ok": true,
+   "base_rms": 8.941551224941263,
+   "pad_rms": 15.025003494696984
+  }
+ ],
+ "gains": {
+  "w_att": 11.593077335488138,
+  "ki_att": 1160.7009185566876,
+  "i_att_max": 0.913551925905319,
+  "kp_pos": 7.666946540893028,
+  "kd_pos": 5.695770268055931,
+  "ki_pos": 1.5503049304307819,
+  "lag_gain": 0.8762149012938372,
+  "kp_joint": 1.5695209139090276,
+  "kd_joint": 0.01606314584720677,
+  "k_corr": 0.16530175378236983
+ },
+ "development_budget": {
+  "linearisation_scans": [
+   "linear_search.json",
+   "linear_search2.json"
+  ],
+  "grid_free_arm": [
+   "free_arm_grid.json (32)",
+   "free_arm_grid2.json (24)"
+  ],
+  "random_stage2": 80,
+  "random_stage3": 120
+ }
+}

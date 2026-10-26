@@ -1,0 +1,390 @@
+{
+ "name": "mm_dev",
+ "seed": 11,
+ "scenarios": [
+  {
+   "id": "mm_dev_000",
+   "family": "payload",
+   "path": "line",
+   "seed": 133802,
+   "gap0": 0.065,
+   "dyz": [
+    0.002,
+    -0.0094
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0404,
+     "pos_hand_m": [
+      0.0,
+      0.0428,
+      -0.0572
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_dev_001",
+   "family": "contact",
+   "path": "line",
+   "seed": 542744,
+   "gap0": 0.0784,
+   "dyz": [
+    0.0024,
+    -0.0026
+   ],
+   "mismatch": {
+    "k_scale": 1.1114,
+    "c_scale": 1.4943,
+    "mu_scale": 0.913
+   }
+  },
+  {
+   "id": "mm_dev_002",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 855718,
+   "gap0": 0.0736,
+   "dyz": [
+    0.0034,
+    0.0002
+   ],
+   "mismatch": {
+    "kf_scale": 1.0633,
+    "motor_tau_scale": 1.0844
+   }
+  },
+  {
+   "id": "mm_dev_003",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 982267,
+   "gap0": 0.0561,
+   "dyz": [
+    0.0011,
+    -0.0003
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.2183,
+      "t0": 2.9412,
+      "freq": 0.4407
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_dev_004",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 886692,
+   "gap0": 0.0539,
+   "dyz": [
+    -0.0007,
+    -0.0045
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.4688,
+      "t0": 7.8599,
+      "dur": 0.6477
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_dev_005",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 857504,
+   "gap0": 0.0561,
+   "dyz": [
+    0.008,
+    -0.0057
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0323,
+     "pos_hand_m": [
+      0.0,
+      -0.0299,
+      -0.0462
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_dev_006",
+   "family": "contact",
+   "path": "circle",
+   "seed": 726995,
+   "gap0": 0.0772,
+   "dyz": [
+    0.0039,
+    -0.0032
+   ],
+   "mismatch": {
+    "k_scale": 0.6169,
+    "c_scale": 0.7397,
+    "mu_scale": 1.9947
+   }
+  },
+  {
+   "id": "mm_dev_007",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 89822,
+   "gap0": 0.0707,
+   "dyz": [
+    -0.0089,
+    -0.0093
+   ],
+   "mismatch": {
+    "kf_scale": 1.0692,
+    "motor_tau_scale": 1.1115
+   }
+  },
+  {
+   "id": "mm_dev_008",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 20153,
+   "gap0": 0.0595,
+   "dyz": [
+    -0.0082,
+    -0.0065
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.2678,
+      "t0": 3.8652,
+      "freq": 0.2382
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_dev_009",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 644939,
+   "gap0": 0.0559,
+   "dyz": [
+    -0.0088,
+    0.002
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.2081,
+      "t0": 8.6103,
+      "dur": 0.6902
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_dev_010",
+   "family": "payload",
+   "path": "line",
+   "seed": 680877,
+   "gap0": 0.0505,
+   "dyz": [
+    -0.0041,
+    0.0045
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0645,
+     "pos_hand_m": [
+      0.0,
+      0.0353,
+      -0.0513
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_dev_011",
+   "family": "contact",
+   "path": "line",
+   "seed": 244477,
+   "gap0": 0.0577,
+   "dyz": [
+    0.0096,
+    0.0088
+   ],
+   "mismatch": {
+    "k_scale": 0.9407,
+    "c_scale": 1.154,
+    "mu_scale": 0.9715
+   }
+  },
+  {
+   "id": "mm_dev_012",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 999107,
+   "gap0": 0.0512,
+   "dyz": [
+    -0.0087,
+    -0.0019
+   ],
+   "mismatch": {
+    "kf_scale": 0.949,
+    "motor_tau_scale": 1.2917
+   }
+  },
+  {
+   "id": "mm_dev_013",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 302088,
+   "gap0": 0.0664,
+   "dyz": [
+    0.0032,
+    0.0038
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2855,
+      "t0": 2.5989,
+      "freq": 0.3878
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_dev_014",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 176185,
+   "gap0": 0.0633,
+   "dyz": [
+    0.0057,
+    0.0079
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.2106,
+      "t0": 7.7188,
+      "dur": 0.6631
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_dev_015",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 544610,
+   "gap0": 0.0543,
+   "dyz": [
+    -0.0051,
+    -0.0029
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0343,
+     "pos_hand_m": [
+      0.0,
+      0.037,
+      -0.0345
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_dev_016",
+   "family": "contact",
+   "path": "line",
+   "seed": 214975,
+   "gap0": 0.0649,
+   "dyz": [
+    -0.0084,
+    0.0022
+   ],
+   "mismatch": {
+    "k_scale": 0.8317,
+    "c_scale": 0.558,
+    "mu_scale": 0.6729
+   }
+  },
+  {
+   "id": "mm_dev_017",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 845039,
+   "gap0": 0.0691,
+   "dyz": [
+    -0.0035,
+    0.0029
+   ],
+   "mismatch": {
+    "kf_scale": 0.9704,
+    "motor_tau_scale": 0.7915
+   }
+  },
+  {
+   "id": "mm_dev_018",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 223802,
+   "gap0": 0.0619,
+   "dyz": [
+    0.0083,
+    -0.0077
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.2123,
+      "t0": 5.8536,
+      "freq": 0.4722
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_dev_019",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 403084,
+   "gap0": 0.052,
+   "dyz": [
+    0.0061,
+    0.0037
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.3395,
+      "t0": 7.0986,
+      "dur": 1.3019
+     }
+    ]
+   }
+  }
+ ]
+}

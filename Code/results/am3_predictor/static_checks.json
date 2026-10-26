@@ -1,0 +1,16 @@
+{
+ "fk": 3.3306690738754696e-16,
+ "jac_cols": 2.8102520310824275e-16,
+ "jac_fd": 5.5162874268432915e-11,
+ "M": 1.000000082740371e-09,
+ "M_cross_norm": 0.032639008285303486,
+ "M_min_eig": 0.00035649221616589234,
+ "bias": 1.0815258022489616e-08,
+ "contact_point_vel": 5.551115123125783e-16,
+ "acc": 5.440762834041379e-06,
+ "M_scale": 1.520000001,
+ "bias_scale": 15.194952605851022,
+ "acc_scale": 1446.9616114707742,
+ "acc_samples_skipped_for_contact": 11,
+ "note": "max abs error over 50 random states; M_cross_norm is the smallest max-abs base-joint cross block (non-zero coupling), contact point at the pad surface facing the wall; acc uses d.ctrl thrust kf*Omega^2 and joint torques, plant joint damping"
+}

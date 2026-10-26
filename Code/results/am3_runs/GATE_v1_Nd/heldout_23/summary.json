@@ -1,0 +1,110 @@
+{
+ "controller": "N_decoupled",
+ "path": "free",
+ "seed": 889796,
+ "abort": [
+  0.7199999999999485,
+  "loss of control (failsafe): tilt 42 deg, base error 157 mm"
+ ],
+ "t_end": 0.6999999999999507,
+ "wall_s": 2.4463868141174316,
+ "base": {
+  "rms_mm": 79.1781785874425,
+  "max_mm": 157.26485356692405,
+  "final_mm": 157.26485356692405,
+  "vel_max": 0.7096595688388775,
+  "settle_s": 0.6999999999999507
+ },
+ "com": {
+  "range_mm": [
+   96.20916625099262,
+   78.42139574709206,
+   54.86667146990221
+  ],
+  "rms_dev_mm": 46.47608017192958
+ },
+ "attitude": {
+  "tilt_max_deg": 39.8011670699174,
+  "tilt_rms_deg": 20.980265114716154,
+  "omega_max": 11.20190880319212
+ },
+ "pad_vs_reference": {
+  "rms_mm": 50.7632178319091,
+  "max_mm": 86.84208762276911
+ },
+ "contact": {
+  "valid_fraction": NaN,
+  "longest_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 0.0,
+  "impulse_Ns": 0.0,
+  "peak_ft_N": 0.0,
+  "Fn_mean_trace_N": NaN,
+  "Fn_std_trace_N": NaN,
+  "unexpected": [
+   [
+    "prop0",
+    "wall"
+   ],
+   [
+    "prop1",
+    "wall"
+   ]
+  ],
+  "unexpected_first": [
+   0.533749999999969,
+   [
+    [
+     "prop0",
+     "wall"
+    ],
+    [
+     "prop0",
+     "wall"
+    ],
+    [
+     "prop0",
+     "wall"
+    ]
+   ]
+  ]
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.923218693726778,
+   1.0,
+   1.0
+  ],
+  "rotor_force_min_N": 0.19802464842102688,
+  "rotor_force_max_N": 8.503857399135686,
+  "rotor_reserve_up_N": 1.4961426008643137,
+  "rotor_reserve_down_N": 0.09802464842102687,
+  "qd_max": [
+   7.912467416383277,
+   20.293954856200127,
+   8.562382199401686
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 31.7214439957299
+ },
+ "timing": {
+  "median_ms": 42.76768399722641,
+  "p95_ms": 72.93042149831308,
+  "p99_ms": 86.32509640083298,
+  "max_ms": 88.3371050003916,
+  "period_ms": 20.0,
+  "over_period_fraction": 1.0,
+  "injected_misses": 0
+ },
+ "completed": false,
+ "command": "scripts/am3_batch.py GATE_v1_Nd heldout Nd --workers 8",
+ "source_hash": "eda4bfef0fec",
+ "miss_p": 0.0
+}

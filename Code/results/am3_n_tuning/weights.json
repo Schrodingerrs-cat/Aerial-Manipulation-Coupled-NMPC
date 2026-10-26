@@ -1,0 +1,578 @@
+[
+ {
+  "cfg": "base",
+  "path": "line_T1",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.878000423697802,
+  "losses": 0,
+  "base_max": 1.1496216400728814
+ },
+ {
+  "cfg": "base",
+  "path": "line_T1",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.8435672287419868,
+  "losses": 0,
+  "base_max": 0.9640469632652061
+ },
+ {
+  "cfg": "base",
+  "path": "line_T1",
+  "seed": 3,
+  "completed": true,
+  "track_rms": 0.876042701481301,
+  "losses": 0,
+  "base_max": 0.9886150862001108
+ },
+ {
+  "cfg": "base",
+  "path": "line_T1",
+  "seed": 4,
+  "completed": true,
+  "track_rms": 0.865137437253224,
+  "losses": 0,
+  "base_max": 1.1223231848073778
+ },
+ {
+  "cfg": "base",
+  "path": "circle_T4",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.7487243354420999,
+  "losses": 0,
+  "base_max": 0.7865159332342854
+ },
+ {
+  "cfg": "base",
+  "path": "circle_T4",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.7591896478758676,
+  "losses": 0,
+  "base_max": 0.8761655181060765
+ },
+ {
+  "cfg": "base",
+  "path": "rounded_triangle_T5",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.5216628451361004,
+  "losses": 0,
+  "base_max": 0.6453533063064104
+ },
+ {
+  "cfg": "base",
+  "path": "line_fast",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.6661439798975719,
+  "losses": 0,
+  "base_max": 0.625819502645972
+ },
+ {
+  "cfg": "tp2",
+  "path": "line_T1",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.6791201993839305,
+  "losses": 0,
+  "base_max": 1.2306325895432138
+ },
+ {
+  "cfg": "tp2",
+  "path": "line_T1",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.6147270951538423,
+  "losses": 0,
+  "base_max": 1.113685519513551
+ },
+ {
+  "cfg": "tp2",
+  "path": "line_T1",
+  "seed": 3,
+  "completed": true,
+  "track_rms": 0.6756235778247394,
+  "losses": 0,
+  "base_max": 1.3231048407726584
+ },
+ {
+  "cfg": "tp2",
+  "path": "line_T1",
+  "seed": 4,
+  "completed": true,
+  "track_rms": 0.6407165499311026,
+  "losses": 0,
+  "base_max": 1.2902379514298827
+ },
+ {
+  "cfg": "tp2",
+  "path": "circle_T4",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.37718150150896523,
+  "losses": 0,
+  "base_max": 0.7208339046800659
+ },
+ {
+  "cfg": "tp2",
+  "path": "circle_T4",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.3812235964398389,
+  "losses": 0,
+  "base_max": 0.8124299139310917
+ },
+ {
+  "cfg": "tp2",
+  "path": "rounded_triangle_T5",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.2578379999320663,
+  "losses": 0,
+  "base_max": 0.593744208791815
+ },
+ {
+  "cfg": "tp2",
+  "path": "line_fast",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.32469397004457534,
+  "losses": 0,
+  "base_max": 0.597972942687723
+ },
+ {
+  "cfg": "tp2_tv2",
+  "path": "line_T1",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.7197054785971967,
+  "losses": 0,
+  "base_max": 1.5860307681883967
+ },
+ {
+  "cfg": "tp2_tv2",
+  "path": "line_T1",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.6727933147046758,
+  "losses": 0,
+  "base_max": 1.3159084709019258
+ },
+ {
+  "cfg": "tp2_tv2",
+  "path": "line_T1",
+  "seed": 3,
+  "completed": true,
+  "track_rms": 0.7319525983729583,
+  "losses": 0,
+  "base_max": 1.430470809959035
+ },
+ {
+  "cfg": "tp2_tv2",
+  "path": "line_T1",
+  "seed": 4,
+  "completed": true,
+  "track_rms": 0.6680172122214003,
+  "losses": 0,
+  "base_max": 1.5222499805177894
+ },
+ {
+  "cfg": "tp2_tv2",
+  "path": "circle_T4",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.3948189327148811,
+  "losses": 0,
+  "base_max": 0.8581670043353653
+ },
+ {
+  "cfg": "tp2_tv2",
+  "path": "circle_T4",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.402913163337121,
+  "losses": 0,
+  "base_max": 0.967791782514474
+ },
+ {
+  "cfg": "tp2_tv2",
+  "path": "rounded_triangle_T5",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.2770588956747778,
+  "losses": 0,
+  "base_max": 0.7208742072324184
+ },
+ {
+  "cfg": "tp2_tv2",
+  "path": "line_fast",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.3436244989273064,
+  "losses": 0,
+  "base_max": 0.6442990455638516
+ },
+ {
+  "cfg": "tp3",
+  "path": "line_T1",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.4019128688715107,
+  "losses": 0,
+  "base_max": 1.1599334236711083
+ },
+ {
+  "cfg": "tp3",
+  "path": "line_T1",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.3810110403105261,
+  "losses": 0,
+  "base_max": 0.8627504880900032
+ },
+ {
+  "cfg": "tp3",
+  "path": "line_T1",
+  "seed": 3,
+  "completed": true,
+  "track_rms": 0.3926102185355711,
+  "losses": 0,
+  "base_max": 1.0270402439114878
+ },
+ {
+  "cfg": "tp3",
+  "path": "line_T1",
+  "seed": 4,
+  "completed": true,
+  "track_rms": 0.37186912145582907,
+  "losses": 0,
+  "base_max": 1.0269240995352211
+ },
+ {
+  "cfg": "tp3",
+  "path": "circle_T4",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.22703334368110878,
+  "losses": 0,
+  "base_max": 1.1333695522281797
+ },
+ {
+  "cfg": "tp3",
+  "path": "circle_T4",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.22397428591271368,
+  "losses": 0,
+  "base_max": 0.6687213938835669
+ },
+ {
+  "cfg": "tp3",
+  "path": "rounded_triangle_T5",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.16620521078633121,
+  "losses": 0,
+  "base_max": 0.6154844879860006
+ },
+ {
+  "cfg": "tp3",
+  "path": "line_fast",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.18968286108251858,
+  "losses": 0,
+  "base_max": 2.269353973798144
+ },
+ {
+  "cfg": "B2",
+  "path": "line_T1",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.7082329525042439,
+  "losses": 0,
+  "base_max": 0.7180230518559441
+ },
+ {
+  "cfg": "B2",
+  "path": "line_T1",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.3736763570679026,
+  "losses": 0,
+  "base_max": 0.37925952756344067
+ },
+ {
+  "cfg": "B2",
+  "path": "line_T1",
+  "seed": 3,
+  "completed": true,
+  "track_rms": 0.39129361974627014,
+  "losses": 0,
+  "base_max": 0.5178252801043216
+ },
+ {
+  "cfg": "B2",
+  "path": "line_T1",
+  "seed": 4,
+  "completed": true,
+  "track_rms": 0.36843898414314935,
+  "losses": 0,
+  "base_max": 0.48772250311136206
+ },
+ {
+  "cfg": "B2",
+  "path": "circle_T4",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.38682058003171227,
+  "losses": 0,
+  "base_max": 0.26314044150974236
+ },
+ {
+  "cfg": "B2",
+  "path": "circle_T4",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.24290292262079527,
+  "losses": 0,
+  "base_max": 0.5807124631218478
+ },
+ {
+  "cfg": "B2",
+  "path": "rounded_triangle_T5",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.16041174778317752,
+  "losses": 0,
+  "base_max": 0.3532506832540611
+ },
+ {
+  "cfg": "B2",
+  "path": "line_fast",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.21958712976344413,
+  "losses": 0,
+  "base_max": 0.2743783362244677
+ },
+ {
+  "cfg": "du2",
+  "path": "line_T1",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.39987868483772043,
+  "losses": 0,
+  "base_max": 1.1626993654310191
+ },
+ {
+  "cfg": "du2",
+  "path": "line_T1",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.28506223698530025,
+  "losses": 0,
+  "base_max": 1.85367298721267
+ },
+ {
+  "cfg": "du2",
+  "path": "line_T1",
+  "seed": 3,
+  "completed": true,
+  "track_rms": 0.39257639278735873,
+  "losses": 0,
+  "base_max": 0.5401490894996209
+ },
+ {
+  "cfg": "du2",
+  "path": "line_T1",
+  "seed": 4,
+  "completed": true,
+  "track_rms": 0.3784733099648289,
+  "losses": 0,
+  "base_max": 1.0164249689039273
+ },
+ {
+  "cfg": "du2",
+  "path": "circle_T4",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.2254185246891321,
+  "losses": 0,
+  "base_max": 0.6290974645389704
+ },
+ {
+  "cfg": "du2",
+  "path": "circle_T4",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.21916283475732593,
+  "losses": 0,
+  "base_max": 0.2796598211954248
+ },
+ {
+  "cfg": "du2",
+  "path": "rounded_triangle_T5",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.18646717995938314,
+  "losses": 0,
+  "base_max": 1.7271897674986105
+ },
+ {
+  "cfg": "du2",
+  "path": "line_fast",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.33012131317461507,
+  "losses": 0,
+  "base_max": 0.26905122452887315
+ },
+ {
+  "cfg": "du_half",
+  "path": "line_T1",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.39456941390942085,
+  "losses": 0,
+  "base_max": 0.5437405081750678
+ },
+ {
+  "cfg": "du_half",
+  "path": "line_T1",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.3775047712215283,
+  "losses": 0,
+  "base_max": 0.268148167997199
+ },
+ {
+  "cfg": "du_half",
+  "path": "line_T1",
+  "seed": 3,
+  "completed": true,
+  "track_rms": 0.3943319782847003,
+  "losses": 0,
+  "base_max": 1.0329917746360286
+ },
+ {
+  "cfg": "du_half",
+  "path": "line_T1",
+  "seed": 4,
+  "completed": true,
+  "track_rms": 0.4115731024924219,
+  "losses": 0,
+  "base_max": 0.5019581766946438
+ },
+ {
+  "cfg": "du_half",
+  "path": "circle_T4",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.23297820801013966,
+  "losses": 0,
+  "base_max": 0.7090274724690133
+ },
+ {
+  "cfg": "du_half",
+  "path": "circle_T4",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.23908545005410886,
+  "losses": 0,
+  "base_max": 0.3987273140676145
+ },
+ {
+  "cfg": "du_half",
+  "path": "rounded_triangle_T5",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.1500103217156192,
+  "losses": 0,
+  "base_max": 0.2956061293937397
+ },
+ {
+  "cfg": "du_half",
+  "path": "line_fast",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.2274684853990942,
+  "losses": 0,
+  "base_max": 0.5367776903378267
+ },
+ {
+  "cfg": "tp2_B2_du2",
+  "path": "line_T1",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.4659400878234059,
+  "losses": 0,
+  "base_max": 0.2725443863155225
+ },
+ {
+  "cfg": "tp2_B2_du2",
+  "path": "line_T1",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.32917360784271693,
+  "losses": 0,
+  "base_max": 0.7740221593570416
+ },
+ {
+  "cfg": "tp2_B2_du2",
+  "path": "line_T1",
+  "seed": 3,
+  "completed": true,
+  "track_rms": 0.3474652317701769,
+  "losses": 0,
+  "base_max": 0.4187521120846185
+ },
+ {
+  "cfg": "tp2_B2_du2",
+  "path": "line_T1",
+  "seed": 4,
+  "completed": true,
+  "track_rms": 0.28174727443825204,
+  "losses": 0,
+  "base_max": 1.2097516434758064
+ },
+ {
+  "cfg": "tp2_B2_du2",
+  "path": "circle_T4",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.22885937383234387,
+  "losses": 0,
+  "base_max": 0.6625158886488215
+ },
+ {
+  "cfg": "tp2_B2_du2",
+  "path": "circle_T4",
+  "seed": 2,
+  "completed": true,
+  "track_rms": 0.20914307888895362,
+  "losses": 0,
+  "base_max": 0.5366719964598796
+ },
+ {
+  "cfg": "tp2_B2_du2",
+  "path": "rounded_triangle_T5",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.13617628549770092,
+  "losses": 0,
+  "base_max": 0.2661061967717384
+ },
+ {
+  "cfg": "tp2_B2_du2",
+  "path": "line_fast",
+  "seed": 1,
+  "completed": true,
+  "track_rms": 0.2089155345639822,
+  "losses": 0,
+  "base_max": 0.5145142150151594
+ }
+]

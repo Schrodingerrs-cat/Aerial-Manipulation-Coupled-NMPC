@@ -1,0 +1,38 @@
+{
+ "version": "v1",
+ "files": {
+  "ocrl/am3_ctrl_b.py": "f43ba4f208ceb85c128f19d871e9b3b26376c38ea243569d4525f1bb1cb1c280",
+  "ocrl/am3_ctrl_n.py": "1f8268aea19d86b062355ffc3f6db562a7f53cfa59fdb48e79a0d7484cc34cdc",
+  "ocrl/am3_ekf.py": "5f16f4bd8e879e5954619df5ad7c0f18162babb367e6758fcebb64a5b4d079df",
+  "ocrl/am3_episode.py": "54ceccbebc0765dba3d57daca0c3eefd0966053189f9e8a3a57210653f06bbfa",
+  "ocrl/am3_eval.py": "3a6bcdf4af1190ec3cb8f3ae60a1479d41e2ce9484730184efc25995309d827a",
+  "ocrl/am3_mismatch.py": "68513230581beae37b3fe138d99e7f7010affe9017a348e3dec9784539b56394",
+  "ocrl/am3_nmpc.py": "4d7e5ef66aa73b67b1468675810062ca0e78bce956d6fd58b28b2be59b583461",
+  "ocrl/am3_path.py": "d80c3f4d3937ff5316988e92e41738a89de1667c60db7b551e9a56fdea00a56e",
+  "ocrl/am3_plant.py": "55d02eae2243523bf96c6d13a6ae2e2ab12e375c17fba7c1205c5c0fe2192e05",
+  "ocrl/am3_pred.py": "acf7d9e02aa1ec290d30e7cab58d2dd0f32b40e42a459369723ce33df61f6d6f",
+  "ocrl/am3_record.py": "c822e9c569dcfa96723554adc6a9db0591f931e6f92160e466c4b463113bd13c",
+  "ocrl/am3_ref.py": "a52723e70cd98a4a5915fc328136f5dd509912412a615dc245f3e2803f1e5db7",
+  "ocrl/am3_static.py": "79d12cc68017742be85d52b638b22bc3fc8f7a6bcaaa875c33c3f6c3cdf95452",
+  "ocrl/am3_task.py": "b053f0dcaf32e598cf05b1fa58d5791321d0147f054c8f9c54e7404a7428579c",
+  "config/am3_design_v3.json": "eb3a0c2edc8bc190209a1302a187d75dedbfa4e5c6e7371e0e2547c8a309b3da",
+  "config/am3_task_v1.json": "4b700969fbf207813258944e2646f33b8d59c2ce6069d7486c253be576c7abda",
+  "config/am3_b_gains_v3.json": "94d757de04fcbcd5a32b12af52657538135a08918c372f905d7a534d01cf8a8e",
+  "config/am3_acceptance_v1.json": "6625c5d56af28dc0b1545c643ecafd9b84bf0684153ceb1027d87e75e77ab8d4",
+  "config/am3_domain_heldout.json": "f9f9323c2ac1e2025202c0c5c8b28396391daebf50bf1fedae7958a3972533c4",
+  "config/am3_domain_val.json": "d084a5de653e44a768bd79fee27151758a60b1e4bd837ce33b901d6531626cbb",
+  "config/am3_domain_dev.json": "6cd589cf4e4ea5858bce8a05996c50ea0050c1b5a3aeb62720e245c918e0026e",
+  "model/aerial_manipulator_v3.xml": "2d4b6e40c96c392bb7888fd65ada4a402a41ce4f230d186f015b2f6fb597d070"
+ },
+ "python": "3.10.12",
+ "mujoco": "3.10.0",
+ "casadi": "3.8.1",
+ "numpy": "2.2.6",
+ "machine": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+ "cpus": 16,
+ "candidates": {
+  "B": "ocrl/am3_ctrl_b.py with config/am3_b_gains_v3.json",
+  "N": "ocrl/am3_ctrl_n.py + am3_nmpc.py (N=10, h=0.02, nsub=4, acados SQP_RTI, weights in am3_nmpc.W)",
+  "Nd": "same with coupling='decoupled'"
+ }
+}

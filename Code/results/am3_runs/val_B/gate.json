@@ -1,0 +1,225 @@
+{
+ "criteria_file": "draft",
+ "stat": {
+  "n": 16,
+  "joint_successes": 0,
+  "completed": 16,
+  "failed_criteria": {
+   "base_max": 11,
+   "tilt": 4,
+   "path_tracking_rms": 14,
+   "endpoint": 11,
+   "coverage": 7,
+   "contact_fraction": 2
+  },
+  "base_max_mm": {
+   "median": 23.12301900087757,
+   "max": 33.71130253300399
+  },
+  "trace_track_rms_mm": {
+   "median": 10.12784975711072,
+   "max": 16.185241493142197
+  },
+  "peak_Fn_N_max": 1.185140547382588,
+  "timing": {
+   "median_ms": 1.2522725010057911,
+   "max_ms": 20.21495799999684,
+   "over_period_fraction_mean": 0.00045921119046206187
+  }
+ },
+ "scenarios": [
+  {
+   "id": "val_00",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_01",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_02",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_03",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_04",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "coverage"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_05",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_06",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_07",
+   "path": "free",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "contact_fraction"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_08",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_09",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_10",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_11",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_12",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "coverage"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_13",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_14",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "val_15",
+   "path": "free",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "contact_fraction"
+   ],
+   "abort": null
+  }
+ ]
+}

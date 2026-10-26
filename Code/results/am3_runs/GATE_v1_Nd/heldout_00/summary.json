@@ -1,0 +1,102 @@
+{
+ "controller": "N_decoupled",
+ "path": "line",
+ "seed": 411269,
+ "abort": [
+  0.5999999999999617,
+  "loss of control (failsafe): tilt 41 deg, base error 105 mm"
+ ],
+ "t_end": 0.5799999999999639,
+ "wall_s": 0.9843728542327881,
+ "base": {
+  "rms_mm": 40.2618849999339,
+  "max_mm": 101.89153038000617,
+  "final_mm": 101.89153038000617,
+  "vel_max": 0.7533013752867481,
+  "settle_s": 0.5799999999999639
+ },
+ "com": {
+  "range_mm": [
+   75.77032825841923,
+   14.196792484625137,
+   35.24509711442181
+  ],
+  "rms_dev_mm": 23.94618656879951
+ },
+ "attitude": {
+  "tilt_max_deg": 37.727173342172776,
+  "tilt_rms_deg": 19.64990897422296,
+  "omega_max": 14.963777406342492
+ },
+ "pad_vs_reference": {
+  "rms_mm": 89.39403442677919,
+  "max_mm": 152.9917648395515
+ },
+ "contact": {
+  "valid_fraction": NaN,
+  "longest_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 0.0,
+  "impulse_Ns": 0.0,
+  "peak_ft_N": 0.0,
+  "Fn_mean_trace_N": NaN,
+  "Fn_std_trace_N": NaN,
+  "unexpected": [
+   [
+    "prop0",
+    "wall"
+   ]
+  ],
+  "unexpected_first": [
+   0.5347499999999689,
+   [
+    [
+     "prop0",
+     "wall"
+    ],
+    [
+     "prop0",
+     "wall"
+    ]
+   ]
+  ]
+ },
+ "actuation": {
+  "tau_util_max": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "rotor_force_min_N": 0.7790518108427754,
+  "rotor_force_max_N": 8.239854252862123,
+  "rotor_reserve_up_N": 1.7601457471378765,
+  "rotor_reserve_down_N": 0.6790518108427754,
+  "qd_max": [
+   8.285357097868369,
+   23.849903421274878,
+   10.867468944857109
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 4,
+  "fallback": 0,
+  "slack_max": 33.99189075479294
+ },
+ "timing": {
+  "median_ms": 18.432410499372054,
+  "p95_ms": 47.54249184188666,
+  "p99_ms": 49.79408243772923,
+  "max_ms": 50.63965400040615,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.3,
+  "injected_misses": 0
+ },
+ "completed": false,
+ "command": "scripts/am3_batch.py GATE_v1_Nd heldout Nd --workers 8",
+ "source_hash": "eda4bfef0fec",
+ "miss_p": 0.0
+}

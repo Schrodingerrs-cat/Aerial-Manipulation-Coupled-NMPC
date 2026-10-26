@@ -1,0 +1,85 @@
+{
+ "controller": "N_decoupled",
+ "path": "line_fast",
+ "seed": 214433,
+ "abort": [
+  0.8399999999999352,
+  "loss of control (failsafe): tilt 16 deg, base error 261 mm"
+ ],
+ "t_end": 0.8199999999999374,
+ "wall_s": 1.3942298889160156,
+ "base": {
+  "rms_mm": 99.60379041719938,
+  "max_mm": 243.42921814383803,
+  "final_mm": 243.42921814383803,
+  "vel_max": 1.001778394719212,
+  "settle_s": 0.8199999999999374
+ },
+ "com": {
+  "range_mm": [
+   176.36650861391485,
+   162.1444916975691,
+   29.62131856389494
+  ],
+  "rms_dev_mm": 77.14009010126449
+ },
+ "attitude": {
+  "tilt_max_deg": 23.37270977026636,
+  "tilt_rms_deg": 13.392162200936657,
+  "omega_max": 10.491227783029865
+ },
+ "pad_vs_reference": {
+  "rms_mm": 108.22531777935285,
+  "max_mm": 197.1938902944678
+ },
+ "contact": {
+  "valid_fraction": NaN,
+  "longest_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 0.0,
+  "impulse_Ns": 0.0,
+  "peak_ft_N": 0.0,
+  "Fn_mean_trace_N": NaN,
+  "Fn_std_trace_N": NaN,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "rotor_force_min_N": 0.5514612652167759,
+  "rotor_force_max_N": 8.44820179850427,
+  "rotor_reserve_up_N": 1.5517982014957301,
+  "rotor_reserve_down_N": 0.4514612652167759,
+  "qd_max": [
+   8.038286785666196,
+   19.231901065177794,
+   8.023403246462818
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 2,
+  "fallback": 0,
+  "slack_max": 51.84438294740709
+ },
+ "timing": {
+  "median_ms": 18.1290065011126,
+  "p95_ms": 45.600217406172284,
+  "p99_ms": 48.255411964346415,
+  "max_ms": 49.322701001074165,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.30952380952380953,
+  "injected_misses": 0
+ },
+ "completed": false,
+ "command": "scripts/am3_batch.py GATE_v1_Nd heldout Nd --workers 8",
+ "source_hash": "eda4bfef0fec",
+ "miss_p": 0.0
+}

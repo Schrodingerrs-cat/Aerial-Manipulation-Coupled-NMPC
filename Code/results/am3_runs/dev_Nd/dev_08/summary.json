@@ -1,0 +1,106 @@
+{
+ "controller": "N_decoupled",
+ "path": "line",
+ "seed": 419405,
+ "abort": [
+  1.099999999999951,
+  "loss of control (failsafe): tilt 43 deg, base error 176 mm"
+ ],
+ "t_end": 1.0799999999999443,
+ "wall_s": 1.8070974349975586,
+ "base": {
+  "rms_mm": 52.36763375987523,
+  "max_mm": 155.2787134188495,
+  "final_mm": 155.2787134188495,
+  "vel_max": 1.2165656047325781,
+  "settle_s": 1.0799999999999443
+ },
+ "com": {
+  "range_mm": [
+   125.14279762342379,
+   82.86875131448537,
+   84.58250234219
+  ],
+  "rms_dev_mm": 40.98179704613388
+ },
+ "attitude": {
+  "tilt_max_deg": 39.494258030696365,
+  "tilt_rms_deg": 13.370156826971774,
+  "omega_max": 11.45428873037866
+ },
+ "pad_vs_reference": {
+  "rms_mm": 65.71023548738738,
+  "max_mm": 121.06418182402899
+ },
+ "contact": {
+  "valid_fraction": NaN,
+  "longest_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 0.0,
+  "impulse_Ns": 0.0,
+  "peak_ft_N": 0.0,
+  "Fn_mean_trace_N": NaN,
+  "Fn_std_trace_N": NaN,
+  "unexpected": [
+   [
+    "prop0",
+    "wall"
+   ]
+  ],
+  "unexpected_first": [
+   1.0867499999999466,
+   [
+    [
+     "prop0",
+     "wall"
+    ],
+    [
+     "prop0",
+     "wall"
+    ],
+    [
+     "prop0",
+     "wall"
+    ]
+   ]
+  ]
+ },
+ "actuation": {
+  "tau_util_max": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "rotor_force_min_N": 0.5386452421889585,
+  "rotor_force_max_N": 8.513110515914876,
+  "rotor_reserve_up_N": 1.4868894840851237,
+  "rotor_reserve_down_N": 0.4386452421889585,
+  "qd_max": [
+   7.950408373866968,
+   22.250253105427905,
+   8.359609685639352
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 3,
+  "fallback": 0,
+  "slack_max": 135.15514581128303
+ },
+ "timing": {
+  "median_ms": 18.409846001304686,
+  "p95_ms": 44.94703399977878,
+  "p99_ms": 53.01515245984775,
+  "max_ms": 57.13343599927612,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.36363636363636365,
+  "injected_misses": 0
+ },
+ "completed": false,
+ "command": "scripts/am3_batch.py dev_Nd dev Nd --workers 8",
+ "source_hash": "eda4bfef0fec",
+ "miss_p": 0.0
+}

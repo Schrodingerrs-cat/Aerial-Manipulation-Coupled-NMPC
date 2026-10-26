@@ -1,0 +1,39 @@
+mmdev_D {
+ "n": 20,
+ "solver_hang_stubs": 0,
+ "joint_successes": 13,
+ "completed": 19,
+ "failed_criteria": {
+  "path_tracking_rms": 7,
+  "coverage": 4,
+  "endpoint": 4,
+  "no_abort": 1,
+  "contact_fraction": 1,
+  "recovery": 1,
+  "base_max": 1,
+  "tilt": 1,
+  "no_unexpected_contact": 1,
+  "rotor_reserve": 1
+ },
+ "base_max_mm": {
+  "median": 2.9037111420147794,
+  "max": 103.68025691135142
+ },
+ "trace_track_rms_mm": {
+  "median": 1.048300861439666,
+  "max": 71.26383461106661
+ },
+ "peak_Fn_N_max": 2.3234315145896423,
+ "timing": {
+  "median_ms": 18.18789899971307,
+  "max_ms": 240.74468099934165,
+  "over_period_fraction_mean": 0.28204685533154994
+ }
+}
+ FAIL mm_dev_000 line ['path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL mm_dev_005 rounded_triangle ['path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL mm_dev_006 circle ['path_tracking_rms'] None
+ FAIL mm_dev_010 line ['no_abort', 'path_tracking_rms', 'coverage', 'endpoint', 'contact_fraction', 'recovery'] None
+ FAIL mm_dev_015 rounded_triangle ['path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL mm_dev_016 line ['path_tracking_rms'] None
+ FAIL mm_dev_017 circle ['base_max', 'tilt', 'path_tracking_rms', 'no_unexpected_contact', 'rotor_reserve'] None

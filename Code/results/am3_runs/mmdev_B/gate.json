@@ -1,0 +1,347 @@
+{
+ "criteria_file": "config/am3_acceptance_v1.json",
+ "stat": {
+  "n": 20,
+  "solver_hang_stubs": 0,
+  "joint_successes": 0,
+  "completed": 12,
+  "failed_criteria": {
+   "no_abort": 8,
+   "base_max": 17,
+   "tilt": 11,
+   "path_tracking_rms": 16,
+   "coverage": 8,
+   "endpoint": 12,
+   "force_peak": 7,
+   "recovery": 7,
+   "rotor_reserve": 9,
+   "no_unexpected_contact": 5,
+   "contact_fraction": 5
+  },
+  "base_max_mm": {
+   "median": 39.37541061641653,
+   "max": 133.56116654900595
+  },
+  "trace_track_rms_mm": {
+   "median": 14.348674801360438,
+   "max": 41.14809621402199
+  },
+  "peak_Fn_N_max": 9.112141664446757,
+  "timing": {
+   "median_ms": 1.2212450019433163,
+   "max_ms": 11.154916999657871,
+   "over_period_fraction_mean": 9.318645500183841e-05
+  }
+ },
+ "scenarios": [
+  {
+   "id": "mm_dev_000",
+   "path": "line",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "force_peak",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": [
+    13.499999999991212,
+    "loss of control (failsafe): tilt 40 deg, base error 62 mm"
+   ]
+  },
+  {
+   "id": "mm_dev_001",
+   "path": "line",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_002",
+   "path": "line",
+   "family": "propulsion",
+   "all": false,
+   "failed": [
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_003",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_004",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "force_peak",
+    "no_unexpected_contact",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": [
+    10.78499999999754,
+    "loss of control (failsafe): tilt 41 deg, base error 86 mm"
+   ]
+  },
+  {
+   "id": "mm_dev_005",
+   "path": "rounded_triangle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "contact_fraction",
+    "force_peak",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    6.045000000001642,
+    "loss of control (failsafe): tilt 40 deg, base error 63 mm"
+   ]
+  },
+  {
+   "id": "mm_dev_006",
+   "path": "circle",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": [
+    13.279999999991725,
+    "loss of control (failsafe): tilt 40 deg, base error 31 mm"
+   ]
+  },
+  {
+   "id": "mm_dev_007",
+   "path": "circle",
+   "family": "propulsion",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "contact_fraction",
+    "force_peak",
+    "no_unexpected_contact",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": [
+    7.23000000000309,
+    "loss of control (failsafe): tilt 41 deg, base error 134 mm"
+   ]
+  },
+  {
+   "id": "mm_dev_008",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_009",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_010",
+   "path": "line",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "contact_fraction",
+    "force_peak",
+    "no_unexpected_contact",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": [
+    5.645000000001153,
+    "loss of control (failsafe): tilt 40 deg, base error 19 mm"
+   ]
+  },
+  {
+   "id": "mm_dev_011",
+   "path": "line",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_012",
+   "path": "rounded_triangle",
+   "family": "propulsion",
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "force_peak",
+    "rotor_reserve"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_013",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_014",
+   "path": "line",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_015",
+   "path": "rounded_triangle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "force_peak",
+    "no_unexpected_contact",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": [
+    9.839999999999742,
+    "loss of control (failsafe): tilt 41 deg, base error 126 mm"
+   ]
+  },
+  {
+   "id": "mm_dev_016",
+   "path": "line",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_017",
+   "path": "circle",
+   "family": "propulsion",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "contact_fraction",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": [
+    8.145000000003693,
+    "loss of control (failsafe): tilt 40 deg, base error 36 mm"
+   ]
+  },
+  {
+   "id": "mm_dev_018",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm_dev_019",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "endpoint"
+   ],
+   "abort": null
+  }
+ ]
+}

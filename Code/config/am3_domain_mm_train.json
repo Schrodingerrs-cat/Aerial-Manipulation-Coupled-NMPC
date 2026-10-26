@@ -1,0 +1,5766 @@
+{
+ "name": "mm_train",
+ "seed": 44,
+ "scenarios": [
+  {
+   "id": "mm_train_000",
+   "family": "payload",
+   "path": "line",
+   "seed": 666850,
+   "gap0": 0.0577,
+   "dyz": [
+    -0.0019,
+    0.0094
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0414,
+     "pos_hand_m": [
+      0.0,
+      0.0357,
+      -0.0535
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_001",
+   "family": "contact",
+   "path": "circle",
+   "seed": 101037,
+   "gap0": 0.0703,
+   "dyz": [
+    0.0023,
+    0.0091
+   ],
+   "mismatch": {
+    "k_scale": 1.0114,
+    "c_scale": 1.9095,
+    "mu_scale": 1.8901
+   }
+  },
+  {
+   "id": "mm_train_002",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 586359,
+   "gap0": 0.0506,
+   "dyz": [
+    0.0059,
+    0.008
+   ],
+   "mismatch": {
+    "kf_scale": 1.0048,
+    "motor_tau_scale": 0.838
+   }
+  },
+  {
+   "id": "mm_train_003",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 968667,
+   "gap0": 0.0754,
+   "dyz": [
+    -0.0083,
+    0.0009
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.1603,
+      "t0": 5.9086,
+      "freq": 0.283
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_004",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 714032,
+   "gap0": 0.073,
+   "dyz": [
+    -0.0042,
+    -0.0071
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.3361,
+      "t0": 7.5758,
+      "dur": 0.7116
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_005",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 437829,
+   "gap0": 0.0694,
+   "dyz": [
+    0.0005,
+    -0.0077
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0939,
+     "pos_hand_m": [
+      0.0,
+      -0.0167,
+      -0.0284
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_006",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 53444,
+   "gap0": 0.0562,
+   "dyz": [
+    0.0096,
+    0.0079
+   ],
+   "mismatch": {
+    "k_scale": 1.1661,
+    "c_scale": 1.5865,
+    "mu_scale": 0.9161
+   }
+  },
+  {
+   "id": "mm_train_007",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 130420,
+   "gap0": 0.0629,
+   "dyz": [
+    -0.0035,
+    0.0039
+   ],
+   "mismatch": {
+    "kf_scale": 0.9766,
+    "motor_tau_scale": 1.1932
+   }
+  },
+  {
+   "id": "mm_train_008",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 228582,
+   "gap0": 0.0581,
+   "dyz": [
+    -0.0059,
+    -0.0036
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.2457,
+      "t0": 3.7499,
+      "freq": 0.408
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_009",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 180243,
+   "gap0": 0.057,
+   "dyz": [
+    0.0052,
+    -0.0005
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.3805,
+      "t0": 7.2363,
+      "dur": 0.8154
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_010",
+   "family": "payload",
+   "path": "line",
+   "seed": 414985,
+   "gap0": 0.0683,
+   "dyz": [
+    -0.0055,
+    -0.0091
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0328,
+     "pos_hand_m": [
+      0.0,
+      0.0275,
+      -0.0326
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_011",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 197384,
+   "gap0": 0.0703,
+   "dyz": [
+    -0.009,
+    0.004
+   ],
+   "mismatch": {
+    "k_scale": 1.147,
+    "c_scale": 1.9427,
+    "mu_scale": 0.8447
+   }
+  },
+  {
+   "id": "mm_train_012",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 808739,
+   "gap0": 0.075,
+   "dyz": [
+    -0.0015,
+    -0.0006
+   ],
+   "mismatch": {
+    "kf_scale": 1.0434,
+    "motor_tau_scale": 0.828
+   }
+  },
+  {
+   "id": "mm_train_013",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 80844,
+   "gap0": 0.0741,
+   "dyz": [
+    0.0019,
+    0.0081
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.1547,
+      "t0": 5.183,
+      "freq": 0.3908
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_014",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 281646,
+   "gap0": 0.0579,
+   "dyz": [
+    0.0051,
+    0.0069
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.4112,
+      "t0": 7.6518,
+      "dur": 0.6835
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_015",
+   "family": "payload",
+   "path": "line",
+   "seed": 124543,
+   "gap0": 0.053,
+   "dyz": [
+    -0.0007,
+    -0.0077
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0724,
+     "pos_hand_m": [
+      0.0,
+      0.0325,
+      -0.0431
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_016",
+   "family": "contact",
+   "path": "circle",
+   "seed": 885342,
+   "gap0": 0.0751,
+   "dyz": [
+    0.0065,
+    -0.0037
+   ],
+   "mismatch": {
+    "k_scale": 1.1657,
+    "c_scale": 1.2126,
+    "mu_scale": 0.6798
+   }
+  },
+  {
+   "id": "mm_train_017",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 647881,
+   "gap0": 0.0525,
+   "dyz": [
+    -0.0056,
+    0.0092
+   ],
+   "mismatch": {
+    "kf_scale": 1.0814,
+    "motor_tau_scale": 1.2764
+   }
+  },
+  {
+   "id": "mm_train_018",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 763249,
+   "gap0": 0.0776,
+   "dyz": [
+    -0.0062,
+    0.0016
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.1385,
+      "t0": 2.5473,
+      "freq": 0.4605
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_019",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 992617,
+   "gap0": 0.0712,
+   "dyz": [
+    0.0078,
+    -0.0062
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.3474,
+      "t0": 7.688,
+      "dur": 1.4374
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_020",
+   "family": "payload",
+   "path": "line",
+   "seed": 398126,
+   "gap0": 0.0758,
+   "dyz": [
+    -0.0068,
+    0.002
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0734,
+     "pos_hand_m": [
+      0.0,
+      -0.0168,
+      -0.0356
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_021",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 469931,
+   "gap0": 0.0612,
+   "dyz": [
+    -0.0076,
+    -0.0008
+   ],
+   "mismatch": {
+    "k_scale": 0.7024,
+    "c_scale": 1.4873,
+    "mu_scale": 1.6094
+   }
+  },
+  {
+   "id": "mm_train_022",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 539066,
+   "gap0": 0.0749,
+   "dyz": [
+    0.0037,
+    -0.0011
+   ],
+   "mismatch": {
+    "kf_scale": 0.9012,
+    "motor_tau_scale": 0.8251
+   }
+  },
+  {
+   "id": "mm_train_023",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 67206,
+   "gap0": 0.0744,
+   "dyz": [
+    -0.0091,
+    0.0039
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.2064,
+      "t0": 3.1375,
+      "freq": 0.4338
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_024",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 412389,
+   "gap0": 0.0755,
+   "dyz": [
+    0.0052,
+    0.0095
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.2661,
+      "t0": 8.4856,
+      "dur": 1.0358
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_025",
+   "family": "payload",
+   "path": "line",
+   "seed": 747053,
+   "gap0": 0.0554,
+   "dyz": [
+    -0.0052,
+    0.0038
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0925,
+     "pos_hand_m": [
+      0.0,
+      -0.0333,
+      -0.0419
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_026",
+   "family": "contact",
+   "path": "circle",
+   "seed": 788075,
+   "gap0": 0.0752,
+   "dyz": [
+    0.0075,
+    -0.0006
+   ],
+   "mismatch": {
+    "k_scale": 0.7726,
+    "c_scale": 0.7933,
+    "mu_scale": 1.4618
+   }
+  },
+  {
+   "id": "mm_train_027",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 155252,
+   "gap0": 0.0518,
+   "dyz": [
+    0.009,
+    0.0032
+   ],
+   "mismatch": {
+    "kf_scale": 1.0624,
+    "motor_tau_scale": 0.9619
+   }
+  },
+  {
+   "id": "mm_train_028",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 486012,
+   "gap0": 0.0604,
+   "dyz": [
+    -0.0062,
+    0.0083
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2125,
+      "t0": 3.3659,
+      "freq": 0.2875
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_029",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 806802,
+   "gap0": 0.0711,
+   "dyz": [
+    -0.0091,
+    0.0021
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.2016,
+      "t0": 8.2507,
+      "dur": 1.1292
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_030",
+   "family": "payload",
+   "path": "line",
+   "seed": 137004,
+   "gap0": 0.0717,
+   "dyz": [
+    -0.0058,
+    -0.0011
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0487,
+     "pos_hand_m": [
+      0.0,
+      -0.0392,
+      -0.0285
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_031",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 814373,
+   "gap0": 0.0738,
+   "dyz": [
+    -0.001,
+    -0.0045
+   ],
+   "mismatch": {
+    "k_scale": 1.2895,
+    "c_scale": 1.0369,
+    "mu_scale": 1.5304
+   }
+  },
+  {
+   "id": "mm_train_032",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 498910,
+   "gap0": 0.0605,
+   "dyz": [
+    0.0069,
+    -0.0048
+   ],
+   "mismatch": {
+    "kf_scale": 0.9408,
+    "motor_tau_scale": 0.9706
+   }
+  },
+  {
+   "id": "mm_train_033",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 177385,
+   "gap0": 0.0538,
+   "dyz": [
+    -0.0008,
+    -0.0049
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": 0.1883,
+      "t0": 3.0304,
+      "freq": 0.2152
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_034",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 281690,
+   "gap0": 0.0634,
+   "dyz": [
+    -0.0053,
+    -0.0054
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.3696,
+      "t0": 7.8564,
+      "dur": 0.6265
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_035",
+   "family": "payload",
+   "path": "line",
+   "seed": 461596,
+   "gap0": 0.061,
+   "dyz": [
+    -0.008,
+    -0.0099
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0855,
+     "pos_hand_m": [
+      0.0,
+      -0.0331,
+      -0.0287
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_036",
+   "family": "contact",
+   "path": "line",
+   "seed": 351441,
+   "gap0": 0.0642,
+   "dyz": [
+    0.006,
+    0.0021
+   ],
+   "mismatch": {
+    "k_scale": 1.063,
+    "c_scale": 0.9225,
+    "mu_scale": 0.5864
+   }
+  },
+  {
+   "id": "mm_train_037",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 781721,
+   "gap0": 0.0746,
+   "dyz": [
+    -0.0045,
+    -0.0043
+   ],
+   "mismatch": {
+    "kf_scale": 1.0649,
+    "motor_tau_scale": 0.7097
+   }
+  },
+  {
+   "id": "mm_train_038",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 202634,
+   "gap0": 0.0753,
+   "dyz": [
+    -0.0024,
+    -0.0025
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.1562,
+      "t0": 4.7339,
+      "freq": 0.236
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_039",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 807792,
+   "gap0": 0.0798,
+   "dyz": [
+    0.0061,
+    -0.0057
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.4532,
+      "t0": 7.2286,
+      "dur": 1.1121
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_040",
+   "family": "payload",
+   "path": "line",
+   "seed": 259862,
+   "gap0": 0.0695,
+   "dyz": [
+    -0.0066,
+    -0.0078
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0552,
+     "pos_hand_m": [
+      0.0,
+      -0.0179,
+      -0.036
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_041",
+   "family": "contact",
+   "path": "circle",
+   "seed": 576977,
+   "gap0": 0.0741,
+   "dyz": [
+    -0.0037,
+    -0.0086
+   ],
+   "mismatch": {
+    "k_scale": 1.3197,
+    "c_scale": 0.9607,
+    "mu_scale": 1.1964
+   }
+  },
+  {
+   "id": "mm_train_042",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 104691,
+   "gap0": 0.0541,
+   "dyz": [
+    -0.0018,
+    0.0072
+   ],
+   "mismatch": {
+    "kf_scale": 0.9173,
+    "motor_tau_scale": 1.0358
+   }
+  },
+  {
+   "id": "mm_train_043",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 926786,
+   "gap0": 0.0596,
+   "dyz": [
+    0.0069,
+    0.007
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.2769,
+      "t0": 4.3542,
+      "freq": 0.3651
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_044",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 952546,
+   "gap0": 0.0689,
+   "dyz": [
+    -0.0017,
+    -0.0004
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.3362,
+      "t0": 7.497,
+      "dur": 0.9881
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_045",
+   "family": "payload",
+   "path": "line",
+   "seed": 847492,
+   "gap0": 0.0661,
+   "dyz": [
+    0.0072,
+    -0.009
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0434,
+     "pos_hand_m": [
+      0.0,
+      0.0245,
+      -0.0527
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_046",
+   "family": "contact",
+   "path": "line",
+   "seed": 260872,
+   "gap0": 0.0677,
+   "dyz": [
+    -0.0001,
+    -0.0094
+   ],
+   "mismatch": {
+    "k_scale": 0.7251,
+    "c_scale": 1.6566,
+    "mu_scale": 1.1654
+   }
+  },
+  {
+   "id": "mm_train_047",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 879443,
+   "gap0": 0.0579,
+   "dyz": [
+    0.0036,
+    0.0035
+   ],
+   "mismatch": {
+    "kf_scale": 1.0414,
+    "motor_tau_scale": 1.1556
+   }
+  },
+  {
+   "id": "mm_train_048",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 202814,
+   "gap0": 0.0622,
+   "dyz": [
+    -0.0046,
+    -0.0055
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.1074,
+      "t0": 4.7341,
+      "freq": 0.2679
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_049",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 484350,
+   "gap0": 0.0784,
+   "dyz": [
+    0.0092,
+    -0.005
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.4913,
+      "t0": 8.3384,
+      "dur": 1.3301
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_050",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 514230,
+   "gap0": 0.0634,
+   "dyz": [
+    0.0021,
+    -0.0056
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.047,
+     "pos_hand_m": [
+      0.0,
+      0.0022,
+      -0.0251
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_051",
+   "family": "contact",
+   "path": "circle",
+   "seed": 884335,
+   "gap0": 0.0593,
+   "dyz": [
+    -0.0004,
+    -0.0077
+   ],
+   "mismatch": {
+    "k_scale": 1.1277,
+    "c_scale": 1.5691,
+    "mu_scale": 1.2116
+   }
+  },
+  {
+   "id": "mm_train_052",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 820671,
+   "gap0": 0.0561,
+   "dyz": [
+    0.0048,
+    0.0065
+   ],
+   "mismatch": {
+    "kf_scale": 1.0444,
+    "motor_tau_scale": 1.228
+   }
+  },
+  {
+   "id": "mm_train_053",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 790914,
+   "gap0": 0.0514,
+   "dyz": [
+    -0.0007,
+    0.0016
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.1877,
+      "t0": 5.753,
+      "freq": 0.2087
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_054",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 19943,
+   "gap0": 0.0765,
+   "dyz": [
+    -0.0068,
+    -0.0007
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.3022,
+      "t0": 8.1296,
+      "dur": 0.8854
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_055",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 197095,
+   "gap0": 0.062,
+   "dyz": [
+    -0.001,
+    -0.0013
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.067,
+     "pos_hand_m": [
+      0.0,
+      0.0427,
+      -0.0362
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_056",
+   "family": "contact",
+   "path": "line",
+   "seed": 978397,
+   "gap0": 0.0673,
+   "dyz": [
+    -0.009,
+    -0.0053
+   ],
+   "mismatch": {
+    "k_scale": 1.5399,
+    "c_scale": 0.5145,
+    "mu_scale": 1.9751
+   }
+  },
+  {
+   "id": "mm_train_057",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 965420,
+   "gap0": 0.0582,
+   "dyz": [
+    -0.0026,
+    0.0065
+   ],
+   "mismatch": {
+    "kf_scale": 1.0825,
+    "motor_tau_scale": 1.2402
+   }
+  },
+  {
+   "id": "mm_train_058",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 35628,
+   "gap0": 0.0759,
+   "dyz": [
+    -0.0011,
+    -0.0087
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.1094,
+      "t0": 3.652,
+      "freq": 0.3637
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_059",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 359381,
+   "gap0": 0.0517,
+   "dyz": [
+    0.0081,
+    0.0033
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.4266,
+      "t0": 7.6805,
+      "dur": 1.2637
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_060",
+   "family": "payload",
+   "path": "circle",
+   "seed": 579178,
+   "gap0": 0.0589,
+   "dyz": [
+    0.0051,
+    -0.0019
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0742,
+     "pos_hand_m": [
+      0.0,
+      0.0088,
+      -0.039
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_061",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 969816,
+   "gap0": 0.0542,
+   "dyz": [
+    -0.0092,
+    -0.009
+   ],
+   "mismatch": {
+    "k_scale": 1.0647,
+    "c_scale": 0.7312,
+    "mu_scale": 1.5977
+   }
+  },
+  {
+   "id": "mm_train_062",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 562170,
+   "gap0": 0.0631,
+   "dyz": [
+    -0.0072,
+    -0.001
+   ],
+   "mismatch": {
+    "kf_scale": 1.0719,
+    "motor_tau_scale": 1.1277
+   }
+  },
+  {
+   "id": "mm_train_063",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 357064,
+   "gap0": 0.0677,
+   "dyz": [
+    0.0057,
+    0.0019
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.2434,
+      "t0": 5.9293,
+      "freq": 0.3404
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_064",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 359251,
+   "gap0": 0.0744,
+   "dyz": [
+    0.003,
+    0.0031
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.3562,
+      "t0": 8.2551,
+      "dur": 1.4021
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_065",
+   "family": "payload",
+   "path": "line",
+   "seed": 196467,
+   "gap0": 0.0544,
+   "dyz": [
+    -0.0082,
+    -0.0091
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.044,
+     "pos_hand_m": [
+      0.0,
+      -0.0081,
+      -0.0503
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_066",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 61310,
+   "gap0": 0.0557,
+   "dyz": [
+    -0.0031,
+    0.0077
+   ],
+   "mismatch": {
+    "k_scale": 1.4109,
+    "c_scale": 1.013,
+    "mu_scale": 1.5725
+   }
+  },
+  {
+   "id": "mm_train_067",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 556505,
+   "gap0": 0.0785,
+   "dyz": [
+    0.0094,
+    -0.0011
+   ],
+   "mismatch": {
+    "kf_scale": 0.9025,
+    "motor_tau_scale": 1.3327
+   }
+  },
+  {
+   "id": "mm_train_068",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 340835,
+   "gap0": 0.0542,
+   "dyz": [
+    0.0072,
+    0.0082
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.1518,
+      "t0": 5.8673,
+      "freq": 0.4128
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_069",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 838031,
+   "gap0": 0.0537,
+   "dyz": [
+    -0.0064,
+    -0.0088
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.4427,
+      "t0": 8.7607,
+      "dur": 1.4886
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_070",
+   "family": "payload",
+   "path": "circle",
+   "seed": 996666,
+   "gap0": 0.051,
+   "dyz": [
+    -0.0053,
+    -0.007
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0709,
+     "pos_hand_m": [
+      0.0,
+      -0.0023,
+      -0.0227
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_071",
+   "family": "contact",
+   "path": "circle",
+   "seed": 311819,
+   "gap0": 0.0518,
+   "dyz": [
+    -0.0095,
+    0.0062
+   ],
+   "mismatch": {
+    "k_scale": 1.2352,
+    "c_scale": 0.7862,
+    "mu_scale": 1.8597
+   }
+  },
+  {
+   "id": "mm_train_072",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 366431,
+   "gap0": 0.0682,
+   "dyz": [
+    0.0084,
+    -0.009
+   ],
+   "mismatch": {
+    "kf_scale": 1.0688,
+    "motor_tau_scale": 1.3846
+   }
+  },
+  {
+   "id": "mm_train_073",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 539575,
+   "gap0": 0.0662,
+   "dyz": [
+    -0.0015,
+    -0.0086
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2791,
+      "t0": 2.6275,
+      "freq": 0.2643
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_074",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 165872,
+   "gap0": 0.0513,
+   "dyz": [
+    -0.0051,
+    -0.0009
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.2843,
+      "t0": 7.3242,
+      "dur": 0.5741
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_075",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 777693,
+   "gap0": 0.0731,
+   "dyz": [
+    -0.0055,
+    -0.002
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0597,
+     "pos_hand_m": [
+      0.0,
+      0.028,
+      -0.0456
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_076",
+   "family": "contact",
+   "path": "line",
+   "seed": 310449,
+   "gap0": 0.0778,
+   "dyz": [
+    0.0003,
+    -0.0
+   ],
+   "mismatch": {
+    "k_scale": 1.3551,
+    "c_scale": 1.185,
+    "mu_scale": 1.5558
+   }
+  },
+  {
+   "id": "mm_train_077",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 430113,
+   "gap0": 0.0593,
+   "dyz": [
+    -0.0005,
+    0.0027
+   ],
+   "mismatch": {
+    "kf_scale": 1.0377,
+    "motor_tau_scale": 0.7571
+   }
+  },
+  {
+   "id": "mm_train_078",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 381690,
+   "gap0": 0.0778,
+   "dyz": [
+    0.0067,
+    -0.0076
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.1378,
+      "t0": 4.3951,
+      "freq": 0.2844
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_079",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 987388,
+   "gap0": 0.0526,
+   "dyz": [
+    -0.0094,
+    -0.0057
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.3996,
+      "t0": 8.5673,
+      "dur": 0.8397
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_080",
+   "family": "payload",
+   "path": "circle",
+   "seed": 466859,
+   "gap0": 0.0684,
+   "dyz": [
+    0.009,
+    -0.0099
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.053,
+     "pos_hand_m": [
+      0.0,
+      0.0226,
+      -0.0236
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_081",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 997677,
+   "gap0": 0.0611,
+   "dyz": [
+    -0.0094,
+    -0.01
+   ],
+   "mismatch": {
+    "k_scale": 0.7557,
+    "c_scale": 0.5392,
+    "mu_scale": 0.5228
+   }
+  },
+  {
+   "id": "mm_train_082",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 290914,
+   "gap0": 0.0626,
+   "dyz": [
+    0.001,
+    0.0077
+   ],
+   "mismatch": {
+    "kf_scale": 0.9948,
+    "motor_tau_scale": 1.1808
+   }
+  },
+  {
+   "id": "mm_train_083",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 741502,
+   "gap0": 0.0597,
+   "dyz": [
+    0.0044,
+    0.0038
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.262,
+      "t0": 3.5296,
+      "freq": 0.2656
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_084",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 150282,
+   "gap0": 0.078,
+   "dyz": [
+    -0.0044,
+    0.0055
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.4805,
+      "t0": 8.2158,
+      "dur": 0.6806
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_085",
+   "family": "payload",
+   "path": "line",
+   "seed": 888185,
+   "gap0": 0.0521,
+   "dyz": [
+    0.0045,
+    0.006
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0851,
+     "pos_hand_m": [
+      0.0,
+      -0.0374,
+      -0.0429
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_086",
+   "family": "contact",
+   "path": "line",
+   "seed": 12224,
+   "gap0": 0.0597,
+   "dyz": [
+    -0.0016,
+    -0.0032
+   ],
+   "mismatch": {
+    "k_scale": 1.4651,
+    "c_scale": 1.9853,
+    "mu_scale": 1.1103
+   }
+  },
+  {
+   "id": "mm_train_087",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 671650,
+   "gap0": 0.0759,
+   "dyz": [
+    -0.0094,
+    0.0058
+   ],
+   "mismatch": {
+    "kf_scale": 0.918,
+    "motor_tau_scale": 0.8571
+   }
+  },
+  {
+   "id": "mm_train_088",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 904197,
+   "gap0": 0.0553,
+   "dyz": [
+    -0.0012,
+    -0.0023
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.1878,
+      "t0": 4.5571,
+      "freq": 0.4039
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_089",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 832301,
+   "gap0": 0.0596,
+   "dyz": [
+    0.0048,
+    -0.004
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.3009,
+      "t0": 8.4593,
+      "dur": 0.7019
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_090",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 721274,
+   "gap0": 0.0651,
+   "dyz": [
+    0.0078,
+    -0.0068
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0833,
+     "pos_hand_m": [
+      0.0,
+      -0.0096,
+      -0.045
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_091",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 635384,
+   "gap0": 0.0664,
+   "dyz": [
+    0.0086,
+    -0.0084
+   ],
+   "mismatch": {
+    "k_scale": 0.6113,
+    "c_scale": 0.7751,
+    "mu_scale": 1.572
+   }
+  },
+  {
+   "id": "mm_train_092",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 75749,
+   "gap0": 0.0715,
+   "dyz": [
+    0.0091,
+    -0.0001
+   ],
+   "mismatch": {
+    "kf_scale": 1.0418,
+    "motor_tau_scale": 0.7865
+   }
+  },
+  {
+   "id": "mm_train_093",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 366377,
+   "gap0": 0.0561,
+   "dyz": [
+    0.0091,
+    0.008
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.1472,
+      "t0": 5.5623,
+      "freq": 0.4087
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_094",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 61865,
+   "gap0": 0.0536,
+   "dyz": [
+    0.0051,
+    0.0069
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.2721,
+      "t0": 7.23,
+      "dur": 1.2286
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_095",
+   "family": "payload",
+   "path": "line",
+   "seed": 664953,
+   "gap0": 0.0711,
+   "dyz": [
+    0.0035,
+    -0.0099
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0654,
+     "pos_hand_m": [
+      0.0,
+      0.0028,
+      -0.0402
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_096",
+   "family": "contact",
+   "path": "line",
+   "seed": 868744,
+   "gap0": 0.0539,
+   "dyz": [
+    0.0029,
+    0.004
+   ],
+   "mismatch": {
+    "k_scale": 1.021,
+    "c_scale": 0.5555,
+    "mu_scale": 1.7886
+   }
+  },
+  {
+   "id": "mm_train_097",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 843307,
+   "gap0": 0.0558,
+   "dyz": [
+    -0.0004,
+    0.0088
+   ],
+   "mismatch": {
+    "kf_scale": 0.9531,
+    "motor_tau_scale": 0.9218
+   }
+  },
+  {
+   "id": "mm_train_098",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 989426,
+   "gap0": 0.0705,
+   "dyz": [
+    0.0072,
+    -0.0079
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.2939,
+      "t0": 4.9375,
+      "freq": 0.2929
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_099",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 559501,
+   "gap0": 0.0546,
+   "dyz": [
+    -0.0058,
+    -0.0034
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.2106,
+      "t0": 8.5005,
+      "dur": 0.7044
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_100",
+   "family": "payload",
+   "path": "line",
+   "seed": 519264,
+   "gap0": 0.0601,
+   "dyz": [
+    -0.0077,
+    0.0009
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0944,
+     "pos_hand_m": [
+      0.0,
+      0.0418,
+      -0.0366
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_101",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 780350,
+   "gap0": 0.0681,
+   "dyz": [
+    -0.0031,
+    -0.0056
+   ],
+   "mismatch": {
+    "k_scale": 1.5522,
+    "c_scale": 0.6079,
+    "mu_scale": 1.0321
+   }
+  },
+  {
+   "id": "mm_train_102",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 646207,
+   "gap0": 0.0599,
+   "dyz": [
+    0.0019,
+    -0.0097
+   ],
+   "mismatch": {
+    "kf_scale": 0.9058,
+    "motor_tau_scale": 0.8295
+   }
+  },
+  {
+   "id": "mm_train_103",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 168647,
+   "gap0": 0.0529,
+   "dyz": [
+    -0.0069,
+    0.0084
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": 0.2037,
+      "t0": 3.3773,
+      "freq": 0.3181
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_104",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 733878,
+   "gap0": 0.0634,
+   "dyz": [
+    -0.0046,
+    -0.0084
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.4399,
+      "t0": 8.7441,
+      "dur": 0.8654
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_105",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 919683,
+   "gap0": 0.0762,
+   "dyz": [
+    0.0068,
+    -0.0087
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0492,
+     "pos_hand_m": [
+      0.0,
+      0.0209,
+      -0.0463
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_106",
+   "family": "contact",
+   "path": "circle",
+   "seed": 840225,
+   "gap0": 0.0772,
+   "dyz": [
+    -0.0099,
+    0.0091
+   ],
+   "mismatch": {
+    "k_scale": 1.1222,
+    "c_scale": 1.9391,
+    "mu_scale": 1.337
+   }
+  },
+  {
+   "id": "mm_train_107",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 596148,
+   "gap0": 0.0727,
+   "dyz": [
+    0.0045,
+    -0.0059
+   ],
+   "mismatch": {
+    "kf_scale": 1.0582,
+    "motor_tau_scale": 0.9351
+   }
+  },
+  {
+   "id": "mm_train_108",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 669768,
+   "gap0": 0.0556,
+   "dyz": [
+    0.0042,
+    0.0001
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.211,
+      "t0": 2.4088,
+      "freq": 0.3164
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_109",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 529888,
+   "gap0": 0.0573,
+   "dyz": [
+    0.0079,
+    0.0047
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.3469,
+      "t0": 8.5594,
+      "dur": 0.5939
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_110",
+   "family": "payload",
+   "path": "line",
+   "seed": 743558,
+   "gap0": 0.0596,
+   "dyz": [
+    -0.0028,
+    -0.0097
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0577,
+     "pos_hand_m": [
+      0.0,
+      0.0009,
+      -0.0469
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_111",
+   "family": "contact",
+   "path": "line",
+   "seed": 868251,
+   "gap0": 0.0543,
+   "dyz": [
+    0.0055,
+    0.0048
+   ],
+   "mismatch": {
+    "k_scale": 1.4558,
+    "c_scale": 0.8384,
+    "mu_scale": 1.3334
+   }
+  },
+  {
+   "id": "mm_train_112",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 16365,
+   "gap0": 0.0641,
+   "dyz": [
+    0.0014,
+    -0.0019
+   ],
+   "mismatch": {
+    "kf_scale": 0.9165,
+    "motor_tau_scale": 1.3007
+   }
+  },
+  {
+   "id": "mm_train_113",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 710794,
+   "gap0": 0.0587,
+   "dyz": [
+    -0.0079,
+    0.0049
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.1619,
+      "t0": 4.3188,
+      "freq": 0.3264
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_114",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 951095,
+   "gap0": 0.0793,
+   "dyz": [
+    -0.0065,
+    0.0095
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.2873,
+      "t0": 8.8208,
+      "dur": 1.1883
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_115",
+   "family": "payload",
+   "path": "line",
+   "seed": 177976,
+   "gap0": 0.0793,
+   "dyz": [
+    0.0078,
+    0.0065
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0876,
+     "pos_hand_m": [
+      0.0,
+      -0.0136,
+      -0.0546
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_116",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 985180,
+   "gap0": 0.07,
+   "dyz": [
+    -0.006,
+    0.0001
+   ],
+   "mismatch": {
+    "k_scale": 1.1069,
+    "c_scale": 1.6414,
+    "mu_scale": 1.1938
+   }
+  },
+  {
+   "id": "mm_train_117",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 936393,
+   "gap0": 0.0641,
+   "dyz": [
+    0.0054,
+    -0.0097
+   ],
+   "mismatch": {
+    "kf_scale": 1.0947,
+    "motor_tau_scale": 0.8145
+   }
+  },
+  {
+   "id": "mm_train_118",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 79764,
+   "gap0": 0.0704,
+   "dyz": [
+    -0.0001,
+    -0.0023
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.105,
+      "t0": 3.6675,
+      "freq": 0.498
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_119",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 23566,
+   "gap0": 0.0635,
+   "dyz": [
+    0.0001,
+    0.0099
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.3149,
+      "t0": 8.3997,
+      "dur": 1.1357
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_120",
+   "family": "payload",
+   "path": "line",
+   "seed": 236328,
+   "gap0": 0.0775,
+   "dyz": [
+    -0.0064,
+    -0.0047
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0463,
+     "pos_hand_m": [
+      0.0,
+      0.0225,
+      -0.0579
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_121",
+   "family": "contact",
+   "path": "line",
+   "seed": 168003,
+   "gap0": 0.0589,
+   "dyz": [
+    0.0014,
+    -0.0022
+   ],
+   "mismatch": {
+    "k_scale": 0.6275,
+    "c_scale": 0.6572,
+    "mu_scale": 0.6844
+   }
+  },
+  {
+   "id": "mm_train_122",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 475523,
+   "gap0": 0.0589,
+   "dyz": [
+    -0.0093,
+    -0.0084
+   ],
+   "mismatch": {
+    "kf_scale": 0.9831,
+    "motor_tau_scale": 1.0997
+   }
+  },
+  {
+   "id": "mm_train_123",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 996648,
+   "gap0": 0.0679,
+   "dyz": [
+    0.0038,
+    0.0059
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.1872,
+      "t0": 3.2909,
+      "freq": 0.2771
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_124",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 721293,
+   "gap0": 0.0684,
+   "dyz": [
+    -0.001,
+    -0.0024
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.3518,
+      "t0": 7.9184,
+      "dur": 1.4087
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_125",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 593157,
+   "gap0": 0.0557,
+   "dyz": [
+    -0.0052,
+    -0.0009
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0555,
+     "pos_hand_m": [
+      0.0,
+      -0.0475,
+      -0.0265
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_126",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 499917,
+   "gap0": 0.0648,
+   "dyz": [
+    0.0018,
+    -0.0059
+   ],
+   "mismatch": {
+    "k_scale": 1.1658,
+    "c_scale": 0.8862,
+    "mu_scale": 1.8833
+   }
+  },
+  {
+   "id": "mm_train_127",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 28951,
+   "gap0": 0.0603,
+   "dyz": [
+    0.0043,
+    -0.005
+   ],
+   "mismatch": {
+    "kf_scale": 1.0745,
+    "motor_tau_scale": 0.8951
+   }
+  },
+  {
+   "id": "mm_train_128",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 742151,
+   "gap0": 0.0784,
+   "dyz": [
+    -0.0064,
+    -0.0004
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.1251,
+      "t0": 2.2541,
+      "freq": 0.4202
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_129",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 332545,
+   "gap0": 0.0615,
+   "dyz": [
+    -0.0016,
+    0.0009
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.4567,
+      "t0": 8.2897,
+      "dur": 0.6665
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_130",
+   "family": "payload",
+   "path": "line",
+   "seed": 146267,
+   "gap0": 0.062,
+   "dyz": [
+    -0.0005,
+    -0.0008
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0861,
+     "pos_hand_m": [
+      0.0,
+      -0.0114,
+      -0.0281
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_131",
+   "family": "contact",
+   "path": "line",
+   "seed": 363123,
+   "gap0": 0.0522,
+   "dyz": [
+    0.0075,
+    -0.0012
+   ],
+   "mismatch": {
+    "k_scale": 0.6573,
+    "c_scale": 0.6783,
+    "mu_scale": 0.7542
+   }
+  },
+  {
+   "id": "mm_train_132",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 417183,
+   "gap0": 0.0672,
+   "dyz": [
+    -0.0023,
+    -0.0077
+   ],
+   "mismatch": {
+    "kf_scale": 0.9035,
+    "motor_tau_scale": 1.3351
+   }
+  },
+  {
+   "id": "mm_train_133",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 185197,
+   "gap0": 0.0674,
+   "dyz": [
+    0.0039,
+    -0.0015
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.21,
+      "t0": 5.2576,
+      "freq": 0.4857
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_134",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 518642,
+   "gap0": 0.0651,
+   "dyz": [
+    0.0008,
+    0.0038
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.2874,
+      "t0": 8.4973,
+      "dur": 0.917
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_135",
+   "family": "payload",
+   "path": "line",
+   "seed": 932398,
+   "gap0": 0.0632,
+   "dyz": [
+    0.0049,
+    0.0006
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0627,
+     "pos_hand_m": [
+      0.0,
+      -0.0477,
+      -0.0266
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_136",
+   "family": "contact",
+   "path": "circle",
+   "seed": 924389,
+   "gap0": 0.0593,
+   "dyz": [
+    0.0064,
+    -0.0024
+   ],
+   "mismatch": {
+    "k_scale": 1.3973,
+    "c_scale": 0.5387,
+    "mu_scale": 1.8411
+   }
+  },
+  {
+   "id": "mm_train_137",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 759759,
+   "gap0": 0.0714,
+   "dyz": [
+    -0.0049,
+    -0.0048
+   ],
+   "mismatch": {
+    "kf_scale": 0.9675,
+    "motor_tau_scale": 0.8501
+   }
+  },
+  {
+   "id": "mm_train_138",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 237606,
+   "gap0": 0.0613,
+   "dyz": [
+    -0.0097,
+    -0.0076
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2291,
+      "t0": 3.3639,
+      "freq": 0.2233
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_139",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 261961,
+   "gap0": 0.07,
+   "dyz": [
+    -0.0097,
+    -0.0059
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.261,
+      "t0": 7.499,
+      "dur": 0.6101
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_140",
+   "family": "payload",
+   "path": "circle",
+   "seed": 604230,
+   "gap0": 0.0703,
+   "dyz": [
+    0.0061,
+    0.0028
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0401,
+     "pos_hand_m": [
+      0.0,
+      0.0364,
+      -0.0507
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_141",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 498907,
+   "gap0": 0.0754,
+   "dyz": [
+    -0.009,
+    0.0036
+   ],
+   "mismatch": {
+    "k_scale": 0.6103,
+    "c_scale": 0.9428,
+    "mu_scale": 1.4052
+   }
+  },
+  {
+   "id": "mm_train_142",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 98988,
+   "gap0": 0.0603,
+   "dyz": [
+    0.0051,
+    -0.0042
+   ],
+   "mismatch": {
+    "kf_scale": 1.0803,
+    "motor_tau_scale": 0.828
+   }
+  },
+  {
+   "id": "mm_train_143",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 452919,
+   "gap0": 0.0542,
+   "dyz": [
+    0.0049,
+    0.0099
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.2329,
+      "t0": 5.3512,
+      "freq": 0.4961
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_144",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 901404,
+   "gap0": 0.075,
+   "dyz": [
+    -0.0092,
+    0.0001
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.416,
+      "t0": 7.475,
+      "dur": 1.0903
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_145",
+   "family": "payload",
+   "path": "line",
+   "seed": 540745,
+   "gap0": 0.0542,
+   "dyz": [
+    -0.0036,
+    -0.0099
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0968,
+     "pos_hand_m": [
+      0.0,
+      0.0318,
+      -0.0475
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_146",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 306797,
+   "gap0": 0.0662,
+   "dyz": [
+    -0.0085,
+    -0.0021
+   ],
+   "mismatch": {
+    "k_scale": 0.9663,
+    "c_scale": 1.5028,
+    "mu_scale": 1.8386
+   }
+  },
+  {
+   "id": "mm_train_147",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 495489,
+   "gap0": 0.067,
+   "dyz": [
+    -0.0081,
+    -0.0097
+   ],
+   "mismatch": {
+    "kf_scale": 0.9646,
+    "motor_tau_scale": 0.714
+   }
+  },
+  {
+   "id": "mm_train_148",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 265379,
+   "gap0": 0.0588,
+   "dyz": [
+    -0.0007,
+    -0.0065
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.1091,
+      "t0": 2.1295,
+      "freq": 0.4092
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_149",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 530189,
+   "gap0": 0.0552,
+   "dyz": [
+    -0.0032,
+    0.0082
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.3198,
+      "t0": 7.6019,
+      "dur": 0.6875
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_150",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 652106,
+   "gap0": 0.0579,
+   "dyz": [
+    -0.0025,
+    0.0058
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0808,
+     "pos_hand_m": [
+      0.0,
+      -0.0372,
+      -0.0307
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_151",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 366690,
+   "gap0": 0.0578,
+   "dyz": [
+    -0.0078,
+    -0.007
+   ],
+   "mismatch": {
+    "k_scale": 0.7911,
+    "c_scale": 1.7979,
+    "mu_scale": 1.3546
+   }
+  },
+  {
+   "id": "mm_train_152",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 381841,
+   "gap0": 0.0518,
+   "dyz": [
+    0.0054,
+    0.0084
+   ],
+   "mismatch": {
+    "kf_scale": 1.0488,
+    "motor_tau_scale": 0.805
+   }
+  },
+  {
+   "id": "mm_train_153",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 86178,
+   "gap0": 0.0759,
+   "dyz": [
+    0.0077,
+    0.0043
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.1099,
+      "t0": 5.842,
+      "freq": 0.4853
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_154",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 118362,
+   "gap0": 0.0613,
+   "dyz": [
+    -0.0023,
+    -0.0047
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.3121,
+      "t0": 7.2645,
+      "dur": 0.8438
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_155",
+   "family": "payload",
+   "path": "circle",
+   "seed": 21820,
+   "gap0": 0.0736,
+   "dyz": [
+    -0.0018,
+    -0.0008
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0713,
+     "pos_hand_m": [
+      0.0,
+      -0.0253,
+      -0.0357
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_156",
+   "family": "contact",
+   "path": "line",
+   "seed": 474656,
+   "gap0": 0.0698,
+   "dyz": [
+    0.0062,
+    -0.0032
+   ],
+   "mismatch": {
+    "k_scale": 1.5143,
+    "c_scale": 1.9725,
+    "mu_scale": 1.425
+   }
+  },
+  {
+   "id": "mm_train_157",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 65605,
+   "gap0": 0.0635,
+   "dyz": [
+    -0.0018,
+    0.0004
+   ],
+   "mismatch": {
+    "kf_scale": 0.9409,
+    "motor_tau_scale": 1.314
+   }
+  },
+  {
+   "id": "mm_train_158",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 730565,
+   "gap0": 0.0662,
+   "dyz": [
+    0.0062,
+    -0.0057
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.2371,
+      "t0": 3.7093,
+      "freq": 0.3926
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_159",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 456134,
+   "gap0": 0.0779,
+   "dyz": [
+    0.0088,
+    -0.0058
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.4043,
+      "t0": 7.2062,
+      "dur": 0.8995
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_160",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 979615,
+   "gap0": 0.0696,
+   "dyz": [
+    0.0013,
+    0.0064
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0525,
+     "pos_hand_m": [
+      0.0,
+      0.0255,
+      -0.0504
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_161",
+   "family": "contact",
+   "path": "circle",
+   "seed": 211378,
+   "gap0": 0.078,
+   "dyz": [
+    -0.0058,
+    0.0054
+   ],
+   "mismatch": {
+    "k_scale": 0.8547,
+    "c_scale": 1.5404,
+    "mu_scale": 1.1847
+   }
+  },
+  {
+   "id": "mm_train_162",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 633165,
+   "gap0": 0.053,
+   "dyz": [
+    0.0027,
+    -0.0011
+   ],
+   "mismatch": {
+    "kf_scale": 0.9001,
+    "motor_tau_scale": 0.7821
+   }
+  },
+  {
+   "id": "mm_train_163",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 626869,
+   "gap0": 0.0631,
+   "dyz": [
+    -0.0074,
+    -0.0016
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.2583,
+      "t0": 5.2441,
+      "freq": 0.3427
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_164",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 862771,
+   "gap0": 0.0547,
+   "dyz": [
+    -0.006,
+    0.0019
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.3357,
+      "t0": 7.2734,
+      "dur": 0.929
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_165",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 851794,
+   "gap0": 0.0727,
+   "dyz": [
+    -0.0051,
+    -0.0001
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0425,
+     "pos_hand_m": [
+      0.0,
+      -0.0372,
+      -0.0446
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_166",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 118037,
+   "gap0": 0.0677,
+   "dyz": [
+    -0.0039,
+    0.0076
+   ],
+   "mismatch": {
+    "k_scale": 1.5107,
+    "c_scale": 1.3109,
+    "mu_scale": 1.3833
+   }
+  },
+  {
+   "id": "mm_train_167",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 776382,
+   "gap0": 0.0665,
+   "dyz": [
+    -0.0018,
+    -0.0057
+   ],
+   "mismatch": {
+    "kf_scale": 1.0495,
+    "motor_tau_scale": 1.0609
+   }
+  },
+  {
+   "id": "mm_train_168",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 493884,
+   "gap0": 0.0651,
+   "dyz": [
+    -0.0085,
+    0.0
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.2938,
+      "t0": 3.597,
+      "freq": 0.4284
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_169",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 34308,
+   "gap0": 0.077,
+   "dyz": [
+    0.0077,
+    0.004
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.3756,
+      "t0": 8.2567,
+      "dur": 1.1026
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_170",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 636469,
+   "gap0": 0.0772,
+   "dyz": [
+    -0.006,
+    0.0094
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0934,
+     "pos_hand_m": [
+      0.0,
+      -0.028,
+      -0.0348
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_171",
+   "family": "contact",
+   "path": "line",
+   "seed": 502933,
+   "gap0": 0.0512,
+   "dyz": [
+    0.0075,
+    -0.0017
+   ],
+   "mismatch": {
+    "k_scale": 1.2396,
+    "c_scale": 1.3882,
+    "mu_scale": 1.7584
+   }
+  },
+  {
+   "id": "mm_train_172",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 760949,
+   "gap0": 0.0545,
+   "dyz": [
+    -0.007,
+    0.0001
+   ],
+   "mismatch": {
+    "kf_scale": 1.007,
+    "motor_tau_scale": 1.0687
+   }
+  },
+  {
+   "id": "mm_train_173",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 79451,
+   "gap0": 0.0754,
+   "dyz": [
+    0.001,
+    0.007
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.1071,
+      "t0": 4.7535,
+      "freq": 0.4319
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_174",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 564225,
+   "gap0": 0.0581,
+   "dyz": [
+    0.0023,
+    0.0005
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.4976,
+      "t0": 8.5443,
+      "dur": 1.4665
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_175",
+   "family": "payload",
+   "path": "circle",
+   "seed": 894813,
+   "gap0": 0.055,
+   "dyz": [
+    -0.0042,
+    0.0083
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0854,
+     "pos_hand_m": [
+      0.0,
+      0.0344,
+      -0.0527
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_176",
+   "family": "contact",
+   "path": "circle",
+   "seed": 774792,
+   "gap0": 0.0704,
+   "dyz": [
+    0.0082,
+    -0.0071
+   ],
+   "mismatch": {
+    "k_scale": 0.6431,
+    "c_scale": 1.4126,
+    "mu_scale": 1.487
+   }
+  },
+  {
+   "id": "mm_train_177",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 532183,
+   "gap0": 0.0591,
+   "dyz": [
+    -0.0083,
+    0.007
+   ],
+   "mismatch": {
+    "kf_scale": 1.0226,
+    "motor_tau_scale": 1.3521
+   }
+  },
+  {
+   "id": "mm_train_178",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 967631,
+   "gap0": 0.0577,
+   "dyz": [
+    -0.007,
+    0.0022
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.1758,
+      "t0": 4.8177,
+      "freq": 0.3918
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_179",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 267221,
+   "gap0": 0.0798,
+   "dyz": [
+    0.0094,
+    -0.0019
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.384,
+      "t0": 7.0495,
+      "dur": 0.9911
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_180",
+   "family": "payload",
+   "path": "circle",
+   "seed": 381798,
+   "gap0": 0.0754,
+   "dyz": [
+    0.0063,
+    0.0018
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0401,
+     "pos_hand_m": [
+      0.0,
+      -0.021,
+      -0.0466
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_181",
+   "family": "contact",
+   "path": "line",
+   "seed": 607075,
+   "gap0": 0.0603,
+   "dyz": [
+    -0.0072,
+    -0.0034
+   ],
+   "mismatch": {
+    "k_scale": 0.7319,
+    "c_scale": 1.185,
+    "mu_scale": 1.5122
+   }
+  },
+  {
+   "id": "mm_train_182",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 921976,
+   "gap0": 0.0779,
+   "dyz": [
+    0.0055,
+    -0.0056
+   ],
+   "mismatch": {
+    "kf_scale": 1.0266,
+    "motor_tau_scale": 1.2923
+   }
+  },
+  {
+   "id": "mm_train_183",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 97692,
+   "gap0": 0.0659,
+   "dyz": [
+    -0.0084,
+    0.0023
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.2657,
+      "t0": 4.1637,
+      "freq": 0.2953
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_184",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 689170,
+   "gap0": 0.0523,
+   "dyz": [
+    -0.0092,
+    -0.0072
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.4655,
+      "t0": 8.0453,
+      "dur": 0.8101
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_185",
+   "family": "payload",
+   "path": "line",
+   "seed": 960465,
+   "gap0": 0.0513,
+   "dyz": [
+    0.0021,
+    0.0054
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0993,
+     "pos_hand_m": [
+      0.0,
+      0.0012,
+      -0.0568
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_186",
+   "family": "contact",
+   "path": "circle",
+   "seed": 43440,
+   "gap0": 0.0794,
+   "dyz": [
+    -0.0052,
+    -0.0062
+   ],
+   "mismatch": {
+    "k_scale": 1.4899,
+    "c_scale": 1.8331,
+    "mu_scale": 1.0387
+   }
+  },
+  {
+   "id": "mm_train_187",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 283909,
+   "gap0": 0.0713,
+   "dyz": [
+    0.0022,
+    0.0033
+   ],
+   "mismatch": {
+    "kf_scale": 0.9124,
+    "motor_tau_scale": 1.347
+   }
+  },
+  {
+   "id": "mm_train_188",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 497939,
+   "gap0": 0.0631,
+   "dyz": [
+    0.0007,
+    -0.0048
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.2684,
+      "t0": 4.9928,
+      "freq": 0.4763
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_189",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 457375,
+   "gap0": 0.079,
+   "dyz": [
+    0.0054,
+    0.0053
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.2265,
+      "t0": 8.6873,
+      "dur": 0.7161
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_190",
+   "family": "payload",
+   "path": "circle",
+   "seed": 349027,
+   "gap0": 0.0667,
+   "dyz": [
+    0.0092,
+    -0.01
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0369,
+     "pos_hand_m": [
+      0.0,
+      0.002,
+      -0.0502
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_191",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 238799,
+   "gap0": 0.0726,
+   "dyz": [
+    0.0031,
+    0.009
+   ],
+   "mismatch": {
+    "k_scale": 1.4558,
+    "c_scale": 1.4423,
+    "mu_scale": 0.6474
+   }
+  },
+  {
+   "id": "mm_train_192",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 283949,
+   "gap0": 0.0674,
+   "dyz": [
+    -0.009,
+    0.0089
+   ],
+   "mismatch": {
+    "kf_scale": 1.0696,
+    "motor_tau_scale": 0.9073
+   }
+  },
+  {
+   "id": "mm_train_193",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 479566,
+   "gap0": 0.0686,
+   "dyz": [
+    0.0006,
+    0.0019
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2024,
+      "t0": 2.0765,
+      "freq": 0.3409
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_194",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 66057,
+   "gap0": 0.0761,
+   "dyz": [
+    0.0073,
+    -0.0097
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.2828,
+      "t0": 8.9176,
+      "dur": 0.6817
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_195",
+   "family": "payload",
+   "path": "line",
+   "seed": 72391,
+   "gap0": 0.0741,
+   "dyz": [
+    0.0094,
+    -0.0026
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0853,
+     "pos_hand_m": [
+      0.0,
+      -0.0417,
+      -0.0404
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_196",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 308531,
+   "gap0": 0.069,
+   "dyz": [
+    0.0026,
+    0.007
+   ],
+   "mismatch": {
+    "k_scale": 0.6524,
+    "c_scale": 0.654,
+    "mu_scale": 1.5843
+   }
+  },
+  {
+   "id": "mm_train_197",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 561869,
+   "gap0": 0.0507,
+   "dyz": [
+    -0.0036,
+    0.0016
+   ],
+   "mismatch": {
+    "kf_scale": 1.0501,
+    "motor_tau_scale": 0.9164
+   }
+  },
+  {
+   "id": "mm_train_198",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 77049,
+   "gap0": 0.0772,
+   "dyz": [
+    -0.0086,
+    0.0066
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.291,
+      "t0": 5.8602,
+      "freq": 0.4073
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_199",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 469192,
+   "gap0": 0.0544,
+   "dyz": [
+    -0.0003,
+    0.0077
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.2191,
+      "t0": 8.8015,
+      "dur": 1.3227
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_200",
+   "family": "payload",
+   "path": "circle",
+   "seed": 383081,
+   "gap0": 0.0619,
+   "dyz": [
+    0.0058,
+    -0.0056
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.085,
+     "pos_hand_m": [
+      0.0,
+      -0.0404,
+      -0.0581
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_201",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 331268,
+   "gap0": 0.0736,
+   "dyz": [
+    0.0093,
+    -0.004
+   ],
+   "mismatch": {
+    "k_scale": 1.4952,
+    "c_scale": 0.5668,
+    "mu_scale": 1.5412
+   }
+  },
+  {
+   "id": "mm_train_202",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 226649,
+   "gap0": 0.0615,
+   "dyz": [
+    -0.0017,
+    0.0007
+   ],
+   "mismatch": {
+    "kf_scale": 0.9145,
+    "motor_tau_scale": 1.3187
+   }
+  },
+  {
+   "id": "mm_train_203",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 385948,
+   "gap0": 0.0731,
+   "dyz": [
+    0.0068,
+    0.0023
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": 0.2316,
+      "t0": 5.6643,
+      "freq": 0.4272
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_204",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 27119,
+   "gap0": 0.0626,
+   "dyz": [
+    0.0027,
+    -0.0026
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.213,
+      "t0": 7.55,
+      "dur": 1.4414
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_205",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 888318,
+   "gap0": 0.0623,
+   "dyz": [
+    -0.0074,
+    0.0007
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0955,
+     "pos_hand_m": [
+      0.0,
+      0.0149,
+      -0.0561
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_206",
+   "family": "contact",
+   "path": "circle",
+   "seed": 971088,
+   "gap0": 0.059,
+   "dyz": [
+    -0.0071,
+    0.0086
+   ],
+   "mismatch": {
+    "k_scale": 1.3702,
+    "c_scale": 1.771,
+    "mu_scale": 1.2664
+   }
+  },
+  {
+   "id": "mm_train_207",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 41351,
+   "gap0": 0.0721,
+   "dyz": [
+    0.0084,
+    0.0044
+   ],
+   "mismatch": {
+    "kf_scale": 0.973,
+    "motor_tau_scale": 0.9758
+   }
+  },
+  {
+   "id": "mm_train_208",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 479819,
+   "gap0": 0.0783,
+   "dyz": [
+    0.0096,
+    -0.0029
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.1123,
+      "t0": 3.0412,
+      "freq": 0.4724
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_209",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 948635,
+   "gap0": 0.0639,
+   "dyz": [
+    -0.0075,
+    0.0012
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.286,
+      "t0": 8.7956,
+      "dur": 0.989
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_210",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 981921,
+   "gap0": 0.0594,
+   "dyz": [
+    0.0011,
+    -0.0017
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0662,
+     "pos_hand_m": [
+      0.0,
+      -0.0154,
+      -0.0272
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_211",
+   "family": "contact",
+   "path": "circle",
+   "seed": 300763,
+   "gap0": 0.0534,
+   "dyz": [
+    -0.0056,
+    0.0097
+   ],
+   "mismatch": {
+    "k_scale": 0.6182,
+    "c_scale": 1.5942,
+    "mu_scale": 0.8105
+   }
+  },
+  {
+   "id": "mm_train_212",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 784114,
+   "gap0": 0.0659,
+   "dyz": [
+    -0.0036,
+    -0.0082
+   ],
+   "mismatch": {
+    "kf_scale": 1.0458,
+    "motor_tau_scale": 1.1422
+   }
+  },
+  {
+   "id": "mm_train_213",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 145861,
+   "gap0": 0.0724,
+   "dyz": [
+    0.0063,
+    0.0073
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2283,
+      "t0": 5.0629,
+      "freq": 0.4978
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_214",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 142923,
+   "gap0": 0.0798,
+   "dyz": [
+    -0.0055,
+    0.0001
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.3324,
+      "t0": 7.7836,
+      "dur": 0.6133
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_215",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 986728,
+   "gap0": 0.0706,
+   "dyz": [
+    -0.0082,
+    -0.003
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0992,
+     "pos_hand_m": [
+      0.0,
+      0.0477,
+      -0.0202
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_216",
+   "family": "contact",
+   "path": "circle",
+   "seed": 430071,
+   "gap0": 0.0636,
+   "dyz": [
+    0.0077,
+    0.0039
+   ],
+   "mismatch": {
+    "k_scale": 1.0521,
+    "c_scale": 1.0696,
+    "mu_scale": 1.7578
+   }
+  },
+  {
+   "id": "mm_train_217",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 353168,
+   "gap0": 0.0765,
+   "dyz": [
+    0.009,
+    -0.0087
+   ],
+   "mismatch": {
+    "kf_scale": 0.9771,
+    "motor_tau_scale": 1.381
+   }
+  },
+  {
+   "id": "mm_train_218",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 904732,
+   "gap0": 0.0772,
+   "dyz": [
+    0.0075,
+    -0.0055
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.2477,
+      "t0": 5.7996,
+      "freq": 0.2939
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_219",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 900200,
+   "gap0": 0.0617,
+   "dyz": [
+    -0.0022,
+    0.0094
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.282,
+      "t0": 7.2613,
+      "dur": 0.584
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_220",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 927532,
+   "gap0": 0.0568,
+   "dyz": [
+    -0.005,
+    -0.0097
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0819,
+     "pos_hand_m": [
+      0.0,
+      -0.0456,
+      -0.0425
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_221",
+   "family": "contact",
+   "path": "circle",
+   "seed": 207411,
+   "gap0": 0.0616,
+   "dyz": [
+    -0.0004,
+    -0.0019
+   ],
+   "mismatch": {
+    "k_scale": 1.5473,
+    "c_scale": 1.6137,
+    "mu_scale": 1.3488
+   }
+  },
+  {
+   "id": "mm_train_222",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 390724,
+   "gap0": 0.0624,
+   "dyz": [
+    -0.01,
+    0.0066
+   ],
+   "mismatch": {
+    "kf_scale": 0.9072,
+    "motor_tau_scale": 0.7
+   }
+  },
+  {
+   "id": "mm_train_223",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 428400,
+   "gap0": 0.08,
+   "dyz": [
+    0.0081,
+    0.0037
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.2974,
+      "t0": 5.5235,
+      "freq": 0.4275
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_224",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 230086,
+   "gap0": 0.065,
+   "dyz": [
+    0.0065,
+    -0.0001
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.2519,
+      "t0": 8.0729,
+      "dur": 1.1473
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_225",
+   "family": "payload",
+   "path": "circle",
+   "seed": 844944,
+   "gap0": 0.0591,
+   "dyz": [
+    0.0056,
+    0.0063
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0675,
+     "pos_hand_m": [
+      0.0,
+      -0.0264,
+      -0.0355
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_226",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 603247,
+   "gap0": 0.0741,
+   "dyz": [
+    0.0028,
+    0.0067
+   ],
+   "mismatch": {
+    "k_scale": 0.8306,
+    "c_scale": 1.605,
+    "mu_scale": 0.6079
+   }
+  },
+  {
+   "id": "mm_train_227",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 489436,
+   "gap0": 0.0589,
+   "dyz": [
+    -0.0077,
+    0.006
+   ],
+   "mismatch": {
+    "kf_scale": 1.0265,
+    "motor_tau_scale": 0.7701
+   }
+  },
+  {
+   "id": "mm_train_228",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 108120,
+   "gap0": 0.0762,
+   "dyz": [
+    0.0016,
+    -0.0004
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.1281,
+      "t0": 4.1131,
+      "freq": 0.251
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_229",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 690297,
+   "gap0": 0.0769,
+   "dyz": [
+    -0.0069,
+    -0.0084
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.2475,
+      "t0": 8.3401,
+      "dur": 1.1043
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_230",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 734390,
+   "gap0": 0.0676,
+   "dyz": [
+    0.0037,
+    -0.0018
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0785,
+     "pos_hand_m": [
+      0.0,
+      -0.0444,
+      -0.0467
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_231",
+   "family": "contact",
+   "path": "line",
+   "seed": 730907,
+   "gap0": 0.0765,
+   "dyz": [
+    -0.0028,
+    0.0008
+   ],
+   "mismatch": {
+    "k_scale": 0.864,
+    "c_scale": 1.3037,
+    "mu_scale": 1.7437
+   }
+  },
+  {
+   "id": "mm_train_232",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 394231,
+   "gap0": 0.0589,
+   "dyz": [
+    0.009,
+    0.0027
+   ],
+   "mismatch": {
+    "kf_scale": 1.0229,
+    "motor_tau_scale": 1.3206
+   }
+  },
+  {
+   "id": "mm_train_233",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 92727,
+   "gap0": 0.0676,
+   "dyz": [
+    0.0021,
+    -0.0002
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2903,
+      "t0": 4.9853,
+      "freq": 0.2914
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_234",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 408941,
+   "gap0": 0.0729,
+   "dyz": [
+    0.0003,
+    0.0014
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.4909,
+      "t0": 7.6695,
+      "dur": 1.2512
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_235",
+   "family": "payload",
+   "path": "circle",
+   "seed": 901297,
+   "gap0": 0.0793,
+   "dyz": [
+    -0.0012,
+    0.0081
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0664,
+     "pos_hand_m": [
+      0.0,
+      0.0126,
+      -0.0301
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_236",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 378175,
+   "gap0": 0.0704,
+   "dyz": [
+    0.0045,
+    -0.0007
+   ],
+   "mismatch": {
+    "k_scale": 0.8553,
+    "c_scale": 0.9351,
+    "mu_scale": 1.818
+   }
+  },
+  {
+   "id": "mm_train_237",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 689105,
+   "gap0": 0.0629,
+   "dyz": [
+    0.008,
+    -0.0053
+   ],
+   "mismatch": {
+    "kf_scale": 1.0184,
+    "motor_tau_scale": 0.7925
+   }
+  },
+  {
+   "id": "mm_train_238",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 830564,
+   "gap0": 0.0698,
+   "dyz": [
+    0.0089,
+    0.0006
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.1338,
+      "t0": 2.9837,
+      "freq": 0.4622
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_239",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 967535,
+   "gap0": 0.0693,
+   "dyz": [
+    -0.0098,
+    -0.0048
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.209,
+      "t0": 7.7652,
+      "dur": 1.457
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_240",
+   "family": "payload",
+   "path": "line",
+   "seed": 895741,
+   "gap0": 0.0749,
+   "dyz": [
+    -0.0048,
+    0.002
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0939,
+     "pos_hand_m": [
+      0.0,
+      0.0323,
+      -0.0496
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_241",
+   "family": "contact",
+   "path": "line",
+   "seed": 229775,
+   "gap0": 0.0512,
+   "dyz": [
+    0.0028,
+    -0.0078
+   ],
+   "mismatch": {
+    "k_scale": 0.9696,
+    "c_scale": 1.9311,
+    "mu_scale": 1.2664
+   }
+  },
+  {
+   "id": "mm_train_242",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 923491,
+   "gap0": 0.0681,
+   "dyz": [
+    -0.0076,
+    -0.0005
+   ],
+   "mismatch": {
+    "kf_scale": 0.9727,
+    "motor_tau_scale": 1.2377
+   }
+  },
+  {
+   "id": "mm_train_243",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 535056,
+   "gap0": 0.0622,
+   "dyz": [
+    0.006,
+    -0.0011
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": 0.1334,
+      "t0": 4.9324,
+      "freq": 0.3545
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_244",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 793022,
+   "gap0": 0.0656,
+   "dyz": [
+    0.0029,
+    0.0068
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.4489,
+      "t0": 8.1358,
+      "dur": 0.9422
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_245",
+   "family": "payload",
+   "path": "circle",
+   "seed": 445183,
+   "gap0": 0.0629,
+   "dyz": [
+    0.002,
+    0.0026
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.042,
+     "pos_hand_m": [
+      0.0,
+      -0.0168,
+      -0.0497
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_246",
+   "family": "contact",
+   "path": "line",
+   "seed": 134741,
+   "gap0": 0.0615,
+   "dyz": [
+    0.0027,
+    -0.0037
+   ],
+   "mismatch": {
+    "k_scale": 1.1874,
+    "c_scale": 1.8054,
+    "mu_scale": 1.3977
+   }
+  },
+  {
+   "id": "mm_train_247",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 42678,
+   "gap0": 0.0557,
+   "dyz": [
+    -0.0034,
+    0.0029
+   ],
+   "mismatch": {
+    "kf_scale": 0.9204,
+    "motor_tau_scale": 0.7066
+   }
+  },
+  {
+   "id": "mm_train_248",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 819247,
+   "gap0": 0.0666,
+   "dyz": [
+    -0.0036,
+    -0.0005
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": 0.1154,
+      "t0": 3.1971,
+      "freq": 0.3986
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_249",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 525230,
+   "gap0": 0.0536,
+   "dyz": [
+    -0.0088,
+    -0.0009
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.434,
+      "t0": 8.8377,
+      "dur": 0.5702
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_250",
+   "family": "payload",
+   "path": "circle",
+   "seed": 219436,
+   "gap0": 0.0628,
+   "dyz": [
+    0.0082,
+    -0.0004
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0859,
+     "pos_hand_m": [
+      0.0,
+      -0.0358,
+      -0.058
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_251",
+   "family": "contact",
+   "path": "line",
+   "seed": 967468,
+   "gap0": 0.0589,
+   "dyz": [
+    0.0039,
+    0.0065
+   ],
+   "mismatch": {
+    "k_scale": 1.0117,
+    "c_scale": 1.7124,
+    "mu_scale": 1.6241
+   }
+  },
+  {
+   "id": "mm_train_252",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 827995,
+   "gap0": 0.0768,
+   "dyz": [
+    0.001,
+    0.0053
+   ],
+   "mismatch": {
+    "kf_scale": 1.0571,
+    "motor_tau_scale": 1.3632
+   }
+  },
+  {
+   "id": "mm_train_253",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 775568,
+   "gap0": 0.0563,
+   "dyz": [
+    0.0003,
+    0.0026
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.1807,
+      "t0": 4.2077,
+      "freq": 0.4423
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_254",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 484989,
+   "gap0": 0.053,
+   "dyz": [
+    -0.0068,
+    0.0089
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.4895,
+      "t0": 7.8251,
+      "dur": 0.6558
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_255",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 212444,
+   "gap0": 0.0664,
+   "dyz": [
+    -0.0009,
+    0.0017
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0953,
+     "pos_hand_m": [
+      0.0,
+      0.0232,
+      -0.0251
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_256",
+   "family": "contact",
+   "path": "circle",
+   "seed": 111453,
+   "gap0": 0.0562,
+   "dyz": [
+    -0.0054,
+    0.0082
+   ],
+   "mismatch": {
+    "k_scale": 1.156,
+    "c_scale": 1.7109,
+    "mu_scale": 1.9978
+   }
+  },
+  {
+   "id": "mm_train_257",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 817474,
+   "gap0": 0.0604,
+   "dyz": [
+    -0.0078,
+    0.0025
+   ],
+   "mismatch": {
+    "kf_scale": 1.0984,
+    "motor_tau_scale": 0.7891
+   }
+  },
+  {
+   "id": "mm_train_258",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 461908,
+   "gap0": 0.0576,
+   "dyz": [
+    0.0043,
+    0.0066
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.1181,
+      "t0": 5.3949,
+      "freq": 0.4431
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_259",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 660822,
+   "gap0": 0.0778,
+   "dyz": [
+    -0.006,
+    0.0068
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.3753,
+      "t0": 8.4374,
+      "dur": 0.5077
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_260",
+   "family": "payload",
+   "path": "line",
+   "seed": 221027,
+   "gap0": 0.0582,
+   "dyz": [
+    0.0017,
+    0.0016
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0679,
+     "pos_hand_m": [
+      0.0,
+      -0.0486,
+      -0.0374
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_261",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 553009,
+   "gap0": 0.0676,
+   "dyz": [
+    0.0043,
+    0.0099
+   ],
+   "mismatch": {
+    "k_scale": 1.5497,
+    "c_scale": 1.5525,
+    "mu_scale": 0.8071
+   }
+  },
+  {
+   "id": "mm_train_262",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 833165,
+   "gap0": 0.0673,
+   "dyz": [
+    0.0049,
+    -0.0035
+   ],
+   "mismatch": {
+    "kf_scale": 0.9817,
+    "motor_tau_scale": 1.3778
+   }
+  },
+  {
+   "id": "mm_train_263",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 357899,
+   "gap0": 0.0699,
+   "dyz": [
+    -0.0064,
+    0.0072
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.2664,
+      "t0": 5.3802,
+      "freq": 0.4038
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_264",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 299251,
+   "gap0": 0.0769,
+   "dyz": [
+    0.0084,
+    -0.0082
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.2281,
+      "t0": 7.6308,
+      "dur": 0.6727
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_265",
+   "family": "payload",
+   "path": "circle",
+   "seed": 817746,
+   "gap0": 0.0765,
+   "dyz": [
+    0.0008,
+    0.0016
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0381,
+     "pos_hand_m": [
+      0.0,
+      0.0156,
+      -0.0381
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_266",
+   "family": "contact",
+   "path": "circle",
+   "seed": 422094,
+   "gap0": 0.0673,
+   "dyz": [
+    -0.0053,
+    0.0001
+   ],
+   "mismatch": {
+    "k_scale": 1.3882,
+    "c_scale": 1.4991,
+    "mu_scale": 1.4255
+   }
+  },
+  {
+   "id": "mm_train_267",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 25138,
+   "gap0": 0.0618,
+   "dyz": [
+    0.0088,
+    -0.0038
+   ],
+   "mismatch": {
+    "kf_scale": 1.0914,
+    "motor_tau_scale": 1.2408
+   }
+  },
+  {
+   "id": "mm_train_268",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 296148,
+   "gap0": 0.0653,
+   "dyz": [
+    0.0049,
+    -0.0044
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.1516,
+      "t0": 5.9387,
+      "freq": 0.2461
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_269",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 300860,
+   "gap0": 0.0668,
+   "dyz": [
+    0.0048,
+    -0.0068
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.4368,
+      "t0": 8.0673,
+      "dur": 0.7568
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_270",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 656205,
+   "gap0": 0.0737,
+   "dyz": [
+    0.0047,
+    0.0017
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0669,
+     "pos_hand_m": [
+      0.0,
+      0.0143,
+      -0.0322
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_271",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 343817,
+   "gap0": 0.0513,
+   "dyz": [
+    -0.0028,
+    0.0062
+   ],
+   "mismatch": {
+    "k_scale": 1.1007,
+    "c_scale": 0.9652,
+    "mu_scale": 1.5955
+   }
+  },
+  {
+   "id": "mm_train_272",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 582839,
+   "gap0": 0.0747,
+   "dyz": [
+    -0.0009,
+    0.0071
+   ],
+   "mismatch": {
+    "kf_scale": 0.9716,
+    "motor_tau_scale": 1.3531
+   }
+  },
+  {
+   "id": "mm_train_273",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 296549,
+   "gap0": 0.055,
+   "dyz": [
+    0.0066,
+    0.0084
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": 0.1563,
+      "t0": 4.6884,
+      "freq": 0.3059
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_274",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 90568,
+   "gap0": 0.0663,
+   "dyz": [
+    0.0089,
+    -0.0045
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.4113,
+      "t0": 7.8549,
+      "dur": 1.3026
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_275",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 490509,
+   "gap0": 0.0522,
+   "dyz": [
+    0.0018,
+    0.0093
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0356,
+     "pos_hand_m": [
+      0.0,
+      -0.0224,
+      -0.0427
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_276",
+   "family": "contact",
+   "path": "line",
+   "seed": 174948,
+   "gap0": 0.0796,
+   "dyz": [
+    0.0049,
+    -0.0051
+   ],
+   "mismatch": {
+    "k_scale": 1.0494,
+    "c_scale": 1.1003,
+    "mu_scale": 0.805
+   }
+  },
+  {
+   "id": "mm_train_277",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 106147,
+   "gap0": 0.0755,
+   "dyz": [
+    -0.0005,
+    -0.0056
+   ],
+   "mismatch": {
+    "kf_scale": 0.9769,
+    "motor_tau_scale": 0.9257
+   }
+  },
+  {
+   "id": "mm_train_278",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 134651,
+   "gap0": 0.0796,
+   "dyz": [
+    -0.001,
+    0.0004
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.1253,
+      "t0": 4.6324,
+      "freq": 0.3791
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_279",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 546155,
+   "gap0": 0.0798,
+   "dyz": [
+    -0.0019,
+    -0.0082
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": 0.2096,
+      "t0": 8.3917,
+      "dur": 0.7853
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_280",
+   "family": "payload",
+   "path": "line",
+   "seed": 194075,
+   "gap0": 0.0523,
+   "dyz": [
+    0.0013,
+    -0.0011
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0872,
+     "pos_hand_m": [
+      0.0,
+      0.0134,
+      -0.049
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_281",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 734533,
+   "gap0": 0.062,
+   "dyz": [
+    -0.0019,
+    0.0028
+   ],
+   "mismatch": {
+    "k_scale": 1.2594,
+    "c_scale": 1.8521,
+    "mu_scale": 0.7782
+   }
+  },
+  {
+   "id": "mm_train_282",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 237708,
+   "gap0": 0.0607,
+   "dyz": [
+    -0.0032,
+    -0.0005
+   ],
+   "mismatch": {
+    "kf_scale": 0.9882,
+    "motor_tau_scale": 1.1013
+   }
+  },
+  {
+   "id": "mm_train_283",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 791697,
+   "gap0": 0.0731,
+   "dyz": [
+    -0.0034,
+    -0.0015
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.2043,
+      "t0": 5.5278,
+      "freq": 0.4913
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_284",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 961357,
+   "gap0": 0.0617,
+   "dyz": [
+    0.002,
+    0.0002
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.4013,
+      "t0": 8.467,
+      "dur": 0.5786
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_285",
+   "family": "payload",
+   "path": "circle",
+   "seed": 600368,
+   "gap0": 0.0722,
+   "dyz": [
+    0.0047,
+    0.0043
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0491,
+     "pos_hand_m": [
+      0.0,
+      0.006,
+      -0.0519
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_286",
+   "family": "contact",
+   "path": "circle",
+   "seed": 583867,
+   "gap0": 0.0657,
+   "dyz": [
+    -0.0075,
+    0.0041
+   ],
+   "mismatch": {
+    "k_scale": 0.7203,
+    "c_scale": 1.8658,
+    "mu_scale": 0.6615
+   }
+  },
+  {
+   "id": "mm_train_287",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 162397,
+   "gap0": 0.0775,
+   "dyz": [
+    0.0081,
+    0.0053
+   ],
+   "mismatch": {
+    "kf_scale": 0.9171,
+    "motor_tau_scale": 0.7334
+   }
+  },
+  {
+   "id": "mm_train_288",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 542592,
+   "gap0": 0.0759,
+   "dyz": [
+    0.0033,
+    -0.0038
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2132,
+      "t0": 5.6703,
+      "freq": 0.473
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_289",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 842987,
+   "gap0": 0.0516,
+   "dyz": [
+    -0.0009,
+    0.0016
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.3021,
+      "t0": 8.7758,
+      "dur": 1.0202
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_290",
+   "family": "payload",
+   "path": "line",
+   "seed": 137938,
+   "gap0": 0.0622,
+   "dyz": [
+    -0.0047,
+    -0.0089
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0948,
+     "pos_hand_m": [
+      0.0,
+      -0.0209,
+      -0.0566
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_291",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 62759,
+   "gap0": 0.0582,
+   "dyz": [
+    0.0011,
+    -0.0038
+   ],
+   "mismatch": {
+    "k_scale": 1.1471,
+    "c_scale": 0.5841,
+    "mu_scale": 0.5113
+   }
+  },
+  {
+   "id": "mm_train_292",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 28514,
+   "gap0": 0.0691,
+   "dyz": [
+    0.0088,
+    0.0093
+   ],
+   "mismatch": {
+    "kf_scale": 0.9984,
+    "motor_tau_scale": 1.1529
+   }
+  },
+  {
+   "id": "mm_train_293",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 117133,
+   "gap0": 0.0675,
+   "dyz": [
+    -0.0059,
+    -0.0084
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": 0.2303,
+      "t0": 2.2735,
+      "freq": 0.3169
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_294",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 387938,
+   "gap0": 0.0756,
+   "dyz": [
+    -0.0019,
+    0.0082
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": -0.4622,
+      "t0": 7.5357,
+      "dur": 0.932
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_295",
+   "family": "payload",
+   "path": "line",
+   "seed": 445896,
+   "gap0": 0.0642,
+   "dyz": [
+    0.009,
+    0.0021
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0799,
+     "pos_hand_m": [
+      0.0,
+      0.0137,
+      -0.0462
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm_train_296",
+   "family": "contact",
+   "path": "circle",
+   "seed": 559055,
+   "gap0": 0.0517,
+   "dyz": [
+    0.0098,
+    -0.0057
+   ],
+   "mismatch": {
+    "k_scale": 1.5303,
+    "c_scale": 0.7905,
+    "mu_scale": 0.8355
+   }
+  },
+  {
+   "id": "mm_train_297",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 589238,
+   "gap0": 0.0799,
+   "dyz": [
+    0.0013,
+    0.0019
+   ],
+   "mismatch": {
+    "kf_scale": 0.9772,
+    "motor_tau_scale": 1.1077
+   }
+  },
+  {
+   "id": "mm_train_298",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 451037,
+   "gap0": 0.0669,
+   "dyz": [
+    0.0027,
+    -0.0077
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.2807,
+      "t0": 5.1799,
+      "freq": 0.3677
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm_train_299",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 638851,
+   "gap0": 0.054,
+   "dyz": [
+    -0.0052,
+    0.0089
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.2036,
+      "t0": 7.4669,
+      "dur": 0.7405
+     }
+    ]
+   }
+  }
+ ]
+}

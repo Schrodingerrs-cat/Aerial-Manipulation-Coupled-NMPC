@@ -1,0 +1,75 @@
+{
+ "baseline": {
+  "passes": {
+   "no_abort": true,
+   "base_max": true,
+   "tilt": true,
+   "path_tracking_rms": true,
+   "coverage": true,
+   "endpoint": true,
+   "contact_fraction": true,
+   "force_peak": true,
+   "no_unexpected_contact": true,
+   "recovery": true,
+   "rotor_reserve": true,
+   "solver": true,
+   "all": true
+  },
+  "completed": true
+ },
+ "drifting_base": {
+  "passes": {
+   "base_max": false,
+   "all": false
+  },
+  "all": false,
+  "key": {
+   "base_max": 30.566627597172932,
+   "coverage": 1.0,
+   "valid_fraction": 1.0,
+   "completed": true,
+   "over_period": 0.9010282776349614
+  }
+ },
+ "detached_tool_in_trace": {
+  "passes": {
+   "coverage": false,
+   "contact_fraction": false,
+   "all": false
+  },
+  "all": false,
+  "key": {
+   "base_max": 0.5713992493776915,
+   "coverage": 0.0,
+   "valid_fraction": 0.0,
+   "completed": true,
+   "over_period": 0.9010282776349614
+  }
+ },
+ "partial_path": {
+  "passes": {
+   "no_abort": false,
+   "contact_fraction": false,
+   "all": false
+  },
+  "all": false,
+  "key": {
+   "base_max": 0.25488936232644577,
+   "coverage": null,
+   "valid_fraction": 0.6139237199582027,
+   "completed": false,
+   "over_period": 0.7630769230769231
+  }
+ },
+ "deadline_overruns": {
+  "passes": {},
+  "all": true,
+  "key": {
+   "base_max": 0.5713992493776915,
+   "coverage": 1.0,
+   "valid_fraction": 1.0,
+   "completed": true,
+   "over_period": 0.922879177377892
+  }
+ }
+}

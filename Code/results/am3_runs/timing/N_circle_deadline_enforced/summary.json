@@ -1,0 +1,110 @@
+{
+ "controller": "N",
+ "path": "circle",
+ "seed": 0,
+ "abort": [
+  5.400000000000854,
+  "loss of control (failsafe): tilt 41 deg, base error 200 mm"
+ ],
+ "t_end": 5.3800000000008295,
+ "wall_s": 6.73494553565979,
+ "base": {
+  "rms_mm": 31.898605543221215,
+  "max_mm": 201.60189530685858,
+  "final_mm": 201.60189530685858,
+  "vel_max": 0.8583307543976155,
+  "settle_s": 5.3800000000008295
+ },
+ "com": {
+  "range_mm": [
+   76.08356714237674,
+   195.52553139554254,
+   46.27554492454911
+  ],
+  "rms_dev_mm": 30.40109617745121
+ },
+ "attitude": {
+  "tilt_max_deg": 39.609114283005084,
+  "tilt_rms_deg": 7.097953306881781,
+  "omega_max": 11.87212482549579
+ },
+ "pad_vs_reference": {
+  "rms_mm": 20.15160008217431,
+  "max_mm": 123.11698363623591
+ },
+ "contact": {
+  "valid_fraction": NaN,
+  "longest_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 4.355004554609732,
+  "impulse_Ns": 0.04059301595192154,
+  "peak_ft_N": 0.6532506831914596,
+  "Fn_mean_trace_N": NaN,
+  "Fn_std_trace_N": NaN,
+  "unexpected": [
+   [
+    "finger_r",
+    "wall"
+   ],
+   [
+    "prop1",
+    "wall"
+   ]
+  ],
+  "unexpected_first": [
+   5.314250000000749,
+   [
+    [
+     "prop1",
+     "wall"
+    ],
+    [
+     "prop1",
+     "wall"
+    ],
+    [
+     "prop1",
+     "wall"
+    ]
+   ]
+  ]
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.8790401224698878,
+   1.0,
+   0.43355996684611336
+  ],
+  "rotor_force_min_N": 0.24890083120521755,
+  "rotor_force_max_N": 9.837825454238216,
+  "rotor_reserve_up_N": 0.16217454576178447,
+  "rotor_reserve_down_N": 0.14890083120521755,
+  "qd_max": [
+   8.127534427343642,
+   6.053858969100882,
+   4.163772937085414
+  ],
+  "cmd_clip_fraction": 0.937037037037037
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 70.74526113161251
+ },
+ "timing": {
+  "median_ms": 15.178829000433325,
+  "p95_ms": 27.139518499643593,
+  "p99_ms": 39.770125101858866,
+  "max_ms": 42.46414400040521,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.07407407407407407,
+  "injected_misses": 20
+ },
+ "completed": false,
+ "command": "scripts/am3_timing.py",
+ "source_hash": "ba9b4882c688",
+ "miss_p": 0.0
+}

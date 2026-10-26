@@ -1,0 +1,153 @@
+{
+ "criteria_file": "draft",
+ "stat": {
+  "n": 16,
+  "joint_successes": 16,
+  "completed": 16,
+  "failed_criteria": {},
+  "base_max_mm": {
+   "median": 0.5645849016621992,
+   "max": 1.1419684037044768
+  },
+  "trace_track_rms_mm": {
+   "median": 0.4244974459708102,
+   "max": 0.7832498883642734
+  },
+  "peak_Fn_N_max": 0.7203908852588291,
+  "timing": {
+   "median_ms": 28.224064499227097,
+   "max_ms": 209.5251660066424,
+   "over_period_fraction_mean": 0.5750330850582436
+  }
+ },
+ "scenarios": [
+  {
+   "id": "val_00",
+   "path": "line",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_01",
+   "path": "line_fast",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_02",
+   "path": "line_T1",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_03",
+   "path": "circle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_04",
+   "path": "circle_T4",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_05",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_06",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_07",
+   "path": "free",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_08",
+   "path": "line",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_09",
+   "path": "line_fast",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_10",
+   "path": "line_T1",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_11",
+   "path": "circle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_12",
+   "path": "circle_T4",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_13",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_14",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "val_15",
+   "path": "free",
+   "family": null,
+   "all": true,
+   "failed": [],
+   "abort": null
+  }
+ ]
+}

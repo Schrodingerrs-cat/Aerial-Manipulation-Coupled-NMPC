@@ -1,0 +1,20 @@
+GATE_v1_N {
+ "n": 30,
+ "joint_successes": 30,
+ "completed": 30,
+ "failed_criteria": {},
+ "base_max_mm": {
+  "median": 0.6170245882197983,
+  "max": 1.309795889682991
+ },
+ "trace_track_rms_mm": {
+  "median": 0.4256175251588001,
+  "max": 0.8648111772772692
+ },
+ "peak_Fn_N_max": 0.7288577230761761,
+ "timing": {
+  "median_ms": 17.82046900189016,
+  "max_ms": 189.00928299990483,
+  "over_period_fraction_mean": 0.2095473256293236
+ }
+}

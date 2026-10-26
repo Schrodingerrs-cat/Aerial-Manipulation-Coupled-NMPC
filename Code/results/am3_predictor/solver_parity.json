@@ -1,0 +1,82 @@
+{
+ "hover": {
+  "phase": "hover",
+  "acados_ok": true,
+  "ipopt_ok": true,
+  "cost_acados_reported": 3.1391567167617766e-14,
+  "cost_ipopt": -0.0016999998825348722,
+  "cost_casadi_on_acados_traj": 1.4387105795340441e-28,
+  "u0_diff_inf": 8.490701475238893e-07,
+  "u0_scale": [
+   1204.112920713062,
+   1204.1129207130618,
+   982.7138311693468,
+   982.7138311693468,
+   6.034829361763363e-18,
+   0.2988650918764092,
+   0.2026435144449983
+  ],
+  "ipopt_status": "Solve_Succeeded",
+  "acados_iters": 30
+ },
+ "position": {
+  "phase": "position",
+  "acados_ok": true,
+  "ipopt_ok": true,
+  "cost_acados_reported": 4894.896424805036,
+  "cost_ipopt": 4894.896291169718,
+  "cost_casadi_on_acados_traj": 4894.896424805035,
+  "u0_diff_inf": 6.631922087763087e-05,
+  "u0_scale": [
+   1085.6912198410284,
+   1460.2617777348296,
+   687.6747800033281,
+   1053.2344181745577,
+   0.09420941217287984,
+   0.35726171206886415,
+   0.1822783949937697
+  ],
+  "ipopt_status": "Solve_Succeeded",
+  "acados_iters": 8
+ },
+ "approach": {
+  "phase": "approach",
+  "acados_ok": true,
+  "ipopt_ok": true,
+  "cost_acados_reported": 42314.69470150726,
+  "cost_ipopt": 42314.69461639636,
+  "cost_casadi_on_acados_traj": 42314.69470150672,
+  "u0_diff_inf": 9.82822791684157e-05,
+  "u0_scale": [
+   1033.997788350863,
+   1501.7596641965754,
+   655.7541196907807,
+   1069.0088031299595,
+   0.12000094955428238,
+   0.35834129910583296,
+   0.18232845597022482
+  ],
+  "ipopt_status": "Solve_Succeeded",
+  "acados_iters": 10
+ },
+ "trace": {
+  "phase": "approach",
+  "acados_ok": true,
+  "ipopt_ok": true,
+  "cost_acados_reported": 53233.03500392214,
+  "cost_ipopt": 53233.03493952333,
+  "cost_casadi_on_acados_traj": 53233.03500392213,
+  "u0_diff_inf": 9.62170859111211e-05,
+  "u0_scale": [
+   1034.6748807607037,
+   1501.9459716947404,
+   654.7716624045509,
+   1067.4816785962037,
+   0.12004896823418672,
+   0.3583653702782277,
+   0.1823188151134327
+  ],
+  "ipopt_status": "Solve_Succeeded",
+  "acados_iters": 11
+ }
+}

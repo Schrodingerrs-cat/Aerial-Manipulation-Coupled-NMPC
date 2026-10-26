@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.npz
+*.zip
+*.o
+*.so
+Code/third_party/
+Code/results/acados_codegen/
+Code/results/am3_rl/
+Source/
