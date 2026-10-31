@@ -18,18 +18,27 @@ def make_ctrl(name):
         n = CorrectedNMPC(None, "L"); n.corrector = PolicyCorrector(SAC.load(os.path.join(HERE, "..", name[2:]), device="cpu"), n.form.pr); return n
     if name == "Z":
         from ocrl.am3_ctrl_corr import CorrectedNMPC, ZeroCorrector; return CorrectedNMPC(ZeroCorrector(), "Z")
+    if name == "B4": from ocrl.am3_ctrl_b_v4 import BaselineBV4; return BaselineBV4()          # archived information-sharing B v4
     if name == "B": from ocrl.am3_ctrl_b import BaselineB; return BaselineB()
     from ocrl.am3_ctrl_n import NMPC; return NMPC("full" if name == "N" else "decoupled")
 def free_waypoints(kind="free", gap0=0.06):
     x0, _ = initial_state(gap0); p0 = np.array(AMPred3().pad_f(x0)[0]).ravel()
+    if kind.split("_")[0] == "free" and kind.split("_")[1:2] and kind.split("_")[1] in ("circ", "yosc", "zosc", "reach"):          # continuous periodic pad motion (ocrl/am3_free_motion.py), 3 s stationary hover first
+        import ocrl.am3_episode as E; from ocrl.am3_free_motion import FreeMotion, MOTION_S; from ocrl.am3_task import TASK; TASK["hover_s"] = 3.0; E.Task = FreeMotion; return [p0], MOTION_S
+    if kind.startswith("free_osc"):        # "free_osc<A>_T<half_period_s>": pad oscillates +-A m along (y, z/2), 12 legs after a 3 s stationary hover (am3_arm_motion.py --kind osc)
+        from ocrl.am3_task import TASK; TASK["hover_s"] = 3.0; A, T = kind[8:].split("_T"); return [p0 + (-1) ** k * float(A) * np.array([0, 1.0, 0.5]) for k in range(12)], float(T)
+    if kind.startswith("free_s"):          # "free_s<scale>_T<segment_s>": the standard free loop scaled about the start point, with a 3 s stationary hover first (am3_arm_motion.py)
+        from ocrl.am3_task import TASK; TASK["hover_s"] = 3.0; sc, T = kind[6:].split("_T"); return [p0 + float(sc) * (w - p0) for w in free_waypoints("free", gap0)[0]], float(T)
     if kind == "free_big": return [p0 + d for d in ([0.02, 0.08, 0.04], [0.0, -0.08, 0.04], [0.03, -0.08, -0.04], [0.0, 0.08, -0.04], [0, 0, 0])], 1.2
     return [p0 + [0, 0.06, 0.03], p0 + [0.02, -0.06, 0.03], p0 + [0, 0, -0.03], p0], None
 def run(tag, ctrl_name, path, seed=0, tmax=40.0, miss_p=0.0, outdir=None, record=None, gap0=0.06, dyz=(0.0, 0.0), enforce_deadline=False, mismatch=None):
     rng = np.random.default_rng(1000 + seed); miss = (lambda k: bool(rng.random() < miss_p)) if miss_p > 0 else None
-    wp, seg = free_waypoints(path) if path.startswith("free") else (None, None); ep = Episode(make_ctrl(ctrl_name), path, seed=seed, T_max=tmax, free_waypoints=wp, segment_s=seg, miss=miss, record=record, x0=initial_state(gap0, (0.0 + dyz[0], 1.04 + dyz[1])), enforce_deadline=enforce_deadline, mismatch=mismatch).run(); m = metrics(ep)
+    wp, seg = free_waypoints(path) if path.startswith("free") else (None, None); ep = Episode(make_ctrl(ctrl_name), path, seed=seed, T_max=tmax, free_waypoints=wp, segment_s=seg, miss=miss, x0=initial_state(gap0, (0.0 + dyz[0], 1.04 + dyz[1])), enforce_deadline=enforce_deadline, mismatch=mismatch)
+    if record is not None: record.attach(ep)
+    ep.run(); m = metrics(ep)
     out = outdir or os.path.join(HERE, "..", "results", "am3_runs", tag); os.makedirs(out, exist_ok=True); R = ep.rows
     np.savez_compressed(os.path.join(out, "log.npz"), t=[r["t"] for r in R], x=[r["x"] for r in R], xm=[r["xm"] for r in R], F=[r["F"] for r in R], Fm=[r["Fm"] for r in R], ft=[r["ft"] for r in R], pad=[r["pad"] for r in R], ref=[r["ref"]["p"] for r in R], phase=[r["phase"] for r in R],
-                        u_cmd=[r["u_cmd"] for r in R], u_app=[r["u_app"] for r in R], com=[r["com"] for r in R], cycle_s=[r["cycle_s"] for r in R], physics_t=ep.pl.log["t"], physics_Fn=ep.pl.log["Fn"], physics_tau=ep.pl.log["tau"], physics_Omega=ep.pl.log["Omega"])
+                        u_cmd=[r["u_cmd"] for r in R], u_app=[r["u_app"] for r in R], com=[r["com"] for r in R], cycle_s=[r["cycle_s"] for r in R], physics_t=ep.pl.log["t"], physics_Fn=ep.pl.log["Fn"], physics_ft=ep.pl.log["ft"], physics_tau=ep.pl.log["tau"], physics_Omega=ep.pl.log["Omega"])
     src = hashlib.sha1(b"".join(open(os.path.join(HERE, "..", "ocrl", f), "rb").read() for f in sorted(os.listdir(os.path.join(HERE, "..", "ocrl"))) if f.startswith("am3_") and f.endswith(".py"))).hexdigest()[:12]
     json.dump(dict(m, command=" ".join(sys.argv), source_hash=src, miss_p=miss_p), open(os.path.join(out, "summary.json"), "w"), indent=1, default=str); return ep, m
 if __name__ == "__main__":

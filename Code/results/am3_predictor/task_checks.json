@@ -1,0 +1,46 @@
+{
+ "line": {
+  "max_abs_velocity_error_m_s": 1.0688378429544228e-05,
+  "phases_seen": [
+   "approach",
+   "hover",
+   "position",
+   "recover",
+   "settle",
+   "trace"
+  ],
+  "recoveries": 1
+ },
+ "circle": {
+  "max_abs_velocity_error_m_s": 1.4596256753509262e-06,
+  "phases_seen": [
+   "approach",
+   "hover",
+   "position",
+   "recover",
+   "settle",
+   "trace"
+  ],
+  "recoveries": 1
+ },
+ "rounded_triangle": {
+  "max_abs_velocity_error_m_s": 1.2313015744691567e-06,
+  "phases_seen": [
+   "approach",
+   "hover",
+   "position",
+   "recover",
+   "settle",
+   "trace"
+  ],
+  "recoveries": 1
+ },
+ "detect_dt_0.005": {
+  "t_contact_detected": 5.769999999999899,
+  "t_loss_confirmed": 7.369999999999865
+ },
+ "detect_dt_0.02": {
+  "t_contact_detected": 5.759999999999965,
+  "t_loss_confirmed": 7.359999999999931
+ }
+}

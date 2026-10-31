@@ -1,0 +1,22 @@
+{
+ "version": "acceptance v2 DRAFT (2026-10-30)",
+ "note": "Replaces the v2 gate (am_acceptance_v1.json): no alignment/pointing criterion, no force-target band, no 1.5 F* rule, no three-second dwell. Thresholds are derived from the task, not from controller results: base 20 mm = 1/15 of the 0.3 m reach and about the pad compression range (12 mm radius) scale; pad tracking 3 mm = quarter of the pad radius; endpoint 5 mm; coverage within 5 mm; force peak 4 N = pad compression limit (6 mm x 600 N/m = 3.6 N, rounded); rotor reserve 0.3 N each side of [0.1, 10] N; tilt 15 deg = NMPC constraint. v2 additions (audit B05/B06): free-arm runs must meet the same pad-tracking RMS; wall runs fail closed when trace/contact metrics are missing; measured final gap after retreat >= 50 mm; contact fractions are computed over the whole contact-intended window including recoveries.",
+ "criteria": {
+  "base_max_mm": 20.0,
+  "tilt_max_deg": 15.0,
+  "pad_track_rms_mm": 3.0,
+  "coverage": 0.95,
+  "endpoint_mm": 5.0,
+  "contact_valid_fraction": 0.95,
+  "force_peak_N": 4.0,
+  "max_losses": 2,
+  "rotor_reserve_N": 0.3,
+  "final_gap_mm_min": 50.0
+ },
+ "gate": {
+  "n_cases": 30,
+  "required_joint_successes": 29,
+  "timing_target_ms": 20.0,
+  "timing_reported_separately": true
+ }
+}

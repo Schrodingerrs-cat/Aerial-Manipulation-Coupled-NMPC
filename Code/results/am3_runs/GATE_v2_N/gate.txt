@@ -1,0 +1,28 @@
+GATE_v2_N {
+ "n": 30,
+ "solver_hang_stubs": 0,
+ "joint_successes": 29,
+ "completed": 30,
+ "failed_criteria": {
+  "base_max": 1,
+  "tilt": 1,
+  "free_pad_tracking_rms": 1,
+  "no_unexpected_contact": 1,
+  "rotor_reserve": 1
+ },
+ "base_max_mm": {
+  "median": 0.5838117311266289,
+  "max": 113.75097943395916
+ },
+ "trace_track_rms_mm": {
+  "median": 0.4198615442726967,
+  "max": 0.913983561487165
+ },
+ "peak_Fn_N_max": 0.7257280106880696,
+ "timing": {
+  "median_ms": 15.422678999584605,
+  "max_ms": 196.66341900119733,
+  "over_period_fraction_mean": 0.15948420478043698
+ }
+}
+ FAIL heldout2_07 free ['base_max', 'tilt', 'free_pad_tracking_rms', 'no_unexpected_contact', 'rotor_reserve'] None

@@ -1,0 +1,481 @@
+{
+ "criteria_file": "config/am3_acceptance_v2.json",
+ "stat": {
+  "n": 30,
+  "solver_hang_stubs": 0,
+  "joint_successes": 0,
+  "completed": 30,
+  "failed_criteria": {
+   "base_max": 30,
+   "path_tracking_rms": 27,
+   "coverage": 27,
+   "endpoint": 27,
+   "contact_fraction": 27,
+   "recovery": 27,
+   "retreat_clear": 8,
+   "free_pad_tracking_rms": 3
+  },
+  "base_max_mm": {
+   "median": 29.77844302204067,
+   "max": 75.48926105288294
+  },
+  "trace_track_rms_mm": {
+   "median": 18.31293574466772,
+   "max": 23.2774344555957
+  },
+  "peak_Fn_N_max": 0.47740843906227076,
+  "timing": {
+   "median_ms": 1.1857832500936638,
+   "max_ms": 20.159188999969047,
+   "over_period_fraction_mean": 6.593572041000758e-05
+  }
+ },
+ "scenarios": [
+  {
+   "id": "heldout2_00",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_01",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_02",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_03",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "retreat_clear",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_04",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_05",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "retreat_clear",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_06",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_07",
+   "path": "free",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "free_pad_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_08",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_09",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_10",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_11",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "retreat_clear",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_12",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_13",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "retreat_clear",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_14",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_15",
+   "path": "free",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "free_pad_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_16",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_17",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_18",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_19",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "retreat_clear",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_20",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_21",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "retreat_clear",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_22",
+   "path": "rounded_triangle_T5",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_23",
+   "path": "free",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "free_pad_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_24",
+   "path": "line",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_25",
+   "path": "line_fast",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_26",
+   "path": "line_T1",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_27",
+   "path": "circle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "retreat_clear",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_28",
+   "path": "circle_T4",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "heldout2_29",
+   "path": "rounded_triangle",
+   "family": null,
+   "all": false,
+   "failed": [
+    "base_max",
+    "retreat_clear",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  }
+ ]
+}

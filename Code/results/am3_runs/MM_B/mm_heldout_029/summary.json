@@ -1,0 +1,173 @@
+{
+ "controller": "B",
+ "path": "circle",
+ "seed": 435671,
+ "abort": null,
+ "t_end": 26.50000000003552,
+ "wall_s": 21.20767831802368,
+ "base": {
+  "rms_mm": 13.607499388268762,
+  "max_mm": 38.80615967342231,
+  "final_mm": 17.8149770478521,
+  "vel_max": 0.0526030600245833,
+  "settle_s": 26.50000000003552
+ },
+ "com": {
+  "range_mm": [
+   20.956161473034697,
+   51.587013537753776,
+   14.638188289144205
+  ],
+  "rms_dev_mm": 12.167235243001796
+ },
+ "attitude": {
+  "tilt_max_deg": 2.49293470704695,
+  "tilt_rms_deg": 0.7761731109737768,
+  "omega_max": 0.5910154570489633
+ },
+ "pad_vs_reference": {
+  "rms_mm": 17.438101226693544,
+  "max_mm": 48.93577724122177
+ },
+ "trace": {
+  "track_rms_mm": 15.156248274300788,
+  "track_max_mm": 23.67029600280252,
+  "timed_nominal_rms_mm": 38.881354634489455,
+  "timed_nominal_max_mm": 60.11339701756075,
+  "duration_s": 15.325000000010554,
+  "nominal_T": 10.0,
+  "delay_s": 5.325000000010554,
+  "x_dev_rms_mm": 0.6826124869646746,
+  "coverage_5mm": 0.5,
+  "endpoint_err_mm": 13.923766153142441,
+  "reached_end": true
+ },
+ "contact": {
+  "valid_fraction": 0.8671490765367528,
+  "longest_s": 11.28575,
+  "detached_intervals_s": [
+   0.4335,
+   0.191,
+   0.2905,
+   0.01825,
+   0.18225,
+   0.2425,
+   0.10575,
+   0.056,
+   0.16625,
+   0.1695,
+   0.15,
+   0.15075,
+   0.079
+  ],
+  "detached_total_s": 2.23525,
+  "losses": 10,
+  "recovery_s": 2.235000000000001,
+  "recoveries": [
+   {
+    "t": 6.774999999999878,
+    "phase": "trace",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.4650000000000003
+   },
+   {
+    "t": 7.474999999999863,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.2100000000000001
+   },
+   {
+    "t": 7.874999999999854,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.3350000000000002
+   },
+   {
+    "t": 8.44499999999992,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.19000000000000009
+   },
+   {
+    "t": 8.844999999999983,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.2050000000000001
+   },
+   {
+    "t": 9.260000000000048,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.2000000000000001
+   },
+   {
+    "t": 9.700000000000117,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.18000000000000008
+   },
+   {
+    "t": 10.11000000000018,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.19000000000000009
+   },
+   {
+    "t": 10.590000000000256,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.13000000000000003
+   },
+   {
+    "t": 10.985000000000317,
+    "phase": "settle_resume",
+    "tau_p": 0.16200000000000012,
+    "duration_s": 0.13000000000000003
+   }
+  ],
+  "peak_Fn_N": 0.44282052210789624,
+  "impulse_Ns": 3.3748948583078446,
+  "peak_ft_N": 0.06235326959906992,
+  "Fn_mean_trace_N": 0.21774458957938767,
+  "Fn_std_trace_N": 0.04502811706300737,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.03340434970585357,
+   0.6735904354943071,
+   0.23853275294548032
+  ],
+  "rotor_force_min_N": 1.8106071250690488,
+  "rotor_force_max_N": 5.668207008088279,
+  "rotor_reserve_up_N": 4.331792991911721,
+  "rotor_reserve_down_N": 1.7106071250690487,
+  "qd_max": [
+   0.20491196628568129,
+   0.9209679215173033,
+   0.6901960047929954
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 0.0
+ },
+ "timing": {
+  "median_ms": 1.2739230005536228,
+  "p95_ms": 1.4568819970008917,
+  "p99_ms": 1.9848240008286666,
+  "max_ms": 4.333942000812385,
+  "period_ms": 5.0,
+  "over_period_fraction": 0.0,
+  "injected_misses": 0
+ },
+ "final_gap_mm": 45.09857281122854,
+ "completed": true,
+ "command": "scripts/am3_batch.py MM_B mm_heldout B --workers 5",
+ "source_hash": "50190e836316",
+ "miss_p": 0.0
+}

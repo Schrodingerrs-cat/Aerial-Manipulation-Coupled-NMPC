@@ -18,9 +18,7 @@
   "v_approach_m_s": 0.02,
   "seek_floor_m": -0.003,
   "F_on_N": 0.15,
-  "T_on_samples": 3,
   "F_off_N": 0.08,
-  "T_off_samples": 5,
   "F_max_N": 4.0,
   "settle_s": 0.5,
   "recover_max_s": 3.0,
@@ -34,7 +32,10 @@
   "acquire_max_s": 8.0,
   "release_gap_m": 0.003,
   "retreat_accel_m_s2": 0.05,
-  "recover_gap_max_m": 0.02
+  "recover_gap_max_m": 0.02,
+  "T_on_s": 0.06,
+  "T_off_s": 0.1,
+  "final_gap_min_m": 0.05
  },
  "endhold_s": 1.0,
  "paths": {

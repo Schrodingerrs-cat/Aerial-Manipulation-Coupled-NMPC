@@ -1,0 +1,98 @@
+{
+ "controller": "N",
+ "path": "tri_x1.5",
+ "seed": 11,
+ "abort": null,
+ "t_end": 21.420000000011264,
+ "wall_s": 40.24993681907654,
+ "base": {
+  "rms_mm": 0.18827975425275603,
+  "max_mm": 0.5833247283635892,
+  "final_mm": 0.1656155932551114,
+  "vel_max": 0.0052133854080055305,
+  "settle_s": 0.0
+ },
+ "com": {
+  "range_mm": [
+   11.416672142469665,
+   11.63469987314095,
+   8.935992198259468
+  ],
+  "rms_dev_mm": 5.889830217306817
+ },
+ "attitude": {
+  "tilt_max_deg": 2.631379860435857,
+  "tilt_rms_deg": 1.574972892906483,
+  "omega_max": 0.20537507309419173
+ },
+ "pad_vs_reference": {
+  "rms_mm": 0.2967318601068567,
+  "max_mm": 0.8921772965720748
+ },
+ "trace": {
+  "track_rms_mm": 0.3943954015534559,
+  "track_max_mm": 0.8921772965720748,
+  "timed_nominal_rms_mm": 5.485941726084727,
+  "timed_nominal_max_mm": 8.609321768795844,
+  "duration_s": 10.239999999986292,
+  "nominal_T": 10.0,
+  "delay_s": 0.23999999998629207,
+  "x_dev_rms_mm": 0.15670742761373319,
+  "coverage_5mm": 1.0,
+  "endpoint_err_mm": 0.17253435837046902,
+  "reached_end": true
+ },
+ "contact": {
+  "valid_fraction": 1.0,
+  "longest_s": 11.74025,
+  "detached_intervals_s": [],
+  "detached_total_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 0.7222889030700885,
+  "impulse_Ns": 6.498306130574445,
+  "peak_ft_N": 0.1021669871203692,
+  "Fn_mean_trace_N": 0.5495736622860847,
+  "Fn_std_trace_N": 0.05008825389007505,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.0625806276765764,
+   0.5515297461169318,
+   0.2267224821417911
+  ],
+  "rotor_force_min_N": 1.1991080234953122,
+  "rotor_force_max_N": 5.952365077388078,
+  "rotor_reserve_up_N": 4.047634922611922,
+  "rotor_reserve_down_N": 1.0991080234953121,
+  "qd_max": [
+   0.26131383201419023,
+   0.33576652980484156,
+   0.35771571584000694
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 1.4601621219466434e-12
+ },
+ "timing": {
+  "median_ms": 24.12763649954286,
+  "p95_ms": 30.028229700292286,
+  "p99_ms": 53.94897352118269,
+  "max_ms": 90.09832000083406,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.5251865671641791,
+  "injected_misses": 0
+ },
+ "final_gap_mm": 63.07644068802278,
+ "completed": true,
+ "command": "scripts/am3_stress.py S1 --workers 12",
+ "source_hash": "50190e836316",
+ "miss_p": 0.0
+}

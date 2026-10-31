@@ -1,0 +1,962 @@
+[
+ {
+  "seed": 1,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "(4.354999999999577, 'loss of control (failsafe): tilt 27 deg, base error 252 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.66742850866473,
+   "tilt_max_deg": 0.015465667918653933,
+   "rotor_dev_max_rad_s": 1.1793945411247932
+  },
+  "motion": {
+   "base_max_mm": 247.52290902215415,
+   "tilt_max_deg": 29.550792225052106,
+   "rotor_dev_max_rad_s": 973.0004384483586,
+   "rotor_dev_max_pct": 80.80741208499978,
+   "joint_speed_max_rad_s": 8.074511580127002,
+   "pad_err_rms_mm": 103.73333080802979,
+   "pad_err_max_mm": 372.3821227751985
+  }
+ },
+ {
+  "seed": 1,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.3525302267414156,
+   "tilt_max_deg": 0.5694305677621063,
+   "rotor_dev_max_rad_s": 32.881576155094535
+  },
+  "motion": {
+   "base_max_mm": 4.9405943259679095,
+   "tilt_max_deg": 8.556348024282284,
+   "rotor_dev_max_rad_s": 909.5794689673965,
+   "rotor_dev_max_pct": 75.63301160930857,
+   "joint_speed_max_rad_s": 3.00192293721508,
+   "pad_err_rms_mm": 0.44570851091595864,
+   "pad_err_max_mm": 0.8247696096797279
+  }
+ },
+ {
+  "seed": 1,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "(5.760000000001294, 'loss of control (failsafe): tilt 17 deg, base error 254 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.66742850866473,
+   "tilt_max_deg": 0.015465667918653933,
+   "rotor_dev_max_rad_s": 1.1793945411247932
+  },
+  "motion": {
+   "base_max_mm": 247.5093449169524,
+   "tilt_max_deg": 37.23962671755242,
+   "rotor_dev_max_rad_s": 977.1184382962188,
+   "rotor_dev_max_pct": 81.1799707603064,
+   "joint_speed_max_rad_s": 6.932294129020524,
+   "pad_err_rms_mm": 88.22102919436365,
+   "pad_err_max_mm": 293.9118224460282
+  }
+ },
+ {
+  "seed": 1,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.2442817544112056,
+   "tilt_max_deg": 0.4082287592000744,
+   "rotor_dev_max_rad_s": 25.297800704236806
+  },
+  "motion": {
+   "base_max_mm": 3.0807696835795215,
+   "tilt_max_deg": 5.866499911450563,
+   "rotor_dev_max_rad_s": 554.8663081778197,
+   "rotor_dev_max_pct": 46.12596435328627,
+   "joint_speed_max_rad_s": 3.0011866384764865,
+   "pad_err_rms_mm": 0.2631819738983852,
+   "pad_err_max_mm": 0.5055392042232026
+  }
+ },
+ {
+  "seed": 1,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "(4.379999999999607, 'loss of control (failsafe): tilt 41 deg, base error 238 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.66742850866473,
+   "tilt_max_deg": 0.015465667918653933,
+   "rotor_dev_max_rad_s": 1.1793945411247932
+  },
+  "motion": {
+   "base_max_mm": 235.6937748107124,
+   "tilt_max_deg": 39.43208996937851,
+   "rotor_dev_max_rad_s": 913.3342075637361,
+   "rotor_dev_max_pct": 75.8521484323531,
+   "joint_speed_max_rad_s": 6.125721546084179,
+   "pad_err_rms_mm": 117.53327669156839,
+   "pad_err_max_mm": 380.7154690947848
+  }
+ },
+ {
+  "seed": 1,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.293801602446787,
+   "tilt_max_deg": 0.48245546529415556,
+   "rotor_dev_max_rad_s": 28.85851097451132
+  },
+  "motion": {
+   "base_max_mm": 4.419458334688454,
+   "tilt_max_deg": 6.725735961188547,
+   "rotor_dev_max_rad_s": 721.0721739108617,
+   "rotor_dev_max_pct": 59.94653605962055,
+   "joint_speed_max_rad_s": 2.9976680397099353,
+   "pad_err_rms_mm": 0.3438156924950529,
+   "pad_err_max_mm": 0.6766578506112421
+  }
+ },
+ {
+  "seed": 1,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "(5.980000000001563, 'loss of control (failsafe): tilt 39 deg, base error 251 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.66742850866473,
+   "tilt_max_deg": 0.015465667918653933,
+   "rotor_dev_max_rad_s": 1.1793945411247932
+  },
+  "motion": {
+   "base_max_mm": 247.81683467844567,
+   "tilt_max_deg": 38.115459275521445,
+   "rotor_dev_max_rad_s": 874.3809613126103,
+   "rotor_dev_max_pct": 73.31676905526685,
+   "joint_speed_max_rad_s": 6.567574623456452,
+   "pad_err_rms_mm": 161.6394737677958,
+   "pad_err_max_mm": 391.31364886304704
+  }
+ },
+ {
+  "seed": 1,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.23960181526916022,
+   "tilt_max_deg": 0.39966165765942036,
+   "rotor_dev_max_rad_s": 24.997255162321608
+  },
+  "motion": {
+   "base_max_mm": 3.711431134139332,
+   "tilt_max_deg": 5.2697674104114025,
+   "rotor_dev_max_rad_s": 466.9349629229164,
+   "rotor_dev_max_pct": 41.26226112921831,
+   "joint_speed_max_rad_s": 2.7872237298157767,
+   "pad_err_rms_mm": 0.28218456371810546,
+   "pad_err_max_mm": 0.5892675950548594
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "(4.354999999999577, 'loss of control (failsafe): tilt 27 deg, base error 252 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.824464788353968,
+   "tilt_max_deg": 0.012234021508937782,
+   "rotor_dev_max_rad_s": 1.1231211324274
+  },
+  "motion": {
+   "base_max_mm": 247.17525372690756,
+   "tilt_max_deg": 29.504799163956477,
+   "rotor_dev_max_rad_s": 972.662112786792,
+   "rotor_dev_max_pct": 80.78049968903798,
+   "joint_speed_max_rad_s": 8.110028167816752,
+   "pad_err_rms_mm": 103.61520251723275,
+   "pad_err_max_mm": 370.7006393129027
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.41326977162658407,
+   "tilt_max_deg": 0.5479055553391422,
+   "rotor_dev_max_rad_s": 33.54394212516809
+  },
+  "motion": {
+   "base_max_mm": 4.912802665091361,
+   "tilt_max_deg": 8.567678283229709,
+   "rotor_dev_max_rad_s": 908.909398069474,
+   "rotor_dev_max_pct": 75.56077063117574,
+   "joint_speed_max_rad_s": 3.0057306586159873,
+   "pad_err_rms_mm": 0.44926015116530554,
+   "pad_err_max_mm": 0.8376198337803072
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "(5.770000000001306, 'loss of control (failsafe): tilt 16 deg, base error 255 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.824464788353968,
+   "tilt_max_deg": 0.012234021508937782,
+   "rotor_dev_max_rad_s": 1.1231211324274
+  },
+  "motion": {
+   "base_max_mm": 249.2135827066527,
+   "tilt_max_deg": 36.46556523298101,
+   "rotor_dev_max_rad_s": 975.2417417002739,
+   "rotor_dev_max_pct": 81.18013102180683,
+   "joint_speed_max_rad_s": 6.942712004057963,
+   "pad_err_rms_mm": 89.46263499802085,
+   "pad_err_max_mm": 313.47518812846954
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.29231127652938205,
+   "tilt_max_deg": 0.3816258045583528,
+   "rotor_dev_max_rad_s": 25.31825021356076
+  },
+  "motion": {
+   "base_max_mm": 3.2078044735021245,
+   "tilt_max_deg": 5.824424962163854,
+   "rotor_dev_max_rad_s": 539.7896790873895,
+   "rotor_dev_max_pct": 44.86224275164029,
+   "joint_speed_max_rad_s": 2.995799937620919,
+   "pad_err_rms_mm": 0.26274873815966165,
+   "pad_err_max_mm": 0.47132577634122436
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "(4.379999999999607, 'loss of control (failsafe): tilt 41 deg, base error 241 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.824464788353968,
+   "tilt_max_deg": 0.012234021508937782,
+   "rotor_dev_max_rad_s": 1.1231211324274
+  },
+  "motion": {
+   "base_max_mm": 238.93958385541075,
+   "tilt_max_deg": 39.4424199257036,
+   "rotor_dev_max_rad_s": 913.2847993722302,
+   "rotor_dev_max_pct": 75.84915818332404,
+   "joint_speed_max_rad_s": 6.142065429740632,
+   "pad_err_rms_mm": 117.99274980224796,
+   "pad_err_max_mm": 384.45236806588326
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.349666111353876,
+   "tilt_max_deg": 0.45937738675788536,
+   "rotor_dev_max_rad_s": 29.21227502248894
+  },
+  "motion": {
+   "base_max_mm": 4.351594829037513,
+   "tilt_max_deg": 6.7830281047451,
+   "rotor_dev_max_rad_s": 734.9723828264471,
+   "rotor_dev_max_pct": 61.08854315544059,
+   "joint_speed_max_rad_s": 2.997672224950544,
+   "pad_err_rms_mm": 0.3460879420623994,
+   "pad_err_max_mm": 0.603172558114787
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "(6.000000000001587, 'loss of control (failsafe): tilt 40 deg, base error 235 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.824464788353968,
+   "tilt_max_deg": 0.012234021508937782,
+   "rotor_dev_max_rad_s": 1.1231211324274
+  },
+  "motion": {
+   "base_max_mm": 232.1295852432103,
+   "tilt_max_deg": 39.35683943085821,
+   "rotor_dev_max_rad_s": 873.2030586715924,
+   "rotor_dev_max_pct": 72.8840493335429,
+   "joint_speed_max_rad_s": 6.508691445303702,
+   "pad_err_rms_mm": 160.6084628776555,
+   "pad_err_max_mm": 358.9669166984914
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.28830949956612106,
+   "tilt_max_deg": 0.37440205820011485,
+   "rotor_dev_max_rad_s": 25.019066365441176
+  },
+  "motion": {
+   "base_max_mm": 3.692213214649064,
+   "tilt_max_deg": 5.3230244769775705,
+   "rotor_dev_max_rad_s": 470.0876968736576,
+   "rotor_dev_max_pct": 39.10244342237967,
+   "joint_speed_max_rad_s": 2.836279589372306,
+   "pad_err_rms_mm": 0.28503369516094984,
+   "pad_err_max_mm": 0.5195303418993622
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "(4.354999999999577, 'loss of control (failsafe): tilt 27 deg, base error 251 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.8132802056207059,
+   "tilt_max_deg": 0.019034100912647293,
+   "rotor_dev_max_rad_s": 1.7791364442086888
+  },
+  "motion": {
+   "base_max_mm": 245.9271959804308,
+   "tilt_max_deg": 29.585164827862766,
+   "rotor_dev_max_rad_s": 971.7482401963575,
+   "rotor_dev_max_pct": 80.70691180636969,
+   "joint_speed_max_rad_s": 8.081907387863154,
+   "pad_err_rms_mm": 103.23071885060743,
+   "pad_err_max_mm": 370.3293921987516
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.3885903738926535,
+   "tilt_max_deg": 0.4789302971108547,
+   "rotor_dev_max_rad_s": 35.865055734929
+  },
+  "motion": {
+   "base_max_mm": 4.801887335946798,
+   "tilt_max_deg": 8.614163862335799,
+   "rotor_dev_max_rad_s": 906.0196579053431,
+   "rotor_dev_max_pct": 75.3665189994615,
+   "joint_speed_max_rad_s": 3.0052985201075093,
+   "pad_err_rms_mm": 0.46103496965913593,
+   "pad_err_max_mm": 0.960372098884113
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "(5.760000000001294, 'loss of control (failsafe): tilt 16 deg, base error 251 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.8132802056207059,
+   "tilt_max_deg": 0.019034100912647293,
+   "rotor_dev_max_rad_s": 1.7791364442086888
+  },
+  "motion": {
+   "base_max_mm": 244.37814206908868,
+   "tilt_max_deg": 36.57698616705191,
+   "rotor_dev_max_rad_s": 972.9089432190958,
+   "rotor_dev_max_pct": 81.17865203395397,
+   "joint_speed_max_rad_s": 6.917353020162291,
+   "pad_err_rms_mm": 87.87111798632232,
+   "pad_err_max_mm": 287.4898817216064
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.27397842718993753,
+   "tilt_max_deg": 0.3126265985077133,
+   "rotor_dev_max_rad_s": 28.04208688514086
+  },
+  "motion": {
+   "base_max_mm": 3.224798102533798,
+   "tilt_max_deg": 5.973381007834506,
+   "rotor_dev_max_rad_s": 547.0862060863666,
+   "rotor_dev_max_pct": 45.49599801630379,
+   "joint_speed_max_rad_s": 2.998216028441449,
+   "pad_err_rms_mm": 0.2664304965977116,
+   "pad_err_max_mm": 0.5831559745706464
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "(4.379999999999607, 'loss of control (failsafe): tilt 41 deg, base error 239 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.8132802056207059,
+   "tilt_max_deg": 0.019034100912647293,
+   "rotor_dev_max_rad_s": 1.7791364442086888
+  },
+  "motion": {
+   "base_max_mm": 236.50171469720502,
+   "tilt_max_deg": 39.48377562171526,
+   "rotor_dev_max_rad_s": 914.0292799431761,
+   "rotor_dev_max_pct": 75.91316087169592,
+   "joint_speed_max_rad_s": 6.133659974471615,
+   "pad_err_rms_mm": 117.97100107188065,
+   "pad_err_max_mm": 382.92374283881315
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.324303646693979,
+   "tilt_max_deg": 0.3911061946768457,
+   "rotor_dev_max_rad_s": 31.818995773543975
+  },
+  "motion": {
+   "base_max_mm": 4.303649012040033,
+   "tilt_max_deg": 6.761719326704294,
+   "rotor_dev_max_rad_s": 715.7365975786643,
+   "rotor_dev_max_pct": 59.52602111161415,
+   "joint_speed_max_rad_s": 2.997390158692031,
+   "pad_err_rms_mm": 0.34710307237774646,
+   "pad_err_max_mm": 0.7185990127415441
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "(5.935000000001508, 'loss of control (failsafe): tilt 31 deg, base error 251 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.8132802056207059,
+   "tilt_max_deg": 0.019034100912647293,
+   "rotor_dev_max_rad_s": 1.7791364442086888
+  },
+  "motion": {
+   "base_max_mm": 246.98954419957798,
+   "tilt_max_deg": 37.35885683872092,
+   "rotor_dev_max_rad_s": 869.6512822848825,
+   "rotor_dev_max_pct": 73.01828721535334,
+   "joint_speed_max_rad_s": 6.543036293853228,
+   "pad_err_rms_mm": 159.524582342184,
+   "pad_err_max_mm": 403.2312027504513
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.27397842718993753,
+   "tilt_max_deg": 0.3065890367242014,
+   "rotor_dev_max_rad_s": 27.916095462757767
+  },
+  "motion": {
+   "base_max_mm": 3.7674580928162853,
+   "tilt_max_deg": 5.358335979679665,
+   "rotor_dev_max_rad_s": 479.4951993241971,
+   "rotor_dev_max_pct": 40.5838447372109,
+   "joint_speed_max_rad_s": 2.814082566569069,
+   "pad_err_rms_mm": 0.28816010568463046,
+   "pad_err_max_mm": 0.6266208803587716
+  }
+ },
+ {
+  "seed": 4,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "(4.359999999999583, 'loss of control (failsafe): tilt 29 deg, base error 252 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.7785121308763038,
+   "tilt_max_deg": 0.027401855771429867,
+   "rotor_dev_max_rad_s": 1.4058177311221698
+  },
+  "motion": {
+   "base_max_mm": 247.9314546755266,
+   "tilt_max_deg": 29.211886796536223,
+   "rotor_dev_max_rad_s": 970.4265348404446,
+   "rotor_dev_max_pct": 80.59587391577115,
+   "joint_speed_max_rad_s": 8.146301248245091,
+   "pad_err_rms_mm": 105.12454299589868,
+   "pad_err_max_mm": 377.6129038942646
+  }
+ },
+ {
+  "seed": 4,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.47897672342439934,
+   "tilt_max_deg": 0.44800667852395276,
+   "rotor_dev_max_rad_s": 25.99992785881318
+  },
+  "motion": {
+   "base_max_mm": 4.9669476909244965,
+   "tilt_max_deg": 8.504090691528221,
+   "rotor_dev_max_rad_s": 904.7945128549594,
+   "rotor_dev_max_pct": 75.24815778711172,
+   "joint_speed_max_rad_s": 3.0082117217075384,
+   "pad_err_rms_mm": 0.4348478308435636,
+   "pad_err_max_mm": 0.7742589706470211
+  }
+ },
+ {
+  "seed": 4,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "(5.875000000001434, 'loss of control (failsafe): tilt 40 deg, base error 246 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.7785121308763038,
+   "tilt_max_deg": 0.027401855771429867,
+   "rotor_dev_max_rad_s": 1.4058177311221698
+  },
+  "motion": {
+   "base_max_mm": 243.47167564909464,
+   "tilt_max_deg": 39.14746212867044,
+   "rotor_dev_max_rad_s": 963.3541401324949,
+   "rotor_dev_max_pct": 81.13082956099684,
+   "joint_speed_max_rad_s": 6.84340873565086,
+   "pad_err_rms_mm": 104.0845472292047,
+   "pad_err_max_mm": 413.8930724679845
+  }
+ },
+ {
+  "seed": 4,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.3582387776581396,
+   "tilt_max_deg": 0.28376949351872205,
+   "rotor_dev_max_rad_s": 18.052785137342426
+  },
+  "motion": {
+   "base_max_mm": 3.1187269041695407,
+   "tilt_max_deg": 5.821700464222949,
+   "rotor_dev_max_rad_s": 544.6701484460792,
+   "rotor_dev_max_pct": 45.285647894312206,
+   "joint_speed_max_rad_s": 2.9958572444008507,
+   "pad_err_rms_mm": 0.2628456762150283,
+   "pad_err_max_mm": 0.53293825381814
+  }
+ },
+ {
+  "seed": 4,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "(4.379999999999607, 'loss of control (failsafe): tilt 41 deg, base error 242 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.7785121308763038,
+   "tilt_max_deg": 0.027401855771429867,
+   "rotor_dev_max_rad_s": 1.4058177311221698
+  },
+  "motion": {
+   "base_max_mm": 239.54710268901934,
+   "tilt_max_deg": 39.36591733877906,
+   "rotor_dev_max_rad_s": 912.8773106423864,
+   "rotor_dev_max_pct": 75.8162951935346,
+   "joint_speed_max_rad_s": 6.10792739465771,
+   "pad_err_rms_mm": 117.81026803268513,
+   "pad_err_max_mm": 384.45330427196495
+  }
+ },
+ {
+  "seed": 4,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.41479481700369303,
+   "tilt_max_deg": 0.35878602347249183,
+   "rotor_dev_max_rad_s": 22.07560747286834
+  },
+  "motion": {
+   "base_max_mm": 4.427382921901835,
+   "tilt_max_deg": 6.699269458392505,
+   "rotor_dev_max_rad_s": 725.0432101069431,
+   "rotor_dev_max_pct": 60.286905429281504,
+   "joint_speed_max_rad_s": 2.99667328144849,
+   "pad_err_rms_mm": 0.32987470489634396,
+   "pad_err_max_mm": 0.6555711380138629
+  }
+ },
+ {
+  "seed": 4,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "(5.975000000001557, 'loss of control (failsafe): tilt 38 deg, base error 251 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.7785121308763038,
+   "tilt_max_deg": 0.027401855771429867,
+   "rotor_dev_max_rad_s": 1.4058177311221698
+  },
+  "motion": {
+   "base_max_mm": 248.17510103898212,
+   "tilt_max_deg": 37.46160288005957,
+   "rotor_dev_max_rad_s": 873.7907240248736,
+   "rotor_dev_max_pct": 73.3437512178827,
+   "joint_speed_max_rad_s": 6.576404549151495,
+   "pad_err_rms_mm": 161.26942306336645,
+   "pad_err_max_mm": 392.62103901683446
+  }
+ },
+ {
+  "seed": 4,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.35429545260464623,
+   "tilt_max_deg": 0.2756875959490987,
+   "rotor_dev_max_rad_s": 18.769822122198548
+  },
+  "motion": {
+   "base_max_mm": 3.7559860931158466,
+   "tilt_max_deg": 5.258376043071303,
+   "rotor_dev_max_rad_s": 467.98048689185816,
+   "rotor_dev_max_pct": 40.885111726634996,
+   "joint_speed_max_rad_s": 2.790881261655957,
+   "pad_err_rms_mm": 0.2673698166467694,
+   "pad_err_max_mm": 0.5271289315443372
+  }
+ },
+ {
+  "seed": 5,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "(4.354999999999577, 'loss of control (failsafe): tilt 27 deg, base error 251 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.9966823635079586,
+   "tilt_max_deg": 0.02273799288202355,
+   "rotor_dev_max_rad_s": 1.5938196395259183
+  },
+  "motion": {
+   "base_max_mm": 246.07658866765163,
+   "tilt_max_deg": 29.413522343305896,
+   "rotor_dev_max_rad_s": 972.2609461634762,
+   "rotor_dev_max_pct": 80.73968557388721,
+   "joint_speed_max_rad_s": 8.125298526526564,
+   "pad_err_rms_mm": 103.3571992190247,
+   "pad_err_max_mm": 370.16189146433334
+  }
+ },
+ {
+  "seed": 5,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.3575628547193206,
+   "tilt_max_deg": 0.3645745774328007,
+   "rotor_dev_max_rad_s": 42.38501849738168
+  },
+  "motion": {
+   "base_max_mm": 4.881138258439601,
+   "tilt_max_deg": 8.443011627690353,
+   "rotor_dev_max_rad_s": 906.0775930421509,
+   "rotor_dev_max_pct": 75.33282552258233,
+   "joint_speed_max_rad_s": 3.0020666164499854,
+   "pad_err_rms_mm": 0.4425958739458549,
+   "pad_err_max_mm": 0.8590850136845793
+  }
+ },
+ {
+  "seed": 5,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "(5.740000000001269, 'loss of control (failsafe): tilt 22 deg, base error 256 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.9966823635079586,
+   "tilt_max_deg": 0.02273799288202355,
+   "rotor_dev_max_rad_s": 1.5938196395259183
+  },
+  "motion": {
+   "base_max_mm": 249.5379821388502,
+   "tilt_max_deg": 38.868406621556154,
+   "rotor_dev_max_rad_s": 980.9118248300906,
+   "rotor_dev_max_pct": 81.45808244690411,
+   "joint_speed_max_rad_s": 6.964478183927514,
+   "pad_err_rms_mm": 85.807484906456,
+   "pad_err_max_mm": 273.662440847388
+  }
+ },
+ {
+  "seed": 5,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.06,
+  "seg_s": 0.3,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.26049238472720004,
+   "tilt_max_deg": 0.22032571967860468,
+   "rotor_dev_max_rad_s": 34.02985860373178
+  },
+  "motion": {
+   "base_max_mm": 3.102044222883676,
+   "tilt_max_deg": 5.865000062798984,
+   "rotor_dev_max_rad_s": 534.9744576824116,
+   "rotor_dev_max_pct": 44.46581479648003,
+   "joint_speed_max_rad_s": 2.993196736705818,
+   "pad_err_rms_mm": 0.26822957900860356,
+   "pad_err_max_mm": 0.514746748860944
+  }
+ },
+ {
+  "seed": 5,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "(4.379999999999607, 'loss of control (failsafe): tilt 41 deg, base error 237 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.9966823635079586,
+   "tilt_max_deg": 0.02273799288202355,
+   "rotor_dev_max_rad_s": 1.5938196395259183
+  },
+  "motion": {
+   "base_max_mm": 235.17816005471337,
+   "tilt_max_deg": 39.39699641811614,
+   "rotor_dev_max_rad_s": 913.119597347573,
+   "rotor_dev_max_pct": 75.8283971727086,
+   "joint_speed_max_rad_s": 6.110567992282199,
+   "pad_err_rms_mm": 117.26476118485967,
+   "pad_err_max_mm": 379.9281643071642
+  }
+ },
+ {
+  "seed": 5,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.05,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.305024167203957,
+   "tilt_max_deg": 0.2844260347473063,
+   "rotor_dev_max_rad_s": 38.0845742739491
+  },
+  "motion": {
+   "base_max_mm": 4.399693894073288,
+   "tilt_max_deg": 6.627720565115001,
+   "rotor_dev_max_rad_s": 713.2515971440102,
+   "rotor_dev_max_pct": 59.28861371803512,
+   "joint_speed_max_rad_s": 2.9960906115958785,
+   "pad_err_rms_mm": 0.33575337444502634,
+   "pad_err_max_mm": 0.6814362509119158
+  }
+ },
+ {
+  "seed": 5,
+  "kind": "osc",
+  "ctrl": "B",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "(6.30500000000196, 'loss of control (failsafe): tilt 17 deg, base error 251 mm')",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.014999999999689,
+  "pre": {
+   "base_max_mm": 0.9966823635079586,
+   "tilt_max_deg": 0.02273799288202355,
+   "rotor_dev_max_rad_s": 1.5938196395259183
+  },
+  "motion": {
+   "base_max_mm": 249.10211766325642,
+   "tilt_max_deg": 37.71043231609718,
+   "rotor_dev_max_rad_s": 857.6004433787085,
+   "rotor_dev_max_pct": 72.59901167586416,
+   "joint_speed_max_rad_s": 6.848728218080426,
+   "pad_err_rms_mm": 164.4128109759253,
+   "pad_err_max_mm": 302.4002493554808
+  }
+ },
+ {
+  "seed": 5,
+  "kind": "osc",
+  "ctrl": "N",
+  "scale": 0.04,
+  "seg_s": 0.25,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.259100069155857,
+   "tilt_max_deg": 0.2119432964076161,
+   "rotor_dev_max_rad_s": 33.89847607214506
+  },
+  "motion": {
+   "base_max_mm": 3.686364784509123,
+   "tilt_max_deg": 5.188395612324796,
+   "rotor_dev_max_rad_s": 462.7746064461321,
+   "rotor_dev_max_pct": 40.24654230184427,
+   "joint_speed_max_rad_s": 2.819259629835292,
+   "pad_err_rms_mm": 0.27229022624049354,
+   "pad_err_max_mm": 0.5596750094704266
+  }
+ }
+]

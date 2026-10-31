@@ -1,0 +1,128 @@
+{
+ "version": "B gains v4 (2026-10-30)",
+ "selected_from": "results/am3_b_tuning/stage6.json: local search around the best stationary-stable stage-5 candidate; selection criteria: linearised spectral radius < 0.9993 at four postures, 30 s noisy stationary hover x 4 postures x {rest, kick} without loss of control, then lowest mean development base/pad error on six development scenarios. Replaces v3, which was found (audit B01) to be unstable in stationary hover.",
+ "score": 33.93794931252937,
+ "rho_max": 0.9990533873173397,
+ "per_scenario": [
+  {
+   "sc": "free",
+   "ok": true,
+   "base_rms": 26.27434089763948,
+   "pad_rms": 28.498674029508365
+  },
+  {
+   "sc": "free_big",
+   "ok": true,
+   "base_rms": 46.120874302612286,
+   "pad_rms": 50.15568218110715
+  },
+  {
+   "sc": "line",
+   "ok": true,
+   "base_rms": 15.254053416030578,
+   "pad_rms": 14.648402178108913
+  },
+  {
+   "sc": "line_T1",
+   "ok": true,
+   "base_rms": 22.592958514844256,
+   "pad_rms": 24.635710629176476
+  },
+  {
+   "sc": "circle",
+   "ok": true,
+   "base_rms": 10.758167937246824,
+   "pad_rms": 12.362272526374168
+  },
+  {
+   "sc": "rounded_triangle",
+   "ok": true,
+   "base_rms": 11.59538812463971,
+   "pad_rms": 11.763083820051119
+  }
+ ],
+ "hover": {
+  "hover_gap60": {
+   "abort": false,
+   "late": {
+    "base_max_mm": 0.2103580497974509,
+    "tilt_max_deg": 0.03784489351495504
+   },
+   "final_tilt": 0.012530860281935504
+  },
+  "hover_gap60_kick": {
+   "abort": false,
+   "late": {
+    "base_max_mm": 0.2087838457236101,
+    "tilt_max_deg": 0.03784543532157597
+   },
+   "final_tilt": 0.01253038377717221
+  },
+  "hover_off_right": {
+   "abort": false,
+   "late": {
+    "base_max_mm": 0.21042049104255672,
+    "tilt_max_deg": 0.043295710806999864
+   },
+   "final_tilt": 0.009698873790270993
+  },
+  "hover_off_right_kick": {
+   "abort": false,
+   "late": {
+    "base_max_mm": 0.20851561556725523,
+    "tilt_max_deg": 0.043295059758311466
+   },
+   "final_tilt": 0.009697911405155702
+  },
+  "hover_off_left_low": {
+   "abort": false,
+   "late": {
+    "base_max_mm": 0.2630050316488393,
+    "tilt_max_deg": 0.03401233111212035
+   },
+   "final_tilt": 0.009863926684491847
+  },
+  "hover_off_left_low_kick": {
+   "abort": false,
+   "late": {
+    "base_max_mm": 0.2621637101020038,
+    "tilt_max_deg": 0.03401172375665473
+   },
+   "final_tilt": 0.0098633470873109
+  },
+  "near_contact_posture": {
+   "abort": false,
+   "late": {
+    "base_max_mm": 0.3518308085327344,
+    "tilt_max_deg": 0.03347725698134752
+   },
+   "final_tilt": 0.004944383344580822
+  },
+  "near_contact_posture_kick": {
+   "abort": false,
+   "late": {
+    "base_max_mm": 0.3511282671390423,
+    "tilt_max_deg": 0.033481147087450036
+   },
+   "final_tilt": 0.004944662758681808
+  }
+ },
+ "gains": {
+  "w_att": 11.577694533763868,
+  "ki_att": 454.2689630479777,
+  "kp_pos": 4.790849070361491,
+  "kd_pos": 5.15448854583217,
+  "ki_pos": 1.225380749683309,
+  "lag_gain": 0.0,
+  "tau_motor": 0.04,
+  "kp_joint": 0.9951874087404384,
+  "kd_joint": 0.018548146617610315,
+  "k_corr": 0.23469972893037067
+ },
+ "development_budget": {
+  "stages_1_to_4": "discarded 30 Oct 2026 together with B v1-v3 (removed at the user's request)",
+  "stability_search_400_linear": "stability_search.json",
+  "stage5_12_mujoco": "stage5.json",
+  "stage6_600_linear_16_mujoco": "stage6.json"
+ }
+}

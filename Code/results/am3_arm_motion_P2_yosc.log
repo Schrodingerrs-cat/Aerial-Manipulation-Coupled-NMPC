@@ -1,0 +1,26 @@
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+B 1 0.04 3.0  pre base 0.67 mm | motion base 83.1 mm tilt 16.65 deg rotor dev 901 rad/s (74.9%) joint 4.23 rad/s pad err rms 66.0 mm
+N 1 0.04 3.0  pre base 0.20 mm | motion base 6.4 mm tilt 10.90 deg rotor dev 918 rad/s (76.2%) joint 3.01 rad/s pad err rms 2.6 mm
+B 2 0.04 3.0  pre base 0.82 mm | motion base 82.8 mm tilt 13.12 deg rotor dev 908 rad/s (75.4%) joint 3.50 rad/s pad err rms 69.0 mm
+N 2 0.04 3.0  pre base 0.22 mm | motion base 6.1 mm tilt 10.26 deg rotor dev 918 rad/s (76.2%) joint 3.01 rad/s pad err rms 2.6 mm
+B 3 0.04 3.0  pre base 0.81 mm | motion base 112.7 mm tilt 20.66 deg rotor dev 929 rad/s (77.1%) joint 5.29 rad/s pad err rms 73.4 mm
+N 3 0.04 3.0  pre base 0.27 mm | motion base 6.2 mm tilt 10.60 deg rotor dev 918 rad/s (76.3%) joint 3.02 rad/s pad err rms 2.6 mm

@@ -12,10 +12,11 @@ DT_C = TASK["control_period_s"]          # default period (NMPC); a controller c
 class Sensors:
     """Noisy full state (output of a high-grade estimator: mocap + IMU fusion; rotor speeds as telemetry) and a scalar normal-force sensor.  Identical for every controller."""
     SIG = dict(p=1e-4, att=np.radians(0.01), v=1e-3, w=5e-4, q=5e-5, qd=1e-3, Om=0.5, F=0.01)
-    def __init__(self, seed=0, enabled=True): self.rng = np.random.default_rng(seed); self.on = enabled
-    def measure(self, x, F):
+    def __init__(self, seed=0, enabled=True): self.seed = seed; self.on = enabled
+    def measure(self, x, F, t=0.0):
+        """Noise is a deterministic function of (seed, physical time on a 5 ms grid): two controllers sampling at different rates see the same noise values at coincident times."""
         if not self.on: return x.copy(), F
-        s, r = self.SIG, self.rng.standard_normal; xm = x.copy(); xm[0:3] += s["p"] * r(3); dth = s["att"] * r(3); Q = x[3:7]
+        s, r = self.SIG, np.random.default_rng([int(self.seed), int(round(t / 0.005))]).standard_normal; xm = x.copy(); xm[0:3] += s["p"] * r(3); dth = s["att"] * r(3); Q = x[3:7]
         dq = 0.5 * np.array([-Q[1] * dth[0] - Q[2] * dth[1] - Q[3] * dth[2], Q[0] * dth[0] + Q[2] * dth[2] - Q[3] * dth[1], Q[0] * dth[1] - Q[1] * dth[2] + Q[3] * dth[0], Q[0] * dth[2] + Q[1] * dth[1] - Q[2] * dth[0]])
         xm[3:7] = (Q + dq) / np.linalg.norm(Q + dq); xm[7:10] += s["v"] * r(3); xm[10:13] += s["w"] * r(3); xm[13:16] += s["q"] * r(3); xm[16:19] += s["qd"] * r(3); xm[19:23] += s["Om"] * r(4); return xm, F + s["F"] * r()
 
@@ -37,7 +38,7 @@ class Episode:
             if time.time() - t_wall0 > self.wall_limit: self.abort = (pl.d.time, "wall-clock limit (stuck solver or plant)"); break
             x = pl.state()
             if not np.isfinite(x).all() or (self.rows and pl.d.time < self.rows[-1]["t"]): self.abort = (self.rows[-1]["t"] if self.rows else 0.0, "numerical instability in the plant (MuJoCo reset)"); break          # MuJoCo resets its data (and time) on divergence
-            F, ft = pl.pad_force(); xm, Fm = self.sens.measure(x, F); gm = self.gap_meas(xm); task.advance(dt_c, Fm, gm) if k else None
+            F, ft = pl.pad_force(); xm, Fm = self.sens.measure(x, F, pl.d.time); gm = self.gap_meas(xm) if getattr(self.ctrl, 'task_uses_state', True) else task.gap_ref; task.advance(dt_c, Fm, gm) if k else None
             if task.failed: self.abort = (pl.d.time, task.failed); break
             tilt_m = np.degrees(2 * np.arcsin(min(1.0, np.hypot(xm[4], xm[5]))))
             if tilt_m > 40 or np.linalg.norm(xm[0:3] - BASE) > 0.25: self.abort = (pl.d.time, f"loss of control (failsafe): tilt {tilt_m:.0f} deg, base error {np.linalg.norm(xm[0:3] - BASE) * 1e3:.0f} mm"); break          # same monitor for every controller
@@ -49,7 +50,7 @@ class Episode:
                 u_new = u_pend.copy(); missed = True; info = dict(info, deadline_miss=True)
                 if hasattr(self.ctrl, "held"): self.ctrl.held(u_new)
             ref = task.ref(); pad = np.array(self.kin.pad_f(x)[0]).ravel()
-            self.rows.append(dict(t=pl.d.time, x=x, xm=xm, F=F, Fm=Fm, ft=ft.copy(), phase=task.phase, ref=ref, pad=pad, gap=pl.gap(), u_cmd=u_new.copy(), u_app=u_app.copy(), com=pl.com(), cycle_s=cyc, missed=missed, contact=task.contact, other=len(pl.other_contacts()), info=info))
+            self.rows.append(dict(t=pl.d.time, x=x, xm=xm, F=F, Fm=Fm, ft=ft.copy(), phase=task.phase, ref=ref, pad=pad, gap=pl.gap(), u_cmd=u_new.copy(), u_app=u_app.copy(), u_next=u_pend.copy(), com=pl.com(), cycle_s=cyc, missed=missed, contact=task.contact, other=len(pl.other_contacts()), info=info))
             if self.record is not None: self.record(self, pl.d.time)
             u_app, u_pend = u_pend, u_new                                              # one-period computation latency
             for _ in range(n_sub): pl.step(u_app)

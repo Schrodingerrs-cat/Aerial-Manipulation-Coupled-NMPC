@@ -30,10 +30,11 @@ class Task:
     def _enter(self, ph): self.phase = ph; self.tph = 0.0
     def advance(self, dt, F_meas, gap_meas, nominal=False):
         self.t += dt; self.tph += dt; ph = self.phase; g0 = self.gap_ref
+        n_on_req, n_off_req = max(1, round(CP["T_on_s"] / dt)), max(1, round(CP["T_off_s"] / dt))          # persistence is defined in seconds, so it does not depend on the controller rate
         if not nominal:                                       # persistent contact detection with hysteresis on the measured force
             self.n_on = self.n_on + 1 if F_meas > CP["F_on_N"] else 0; self.n_off = self.n_off + 1 if F_meas < CP["F_off_N"] else 0
-            if not self.contact and self.n_on >= CP["T_on_samples"]: self.contact = True
-            if self.contact and self.n_off >= CP["T_off_samples"]: self.contact = False
+            if not self.contact and self.n_on >= n_on_req: self.contact = True
+            if self.contact and self.n_off >= n_off_req: self.contact = False
         self.rho += np.clip((1.0 if ph == "trace" else 0.0) - self.rho, -dt / CP["progress_slew_s"], dt / CP["progress_slew_s"])
         if self.free:
             if ph == "hover" and self.tph >= TASK["hover_s"]: self._enter("trace")
@@ -68,7 +69,7 @@ class Task:
             self.t_recover += dt; self.gap_ref = max(self.gap_ref - (CP["v_final_m_s"] if self.gap_ref > 0.0 else CP["v_seek_m_s"]) * dt, CP["seek_floor_m"])
             if self.contact and not nominal: self.recoveries[-1]["duration_s"] = self.t_recover; self.gap_settle0 = self.gap_ref; self._enter("settle_resume")
             elif self.t_recover > CP["recover_max_s"]: self.failed = "recovery timeout"
-        if not nominal and ph in ("settle", "trace", "endhold", "settle_resume") and not self.contact and self.n_off >= CP["T_off_samples"]:        # confirmed loss
+        if not nominal and ph in ("settle", "trace", "endhold", "settle_resume") and not self.contact and self.n_off >= n_off_req:        # confirmed loss
             self.prev = "endhold" if ph == "endhold" else "trace"; self.recoveries.append(dict(t=self.t, phase=ph, tau_p=self.tau_p)); self.t_recover = 0.0
             self.gap_ref = float(np.clip(gap_meas, -DELTA, CP["recover_gap_max_m"])); self._enter("recover")
         self.gap_rate = (self.gap_ref - g0) / dt if dt > 0 else 0.0
@@ -81,7 +82,7 @@ class Task:
         elif ph == "position":
             f, f1, _ = min_jerk(self.tph / TASK["position_s"]); p = self.p0 + (self.pre - self.p0) * f; v = (self.pre - self.p0) * f1 / TASK["position_s"]
         else:
-            yz, vyz, _ = reference(self.path, self.T, min(self.tau_p, self.T)); vyz = vyz * (1.0 if ph == "trace" else 0.0); p = np.r_[wall_x(self.gap_ref), YZ0 + yz]; v = np.r_[-self.gap_rate, vyz]
+            yz, vyz, _ = reference(self.path, self.T, min(self.tau_p, self.T)); vyz = vyz * (self.rho if ph == "trace" else 0.0); p = np.r_[wall_x(self.gap_ref), YZ0 + yz]; v = np.r_[-self.gap_rate, vyz]          # progress advances at rate rho, so the path velocity is scaled by rho (chain rule)
         contact = ph in ("settle", "settle_resume", "trace", "endhold")
         return dict(phase=ph, p=p, v=v, gap=self.gap_ref, contact_expected=contact, s=min(1.0, self.tau_p / self.T))
     def horizon(self, N, h, dt=0.02):

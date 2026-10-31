@@ -1,0 +1,98 @@
+{
+ "controller": "N",
+ "path": "line",
+ "seed": 0,
+ "abort": null,
+ "t_end": 15.399999999986784,
+ "wall_s": 113.95542478561401,
+ "base": {
+  "rms_mm": 0.16778847603160404,
+  "max_mm": 0.41818426779356727,
+  "final_mm": 0.17108648157381695,
+  "vel_max": 0.006772581503826439,
+  "settle_s": 0.0
+ },
+ "com": {
+  "range_mm": [
+   10.599363821950924,
+   9.071036402127495,
+   3.102449677563124
+  ],
+  "rms_dev_mm": 5.55720797992131
+ },
+ "attitude": {
+  "tilt_max_deg": 2.476841403188295,
+  "tilt_rms_deg": 1.3100558981124808,
+  "omega_max": 0.19347835196137314
+ },
+ "pad_vs_reference": {
+  "rms_mm": 0.22549062331403105,
+  "max_mm": 0.7164569840026895
+ },
+ "trace": {
+  "track_rms_mm": 0.34451966568150577,
+  "track_max_mm": 0.7164569840026895,
+  "timed_nominal_rms_mm": 5.752488297179915,
+  "timed_nominal_max_mm": 9.287902958066143,
+  "duration_s": 4.2199999999959905,
+  "nominal_T": 4.0,
+  "delay_s": 0.21999999999599051,
+  "x_dev_rms_mm": 0.15085501768312118,
+  "coverage_5mm": 1.0,
+  "endpoint_err_mm": 0.21821670869932092,
+  "reached_end": true
+ },
+ "contact": {
+  "valid_fraction": 1.0,
+  "longest_s": 5.72025,
+  "detached_intervals_s": [],
+  "detached_total_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 0.6664995610584703,
+  "impulse_Ns": 3.209881954323955,
+  "peak_ft_N": 0.09997493415877055,
+  "Fn_mean_trace_N": 0.5481971000333109,
+  "Fn_std_trace_N": 0.04203863856740764,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.057637257960093655,
+   0.5312783447110939,
+   0.2194069741170331
+  ],
+  "rotor_force_min_N": 1.466818916653073,
+  "rotor_force_max_N": 5.801680363760874,
+  "rotor_reserve_up_N": 4.198319636239126,
+  "rotor_reserve_down_N": 1.3668189166530729,
+  "qd_max": [
+   0.18796846976990036,
+   0.3229669922388498,
+   0.3273261723506789
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 1.8493737602996143e-12
+ },
+ "timing": {
+  "median_ms": 16.500187999554328,
+  "p95_ms": 27.960161999544653,
+  "p99_ms": 52.45690080009806,
+  "max_ms": 59.6233989999746,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.10376134889753567,
+  "injected_misses": 0
+ },
+ "final_gap_mm": 62.83574008511507,
+ "completed": true,
+ "command": "scripts/am3_compare.py AM3_BvsN_line_2026-10-30_sepB line",
+ "source_hash": "50190e836316",
+ "miss_p": 0.0
+}

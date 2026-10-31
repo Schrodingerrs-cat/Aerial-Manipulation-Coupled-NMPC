@@ -1,0 +1,57 @@
+GATE_v2_B {
+ "n": 30,
+ "solver_hang_stubs": 0,
+ "joint_successes": 0,
+ "completed": 30,
+ "failed_criteria": {
+  "base_max": 30,
+  "path_tracking_rms": 27,
+  "endpoint": 27,
+  "coverage": 15,
+  "free_pad_tracking_rms": 3
+ },
+ "base_max_mm": {
+  "median": 33.28072376875879,
+  "max": 74.44233227511035
+ },
+ "trace_track_rms_mm": {
+  "median": 18.2909710310511,
+  "max": 25.721837634922387
+ },
+ "peak_Fn_N_max": 1.0039636026243057,
+ "timing": {
+  "median_ms": 1.2419085001056374,
+  "max_ms": 12.356350000118255,
+  "over_period_fraction_mean": 0.00011976092691246641
+ }
+}
+ FAIL heldout2_00 line ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_01 line_fast ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_02 line_T1 ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_03 circle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_04 circle_T4 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_05 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_06 rounded_triangle_T5 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_07 free ['base_max', 'free_pad_tracking_rms'] None
+ FAIL heldout2_08 line ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_09 line_fast ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_10 line_T1 ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_11 circle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_12 circle_T4 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_13 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_14 rounded_triangle_T5 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_15 free ['base_max', 'free_pad_tracking_rms'] None
+ FAIL heldout2_16 line ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_17 line_fast ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_18 line_T1 ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_19 circle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_20 circle_T4 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_21 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_22 rounded_triangle_T5 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_23 free ['base_max', 'free_pad_tracking_rms'] None
+ FAIL heldout2_24 line ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_25 line_fast ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_26 line_T1 ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL heldout2_27 circle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_28 circle_T4 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL heldout2_29 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None

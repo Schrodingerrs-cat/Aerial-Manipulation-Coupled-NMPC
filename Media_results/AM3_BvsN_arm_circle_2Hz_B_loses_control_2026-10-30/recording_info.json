@@ -1,0 +1,12 @@
+{
+ "B": {
+  "wall_clock_s": 25.951651096343994,
+  "frames": 146,
+  "abort": "(4.845000000000176, 'loss of control (failsafe): tilt 41 deg, base error 114 mm')"
+ },
+ "N": {
+  "wall_clock_s": 67.20671582221985,
+  "frames": 332,
+  "abort": "None"
+ }
+}

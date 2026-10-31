@@ -1,0 +1,173 @@
+{
+ "version": "stress v2 (2026-10-30), pre-registered combinations of the v1 speed and amplitude axes",
+ "paths": {
+  "line_L0.08_T2.0": {
+   "kind": "line",
+   "a": [
+    -0.08,
+    0
+   ],
+   "b": [
+    0.08,
+    0
+   ],
+   "T_s": 2.0
+  },
+  "line_L0.08_T1.0": {
+   "kind": "line",
+   "a": [
+    -0.08,
+    0
+   ],
+   "b": [
+    0.08,
+    0
+   ],
+   "T_s": 1.0
+  },
+  "circle_r0.045_T4": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.045,
+   "T_s": 4
+  },
+  "circle_r0.045_T3": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.045,
+   "T_s": 3
+  },
+  "tri_x1.5_T3": {
+   "kind": "polygon",
+   "vertices": [
+    [
+     -0.06,
+     -0.03
+    ],
+    [
+     0.06,
+     -0.03
+    ],
+    [
+     0.0,
+     0.045
+    ]
+   ],
+   "fillet_m": 0.015,
+   "T_s": 3.0
+  },
+  "tri_x1.5_T2": {
+   "kind": "polygon",
+   "vertices": [
+    [
+     -0.06,
+     -0.03
+    ],
+    [
+     0.06,
+     -0.03
+    ],
+    [
+     0.0,
+     0.045
+    ]
+   ],
+   "fillet_m": 0.015,
+   "T_s": 2.0
+  },
+  "circle_r0.045_T3_off": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.045,
+   "T_s": 3.0
+  }
+ },
+ "scenarios": [
+  {
+   "id": "line_L0.08_T2.0",
+   "path": "line_L0.08_T2.0",
+   "family": "speed+amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "line_L0.08_T1.0",
+   "path": "line_L0.08_T1.0",
+   "family": "speed+amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_r0.045_T4",
+   "path": "circle_r0.045_T4",
+   "family": "speed+amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_r0.045_T3",
+   "path": "circle_r0.045_T3",
+   "family": "speed+amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "tri_x1.5_T3",
+   "path": "tri_x1.5_T3",
+   "family": "speed+amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "tri_x1.5_T2",
+   "path": "tri_x1.5_T2",
+   "family": "speed+amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_r0.045_T3_off",
+   "path": "circle_r0.045_T3_off",
+   "family": "speed+amplitude+offset",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0.03,
+    -0.03
+   ]
+  }
+ ]
+}

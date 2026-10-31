@@ -1,0 +1,263 @@
+{
+  "snapshot": {
+    "Code/ocrl/am3_mismatch.py": "68513230581beae37b3fe138d99e7f7010affe9017a348e3dec9784539b56394",
+    "Code/ocrl/am3_rl.py": "ae51a4ec0172fff63bbfd053e1f0e1de97794dfe5d8a95716a504de7bbc351b7",
+    "Code/ocrl/am3_ekf.py": "a69fe88531f719262650e31fa8bb3e0b2269e8320ee8c1eb13ea3cf6ace404d6",
+    "Code/ocrl/am3_ctrl_corr.py": "1edea48b8083caa46d5657bc906d9fda52ee75b86eb40d91c282b5d3901b3ed1",
+    "Code/ocrl/am3_ctrl_b.py": "f43ba4f208ceb85c128f19d871e9b3b26376c38ea243569d4525f1bb1cb1c280",
+    "Code/ocrl/am3_eval.py": "3a6bcdf4af1190ec3cb8f3ae60a1479d41e2ce9484730184efc25995309d827a",
+    "Code/ocrl/am3_path.py": "d80c3f4d3937ff5316988e92e41738a89de1667c60db7b551e9a56fdea00a56e",
+    "Code/ocrl/am3_pred.py": "acf7d9e02aa1ec290d30e7cab58d2dd0f32b40e42a459369723ce33df61f6d6f",
+    "Code/ocrl/am3_record.py": "c822e9c569dcfa96723554adc6a9db0591f931e6f92160e466c4b463113bd13c",
+    "Code/ocrl/am3_ctrl_n.py": "1f8268aea19d86b062355ffc3f6db562a7f53cfa59fdb48e79a0d7484cc34cdc",
+    "Code/ocrl/am3_ref.py": "a52723e70cd98a4a5915fc328136f5dd509912412a615dc245f3e2803f1e5db7",
+    "Code/ocrl/am3_nmpc.py": "4d7e5ef66aa73b67b1468675810062ca0e78bce956d6fd58b28b2be59b583461",
+    "Code/ocrl/am3_episode.py": "54ceccbebc0765dba3d57daca0c3eefd0966053189f9e8a3a57210653f06bbfa",
+    "Code/ocrl/am3_plant.py": "55d02eae2243523bf96c6d13a6ae2e2ab12e375c17fba7c1205c5c0fe2192e05",
+    "Code/ocrl/am3_task.py": "b053f0dcaf32e598cf05b1fa58d5791321d0147f054c8f9c54e7404a7428579c",
+    "Code/ocrl/am3_static.py": "79d12cc68017742be85d52b638b22bc3fc8f7a6bcaaa875c33c3f6c3cdf95452",
+    "Code/scripts/am3_tune_nd.py": "61bf779275512dba19a7251252cbbfcb42f6e45d71b332940c329f7df7550812",
+    "Code/scripts/am3_compare.py": "f197496f8107e55af1a8b4a8f51160ee67bea638cd55c205b94c24ddb140af44",
+    "Code/scripts/am3_train_sac.py": "aaf9a9e40cdcd8f959cbf58f5115153d15900a985cc07129debe42523fbdf227",
+    "Code/scripts/am3_feasibility.py": "9444f28eabd645491cdfb8e68c3055bdd0cdff9916d830ee2ff710c8e9eee1f7",
+    "Code/scripts/am3_freeze.py": "d763c59890c77922927cc6c609845b4bc6b0f81467bfc0fbf4443779f12351b9",
+    "Code/scripts/am3_build_model.py": "5239bcba567aac18f45dc8821e0f62461bc203846df5785320c20ddc476480a8",
+    "Code/scripts/am3_timing.py": "78185b900e7ebf3d9532582452f5000b108bd09415f9aeeded99065d63fb30df",
+    "Code/scripts/am3_check_friction.py": "4f8aa67307e3b5ccb6303c99f4e403796b57df301b0a8b3b4cc323f6ac677c33",
+    "Code/scripts/am3_tune_n.py": "c2ec5c744d344850c338649d884da9ce1c2b1bfb24d8a5e1ddcbaa46d052ec9b",
+    "Code/scripts/am3_tune_b.py": "27017768f35d87a12bab681146d9df4ac7d1f6768340c14297c5b7cffa14288f",
+    "Code/scripts/am3_b_linear.py": "a13435aeb39e66d748784bfbe51219d0c8aed44f5357f57f9553d01c26e2ca36",
+    "Code/scripts/am3_check_pred.py": "f0eed4d1cf2f6a3261a26e17d3727e52edbb6b5b7b6190030e87ae577532c874",
+    "Code/scripts/am3_check_parity.py": "4aefbf4bd72c6e614069efe9078a313b327ece652fffa3973b195bca0227bfa1",
+    "Code/scripts/am3_run_one.py": "cf3134d8c5d9bd7dd687eff53297e203390cc62c801118429e07a82f93677991",
+    "Code/scripts/am3_ekf_tune.py": "161503c7149922db2e4bcc9e5468deaeef44e1d5b2d67f29d4478f35a46cae9f",
+    "Code/scripts/am3_make_domain.py": "9bdf99537e01ed13c3479a086bb11d147cd426f23798db8399a82107fccb5b17",
+    "Code/scripts/am3_check_rollout.py": "43e68e9f85ad51568569f408e59bafbb05e6d326e6a5af99946070c023e82839",
+    "Code/scripts/am3_make_mm_domain.py": "8593e01ee295864f966c1cc608fcc92b6a958504e671d282cb2f8cc75aca65b9",
+    "Code/scripts/am3_calibrate_contact.py": "1c13d5e605f074d584cd5c34005dfc6472b1fe1add694c76e181768fbb953e9a",
+    "Code/scripts/am3_gate.py": "b83ce0ba2688dea2a1d55bcd6d2c33bbf6389d4f4d8fa12c19ebb7055450c911",
+    "Code/scripts/am3_tune_b_random3.py": "94728af3ae2a623a00c4d2d4735670c8b16ce7c18474e4d0c48fc2c20217b873",
+    "Code/scripts/am3_check_eval.py": "c24f5877a7efb928a95577f819fca52f39d7a29a168931d2300293351dbed9c8",
+    "Code/scripts/am3_design_scan.py": "a1ece204ea0294d011bcff9be617eef70cf092c4d0fd26a9743fe7cc8f7d6030",
+    "Code/scripts/am3_batch.py": "9251d2ec4244ccf208ae7815a8b1ef030855fbd0132cd3cb4c736329b7d60f01",
+    "Code/scripts/am3_run.py": "20fb6f7085d8483210bfe15ceb5748b92a1658f3f7fda7c2b76bbf6347483e47",
+    "Code/config/am3_design_v3.json": "eb3a0c2edc8bc190209a1302a187d75dedbfa4e5c6e7371e0e2547c8a309b3da",
+    "Code/config/am3_domain_mm_heldout.json": "c1478245980b81ebdac7aa701c83279878c3f66ca65ffd5b5b6258d37a348d2d",
+    "Code/config/am3_domain_heldout.json": "f9f9323c2ac1e2025202c0c5c8b28396391daebf50bf1fedae7958a3972533c4",
+    "Code/config/am3_freeze_v1.json": "ab1cfa707d5383b2886e31761d58e1c13b70c815d7791e681afe0f5120c83295",
+    "Code/config/am3_domain_mm_val.json": "1dac1ff2e45f7450ddec7c17d42d7e7d7f9ba290c7b5577b7b4b4237e31a5f83",
+    "Code/config/am3_domain_dev.json": "6cd589cf4e4ea5858bce8a05996c50ea0050c1b5a3aeb62720e245c918e0026e",
+    "Code/config/am3_domain_mm_train.json": "3fa0a4f37f9414171906e0933d75750277bffda1107f2ad73882e04d7ba7e701",
+    "Code/config/am3_task_v1.json": "4b700969fbf207813258944e2646f33b8d59c2ce6069d7486c253be576c7abda",
+    "Code/config/am3_acceptance_v1.json": "6625c5d56af28dc0b1545c643ecafd9b84bf0684153ceb1027d87e75e77ab8d4",
+    "Code/config/am3_b_gains_v3.json": "94d757de04fcbcd5a32b12af52657538135a08918c372f905d7a534d01cf8a8e",
+    "Code/config/am3_acceptance_draft.json": "6625c5d56af28dc0b1545c643ecafd9b84bf0684153ceb1027d87e75e77ab8d4",
+    "Code/config/am3_domain_mm_dev.json": "629974e4e57d1a7dcd466d1ec335953eb0b872c66c602d37e390226c9d9dba8c",
+    "Code/config/am3_domain_val.json": "d084a5de653e44a768bd79fee27151758a60b1e4bd837ce33b901d6531626cbb",
+    "Code/model/aerial_manipulator_v3.xml": "2d4b6e40c96c392bb7888fd65ada4a402a41ce4f230d186f015b2f6fb597d070"
+  },
+  "freeze_changed": [
+    "ocrl/am3_ekf.py"
+  ],
+  "syntax_errors": [],
+  "stationary_B": [
+    {
+      "window": [
+        0,
+        1
+      ],
+      "tilt_deg": 0.11227297833092631,
+      "base_mm": 3.169349667206839
+    },
+    {
+      "window": [
+        1,
+        3
+      ],
+      "tilt_deg": 0.4122910061117921,
+      "base_mm": 3.3844698256855006
+    },
+    {
+      "window": [
+        3,
+        6
+      ],
+      "tilt_deg": 1.293891060979689,
+      "base_mm": 2.899954250956148
+    },
+    {
+      "window": [
+        6,
+        10
+      ],
+      "tilt_deg": 8.955276121353382,
+      "base_mm": 16.475557739607172
+    }
+  ],
+  "B_linear": {
+    "radius": 1.0022553570674004,
+    "largest": [
+      1.0022553570674004,
+      1.0022553570674004,
+      0.9993674220675779,
+      0.9993674220675779
+    ],
+    "equilibrium_residual": 4.092726157978177e-12
+  },
+  "predictor_checks": {
+    "fk": 3.3306690738754696e-16,
+    "jac_cols": 2.8102520310824275e-16,
+    "jac_fd": 5.5162874268432915e-11,
+    "M": 1.000000082740371e-09,
+    "M_cross_norm": 0.032639008285303486,
+    "M_min_eig": 0.00035649221616589234,
+    "bias": 1.0815258022489616e-08,
+    "contact_point_vel": 5.551115123125783e-16,
+    "acc": 5.440762834041379e-06,
+    "M_scale": 1.520000001,
+    "bias_scale": 15.194952605851022,
+    "acc_scale": 1446.9616114707742,
+    "acc_samples_skipped_for_contact": 11,
+    "note": "max abs error over 50 random states; M_cross_norm is the smallest max-abs base-joint cross block (non-zero coupling), contact point at the pad surface facing the wall; acc uses d.ctrl thrust kf*Omega^2 and joint torques, plant joint damping"
+  },
+  "newton_euler": [
+    {
+      "wall": false,
+      "shoulder_torque_increment": 0,
+      "force_balance_error_N": 2.220446049250313e-15,
+      "moment_balance_error_Nm": 1.0245690417542994e-15,
+      "COM_accel": [
+        -1.3574136602441857e-19,
+        6.2700956189833806e-24,
+        -6.453944976537497e-09
+      ],
+      "base_accel": [
+        -7.289473697769741e-11,
+        7.59578733003306e-10,
+        2.566075214715861e-09
+      ],
+      "body_angular_accel": [
+        -3.095148349808747e-08,
+        4.034158898947243e-09,
+        -2.0089444049115508e-15
+      ],
+      "wall_force": 0.0,
+      "other_contacts": []
+    },
+    {
+      "wall": false,
+      "shoulder_torque_increment": 0.05,
+      "force_balance_error_N": 2.247657055816641e-15,
+      "moment_balance_error_Nm": 1.0219340600208779e-15,
+      "COM_accel": [
+        -1.9722206076381588e-16,
+        6.361242823137546e-24,
+        -6.453944971828356e-09
+      ],
+      "base_accel": [
+        -0.016634095224246997,
+        7.337232965244767e-10,
+        0.15830562792165206
+      ],
+      "body_angular_accel": [
+        -2.4229916746247666e-08,
+        -29.0752322968162,
+        -2.008944410915572e-15
+      ],
+      "wall_force": 0.0,
+      "other_contacts": []
+    },
+    {
+      "wall": true,
+      "shoulder_torque_increment": 0,
+      "force_balance_error_N": 2.3972849129904254e-15,
+      "moment_balance_error_Nm": 7.574601003337388e-16,
+      "COM_accel": [
+        -0.37562485631303794,
+        7.002427593080787e-12,
+        -0.047879867410864134
+      ],
+      "base_accel": [
+        0.03480868295999308,
+        8.608216917492876e-10,
+        -0.03710891727509074
+      ],
+      "body_angular_accel": [
+        -2.4485384118440568e-08,
+        -1.9263909071086665,
+        -2.0089444120094404e-15
+      ],
+      "wall_force": 0.5709497819714427,
+      "other_contacts": []
+    }
+  ],
+  "hysteresis": {
+    "0.005": {
+      "acquisition_s": 0.015,
+      "loss_s": 0.025
+    },
+    "0.02": {
+      "acquisition_s": 0.06,
+      "loss_s": 0.1
+    }
+  },
+  "free_bad_tracking_passes": {
+    "no_abort": true,
+    "base_max": true,
+    "tilt": true,
+    "contact_fraction": true,
+    "force_peak": true,
+    "no_unexpected_contact": true,
+    "recovery": true,
+    "rotor_reserve": true,
+    "solver": true,
+    "all": true
+  },
+  "logged_vs_interval_input": [
+    {
+      "t": 0.0,
+      "logged": 7.065730446381395e-26,
+      "actual": 7.065730446381395e-26
+    },
+    {
+      "t": 0.020000000000000014,
+      "logged": 7.065730446381395e-26,
+      "actual": 0.001
+    },
+    {
+      "t": 0.04000000000000003,
+      "logged": 0.001,
+      "actual": 0.002
+    },
+    {
+      "t": 0.060000000000000046,
+      "logged": 0.002,
+      "actual": 0.003
+    }
+  ],
+  "reference_derivative": {
+    "advertised": [
+      -0.0,
+      0.0071777343750000005,
+      0.0
+    ],
+    "finite_difference": [
+      0.0,
+      0.002153335780519239,
+      0.0
+    ],
+    "rho": 0.3
+  },
+  "gate_rescore": {
+    "N": {
+      "n": 30,
+      "stubs": 0,
+      "passes": 30
+    },
+    "B": {
+      "n": 30,
+      "stubs": 0,
+      "passes": 1
+    }
+  }
+}

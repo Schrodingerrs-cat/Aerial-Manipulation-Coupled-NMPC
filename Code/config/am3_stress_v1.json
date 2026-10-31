@@ -1,0 +1,511 @@
+{
+ "version": "stress v1 (2026-10-30), pre-registered grid; paths are injected into TASK['paths'] at run time, nothing in config/am3_task_v1.json or the models is changed",
+ "paths": {
+  "line_T2.5": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0
+   ],
+   "b": [
+    0.04,
+    0
+   ],
+   "T_s": 2.5
+  },
+  "line_T1.5": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0
+   ],
+   "b": [
+    0.04,
+    0
+   ],
+   "T_s": 1.5
+  },
+  "line_T1.0": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0
+   ],
+   "b": [
+    0.04,
+    0
+   ],
+   "T_s": 1.0
+  },
+  "line_T0.7": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0
+   ],
+   "b": [
+    0.04,
+    0
+   ],
+   "T_s": 0.7
+  },
+  "circle_T6": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.025,
+   "T_s": 6
+  },
+  "circle_T4": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.025,
+   "T_s": 4
+  },
+  "circle_T3": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.025,
+   "T_s": 3
+  },
+  "circle_T2": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.025,
+   "T_s": 2
+  },
+  "tri_T5": {
+   "kind": "polygon",
+   "vertices": [
+    [
+     -0.04,
+     -0.02
+    ],
+    [
+     0.04,
+     -0.02
+    ],
+    [
+     0.0,
+     0.03
+    ]
+   ],
+   "fillet_m": 0.01,
+   "T_s": 5
+  },
+  "tri_T3": {
+   "kind": "polygon",
+   "vertices": [
+    [
+     -0.04,
+     -0.02
+    ],
+    [
+     0.04,
+     -0.02
+    ],
+    [
+     0.0,
+     0.03
+    ]
+   ],
+   "fillet_m": 0.01,
+   "T_s": 3
+  },
+  "tri_T2": {
+   "kind": "polygon",
+   "vertices": [
+    [
+     -0.04,
+     -0.02
+    ],
+    [
+     0.04,
+     -0.02
+    ],
+    [
+     0.0,
+     0.03
+    ]
+   ],
+   "fillet_m": 0.01,
+   "T_s": 2
+  },
+  "line_L0.06": {
+   "kind": "line",
+   "a": [
+    -0.06,
+    0
+   ],
+   "b": [
+    0.06,
+    0
+   ],
+   "T_s": 4.0
+  },
+  "line_L0.08": {
+   "kind": "line",
+   "a": [
+    -0.08,
+    0
+   ],
+   "b": [
+    0.08,
+    0
+   ],
+   "T_s": 4.0
+  },
+  "circle_r0.035": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.035,
+   "T_s": 10.0
+  },
+  "circle_r0.045": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.045,
+   "T_s": 10.0
+  },
+  "tri_x1.5": {
+   "kind": "polygon",
+   "vertices": [
+    [
+     -0.06,
+     -0.03
+    ],
+    [
+     0.06,
+     -0.03
+    ],
+    [
+     0.0,
+     0.045
+    ]
+   ],
+   "fillet_m": 0.015,
+   "T_s": 10.0
+  },
+  "circle_off+0.03_+0.00": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.025,
+   "T_s": 10.0
+  },
+  "circle_off-0.03_+0.00": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.025,
+   "T_s": 10.0
+  },
+  "circle_off+0.00_+0.03": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.025,
+   "T_s": 10.0
+  },
+  "circle_off+0.00_-0.03": {
+   "kind": "circle",
+   "centre": [
+    0,
+    0
+   ],
+   "radius": 0.025,
+   "T_s": 10.0
+  },
+  "line_off+0.03_+0.03": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0
+   ],
+   "b": [
+    0.04,
+    0
+   ],
+   "T_s": 4.0
+  },
+  "line_off-0.03_-0.03": {
+   "kind": "line",
+   "a": [
+    -0.04,
+    0
+   ],
+   "b": [
+    0.04,
+    0
+   ],
+   "T_s": 4.0
+  }
+ },
+ "scenarios": [
+  {
+   "id": "line_T2.5",
+   "path": "line_T2.5",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "line_T1.5",
+   "path": "line_T1.5",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "line_T1.0",
+   "path": "line_T1.0",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "line_T0.7",
+   "path": "line_T0.7",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_T6",
+   "path": "circle_T6",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_T4",
+   "path": "circle_T4",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_T3",
+   "path": "circle_T3",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_T2",
+   "path": "circle_T2",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "tri_T5",
+   "path": "tri_T5",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "tri_T3",
+   "path": "tri_T3",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "tri_T2",
+   "path": "tri_T2",
+   "family": "speed",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "line_L0.06",
+   "path": "line_L0.06",
+   "family": "amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "line_L0.08",
+   "path": "line_L0.08",
+   "family": "amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_r0.035",
+   "path": "circle_r0.035",
+   "family": "amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_r0.045",
+   "path": "circle_r0.045",
+   "family": "amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "tri_x1.5",
+   "path": "tri_x1.5",
+   "family": "amplitude",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "circle_off+0.03_+0.00",
+   "path": "circle_off+0.03_+0.00",
+   "family": "offset",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0.03,
+    0
+   ]
+  },
+  {
+   "id": "circle_off-0.03_+0.00",
+   "path": "circle_off-0.03_+0.00",
+   "family": "offset",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    -0.03,
+    0
+   ]
+  },
+  {
+   "id": "circle_off+0.00_+0.03",
+   "path": "circle_off+0.00_+0.03",
+   "family": "offset",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    0.03
+   ]
+  },
+  {
+   "id": "circle_off+0.00_-0.03",
+   "path": "circle_off+0.00_-0.03",
+   "family": "offset",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0,
+    -0.03
+   ]
+  },
+  {
+   "id": "line_off+0.03_+0.03",
+   "path": "line_off+0.03_+0.03",
+   "family": "offset",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    0.03,
+    0.03
+   ]
+  },
+  {
+   "id": "line_off-0.03_-0.03",
+   "path": "line_off-0.03_-0.03",
+   "family": "offset",
+   "seed": 11,
+   "gap0": 0.06,
+   "dyz": [
+    -0.03,
+    -0.03
+   ]
+  }
+ ]
+}

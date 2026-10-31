@@ -1,0 +1,13 @@
+{
+  "abort": [
+    3.979999999999154,
+    "loss of control (failsafe): tilt 40 deg, base error 230 mm"
+  ],
+  "last_logged_time": 3.9749999999991568,
+  "max_base_error_mm": 229.48347166296358,
+  "max_tilt_deg": 39.248078370021304,
+  "peak_pad_wall_force": 0.0,
+  "unexpected_contacts": [],
+  "preimpact_state_max_difference": 0.0,
+  "preimpact_samples": 757
+}
