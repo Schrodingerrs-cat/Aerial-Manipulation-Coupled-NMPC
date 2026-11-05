@@ -34,7 +34,8 @@ Peak base displacement per phase (mm), B v5 / N:
 ## Limits
 One seed, nominal plant, one loop shape scaled in amplitude/time; B rotor trim fixed at the start posture by design. The earlier "mm_027" thrust-mismatch failure is not part of this evidence (see `Findings/Codebase/b_failure_search_2026-10-30.md`).
 
-## Arm oscillation: B loses control, N does not (free flight, no wall, nominal plant)
+## Arm oscillation: B loses control, N does not (CONTAMINATED by wall contact: not a clean free-flight failure)
+**Correction (4 Nov 2026):** the plant still contains the wall geometry. In the seed-0 oscillation run B's pad touched the wall at 3.784 s (peak Fn 8.13 N, finger_l/finger_r/prop1 contacts) before the 4.355 s abort, after B had already reached about 153 mm and 22 deg. The oscillation therefore shows arm-induced disturbance followed by an unintended collision, not an isolated free-flight failure. The clean case is the 6 cm, 2 Hz circle below (peak Fn 0 N, no unexpected contacts in the seed-0 logs); wall contact was not audited for the other grid runs.
 Same script, `--kind osc`: after 3 s of stationary hover (B base 0.81 mm, tilt 0.04 deg before the command) the pad oscillates +-A along (y, z/2), 12 legs of T seconds (half cycle). Grid fixed before running (A = 3 or 6 cm; T = 0.8, 0.5, 0.35, 0.25 s), then the boundary was probed with 5 more noise seeds. Raw: `Code/results/am3_arm_motion/O1` (grid), `O2` (seeds 1-5 and neighbours), figure `arm_motion_2026-10-30/arm_oscillation_timeseries.png`.
 | A (cm) / half cycle T (s) | B | N |
 |---|---|---|

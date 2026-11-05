@@ -16,7 +16,7 @@ Less wall force/tilt for B accompanies worse tracking, so tilt is not a like-for
 ## 4. Failures actually caused by arm motion
 `Physics/arm_motion_vs_hover_2026-10-30.md`, raw `Code/results/am3_arm_motion/`.
 * Free-flight arm loops displace B 30-129 mm (N 0.3 mm); mostly amplitude/posture driven (hypothesis: COM shift versus fixed trim, not tested).
-* B loses control (failsafe tilt > 40 deg or base error > 0.25 m) under +-6 cm oscillation at ~2 Hz and a 6 cm circle at 2 Hz, in every seed tried; N completes (circle: rotor-speed change 80 %, close to its limit).
+* B loses control (failsafe tilt > 40 deg or base error > 0.25 m) under a 6 cm circle at 2 Hz in every seed tried (clean: no wall contact in the seed-0 logs); the +-6 cm oscillation also aborts B, but that run includes a wall collision (8.13 N at 3.784 s) and is not a clean free-flight failure; N completes (circle: rotor-speed change 80 %, close to its limit).
 * Not clean wins: circle 4 cm / 3 Hz (N tracks poorly), 6 cm at 3 Hz (both abort), side-to-side 4 cm / 3 Hz (B abort not reproducible).
 Media: `AM3_BvsN_arm_oscillation_B_loses_control_2026-10-30/`, `AM3_BvsN_arm_circle_2Hz_B_loses_control_2026-10-30/` (rendered, not watched).
 

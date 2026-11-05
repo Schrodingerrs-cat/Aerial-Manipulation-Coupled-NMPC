@@ -87,12 +87,12 @@ Every success claim must be supported by actual simulation behavior, numerical r
 
 `AM3_BvsN_<path>_2026-10-30_sepB/`: B v5 (separate drone and arm controllers, no information sharing) vs N, same settings as the `_2026-10-30` set (which used the information-sharing B v4). Details: `Findings/Codebase/b_separation_2026-10-30.md`.
 
-## Arm-motion failure recordings (30 Oct 2026, free flight, no wall, nominal plant)
+## Arm-motion failure recordings (30 Oct 2026, wall-free task, nominal plant; wall geometry still present)
 Both: B v5 vs N, same recorder/layout as above; the pad follows a prescribed periodic motion after 3 s of stationary hover. Study and caveats: `Findings/Physics/arm_motion_vs_hover_2026-10-30.md`. The videos were rendered but not watched; claims rest on the metrics JSON and `recording_info.json`.
 
 | Folder | Motion | Result | Files |
 |---|---|---|---|
-| `AM3_BvsN_arm_oscillation_B_loses_control_2026-10-30` | pad oscillation +-6 cm, half-cycle 0.25 s (about 2 Hz) | B loses control (failsafe abort, reproducible over seeds); N completes | `compare_free_osc0.06_T0.25_{overview_wall,contact_side}.mp4`, `raw_*`, `*_metrics.json`, `*_summary.png`, `*_timeseries.png`, `compose_commands.txt` |
-| `AM3_BvsN_arm_circle_2Hz_B_loses_control_2026-10-30` | pad circle radius 6 cm, 2 Hz (pad speed about 0.75 m/s) | B aborts at 4.845 s (tilt 41 deg, base error 114 mm), also in seeds 1-3; N completes (base 6 mm, tilt 9.9 deg, pad error 1.2 mm RMS, rotor-speed change 80 %, near its limit) | `compare_free_circ_A0.06_f2.0_{overview_wall,contact_side}.mp4`, `raw_*`, `*_metrics.json`, `*_summary.png`, `*_timeseries.png`, `recording_info.json`, `compose_commands.txt` |
+| `AM3_BvsN_arm_oscillation_B_loses_control_2026-10-30` | pad oscillation +-6 cm, half-cycle 0.25 s (about 2 Hz) | B loses control (failsafe abort) but **B's pad hit the wall at 3.784 s (8.13 N) before the abort, so this is not a clean free-flight failure**; N completes | `compare_free_osc0.06_T0.25_{overview_wall,contact_side}.mp4`, `raw_*`, `*_metrics.json`, `*_summary.png`, `*_timeseries.png`, `compose_commands.txt` |
+| `AM3_BvsN_arm_circle_2Hz_B_loses_control_2026-10-30` | pad circle radius 6 cm, 2 Hz (pad speed about 0.75 m/s) | B aborts at 4.845 s (tilt 41 deg, base error 114 mm), also in seeds 1-3; no wall contact in the seed-0 logs (peak Fn 0 N); N completes (base 6 mm, tilt 9.9 deg, pad error 1.2 mm RMS, rotor-speed change 80 %, near its limit) | `compare_free_circ_A0.06_f2.0_{overview_wall,contact_side}.mp4`, `raw_*`, `*_metrics.json`, `*_summary.png`, `*_timeseries.png`, `recording_info.json`, `compose_commands.txt` |
 
 Not established: the mechanism of B's loss of control, N's failure boundary, and whether a B with explicit arm/contact compensation or equal controller rate would survive (not run). The discarded mm_027 video (a pre-existing hover offset, not arm-induced) is documented only in `Findings/Codebase/b_failure_search_2026-10-30.md`.
