@@ -1,0 +1,98 @@
+{
+ "controller": "B",
+ "path": "rounded_triangle_T5",
+ "seed": 299751,
+ "abort": null,
+ "t_end": 16.52499999998789,
+ "wall_s": 13.200366258621216,
+ "base": {
+  "rms_mm": 14.32939651152405,
+  "max_mm": 32.93780545659192,
+  "final_mm": 9.01803362415311,
+  "vel_max": 0.07041516520026482,
+  "settle_s": 16.52499999998789
+ },
+ "com": {
+  "range_mm": [
+   36.52545537726037,
+   57.37823589375243,
+   10.94344448354967
+  ],
+  "rms_dev_mm": 16.108183582973055
+ },
+ "attitude": {
+  "tilt_max_deg": 3.328360156533443,
+  "tilt_rms_deg": 1.472142091494368,
+  "omega_max": 0.4778908893684541
+ },
+ "pad_vs_reference": {
+  "rms_mm": 14.87844631391677,
+  "max_mm": 38.406119295240195
+ },
+ "trace": {
+  "track_rms_mm": 18.2909710310511,
+  "track_max_mm": 38.406119295240195,
+  "timed_nominal_rms_mm": 20.23996823608622,
+  "timed_nominal_max_mm": 46.887049545400686,
+  "duration_s": 5.244999999993193,
+  "nominal_T": 5.0,
+  "delay_s": 0.2449999999931931,
+  "x_dev_rms_mm": 0.28566620574480145,
+  "coverage_5mm": 0.7,
+  "endpoint_err_mm": 15.86801272828679,
+  "reached_end": true
+ },
+ "contact": {
+  "valid_fraction": 1.0,
+  "longest_s": 6.74525,
+  "detached_intervals_s": [],
+  "detached_total_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 1.0039636026243057,
+  "impulse_Ns": 3.746288956315002,
+  "peak_ft_N": 0.10872647535938942,
+  "Fn_mean_trace_N": 0.537377579799378,
+  "Fn_std_trace_N": 0.1117093640915339,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.03943303227569315,
+   0.5281473787754112,
+   0.21993947235915953
+  ],
+  "rotor_force_min_N": 1.6773484408515407,
+  "rotor_force_max_N": 5.67134711331272,
+  "rotor_reserve_up_N": 4.32865288668728,
+  "rotor_reserve_down_N": 1.5773484408515406,
+  "qd_max": [
+   0.19043399930057814,
+   0.7693489090813471,
+   0.5744322374766646
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 0.0
+ },
+ "timing": {
+  "median_ms": 1.2435319995347527,
+  "p95_ms": 2.0693362503152457,
+  "p99_ms": 2.3166976501670407,
+  "max_ms": 4.092645000127959,
+  "period_ms": 5.0,
+  "over_period_fraction": 0.0,
+  "injected_misses": 0
+ },
+ "final_gap_mm": 63.434973561517296,
+ "completed": true,
+ "command": "scripts/am3_batch.py GATE_v2_B heldout2 B --workers 8",
+ "source_hash": "534bb1d8cb0f",
+ "miss_p": 0.0
+}

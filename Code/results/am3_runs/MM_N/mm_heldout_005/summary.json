@@ -1,0 +1,113 @@
+{
+ "controller": "N",
+ "path": "rounded_triangle",
+ "seed": 794861,
+ "abort": [
+  1.039999999999931,
+  "loss of control (failsafe): tilt 40 deg, base error 120 mm"
+ ],
+ "t_end": 1.0199999999999243,
+ "wall_s": 4.161509990692139,
+ "base": {
+  "rms_mm": 67.22005446132225,
+  "max_mm": 125.8699301206381,
+  "final_mm": 121.28203153817289,
+  "vel_max": 0.5705134466010066,
+  "settle_s": 1.0199999999999243
+ },
+ "com": {
+  "range_mm": [
+   97.03210851019273,
+   91.1850610821941,
+   33.1381535726214
+  ],
+  "rms_dev_mm": 43.70555713351332
+ },
+ "attitude": {
+  "tilt_max_deg": 36.72800417007075,
+  "tilt_rms_deg": 16.39005548489825,
+  "omega_max": 7.942837838191251
+ },
+ "pad_vs_reference": {
+  "rms_mm": 84.55700442417788,
+  "max_mm": 154.08493104832704
+ },
+ "contact": {
+  "valid_fraction": NaN,
+  "longest_s": 0.0,
+  "detached_intervals_s": [],
+  "detached_total_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 0.0,
+  "impulse_Ns": 0.0,
+  "peak_ft_N": 0.0,
+  "Fn_mean_trace_N": NaN,
+  "Fn_std_trace_N": NaN,
+  "unexpected": [
+   [
+    "prop0",
+    "wall"
+   ],
+   [
+    "prop1",
+    "wall"
+   ]
+  ],
+  "unexpected_first": [
+   0.769999999999943,
+   [
+    [
+     "prop0",
+     "wall"
+    ],
+    [
+     "prop0",
+     "wall"
+    ],
+    [
+     "prop0",
+     "wall"
+    ]
+   ]
+  ]
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.24735201914718769,
+   0.7591378209130835,
+   0.3955731024832767
+  ],
+  "rotor_force_min_N": 0.1439699934850581,
+  "rotor_force_max_N": 8.944459411237297,
+  "rotor_reserve_up_N": 1.0555405887627032,
+  "rotor_reserve_down_N": 0.04396999348505809,
+  "qd_max": [
+   4.473676862333079,
+   7.475362152543782,
+   4.5149642626030175
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 5.279870770652863
+ },
+ "timing": {
+  "median_ms": 49.09923500053992,
+  "p95_ms": 106.8362771984539,
+  "p99_ms": 107.71923575983237,
+  "max_ms": 107.88831299942103,
+  "period_ms": 20.0,
+  "over_period_fraction": 1.0,
+  "injected_misses": 0
+ },
+ "final_gap_mm": 52.79984954108465,
+ "completed": false,
+ "command": "scripts/am3_batch.py MM_N mm_heldout_sub N --workers 10",
+ "source_hash": "50190e836316",
+ "miss_p": 0.0
+}

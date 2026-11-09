@@ -37,7 +37,7 @@ class ExternalCorrector:
 class StepEpisode(Episode):
     """Episode with the control cycle split in observe (measure, advance task, failsafe) and commit (controller, log, plant steps) so that a learner can act between them."""
     def observe(self):
-        pl, task = self.pl, self.task; self.x = pl.state(); F, self.ft = pl.pad_force(); self.F = F; self.xm, self.Fm = self.sens.measure(self.x, F); gm = self.gap_meas(self.xm)
+        pl, task = self.pl, self.task; self.x = pl.state(); F, self.ft = pl.pad_force(); self.F = F; self.xm, self.Fm = self.sens.measure(self.x, F, pl.d.time); gm = self.gap_meas(self.xm)
         if self.k: task.advance(self.dt_c, self.Fm, gm)
         tilt = np.degrees(2 * np.arcsin(min(1.0, np.hypot(self.xm[4], self.xm[5])))); self.stop = bool(task.failed or not np.isfinite(self.x).all() or tilt > 40 or np.linalg.norm(self.xm[0:3] - BASE) > 0.25 or pl.d.time > self.T_max)
         return self.xm, self.Fm

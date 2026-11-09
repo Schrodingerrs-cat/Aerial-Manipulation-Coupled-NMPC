@@ -1,0 +1,85 @@
+{
+ "controller": "N",
+ "path": "free_circ_A0.06_f2.0",
+ "seed": 0,
+ "abort": null,
+ "t_end": 11.019999999996992,
+ "wall_s": 67.20671582221985,
+ "base": {
+  "rms_mm": 2.716551218068981,
+  "max_mm": 5.863742427288078,
+  "final_mm": 0.11431601560035512,
+  "vel_max": 0.07349314589591133,
+  "settle_s": 9.040000000001607
+ },
+ "com": {
+  "range_mm": [
+   6.9068833138434815,
+   21.169561931050744,
+   15.148598232267219
+  ],
+  "rms_dev_mm": 7.135548152965121
+ },
+ "attitude": {
+  "tilt_max_deg": 9.934141522829535,
+  "tilt_rms_deg": 4.855380567910234,
+  "omega_max": 2.9701147116840625
+ },
+ "pad_vs_reference": {
+  "rms_mm": 0.9535801004410783,
+  "max_mm": 6.64639528331559
+ },
+ "contact": {
+  "valid_fraction": NaN,
+  "longest_s": 0.0,
+  "detached_intervals_s": [],
+  "detached_total_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 0.0,
+  "impulse_Ns": 0.0,
+  "peak_ft_N": 0.0,
+  "Fn_mean_trace_N": 0.0,
+  "Fn_std_trace_N": 0.0,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.5358638419888472,
+   0.5836375934489484,
+   0.3383932343655149
+  ],
+  "rotor_force_min_N": 0.12072397645528703,
+  "rotor_force_max_N": 9.716421267159886,
+  "rotor_reserve_up_N": 0.28357873284011426,
+  "rotor_reserve_down_N": 0.02072397645528702,
+  "qd_max": [
+   3.002994892241079,
+   3.003057217829589,
+   0.9843245321067057
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 0.019212416813960687
+ },
+ "timing": {
+  "median_ms": 15.48900799753028,
+  "p95_ms": 16.44806725107628,
+  "p99_ms": 17.317457428762285,
+  "max_ms": 20.782791998499306,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.0036231884057971015,
+  "injected_misses": 0
+ },
+ "final_gap_mm": null,
+ "completed": true,
+ "command": "scripts/am3_compare.py AM3_BvsN_arm_circle_2Hz_B_loses_control_2026-10-30 free_circ_A0.06_f2.0",
+ "source_hash": "30962804170f",
+ "miss_p": 0.0
+}

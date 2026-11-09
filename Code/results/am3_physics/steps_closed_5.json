@@ -1,0 +1,41 @@
+{
+ "step5": {
+  "note": "open loop = rotors frozen at the initial hover trim; joint torques either replayed from N's run (arm moves from 1 s) or frozen at the initial trim (control); N's torque schedule includes N's own base-stabilising corrections, so this shows magnitude and direction, not a clean pure-arm-motion response",
+  "base_dev_mm_arm_replayed": {
+   "0.5s": 0.383186871538837,
+   "1.0s": 4.325900255088954,
+   "1.25s": 12.788307424981207,
+   "1.5s": 76.98373817892836,
+   "1.75s": 420.0747952848255
+  },
+  "base_dev_mm_torques_frozen": {
+   "0.5s": 1.658550274449751e-06,
+   "1.0s": 4.808893248001816e-05,
+   "1.25s": 0.00017462833964972357,
+   "1.5s": 0.0005797479441414635,
+   "1.75s": 0.0018428741989100304
+  },
+  "tilt_deg_arm_replayed": {
+   "0.5s": 0.050174904026868784,
+   "1.0s": 0.4774631731847421,
+   "1.25s": 3.2869674610532686,
+   "1.5s": 25.040747372273014,
+   "1.75s": 71.20724399905751
+  },
+  "tilt_deg_torques_frozen": {
+   "0.5s": 5.993182096428004e-07,
+   "1.0s": 7.172059632514579e-06,
+   "1.25s": 2.2347813699265558e-05,
+   "1.5s": 6.890793758614968e-05,
+   "1.75s": 0.00021189572183635805
+  },
+  "B_closed_loop_base_max_mm_first2s": 42.30529615371721,
+  "N_closed_loop_base_max_mm_first2s": 0.28069814329669696,
+  "arm_motion_starts_s": 1.0,
+  "window_1_to_1p5s_coupling_term_vs_measured_base_angular_accel_corr": [
+   0.8871333136884603,
+   0.8408939974272852,
+   -0.2222648279421712
+  ]
+ }
+}

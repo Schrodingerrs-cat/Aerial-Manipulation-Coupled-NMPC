@@ -1,0 +1,28 @@
+{
+ "B": {
+  "abort": "None",
+  "a_com_first10ms_force_pulse": 0.19720920848613713,
+  "expected_F_over_m": 0.19736842092278392,
+  "dLdt_first10ms_torque_pulse": 0.019878298486800148,
+  "expected_tau": 0.02,
+  "peak_base_dev_force_pulse_mm": 8.895866418640042,
+  "peak_tilt_force_pulse_deg": 1.2134733650670617,
+  "peak_base_dev_torque_pulse_mm": 2.259154799404528,
+  "base_mm_last2s": 0.9183683518788263,
+  "max_balance_res_F": 1.2706088282165781e-05,
+  "max_balance_res_M": 1.2287908381699436e-06
+ },
+ "N": {
+  "abort": "None",
+  "a_com_first10ms_force_pulse": 0.20961205613010753,
+  "expected_F_over_m": 0.19736842092278392,
+  "dLdt_first10ms_torque_pulse": 0.023570605417574685,
+  "expected_tau": 0.02,
+  "peak_base_dev_force_pulse_mm": 4.021585369839875,
+  "peak_tilt_force_pulse_deg": 2.038780588899749,
+  "peak_base_dev_torque_pulse_mm": 2.184778218268457,
+  "base_mm_last2s": 0.2546907801747212,
+  "max_balance_res_F": 0.00015203887563439156,
+  "max_balance_res_M": 1.177105924904387e-05
+ }
+}

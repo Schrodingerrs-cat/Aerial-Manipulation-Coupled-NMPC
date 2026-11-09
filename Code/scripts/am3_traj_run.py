@@ -39,6 +39,7 @@ def pad_to(frames_dir, rec, ep, n_target, size):
 
 
 def main(tag, ctrls, seed, segment_s, scale, video, mode="diamond", duration=30.0, base_laps=3, arm_laps=10, r_arm=0.05, shape="lemniscate", no_wall=False, arm_down=False):
+    if "B" in ctrls: raise SystemExit("B v5 holds the fixed hover point and has no moving-base reference; use commit bd93354 for the earlier moving-base B")
     out = os.path.join(MEDIA, tag); os.makedirs(out, exist_ok=True)
     bo = (np.array(BASE_OFFSETS) * scale).tolist(); po = (np.array(PAD_OFFSETS) * scale).tolist()
     amp_y, amp_z = 0.15 * scale, 0.05 * scale; set_cameras(amp_y, amp_z, no_wall)

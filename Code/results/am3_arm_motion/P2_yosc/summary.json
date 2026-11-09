@@ -1,0 +1,146 @@
+[
+ {
+  "seed": 1,
+  "kind": "yosc",
+  "ctrl": "B",
+  "scale": 0.04,
+  "seg_s": 3.0,
+  "abort": "None",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.0549999999996666,
+  "pre": {
+   "base_max_mm": 0.66742850866473,
+   "tilt_max_deg": 0.015465667918653933,
+   "rotor_dev_max_rad_s": 1.1793945411247932
+  },
+  "motion": {
+   "base_max_mm": 83.11894369854268,
+   "tilt_max_deg": 16.64999141532408,
+   "rotor_dev_max_rad_s": 900.860742324662,
+   "rotor_dev_max_pct": 74.89344705265107,
+   "joint_speed_max_rad_s": 4.2273715698453,
+   "pad_err_rms_mm": 66.04377312155266,
+   "pad_err_max_mm": 120.02271482415853
+  }
+ },
+ {
+  "seed": 1,
+  "kind": "yosc",
+  "ctrl": "N",
+  "scale": 0.04,
+  "seg_s": 3.0,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.19717924774911064,
+   "tilt_max_deg": 0.1672917025410627,
+   "rotor_dev_max_rad_s": 18.782550439380202
+  },
+  "motion": {
+   "base_max_mm": 6.426519070050488,
+   "tilt_max_deg": 10.897432588039853,
+   "rotor_dev_max_rad_s": 917.5738280654085,
+   "rotor_dev_max_pct": 76.19706330789168,
+   "joint_speed_max_rad_s": 3.0135352965576887,
+   "pad_err_rms_mm": 2.614189161873151,
+   "pad_err_max_mm": 6.494903619317383
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "yosc",
+  "ctrl": "B",
+  "scale": 0.04,
+  "seg_s": 3.0,
+  "abort": "None",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.0549999999996666,
+  "pre": {
+   "base_max_mm": 0.824464788353968,
+   "tilt_max_deg": 0.012234021508937782,
+   "rotor_dev_max_rad_s": 1.1231211324274
+  },
+  "motion": {
+   "base_max_mm": 82.75632463264706,
+   "tilt_max_deg": 13.122217990340335,
+   "rotor_dev_max_rad_s": 907.8841822401137,
+   "rotor_dev_max_pct": 75.3999103657509,
+   "joint_speed_max_rad_s": 3.4950486176019244,
+   "pad_err_rms_mm": 68.95090323541207,
+   "pad_err_max_mm": 153.29480305451935
+  }
+ },
+ {
+  "seed": 2,
+  "kind": "yosc",
+  "ctrl": "N",
+  "scale": 0.04,
+  "seg_s": 3.0,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.08000000000000006,
+  "pre": {
+   "base_max_mm": 0.22403339786200255,
+   "tilt_max_deg": 0.1921355103512694,
+   "rotor_dev_max_rad_s": 21.495490577005057
+  },
+  "motion": {
+   "base_max_mm": 6.115297988756426,
+   "tilt_max_deg": 10.259999151174421,
+   "rotor_dev_max_rad_s": 917.6888097983428,
+   "rotor_dev_max_pct": 76.20729200682234,
+   "joint_speed_max_rad_s": 3.010988243026394,
+   "pad_err_rms_mm": 2.5923564544590607,
+   "pad_err_max_mm": 6.653961070342953
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "yosc",
+  "ctrl": "B",
+  "scale": 0.04,
+  "seg_s": 3.0,
+  "abort": "None",
+  "t_motion_start_cmd": 3.0049999999996944,
+  "t_joint_moving": 3.0549999999996666,
+  "pre": {
+   "base_max_mm": 0.8132802056207059,
+   "tilt_max_deg": 0.019034100912647293,
+   "rotor_dev_max_rad_s": 1.7791364442086888
+  },
+  "motion": {
+   "base_max_mm": 112.74701192827067,
+   "tilt_max_deg": 20.66256506708849,
+   "rotor_dev_max_rad_s": 928.938258947054,
+   "rotor_dev_max_pct": 77.14444789929237,
+   "joint_speed_max_rad_s": 5.285179956794316,
+   "pad_err_rms_mm": 73.43485553862467,
+   "pad_err_max_mm": 182.61469145138494
+  }
+ },
+ {
+  "seed": 3,
+  "kind": "yosc",
+  "ctrl": "N",
+  "scale": 0.04,
+  "seg_s": 3.0,
+  "abort": "None",
+  "t_motion_start_cmd": 2.999999999999697,
+  "t_joint_moving": 0.04000000000000003,
+  "pre": {
+   "base_max_mm": 0.27397842718993753,
+   "tilt_max_deg": 0.1916734888455146,
+   "rotor_dev_max_rad_s": 20.22088084815232
+  },
+  "motion": {
+   "base_max_mm": 6.168393994068786,
+   "tilt_max_deg": 10.602635119038112,
+   "rotor_dev_max_rad_s": 918.3492495081214,
+   "rotor_dev_max_pct": 76.25362411558547,
+   "joint_speed_max_rad_s": 3.0160624926827326,
+   "pad_err_rms_mm": 2.572853830193084,
+   "pad_err_max_mm": 6.465065984049255
+  }
+ }
+]

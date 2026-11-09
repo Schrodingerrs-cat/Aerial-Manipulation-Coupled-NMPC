@@ -1,0 +1,170 @@
+{
+ "controller": "B",
+ "path": "rounded_triangle",
+ "seed": 0,
+ "abort": null,
+ "t_end": 26.080000000033515,
+ "wall_s": 195.4734411239624,
+ "base": {
+  "rms_mm": 12.512465235767888,
+  "max_mm": 22.560551250757936,
+  "final_mm": 17.393916565844673,
+  "vel_max": 0.03047947814888341,
+  "settle_s": 26.080000000033515
+ },
+ "com": {
+  "range_mm": [
+   23.03039352010161,
+   44.21860499822991,
+   12.094897015986206
+  ],
+  "rms_dev_mm": 10.838109247192506
+ },
+ "attitude": {
+  "tilt_max_deg": 1.5463175892234158,
+  "tilt_rms_deg": 0.663600527304823,
+  "omega_max": 0.4845739692614572
+ },
+ "pad_vs_reference": {
+  "rms_mm": 16.173752806158895,
+  "max_mm": 37.897684466028004
+ },
+ "trace": {
+  "track_rms_mm": 13.020721081839623,
+  "track_max_mm": 21.77252252505593,
+  "timed_nominal_rms_mm": 40.49995496506866,
+  "timed_nominal_max_mm": 63.96909906096844,
+  "duration_s": 14.900000000008543,
+  "nominal_T": 10.0,
+  "delay_s": 4.900000000008543,
+  "x_dev_rms_mm": 0.6855246222579918,
+  "coverage_5mm": 0.3,
+  "endpoint_err_mm": 10.624691090729844,
+  "reached_end": true
+ },
+ "contact": {
+  "valid_fraction": 0.871160500602125,
+  "longest_s": 11.279,
+  "detached_intervals_s": [
+   0.036000000000000004,
+   0.43175,
+   0.1115,
+   0.0785,
+   0.25775,
+   0.028,
+   0.10400000000000001,
+   0.06525,
+   0.2605,
+   0.16575,
+   0.20500000000000002,
+   0.04775,
+   0.10375000000000001,
+   0.03225,
+   0.15025,
+   0.035
+  ],
+  "detached_total_s": 2.113,
+  "losses": 9,
+  "recovery_s": 2.0850000000000013,
+  "recoveries": [
+   {
+    "t": 6.824999999999877,
+    "phase": "trace",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.39500000000000024
+   },
+   {
+    "t": 7.4449999999998635,
+    "phase": "settle_resume",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.2050000000000001
+   },
+   {
+    "t": 7.849999999999855,
+    "phase": "settle_resume",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.31000000000000016
+   },
+   {
+    "t": 8.364999999999908,
+    "phase": "settle_resume",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.1950000000000001
+   },
+   {
+    "t": 8.774999999999972,
+    "phase": "settle_resume",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.30000000000000016
+   },
+   {
+    "t": 9.315000000000056,
+    "phase": "settle_resume",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.19000000000000009
+   },
+   {
+    "t": 9.710000000000118,
+    "phase": "settle_resume",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.2000000000000001
+   },
+   {
+    "t": 10.180000000000192,
+    "phase": "settle_resume",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.13500000000000004
+   },
+   {
+    "t": 10.580000000000254,
+    "phase": "settle_resume",
+    "tau_p": 0.20025000000000015,
+    "duration_s": 0.15500000000000005
+   }
+  ],
+  "peak_Fn_N": 0.4245063155705372,
+  "impulse_Ns": 3.215343991326454,
+  "peak_ft_N": 0.060817414414788135,
+  "Fn_mean_trace_N": 0.21146418232737893,
+  "Fn_std_trace_N": 0.04747303730421127,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.026316853811624928,
+   0.7080556157641271,
+   0.23592168251985862
+  ],
+  "rotor_force_min_N": 1.8953083699029334,
+  "rotor_force_max_N": 5.304408418870373,
+  "rotor_reserve_up_N": 4.695591581129627,
+  "rotor_reserve_down_N": 1.7953083699029333,
+  "qd_max": [
+   0.1600740411403279,
+   0.843677122508793,
+   0.8843419044304284
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 0.0
+ },
+ "timing": {
+  "median_ms": 1.285169000766473,
+  "p95_ms": 1.7592101998161522,
+  "p99_ms": 2.337287160626149,
+  "max_ms": 4.27062900052988,
+  "period_ms": 5.0,
+  "over_period_fraction": 0.0,
+  "injected_misses": 0
+ },
+ "final_gap_mm": 46.08658752212137,
+ "completed": true,
+ "command": "scripts/am3_compare.py AM3_BvsN_rounded_triangle_2026-10-30_sepB rounded_triangle",
+ "source_hash": "50190e836316",
+ "miss_p": 0.0
+}

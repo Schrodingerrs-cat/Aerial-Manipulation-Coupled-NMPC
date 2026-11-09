@@ -1,0 +1,98 @@
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{
+ "baseline": {
+  "passes": {
+   "no_abort": true,
+   "base_max": true,
+   "tilt": true,
+   "trace_metrics_present": true,
+   "retreat_clear": true,
+   "path_tracking_rms": true,
+   "coverage": true,
+   "endpoint": true,
+   "contact_fraction": true,
+   "force_peak": true,
+   "no_unexpected_contact": true,
+   "recovery": true,
+   "rotor_reserve": true,
+   "solver": true,
+   "all": true
+  },
+  "completed": true
+ },
+ "drifting_base": {
+  "passes": {
+   "base_max": false,
+   "all": false
+  },
+  "all": false,
+  "key": {
+   "base_max": 30.404692663886745,
+   "coverage": 1.0,
+   "valid_fraction": 1.0,
+   "completed": true,
+   "over_period": 0.016861219195849545
+  }
+ },
+ "detached_tool_in_trace": {
+  "passes": {
+   "coverage": false,
+   "contact_fraction": false,
+   "all": false
+  },
+  "all": false,
+  "key": {
+   "base_max": 0.41818426779356727,
+   "coverage": 0.0,
+   "valid_fraction": 0.0,
+   "completed": true,
+   "over_period": 0.016861219195849545
+  }
+ },
+ "partial_path": {
+  "passes": {
+   "no_abort": false,
+   "trace_metrics_present": false,
+   "retreat_clear": false,
+   "all": false
+  },
+  "all": false,
+  "key": {
+   "base_max": 0.28100044242932154,
+   "coverage": null,
+   "valid_fraction": 1.0,
+   "completed": false,
+   "over_period": 0.03773584905660377
+  }
+ },
+ "deadline_overruns": {
+  "passes": {},
+  "all": true,
+  "key": {
+   "base_max": 0.41818426779356727,
+   "coverage": 1.0,
+   "valid_fraction": 1.0,
+   "completed": true,
+   "over_period": 0.21530479896238652
+  }
+ },
+ "free_arm_metre_error": {
+  "passes": {
+   "free_pad_tracking_rms": false,
+   "all": false
+  }
+ },
+ "wall_missing_trace_metrics": {
+  "passes": {
+   "trace_metrics_present": false,
+   "all": false
+  }
+ }
+}

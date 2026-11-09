@@ -1,0 +1,178 @@
+{
+ "controller": "B",
+ "path": "rounded_triangle",
+ "seed": 116242,
+ "abort": null,
+ "t_end": 26.600000000035998,
+ "wall_s": 163.90201997756958,
+ "base": {
+  "rms_mm": 132.9320673337799,
+  "max_mm": 164.35720781206982,
+  "final_mm": 130.88264976396042,
+  "vel_max": 0.15446917497917023,
+  "settle_s": 26.600000000035998
+ },
+ "com": {
+  "range_mm": [
+   25.127338480700146,
+   50.43744606811243,
+   165.07315293143932
+  ],
+  "rms_dev_mm": 21.54653794758714
+ },
+ "attitude": {
+  "tilt_max_deg": 1.446740154591653,
+  "tilt_rms_deg": 0.6649653292453039,
+  "omega_max": 0.4846599288911951
+ },
+ "pad_vs_reference": {
+  "rms_mm": 126.08478667144158,
+  "max_mm": 165.5406742891034
+ },
+ "trace": {
+  "track_rms_mm": 124.5114713238275,
+  "track_max_mm": 137.13134980461197,
+  "timed_nominal_rms_mm": 153.4141243187814,
+  "timed_nominal_max_mm": 174.7774800377524,
+  "duration_s": 15.335000000010922,
+  "nominal_T": 10.0,
+  "delay_s": 5.335000000010922,
+  "x_dev_rms_mm": 0.6949806920257032,
+  "coverage_5mm": 0.0,
+  "endpoint_err_mm": 136.6054423148603,
+  "reached_end": true
+ },
+ "contact": {
+  "valid_fraction": 0.8592090999539657,
+  "longest_s": 11.29275,
+  "detached_intervals_s": [
+   0.043000000000000003,
+   0.46925,
+   0.225,
+   0.28475,
+   0.04875,
+   0.10025,
+   0.06875,
+   0.23850000000000002,
+   0.1,
+   0.06425,
+   0.1,
+   0.063,
+   0.10250000000000001,
+   0.0485,
+   0.10875,
+   0.04875,
+   0.13375,
+   0.1225
+  ],
+  "detached_total_s": 2.37025,
+  "losses": 10,
+  "recovery_s": 2.320000000000001,
+  "recoveries": [
+   {
+    "t": 6.8349999999998765,
+    "phase": "trace",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.4700000000000003
+   },
+   {
+    "t": 7.544999999999861,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.29000000000000015
+   },
+   {
+    "t": 8.044999999999858,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.3400000000000002
+   },
+   {
+    "t": 8.604999999999945,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.2000000000000001
+   },
+   {
+    "t": 9.010000000000009,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.2000000000000001
+   },
+   {
+    "t": 9.410000000000071,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.19000000000000009
+   },
+   {
+    "t": 9.825000000000136,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.19000000000000009
+   },
+   {
+    "t": 10.245000000000202,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.18000000000000008
+   },
+   {
+    "t": 10.665000000000267,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.13000000000000003
+   },
+   {
+    "t": 11.06500000000033,
+    "phase": "settle_resume",
+    "tau_p": 0.1387500000000001,
+    "duration_s": 0.13000000000000003
+   }
+  ],
+  "peak_Fn_N": 0.40980897258211324,
+  "impulse_Ns": 3.2187275333102097,
+  "peak_ft_N": 0.05783216067250123,
+  "Fn_mean_trace_N": 0.20635509963124116,
+  "Fn_std_trace_N": 0.04285377276029758,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.01909058784359795,
+   0.6719459688014107,
+   0.23162121804962338
+  ],
+  "rotor_force_min_N": 2.1180266949023165,
+  "rotor_force_max_N": 5.822891967994942,
+  "rotor_reserve_up_N": 4.177108032005058,
+  "rotor_reserve_down_N": 2.0180266949023165,
+  "qd_max": [
+   0.14556333969698745,
+   0.7522008967164304,
+   0.8580255472179915
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 0.0
+ },
+ "timing": {
+  "median_ms": 1.2837430003855843,
+  "p95_ms": 1.5705410005466547,
+  "p99_ms": 2.190849800535944,
+  "max_ms": 3.6998249997850507,
+  "period_ms": 5.0,
+  "over_period_fraction": 0.0,
+  "injected_misses": 0
+ },
+ "final_gap_mm": 45.65208459644267,
+ "completed": true,
+ "command": "scripts/am3_compare.py AM3_BvsN_propulsion_mismatch_triangle_2026-10-30 x --domain mm_heldout --scenario mm_heldout_027",
+ "source_hash": "50190e836316",
+ "miss_p": 0.0
+}

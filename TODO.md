@@ -2,13 +2,15 @@
 
 Status key: [x] done with evidence, [~] partial, [ ] open. Evidence paths are in Findings/STATUS.md.
 
-- [x] 0. Reconcile CLAUDE.md / TODO.md / STATUS.md with the 25 Oct plan
-- [x] 1. Assembly: continuous mount, compact pad contact, no rod (design v3 doc + renders)
-- [x] 2. Position-only feasibility of line / circle / rounded triangle (acquisition/release checked at samples)
-- [~] 3. Predictor vs MuJoCo: kinematics, Jacobians, M, bias, accelerations, contact stiffness/impact PASS; sliding/reversal/loss contact validation open
-- [~] 4. Shared task logic + baseline B (tuned on development scenarios; 16/16 development completions)
-- [~] 5. NMPC N + decoupled ablation (N 16/16 development completions; weights untuned; timing not real-time on a loaded machine)
-- [x] 6. Matched B/N recordings (free-flight arm motion, wall line, wall circle) with plots
-- [~] 7. Freeze v1 + 30-case held-out gate DONE; quiet-machine timing, deadline-miss and delayed-actuation trials open
-- [~] 8. Mismatch suite, correction interface (zero parity exact), EKF D (dev: N 11/20, D 13/20 joint successes) and SAC L (3 seeds, training PAUSED at about 100k of 200k steps) done; L evaluation, validation-based checkpoint choice, freeze v2 and paired held-out N/D/L open
-- [ ] 9. Clean reproduction and final report
+- [x] 0. Reconcile CLAUDE.md / TODO.md / STATUS.md with the 25 Oct plan; update after the 30 Oct audit
+- [x] 1. Assembly: continuous mount, compact pad contact, no rod
+- [x] 2. Position-only feasibility of line / circle / rounded polyline (sampled)
+- [x] 3. Physics isolation: stationary arm, one-joint motion, gentle contact, sliding, fixed-command diagnostic (`Findings/Physics/`)
+- [~] 3b. Predictor vs MuJoCo: instantaneous PASS; production-step discretisation, parity at contact, sliding validation open
+- [x] 4. Baseline B retuned for stationary stability (v4); audit B01 fixed
+- [x] 5. NMPC N; fresh held-out gate 29/30 (one infeasible free-arm scenario)
+- [x] 6. B/N recordings and metric figures on three trajectories (2026-10-30)
+- [x] 7. Freeze v2 + fresh held-out gate for B and N
+- [ ] 7b. N deadline compliance (bounded solves or scheduler), delayed-actuation trials on freeze v2, reachability screen for free-arm scenarios
+- [ ] 8. Rerun the NMPC decoupled-model ablation, D (EKF) and L (SAC, training paused) on freeze v2
+- [ ] 9. Remaining audit items (B06-B09, B12, B14, B18) and final report

@@ -1,0 +1,34 @@
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+N hover_gap60                  None 0-2s: 0.3mm/0.18deg 2-5s: 0.2mm/0.18deg 5-10s: 0.2mm/0.25deg 10-20s: 0.3mm/0.22deg 20-30s: 0.3mm/0.22deg
+N hover_gap60_kick             None 0-2s: 4.9mm/4.33deg 2-5s: 0.2mm/0.18deg 5-10s: 0.2mm/0.25deg 10-20s: 0.3mm/0.22deg 20-30s: 0.3mm/0.22deg
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+N hover_off_right              None 0-2s: 0.3mm/0.19deg 2-5s: 0.2mm/0.18deg 5-10s: 0.2mm/0.25deg 10-20s: 0.3mm/0.22deg 20-30s: 0.3mm/0.23deg
+N hover_off_right_kick         None 0-2s: 5.1mm/4.39deg 2-5s: 0.2mm/0.18deg 5-10s: 0.2mm/0.25deg 10-20s: 0.3mm/0.22deg 20-30s: 0.3mm/0.23deg
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+N hover_off_left_low           None 0-2s: 0.3mm/0.18deg 2-5s: 0.2mm/0.18deg 5-10s: 0.2mm/0.25deg 10-20s: 0.3mm/0.22deg 20-30s: 0.3mm/0.22deg
+N hover_off_left_low_kick      None 0-2s: 4.8mm/4.37deg 2-5s: 0.2mm/0.18deg 5-10s: 0.2mm/0.25deg 10-20s: 0.3mm/0.22deg 20-30s: 0.3mm/0.22deg
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+N near_contact_posture         None 0-2s: 0.3mm/0.19deg 2-5s: 0.2mm/0.18deg 5-10s: 0.2mm/0.24deg 10-20s: 0.3mm/0.22deg 20-30s: 0.3mm/0.22deg
+N near_contact_posture_kick    None 0-2s: 5.0mm/4.35deg 2-5s: 0.2mm/0.18deg 5-10s: 0.2mm/0.24deg 10-20s: 0.3mm/0.22deg 20-30s: 0.3mm/0.22deg

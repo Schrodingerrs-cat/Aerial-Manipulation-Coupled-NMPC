@@ -16,7 +16,9 @@ def local(x, y):
 def cstate(b): return np.r_[b.ip, b.ia, b.corr, b.q_ref, b.om_prev]
 def set_c(b, c): b.ip, b.ia, b.corr, b.q_ref, b.om_prev = c[0:3].copy(), c[3:6].copy(), c[6:9].copy(), c[9:12].copy(), c[12:16].copy()
 
-def eigs(g):
+def eigs(g, gap0=0.06, yz=(0.0, 1.04)):
+    global x0, u0, p0
+    x0, u0 = initial_state(gap0, yz); p0 = np.array(pr.pad_f(x0)[0]).ravel()
     b = BaselineB(g); task = Task("h", p0, [p0]); b.reset(x0, u0, task); c0 = cstate(b); b.t_prev = 0.0; u1, _ = b.compute(T0, x0, 0.0, task); c1 = cstate(b); set_c(b, c0)
     def Fn(z):
         xk = retract(x0, z[0:22]); upk = u0 + z[22:29]; set_c(b, c0 + z[29:45]); b.t_prev = 0.0; u_new, _ = b.compute(T0, xk, 0.0, task); xn = np.array(step(xk, upk, np.zeros(2))).ravel()

@@ -4,17 +4,17 @@ A 1.52 kg quadrotor with a three-joint arm (yaw, shoulder, elbow; wrist fixed) h
 
 * **N** - coupled NMPC (CasADi model, acados SQP-RTI, 50 Hz): full 9x9 mass matrix, rotor lag, pad-wall contact in the prediction.
 * **B** - tuned baseline: geometric hover controller + separate joint-space arm control, no arm-base coupling (200 Hz).
-* **Nd** - the NMPC with a decoupled model (ablation).
-* **D / L** - N with a classical EKF correction / learned (SAC) correction of two prediction channels (in progress).
+* **Nd, D, L** - decoupled-model NMPC ablation, N with an EKF correction, N with a learned (SAC) correction: implemented, results predate the audit and are being redone.
 
-## Results so far (nominal held-out gate, 30 scenarios, criteria frozen beforehand)
-| Controller | Completed | Meets all frozen criteria |
-|---|---|---|
-| N | 30/30 | 30/30 (base error <= 1.3 mm, pad tracking RMS <= 0.9 mm) |
-| B | 30/30 | 1/30 (base error median 22.7 mm, tracking RMS median 10.2 mm) |
-| Nd (same settings) | 0/30 | 0/30 (failsafe aborts, solver hangs) |
+## Results so far (fresh nominal held-out gate, 30 scenarios, criteria frozen beforehand)
+| Controller | Completed | Meets all frozen criteria | Notes |
+|---|---|---|---|
+| N coupled NMPC | 30/30 | 29/30 | base error median 0.6 mm, trace tracking RMS <= 0.9 mm; the one failure is a free-arm scenario whose reference is infeasible within the operational joint limits |
+| B decoupled baseline (stable gains v4) | 30/30 | 0/30 | stable, but base error median 33 mm and trace tracking RMS median 18 mm |
 
-Caveats (details in `Findings/`): B runs at 200 Hz and N at 50 Hz; N is not real-time compliant (about 1.5 % of cycles above 20 ms, and enforced deadlines make it lose control); nominal conditions use a predictor that matches the plant; model-mismatch comparison (N 11/20, D 13/20 on the development list, L training paused) is unfinished. Side-by-side recordings: `Media_results/AM3_BvsN_*`.
+Matched videos (2560x1440, simulation time 1.0x) with eight measured time series and a metric table for a line, a circle and a polyline: `Media_results/AM3_BvsN_*_2026-10-30/`. Physics isolation (arm reaction, wall load and sliding explained with the MuJoCo momentum balance): `Findings/Physics/`. A 30 Oct audit found defects in the earlier B/N results (B was unstable in stationary hover, contact timing depended on the control rate, the free-arm gate had no tracking criterion); they were fixed and the gate rerun: `Findings/Audits/AM3_B_N_AUDIT_RESPONSE_2026-10-30.md`.
+
+Caveats (details in `Findings/`): B runs at 200 Hz and N at 50 Hz, so the comparison includes rate, latency, preview, architecture, model and tuning; it does not isolate one coupling term. N is not real-time compliant (about 1.5 % of cycles above 20 ms; enforced deadlines make it lose control). Nominal conditions use a predictor that matches the plant; robustness to model mismatch, the decoupled-model ablation and the EKF/SAC correction (D/L) predate the audit and are not part of the current claims. Physical parameters are declared assumptions.
 
 ## Layout
 * `Plan.md` plan of record, `TODO.md`, `Findings/STATUS.md` gate table, `Findings/Codebase/` design, controllers, gate and timing notes.
@@ -27,7 +27,8 @@ MuJoCo 3.10, CasADi 3.8.1, acados (built from source into `Code/third_party/acad
 cd Code
 python3 scripts/am3_check_pred.py                         # predictor vs MuJoCo
 python3 scripts/am3_run.py demo N line                    # one closed-loop run (N, B, Nd)
-python3 scripts/am3_batch.py GATE_v1_N heldout N --workers 8 && python3 scripts/am3_gate.py GATE_v1_N config/am3_acceptance_v1.json
-python3 scripts/am3_compare.py MY_TAG line                # matched B/N recording
+python3 scripts/am3_batch.py GATE_v2_N heldout2 N --workers 8 && python3 scripts/am3_gate.py GATE_v2_N config/am3_acceptance_v2.json
+python3 scripts/am3_compare.py MY_TAG line                # matched B/N recording + metric figures
+python3 scripts/am3_physics_check.py && python3 scripts/am3_physics_closed.py   # physics isolation
 ```
 Raw per-step logs (`*.npz`), generated solver code and trained checkpoints are not tracked.

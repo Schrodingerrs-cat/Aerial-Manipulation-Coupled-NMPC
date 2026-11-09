@@ -1,0 +1,66 @@
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+/home/aryans-cat/.local/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+B 0.5 3.0  pre base 0.81 mm | motion base 30.2 mm tilt 0.30 deg rotor dev 35 rad/s (3.6%) joint 0.17 rad/s pad err rms 14.0 mm
+N 0.5 3.0  pre base 0.22 mm | motion base 0.3 mm tilt 0.26 deg rotor dev 45 rad/s (4.6%) joint 0.27 rad/s pad err rms 0.1 mm
+B 0.5 1.5  pre base 0.81 mm | motion base 35.2 mm tilt 1.18 deg rotor dev 43 rad/s (4.4%) joint 0.33 rad/s pad err rms 16.9 mm
+N 0.5 1.5  pre base 0.22 mm | motion base 0.2 mm tilt 0.25 deg rotor dev 49 rad/s (5.0%) joint 0.35 rad/s pad err rms 0.1 mm
+B 0.5 0.8  pre base 0.81 mm | motion base 35.4 mm tilt 3.27 deg rotor dev 66 rad/s (6.7%) joint 0.62 rad/s pad err rms 19.0 mm
+N 0.5 0.8  pre base 0.22 mm | motion base 0.2 mm tilt 0.53 deg rotor dev 62 rad/s (6.3%) joint 0.59 rad/s pad err rms 0.1 mm
+B 1.0 3.0  pre base 0.81 mm | motion base 63.8 mm tilt 0.61 deg rotor dev 74 rad/s (7.5%) joint 0.33 rad/s pad err rms 29.6 mm
+N 1.0 3.0  pre base 0.22 mm | motion base 0.3 mm tilt 0.27 deg rotor dev 82 rad/s (8.3%) joint 0.36 rad/s pad err rms 0.1 mm
+B 1.0 1.5  pre base 0.81 mm | motion base 75.5 mm tilt 2.59 deg rotor dev 94 rad/s (9.6%) joint 0.65 rad/s pad err rms 35.7 mm
+N 1.0 1.5  pre base 0.22 mm | motion base 0.3 mm tilt 0.32 deg rotor dev 90 rad/s (9.2%) joint 0.67 rad/s pad err rms 0.1 mm
+B 1.0 0.8  pre base 0.81 mm | motion base 77.3 mm tilt 7.28 deg rotor dev 147 rad/s (15.0%) joint 1.20 rad/s pad err rms 40.7 mm
+N 1.0 0.8  pre base 0.22 mm | motion base 0.3 mm tilt 0.89 deg rotor dev 123 rad/s (12.5%) joint 1.15 rad/s pad err rms 0.1 mm
+B 1.5 3.0  pre base 0.81 mm | motion base 101.0 mm tilt 0.96 deg rotor dev 118 rad/s (12.0%) joint 0.48 rad/s pad err rms 46.8 mm
+N 1.5 3.0  pre base 0.22 mm | motion base 0.3 mm tilt 0.28 deg rotor dev 125 rad/s (12.8%) joint 0.49 rad/s pad err rms 0.1 mm
+B 1.5 1.5  pre base 0.81 mm | motion base 121.5 mm tilt 4.27 deg rotor dev 155 rad/s (15.8%) joint 0.94 rad/s pad err rms 56.5 mm
+N 1.5 1.5  pre base 0.22 mm | motion base 0.3 mm tilt 0.40 deg rotor dev 137 rad/s (13.9%) joint 0.98 rad/s pad err rms 0.1 mm
+B 1.5 0.8  pre base 0.81 mm | motion base 128.9 mm tilt 12.29 deg rotor dev 251 rad/s (25.6%) joint 1.76 rad/s pad err rms 66.7 mm
+N 1.5 0.8  pre base 0.22 mm | motion base 0.4 mm tilt 1.28 deg rotor dev 194 rad/s (19.8%) joint 1.72 rad/s pad err rms 0.1 mm

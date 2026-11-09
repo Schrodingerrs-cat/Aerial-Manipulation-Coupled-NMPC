@@ -1,0 +1,1442 @@
+[
+ {
+  "g": {
+   "w_att": 9.015151476589807,
+   "ki_att": 394.62415033217025,
+   "kp_pos": 2.4158036044098172,
+   "kd_pos": 2.3729388077291556,
+   "ki_pos": 1.8820617232155945,
+   "lag_gain": 0.597256272206238,
+   "tau_motor": 0.042071427665276696,
+   "kp_joint": 0.6350967610607309,
+   "kd_joint": 0.03840911059643031,
+   "k_corr": 0.184786424621184
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3383152821264023,
+     "tilt_max_deg": 0.0378761827405715
+    },
+    "final_tilt": 0.01646960202248943
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.340648561585272,
+     "tilt_max_deg": 0.03787532900511712
+    },
+    "final_tilt": 0.016468901467522973
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.32600691116143155,
+     "tilt_max_deg": 0.037351459688313216
+    },
+    "final_tilt": 0.012841104398690755
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3260693046411111,
+     "tilt_max_deg": 0.03735082966253848
+    },
+    "final_tilt": 0.012840482048191644
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.35631465587813715,
+     "tilt_max_deg": 0.037202515692975405
+    },
+    "final_tilt": 0.014279510347812916
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.35828338470258264,
+     "tilt_max_deg": 0.037202787473839614
+    },
+    "final_tilt": 0.014278975622184994
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3525947549829757,
+     "tilt_max_deg": 0.03910992105376384
+    },
+    "final_tilt": 0.011032382241830098
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3571857212113019,
+     "tilt_max_deg": 0.039059205653179156
+    },
+    "final_tilt": 0.011033424562254887
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": true,
+    "base_rms": 87.9385296036622,
+    "pad_rms": 89.5335250807994
+   },
+   {
+    "sc": "free_big",
+    "ok": false,
+    "base_rms": 82.64636632082576,
+    "pad_rms": 89.8644985495142
+   },
+   {
+    "sc": "line",
+    "ok": false,
+    "base_rms": 74.21148207778792,
+    "pad_rms": 83.17844283146579
+   },
+   {
+    "sc": "line_T1",
+    "ok": false,
+    "base_rms": 62.46556167001999,
+    "pad_rms": 66.31054118227526
+   },
+   {
+    "sc": "circle",
+    "ok": false,
+    "base_rms": 56.54922904870519,
+    "pad_rms": 62.599753355598196
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": false,
+    "base_rms": 82.10403188042005,
+    "pad_rms": 98.42753701573824
+   }
+  ],
+  "score": 5115.14539160152,
+  "rho_max": 0.9990621548554408
+ },
+ {
+  "g": {
+   "w_att": 7.720945064734624,
+   "ki_att": 184.73707560136887,
+   "kp_pos": 1.792326072784624,
+   "kd_pos": 2.1633909808914167,
+   "ki_pos": 1.9555735721498058,
+   "lag_gain": 0.7615909180184797,
+   "tau_motor": 0.04205406288934894,
+   "kp_joint": 1.7941885871780512,
+   "kd_joint": 0.036400076429193996,
+   "k_corr": 0.17787836200313306
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.527913061120683,
+     "tilt_max_deg": 0.08780761891252094
+    },
+    "final_tilt": 0.012320681797691335
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.5257017547601266,
+     "tilt_max_deg": 0.08780790574646564
+    },
+    "final_tilt": 0.012321130227861533
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.7048081319391035,
+     "tilt_max_deg": 0.09613077387416928
+    },
+    "final_tilt": 0.010459892729800833
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.7015519716771377,
+     "tilt_max_deg": 0.09613116916735147
+    },
+    "final_tilt": 0.010460432093993612
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.4145695989741736,
+     "tilt_max_deg": 0.07521832275846266
+    },
+    "final_tilt": 0.021928439322511827
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.4124282357935891,
+     "tilt_max_deg": 0.07521954200575322
+    },
+    "final_tilt": 0.021927793582660556
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.6145344996194413,
+     "tilt_max_deg": 0.08816350196446869
+    },
+    "final_tilt": 0.021871963589178176
+   },
+   "near_contact_posture_kick": {
+    "abort": true,
+    "late": {
+     "base_max_mm": 247.2583607119355,
+     "tilt_max_deg": 13.275965170421905
+    },
+    "final_tilt": 6.680202927311997
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": false,
+    "base_rms": 105.67876647551444,
+    "pad_rms": 109.67075501258192
+   },
+   {
+    "sc": "free_big",
+    "ok": false,
+    "base_rms": 68.83693928557274,
+    "pad_rms": 72.0137846533979
+   },
+   {
+    "sc": "line",
+    "ok": false,
+    "base_rms": 83.85198849600104,
+    "pad_rms": 82.74425780247103
+   },
+   {
+    "sc": "line_T1",
+    "ok": false,
+    "base_rms": 81.02300766921088,
+    "pad_rms": 81.29396733364408
+   },
+   {
+    "sc": "circle",
+    "ok": false,
+    "base_rms": 39.436537128506416,
+    "pad_rms": 36.04902363815934
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": false,
+    "base_rms": 67.59494056732655,
+    "pad_rms": 66.95886554928136
+   }
+  ],
+  "score": 7111.797917769483,
+  "rho_max": 0.9991070632440882
+ },
+ {
+  "g": {
+   "w_att": 10.162197473336285,
+   "ki_att": 128.65976788623058,
+   "kp_pos": 1.798560529012562,
+   "kd_pos": 3.9798595322037267,
+   "ki_pos": 1.9429157448954595,
+   "lag_gain": 0.6629021158929189,
+   "tau_motor": 0.05468054048436283,
+   "kp_joint": 0.3954614510282997,
+   "kd_joint": 0.03602178443638031,
+   "k_corr": 0.19469124539580127
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 5.377590831068098,
+     "tilt_max_deg": 0.34935474410442174
+    },
+    "final_tilt": 0.3373711528978605
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 5.138067960431371,
+     "tilt_max_deg": 0.44781229155590246
+    },
+    "final_tilt": 0.19621116414130246
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.635198471816656,
+     "tilt_max_deg": 0.12168425019119304
+    },
+    "final_tilt": 0.017863765046204384
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.631766661456593,
+     "tilt_max_deg": 0.12168343463562971
+    },
+    "final_tilt": 0.017852402936026735
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 4.556981210458237,
+     "tilt_max_deg": 0.20742850028731838
+    },
+    "final_tilt": 0.11551735795728559
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 2.318286458632261,
+     "tilt_max_deg": 0.18757533021778056
+    },
+    "final_tilt": 0.10731353677036091
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.6481085236629823,
+     "tilt_max_deg": 0.04410532294938679
+    },
+    "final_tilt": 0.005717413271201235
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.6555815863053303,
+     "tilt_max_deg": 0.04409924811459754
+    },
+    "final_tilt": 0.005727298524150745
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": false,
+    "base_rms": 83.13326940969738,
+    "pad_rms": 89.58712587445771
+   },
+   {
+    "sc": "free_big",
+    "ok": false,
+    "base_rms": 106.95863542596167,
+    "pad_rms": 114.55607053535026
+   },
+   {
+    "sc": "line",
+    "ok": true,
+    "base_rms": 59.79664905394308,
+    "pad_rms": 57.709021363140295
+   },
+   {
+    "sc": "line_T1",
+    "ok": true,
+    "base_rms": 96.13781990054443,
+    "pad_rms": 93.48495273794357
+   },
+   {
+    "sc": "circle",
+    "ok": true,
+    "base_rms": 68.87541365896767,
+    "pad_rms": 67.04659066145102
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": true,
+    "base_rms": 68.98174779357646,
+    "pad_rms": 67.41056965203366
+   }
+  ],
+  "score": 2121.4634501091464,
+  "rho_max": 0.9991130323352588
+ },
+ {
+  "g": {
+   "w_att": 9.233575424271478,
+   "ki_att": 432.16374361031427,
+   "kp_pos": 1.6271525033624652,
+   "kd_pos": 3.0651802608085323,
+   "ki_pos": 1.951493832565757,
+   "lag_gain": 0.15268271286258583,
+   "tau_motor": 0.04172945536912002,
+   "kp_joint": 1.3679792225271847,
+   "kd_joint": 0.03675528171884926,
+   "k_corr": 0.19384977514427626
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3811053293265596,
+     "tilt_max_deg": 0.047989931917909866
+    },
+    "final_tilt": 0.025179254523971673
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3833854390134562,
+     "tilt_max_deg": 0.047775486863616726
+    },
+    "final_tilt": 0.025251654913959854
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3505717848415419,
+     "tilt_max_deg": 0.043552511906190465
+    },
+    "final_tilt": 0.018896962492960117
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3550328253199996,
+     "tilt_max_deg": 0.043700918798903685
+    },
+    "final_tilt": 0.018902249877566727
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3601996708511265,
+     "tilt_max_deg": 0.03997091277471377
+    },
+    "final_tilt": 0.030112903101300992
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3642360160627989,
+     "tilt_max_deg": 0.039436020514438216
+    },
+    "final_tilt": 0.03008006891327003
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.33295121528705224,
+     "tilt_max_deg": 0.03139072955580201
+    },
+    "final_tilt": 0.019951251689144207
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3248015133830106,
+     "tilt_max_deg": 0.03135770940467621
+    },
+    "final_tilt": 0.01996422653286516
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": true,
+    "base_rms": 68.01789602248411,
+    "pad_rms": 67.4201341164626
+   },
+   {
+    "sc": "free_big",
+    "ok": false,
+    "base_rms": 110.17121932067782,
+    "pad_rms": 113.05286315008728
+   },
+   {
+    "sc": "line",
+    "ok": true,
+    "base_rms": 42.059435702140554,
+    "pad_rms": 44.04301497744554
+   },
+   {
+    "sc": "line_T1",
+    "ok": true,
+    "base_rms": 39.9653241448985,
+    "pad_rms": 38.77739843505658
+   },
+   {
+    "sc": "circle",
+    "ok": true,
+    "base_rms": 32.8218893356722,
+    "pad_rms": 34.978142146843034
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": false,
+    "base_rms": 61.16613117566643,
+    "pad_rms": 62.059075008108614
+   }
+  ],
+  "score": 2089.06120160309,
+  "rho_max": 0.999137670704611
+ },
+ {
+  "g": {
+   "w_att": 10.972267399866599,
+   "ki_att": 198.4612214779679,
+   "kp_pos": 3.928559587268404,
+   "kd_pos": 4.706320828397577,
+   "ki_pos": 1.7881962745844466,
+   "lag_gain": 0.760415452310762,
+   "tau_motor": 0.04851214327674221,
+   "kp_joint": 0.8700269167119546,
+   "kd_joint": 0.026449123184457198,
+   "k_corr": 0.16803237117347467
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.6229986343663524,
+     "tilt_max_deg": 0.06352777004823336
+    },
+    "final_tilt": 0.020014013058241225
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.6180461096511525,
+     "tilt_max_deg": 0.06351933431227337
+    },
+    "final_tilt": 0.020015977092216756
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.5962900356852249,
+     "tilt_max_deg": 0.06217546896074436
+    },
+    "final_tilt": 0.02885314625833472
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.6016888672456444,
+     "tilt_max_deg": 0.062182107139530346
+    },
+    "final_tilt": 0.028852372301745498
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.7757082710809977,
+     "tilt_max_deg": 0.07658042433788949
+    },
+    "final_tilt": 0.007867400334065456
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.7716973139018439,
+     "tilt_max_deg": 0.07657497887957745
+    },
+    "final_tilt": 0.007869961476053193
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.5973645042073861,
+     "tilt_max_deg": 0.06250421874521798
+    },
+    "final_tilt": 0.02468214597374302
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.5916062457000475,
+     "tilt_max_deg": 0.06250254176989717
+    },
+    "final_tilt": 0.024681901510893497
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": true,
+    "base_rms": 60.891864233694626,
+    "pad_rms": 64.23837358240574
+   },
+   {
+    "sc": "free_big",
+    "ok": true,
+    "base_rms": 108.31122987492381,
+    "pad_rms": 115.33244282168027
+   },
+   {
+    "sc": "line",
+    "ok": true,
+    "base_rms": 35.769227847833506,
+    "pad_rms": 33.91751295492901
+   },
+   {
+    "sc": "line_T1",
+    "ok": true,
+    "base_rms": 48.45494805120026,
+    "pad_rms": 49.898821072187744
+   },
+   {
+    "sc": "circle",
+    "ok": true,
+    "base_rms": 26.43441182533891,
+    "pad_rms": 27.39335531338479
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": true,
+    "base_rms": 27.347669801603278,
+    "pad_rms": 26.714922935362818
+   }
+  ],
+  "score": 77.6595109957616,
+  "rho_max": 0.9991541046817487
+ },
+ {
+  "g": {
+   "w_att": 8.336118927146071,
+   "ki_att": 116.44849724626725,
+   "kp_pos": 1.637566410370264,
+   "kd_pos": 3.9611742935372902,
+   "ki_pos": 1.4684641652437158,
+   "lag_gain": 0.11845884641498894,
+   "tau_motor": 0.04360079232942027,
+   "kp_joint": 0.21943904503062842,
+   "kd_joint": 0.03374136208631595,
+   "k_corr": 0.1480272741968999
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3926087514516062,
+     "tilt_max_deg": 0.030009417088711188
+    },
+    "final_tilt": 0.01367118027199997
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.40251921400057084,
+     "tilt_max_deg": 0.030003501491047045
+    },
+    "final_tilt": 0.013671974046023633
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.405815630316941,
+     "tilt_max_deg": 0.03180315899656375
+    },
+    "final_tilt": 0.012037506756338091
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4188611507062526,
+     "tilt_max_deg": 0.03180695913481494
+    },
+    "final_tilt": 0.01203769898956506
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.39294636914591524,
+     "tilt_max_deg": 0.031186027928399293
+    },
+    "final_tilt": 0.017073576357633527
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.399272640840394,
+     "tilt_max_deg": 0.03118987478908959
+    },
+    "final_tilt": 0.017074228845415852
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.396200738519126,
+     "tilt_max_deg": 0.03284240475629525
+    },
+    "final_tilt": 0.016251448322538976
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4168404858712435,
+     "tilt_max_deg": 0.03284780434771031
+    },
+    "final_tilt": 0.01625319963078145
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": false,
+    "base_rms": 100.94993366299,
+    "pad_rms": 108.39842516583803
+   },
+   {
+    "sc": "free_big",
+    "ok": false,
+    "base_rms": 75.32328958847091,
+    "pad_rms": 81.53553221496261
+   },
+   {
+    "sc": "line",
+    "ok": false,
+    "base_rms": 79.48378371506573,
+    "pad_rms": 81.99714954965376
+   },
+   {
+    "sc": "line_T1",
+    "ok": false,
+    "base_rms": 72.42384068018997,
+    "pad_rms": 79.67120946282454
+   },
+   {
+    "sc": "circle",
+    "ok": false,
+    "base_rms": 73.81948027702762,
+    "pad_rms": 137.6808906858611
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": false,
+    "base_rms": 82.7165092297238,
+    "pad_rms": 81.32959281574657
+   }
+  ],
+  "score": 6128.337206183485,
+  "rho_max": 0.9992255426558669
+ },
+ {
+  "g": {
+   "w_att": 9.429474002445165,
+   "ki_att": 293.1555974109548,
+   "kp_pos": 5.234310081900741,
+   "kd_pos": 3.6263558725723137,
+   "ki_pos": 1.1594391348710515,
+   "lag_gain": 0.989031334751042,
+   "tau_motor": 0.054582742998605556,
+   "kp_joint": 0.5856049183255013,
+   "kd_joint": 0.023284288625381365,
+   "k_corr": 0.17395649810470226
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.3058801003701195,
+     "tilt_max_deg": 0.22368202813452578
+    },
+    "final_tilt": 0.1135788078029775
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.3357881461552317,
+     "tilt_max_deg": 0.22338605935938688
+    },
+    "final_tilt": 0.11354921609292311
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.2482299068676839,
+     "tilt_max_deg": 0.20207258923294458
+    },
+    "final_tilt": 0.10860901382514226
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.2881558183224646,
+     "tilt_max_deg": 0.20286291004090296
+    },
+    "final_tilt": 0.10856770383841358
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.0049287682922465,
+     "tilt_max_deg": 0.1658817297585609
+    },
+    "final_tilt": 0.09412014179586314
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.0308206052377384,
+     "tilt_max_deg": 0.1650414335349777
+    },
+    "final_tilt": 0.09410934885819272
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.8394668128828909,
+     "tilt_max_deg": 0.12690519804857495
+    },
+    "final_tilt": 0.08078566238109706
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.8518097650019172,
+     "tilt_max_deg": 0.12696571001273194
+    },
+    "final_tilt": 0.08078124283961191
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": true,
+    "base_rms": 52.808402322498836,
+    "pad_rms": 57.87899876166758
+   },
+   {
+    "sc": "free_big",
+    "ok": true,
+    "base_rms": 97.10557970445616,
+    "pad_rms": 108.93117831131433
+   },
+   {
+    "sc": "line",
+    "ok": true,
+    "base_rms": 25.92997179911695,
+    "pad_rms": 27.170227655367306
+   },
+   {
+    "sc": "line_T1",
+    "ok": false,
+    "base_rms": 60.01930199640665,
+    "pad_rms": 73.89118683989587
+   },
+   {
+    "sc": "circle",
+    "ok": false,
+    "base_rms": 36.26824549768874,
+    "pad_rms": 41.77452243588483
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": true,
+    "base_rms": 31.063202462537134,
+    "pad_rms": 32.399009863701174
+   }
+  ],
+  "score": 2079.03621095277,
+  "rho_max": 0.9992428939344956
+ },
+ {
+  "g": {
+   "w_att": 11.253440316687975,
+   "ki_att": 308.47470497804323,
+   "kp_pos": 4.287920803760996,
+   "kd_pos": 4.077304613699977,
+   "ki_pos": 1.0138887035149837,
+   "lag_gain": 0.05045041365802094,
+   "tau_motor": 0.040859851298092276,
+   "kp_joint": 0.6776310879296076,
+   "kd_joint": 0.024315234277084468,
+   "k_corr": 0.16662746523662236
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.2202838505558045,
+     "tilt_max_deg": 0.021117313647855275
+    },
+    "final_tilt": 0.009465353690229234
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.219430309117325,
+     "tilt_max_deg": 0.02112119498466901
+    },
+    "final_tilt": 0.009464385027328222
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.21832234156603555,
+     "tilt_max_deg": 0.02348952695136413
+    },
+    "final_tilt": 0.007863266758709088
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.21728612639841108,
+     "tilt_max_deg": 0.023495180549980968
+    },
+    "final_tilt": 0.007862675387155427
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.22317232652086014,
+     "tilt_max_deg": 0.021569179278837135
+    },
+    "final_tilt": 0.011133935373364903
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.22193449064446422,
+     "tilt_max_deg": 0.021567226667053522
+    },
+    "final_tilt": 0.011132184278056317
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.21195877070527788,
+     "tilt_max_deg": 0.02391124915545775
+    },
+    "final_tilt": 0.008721901614886214
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.2090847755438893,
+     "tilt_max_deg": 0.023911138354384968
+    },
+    "final_tilt": 0.00872128990655812
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": true,
+    "base_rms": 46.71365463834228,
+    "pad_rms": 50.39580653223115
+   },
+   {
+    "sc": "free_big",
+    "ok": true,
+    "base_rms": 81.82233266472095,
+    "pad_rms": 88.25350145123335
+   },
+   {
+    "sc": "line",
+    "ok": true,
+    "base_rms": 26.817030759552335,
+    "pad_rms": 26.323922305847514
+   },
+   {
+    "sc": "line_T1",
+    "ok": true,
+    "base_rms": 36.954048538669454,
+    "pad_rms": 39.76674209729603
+   },
+   {
+    "sc": "circle",
+    "ok": true,
+    "base_rms": 18.757584181737975,
+    "pad_rms": 21.461687060259035
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": true,
+    "base_rms": 19.385071871295455,
+    "pad_rms": 19.801457083430147
+   }
+  ],
+  "score": 58.908546819911166,
+  "rho_max": 0.9992444476427191
+ },
+ {
+  "g": {
+   "w_att": 10.951485407645006,
+   "ki_att": 322.32184913604397,
+   "kp_pos": 2.2028815599648732,
+   "kd_pos": 4.0265314200516364,
+   "ki_pos": 1.36546527405098,
+   "lag_gain": 0.7894927775756665,
+   "tau_motor": 0.041107847883599974,
+   "kp_joint": 0.2922738987816209,
+   "kd_joint": 0.03648616779883182,
+   "k_corr": 0.13702440747209288
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.2661940732167687,
+     "tilt_max_deg": 0.12196969563041422
+    },
+    "final_tilt": 0.05772743656773791
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.2734962689129312,
+     "tilt_max_deg": 0.12196644063421239
+    },
+    "final_tilt": 0.05772756890678343
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.2699468567051981,
+     "tilt_max_deg": 0.1234829069279253
+    },
+    "final_tilt": 0.05097281117560636
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.2746957121616203,
+     "tilt_max_deg": 0.12347649939524635
+    },
+    "final_tilt": 0.05097407769695097
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.2949738264283077,
+     "tilt_max_deg": 0.10723226513120351
+    },
+    "final_tilt": 0.06345486745721365
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.3000797527047334,
+     "tilt_max_deg": 0.1072306552247989
+    },
+    "final_tilt": 0.06345483601473721
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.3087217213493434,
+     "tilt_max_deg": 0.1058286369112282
+    },
+    "final_tilt": 0.062462168686203856
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.309641531543249,
+     "tilt_max_deg": 0.10582952157391967
+    },
+    "final_tilt": 0.06246098658084894
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": true,
+    "base_rms": 58.808229909598545,
+    "pad_rms": 61.831934476209554
+   },
+   {
+    "sc": "free_big",
+    "ok": true,
+    "base_rms": 100.29229422591342,
+    "pad_rms": 105.41568720959211
+   },
+   {
+    "sc": "line",
+    "ok": true,
+    "base_rms": 31.394158595000366,
+    "pad_rms": 28.666207785621474
+   },
+   {
+    "sc": "line_T1",
+    "ok": true,
+    "base_rms": 42.76039901584242,
+    "pad_rms": 39.700248805606314
+   },
+   {
+    "sc": "circle",
+    "ok": true,
+    "base_rms": 18.74225158600236,
+    "pad_rms": 26.2857212874276
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": true,
+    "base_rms": 21.442108365928018,
+    "pad_rms": 31.54022105071668
+   }
+  ],
+  "score": 70.026575334312,
+  "rho_max": 0.9992949498119256
+ },
+ {
+  "g": {
+   "w_att": 9.206522367818541,
+   "ki_att": 131.82735694119557,
+   "kp_pos": 1.7659682948519773,
+   "kd_pos": 3.010688283432732,
+   "ki_pos": 1.191691618766852,
+   "lag_gain": 0.12390388729673041,
+   "tau_motor": 0.05407934757510462,
+   "kp_joint": 0.34025662492640213,
+   "kd_joint": 0.025855123066054912,
+   "k_corr": 0.13716562449573175
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4300045675345252,
+     "tilt_max_deg": 0.03372364540446259
+    },
+    "final_tilt": 0.008223742792861012
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4392733337545543,
+     "tilt_max_deg": 0.03372687212159358
+    },
+    "final_tilt": 0.008223717882044802
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4391924532324752,
+     "tilt_max_deg": 0.03491867920803675
+    },
+    "final_tilt": 0.006331459031607666
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4500607422700759,
+     "tilt_max_deg": 0.03492596319629625
+    },
+    "final_tilt": 0.006331212109908543
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.420113257681973,
+     "tilt_max_deg": 0.03443842933271762
+    },
+    "final_tilt": 0.010729292342874291
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4263053868044817,
+     "tilt_max_deg": 0.03444036844708357
+    },
+    "final_tilt": 0.010729346832450472
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.41343895697656663,
+     "tilt_max_deg": 0.034600817053206015
+    },
+    "final_tilt": 0.010998534483691789
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4353337759322995,
+     "tilt_max_deg": 0.03460785715041795
+    },
+    "final_tilt": 0.010997166583201004
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": false,
+    "base_rms": 103.64050541764354,
+    "pad_rms": 108.64824089825647
+   },
+   {
+    "sc": "free_big",
+    "ok": false,
+    "base_rms": 74.9208819037253,
+    "pad_rms": 79.72507115051869
+   },
+   {
+    "sc": "line",
+    "ok": false,
+    "base_rms": 72.97616434550777,
+    "pad_rms": 77.4701391908399
+   },
+   {
+    "sc": "line_T1",
+    "ok": false,
+    "base_rms": 66.89432308149821,
+    "pad_rms": 76.9883259157592
+   },
+   {
+    "sc": "circle",
+    "ok": false,
+    "base_rms": 70.2583457633741,
+    "pad_rms": 78.87516803284379
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": false,
+    "base_rms": 74.24124629704927,
+    "pad_rms": 75.88053500103393
+   }
+  ],
+  "score": 6118.620867817237,
+  "rho_max": 0.9993020090443845
+ },
+ {
+  "g": {
+   "w_att": 9.55820498209377,
+   "ki_att": 190.67939395039994,
+   "kp_pos": 2.192382023880089,
+   "kd_pos": 2.2554545468261384,
+   "ki_pos": 0.943643600916317,
+   "lag_gain": 0.730850308578335,
+   "tau_motor": 0.04347770661626025,
+   "kp_joint": 0.5860980285593754,
+   "kd_joint": 0.011983023612215158,
+   "k_corr": 0.17554252919791757
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.9446590952234566,
+     "tilt_max_deg": 0.05821236053819472
+    },
+    "final_tilt": 0.009834214942496877
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.9256707591218746,
+     "tilt_max_deg": 0.05821314106527288
+    },
+    "final_tilt": 0.009833729223181018
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.9948467865965659,
+     "tilt_max_deg": 0.06143455440269098
+    },
+    "final_tilt": 0.007835259925749617
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.9717111140009486,
+     "tilt_max_deg": 0.061433689357363395
+    },
+    "final_tilt": 0.00783570681220636
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.9840566150739944,
+     "tilt_max_deg": 0.05763104285794317
+    },
+    "final_tilt": 0.012070259872703007
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.9674817097023822,
+     "tilt_max_deg": 0.0576322072158093
+    },
+    "final_tilt": 0.012070076139142245
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.0538971977771703,
+     "tilt_max_deg": 0.06387366762296687
+    },
+    "final_tilt": 0.010873342513093668
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 1.0305801808529444,
+     "tilt_max_deg": 0.06386245412885577
+    },
+    "final_tilt": 0.010873632006857462
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": false,
+    "base_rms": 92.39839121852083,
+    "pad_rms": 96.21760605967502
+   },
+   {
+    "sc": "free_big",
+    "ok": false,
+    "base_rms": 79.5771828433682,
+    "pad_rms": 82.51862226049494
+   },
+   {
+    "sc": "line",
+    "ok": false,
+    "base_rms": 82.56025663464278,
+    "pad_rms": 85.53377579577314
+   },
+   {
+    "sc": "line_T1",
+    "ok": false,
+    "base_rms": 55.955911630121115,
+    "pad_rms": 60.93714225968952
+   },
+   {
+    "sc": "circle",
+    "ok": false,
+    "base_rms": 60.400034235778044,
+    "pad_rms": 59.36701713431119
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": false,
+    "base_rms": 85.14212926071619,
+    "pad_rms": 89.29235066974653
+   }
+  ],
+  "score": 6115.494527152166,
+  "rho_max": 0.9993091633858145
+ },
+ {
+  "g": {
+   "w_att": 7.659001480767596,
+   "ki_att": 82.54606113061416,
+   "kp_pos": 2.5274519698180944,
+   "kd_pos": 5.070123275566944,
+   "ki_pos": 1.4917393021670278,
+   "lag_gain": 0.05149378481277944,
+   "tau_motor": 0.05641969718773083,
+   "kp_joint": 1.1841449844337033,
+   "kd_joint": 0.020626410756153943,
+   "k_corr": 0.13571403215082484
+  },
+  "hover": {
+   "hover_gap60": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3935455527678006,
+     "tilt_max_deg": 0.03881377035368858
+    },
+    "final_tilt": 0.017828661423331876
+   },
+   "hover_gap60_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3968276301674817,
+     "tilt_max_deg": 0.038400217399290136
+    },
+    "final_tilt": 0.017924721317532512
+   },
+   "hover_off_right": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3894649511135343,
+     "tilt_max_deg": 0.035680184177038915
+    },
+    "final_tilt": 0.017111051506503595
+   },
+   "hover_off_right_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3743201894400426,
+     "tilt_max_deg": 0.035655682747743445
+    },
+    "final_tilt": 0.017104538490596555
+   },
+   "hover_off_left_low": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4373764548064341,
+     "tilt_max_deg": 0.038142338320710276
+    },
+    "final_tilt": 0.012197090705708806
+   },
+   "hover_off_left_low_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.4382176275780975,
+     "tilt_max_deg": 0.03838097984180348
+    },
+    "final_tilt": 0.012196520675394127
+   },
+   "near_contact_posture": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.37560152607822345,
+     "tilt_max_deg": 0.03079827900759639
+    },
+    "final_tilt": 0.013834761778786413
+   },
+   "near_contact_posture_kick": {
+    "abort": false,
+    "late": {
+     "base_max_mm": 0.3629965493263929,
+     "tilt_max_deg": 0.030767175821442318
+    },
+    "final_tilt": 0.013816392671853802
+   }
+  },
+  "dev": [
+   {
+    "sc": "free",
+    "ok": false,
+    "base_rms": 100.70111659715647,
+    "pad_rms": 109.63840448952332
+   },
+   {
+    "sc": "free_big",
+    "ok": false,
+    "base_rms": 71.64793129443396,
+    "pad_rms": 79.3022561061463
+   },
+   {
+    "sc": "line",
+    "ok": false,
+    "base_rms": 105.22570479824348,
+    "pad_rms": 115.4967885916287
+   },
+   {
+    "sc": "line_T1",
+    "ok": false,
+    "base_rms": 94.7855019727795,
+    "pad_rms": 113.32128472988437
+   },
+   {
+    "sc": "circle",
+    "ok": false,
+    "base_rms": 59.75655245625462,
+    "pad_rms": 68.73337561082153
+   },
+   {
+    "sc": "rounded_triangle",
+    "ok": false,
+    "base_rms": 93.12499166191756,
+    "pad_rms": 94.27038055870385
+   }
+  ],
+  "score": 6135.93717397069,
+  "rho_max": 0.9993446142695885
+ }
+]

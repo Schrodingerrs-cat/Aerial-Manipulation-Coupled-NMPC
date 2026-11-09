@@ -1,0 +1,21 @@
+dev2_N {
+ "n": 16,
+ "solver_hang_stubs": 0,
+ "joint_successes": 16,
+ "completed": 16,
+ "failed_criteria": {},
+ "base_max_mm": {
+  "median": 0.5783971933994934,
+  "max": 1.2399506346442801
+ },
+ "trace_track_rms_mm": {
+  "median": 0.43336071976951573,
+  "max": 0.8602798246516793
+ },
+ "peak_Fn_N_max": 0.7167336613339186,
+ "timing": {
+  "median_ms": 15.382681250230235,
+  "max_ms": 198.44597600058478,
+  "over_period_fraction_mean": 0.11709368325461075
+ }
+}

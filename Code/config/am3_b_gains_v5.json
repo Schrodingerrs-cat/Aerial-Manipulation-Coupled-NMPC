@@ -1,0 +1,15 @@
+{
+ "version": "B gains v5 (2026-10-30)",
+ "note": "Same numeric gains as v4 (no retuning) minus k_corr (the pad-position feedback loop was removed with the information separation). Retuning only if the separated B proved unstable.",
+ "gains": {
+  "w_att": 11.577694533763868,
+  "ki_att": 454.2689630479777,
+  "kp_pos": 4.790849070361491,
+  "kd_pos": 5.15448854583217,
+  "ki_pos": 1.225380749683309,
+  "lag_gain": 0.0,
+  "tau_motor": 0.04,
+  "kp_joint": 0.9951874087404384,
+  "kd_joint": 0.018548146617610315
+ }
+}

@@ -1,0 +1,43 @@
+dev2_B {
+ "n": 16,
+ "solver_hang_stubs": 0,
+ "joint_successes": 0,
+ "completed": 16,
+ "failed_criteria": {
+  "base_max": 16,
+  "path_tracking_rms": 14,
+  "endpoint": 14,
+  "coverage": 8,
+  "free_pad_tracking_rms": 2
+ },
+ "base_max_mm": {
+  "median": 33.948583285644986,
+  "max": 73.98881120703767
+ },
+ "trace_track_rms_mm": {
+  "median": 18.431050501873848,
+  "max": 25.669909193200624
+ },
+ "peak_Fn_N_max": 0.9979366453007006,
+ "timing": {
+  "median_ms": 1.2237660002938355,
+  "max_ms": 8.210036001401022,
+  "over_period_fraction_mean": 4.019947316001601e-05
+ }
+}
+ FAIL dev_00 line ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL dev_01 line_fast ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL dev_02 line_T1 ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL dev_03 circle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL dev_04 circle_T4 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL dev_05 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL dev_06 rounded_triangle_T5 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL dev_07 free ['base_max', 'free_pad_tracking_rms'] None
+ FAIL dev_08 line ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL dev_09 line_fast ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL dev_10 line_T1 ['base_max', 'path_tracking_rms', 'endpoint'] None
+ FAIL dev_11 circle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL dev_12 circle_T4 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL dev_13 rounded_triangle ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL dev_14 rounded_triangle_T5 ['base_max', 'path_tracking_rms', 'coverage', 'endpoint'] None
+ FAIL dev_15 free ['base_max', 'free_pad_tracking_rms'] None

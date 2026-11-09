@@ -1,0 +1,109 @@
+{
+ "controller": "B",
+ "path": "free_osc0.06_T0.25",
+ "seed": 0,
+ "abort": [
+  4.354999999999577,
+  "loss of control (failsafe): tilt 27 deg, base error 254 mm"
+ ],
+ "t_end": 4.349999999999571,
+ "wall_s": 23.235547065734863,
+ "base": {
+  "rms_mm": 56.205859341624084,
+  "max_mm": 249.05862476148278,
+  "final_mm": 249.05862476148278,
+  "vel_max": 1.1914224645839355,
+  "settle_s": 4.349999999999571
+ },
+ "com": {
+  "range_mm": [
+   234.49163363254561,
+   364.55158860010016,
+   84.23704545889832
+  ],
+  "rms_dev_mm": 56.51141025671577
+ },
+ "attitude": {
+  "tilt_max_deg": 29.591660948641337,
+  "tilt_rms_deg": 8.48137757078967,
+  "omega_max": 7.380008791894806
+ },
+ "pad_vs_reference": {
+  "rms_mm": 57.85599722905622,
+  "max_mm": 372.62503293439033
+ },
+ "contact": {
+  "valid_fraction": NaN,
+  "longest_s": 0.0,
+  "detached_intervals_s": [],
+  "detached_total_s": 0.0,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 8.13433709696403,
+  "impulse_Ns": 0.4344655271206405,
+  "peak_ft_N": 1.2201505645446045,
+  "Fn_mean_trace_N": 0.3307305037140538,
+  "Fn_std_trace_N": 1.2464145381797245,
+  "unexpected": [
+   [
+    "finger_l",
+    "wall"
+   ],
+   [
+    "finger_r",
+    "wall"
+   ],
+   [
+    "prop1",
+    "wall"
+   ]
+  ],
+  "unexpected_first": [
+   3.793749999999257,
+   [
+    [
+     "finger_l",
+     "wall"
+    ]
+   ]
+  ]
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.5826877794006758,
+   0.5402298757893673,
+   0.3778772098535552
+  ],
+  "rotor_force_min_N": 0.1547292570431185,
+  "rotor_force_max_N": 9.891019686538522,
+  "rotor_reserve_up_N": 0.10898031346147796,
+  "rotor_reserve_down_N": 0.054729257043118484,
+  "qd_max": [
+   7.431270055784029,
+   8.117666281736414,
+   4.990758746486172
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 0.0
+ },
+ "timing": {
+  "median_ms": 1.2314820014580619,
+  "p95_ms": 1.4673954992758809,
+  "p99_ms": 1.755062001029726,
+  "max_ms": 3.3722629996191245,
+  "period_ms": 5.0,
+  "over_period_fraction": 0.0,
+  "injected_misses": 0
+ },
+ "final_gap_mm": null,
+ "completed": false,
+ "command": "scripts/am3_compare.py AM3_BvsN_arm_oscillation_B_loses_control_2026-10-30 free_osc0.06_T0.25",
+ "source_hash": "50190e836316",
+ "miss_p": 0.0
+}
