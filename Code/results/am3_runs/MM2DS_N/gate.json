@@ -1,0 +1,411 @@
+{
+ "criteria_file": "config/am3_acceptance_v1.json",
+ "stat": {
+  "n": 40,
+  "solver_hang_stubs": 0,
+  "joint_successes": 22,
+  "completed": 38,
+  "failed_criteria": {
+   "base_max": 15,
+   "force_peak": 1,
+   "no_unexpected_contact": 1,
+   "recovery": 4,
+   "rotor_reserve": 3,
+   "contact_fraction": 3,
+   "no_abort": 2,
+   "tilt": 1,
+   "coverage": 2,
+   "endpoint": 1
+  },
+  "base_max_mm": {
+   "median": 15.729026523165988,
+   "max": 244.1093908316556
+  },
+  "trace_track_rms_mm": {
+   "median": 0.7125583280977436,
+   "max": 2.276902660774145
+  },
+  "peak_Fn_N_max": 4.625025728933997,
+  "timing": {
+   "median_ms": 11.957139000514871,
+   "max_ms": 45.82142099934572,
+   "over_period_fraction_mean": 0.011215277296444968
+  }
+ },
+ "scenarios": [
+  {
+   "id": "ds4_slow_00",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_01",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_02",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max",
+    "force_peak",
+    "no_unexpected_contact",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_03",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_04",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_05",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_06",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_07",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "contact_fraction"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_08",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_slow_09",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_00",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_01",
+   "path": "line",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_02",
+   "path": "line",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_03",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_04",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_05",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_06",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_07",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_08",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds4_dden_09",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_00",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_01",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "contact_fraction",
+    "recovery"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_02",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_03",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_04",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_05",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_06",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_07",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_08",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max",
+    "rotor_reserve"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_slow_09",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_00",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_01",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_02",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_03",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "coverage",
+    "endpoint",
+    "rotor_reserve"
+   ],
+   "abort": [
+    8.160000000003658,
+    "loss of control (failsafe): tilt 28 deg, base error 263 mm"
+   ]
+  },
+  {
+   "id": "ds8_dden_04",
+   "path": "line",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_05",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_06",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_07",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_08",
+   "path": "line",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "coverage"
+   ],
+   "abort": null
+  },
+  {
+   "id": "ds8_dden_09",
+   "path": "line",
+   "family": "disturbance_sudden",
+   "all": false,
+   "failed": [
+    "base_max"
+   ],
+   "abort": null
+  }
+ ]
+}

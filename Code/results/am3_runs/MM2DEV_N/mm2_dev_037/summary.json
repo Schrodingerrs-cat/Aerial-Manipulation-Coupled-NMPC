@@ -1,0 +1,120 @@
+{
+ "controller": "N",
+ "path": "circle",
+ "seed": 687368,
+ "abort": null,
+ "t_end": 22.620000000016994,
+ "wall_s": 23.692816495895386,
+ "base": {
+  "rms_mm": 29.60927366680706,
+  "max_mm": 103.80514308385952,
+  "final_mm": 79.04154832420535,
+  "vel_max": 0.41562741393163666,
+  "settle_s": 22.620000000016994
+ },
+ "com": {
+  "range_mm": [
+   93.17558532321024,
+   88.69119343935076,
+   46.84028487092018
+  ],
+  "rms_dev_mm": 17.673562737289938
+ },
+ "attitude": {
+  "tilt_max_deg": 27.47442026191934,
+  "tilt_rms_deg": 7.757828235340277,
+  "omega_max": 7.6129015951843835
+ },
+ "pad_vs_reference": {
+  "rms_mm": 11.9809372102607,
+  "max_mm": 55.624662372909775
+ },
+ "trace": {
+  "track_rms_mm": 6.439138872059706,
+  "track_max_mm": 15.758639769880604,
+  "timed_nominal_rms_mm": 8.818055487892963,
+  "timed_nominal_max_mm": 20.904369296315952,
+  "duration_s": 10.239999999990555,
+  "nominal_T": 10.0,
+  "delay_s": 0.23999999999055532,
+  "x_dev_rms_mm": 0.7292308894034067,
+  "coverage_5mm": 0.7333333333333333,
+  "endpoint_err_mm": 7.990624048156547,
+  "reached_end": true
+ },
+ "contact": {
+  "valid_fraction": 0.9227236973575118,
+  "longest_s": 2.26675,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 2.6278478146176374,
+  "impulse_Ns": 9.453535266423662,
+  "peak_ft_N": 0.3941771721926456,
+  "Fn_mean_trace_N": 0.8110864839862243,
+  "Fn_std_trace_N": 0.46192462424976727,
+  "unexpected": [
+   [
+    "prop0",
+    "wall"
+   ],
+   [
+    "prop1",
+    "wall"
+   ]
+  ],
+  "unexpected_first": [
+   1.0722499999999417,
+   [
+    [
+     "prop1",
+     "wall"
+    ],
+    [
+     "prop1",
+     "wall"
+    ],
+    [
+     "prop1",
+     "wall"
+    ]
+   ]
+  ]
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.31213592501702336,
+   1.0,
+   0.6704271521158983
+  ],
+  "rotor_force_min_N": 0.1241433462434969,
+  "rotor_force_max_N": 9.618158428164032,
+  "rotor_reserve_up_N": 0.38184157183596845,
+  "rotor_reserve_down_N": 0.0241433462434969,
+  "qd_max": [
+   4.2755304144565125,
+   7.984645515981256,
+   3.4839497690692673
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 9.422388211586693
+ },
+ "timing": {
+  "median_ms": 12.55581900022662,
+  "p95_ms": 14.506035600061297,
+  "p99_ms": 24.35611184902884,
+  "max_ms": 34.68114000133937,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.024734982332155476,
+  "injected_misses": 0
+ },
+ "completed": true,
+ "command": "scripts/am3_batch.py MM2DEV_N mm2_dev N --workers 6",
+ "source_hash": "18fb0b2e5f05",
+ "miss_p": 0.0
+}

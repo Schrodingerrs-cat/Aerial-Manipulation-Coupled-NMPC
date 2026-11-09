@@ -1,0 +1,24 @@
+{
+ "domain": "mm2_val_contact",
+ "n": 2,
+ "policies": {
+  "results/am3_rl/PILOT_contact_s0/model_40k.zip": [
+   {
+    "scenario": "mm2_val_contact_034",
+    "ret": 811.0460158678908,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_018",
+    "ret": 755.7913634111965,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   }
+  ]
+ }
+}

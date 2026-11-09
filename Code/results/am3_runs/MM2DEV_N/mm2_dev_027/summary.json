@@ -1,0 +1,292 @@
+{
+ "controller": "N",
+ "path": "line",
+ "seed": 456143,
+ "abort": null,
+ "t_end": 39.980000000099885,
+ "wall_s": 41.993412733078,
+ "base": {
+  "rms_mm": 6.9799519970840915,
+  "max_mm": 7.589322418760433,
+  "final_mm": 7.166000988167556,
+  "vel_max": 0.05039680944324648,
+  "settle_s": 39.980000000099885
+ },
+ "com": {
+  "range_mm": [
+   11.699325608659382,
+   4.058953963299005,
+   7.565917085842644
+  ],
+  "rms_dev_mm": 2.862696138827763
+ },
+ "attitude": {
+  "tilt_max_deg": 1.0557229756233277,
+  "tilt_rms_deg": 0.34026543493982225,
+  "omega_max": 0.34047103529274536
+ },
+ "pad_vs_reference": {
+  "rms_mm": 1.5465302882248546,
+  "max_mm": 3.279319928642195
+ },
+ "contact": {
+  "valid_fraction": 0.6110922292600031,
+  "longest_s": 0.19425,
+  "losses": 35,
+  "recovery_s": 25.30000000000001,
+  "recoveries": [
+   {
+    "t": 6.719999999999945,
+    "phase": "settle",
+    "tau_p": 0.0,
+    "duration_s": 0.7600000000000003
+   },
+   {
+    "t": 7.699999999999924,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7600000000000003
+   },
+   {
+    "t": 8.699999999999903,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.6600000000000003
+   },
+   {
+    "t": 9.619999999999884,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.8000000000000004
+   },
+   {
+    "t": 10.799999999999859,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7600000000000003
+   },
+   {
+    "t": 11.819999999999837,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.8000000000000004
+   },
+   {
+    "t": 12.859999999999815,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7800000000000004
+   },
+   {
+    "t": 13.879999999999793,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.8200000000000004
+   },
+   {
+    "t": 14.999999999999769,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.6400000000000002
+   },
+   {
+    "t": 15.85999999999975,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7000000000000003
+   },
+   {
+    "t": 16.719999999999732,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7800000000000004
+   },
+   {
+    "t": 17.73999999999971,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7800000000000004
+   },
+   {
+    "t": 18.75999999999969,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7800000000000004
+   },
+   {
+    "t": 19.759999999999668,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.8000000000000004
+   },
+   {
+    "t": 20.779999999999646,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7600000000000003
+   },
+   {
+    "t": 21.759999999999625,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.8000000000000004
+   },
+   {
+    "t": 22.779999999999603,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7600000000000003
+   },
+   {
+    "t": 23.759999999999582,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7000000000000003
+   },
+   {
+    "t": 24.659999999999563,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7400000000000003
+   },
+   {
+    "t": 25.619999999999543,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7800000000000004
+   },
+   {
+    "t": 26.61999999999952,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7200000000000003
+   },
+   {
+    "t": 27.5799999999995,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.8200000000000004
+   },
+   {
+    "t": 28.659999999999478,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7200000000000003
+   },
+   {
+    "t": 29.599999999999458,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7600000000000003
+   },
+   {
+    "t": 30.579999999999437,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.8200000000000004
+   },
+   {
+    "t": 31.679999999999414,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7400000000000003
+   },
+   {
+    "t": 32.6399999999995,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7000000000000003
+   },
+   {
+    "t": 33.479999999999634,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7000000000000003
+   },
+   {
+    "t": 34.379999999999775,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.6400000000000002
+   },
+   {
+    "t": 35.23999999999991,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7400000000000003
+   },
+   {
+    "t": 36.20000000000006,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.6600000000000003
+   },
+   {
+    "t": 37.1000000000002,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7000000000000003
+   },
+   {
+    "t": 38.00000000000034,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7200000000000003
+   },
+   {
+    "t": 38.96000000000049,
+    "phase": "settle_resume",
+    "tau_p": 0.0,
+    "duration_s": 0.7000000000000003
+   },
+   {
+    "t": 39.90000000000064,
+    "phase": "settle_resume",
+    "tau_p": 0.0
+   }
+  ],
+  "peak_Fn_N": 0.3298562827221575,
+  "impulse_Ns": 2.085848849615497,
+  "peak_ft_N": 0.04947844240832363,
+  "Fn_mean_trace_N": NaN,
+  "Fn_std_trace_N": NaN,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.02275185429294227,
+   0.5216098982481725,
+   0.23575784235055947
+  ],
+  "rotor_force_min_N": 1.809939659921146,
+  "rotor_force_max_N": 4.94162613200259,
+  "rotor_reserve_up_N": 5.05837386799741,
+  "rotor_reserve_down_N": 1.7099396599211458,
+  "qd_max": [
+   0.2120103711989388,
+   0.5209030651436765,
+   0.3349357847360751
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 6.35359102540557e-12
+ },
+ "timing": {
+  "median_ms": 12.472628500290739,
+  "p95_ms": 12.971032249060954,
+  "p99_ms": 13.34286438075651,
+  "max_ms": 49.51053600052546,
+  "period_ms": 20.0,
+  "over_period_fraction": 0.005,
+  "injected_misses": 0
+ },
+ "completed": false,
+ "command": "scripts/am3_batch.py MM2DEV_N mm2_dev N --workers 6",
+ "source_hash": "18fb0b2e5f05",
+ "miss_p": 0.0
+}

@@ -18,7 +18,7 @@ class NMPC:
     def params(self, task):
         refs = task.horizon(self.N + 1, self.h)[1:]; P = np.zeros((NP, self.N + 1))
         for j, r in enumerate(refs):
-            p = default_params(); p[I_P["pad"]] = r["p"]; p[I_P["vpad"]] = r["v"]; p[I_P["pB"]] = BASE; p[I_P["d"]] = self.d; p[I_P["w"]] = W[PH_W[r["phase"]]]
+            p = default_params(); p[I_P["pad"]] = r["p"]; p[I_P["vpad"]] = r["v"]; p[I_P["pB"]] = r.get("pB", BASE); p[I_P["vB"]] = r.get("vB", 0.0); p[I_P["d"]] = self.d; p[I_P["w"]] = W[PH_W[r["phase"]]]
             p[I_P["vcmax"]] = 0.04 if r["phase"] in ("approach", "recover", "position") else 0.5; P[:, j] = p
         return P
     def compute(self, t, xm, Fm, task):

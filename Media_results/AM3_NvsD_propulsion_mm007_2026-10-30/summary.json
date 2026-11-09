@@ -1,0 +1,348 @@
+{
+ "N": {
+  "controller": "N",
+  "path": "circle",
+  "seed": 89822,
+  "abort": null,
+  "t_end": 39.980000000099885,
+  "wall_s": 69.12627577781677,
+  "base": {
+   "rms_mm": 5.403286778491498,
+   "max_mm": 6.376363856538281,
+   "final_mm": 5.351091156909532,
+   "vel_max": 0.03962735576764433,
+   "settle_s": 39.980000000099885
+  },
+  "com": {
+   "range_mm": [
+    11.962985543826687,
+    4.894810006889126,
+    10.250118355441096
+   ],
+   "rms_dev_mm": 3.1008132898881056
+  },
+  "attitude": {
+   "tilt_max_deg": 1.651898055574753,
+   "tilt_rms_deg": 0.661293910863204,
+   "omega_max": 0.29017658378328937
+  },
+  "pad_vs_reference": {
+   "rms_mm": 1.3433769014663481,
+   "max_mm": 2.777183549241065
+  },
+  "trace": {
+   "track_rms_mm": 1.0283546783283164,
+   "track_max_mm": 1.5116624212635954,
+   "timed_nominal_rms_mm": 4.67458559193939,
+   "timed_nominal_max_mm": 7.907791864067797,
+   "duration_s": 32.320000000093216,
+   "nominal_T": 10.0,
+   "delay_s": 22.320000000093216,
+   "x_dev_rms_mm": 0.5502523113545159,
+   "coverage_5mm": 1.0,
+   "endpoint_err_mm": 0.344619586916551,
+   "reached_end": true
+  },
+  "contact": {
+   "valid_fraction": 0.8409576129972922,
+   "longest_s": 10.53625,
+   "losses": 24,
+   "recovery_s": 14.500000000000007,
+   "recoveries": [
+    {
+     "t": 17.399999999999718,
+     "phase": "endhold",
+     "tau_p": 10.0,
+     "duration_s": 0.5600000000000002
+    },
+    {
+     "t": 18.579999999999693,
+     "phase": "endhold",
+     "tau_p": 10.0,
+     "duration_s": 0.6200000000000002
+    },
+    {
+     "t": 19.439999999999674,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6200000000000002
+    },
+    {
+     "t": 20.419999999999654,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.48000000000000015
+    },
+    {
+     "t": 21.57999999999963,
+     "phase": "endhold",
+     "tau_p": 10.0,
+     "duration_s": 0.5800000000000002
+    },
+    {
+     "t": 22.47999999999961,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6600000000000003
+    },
+    {
+     "t": 23.37999999999959,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6600000000000003
+    },
+    {
+     "t": 24.439999999999568,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6200000000000002
+    },
+    {
+     "t": 25.379999999999548,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.5200000000000001
+    },
+    {
+     "t": 26.23999999999953,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6200000000000002
+    },
+    {
+     "t": 27.15999999999951,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6400000000000002
+    },
+    {
+     "t": 28.01999999999949,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.5800000000000002
+    },
+    {
+     "t": 28.859999999999474,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6200000000000002
+    },
+    {
+     "t": 29.799999999999454,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.5800000000000002
+    },
+    {
+     "t": 30.719999999999434,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6600000000000003
+    },
+    {
+     "t": 31.699999999999413,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6200000000000002
+    },
+    {
+     "t": 32.659999999999506,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.5800000000000002
+    },
+    {
+     "t": 33.49999999999964,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.5800000000000002
+    },
+    {
+     "t": 34.33999999999977,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.5600000000000002
+    },
+    {
+     "t": 35.1799999999999,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6400000000000002
+    },
+    {
+     "t": 36.16000000000005,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6400000000000002
+    },
+    {
+     "t": 37.060000000000194,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.6800000000000003
+    },
+    {
+     "t": 38.06000000000035,
+     "phase": "settle_resume",
+     "tau_p": 10.0,
+     "duration_s": 0.5600000000000002
+    },
+    {
+     "t": 39.22000000000053,
+     "phase": "endhold",
+     "tau_p": 10.0,
+     "duration_s": 0.6200000000000002
+    }
+   ],
+   "peak_Fn_N": 0.4416513862572862,
+   "impulse_Ns": 4.803176953810707,
+   "peak_ft_N": 0.06624770793859291,
+   "Fn_mean_trace_N": 0.29226290208786576,
+   "Fn_std_trace_N": 0.04764749998706998,
+   "unexpected": [],
+   "unexpected_first": null
+  },
+  "actuation": {
+   "tau_util_max": [
+    0.02487620392232293,
+    0.5271162403837341,
+    0.23560590397823875
+   ],
+   "rotor_force_min_N": 1.9547171354663704,
+   "rotor_force_max_N": 5.08886389995332,
+   "rotor_reserve_up_N": 4.91113610004668,
+   "rotor_reserve_down_N": 1.8547171354663703,
+   "qd_max": [
+    0.14899804712649292,
+    0.489819268543211,
+    0.30716929487716826
+   ],
+   "cmd_clip_fraction": 1.0
+  },
+  "solver": {
+   "failures": 0,
+   "retries": 0,
+   "fallback": 0,
+   "slack_max": 1.872312040808357e-12
+  },
+  "timing": {
+   "median_ms": 12.050549499690533,
+   "p95_ms": 12.54621365105777,
+   "p99_ms": 13.18310814052893,
+   "max_ms": 43.25633999906131,
+   "period_ms": 20.0,
+   "over_period_fraction": 0.0055,
+   "injected_misses": 0
+  },
+  "completed": false,
+  "frames": 1000
+ },
+ "D": {
+  "controller": "D",
+  "path": "circle",
+  "seed": 89822,
+  "abort": null,
+  "t_end": 21.580000000012028,
+  "wall_s": 36.3519241809845,
+  "base": {
+   "rms_mm": 4.538465263316401,
+   "max_mm": 4.991067502602303,
+   "final_mm": 4.3479887272562685,
+   "vel_max": 0.03930788023490184,
+   "settle_s": 0.0
+  },
+  "com": {
+   "range_mm": [
+    12.40067796515798,
+    5.081241543764513,
+    9.964019359702814
+   ],
+   "rms_dev_mm": 4.682280645336527
+  },
+  "attitude": {
+   "tilt_max_deg": 2.4816656506990173,
+   "tilt_rms_deg": 1.4200250617084795,
+   "omega_max": 0.275366092218814
+  },
+  "pad_vs_reference": {
+   "rms_mm": 2.258097764805425,
+   "max_mm": 3.0587173362808957
+  },
+  "trace": {
+   "track_rms_mm": 1.8224806395630047,
+   "track_max_mm": 2.6963751451375932,
+   "timed_nominal_rms_mm": 4.9975211524993055,
+   "timed_nominal_max_mm": 8.737980576384965,
+   "duration_s": 10.23999999998686,
+   "nominal_T": 10.0,
+   "delay_s": 0.2399999999868605,
+   "x_dev_rms_mm": 0.19531213743278222,
+   "coverage_5mm": 1.0,
+   "endpoint_err_mm": 0.6432521844000504,
+   "reached_end": true
+  },
+  "contact": {
+   "valid_fraction": 1.0,
+   "longest_s": 11.75975,
+   "losses": 0,
+   "recovery_s": 0.0,
+   "recoveries": [],
+   "peak_Fn_N": 0.7080511926111597,
+   "impulse_Ns": 5.821081430026253,
+   "peak_ft_N": 0.10620767889167394,
+   "Fn_mean_trace_N": 0.5112401176139931,
+   "Fn_std_trace_N": 0.058148484004941915,
+   "unexpected": [],
+   "unexpected_first": null
+  },
+  "actuation": {
+   "tau_util_max": [
+    0.035999205794825094,
+    0.5459852551735404,
+    0.22794651271338678
+   ],
+   "rotor_force_min_N": 1.6740552009427871,
+   "rotor_force_max_N": 5.36236870210208,
+   "rotor_reserve_up_N": 4.63763129789792,
+   "rotor_reserve_down_N": 1.574055200942787,
+   "qd_max": [
+    0.1503536817973397,
+    0.43486377577380303,
+    0.3659813180900728
+   ],
+   "cmd_clip_fraction": 1.0
+  },
+  "solver": {
+   "failures": 0,
+   "retries": 0,
+   "fallback": 0,
+   "slack_max": 4.421955716773501e-13
+  },
+  "timing": {
+   "median_ms": 13.615414999549103,
+   "p95_ms": 15.170407449568302,
+   "p99_ms": 22.808855590938112,
+   "max_ms": 41.736330998901394,
+   "period_ms": 20.0,
+   "over_period_fraction": 0.011111111111111112,
+   "injected_misses": 0
+  },
+  "completed": true,
+  "frames": 540
+ },
+ "_scenario": {
+  "id": "mm_dev_007",
+  "family": "propulsion",
+  "path": "circle",
+  "seed": 89822,
+  "gap0": 0.0707,
+  "dyz": [
+   -0.0089,
+   -0.0093
+  ],
+  "mismatch": {
+   "kf_scale": 1.0692,
+   "motor_tau_scale": 1.1115
+  }
+ }
+}

@@ -1,0 +1,966 @@
+{
+ "name": "mm2_dev",
+ "seed": 101,
+ "scenarios": [
+  {
+   "id": "mm2_dev_000",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 310266,
+   "gap0": 0.0608,
+   "dyz": [
+    0.0057,
+    0.0018
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0506,
+     "pos_hand_m": [
+      0.0,
+      0.0423,
+      -0.0252
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_001",
+   "family": "contact",
+   "path": "circle",
+   "seed": 134703,
+   "gap0": 0.0792,
+   "dyz": [
+    -0.0055,
+    0.0061
+   ],
+   "mismatch": {
+    "k_scale": 1.2809,
+    "c_scale": 1.2066,
+    "mu_scale": 0.5462
+   }
+  },
+  {
+   "id": "mm2_dev_002",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 760179,
+   "gap0": 0.0672,
+   "dyz": [
+    -0.0022,
+    -0.0029
+   ],
+   "mismatch": {
+    "kf_scale": 1.0304,
+    "motor_tau_scale": 0.9429
+   }
+  },
+  {
+   "id": "mm2_dev_003",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 607369,
+   "gap0": 0.0611,
+   "dyz": [
+    -0.0089,
+    -0.005
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.2636,
+      "t0": 4.6693,
+      "freq": 0.3412
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_004",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 419405,
+   "gap0": 0.0752,
+   "dyz": [
+    -0.0051,
+    0.0014
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.4357,
+      "t0": 7.7387,
+      "dur": 0.9699
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_005",
+   "family": "payload",
+   "path": "circle",
+   "seed": 179867,
+   "gap0": 0.0771,
+   "dyz": [
+    0.0043,
+    -0.002
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0623,
+     "pos_hand_m": [
+      0.0,
+      -0.0408,
+      -0.0403
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_006",
+   "family": "contact",
+   "path": "line",
+   "seed": 644906,
+   "gap0": 0.0528,
+   "dyz": [
+    -0.0082,
+    -0.0057
+   ],
+   "mismatch": {
+    "k_scale": 1.2991,
+    "c_scale": 0.7688,
+    "mu_scale": 1.3526
+   }
+  },
+  {
+   "id": "mm2_dev_007",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 982624,
+   "gap0": 0.079,
+   "dyz": [
+    -0.0008,
+    0.0055
+   ],
+   "mismatch": {
+    "kf_scale": 0.907,
+    "motor_tau_scale": 1.1512
+   }
+  },
+  {
+   "id": "mm2_dev_008",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 424396,
+   "gap0": 0.0514,
+   "dyz": [
+    0.0082,
+    -0.0069
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.1051,
+      "t0": 2.2459,
+      "freq": 0.2404
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_009",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 886251,
+   "gap0": 0.0735,
+   "dyz": [
+    0.0032,
+    0.003
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.3584,
+      "t0": 7.9637,
+      "dur": 1.4511
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_010",
+   "family": "payload",
+   "path": "circle",
+   "seed": 879854,
+   "gap0": 0.0724,
+   "dyz": [
+    -0.0028,
+    0.0085
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0897,
+     "pos_hand_m": [
+      0.0,
+      0.0492,
+      -0.0509
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_011",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 321572,
+   "gap0": 0.0643,
+   "dyz": [
+    0.0002,
+    0.0008
+   ],
+   "mismatch": {
+    "k_scale": 0.6918,
+    "c_scale": 1.8216,
+    "mu_scale": 1.4066
+   }
+  },
+  {
+   "id": "mm2_dev_012",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 292291,
+   "gap0": 0.0722,
+   "dyz": [
+    -0.0077,
+    -0.0024
+   ],
+   "mismatch": {
+    "kf_scale": 1.0339,
+    "motor_tau_scale": 1.0257
+   }
+  },
+  {
+   "id": "mm2_dev_013",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 762554,
+   "gap0": 0.0687,
+   "dyz": [
+    -0.0027,
+    -0.0024
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 2,
+      "amp": -0.1368,
+      "t0": 5.9724,
+      "freq": 0.3813
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_014",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 843441,
+   "gap0": 0.0734,
+   "dyz": [
+    -0.0023,
+    -0.0069
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 1,
+      "amp": 0.3215,
+      "t0": 7.8069,
+      "dur": 0.5878
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_015",
+   "family": "payload",
+   "path": "circle",
+   "seed": 856302,
+   "gap0": 0.0516,
+   "dyz": [
+    0.008,
+    -0.0025
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0801,
+     "pos_hand_m": [
+      0.0,
+      0.0088,
+      -0.0424
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_016",
+   "family": "contact",
+   "path": "circle",
+   "seed": 541138,
+   "gap0": 0.051,
+   "dyz": [
+    0.0031,
+    -0.008
+   ],
+   "mismatch": {
+    "k_scale": 0.8348,
+    "c_scale": 1.9384,
+    "mu_scale": 1.0638
+   }
+  },
+  {
+   "id": "mm2_dev_017",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 792462,
+   "gap0": 0.0707,
+   "dyz": [
+    -0.0046,
+    -0.0026
+   ],
+   "mismatch": {
+    "kf_scale": 0.9615,
+    "motor_tau_scale": 1.1867
+   }
+  },
+  {
+   "id": "mm2_dev_018",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 386560,
+   "gap0": 0.0614,
+   "dyz": [
+    0.0099,
+    0.0028
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.1578,
+      "t0": 2.0907,
+      "freq": 0.4728
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_019",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 79004,
+   "gap0": 0.0794,
+   "dyz": [
+    -0.0004,
+    0.0019
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 0,
+      "amp": -0.4485,
+      "t0": 8.1653,
+      "dur": 0.7967
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_020",
+   "family": "payload",
+   "path": "line",
+   "seed": 90248,
+   "gap0": 0.0607,
+   "dyz": [
+    0.0034,
+    0.0054
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0373,
+     "pos_hand_m": [
+      0.0,
+      0.0429,
+      -0.0299
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_021",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 164422,
+   "gap0": 0.0559,
+   "dyz": [
+    -0.0071,
+    0.0047
+   ],
+   "mismatch": {
+    "k_scale": 1.539,
+    "c_scale": 1.0201,
+    "mu_scale": 0.65
+   }
+  },
+  {
+   "id": "mm2_dev_022",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 361947,
+   "gap0": 0.0751,
+   "dyz": [
+    0.0065,
+    -0.0053
+   ],
+   "mismatch": {
+    "kf_scale": 0.931,
+    "motor_tau_scale": 1.0468
+   }
+  },
+  {
+   "id": "mm2_dev_023",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 650497,
+   "gap0": 0.0755,
+   "dyz": [
+    -0.0007,
+    -0.0055
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.1445,
+      "t0": 4.8156,
+      "freq": 0.4916
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_024",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 296753,
+   "gap0": 0.0571,
+   "dyz": [
+    0.0062,
+    -0.0027
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.2461,
+      "t0": 7.7418,
+      "dur": 1.3349
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_025",
+   "family": "payload",
+   "path": "line",
+   "seed": 856292,
+   "gap0": 0.0735,
+   "dyz": [
+    -0.0084,
+    0.0068
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.08,
+     "pos_hand_m": [
+      0.0,
+      -0.0412,
+      -0.0583
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_026",
+   "family": "contact",
+   "path": "line",
+   "seed": 225960,
+   "gap0": 0.0554,
+   "dyz": [
+    0.0029,
+    -0.0006
+   ],
+   "mismatch": {
+    "k_scale": 1.1731,
+    "c_scale": 0.9278,
+    "mu_scale": 1.9676
+   }
+  },
+  {
+   "id": "mm2_dev_027",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 456143,
+   "gap0": 0.0699,
+   "dyz": [
+    0.0006,
+    0.0098
+   ],
+   "mismatch": {
+    "kf_scale": 1.091,
+    "motor_tau_scale": 1.0357
+   }
+  },
+  {
+   "id": "mm2_dev_028",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 669667,
+   "gap0": 0.0607,
+   "dyz": [
+    -0.0066,
+    0.0036
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.1952,
+      "t0": 5.6704,
+      "freq": 0.2735
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_029",
+   "family": "disturbance_sudden",
+   "path": "line",
+   "seed": 207615,
+   "gap0": 0.0787,
+   "dyz": [
+    0.0084,
+    0.0002
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.306,
+      "t0": 7.057,
+      "dur": 0.8748
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_030",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 216660,
+   "gap0": 0.0652,
+   "dyz": [
+    0.0061,
+    -0.0068
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0814,
+     "pos_hand_m": [
+      0.0,
+      0.009,
+      -0.0205
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_031",
+   "family": "contact",
+   "path": "line",
+   "seed": 225954,
+   "gap0": 0.064,
+   "dyz": [
+    -0.0046,
+    0.0047
+   ],
+   "mismatch": {
+    "k_scale": 0.6685,
+    "c_scale": 1.597,
+    "mu_scale": 1.7516
+   }
+  },
+  {
+   "id": "mm2_dev_032",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 283616,
+   "gap0": 0.0608,
+   "dyz": [
+    -0.0031,
+    0.0075
+   ],
+   "mismatch": {
+    "kf_scale": 0.9312,
+    "motor_tau_scale": 1.34
+   }
+  },
+  {
+   "id": "mm2_dev_033",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 851284,
+   "gap0": 0.0511,
+   "dyz": [
+    0.0062,
+    -0.0087
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": 0.2036,
+      "t0": 5.5432,
+      "freq": 0.4023
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_034",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 781775,
+   "gap0": 0.0704,
+   "dyz": [
+    -0.0033,
+    0.0087
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.4047,
+      "t0": 7.2165,
+      "dur": 0.6793
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_035",
+   "family": "payload",
+   "path": "circle",
+   "seed": 669280,
+   "gap0": 0.065,
+   "dyz": [
+    -0.0089,
+    -0.0019
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0676,
+     "pos_hand_m": [
+      0.0,
+      -0.0221,
+      -0.0438
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_036",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 962452,
+   "gap0": 0.0557,
+   "dyz": [
+    -0.0038,
+    -0.0045
+   ],
+   "mismatch": {
+    "k_scale": 0.8489,
+    "c_scale": 0.5559,
+    "mu_scale": 1.9351
+   }
+  },
+  {
+   "id": "mm2_dev_037",
+   "family": "propulsion",
+   "path": "circle",
+   "seed": 687368,
+   "gap0": 0.0598,
+   "dyz": [
+    0.0076,
+    -0.0096
+   ],
+   "mismatch": {
+    "kf_scale": 0.9212,
+    "motor_tau_scale": 0.7131
+   }
+  },
+  {
+   "id": "mm2_dev_038",
+   "family": "disturbance_slow",
+   "path": "line",
+   "seed": 725544,
+   "gap0": 0.0501,
+   "dyz": [
+    0.0022,
+    0.0044
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 0,
+      "amp": -0.2856,
+      "t0": 5.0226,
+      "freq": 0.4964
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_039",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 316957,
+   "gap0": 0.0657,
+   "dyz": [
+    -0.0089,
+    -0.0076
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.2408,
+      "t0": 8.2749,
+      "dur": 0.5695
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_040",
+   "family": "payload",
+   "path": "circle",
+   "seed": 158672,
+   "gap0": 0.0609,
+   "dyz": [
+    -0.0023,
+    -0.0084
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0803,
+     "pos_hand_m": [
+      0.0,
+      0.0264,
+      -0.0472
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_041",
+   "family": "contact",
+   "path": "circle",
+   "seed": 173292,
+   "gap0": 0.0708,
+   "dyz": [
+    -0.0074,
+    0.0023
+   ],
+   "mismatch": {
+    "k_scale": 0.9421,
+    "c_scale": 1.5507,
+    "mu_scale": 1.4533
+   }
+  },
+  {
+   "id": "mm2_dev_042",
+   "family": "propulsion",
+   "path": "line",
+   "seed": 480424,
+   "gap0": 0.0584,
+   "dyz": [
+    -0.0022,
+    -0.0041
+   ],
+   "mismatch": {
+    "kf_scale": 1.0518,
+    "motor_tau_scale": 1.2534
+   }
+  },
+  {
+   "id": "mm2_dev_043",
+   "family": "disturbance_slow",
+   "path": "circle",
+   "seed": 233769,
+   "gap0": 0.0571,
+   "dyz": [
+    -0.0002,
+    0.0051
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": 0.1031,
+      "t0": 2.3504,
+      "freq": 0.3153
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_044",
+   "family": "disturbance_sudden",
+   "path": "rounded_triangle",
+   "seed": 90923,
+   "gap0": 0.0628,
+   "dyz": [
+    0.0025,
+    0.0013
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": -0.3433,
+      "t0": 7.8633,
+      "dur": 0.958
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_045",
+   "family": "payload",
+   "path": "rounded_triangle",
+   "seed": 547249,
+   "gap0": 0.059,
+   "dyz": [
+    0.0095,
+    -0.0006
+   ],
+   "mismatch": {
+    "payload": {
+     "kg": 0.0634,
+     "pos_hand_m": [
+      0.0,
+      0.0212,
+      -0.0409
+     ]
+    }
+   }
+  },
+  {
+   "id": "mm2_dev_046",
+   "family": "contact",
+   "path": "line",
+   "seed": 334694,
+   "gap0": 0.0669,
+   "dyz": [
+    -0.0083,
+    0.0086
+   ],
+   "mismatch": {
+    "k_scale": 0.9113,
+    "c_scale": 1.9006,
+    "mu_scale": 1.2779
+   }
+  },
+  {
+   "id": "mm2_dev_047",
+   "family": "propulsion",
+   "path": "rounded_triangle",
+   "seed": 335145,
+   "gap0": 0.0652,
+   "dyz": [
+    -0.0058,
+    0.0099
+   ],
+   "mismatch": {
+    "kf_scale": 1.0269,
+    "motor_tau_scale": 1.0154
+   }
+  },
+  {
+   "id": "mm2_dev_048",
+   "family": "disturbance_slow",
+   "path": "rounded_triangle",
+   "seed": 600946,
+   "gap0": 0.0667,
+   "dyz": [
+    -0.0019,
+    -0.006
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "sine",
+      "axis": 1,
+      "amp": -0.2623,
+      "t0": 2.6461,
+      "freq": 0.3389
+     }
+    ]
+   }
+  },
+  {
+   "id": "mm2_dev_049",
+   "family": "disturbance_sudden",
+   "path": "circle",
+   "seed": 573888,
+   "gap0": 0.0633,
+   "dyz": [
+    -0.002,
+    -0.0093
+   ],
+   "mismatch": {
+    "disturbance": [
+     {
+      "kind": "step",
+      "axis": 2,
+      "amp": 0.2222,
+      "t0": 7.8655,
+      "dur": 0.5843
+     }
+    ]
+   }
+  }
+ ]
+}

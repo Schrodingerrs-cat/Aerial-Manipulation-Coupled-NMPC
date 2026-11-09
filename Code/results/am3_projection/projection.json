@@ -1,0 +1,92 @@
+{
+ "run": "verify1027_N_line",
+ "n_states": 40,
+ "draws": 6,
+ "D_MAX": [
+  0.5,
+  0.1
+ ],
+ "metric": "kinetic (M^-1) norm of the generalised-force residual",
+ "families": {
+  "payload": {
+   "n": 240,
+   "resid_unbounded_med": 0.9826546894616583,
+   "resid_bounded_med": 0.9826546894616583,
+   "resid_bounded_p90": 0.989466075881495,
+   "dtau_norm_med": 0.9451705163519868,
+   "block_share": {
+    "base_force": 0.6426982191789027,
+    "base_moment": 0.16735508185200154,
+    "joint_torque": 0.18994669896909588
+   },
+   "channel_saturation_med": [
+    0.1629926248656189,
+    0.013864833154466898
+   ]
+  },
+  "contact": {
+   "n": 240,
+   "resid_unbounded_med": 0.2685074308700538,
+   "resid_bounded_med": 0.2685074308700538,
+   "resid_bounded_p90": 0.6747701243184909,
+   "dtau_norm_med": 0.26999157620154496,
+   "block_share": {
+    "base_force": 0.7637562286046364,
+    "base_moment": 0.14371951415955173,
+    "joint_torque": 0.09252425723581185
+   },
+   "channel_saturation_med": [
+    0.24084812097807007,
+    0.0015480813146753632
+   ]
+  },
+  "propulsion": {
+   "n": 240,
+   "resid_unbounded_med": 0.7586142118711745,
+   "resid_bounded_med": 0.7586142118711745,
+   "resid_bounded_p90": 0.7655087496961792,
+   "dtau_norm_med": 0.6355724038239452,
+   "block_share": {
+    "base_force": 0.9645873299846481,
+    "base_moment": 0.035108868501015925,
+    "joint_torque": 0.0003038015143358566
+   },
+   "channel_saturation_med": [
+    0.015116142323191254,
+    0.2135737366233746
+   ]
+  },
+  "disturbance_slow": {
+   "n": 240,
+   "resid_unbounded_med": 0.9999926758877872,
+   "resid_bounded_med": 0.9999926758877872,
+   "resid_bounded_p90": 0.9999985605443674,
+   "dtau_norm_med": 0.1628643137340044,
+   "block_share": {
+    "base_force": 0.998144041485166,
+    "base_moment": 0.0008778506342229307,
+    "joint_torque": 0.0009781078806111075
+   },
+   "channel_saturation_med": [
+    0.0002024368853262295,
+    0.0002960462020240515
+   ]
+  },
+  "disturbance_sudden": {
+   "n": 240,
+   "resid_unbounded_med": 0.9999934505580346,
+   "resid_bounded_med": 0.9999934505580346,
+   "resid_bounded_p90": 0.9999990777855183,
+   "dtau_norm_med": 0.3657439739221747,
+   "block_share": {
+    "base_force": 0.9987844282219709,
+    "base_moment": 0.0005951420013628137,
+    "joint_torque": 0.0006204297766662159
+   },
+   "channel_saturation_med": [
+    0.00044539351741865483,
+    0.000661633392295357
+   ]
+  }
+ }
+}

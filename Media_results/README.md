@@ -81,3 +81,98 @@ Conclusion: in nominal conditions with a predictor that matches the plant up to 
 Every success claim must be supported by actual simulation behavior, numerical results, and clearly traceable evidence. Every significant failure must be documented with the same level of integrity.
 
 **No undocumented milestones. No unexplained failures. No unsupported success claims.**
+
+## Moving-base capability test: trajectory flight with simultaneous arm motion (2026-10-27)
+
+**Outside the 25 Oct plan**, which fixes the base-position reference. This is a capability demonstration, not gate evidence: no frozen criterion covers it and it was not part of freeze v1.
+
+Method: `Code/scripts/am3_traj_run.py TAG [--ctrls N,B] [--scale S] [--segment T]`, new module `Code/ocrl/am3_traj.py` (`TrajTask` puts the base on its own min-jerk waypoint trajectory and shifts the pad reference by the base displacement, so base and arm move on one shared clock). Rendered live from the plant as in the B/N comparisons; overlay reports base error against the **moving** reference. Green = commanded base path, orange = actual base path, blue = actual pad path.
+
+Enabling change (freeze v2): a base-velocity reference `vB(3)` was appended to the NMPC parameter vector (`am3_nmpc.py` NP 21 -> 24, residual `x[7:10] - p[21:24]`), and `am3_ctrl_n.py` / `am3_ctrl_b.py` now read `ref.get("pB", BASE)` / `ref.get("vB", 0.0)`. Both default to the previous values, so existing tasks are unchanged. **Equivalence evidence: re-running N and B on `line` after the change reproduced the pre-change run bit-for-bit** (`results/am3_runs/parity_v2_{N,B}_line`; max abs difference 0.0 on the logged state, command, force and pad arrays; every summary metric identical to 12 significant figures).
+
+| Entry | Objective | Result (N) | Evidence | Status |
+|---|---|---|---|---|
+| `AM3_TRAJ_moving_base_2026-10-27` | Base tracks a y-z diamond (+-0.15 m horizontal, 0.08 m vertical, 2 s segments, peak reference speed 0.146 m/s, 0.31 m travelled) while the arm simultaneously runs its own +-6 cm pad loop; free flight, no wall | completed; base vs moving reference RMS 0.175 mm (max 0.488); pad vs reference RMS 0.112 mm (max 0.219); tilt max 1.67 deg; rotor force 2.49-5.00 N of the 0.1-10 N range; 0 solver failures, 0 fallbacks; cycle median 9.2 ms, max 10.3 ms | `trajectory_demo.mp4` (front + isometric), `raw_N_traj_*.mp4`, `trajectory.png`, `summary.json` | successful |
+
+Conclusion: under simultaneous base translation and arm motion the coupled NMPC holds the moving base reference to sub-millimetre error with ample actuator margin and no solver failure. Not established: the same under wall contact (the contact task still uses a fixed base reference), under model mismatch, or for the baseline B (B was given the same moving-reference interface but has not been run on this task).
+
+### Continuous figure-eight: 3 lemniscate laps + 10 arm circles over 30 s (2026-10-27)
+
+Same capability-test caveat as the entry above: **outside the 25 Oct plan, not gate evidence.** Command: `am3_traj_run.py TAG --mode loop --duration 30 --base-laps 3 --arm-laps 10`. `LoopTask` (`Code/ocrl/am3_traj.py`) drives both motions analytically off one clock: the base follows a Gerono lemniscate `y = A sin(th)`, `z = C sin(2 th)` while the pad circles the moving base. A single smoothstep rate envelope ramps 0 -> 1 -> 0 so the motion starts and ends at rest while completing exactly the requested laps; the same envelope scales the arm-circle radius, so the pad spirals out of and back into the base-relative origin with no velocity step at either end.
+
+| Entry | Objective | Result (N) | Evidence | Status |
+|---|---|---|---|---|
+| `AM3_LOOP_figure8_2026-10-27` | 30 s of continuous periodic motion: base flies 3 figure-eight laps (+-0.15 m y, +-0.05 m z, peak reference speed 0.124 m/s, 0.32 m span) while the arm runs 10 circles of 5 cm radius about the moving base | completed; base vs moving reference RMS 0.128 mm (max 0.272); pad vs reference RMS 0.109 mm (max 0.249); tilt max 0.65 deg; joint rates <= 0.55 of the 3.0 rad/s limit; rotor force 2.63-4.76 N of the 0.1-10 N range; 0 solver failures, 0 fallbacks; cycle median 9.3 ms, max 10.7 ms, **no cycle over the 20 ms period in 1500 cycles** | `figure8_demo.mp4` (front + isometric), `raw_N_traj_*.mp4`, `paths.png`, `trajectory.png`, `summary.json` | successful |
+
+Conclusion: sustained simultaneous base and arm motion is tracked to about 0.13 mm with every constraint far from binding. Tracking is *better* than the waypoint diamond above (0.128 vs 0.175 mm RMS, tilt 0.65 vs 1.67 deg) because the lemniscate is smooth and periodic whereas the diamond restarts from rest at each waypoint - the limit here is reference smoothness, not speed. Not established: behaviour near the actuator limits (this run uses roughly half the thrust envelope and a fifth of the joint-rate limit), under wall contact, or under model mismatch.
+
+### Matched B vs N under base and/or arm motion, three isolations (2026-10-27)
+
+Same capability-test caveat: **outside the 25 Oct plan, not gate evidence.** Each pair runs B and N on the identical plant, reference, initial state, seed and sensor noise; both panels are live closed-loop renders at 1.0x simulation time; an aborted run holds its last frame under a red banner giving the abort time and cause (never looped, never hidden). Columns are controllers (B left, N right), rows are cameras (isometric, front). Commands are in each `compose_commands.txt`.
+
+**Failsafe correction made first.** The shared failsafe measured base error against the *fixed* `BASE` constant, so a drone legitimately flying a large trajectory tripped the 250 mm abort while perfectly on reference (observed: both controllers "losing control" at 3.7 s with tilt 0-1 deg and N tracking at 0.139 mm). `am3_episode.py` now measures against the current base reference, `ref.get("pB", BASE)`. Defaults to the old behaviour for every existing task; **re-running N and B on `line` reproduced the previous runs bit-for-bit** (`results/am3_runs/parity_v3_{N,B}_line`, max abs diff 0.0).
+
+| Entry | What it isolates | N | B | Evidence |
+|---|---|---|---|---|
+| `AM3_LOOP_BvsN_hover_armonly_2026-10-27` | **Arm reaction alone**: base holds its fixed hover reference, only the arm moves (10 circles, 5 cm radius, 30 s) | completed; base RMS 0.127 mm, tilt max 0.32 deg | **loss of control at 13.55 s** (tilt 40 deg); base RMS 36.6 mm, pad RMS 53.3 mm | `compare_loop.mp4`, `paths.png`, `trajectory.png`, `summary.json` |
+| `AM3_LOOP_BvsN_figure8_2026-10-27` | **Base and arm moving together**: 3 lemniscate laps (+-0.15 m) + 10 arm circles, 30 s | completed; base RMS 0.128 mm, tilt max 0.65 deg | **loss of control at 15.05 s** (tilt 41 deg); base RMS 58.0 mm, pad RMS 74.1 mm | as above |
+| `AM3_LOOP_BvsN_bigfig8_armhold_2026-10-27` | **Standing COM offset while manoeuvring**: arm ramps out to a fixed 8 cm offset pose and HOLDS it (`--arm-laps 0`) while the base flies 2 large lemniscate laps (+-0.345 m y, +-0.115 m z), 30 s | completed; base RMS 0.129 mm, tilt max 0.66 deg | **loss of control at 11.94 s** (tilt 41 deg); base RMS 34.5 mm, pad RMS 54.0 mm | as above |
+
+Conclusion: in free flight the coupling-neglecting baseline does not merely track worse than it does on the wall task - it **diverges** in all three isolations, while the coupled NMPC holds about 0.13 mm throughout. The hover-with-arm-only case is the sharpest: the drone is asked only to hold station, and B still tips to 40 deg purely from the arm's reaction, which is the term B omits by construction.
+
+Limits of this claim: B runs at 200 Hz with gains searched for the **fixed-hover wall-contact** task (`Findings/Codebase/controllers_v3.md`); it was given the moving-reference interface but was NOT retuned for free-flight manoeuvring. The honest statement is "B as tuned for the original task diverges here", not "no decoupled controller can do this". N meanwhile uses roughly half the thrust envelope and a fifth of the joint-rate limit, so neither controller is near an actuation limit when B fails - the failure is a modelling failure, not saturation.
+
+### Free-flight Lissajous, no wall, arm hanging: coupled vs decoupled (2026-10-27)
+
+Same capability-test caveat: **outside the 25 Oct plan, not gate evidence.** Presentation note with the full explanation: `AM3_FREE_lissajous_BvsN_2026-10-27/NOTES.md`.
+
+Command: `am3_traj_run.py TAG --mode loop --shape lissajous --duration 30 --base-laps 2 --arm-laps 0 --r-arm 0.0 --scale 1.5 --no-wall --arm-down --ctrls B,N`.
+
+New options behind it, all in `Code/ocrl/am3_traj.py` / `Code/scripts/am3_traj_run.py` (no frozen file touched by these three):
+* `--shape {lemniscate,lissajous,sine}`: the base follows `y = A sin(n_y th)`, `z = C sin(n_z th + phi)` with `(n_y, n_z, phi)` = (1,2,0) / (2,3,pi/2) / (1,3,0). The figure is translated so it starts at the hover reference, so there is no step at t = 0.
+* `--arm-down`: start from a hover equilibrium with the arm hanging instead of reaching at the wall, `q = (0, -10, -35) deg` (inside the operational ranges, so the NMPC's soft joint-range constraints are satisfied at the start pose). The pad sits 400 mm below and 154 mm forward of the base origin.
+* `--no-wall`: the wall geom is removed from collision (`contype`/`conaffinity` = 0) and from the render (alpha 0) after the plant is built, so contact calibration in `AMPlant3.__init__` is unaffected.
+* `--arm-laps 0 --r-arm 0.0`: the arm is given no commanded motion at all - it holds its hanging pose while the base manoeuvres, so the only thing acting on the airframe is the arm's own reaction.
+
+| Entry | Objective | N | B | Evidence |
+|---|---|---|---|---|
+| `AM3_FREE_lissajous_BvsN_2026-10-27` | Open-air flight, no wall, arm hanging and uncommanded: base flies 2 laps of a 2:3 Lissajous (+-0.225 m y, 0.15 m z span, peak reference speed 0.21 m/s) over 30 s | completed; base vs moving reference RMS 0.126 mm, tilt max 1.21 deg | **loss of control at 4.82 s** (tilt 40 deg); base RMS 35.6 mm, pad RMS 80.3 mm | `compare_loop.mp4`, `paths.png`, `trajectory.png`, `summary.json`, `NOTES.md` |
+
+Conclusion: with the arm merely hanging - never commanded to move - the decoupled baseline diverges in under five seconds, faster than in any other test so far, because a 0.47 kg arm suspended 400 mm below the airframe is a much harsher reaction load than the tucked contact posture. The coupled NMPC holds 0.126 mm throughout. Same caveats as the entry above: B was tuned for the fixed-hover wall task and never retuned for free flight, and neither controller is near an actuator limit when B fails.
+
+## Correction comparison under model mismatch: nominal NMPC vs classical EKF correction (2026-10-30)
+
+First matched comparison of two **correction** controllers on the same mismatched plant. This is on-plan work (Plan s8), not a capability demo. `am3_compare.py` now takes `--scenario <id>`, which resolves the path, seed, initial offsets and plant mismatch from the `am3_domain_mm*` lists, so N/D/L run on an identical mismatched plant.
+
+Command: `am3_compare.py AM3_NvsD_propulsion_mm007_2026-10-30 circle --ctrls N,D --scenario mm_dev_007`
+
+Scenario `mm_dev_007`: **propulsion** family, circle path, `kf_scale` 1.0692 (thrust coefficient 6.9 % higher than the controller believes), `motor_tau_scale` 1.1115 (motor lag 11 % slower).
+
+Interface validated first: **controller Z (NMPC + zero correction) reproduces N bit-for-bit** (`results/am3_runs/zparity_Z` vs `verify1027_N_line`, max abs diff 0.0 on state, command, force and pad arrays). The correction interface therefore contributes nothing by itself, and any N/D/L difference is attributable to the corrector alone. Solver parity re-confirmed the same day (`results/am3_predictor/solver_parity.json`): IPOPT and acados agree to ~1e-9 relative cost and 1.4e-4 on the first input across hover, position, approach and trace.
+
+| | N (nominal) | D (EKF correction) |
+|---|---|---|
+| completed | **no** (ran to the 40 s cap) | **yes**, at 21.6 s |
+| contact-valid fraction | 0.841 | **1.000** |
+| contact losses | **24** | **0** |
+| mean normal force in trace | **0.292 N** | 0.511 N |
+| completion delay | 22.3 s | 0.24 s |
+| base error max | 6.4 mm | 5.0 mm |
+| trace tracking RMS | 1.03 mm | 1.82 mm |
+
+What the run shows: with the thrust coefficient wrong, N presses at about **half** the intended force (0.29 N against the 0.6 N the 1 mm indentation reference implies). It keeps crossing the contact-loss threshold, enters the recovery loop 24 times, and never finishes the circle inside the episode cap - visible in the plot after t = 18 s as a regular oscillation in force, tilt and pad error. D's EKF estimates the deficit, presses at 0.51 N, holds contact for the whole trace and finishes on time.
+
+Note the trade: D's *tracking* RMS is worse (1.82 vs 1.03 mm). N's tracking number is computed only over the samples where it was in contact, and it spends 16 % of the trace detached, so the two numbers are not measuring the same thing. Completion and contact fraction are the meaningful comparison here.
+
+Evidence: `compare_circle.mp4` (N left, D right; overview and contact close-up), `compare_circle.png`, `raw_{N,D}_*.mp4`, `summary.json`.
+
+**Scope of this result: one scenario, one family.** It demonstrates that the correction pipeline works end to end and that a classical correction can rescue a propulsion mismatch. It is not evidence about any other family - per-family statistics on the larger `mm2_*` lists are in progress, and `Findings/RL/01_where_the_model_fails.md` records that D changes nothing outside the propulsion family on the v1 lists.
+
+## RL_R4_{big_fig8,lissa3d,circle_xy}_2026-10-31
+Side-by-side (zero action | PD+feedforward | RL policy), R4_warm_s1 @1M steps, `--env track4`, start seed 101. Green = reference, orange = actual path. This is one start that survives; at n=20 the policy lost 1/20 starts (seed 111), see Findings/RL/03_endtoend_rl_design.md.
+
+## RL_R5_{big_fig8,lissa3d,circle_xy}_2026-11-04  (rendered 2026-11-04 13:40 EST)
+Trajectory + MOVING ARM, R5_turing_s0 final (15M steps), `--env track5`, start seed 101, free flight. Each folder: compare.mp4 (zero | PD+ff | RL side by side) plus zero.mp4, pd.mp4, rl.mp4 full-size. Green = reference, orange = actual base path; header shows base error, tilt and arm joint error. RMS error after 2 s: RL 2.4-2.6 mm vs PD+ff 394-470 mm (zero action crashes). One start per trajectory; n=20 statistics in Findings/RL/03_endtoend_rl_design.md.
+
+## RL_R6_{big_fig8,lissa3d,circle_xy}_2026-11-09  (rendered 2026-11-09 08:25 EST)
+Trajectory + moving arm (10-50% of range), posture-aware inner loop, R6_turing_s1 final (15M steps), `--env track6`, start seed 1000 (first held-out seed, chosen before looking at it), free flight. Each folder: compare.mp4 (zero | PD+ff | RL) plus zero.mp4, pd.mp4, rl.mp4. RMS after 2 s: RL 2.7 / 2.9 / 2.7 mm, PD+ff 17.3 / 17.4 / 17.3 mm (big_fig8 / lissa3d / circle_xy). This is a typical start, not the worst: seed 1008 gives 83 mm on big_fig8, and about 1% of starts crash early (Findings/RL/03).

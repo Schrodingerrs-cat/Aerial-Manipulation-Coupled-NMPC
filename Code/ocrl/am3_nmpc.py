@@ -8,9 +8,9 @@ from ocrl.am3_pred import AMPred3, C, quat2R
 HERE = os.path.dirname(os.path.abspath(__file__)); GEN_DIR = os.path.join(HERE, "..", "results", "acados_codegen")
 GROUPS = ("tp", "tv", "B", "vB", "att", "w", "qd", "du")
 SIG = dict(tp=(1e-3, 2e-3, 2e-3), tv=5e-3, B=5e-3, vB=0.02, att=0.05, w=0.2, qd=0.5)
-PARAM_NAMES = ["pad(3)", "vpad(3)", "pB(3)", "F_cap", "vc_max", "d(2)", "sqrt_w(8)"]
-NP = 3 + 3 + 3 + 1 + 1 + 2 + 8
-I_P = dict(pad=slice(0, 3), vpad=slice(3, 6), pB=slice(6, 9), Fcap=9, vcmax=10, d=slice(11, 13), w=slice(13, 21))
+PARAM_NAMES = ["pad(3)", "vpad(3)", "pB(3)", "F_cap", "vc_max", "d(2)", "sqrt_w(8)", "vB(3)"]
+NP = 3 + 3 + 3 + 1 + 1 + 2 + 8 + 3                 # vB(3): base-velocity reference, zero for the fixed-hover task (freeze v2)
+I_P = dict(pad=slice(0, 3), vpad=slice(3, 6), pB=slice(6, 9), Fcap=9, vcmax=10, d=slice(11, 13), w=slice(13, 21), vB=slice(21, 24))
 OP = C["joint_limits_deg"]["operational"]; QLO, QHI = np.radians([OP[k][0] for k in ("q1", "q2", "q3")]), np.radians([OP[k][1] for k in ("q1", "q2", "q3")])
 LIM = dict(tilt_deg=15.0, qd_max=3.0, z_clear=-0.045, sig_tilt=0.1, sig_q=0.05, sig_qd=0.5, sig_F=0.1, sig_vc=5e-3, sig_z=5e-3)
 NH = 1 + 6 + 6 + 1 + 1 + 2                       # tilt, q range (lo/hi x3), qd (+/- x3), force cap, closing speed, elbow/wrist height below the rotor plane
@@ -37,7 +37,7 @@ class Formulation:
     def _residual(self, x, u, up, p):
         pad_r, vpad_r, pB, sw = p[0:3], p[3:6], p[6:9], p[13:21]; S = dict(zip(GROUPS, [sw[i] for i in range(8)])); vc, Fn, vT, pT = self._outputs(x); R = quat2R(x[3:7])
         att = ca.vertcat(R[2, 1] - R[1, 2], R[0, 2] - R[2, 0], R[1, 0] - R[0, 1]) / 2          # rotation vector (small angle) of the base from level; yaw included (weak weight), no pointing reference
-        rs = ca.vertcat(S["tp"] * (pT - pad_r) / ca.DM(SIG["tp"]), S["tv"] * (vT - vpad_r) / SIG["tv"], S["B"] * (x[0:3] - pB) / SIG["B"], S["vB"] * x[7:10] / SIG["vB"], S["att"] * att / SIG["att"], S["w"] * x[10:13] / SIG["w"], S["qd"] * x[16:19] / SIG["qd"])
+        rs = ca.vertcat(S["tp"] * (pT - pad_r) / ca.DM(SIG["tp"]), S["tv"] * (vT - vpad_r) / SIG["tv"], S["B"] * (x[0:3] - pB) / SIG["B"], S["vB"] * (x[7:10] - p[21:24]) / SIG["vB"], S["att"] * att / SIG["att"], S["w"] * x[10:13] / SIG["w"], S["qd"] * x[16:19] / SIG["qd"])
         return ca.vertcat(rs, S["du"] * (u - up) / ca.DM(self.us))
     def _constraints(self, x, p):
         F_cap, vc_max = p[9], p[10]; vc, Fn, vT, pT = self._outputs(x); R33 = quat2R(x[3:7])[2, 2]; q, qd = x[13:16], x[16:19]; o3, o4, rp = self.pr.pts_f(x); Rm = quat2R(x[3:7])

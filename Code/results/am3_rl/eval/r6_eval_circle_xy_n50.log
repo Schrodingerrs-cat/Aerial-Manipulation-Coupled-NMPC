@@ -1,0 +1,9 @@
+
+=== circle_xy: 3D, 2 laps in 30 s, peak ref accel 0.11 m/s^2   (50 starts) ===
+policy                                survived  RMS err mm   median  max err mm  tilt max  roughness        bias x,y,z mm
+zero                                      0/50         nan      nan         nan      7.1°      0.000                     
+PD+ff expert                             50/50        18.3     17.5        44.2      9.1°      0.001        [0.3 0.1 0.8]
+R6_turing_s0/model_final.zip             49/50         3.4      2.4        15.1     18.7°      0.014     [ 0.  -0.1 -1.7]
+R6_turing_s1/model_final.zip             50/50         5.5      2.7        31.2     18.4°      0.011     [ 0.4 -1.  -1.8]
+
+written results/am3_rl/eval/r6_eval_circle_xy_n50.json

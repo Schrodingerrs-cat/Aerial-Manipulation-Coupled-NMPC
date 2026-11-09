@@ -40,7 +40,8 @@ class Episode:
             F, ft = pl.pad_force(); xm, Fm = self.sens.measure(x, F); gm = self.gap_meas(xm); task.advance(dt_c, Fm, gm) if k else None
             if task.failed: self.abort = (pl.d.time, task.failed); break
             tilt_m = np.degrees(2 * np.arcsin(min(1.0, np.hypot(xm[4], xm[5]))))
-            if tilt_m > 40 or np.linalg.norm(xm[0:3] - BASE) > 0.25: self.abort = (pl.d.time, f"loss of control (failsafe): tilt {tilt_m:.0f} deg, base error {np.linalg.norm(xm[0:3] - BASE) * 1e3:.0f} mm"); break          # same monitor for every controller
+            pref = np.asarray(task.ref().get("pB", BASE), float)          # failsafe is relative to the CURRENT base reference (equals BASE for the fixed-hover task)
+            if tilt_m > 40 or np.linalg.norm(xm[0:3] - pref) > 0.25: self.abort = (pl.d.time, f"loss of control (failsafe): tilt {tilt_m:.0f} deg, base error {np.linalg.norm(xm[0:3] - pref) * 1e3:.0f} mm"); break          # same monitor for every controller
             t0 = time.perf_counter(); missed = bool(self.miss(k)); info = {}
             if not missed: u_new, info = self.ctrl.compute(pl.d.time, xm, Fm, task); u_new = np.asarray(u_new, float)
             else: u_new = u_pend.copy()
@@ -55,5 +56,5 @@ class Episode:
             for _ in range(n_sub): pl.step(u_app)
             k += 1; tilt = np.degrees(np.arccos(np.clip(1 - 2 * (x[4] ** 2 + x[5] ** 2), -1, 1)))
             if task.phase == "done" and pl.d.time > task.t_done + 1.0: break
-            if tilt > 60 or np.linalg.norm(x[0:3] - BASE) > 0.4 or x[2] < 0.3: self.abort = (pl.d.time, f"divergence: tilt {tilt:.0f} deg, base error {np.linalg.norm(x[0:3] - BASE):.2f} m"); break
+            if tilt > 60 or np.linalg.norm(x[0:3] - pref) > 0.4 or x[2] < 0.3: self.abort = (pl.d.time, f"divergence: tilt {tilt:.0f} deg, base error {np.linalg.norm(x[0:3] - pref):.2f} m"); break
         self.wall_s = time.time() - t_wall0; return self

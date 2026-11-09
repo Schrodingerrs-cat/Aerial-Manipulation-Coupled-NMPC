@@ -1,0 +1,6407 @@
+{
+ "name": "mm2_train_contact",
+ "seed": 505,
+ "family": "contact",
+ "scenarios": [
+  {
+   "id": "mm2_train_contact_000",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 811025,
+   "gap0": 0.0711,
+   "dyz": [
+    -0.0097,
+    0.01
+   ],
+   "mismatch": {
+    "k_scale": 1.3793,
+    "c_scale": 1.2652,
+    "mu_scale": 0.6174
+   }
+  },
+  {
+   "id": "mm2_train_contact_001",
+   "family": "contact",
+   "path": "line",
+   "seed": 219188,
+   "gap0": 0.0742,
+   "dyz": [
+    0.0035,
+    0.0061
+   ],
+   "mismatch": {
+    "k_scale": 1.5748,
+    "c_scale": 1.3617,
+    "mu_scale": 0.8488
+   }
+  },
+  {
+   "id": "mm2_train_contact_002",
+   "family": "contact",
+   "path": "line",
+   "seed": 341102,
+   "gap0": 0.0754,
+   "dyz": [
+    0.0002,
+    0.0031
+   ],
+   "mismatch": {
+    "k_scale": 0.969,
+    "c_scale": 1.7218,
+    "mu_scale": 1.187
+   }
+  },
+  {
+   "id": "mm2_train_contact_003",
+   "family": "contact",
+   "path": "circle",
+   "seed": 387116,
+   "gap0": 0.0793,
+   "dyz": [
+    -0.0002,
+    -0.0019
+   ],
+   "mismatch": {
+    "k_scale": 1.4184,
+    "c_scale": 1.2784,
+    "mu_scale": 1.9252
+   }
+  },
+  {
+   "id": "mm2_train_contact_004",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 369540,
+   "gap0": 0.0526,
+   "dyz": [
+    0.0056,
+    0.0081
+   ],
+   "mismatch": {
+    "k_scale": 1.0315,
+    "c_scale": 1.6205,
+    "mu_scale": 1.5196
+   }
+  },
+  {
+   "id": "mm2_train_contact_005",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 171232,
+   "gap0": 0.0604,
+   "dyz": [
+    0.0008,
+    0.0049
+   ],
+   "mismatch": {
+    "k_scale": 1.0306,
+    "c_scale": 0.5847,
+    "mu_scale": 0.6327
+   }
+  },
+  {
+   "id": "mm2_train_contact_006",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 857214,
+   "gap0": 0.08,
+   "dyz": [
+    -0.0062,
+    0.0075
+   ],
+   "mismatch": {
+    "k_scale": 0.8657,
+    "c_scale": 1.6501,
+    "mu_scale": 1.7459
+   }
+  },
+  {
+   "id": "mm2_train_contact_007",
+   "family": "contact",
+   "path": "circle",
+   "seed": 127181,
+   "gap0": 0.061,
+   "dyz": [
+    0.0072,
+    0.0062
+   ],
+   "mismatch": {
+    "k_scale": 1.3361,
+    "c_scale": 1.0208,
+    "mu_scale": 1.6662
+   }
+  },
+  {
+   "id": "mm2_train_contact_008",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 625792,
+   "gap0": 0.0508,
+   "dyz": [
+    -0.0039,
+    -0.0061
+   ],
+   "mismatch": {
+    "k_scale": 1.394,
+    "c_scale": 1.1458,
+    "mu_scale": 1.4316
+   }
+  },
+  {
+   "id": "mm2_train_contact_009",
+   "family": "contact",
+   "path": "circle",
+   "seed": 576607,
+   "gap0": 0.0597,
+   "dyz": [
+    -0.0027,
+    0.006
+   ],
+   "mismatch": {
+    "k_scale": 0.6104,
+    "c_scale": 1.737,
+    "mu_scale": 1.754
+   }
+  },
+  {
+   "id": "mm2_train_contact_010",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 755105,
+   "gap0": 0.0779,
+   "dyz": [
+    0.0023,
+    -0.0029
+   ],
+   "mismatch": {
+    "k_scale": 0.9599,
+    "c_scale": 1.0306,
+    "mu_scale": 1.6997
+   }
+  },
+  {
+   "id": "mm2_train_contact_011",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 858222,
+   "gap0": 0.0621,
+   "dyz": [
+    -0.0098,
+    -0.0074
+   ],
+   "mismatch": {
+    "k_scale": 1.1917,
+    "c_scale": 1.9645,
+    "mu_scale": 1.5083
+   }
+  },
+  {
+   "id": "mm2_train_contact_012",
+   "family": "contact",
+   "path": "line",
+   "seed": 408320,
+   "gap0": 0.0602,
+   "dyz": [
+    -0.0097,
+    -0.0069
+   ],
+   "mismatch": {
+    "k_scale": 1.4736,
+    "c_scale": 0.9829,
+    "mu_scale": 1.6208
+   }
+  },
+  {
+   "id": "mm2_train_contact_013",
+   "family": "contact",
+   "path": "line",
+   "seed": 992828,
+   "gap0": 0.064,
+   "dyz": [
+    -0.0079,
+    0.0091
+   ],
+   "mismatch": {
+    "k_scale": 0.6336,
+    "c_scale": 1.3964,
+    "mu_scale": 0.7269
+   }
+  },
+  {
+   "id": "mm2_train_contact_014",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 653178,
+   "gap0": 0.0502,
+   "dyz": [
+    0.0019,
+    0.008
+   ],
+   "mismatch": {
+    "k_scale": 1.0161,
+    "c_scale": 1.3315,
+    "mu_scale": 0.6015
+   }
+  },
+  {
+   "id": "mm2_train_contact_015",
+   "family": "contact",
+   "path": "line",
+   "seed": 29058,
+   "gap0": 0.0762,
+   "dyz": [
+    0.0059,
+    -0.006
+   ],
+   "mismatch": {
+    "k_scale": 1.3229,
+    "c_scale": 1.421,
+    "mu_scale": 1.5841
+   }
+  },
+  {
+   "id": "mm2_train_contact_016",
+   "family": "contact",
+   "path": "line",
+   "seed": 215564,
+   "gap0": 0.0689,
+   "dyz": [
+    0.0071,
+    -0.0053
+   ],
+   "mismatch": {
+    "k_scale": 1.5713,
+    "c_scale": 1.4038,
+    "mu_scale": 1.2756
+   }
+  },
+  {
+   "id": "mm2_train_contact_017",
+   "family": "contact",
+   "path": "line",
+   "seed": 929936,
+   "gap0": 0.0524,
+   "dyz": [
+    -0.0021,
+    0.0039
+   ],
+   "mismatch": {
+    "k_scale": 0.8158,
+    "c_scale": 1.711,
+    "mu_scale": 1.8187
+   }
+  },
+  {
+   "id": "mm2_train_contact_018",
+   "family": "contact",
+   "path": "circle",
+   "seed": 572451,
+   "gap0": 0.0588,
+   "dyz": [
+    -0.0025,
+    -0.0098
+   ],
+   "mismatch": {
+    "k_scale": 1.2657,
+    "c_scale": 1.7449,
+    "mu_scale": 0.81
+   }
+  },
+  {
+   "id": "mm2_train_contact_019",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 549627,
+   "gap0": 0.0742,
+   "dyz": [
+    0.0088,
+    -0.0021
+   ],
+   "mismatch": {
+    "k_scale": 1.43,
+    "c_scale": 1.9512,
+    "mu_scale": 0.9361
+   }
+  },
+  {
+   "id": "mm2_train_contact_020",
+   "family": "contact",
+   "path": "circle",
+   "seed": 845809,
+   "gap0": 0.069,
+   "dyz": [
+    -0.004,
+    0.0013
+   ],
+   "mismatch": {
+    "k_scale": 1.5231,
+    "c_scale": 0.7233,
+    "mu_scale": 1.5613
+   }
+  },
+  {
+   "id": "mm2_train_contact_021",
+   "family": "contact",
+   "path": "circle",
+   "seed": 16023,
+   "gap0": 0.0589,
+   "dyz": [
+    0.0054,
+    0.0084
+   ],
+   "mismatch": {
+    "k_scale": 1.1049,
+    "c_scale": 1.598,
+    "mu_scale": 1.7339
+   }
+  },
+  {
+   "id": "mm2_train_contact_022",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 458710,
+   "gap0": 0.0637,
+   "dyz": [
+    0.0023,
+    0.0002
+   ],
+   "mismatch": {
+    "k_scale": 0.9316,
+    "c_scale": 1.9401,
+    "mu_scale": 0.6486
+   }
+  },
+  {
+   "id": "mm2_train_contact_023",
+   "family": "contact",
+   "path": "line",
+   "seed": 621603,
+   "gap0": 0.0734,
+   "dyz": [
+    0.0037,
+    -0.0019
+   ],
+   "mismatch": {
+    "k_scale": 1.0626,
+    "c_scale": 1.7106,
+    "mu_scale": 1.6927
+   }
+  },
+  {
+   "id": "mm2_train_contact_024",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 452461,
+   "gap0": 0.0535,
+   "dyz": [
+    -0.0021,
+    -0.0074
+   ],
+   "mismatch": {
+    "k_scale": 1.4586,
+    "c_scale": 1.3158,
+    "mu_scale": 1.8957
+   }
+  },
+  {
+   "id": "mm2_train_contact_025",
+   "family": "contact",
+   "path": "line",
+   "seed": 691759,
+   "gap0": 0.0685,
+   "dyz": [
+    -0.0033,
+    -0.0099
+   ],
+   "mismatch": {
+    "k_scale": 0.861,
+    "c_scale": 1.3994,
+    "mu_scale": 0.6586
+   }
+  },
+  {
+   "id": "mm2_train_contact_026",
+   "family": "contact",
+   "path": "line",
+   "seed": 618324,
+   "gap0": 0.0621,
+   "dyz": [
+    -0.0037,
+    -0.007
+   ],
+   "mismatch": {
+    "k_scale": 1.3099,
+    "c_scale": 1.2439,
+    "mu_scale": 1.1206
+   }
+  },
+  {
+   "id": "mm2_train_contact_027",
+   "family": "contact",
+   "path": "line",
+   "seed": 701869,
+   "gap0": 0.0566,
+   "dyz": [
+    0.0051,
+    -0.0012
+   ],
+   "mismatch": {
+    "k_scale": 1.0251,
+    "c_scale": 0.7407,
+    "mu_scale": 0.9823
+   }
+  },
+  {
+   "id": "mm2_train_contact_028",
+   "family": "contact",
+   "path": "circle",
+   "seed": 290284,
+   "gap0": 0.0526,
+   "dyz": [
+    0.0067,
+    -0.0066
+   ],
+   "mismatch": {
+    "k_scale": 1.438,
+    "c_scale": 0.7631,
+    "mu_scale": 1.3291
+   }
+  },
+  {
+   "id": "mm2_train_contact_029",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 870496,
+   "gap0": 0.0627,
+   "dyz": [
+    0.002,
+    0.0077
+   ],
+   "mismatch": {
+    "k_scale": 1.4203,
+    "c_scale": 1.2112,
+    "mu_scale": 1.5262
+   }
+  },
+  {
+   "id": "mm2_train_contact_030",
+   "family": "contact",
+   "path": "line",
+   "seed": 69990,
+   "gap0": 0.0614,
+   "dyz": [
+    -0.0022,
+    -0.0001
+   ],
+   "mismatch": {
+    "k_scale": 0.7577,
+    "c_scale": 1.8007,
+    "mu_scale": 0.6413
+   }
+  },
+  {
+   "id": "mm2_train_contact_031",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 683467,
+   "gap0": 0.055,
+   "dyz": [
+    0.0092,
+    0.0061
+   ],
+   "mismatch": {
+    "k_scale": 1.2713,
+    "c_scale": 0.581,
+    "mu_scale": 0.602
+   }
+  },
+  {
+   "id": "mm2_train_contact_032",
+   "family": "contact",
+   "path": "line",
+   "seed": 942256,
+   "gap0": 0.0609,
+   "dyz": [
+    -0.0048,
+    -0.0038
+   ],
+   "mismatch": {
+    "k_scale": 1.0348,
+    "c_scale": 0.9799,
+    "mu_scale": 0.589
+   }
+  },
+  {
+   "id": "mm2_train_contact_033",
+   "family": "contact",
+   "path": "line",
+   "seed": 478371,
+   "gap0": 0.0529,
+   "dyz": [
+    -0.0051,
+    0.0029
+   ],
+   "mismatch": {
+    "k_scale": 1.1293,
+    "c_scale": 0.9236,
+    "mu_scale": 1.2777
+   }
+  },
+  {
+   "id": "mm2_train_contact_034",
+   "family": "contact",
+   "path": "line",
+   "seed": 46076,
+   "gap0": 0.0515,
+   "dyz": [
+    -0.0029,
+    -0.0009
+   ],
+   "mismatch": {
+    "k_scale": 1.3008,
+    "c_scale": 1.5144,
+    "mu_scale": 1.5465
+   }
+  },
+  {
+   "id": "mm2_train_contact_035",
+   "family": "contact",
+   "path": "circle",
+   "seed": 839576,
+   "gap0": 0.0691,
+   "dyz": [
+    0.0007,
+    0.0099
+   ],
+   "mismatch": {
+    "k_scale": 0.6306,
+    "c_scale": 0.7355,
+    "mu_scale": 1.6117
+   }
+  },
+  {
+   "id": "mm2_train_contact_036",
+   "family": "contact",
+   "path": "line",
+   "seed": 45303,
+   "gap0": 0.0577,
+   "dyz": [
+    -0.004,
+    0.007
+   ],
+   "mismatch": {
+    "k_scale": 0.8185,
+    "c_scale": 1.6705,
+    "mu_scale": 0.7949
+   }
+  },
+  {
+   "id": "mm2_train_contact_037",
+   "family": "contact",
+   "path": "circle",
+   "seed": 619794,
+   "gap0": 0.0669,
+   "dyz": [
+    -0.0064,
+    -0.0068
+   ],
+   "mismatch": {
+    "k_scale": 1.3301,
+    "c_scale": 1.8258,
+    "mu_scale": 1.9179
+   }
+  },
+  {
+   "id": "mm2_train_contact_038",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 929221,
+   "gap0": 0.0748,
+   "dyz": [
+    -0.0012,
+    -0.0094
+   ],
+   "mismatch": {
+    "k_scale": 1.0549,
+    "c_scale": 1.9519,
+    "mu_scale": 0.5612
+   }
+  },
+  {
+   "id": "mm2_train_contact_039",
+   "family": "contact",
+   "path": "circle",
+   "seed": 112170,
+   "gap0": 0.0686,
+   "dyz": [
+    0.0037,
+    -0.0094
+   ],
+   "mismatch": {
+    "k_scale": 0.9078,
+    "c_scale": 1.327,
+    "mu_scale": 1.7642
+   }
+  },
+  {
+   "id": "mm2_train_contact_040",
+   "family": "contact",
+   "path": "line",
+   "seed": 116692,
+   "gap0": 0.078,
+   "dyz": [
+    0.0008,
+    0.009
+   ],
+   "mismatch": {
+    "k_scale": 1.397,
+    "c_scale": 1.7792,
+    "mu_scale": 1.9945
+   }
+  },
+  {
+   "id": "mm2_train_contact_041",
+   "family": "contact",
+   "path": "line",
+   "seed": 920622,
+   "gap0": 0.0583,
+   "dyz": [
+    0.0051,
+    -0.008
+   ],
+   "mismatch": {
+    "k_scale": 0.6448,
+    "c_scale": 1.3681,
+    "mu_scale": 1.9534
+   }
+  },
+  {
+   "id": "mm2_train_contact_042",
+   "family": "contact",
+   "path": "circle",
+   "seed": 671202,
+   "gap0": 0.0761,
+   "dyz": [
+    0.0032,
+    -0.0023
+   ],
+   "mismatch": {
+    "k_scale": 0.8927,
+    "c_scale": 1.9842,
+    "mu_scale": 0.7327
+   }
+  },
+  {
+   "id": "mm2_train_contact_043",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 884104,
+   "gap0": 0.0777,
+   "dyz": [
+    0.0069,
+    0.0039
+   ],
+   "mismatch": {
+    "k_scale": 0.8618,
+    "c_scale": 1.3391,
+    "mu_scale": 1.3059
+   }
+  },
+  {
+   "id": "mm2_train_contact_044",
+   "family": "contact",
+   "path": "line",
+   "seed": 19075,
+   "gap0": 0.0508,
+   "dyz": [
+    0.0026,
+    -0.0065
+   ],
+   "mismatch": {
+    "k_scale": 1.0523,
+    "c_scale": 0.818,
+    "mu_scale": 1.5995
+   }
+  },
+  {
+   "id": "mm2_train_contact_045",
+   "family": "contact",
+   "path": "line",
+   "seed": 249897,
+   "gap0": 0.052,
+   "dyz": [
+    -0.0013,
+    0.0048
+   ],
+   "mismatch": {
+    "k_scale": 1.3957,
+    "c_scale": 0.8569,
+    "mu_scale": 1.1581
+   }
+  },
+  {
+   "id": "mm2_train_contact_046",
+   "family": "contact",
+   "path": "line",
+   "seed": 322473,
+   "gap0": 0.0796,
+   "dyz": [
+    -0.0078,
+    0.0023
+   ],
+   "mismatch": {
+    "k_scale": 0.9506,
+    "c_scale": 1.4881,
+    "mu_scale": 1.622
+   }
+  },
+  {
+   "id": "mm2_train_contact_047",
+   "family": "contact",
+   "path": "line",
+   "seed": 985080,
+   "gap0": 0.0557,
+   "dyz": [
+    0.0091,
+    -0.002
+   ],
+   "mismatch": {
+    "k_scale": 0.8142,
+    "c_scale": 1.195,
+    "mu_scale": 0.6612
+   }
+  },
+  {
+   "id": "mm2_train_contact_048",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 833406,
+   "gap0": 0.0512,
+   "dyz": [
+    0.0041,
+    -0.0014
+   ],
+   "mismatch": {
+    "k_scale": 1.2097,
+    "c_scale": 1.6109,
+    "mu_scale": 1.8509
+   }
+  },
+  {
+   "id": "mm2_train_contact_049",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 207316,
+   "gap0": 0.0782,
+   "dyz": [
+    -0.009,
+    0.0044
+   ],
+   "mismatch": {
+    "k_scale": 1.4146,
+    "c_scale": 0.563,
+    "mu_scale": 1.4417
+   }
+  },
+  {
+   "id": "mm2_train_contact_050",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 30442,
+   "gap0": 0.0531,
+   "dyz": [
+    -0.0016,
+    0.0016
+   ],
+   "mismatch": {
+    "k_scale": 0.7562,
+    "c_scale": 0.6062,
+    "mu_scale": 1.8217
+   }
+  },
+  {
+   "id": "mm2_train_contact_051",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 855484,
+   "gap0": 0.0697,
+   "dyz": [
+    -0.0097,
+    0.0013
+   ],
+   "mismatch": {
+    "k_scale": 1.4585,
+    "c_scale": 1.5006,
+    "mu_scale": 0.8432
+   }
+  },
+  {
+   "id": "mm2_train_contact_052",
+   "family": "contact",
+   "path": "line",
+   "seed": 40924,
+   "gap0": 0.0507,
+   "dyz": [
+    0.0072,
+    -0.003
+   ],
+   "mismatch": {
+    "k_scale": 1.5234,
+    "c_scale": 1.1903,
+    "mu_scale": 1.0055
+   }
+  },
+  {
+   "id": "mm2_train_contact_053",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 773472,
+   "gap0": 0.0784,
+   "dyz": [
+    0.0023,
+    0.0078
+   ],
+   "mismatch": {
+    "k_scale": 1.2278,
+    "c_scale": 1.1561,
+    "mu_scale": 1.7293
+   }
+  },
+  {
+   "id": "mm2_train_contact_054",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 103971,
+   "gap0": 0.0722,
+   "dyz": [
+    -0.0076,
+    -0.0079
+   ],
+   "mismatch": {
+    "k_scale": 0.8608,
+    "c_scale": 0.5441,
+    "mu_scale": 1.066
+   }
+  },
+  {
+   "id": "mm2_train_contact_055",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 814649,
+   "gap0": 0.0787,
+   "dyz": [
+    -0.0084,
+    -0.001
+   ],
+   "mismatch": {
+    "k_scale": 1.2757,
+    "c_scale": 1.4104,
+    "mu_scale": 0.6415
+   }
+  },
+  {
+   "id": "mm2_train_contact_056",
+   "family": "contact",
+   "path": "circle",
+   "seed": 560895,
+   "gap0": 0.0623,
+   "dyz": [
+    -0.0043,
+    0.0017
+   ],
+   "mismatch": {
+    "k_scale": 1.0501,
+    "c_scale": 1.6374,
+    "mu_scale": 0.6445
+   }
+  },
+  {
+   "id": "mm2_train_contact_057",
+   "family": "contact",
+   "path": "circle",
+   "seed": 399913,
+   "gap0": 0.0636,
+   "dyz": [
+    -0.0089,
+    0.0012
+   ],
+   "mismatch": {
+    "k_scale": 1.277,
+    "c_scale": 0.9849,
+    "mu_scale": 0.825
+   }
+  },
+  {
+   "id": "mm2_train_contact_058",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 70391,
+   "gap0": 0.0583,
+   "dyz": [
+    -0.0086,
+    -0.0021
+   ],
+   "mismatch": {
+    "k_scale": 1.211,
+    "c_scale": 1.4933,
+    "mu_scale": 0.6844
+   }
+  },
+  {
+   "id": "mm2_train_contact_059",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 621214,
+   "gap0": 0.0721,
+   "dyz": [
+    -0.0077,
+    0.006
+   ],
+   "mismatch": {
+    "k_scale": 1.3888,
+    "c_scale": 1.4886,
+    "mu_scale": 1.5053
+   }
+  },
+  {
+   "id": "mm2_train_contact_060",
+   "family": "contact",
+   "path": "line",
+   "seed": 574177,
+   "gap0": 0.0658,
+   "dyz": [
+    -0.0013,
+    0.003
+   ],
+   "mismatch": {
+    "k_scale": 1.0809,
+    "c_scale": 1.7286,
+    "mu_scale": 0.8514
+   }
+  },
+  {
+   "id": "mm2_train_contact_061",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 514893,
+   "gap0": 0.0615,
+   "dyz": [
+    -0.0045,
+    -0.0074
+   ],
+   "mismatch": {
+    "k_scale": 1.394,
+    "c_scale": 1.0011,
+    "mu_scale": 1.522
+   }
+  },
+  {
+   "id": "mm2_train_contact_062",
+   "family": "contact",
+   "path": "circle",
+   "seed": 602420,
+   "gap0": 0.0756,
+   "dyz": [
+    0.0032,
+    -0.0018
+   ],
+   "mismatch": {
+    "k_scale": 0.6478,
+    "c_scale": 1.2079,
+    "mu_scale": 1.9658
+   }
+  },
+  {
+   "id": "mm2_train_contact_063",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 26441,
+   "gap0": 0.0514,
+   "dyz": [
+    -0.0089,
+    -0.0023
+   ],
+   "mismatch": {
+    "k_scale": 1.0038,
+    "c_scale": 1.984,
+    "mu_scale": 1.6269
+   }
+  },
+  {
+   "id": "mm2_train_contact_064",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 459752,
+   "gap0": 0.0734,
+   "dyz": [
+    -0.0081,
+    -0.0082
+   ],
+   "mismatch": {
+    "k_scale": 1.0451,
+    "c_scale": 1.4177,
+    "mu_scale": 0.619
+   }
+  },
+  {
+   "id": "mm2_train_contact_065",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 256874,
+   "gap0": 0.0524,
+   "dyz": [
+    0.0038,
+    -0.001
+   ],
+   "mismatch": {
+    "k_scale": 1.5876,
+    "c_scale": 0.7018,
+    "mu_scale": 1.2905
+   }
+  },
+  {
+   "id": "mm2_train_contact_066",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 319321,
+   "gap0": 0.0596,
+   "dyz": [
+    -0.0014,
+    -0.0098
+   ],
+   "mismatch": {
+    "k_scale": 1.5462,
+    "c_scale": 0.6573,
+    "mu_scale": 1.9245
+   }
+  },
+  {
+   "id": "mm2_train_contact_067",
+   "family": "contact",
+   "path": "circle",
+   "seed": 58050,
+   "gap0": 0.0507,
+   "dyz": [
+    0.0049,
+    0.0026
+   ],
+   "mismatch": {
+    "k_scale": 1.4714,
+    "c_scale": 0.8976,
+    "mu_scale": 1.3146
+   }
+  },
+  {
+   "id": "mm2_train_contact_068",
+   "family": "contact",
+   "path": "circle",
+   "seed": 346149,
+   "gap0": 0.0711,
+   "dyz": [
+    0.0092,
+    -0.0079
+   ],
+   "mismatch": {
+    "k_scale": 0.8194,
+    "c_scale": 1.0576,
+    "mu_scale": 1.4561
+   }
+  },
+  {
+   "id": "mm2_train_contact_069",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 472913,
+   "gap0": 0.0653,
+   "dyz": [
+    0.001,
+    0.0078
+   ],
+   "mismatch": {
+    "k_scale": 0.7297,
+    "c_scale": 0.9958,
+    "mu_scale": 1.6027
+   }
+  },
+  {
+   "id": "mm2_train_contact_070",
+   "family": "contact",
+   "path": "circle",
+   "seed": 287438,
+   "gap0": 0.0741,
+   "dyz": [
+    -0.0014,
+    -0.0055
+   ],
+   "mismatch": {
+    "k_scale": 1.3597,
+    "c_scale": 1.961,
+    "mu_scale": 1.3369
+   }
+  },
+  {
+   "id": "mm2_train_contact_071",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 92870,
+   "gap0": 0.0681,
+   "dyz": [
+    -0.0088,
+    -0.0075
+   ],
+   "mismatch": {
+    "k_scale": 1.2846,
+    "c_scale": 1.5309,
+    "mu_scale": 1.9279
+   }
+  },
+  {
+   "id": "mm2_train_contact_072",
+   "family": "contact",
+   "path": "line",
+   "seed": 9756,
+   "gap0": 0.0716,
+   "dyz": [
+    -0.0015,
+    0.0051
+   ],
+   "mismatch": {
+    "k_scale": 1.1027,
+    "c_scale": 0.9234,
+    "mu_scale": 1.6153
+   }
+  },
+  {
+   "id": "mm2_train_contact_073",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 703830,
+   "gap0": 0.0746,
+   "dyz": [
+    -0.0083,
+    0.0069
+   ],
+   "mismatch": {
+    "k_scale": 1.5744,
+    "c_scale": 1.0021,
+    "mu_scale": 1.1054
+   }
+  },
+  {
+   "id": "mm2_train_contact_074",
+   "family": "contact",
+   "path": "line",
+   "seed": 503471,
+   "gap0": 0.051,
+   "dyz": [
+    0.0046,
+    0.0066
+   ],
+   "mismatch": {
+    "k_scale": 1.4793,
+    "c_scale": 0.5966,
+    "mu_scale": 1.8463
+   }
+  },
+  {
+   "id": "mm2_train_contact_075",
+   "family": "contact",
+   "path": "line",
+   "seed": 808786,
+   "gap0": 0.0673,
+   "dyz": [
+    0.0001,
+    -0.0036
+   ],
+   "mismatch": {
+    "k_scale": 0.8479,
+    "c_scale": 0.7865,
+    "mu_scale": 0.8305
+   }
+  },
+  {
+   "id": "mm2_train_contact_076",
+   "family": "contact",
+   "path": "circle",
+   "seed": 199995,
+   "gap0": 0.077,
+   "dyz": [
+    -0.0087,
+    -0.0095
+   ],
+   "mismatch": {
+    "k_scale": 1.3544,
+    "c_scale": 1.0196,
+    "mu_scale": 1.5661
+   }
+  },
+  {
+   "id": "mm2_train_contact_077",
+   "family": "contact",
+   "path": "line",
+   "seed": 317984,
+   "gap0": 0.0712,
+   "dyz": [
+    0.0078,
+    -0.0077
+   ],
+   "mismatch": {
+    "k_scale": 1.2527,
+    "c_scale": 0.7112,
+    "mu_scale": 1.9739
+   }
+  },
+  {
+   "id": "mm2_train_contact_078",
+   "family": "contact",
+   "path": "line",
+   "seed": 825003,
+   "gap0": 0.0556,
+   "dyz": [
+    -0.0065,
+    -0.0081
+   ],
+   "mismatch": {
+    "k_scale": 1.5632,
+    "c_scale": 1.9295,
+    "mu_scale": 1.3535
+   }
+  },
+  {
+   "id": "mm2_train_contact_079",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 83368,
+   "gap0": 0.0567,
+   "dyz": [
+    0.0075,
+    -0.0014
+   ],
+   "mismatch": {
+    "k_scale": 0.6884,
+    "c_scale": 1.2398,
+    "mu_scale": 0.7417
+   }
+  },
+  {
+   "id": "mm2_train_contact_080",
+   "family": "contact",
+   "path": "line",
+   "seed": 416188,
+   "gap0": 0.0684,
+   "dyz": [
+    -0.0033,
+    -0.0085
+   ],
+   "mismatch": {
+    "k_scale": 1.3862,
+    "c_scale": 1.4995,
+    "mu_scale": 1.3012
+   }
+  },
+  {
+   "id": "mm2_train_contact_081",
+   "family": "contact",
+   "path": "circle",
+   "seed": 571575,
+   "gap0": 0.0608,
+   "dyz": [
+    0.0025,
+    0.0069
+   ],
+   "mismatch": {
+    "k_scale": 0.6771,
+    "c_scale": 1.0135,
+    "mu_scale": 1.7107
+   }
+  },
+  {
+   "id": "mm2_train_contact_082",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 147641,
+   "gap0": 0.0769,
+   "dyz": [
+    0.0052,
+    -0.0023
+   ],
+   "mismatch": {
+    "k_scale": 0.9036,
+    "c_scale": 1.9561,
+    "mu_scale": 1.8756
+   }
+  },
+  {
+   "id": "mm2_train_contact_083",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 400301,
+   "gap0": 0.0615,
+   "dyz": [
+    0.0021,
+    -0.0018
+   ],
+   "mismatch": {
+    "k_scale": 0.6122,
+    "c_scale": 0.7064,
+    "mu_scale": 1.4383
+   }
+  },
+  {
+   "id": "mm2_train_contact_084",
+   "family": "contact",
+   "path": "line",
+   "seed": 19631,
+   "gap0": 0.0676,
+   "dyz": [
+    -0.0086,
+    -0.006
+   ],
+   "mismatch": {
+    "k_scale": 0.6878,
+    "c_scale": 1.2236,
+    "mu_scale": 1.9057
+   }
+  },
+  {
+   "id": "mm2_train_contact_085",
+   "family": "contact",
+   "path": "circle",
+   "seed": 143952,
+   "gap0": 0.0723,
+   "dyz": [
+    0.0023,
+    -0.0048
+   ],
+   "mismatch": {
+    "k_scale": 0.6231,
+    "c_scale": 1.4102,
+    "mu_scale": 1.6365
+   }
+  },
+  {
+   "id": "mm2_train_contact_086",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 208854,
+   "gap0": 0.0671,
+   "dyz": [
+    -0.0055,
+    -0.0045
+   ],
+   "mismatch": {
+    "k_scale": 1.0563,
+    "c_scale": 1.2201,
+    "mu_scale": 0.9647
+   }
+  },
+  {
+   "id": "mm2_train_contact_087",
+   "family": "contact",
+   "path": "line",
+   "seed": 945828,
+   "gap0": 0.0653,
+   "dyz": [
+    0.0091,
+    0.0071
+   ],
+   "mismatch": {
+    "k_scale": 1.5705,
+    "c_scale": 1.127,
+    "mu_scale": 0.7614
+   }
+  },
+  {
+   "id": "mm2_train_contact_088",
+   "family": "contact",
+   "path": "circle",
+   "seed": 817003,
+   "gap0": 0.0672,
+   "dyz": [
+    -0.0055,
+    -0.0081
+   ],
+   "mismatch": {
+    "k_scale": 1.1624,
+    "c_scale": 1.8373,
+    "mu_scale": 1.6462
+   }
+  },
+  {
+   "id": "mm2_train_contact_089",
+   "family": "contact",
+   "path": "line",
+   "seed": 48021,
+   "gap0": 0.0756,
+   "dyz": [
+    -0.0081,
+    0.0002
+   ],
+   "mismatch": {
+    "k_scale": 1.0995,
+    "c_scale": 1.0731,
+    "mu_scale": 1.2556
+   }
+  },
+  {
+   "id": "mm2_train_contact_090",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 555438,
+   "gap0": 0.058,
+   "dyz": [
+    0.0019,
+    -0.0012
+   ],
+   "mismatch": {
+    "k_scale": 1.2645,
+    "c_scale": 1.4106,
+    "mu_scale": 1.707
+   }
+  },
+  {
+   "id": "mm2_train_contact_091",
+   "family": "contact",
+   "path": "circle",
+   "seed": 410438,
+   "gap0": 0.0728,
+   "dyz": [
+    0.0015,
+    0.0075
+   ],
+   "mismatch": {
+    "k_scale": 1.1168,
+    "c_scale": 1.0094,
+    "mu_scale": 1.3979
+   }
+  },
+  {
+   "id": "mm2_train_contact_092",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 209421,
+   "gap0": 0.0632,
+   "dyz": [
+    0.0051,
+    -0.0088
+   ],
+   "mismatch": {
+    "k_scale": 0.7571,
+    "c_scale": 1.7315,
+    "mu_scale": 1.4175
+   }
+  },
+  {
+   "id": "mm2_train_contact_093",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 437454,
+   "gap0": 0.077,
+   "dyz": [
+    -0.0028,
+    0.0012
+   ],
+   "mismatch": {
+    "k_scale": 0.8612,
+    "c_scale": 1.2085,
+    "mu_scale": 1.6627
+   }
+  },
+  {
+   "id": "mm2_train_contact_094",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 146001,
+   "gap0": 0.0699,
+   "dyz": [
+    0.0087,
+    -0.0043
+   ],
+   "mismatch": {
+    "k_scale": 0.7901,
+    "c_scale": 1.2325,
+    "mu_scale": 0.6716
+   }
+  },
+  {
+   "id": "mm2_train_contact_095",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 431997,
+   "gap0": 0.0637,
+   "dyz": [
+    -0.0084,
+    0.0079
+   ],
+   "mismatch": {
+    "k_scale": 0.8757,
+    "c_scale": 1.1352,
+    "mu_scale": 1.5318
+   }
+  },
+  {
+   "id": "mm2_train_contact_096",
+   "family": "contact",
+   "path": "line",
+   "seed": 102021,
+   "gap0": 0.0518,
+   "dyz": [
+    -0.0049,
+    -0.0013
+   ],
+   "mismatch": {
+    "k_scale": 0.8603,
+    "c_scale": 1.5771,
+    "mu_scale": 1.356
+   }
+  },
+  {
+   "id": "mm2_train_contact_097",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 395438,
+   "gap0": 0.0721,
+   "dyz": [
+    -0.0096,
+    -0.0052
+   ],
+   "mismatch": {
+    "k_scale": 1.3762,
+    "c_scale": 0.7249,
+    "mu_scale": 1.705
+   }
+  },
+  {
+   "id": "mm2_train_contact_098",
+   "family": "contact",
+   "path": "line",
+   "seed": 158036,
+   "gap0": 0.0668,
+   "dyz": [
+    0.0041,
+    -0.0014
+   ],
+   "mismatch": {
+    "k_scale": 0.9247,
+    "c_scale": 1.4678,
+    "mu_scale": 1.1261
+   }
+  },
+  {
+   "id": "mm2_train_contact_099",
+   "family": "contact",
+   "path": "line",
+   "seed": 554027,
+   "gap0": 0.0569,
+   "dyz": [
+    -0.0071,
+    -0.002
+   ],
+   "mismatch": {
+    "k_scale": 0.6284,
+    "c_scale": 1.201,
+    "mu_scale": 1.3123
+   }
+  },
+  {
+   "id": "mm2_train_contact_100",
+   "family": "contact",
+   "path": "circle",
+   "seed": 45988,
+   "gap0": 0.0737,
+   "dyz": [
+    0.0079,
+    -0.0099
+   ],
+   "mismatch": {
+    "k_scale": 0.9795,
+    "c_scale": 0.5819,
+    "mu_scale": 1.9072
+   }
+  },
+  {
+   "id": "mm2_train_contact_101",
+   "family": "contact",
+   "path": "line",
+   "seed": 833654,
+   "gap0": 0.0778,
+   "dyz": [
+    0.008,
+    -0.0044
+   ],
+   "mismatch": {
+    "k_scale": 1.2348,
+    "c_scale": 0.8603,
+    "mu_scale": 1.5945
+   }
+  },
+  {
+   "id": "mm2_train_contact_102",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 20324,
+   "gap0": 0.0729,
+   "dyz": [
+    -0.0028,
+    -0.0038
+   ],
+   "mismatch": {
+    "k_scale": 1.5903,
+    "c_scale": 1.1707,
+    "mu_scale": 1.0153
+   }
+  },
+  {
+   "id": "mm2_train_contact_103",
+   "family": "contact",
+   "path": "line",
+   "seed": 498863,
+   "gap0": 0.0765,
+   "dyz": [
+    -0.0073,
+    -0.0097
+   ],
+   "mismatch": {
+    "k_scale": 0.7335,
+    "c_scale": 0.9759,
+    "mu_scale": 0.801
+   }
+  },
+  {
+   "id": "mm2_train_contact_104",
+   "family": "contact",
+   "path": "line",
+   "seed": 249125,
+   "gap0": 0.064,
+   "dyz": [
+    0.0013,
+    0.0002
+   ],
+   "mismatch": {
+    "k_scale": 1.4756,
+    "c_scale": 1.48,
+    "mu_scale": 1.131
+   }
+  },
+  {
+   "id": "mm2_train_contact_105",
+   "family": "contact",
+   "path": "line",
+   "seed": 977340,
+   "gap0": 0.0666,
+   "dyz": [
+    0.0023,
+    -0.0073
+   ],
+   "mismatch": {
+    "k_scale": 1.0528,
+    "c_scale": 1.8925,
+    "mu_scale": 1.6417
+   }
+  },
+  {
+   "id": "mm2_train_contact_106",
+   "family": "contact",
+   "path": "circle",
+   "seed": 626004,
+   "gap0": 0.0662,
+   "dyz": [
+    -0.0042,
+    0.005
+   ],
+   "mismatch": {
+    "k_scale": 0.6026,
+    "c_scale": 1.5742,
+    "mu_scale": 1.1605
+   }
+  },
+  {
+   "id": "mm2_train_contact_107",
+   "family": "contact",
+   "path": "circle",
+   "seed": 906518,
+   "gap0": 0.0584,
+   "dyz": [
+    -0.0015,
+    0.0006
+   ],
+   "mismatch": {
+    "k_scale": 1.3362,
+    "c_scale": 1.3463,
+    "mu_scale": 1.7805
+   }
+  },
+  {
+   "id": "mm2_train_contact_108",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 108975,
+   "gap0": 0.0511,
+   "dyz": [
+    -0.0046,
+    0.0068
+   ],
+   "mismatch": {
+    "k_scale": 0.7101,
+    "c_scale": 1.0673,
+    "mu_scale": 1.3588
+   }
+  },
+  {
+   "id": "mm2_train_contact_109",
+   "family": "contact",
+   "path": "line",
+   "seed": 779139,
+   "gap0": 0.0582,
+   "dyz": [
+    -0.0063,
+    -0.0024
+   ],
+   "mismatch": {
+    "k_scale": 1.3943,
+    "c_scale": 0.6809,
+    "mu_scale": 1.0326
+   }
+  },
+  {
+   "id": "mm2_train_contact_110",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 960003,
+   "gap0": 0.0674,
+   "dyz": [
+    -0.0097,
+    0.008
+   ],
+   "mismatch": {
+    "k_scale": 1.3788,
+    "c_scale": 1.3694,
+    "mu_scale": 0.6317
+   }
+  },
+  {
+   "id": "mm2_train_contact_111",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 109232,
+   "gap0": 0.0675,
+   "dyz": [
+    -0.005,
+    -0.0017
+   ],
+   "mismatch": {
+    "k_scale": 1.3117,
+    "c_scale": 1.7422,
+    "mu_scale": 1.1963
+   }
+  },
+  {
+   "id": "mm2_train_contact_112",
+   "family": "contact",
+   "path": "line",
+   "seed": 654083,
+   "gap0": 0.0551,
+   "dyz": [
+    0.0022,
+    0.0051
+   ],
+   "mismatch": {
+    "k_scale": 0.9586,
+    "c_scale": 1.205,
+    "mu_scale": 1.206
+   }
+  },
+  {
+   "id": "mm2_train_contact_113",
+   "family": "contact",
+   "path": "circle",
+   "seed": 832918,
+   "gap0": 0.0727,
+   "dyz": [
+    -0.0057,
+    -0.0032
+   ],
+   "mismatch": {
+    "k_scale": 0.9932,
+    "c_scale": 0.7728,
+    "mu_scale": 1.322
+   }
+  },
+  {
+   "id": "mm2_train_contact_114",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 930664,
+   "gap0": 0.0745,
+   "dyz": [
+    -0.0098,
+    -0.008
+   ],
+   "mismatch": {
+    "k_scale": 0.6817,
+    "c_scale": 1.796,
+    "mu_scale": 0.6282
+   }
+  },
+  {
+   "id": "mm2_train_contact_115",
+   "family": "contact",
+   "path": "circle",
+   "seed": 621560,
+   "gap0": 0.0643,
+   "dyz": [
+    -0.0023,
+    -0.0048
+   ],
+   "mismatch": {
+    "k_scale": 0.8859,
+    "c_scale": 1.268,
+    "mu_scale": 1.9029
+   }
+  },
+  {
+   "id": "mm2_train_contact_116",
+   "family": "contact",
+   "path": "circle",
+   "seed": 596016,
+   "gap0": 0.0677,
+   "dyz": [
+    0.0087,
+    -0.0056
+   ],
+   "mismatch": {
+    "k_scale": 0.8166,
+    "c_scale": 0.9082,
+    "mu_scale": 1.5582
+   }
+  },
+  {
+   "id": "mm2_train_contact_117",
+   "family": "contact",
+   "path": "line",
+   "seed": 923513,
+   "gap0": 0.0597,
+   "dyz": [
+    0.0043,
+    -0.0086
+   ],
+   "mismatch": {
+    "k_scale": 1.5435,
+    "c_scale": 1.9404,
+    "mu_scale": 0.9844
+   }
+  },
+  {
+   "id": "mm2_train_contact_118",
+   "family": "contact",
+   "path": "line",
+   "seed": 822533,
+   "gap0": 0.0574,
+   "dyz": [
+    0.0039,
+    0.0025
+   ],
+   "mismatch": {
+    "k_scale": 1.3156,
+    "c_scale": 0.9375,
+    "mu_scale": 1.8473
+   }
+  },
+  {
+   "id": "mm2_train_contact_119",
+   "family": "contact",
+   "path": "circle",
+   "seed": 196883,
+   "gap0": 0.0549,
+   "dyz": [
+    -0.0021,
+    0.0038
+   ],
+   "mismatch": {
+    "k_scale": 1.4759,
+    "c_scale": 0.9018,
+    "mu_scale": 1.321
+   }
+  },
+  {
+   "id": "mm2_train_contact_120",
+   "family": "contact",
+   "path": "line",
+   "seed": 569036,
+   "gap0": 0.0666,
+   "dyz": [
+    -0.0023,
+    -0.0039
+   ],
+   "mismatch": {
+    "k_scale": 0.7339,
+    "c_scale": 0.8233,
+    "mu_scale": 1.4604
+   }
+  },
+  {
+   "id": "mm2_train_contact_121",
+   "family": "contact",
+   "path": "circle",
+   "seed": 952888,
+   "gap0": 0.0704,
+   "dyz": [
+    0.004,
+    0.0039
+   ],
+   "mismatch": {
+    "k_scale": 1.3344,
+    "c_scale": 1.5879,
+    "mu_scale": 1.1506
+   }
+  },
+  {
+   "id": "mm2_train_contact_122",
+   "family": "contact",
+   "path": "line",
+   "seed": 889238,
+   "gap0": 0.0576,
+   "dyz": [
+    -0.0025,
+    -0.0027
+   ],
+   "mismatch": {
+    "k_scale": 1.2473,
+    "c_scale": 1.0695,
+    "mu_scale": 1.9318
+   }
+  },
+  {
+   "id": "mm2_train_contact_123",
+   "family": "contact",
+   "path": "circle",
+   "seed": 594839,
+   "gap0": 0.0767,
+   "dyz": [
+    0.0094,
+    0.0089
+   ],
+   "mismatch": {
+    "k_scale": 0.7965,
+    "c_scale": 1.4579,
+    "mu_scale": 1.9035
+   }
+  },
+  {
+   "id": "mm2_train_contact_124",
+   "family": "contact",
+   "path": "line",
+   "seed": 136961,
+   "gap0": 0.0514,
+   "dyz": [
+    0.0072,
+    -0.006
+   ],
+   "mismatch": {
+    "k_scale": 0.9348,
+    "c_scale": 1.6934,
+    "mu_scale": 0.801
+   }
+  },
+  {
+   "id": "mm2_train_contact_125",
+   "family": "contact",
+   "path": "line",
+   "seed": 591002,
+   "gap0": 0.0702,
+   "dyz": [
+    0.0047,
+    -0.0011
+   ],
+   "mismatch": {
+    "k_scale": 1.2837,
+    "c_scale": 1.9123,
+    "mu_scale": 0.9549
+   }
+  },
+  {
+   "id": "mm2_train_contact_126",
+   "family": "contact",
+   "path": "line",
+   "seed": 944735,
+   "gap0": 0.0676,
+   "dyz": [
+    -0.0042,
+    -0.0076
+   ],
+   "mismatch": {
+    "k_scale": 1.284,
+    "c_scale": 1.391,
+    "mu_scale": 1.779
+   }
+  },
+  {
+   "id": "mm2_train_contact_127",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 974168,
+   "gap0": 0.0711,
+   "dyz": [
+    0.0041,
+    0.0079
+   ],
+   "mismatch": {
+    "k_scale": 0.8739,
+    "c_scale": 0.9305,
+    "mu_scale": 1.0142
+   }
+  },
+  {
+   "id": "mm2_train_contact_128",
+   "family": "contact",
+   "path": "circle",
+   "seed": 431015,
+   "gap0": 0.0635,
+   "dyz": [
+    -0.0063,
+    0.0094
+   ],
+   "mismatch": {
+    "k_scale": 1.5343,
+    "c_scale": 1.4616,
+    "mu_scale": 1.2139
+   }
+  },
+  {
+   "id": "mm2_train_contact_129",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 739313,
+   "gap0": 0.0542,
+   "dyz": [
+    0.0007,
+    -0.0022
+   ],
+   "mismatch": {
+    "k_scale": 0.6125,
+    "c_scale": 1.1491,
+    "mu_scale": 1.2926
+   }
+  },
+  {
+   "id": "mm2_train_contact_130",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 448668,
+   "gap0": 0.0597,
+   "dyz": [
+    0.0085,
+    -0.0066
+   ],
+   "mismatch": {
+    "k_scale": 0.6256,
+    "c_scale": 1.3676,
+    "mu_scale": 0.5389
+   }
+  },
+  {
+   "id": "mm2_train_contact_131",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 214639,
+   "gap0": 0.057,
+   "dyz": [
+    -0.0069,
+    -0.0066
+   ],
+   "mismatch": {
+    "k_scale": 1.0,
+    "c_scale": 0.8063,
+    "mu_scale": 1.127
+   }
+  },
+  {
+   "id": "mm2_train_contact_132",
+   "family": "contact",
+   "path": "line",
+   "seed": 993608,
+   "gap0": 0.064,
+   "dyz": [
+    0.0054,
+    -0.0052
+   ],
+   "mismatch": {
+    "k_scale": 1.3209,
+    "c_scale": 0.5029,
+    "mu_scale": 1.6374
+   }
+  },
+  {
+   "id": "mm2_train_contact_133",
+   "family": "contact",
+   "path": "line",
+   "seed": 807273,
+   "gap0": 0.056,
+   "dyz": [
+    -0.0093,
+    -0.0038
+   ],
+   "mismatch": {
+    "k_scale": 1.5143,
+    "c_scale": 1.4548,
+    "mu_scale": 1.6499
+   }
+  },
+  {
+   "id": "mm2_train_contact_134",
+   "family": "contact",
+   "path": "line",
+   "seed": 168642,
+   "gap0": 0.0723,
+   "dyz": [
+    0.003,
+    -0.0069
+   ],
+   "mismatch": {
+    "k_scale": 1.1766,
+    "c_scale": 0.924,
+    "mu_scale": 0.5325
+   }
+  },
+  {
+   "id": "mm2_train_contact_135",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 718077,
+   "gap0": 0.0568,
+   "dyz": [
+    -0.0003,
+    0.0093
+   ],
+   "mismatch": {
+    "k_scale": 1.2374,
+    "c_scale": 1.1146,
+    "mu_scale": 1.4491
+   }
+  },
+  {
+   "id": "mm2_train_contact_136",
+   "family": "contact",
+   "path": "line",
+   "seed": 30108,
+   "gap0": 0.0699,
+   "dyz": [
+    0.0054,
+    -0.008
+   ],
+   "mismatch": {
+    "k_scale": 0.8084,
+    "c_scale": 1.1765,
+    "mu_scale": 1.2763
+   }
+  },
+  {
+   "id": "mm2_train_contact_137",
+   "family": "contact",
+   "path": "circle",
+   "seed": 992056,
+   "gap0": 0.0674,
+   "dyz": [
+    0.0003,
+    0.0034
+   ],
+   "mismatch": {
+    "k_scale": 0.968,
+    "c_scale": 1.4127,
+    "mu_scale": 1.9141
+   }
+  },
+  {
+   "id": "mm2_train_contact_138",
+   "family": "contact",
+   "path": "line",
+   "seed": 185007,
+   "gap0": 0.0732,
+   "dyz": [
+    0.0007,
+    -0.0043
+   ],
+   "mismatch": {
+    "k_scale": 1.3755,
+    "c_scale": 0.7182,
+    "mu_scale": 0.9623
+   }
+  },
+  {
+   "id": "mm2_train_contact_139",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 297847,
+   "gap0": 0.0576,
+   "dyz": [
+    -0.0077,
+    -0.0094
+   ],
+   "mismatch": {
+    "k_scale": 1.1959,
+    "c_scale": 1.717,
+    "mu_scale": 0.5586
+   }
+  },
+  {
+   "id": "mm2_train_contact_140",
+   "family": "contact",
+   "path": "line",
+   "seed": 974626,
+   "gap0": 0.0631,
+   "dyz": [
+    0.0091,
+    0.01
+   ],
+   "mismatch": {
+    "k_scale": 0.6975,
+    "c_scale": 1.5411,
+    "mu_scale": 1.566
+   }
+  },
+  {
+   "id": "mm2_train_contact_141",
+   "family": "contact",
+   "path": "line",
+   "seed": 658147,
+   "gap0": 0.052,
+   "dyz": [
+    -0.0048,
+    0.0011
+   ],
+   "mismatch": {
+    "k_scale": 0.9478,
+    "c_scale": 0.7723,
+    "mu_scale": 1.5126
+   }
+  },
+  {
+   "id": "mm2_train_contact_142",
+   "family": "contact",
+   "path": "circle",
+   "seed": 596652,
+   "gap0": 0.0747,
+   "dyz": [
+    -0.006,
+    0.0048
+   ],
+   "mismatch": {
+    "k_scale": 0.8128,
+    "c_scale": 1.7073,
+    "mu_scale": 1.5298
+   }
+  },
+  {
+   "id": "mm2_train_contact_143",
+   "family": "contact",
+   "path": "line",
+   "seed": 393519,
+   "gap0": 0.061,
+   "dyz": [
+    -0.0001,
+    0.0
+   ],
+   "mismatch": {
+    "k_scale": 1.4823,
+    "c_scale": 1.5076,
+    "mu_scale": 1.195
+   }
+  },
+  {
+   "id": "mm2_train_contact_144",
+   "family": "contact",
+   "path": "circle",
+   "seed": 326380,
+   "gap0": 0.0609,
+   "dyz": [
+    0.0094,
+    0.0039
+   ],
+   "mismatch": {
+    "k_scale": 1.2938,
+    "c_scale": 1.2429,
+    "mu_scale": 1.8661
+   }
+  },
+  {
+   "id": "mm2_train_contact_145",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 444869,
+   "gap0": 0.0792,
+   "dyz": [
+    0.0077,
+    0.0054
+   ],
+   "mismatch": {
+    "k_scale": 1.1894,
+    "c_scale": 0.5471,
+    "mu_scale": 0.5518
+   }
+  },
+  {
+   "id": "mm2_train_contact_146",
+   "family": "contact",
+   "path": "circle",
+   "seed": 811424,
+   "gap0": 0.0573,
+   "dyz": [
+    -0.0069,
+    -0.0089
+   ],
+   "mismatch": {
+    "k_scale": 1.5398,
+    "c_scale": 1.2623,
+    "mu_scale": 1.3105
+   }
+  },
+  {
+   "id": "mm2_train_contact_147",
+   "family": "contact",
+   "path": "line",
+   "seed": 703078,
+   "gap0": 0.0621,
+   "dyz": [
+    -0.0006,
+    -0.0096
+   ],
+   "mismatch": {
+    "k_scale": 0.6125,
+    "c_scale": 1.7388,
+    "mu_scale": 1.6018
+   }
+  },
+  {
+   "id": "mm2_train_contact_148",
+   "family": "contact",
+   "path": "circle",
+   "seed": 313276,
+   "gap0": 0.0755,
+   "dyz": [
+    0.0071,
+    0.0055
+   ],
+   "mismatch": {
+    "k_scale": 0.8473,
+    "c_scale": 1.6593,
+    "mu_scale": 0.9402
+   }
+  },
+  {
+   "id": "mm2_train_contact_149",
+   "family": "contact",
+   "path": "line",
+   "seed": 754612,
+   "gap0": 0.0634,
+   "dyz": [
+    -0.0089,
+    0.0042
+   ],
+   "mismatch": {
+    "k_scale": 1.0162,
+    "c_scale": 0.7289,
+    "mu_scale": 0.5561
+   }
+  },
+  {
+   "id": "mm2_train_contact_150",
+   "family": "contact",
+   "path": "circle",
+   "seed": 258461,
+   "gap0": 0.0733,
+   "dyz": [
+    0.001,
+    0.0053
+   ],
+   "mismatch": {
+    "k_scale": 1.5049,
+    "c_scale": 0.9792,
+    "mu_scale": 1.3829
+   }
+  },
+  {
+   "id": "mm2_train_contact_151",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 105476,
+   "gap0": 0.0511,
+   "dyz": [
+    -0.0071,
+    -0.0034
+   ],
+   "mismatch": {
+    "k_scale": 1.3107,
+    "c_scale": 0.5606,
+    "mu_scale": 0.8406
+   }
+  },
+  {
+   "id": "mm2_train_contact_152",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 580336,
+   "gap0": 0.0572,
+   "dyz": [
+    -0.0047,
+    0.001
+   ],
+   "mismatch": {
+    "k_scale": 1.5212,
+    "c_scale": 1.5996,
+    "mu_scale": 0.7024
+   }
+  },
+  {
+   "id": "mm2_train_contact_153",
+   "family": "contact",
+   "path": "circle",
+   "seed": 522185,
+   "gap0": 0.0638,
+   "dyz": [
+    0.0022,
+    0.007
+   ],
+   "mismatch": {
+    "k_scale": 1.2656,
+    "c_scale": 1.4023,
+    "mu_scale": 1.5248
+   }
+  },
+  {
+   "id": "mm2_train_contact_154",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 995948,
+   "gap0": 0.0607,
+   "dyz": [
+    -0.0057,
+    -0.0014
+   ],
+   "mismatch": {
+    "k_scale": 1.3357,
+    "c_scale": 1.1827,
+    "mu_scale": 1.394
+   }
+  },
+  {
+   "id": "mm2_train_contact_155",
+   "family": "contact",
+   "path": "line",
+   "seed": 973757,
+   "gap0": 0.0752,
+   "dyz": [
+    -0.0095,
+    -0.0025
+   ],
+   "mismatch": {
+    "k_scale": 0.911,
+    "c_scale": 0.5159,
+    "mu_scale": 0.5244
+   }
+  },
+  {
+   "id": "mm2_train_contact_156",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 146507,
+   "gap0": 0.0638,
+   "dyz": [
+    0.0004,
+    -0.0096
+   ],
+   "mismatch": {
+    "k_scale": 0.7204,
+    "c_scale": 0.5605,
+    "mu_scale": 1.579
+   }
+  },
+  {
+   "id": "mm2_train_contact_157",
+   "family": "contact",
+   "path": "circle",
+   "seed": 488610,
+   "gap0": 0.0626,
+   "dyz": [
+    -0.0003,
+    0.0001
+   ],
+   "mismatch": {
+    "k_scale": 0.665,
+    "c_scale": 1.9822,
+    "mu_scale": 0.7449
+   }
+  },
+  {
+   "id": "mm2_train_contact_158",
+   "family": "contact",
+   "path": "line",
+   "seed": 604062,
+   "gap0": 0.0736,
+   "dyz": [
+    0.0096,
+    0.0034
+   ],
+   "mismatch": {
+    "k_scale": 1.0673,
+    "c_scale": 1.0116,
+    "mu_scale": 1.473
+   }
+  },
+  {
+   "id": "mm2_train_contact_159",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 392299,
+   "gap0": 0.0519,
+   "dyz": [
+    -0.0081,
+    -0.0001
+   ],
+   "mismatch": {
+    "k_scale": 1.1317,
+    "c_scale": 1.6785,
+    "mu_scale": 0.6268
+   }
+  },
+  {
+   "id": "mm2_train_contact_160",
+   "family": "contact",
+   "path": "circle",
+   "seed": 271488,
+   "gap0": 0.05,
+   "dyz": [
+    -0.0058,
+    0.0044
+   ],
+   "mismatch": {
+    "k_scale": 1.0232,
+    "c_scale": 0.7885,
+    "mu_scale": 1.0736
+   }
+  },
+  {
+   "id": "mm2_train_contact_161",
+   "family": "contact",
+   "path": "circle",
+   "seed": 733394,
+   "gap0": 0.0561,
+   "dyz": [
+    -0.0075,
+    -0.0019
+   ],
+   "mismatch": {
+    "k_scale": 0.7216,
+    "c_scale": 0.7238,
+    "mu_scale": 1.5131
+   }
+  },
+  {
+   "id": "mm2_train_contact_162",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 880821,
+   "gap0": 0.0628,
+   "dyz": [
+    0.0027,
+    -0.0043
+   ],
+   "mismatch": {
+    "k_scale": 0.776,
+    "c_scale": 1.6506,
+    "mu_scale": 1.047
+   }
+  },
+  {
+   "id": "mm2_train_contact_163",
+   "family": "contact",
+   "path": "line",
+   "seed": 189990,
+   "gap0": 0.0672,
+   "dyz": [
+    -0.0029,
+    -0.0064
+   ],
+   "mismatch": {
+    "k_scale": 0.8219,
+    "c_scale": 1.4543,
+    "mu_scale": 1.0102
+   }
+  },
+  {
+   "id": "mm2_train_contact_164",
+   "family": "contact",
+   "path": "circle",
+   "seed": 627265,
+   "gap0": 0.0594,
+   "dyz": [
+    -0.005,
+    0.0083
+   ],
+   "mismatch": {
+    "k_scale": 1.5738,
+    "c_scale": 1.4306,
+    "mu_scale": 0.7042
+   }
+  },
+  {
+   "id": "mm2_train_contact_165",
+   "family": "contact",
+   "path": "line",
+   "seed": 487657,
+   "gap0": 0.0552,
+   "dyz": [
+    0.0028,
+    -0.0029
+   ],
+   "mismatch": {
+    "k_scale": 1.0665,
+    "c_scale": 1.1772,
+    "mu_scale": 0.8955
+   }
+  },
+  {
+   "id": "mm2_train_contact_166",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 896731,
+   "gap0": 0.0655,
+   "dyz": [
+    -0.0033,
+    0.0005
+   ],
+   "mismatch": {
+    "k_scale": 1.2575,
+    "c_scale": 0.8808,
+    "mu_scale": 1.6943
+   }
+  },
+  {
+   "id": "mm2_train_contact_167",
+   "family": "contact",
+   "path": "circle",
+   "seed": 856618,
+   "gap0": 0.0675,
+   "dyz": [
+    0.0054,
+    -0.0053
+   ],
+   "mismatch": {
+    "k_scale": 1.3409,
+    "c_scale": 1.0817,
+    "mu_scale": 0.809
+   }
+  },
+  {
+   "id": "mm2_train_contact_168",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 983038,
+   "gap0": 0.0652,
+   "dyz": [
+    -0.0027,
+    0.0056
+   ],
+   "mismatch": {
+    "k_scale": 1.4619,
+    "c_scale": 1.3869,
+    "mu_scale": 0.7378
+   }
+  },
+  {
+   "id": "mm2_train_contact_169",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 346867,
+   "gap0": 0.0797,
+   "dyz": [
+    -0.0082,
+    -0.0044
+   ],
+   "mismatch": {
+    "k_scale": 0.7719,
+    "c_scale": 1.9936,
+    "mu_scale": 0.63
+   }
+  },
+  {
+   "id": "mm2_train_contact_170",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 991018,
+   "gap0": 0.0707,
+   "dyz": [
+    -0.001,
+    0.0096
+   ],
+   "mismatch": {
+    "k_scale": 0.96,
+    "c_scale": 1.1109,
+    "mu_scale": 1.9931
+   }
+  },
+  {
+   "id": "mm2_train_contact_171",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 420209,
+   "gap0": 0.0777,
+   "dyz": [
+    -0.0056,
+    0.0044
+   ],
+   "mismatch": {
+    "k_scale": 0.7159,
+    "c_scale": 1.6265,
+    "mu_scale": 1.8501
+   }
+  },
+  {
+   "id": "mm2_train_contact_172",
+   "family": "contact",
+   "path": "line",
+   "seed": 58968,
+   "gap0": 0.0647,
+   "dyz": [
+    0.0029,
+    0.0076
+   ],
+   "mismatch": {
+    "k_scale": 0.9256,
+    "c_scale": 1.8937,
+    "mu_scale": 0.6516
+   }
+  },
+  {
+   "id": "mm2_train_contact_173",
+   "family": "contact",
+   "path": "circle",
+   "seed": 546313,
+   "gap0": 0.0569,
+   "dyz": [
+    -0.0094,
+    -0.003
+   ],
+   "mismatch": {
+    "k_scale": 1.5966,
+    "c_scale": 1.3648,
+    "mu_scale": 1.9491
+   }
+  },
+  {
+   "id": "mm2_train_contact_174",
+   "family": "contact",
+   "path": "line",
+   "seed": 345544,
+   "gap0": 0.0639,
+   "dyz": [
+    0.0067,
+    -0.0022
+   ],
+   "mismatch": {
+    "k_scale": 1.0756,
+    "c_scale": 1.7644,
+    "mu_scale": 1.3572
+   }
+  },
+  {
+   "id": "mm2_train_contact_175",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 642410,
+   "gap0": 0.0654,
+   "dyz": [
+    0.0052,
+    0.0053
+   ],
+   "mismatch": {
+    "k_scale": 0.8126,
+    "c_scale": 1.2412,
+    "mu_scale": 1.9974
+   }
+  },
+  {
+   "id": "mm2_train_contact_176",
+   "family": "contact",
+   "path": "line",
+   "seed": 477519,
+   "gap0": 0.0524,
+   "dyz": [
+    -0.0076,
+    0.0043
+   ],
+   "mismatch": {
+    "k_scale": 0.8606,
+    "c_scale": 1.5452,
+    "mu_scale": 1.7238
+   }
+  },
+  {
+   "id": "mm2_train_contact_177",
+   "family": "contact",
+   "path": "line",
+   "seed": 951292,
+   "gap0": 0.0738,
+   "dyz": [
+    -0.0021,
+    -0.0086
+   ],
+   "mismatch": {
+    "k_scale": 0.9627,
+    "c_scale": 1.179,
+    "mu_scale": 0.7455
+   }
+  },
+  {
+   "id": "mm2_train_contact_178",
+   "family": "contact",
+   "path": "circle",
+   "seed": 525190,
+   "gap0": 0.0595,
+   "dyz": [
+    -0.0093,
+    -0.0044
+   ],
+   "mismatch": {
+    "k_scale": 1.2518,
+    "c_scale": 1.6414,
+    "mu_scale": 1.0761
+   }
+  },
+  {
+   "id": "mm2_train_contact_179",
+   "family": "contact",
+   "path": "circle",
+   "seed": 834955,
+   "gap0": 0.0778,
+   "dyz": [
+    -0.004,
+    -0.0
+   ],
+   "mismatch": {
+    "k_scale": 0.8579,
+    "c_scale": 0.5222,
+    "mu_scale": 1.9553
+   }
+  },
+  {
+   "id": "mm2_train_contact_180",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 339266,
+   "gap0": 0.0616,
+   "dyz": [
+    -0.0022,
+    0.0006
+   ],
+   "mismatch": {
+    "k_scale": 0.7537,
+    "c_scale": 1.3725,
+    "mu_scale": 1.0534
+   }
+  },
+  {
+   "id": "mm2_train_contact_181",
+   "family": "contact",
+   "path": "line",
+   "seed": 514506,
+   "gap0": 0.0593,
+   "dyz": [
+    0.0068,
+    -0.0001
+   ],
+   "mismatch": {
+    "k_scale": 1.2655,
+    "c_scale": 1.2226,
+    "mu_scale": 1.1554
+   }
+  },
+  {
+   "id": "mm2_train_contact_182",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 605643,
+   "gap0": 0.0777,
+   "dyz": [
+    0.0043,
+    0.0054
+   ],
+   "mismatch": {
+    "k_scale": 0.7798,
+    "c_scale": 0.5315,
+    "mu_scale": 1.704
+   }
+  },
+  {
+   "id": "mm2_train_contact_183",
+   "family": "contact",
+   "path": "line",
+   "seed": 717746,
+   "gap0": 0.0672,
+   "dyz": [
+    -0.0053,
+    0.0
+   ],
+   "mismatch": {
+    "k_scale": 1.1467,
+    "c_scale": 0.6944,
+    "mu_scale": 0.6199
+   }
+  },
+  {
+   "id": "mm2_train_contact_184",
+   "family": "contact",
+   "path": "circle",
+   "seed": 511770,
+   "gap0": 0.072,
+   "dyz": [
+    0.0091,
+    0.0028
+   ],
+   "mismatch": {
+    "k_scale": 1.316,
+    "c_scale": 1.8731,
+    "mu_scale": 0.8416
+   }
+  },
+  {
+   "id": "mm2_train_contact_185",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 737858,
+   "gap0": 0.0561,
+   "dyz": [
+    0.0073,
+    0.0012
+   ],
+   "mismatch": {
+    "k_scale": 0.9438,
+    "c_scale": 1.7505,
+    "mu_scale": 1.3726
+   }
+  },
+  {
+   "id": "mm2_train_contact_186",
+   "family": "contact",
+   "path": "line",
+   "seed": 292133,
+   "gap0": 0.0589,
+   "dyz": [
+    0.0023,
+    0.0092
+   ],
+   "mismatch": {
+    "k_scale": 1.4394,
+    "c_scale": 0.9606,
+    "mu_scale": 1.0502
+   }
+  },
+  {
+   "id": "mm2_train_contact_187",
+   "family": "contact",
+   "path": "circle",
+   "seed": 872469,
+   "gap0": 0.0626,
+   "dyz": [
+    0.0013,
+    -0.0038
+   ],
+   "mismatch": {
+    "k_scale": 0.7049,
+    "c_scale": 1.333,
+    "mu_scale": 0.9627
+   }
+  },
+  {
+   "id": "mm2_train_contact_188",
+   "family": "contact",
+   "path": "circle",
+   "seed": 205855,
+   "gap0": 0.0789,
+   "dyz": [
+    -0.0049,
+    0.0009
+   ],
+   "mismatch": {
+    "k_scale": 1.1571,
+    "c_scale": 1.0571,
+    "mu_scale": 0.5866
+   }
+  },
+  {
+   "id": "mm2_train_contact_189",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 43688,
+   "gap0": 0.0659,
+   "dyz": [
+    -0.0017,
+    -0.0065
+   ],
+   "mismatch": {
+    "k_scale": 0.8513,
+    "c_scale": 1.9248,
+    "mu_scale": 1.581
+   }
+  },
+  {
+   "id": "mm2_train_contact_190",
+   "family": "contact",
+   "path": "line",
+   "seed": 536822,
+   "gap0": 0.0516,
+   "dyz": [
+    0.0061,
+    0.0042
+   ],
+   "mismatch": {
+    "k_scale": 1.2124,
+    "c_scale": 0.9875,
+    "mu_scale": 1.3823
+   }
+  },
+  {
+   "id": "mm2_train_contact_191",
+   "family": "contact",
+   "path": "line",
+   "seed": 638562,
+   "gap0": 0.0747,
+   "dyz": [
+    -0.0036,
+    -0.0035
+   ],
+   "mismatch": {
+    "k_scale": 0.8314,
+    "c_scale": 0.9199,
+    "mu_scale": 1.0002
+   }
+  },
+  {
+   "id": "mm2_train_contact_192",
+   "family": "contact",
+   "path": "circle",
+   "seed": 164914,
+   "gap0": 0.0772,
+   "dyz": [
+    -0.003,
+    -0.0095
+   ],
+   "mismatch": {
+    "k_scale": 1.4957,
+    "c_scale": 0.8017,
+    "mu_scale": 1.9855
+   }
+  },
+  {
+   "id": "mm2_train_contact_193",
+   "family": "contact",
+   "path": "circle",
+   "seed": 518136,
+   "gap0": 0.0522,
+   "dyz": [
+    0.0059,
+    0.0047
+   ],
+   "mismatch": {
+    "k_scale": 1.2756,
+    "c_scale": 1.038,
+    "mu_scale": 1.1276
+   }
+  },
+  {
+   "id": "mm2_train_contact_194",
+   "family": "contact",
+   "path": "circle",
+   "seed": 591474,
+   "gap0": 0.0688,
+   "dyz": [
+    -0.0086,
+    0.001
+   ],
+   "mismatch": {
+    "k_scale": 0.9524,
+    "c_scale": 0.7331,
+    "mu_scale": 0.5588
+   }
+  },
+  {
+   "id": "mm2_train_contact_195",
+   "family": "contact",
+   "path": "circle",
+   "seed": 961736,
+   "gap0": 0.057,
+   "dyz": [
+    -0.0077,
+    0.0092
+   ],
+   "mismatch": {
+    "k_scale": 1.5817,
+    "c_scale": 0.7764,
+    "mu_scale": 0.7846
+   }
+  },
+  {
+   "id": "mm2_train_contact_196",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 291824,
+   "gap0": 0.073,
+   "dyz": [
+    -0.0014,
+    -0.0063
+   ],
+   "mismatch": {
+    "k_scale": 0.6183,
+    "c_scale": 1.288,
+    "mu_scale": 1.8081
+   }
+  },
+  {
+   "id": "mm2_train_contact_197",
+   "family": "contact",
+   "path": "line",
+   "seed": 453589,
+   "gap0": 0.0579,
+   "dyz": [
+    0.0044,
+    -0.0047
+   ],
+   "mismatch": {
+    "k_scale": 0.7106,
+    "c_scale": 0.8639,
+    "mu_scale": 0.5222
+   }
+  },
+  {
+   "id": "mm2_train_contact_198",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 382549,
+   "gap0": 0.0637,
+   "dyz": [
+    0.0064,
+    0.0085
+   ],
+   "mismatch": {
+    "k_scale": 1.5948,
+    "c_scale": 0.7172,
+    "mu_scale": 1.0727
+   }
+  },
+  {
+   "id": "mm2_train_contact_199",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 618632,
+   "gap0": 0.0669,
+   "dyz": [
+    -0.0071,
+    0.0022
+   ],
+   "mismatch": {
+    "k_scale": 1.0451,
+    "c_scale": 1.46,
+    "mu_scale": 1.8062
+   }
+  },
+  {
+   "id": "mm2_train_contact_200",
+   "family": "contact",
+   "path": "circle",
+   "seed": 848704,
+   "gap0": 0.0635,
+   "dyz": [
+    0.0049,
+    0.0022
+   ],
+   "mismatch": {
+    "k_scale": 0.9455,
+    "c_scale": 1.8611,
+    "mu_scale": 1.0829
+   }
+  },
+  {
+   "id": "mm2_train_contact_201",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 516355,
+   "gap0": 0.0558,
+   "dyz": [
+    0.0088,
+    0.0003
+   ],
+   "mismatch": {
+    "k_scale": 1.2119,
+    "c_scale": 1.2218,
+    "mu_scale": 1.5095
+   }
+  },
+  {
+   "id": "mm2_train_contact_202",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 134946,
+   "gap0": 0.0651,
+   "dyz": [
+    -0.0031,
+    0.0001
+   ],
+   "mismatch": {
+    "k_scale": 1.4036,
+    "c_scale": 1.986,
+    "mu_scale": 1.1246
+   }
+  },
+  {
+   "id": "mm2_train_contact_203",
+   "family": "contact",
+   "path": "circle",
+   "seed": 253511,
+   "gap0": 0.0592,
+   "dyz": [
+    0.0009,
+    -0.0047
+   ],
+   "mismatch": {
+    "k_scale": 0.7771,
+    "c_scale": 1.9745,
+    "mu_scale": 1.9509
+   }
+  },
+  {
+   "id": "mm2_train_contact_204",
+   "family": "contact",
+   "path": "line",
+   "seed": 631979,
+   "gap0": 0.0536,
+   "dyz": [
+    0.0076,
+    -0.008
+   ],
+   "mismatch": {
+    "k_scale": 0.8768,
+    "c_scale": 0.8096,
+    "mu_scale": 1.422
+   }
+  },
+  {
+   "id": "mm2_train_contact_205",
+   "family": "contact",
+   "path": "line",
+   "seed": 490695,
+   "gap0": 0.0726,
+   "dyz": [
+    0.007,
+    0.0067
+   ],
+   "mismatch": {
+    "k_scale": 0.9106,
+    "c_scale": 1.5032,
+    "mu_scale": 1.0405
+   }
+  },
+  {
+   "id": "mm2_train_contact_206",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 194356,
+   "gap0": 0.0632,
+   "dyz": [
+    0.0082,
+    0.0057
+   ],
+   "mismatch": {
+    "k_scale": 0.6551,
+    "c_scale": 1.0617,
+    "mu_scale": 1.255
+   }
+  },
+  {
+   "id": "mm2_train_contact_207",
+   "family": "contact",
+   "path": "line",
+   "seed": 339069,
+   "gap0": 0.0555,
+   "dyz": [
+    -0.0062,
+    -0.0098
+   ],
+   "mismatch": {
+    "k_scale": 1.5879,
+    "c_scale": 1.5523,
+    "mu_scale": 1.9313
+   }
+  },
+  {
+   "id": "mm2_train_contact_208",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 541564,
+   "gap0": 0.0735,
+   "dyz": [
+    0.0086,
+    -0.0049
+   ],
+   "mismatch": {
+    "k_scale": 0.8296,
+    "c_scale": 1.0191,
+    "mu_scale": 0.8001
+   }
+  },
+  {
+   "id": "mm2_train_contact_209",
+   "family": "contact",
+   "path": "circle",
+   "seed": 484812,
+   "gap0": 0.0651,
+   "dyz": [
+    -0.0045,
+    0.0026
+   ],
+   "mismatch": {
+    "k_scale": 0.6582,
+    "c_scale": 1.529,
+    "mu_scale": 0.6666
+   }
+  },
+  {
+   "id": "mm2_train_contact_210",
+   "family": "contact",
+   "path": "line",
+   "seed": 450185,
+   "gap0": 0.0777,
+   "dyz": [
+    -0.0024,
+    -0.0081
+   ],
+   "mismatch": {
+    "k_scale": 1.4873,
+    "c_scale": 0.9311,
+    "mu_scale": 0.5797
+   }
+  },
+  {
+   "id": "mm2_train_contact_211",
+   "family": "contact",
+   "path": "circle",
+   "seed": 771566,
+   "gap0": 0.0587,
+   "dyz": [
+    0.0015,
+    -0.0044
+   ],
+   "mismatch": {
+    "k_scale": 0.6057,
+    "c_scale": 0.6709,
+    "mu_scale": 1.8599
+   }
+  },
+  {
+   "id": "mm2_train_contact_212",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 690785,
+   "gap0": 0.0755,
+   "dyz": [
+    -0.0056,
+    -0.0033
+   ],
+   "mismatch": {
+    "k_scale": 0.9955,
+    "c_scale": 0.5286,
+    "mu_scale": 1.5159
+   }
+  },
+  {
+   "id": "mm2_train_contact_213",
+   "family": "contact",
+   "path": "line",
+   "seed": 473056,
+   "gap0": 0.0655,
+   "dyz": [
+    0.0058,
+    -0.0051
+   ],
+   "mismatch": {
+    "k_scale": 1.3759,
+    "c_scale": 0.6084,
+    "mu_scale": 0.9381
+   }
+  },
+  {
+   "id": "mm2_train_contact_214",
+   "family": "contact",
+   "path": "circle",
+   "seed": 262452,
+   "gap0": 0.0739,
+   "dyz": [
+    -0.0017,
+    0.0029
+   ],
+   "mismatch": {
+    "k_scale": 0.9662,
+    "c_scale": 0.7498,
+    "mu_scale": 1.0831
+   }
+  },
+  {
+   "id": "mm2_train_contact_215",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 697814,
+   "gap0": 0.0579,
+   "dyz": [
+    -0.0005,
+    -0.0064
+   ],
+   "mismatch": {
+    "k_scale": 1.4151,
+    "c_scale": 1.6946,
+    "mu_scale": 1.2831
+   }
+  },
+  {
+   "id": "mm2_train_contact_216",
+   "family": "contact",
+   "path": "circle",
+   "seed": 573960,
+   "gap0": 0.077,
+   "dyz": [
+    0.0024,
+    0.008
+   ],
+   "mismatch": {
+    "k_scale": 0.7354,
+    "c_scale": 1.5557,
+    "mu_scale": 1.3786
+   }
+  },
+  {
+   "id": "mm2_train_contact_217",
+   "family": "contact",
+   "path": "circle",
+   "seed": 430024,
+   "gap0": 0.0781,
+   "dyz": [
+    -0.0017,
+    -0.0064
+   ],
+   "mismatch": {
+    "k_scale": 0.868,
+    "c_scale": 0.8292,
+    "mu_scale": 1.8758
+   }
+  },
+  {
+   "id": "mm2_train_contact_218",
+   "family": "contact",
+   "path": "circle",
+   "seed": 716043,
+   "gap0": 0.0763,
+   "dyz": [
+    0.0033,
+    -0.0026
+   ],
+   "mismatch": {
+    "k_scale": 1.506,
+    "c_scale": 0.8437,
+    "mu_scale": 1.0527
+   }
+  },
+  {
+   "id": "mm2_train_contact_219",
+   "family": "contact",
+   "path": "line",
+   "seed": 456586,
+   "gap0": 0.0755,
+   "dyz": [
+    -0.0033,
+    -0.0059
+   ],
+   "mismatch": {
+    "k_scale": 0.8881,
+    "c_scale": 0.9702,
+    "mu_scale": 1.8472
+   }
+  },
+  {
+   "id": "mm2_train_contact_220",
+   "family": "contact",
+   "path": "line",
+   "seed": 99972,
+   "gap0": 0.0731,
+   "dyz": [
+    0.0076,
+    -0.006
+   ],
+   "mismatch": {
+    "k_scale": 1.0067,
+    "c_scale": 1.6162,
+    "mu_scale": 1.3808
+   }
+  },
+  {
+   "id": "mm2_train_contact_221",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 86715,
+   "gap0": 0.0791,
+   "dyz": [
+    0.003,
+    0.0046
+   ],
+   "mismatch": {
+    "k_scale": 1.2724,
+    "c_scale": 1.207,
+    "mu_scale": 1.2873
+   }
+  },
+  {
+   "id": "mm2_train_contact_222",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 659214,
+   "gap0": 0.076,
+   "dyz": [
+    0.001,
+    0.0024
+   ],
+   "mismatch": {
+    "k_scale": 1.1708,
+    "c_scale": 0.6033,
+    "mu_scale": 1.2335
+   }
+  },
+  {
+   "id": "mm2_train_contact_223",
+   "family": "contact",
+   "path": "circle",
+   "seed": 755083,
+   "gap0": 0.0602,
+   "dyz": [
+    0.0015,
+    0.0053
+   ],
+   "mismatch": {
+    "k_scale": 1.0836,
+    "c_scale": 1.0635,
+    "mu_scale": 1.1169
+   }
+  },
+  {
+   "id": "mm2_train_contact_224",
+   "family": "contact",
+   "path": "line",
+   "seed": 855146,
+   "gap0": 0.0796,
+   "dyz": [
+    -0.0087,
+    -0.0013
+   ],
+   "mismatch": {
+    "k_scale": 0.9647,
+    "c_scale": 0.9234,
+    "mu_scale": 0.9866
+   }
+  },
+  {
+   "id": "mm2_train_contact_225",
+   "family": "contact",
+   "path": "circle",
+   "seed": 212459,
+   "gap0": 0.0631,
+   "dyz": [
+    0.0035,
+    0.0081
+   ],
+   "mismatch": {
+    "k_scale": 1.2724,
+    "c_scale": 0.9422,
+    "mu_scale": 1.9928
+   }
+  },
+  {
+   "id": "mm2_train_contact_226",
+   "family": "contact",
+   "path": "line",
+   "seed": 654863,
+   "gap0": 0.068,
+   "dyz": [
+    0.001,
+    -0.0025
+   ],
+   "mismatch": {
+    "k_scale": 1.5857,
+    "c_scale": 1.7406,
+    "mu_scale": 1.1348
+   }
+  },
+  {
+   "id": "mm2_train_contact_227",
+   "family": "contact",
+   "path": "circle",
+   "seed": 652863,
+   "gap0": 0.0769,
+   "dyz": [
+    -0.0015,
+    0.0073
+   ],
+   "mismatch": {
+    "k_scale": 0.819,
+    "c_scale": 0.9667,
+    "mu_scale": 1.3579
+   }
+  },
+  {
+   "id": "mm2_train_contact_228",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 608208,
+   "gap0": 0.0673,
+   "dyz": [
+    -0.0088,
+    -0.0018
+   ],
+   "mismatch": {
+    "k_scale": 0.9595,
+    "c_scale": 1.3829,
+    "mu_scale": 1.19
+   }
+  },
+  {
+   "id": "mm2_train_contact_229",
+   "family": "contact",
+   "path": "circle",
+   "seed": 976791,
+   "gap0": 0.0517,
+   "dyz": [
+    -0.0062,
+    -0.0045
+   ],
+   "mismatch": {
+    "k_scale": 0.8734,
+    "c_scale": 1.1808,
+    "mu_scale": 0.5788
+   }
+  },
+  {
+   "id": "mm2_train_contact_230",
+   "family": "contact",
+   "path": "circle",
+   "seed": 501665,
+   "gap0": 0.0628,
+   "dyz": [
+    -0.0049,
+    -0.0098
+   ],
+   "mismatch": {
+    "k_scale": 0.9657,
+    "c_scale": 1.7614,
+    "mu_scale": 1.6619
+   }
+  },
+  {
+   "id": "mm2_train_contact_231",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 897272,
+   "gap0": 0.0624,
+   "dyz": [
+    0.0051,
+    -0.0048
+   ],
+   "mismatch": {
+    "k_scale": 0.8418,
+    "c_scale": 0.8642,
+    "mu_scale": 0.9601
+   }
+  },
+  {
+   "id": "mm2_train_contact_232",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 928723,
+   "gap0": 0.0761,
+   "dyz": [
+    0.0064,
+    0.0061
+   ],
+   "mismatch": {
+    "k_scale": 0.9103,
+    "c_scale": 1.3773,
+    "mu_scale": 1.4291
+   }
+  },
+  {
+   "id": "mm2_train_contact_233",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 610294,
+   "gap0": 0.0641,
+   "dyz": [
+    0.0002,
+    -0.0088
+   ],
+   "mismatch": {
+    "k_scale": 0.6604,
+    "c_scale": 0.6668,
+    "mu_scale": 1.2753
+   }
+  },
+  {
+   "id": "mm2_train_contact_234",
+   "family": "contact",
+   "path": "circle",
+   "seed": 884626,
+   "gap0": 0.064,
+   "dyz": [
+    -0.0097,
+    0.0055
+   ],
+   "mismatch": {
+    "k_scale": 0.7745,
+    "c_scale": 1.9431,
+    "mu_scale": 1.8661
+   }
+  },
+  {
+   "id": "mm2_train_contact_235",
+   "family": "contact",
+   "path": "circle",
+   "seed": 867638,
+   "gap0": 0.058,
+   "dyz": [
+    0.005,
+    0.0015
+   ],
+   "mismatch": {
+    "k_scale": 1.1626,
+    "c_scale": 1.2732,
+    "mu_scale": 1.0095
+   }
+  },
+  {
+   "id": "mm2_train_contact_236",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 799942,
+   "gap0": 0.0724,
+   "dyz": [
+    -0.0045,
+    -0.009
+   ],
+   "mismatch": {
+    "k_scale": 1.3719,
+    "c_scale": 1.2977,
+    "mu_scale": 0.9294
+   }
+  },
+  {
+   "id": "mm2_train_contact_237",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 93647,
+   "gap0": 0.056,
+   "dyz": [
+    0.0016,
+    0.0006
+   ],
+   "mismatch": {
+    "k_scale": 0.7505,
+    "c_scale": 0.6389,
+    "mu_scale": 1.6203
+   }
+  },
+  {
+   "id": "mm2_train_contact_238",
+   "family": "contact",
+   "path": "circle",
+   "seed": 869889,
+   "gap0": 0.0515,
+   "dyz": [
+    -0.0058,
+    0.0079
+   ],
+   "mismatch": {
+    "k_scale": 1.1996,
+    "c_scale": 0.5095,
+    "mu_scale": 1.2493
+   }
+  },
+  {
+   "id": "mm2_train_contact_239",
+   "family": "contact",
+   "path": "circle",
+   "seed": 837655,
+   "gap0": 0.0608,
+   "dyz": [
+    0.0078,
+    -0.0006
+   ],
+   "mismatch": {
+    "k_scale": 0.9763,
+    "c_scale": 1.7399,
+    "mu_scale": 1.2596
+   }
+  },
+  {
+   "id": "mm2_train_contact_240",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 660767,
+   "gap0": 0.0678,
+   "dyz": [
+    -0.0038,
+    0.0016
+   ],
+   "mismatch": {
+    "k_scale": 1.5087,
+    "c_scale": 1.3014,
+    "mu_scale": 0.8942
+   }
+  },
+  {
+   "id": "mm2_train_contact_241",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 644640,
+   "gap0": 0.0652,
+   "dyz": [
+    -0.0025,
+    0.0036
+   ],
+   "mismatch": {
+    "k_scale": 1.4966,
+    "c_scale": 1.8152,
+    "mu_scale": 1.279
+   }
+  },
+  {
+   "id": "mm2_train_contact_242",
+   "family": "contact",
+   "path": "line",
+   "seed": 358945,
+   "gap0": 0.0748,
+   "dyz": [
+    -0.0097,
+    0.0025
+   ],
+   "mismatch": {
+    "k_scale": 0.6461,
+    "c_scale": 1.7584,
+    "mu_scale": 0.5309
+   }
+  },
+  {
+   "id": "mm2_train_contact_243",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 304529,
+   "gap0": 0.0622,
+   "dyz": [
+    -0.0043,
+    0.0008
+   ],
+   "mismatch": {
+    "k_scale": 0.6198,
+    "c_scale": 0.867,
+    "mu_scale": 1.0354
+   }
+  },
+  {
+   "id": "mm2_train_contact_244",
+   "family": "contact",
+   "path": "line",
+   "seed": 422784,
+   "gap0": 0.0694,
+   "dyz": [
+    0.009,
+    -0.006
+   ],
+   "mismatch": {
+    "k_scale": 0.903,
+    "c_scale": 1.1839,
+    "mu_scale": 0.6954
+   }
+  },
+  {
+   "id": "mm2_train_contact_245",
+   "family": "contact",
+   "path": "circle",
+   "seed": 278434,
+   "gap0": 0.0529,
+   "dyz": [
+    -0.0019,
+    -0.0022
+   ],
+   "mismatch": {
+    "k_scale": 1.4679,
+    "c_scale": 1.4173,
+    "mu_scale": 1.4268
+   }
+  },
+  {
+   "id": "mm2_train_contact_246",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 180543,
+   "gap0": 0.0641,
+   "dyz": [
+    0.009,
+    0.0013
+   ],
+   "mismatch": {
+    "k_scale": 1.4075,
+    "c_scale": 1.9478,
+    "mu_scale": 1.8226
+   }
+  },
+  {
+   "id": "mm2_train_contact_247",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 809364,
+   "gap0": 0.0542,
+   "dyz": [
+    -0.0036,
+    -0.0082
+   ],
+   "mismatch": {
+    "k_scale": 1.0325,
+    "c_scale": 1.848,
+    "mu_scale": 0.6538
+   }
+  },
+  {
+   "id": "mm2_train_contact_248",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 338397,
+   "gap0": 0.0715,
+   "dyz": [
+    -0.0093,
+    0.0068
+   ],
+   "mismatch": {
+    "k_scale": 0.829,
+    "c_scale": 1.5092,
+    "mu_scale": 0.8568
+   }
+  },
+  {
+   "id": "mm2_train_contact_249",
+   "family": "contact",
+   "path": "circle",
+   "seed": 181801,
+   "gap0": 0.067,
+   "dyz": [
+    0.0019,
+    0.0086
+   ],
+   "mismatch": {
+    "k_scale": 0.7822,
+    "c_scale": 1.4581,
+    "mu_scale": 1.7692
+   }
+  },
+  {
+   "id": "mm2_train_contact_250",
+   "family": "contact",
+   "path": "circle",
+   "seed": 786281,
+   "gap0": 0.0564,
+   "dyz": [
+    0.0027,
+    -0.0028
+   ],
+   "mismatch": {
+    "k_scale": 1.3238,
+    "c_scale": 1.3434,
+    "mu_scale": 1.6533
+   }
+  },
+  {
+   "id": "mm2_train_contact_251",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 377535,
+   "gap0": 0.0662,
+   "dyz": [
+    -0.0034,
+    -0.0085
+   ],
+   "mismatch": {
+    "k_scale": 1.5341,
+    "c_scale": 0.6547,
+    "mu_scale": 0.6407
+   }
+  },
+  {
+   "id": "mm2_train_contact_252",
+   "family": "contact",
+   "path": "circle",
+   "seed": 558737,
+   "gap0": 0.0549,
+   "dyz": [
+    -0.0045,
+    0.0083
+   ],
+   "mismatch": {
+    "k_scale": 1.4233,
+    "c_scale": 1.1803,
+    "mu_scale": 1.2244
+   }
+  },
+  {
+   "id": "mm2_train_contact_253",
+   "family": "contact",
+   "path": "circle",
+   "seed": 602139,
+   "gap0": 0.0584,
+   "dyz": [
+    0.0092,
+    0.008
+   ],
+   "mismatch": {
+    "k_scale": 1.1968,
+    "c_scale": 1.7002,
+    "mu_scale": 1.1195
+   }
+  },
+  {
+   "id": "mm2_train_contact_254",
+   "family": "contact",
+   "path": "circle",
+   "seed": 908176,
+   "gap0": 0.0567,
+   "dyz": [
+    -0.01,
+    0.0057
+   ],
+   "mismatch": {
+    "k_scale": 0.7512,
+    "c_scale": 1.928,
+    "mu_scale": 0.9589
+   }
+  },
+  {
+   "id": "mm2_train_contact_255",
+   "family": "contact",
+   "path": "line",
+   "seed": 734914,
+   "gap0": 0.0731,
+   "dyz": [
+    0.0042,
+    0.0079
+   ],
+   "mismatch": {
+    "k_scale": 0.9247,
+    "c_scale": 1.4091,
+    "mu_scale": 1.9104
+   }
+  },
+  {
+   "id": "mm2_train_contact_256",
+   "family": "contact",
+   "path": "circle",
+   "seed": 808549,
+   "gap0": 0.0716,
+   "dyz": [
+    -0.0046,
+    -0.0043
+   ],
+   "mismatch": {
+    "k_scale": 1.5894,
+    "c_scale": 1.0453,
+    "mu_scale": 1.5083
+   }
+  },
+  {
+   "id": "mm2_train_contact_257",
+   "family": "contact",
+   "path": "circle",
+   "seed": 835677,
+   "gap0": 0.0632,
+   "dyz": [
+    0.0,
+    0.0066
+   ],
+   "mismatch": {
+    "k_scale": 1.2003,
+    "c_scale": 1.4641,
+    "mu_scale": 0.8492
+   }
+  },
+  {
+   "id": "mm2_train_contact_258",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 181356,
+   "gap0": 0.0777,
+   "dyz": [
+    0.0003,
+    -0.0001
+   ],
+   "mismatch": {
+    "k_scale": 1.3999,
+    "c_scale": 1.7394,
+    "mu_scale": 0.7102
+   }
+  },
+  {
+   "id": "mm2_train_contact_259",
+   "family": "contact",
+   "path": "circle",
+   "seed": 201737,
+   "gap0": 0.0535,
+   "dyz": [
+    -0.0095,
+    -0.0031
+   ],
+   "mismatch": {
+    "k_scale": 0.9139,
+    "c_scale": 1.9361,
+    "mu_scale": 1.5169
+   }
+  },
+  {
+   "id": "mm2_train_contact_260",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 641798,
+   "gap0": 0.0604,
+   "dyz": [
+    0.0051,
+    0.0038
+   ],
+   "mismatch": {
+    "k_scale": 0.7046,
+    "c_scale": 0.8696,
+    "mu_scale": 1.1859
+   }
+  },
+  {
+   "id": "mm2_train_contact_261",
+   "family": "contact",
+   "path": "line",
+   "seed": 208349,
+   "gap0": 0.0552,
+   "dyz": [
+    0.0043,
+    -0.0064
+   ],
+   "mismatch": {
+    "k_scale": 1.0699,
+    "c_scale": 0.9732,
+    "mu_scale": 1.0752
+   }
+  },
+  {
+   "id": "mm2_train_contact_262",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 406932,
+   "gap0": 0.0685,
+   "dyz": [
+    0.0083,
+    0.0036
+   ],
+   "mismatch": {
+    "k_scale": 1.4996,
+    "c_scale": 1.546,
+    "mu_scale": 1.5089
+   }
+  },
+  {
+   "id": "mm2_train_contact_263",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 933052,
+   "gap0": 0.0766,
+   "dyz": [
+    0.0032,
+    0.009
+   ],
+   "mismatch": {
+    "k_scale": 1.2434,
+    "c_scale": 0.9167,
+    "mu_scale": 1.4261
+   }
+  },
+  {
+   "id": "mm2_train_contact_264",
+   "family": "contact",
+   "path": "line",
+   "seed": 675672,
+   "gap0": 0.074,
+   "dyz": [
+    -0.0086,
+    -0.0036
+   ],
+   "mismatch": {
+    "k_scale": 1.494,
+    "c_scale": 1.6685,
+    "mu_scale": 0.5222
+   }
+  },
+  {
+   "id": "mm2_train_contact_265",
+   "family": "contact",
+   "path": "circle",
+   "seed": 598088,
+   "gap0": 0.0791,
+   "dyz": [
+    -0.0004,
+    0.0023
+   ],
+   "mismatch": {
+    "k_scale": 1.0922,
+    "c_scale": 1.082,
+    "mu_scale": 1.1181
+   }
+  },
+  {
+   "id": "mm2_train_contact_266",
+   "family": "contact",
+   "path": "circle",
+   "seed": 542838,
+   "gap0": 0.0727,
+   "dyz": [
+    0.0049,
+    -0.0007
+   ],
+   "mismatch": {
+    "k_scale": 0.9448,
+    "c_scale": 1.0467,
+    "mu_scale": 1.6494
+   }
+  },
+  {
+   "id": "mm2_train_contact_267",
+   "family": "contact",
+   "path": "circle",
+   "seed": 855047,
+   "gap0": 0.0667,
+   "dyz": [
+    0.0095,
+    0.0017
+   ],
+   "mismatch": {
+    "k_scale": 0.679,
+    "c_scale": 1.8976,
+    "mu_scale": 0.6599
+   }
+  },
+  {
+   "id": "mm2_train_contact_268",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 597066,
+   "gap0": 0.0784,
+   "dyz": [
+    0.0061,
+    0.0015
+   ],
+   "mismatch": {
+    "k_scale": 0.9671,
+    "c_scale": 0.6437,
+    "mu_scale": 1.2617
+   }
+  },
+  {
+   "id": "mm2_train_contact_269",
+   "family": "contact",
+   "path": "circle",
+   "seed": 88711,
+   "gap0": 0.0615,
+   "dyz": [
+    -0.0008,
+    -0.0067
+   ],
+   "mismatch": {
+    "k_scale": 1.3758,
+    "c_scale": 1.8369,
+    "mu_scale": 1.0009
+   }
+  },
+  {
+   "id": "mm2_train_contact_270",
+   "family": "contact",
+   "path": "circle",
+   "seed": 798603,
+   "gap0": 0.0626,
+   "dyz": [
+    -0.0096,
+    0.0069
+   ],
+   "mismatch": {
+    "k_scale": 1.3575,
+    "c_scale": 1.5553,
+    "mu_scale": 0.8283
+   }
+  },
+  {
+   "id": "mm2_train_contact_271",
+   "family": "contact",
+   "path": "circle",
+   "seed": 830914,
+   "gap0": 0.0601,
+   "dyz": [
+    -0.0066,
+    0.0097
+   ],
+   "mismatch": {
+    "k_scale": 1.3541,
+    "c_scale": 1.5075,
+    "mu_scale": 0.7431
+   }
+  },
+  {
+   "id": "mm2_train_contact_272",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 5427,
+   "gap0": 0.0654,
+   "dyz": [
+    -0.0072,
+    -0.0033
+   ],
+   "mismatch": {
+    "k_scale": 0.7592,
+    "c_scale": 1.5239,
+    "mu_scale": 0.6938
+   }
+  },
+  {
+   "id": "mm2_train_contact_273",
+   "family": "contact",
+   "path": "line",
+   "seed": 839986,
+   "gap0": 0.0707,
+   "dyz": [
+    0.0017,
+    -0.0074
+   ],
+   "mismatch": {
+    "k_scale": 1.2065,
+    "c_scale": 0.5277,
+    "mu_scale": 0.8056
+   }
+  },
+  {
+   "id": "mm2_train_contact_274",
+   "family": "contact",
+   "path": "line",
+   "seed": 371976,
+   "gap0": 0.0793,
+   "dyz": [
+    0.0053,
+    0.0006
+   ],
+   "mismatch": {
+    "k_scale": 1.3,
+    "c_scale": 0.5883,
+    "mu_scale": 1.1363
+   }
+  },
+  {
+   "id": "mm2_train_contact_275",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 282495,
+   "gap0": 0.0612,
+   "dyz": [
+    -0.004,
+    -0.004
+   ],
+   "mismatch": {
+    "k_scale": 0.8618,
+    "c_scale": 1.506,
+    "mu_scale": 1.9656
+   }
+  },
+  {
+   "id": "mm2_train_contact_276",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 432146,
+   "gap0": 0.055,
+   "dyz": [
+    -0.0015,
+    0.0072
+   ],
+   "mismatch": {
+    "k_scale": 1.2146,
+    "c_scale": 1.7659,
+    "mu_scale": 0.6314
+   }
+  },
+  {
+   "id": "mm2_train_contact_277",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 467413,
+   "gap0": 0.0626,
+   "dyz": [
+    0.0037,
+    -0.0083
+   ],
+   "mismatch": {
+    "k_scale": 1.034,
+    "c_scale": 1.5005,
+    "mu_scale": 1.5273
+   }
+  },
+  {
+   "id": "mm2_train_contact_278",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 196374,
+   "gap0": 0.0607,
+   "dyz": [
+    -0.0016,
+    -0.0025
+   ],
+   "mismatch": {
+    "k_scale": 0.7513,
+    "c_scale": 1.2856,
+    "mu_scale": 0.7538
+   }
+  },
+  {
+   "id": "mm2_train_contact_279",
+   "family": "contact",
+   "path": "line",
+   "seed": 112382,
+   "gap0": 0.0743,
+   "dyz": [
+    -0.0063,
+    0.004
+   ],
+   "mismatch": {
+    "k_scale": 1.3323,
+    "c_scale": 1.67,
+    "mu_scale": 0.7897
+   }
+  },
+  {
+   "id": "mm2_train_contact_280",
+   "family": "contact",
+   "path": "line",
+   "seed": 37927,
+   "gap0": 0.0525,
+   "dyz": [
+    -0.0042,
+    -0.004
+   ],
+   "mismatch": {
+    "k_scale": 1.059,
+    "c_scale": 1.7702,
+    "mu_scale": 0.522
+   }
+  },
+  {
+   "id": "mm2_train_contact_281",
+   "family": "contact",
+   "path": "line",
+   "seed": 740521,
+   "gap0": 0.0745,
+   "dyz": [
+    -0.0008,
+    -0.0097
+   ],
+   "mismatch": {
+    "k_scale": 0.8897,
+    "c_scale": 1.5414,
+    "mu_scale": 0.5134
+   }
+  },
+  {
+   "id": "mm2_train_contact_282",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 986990,
+   "gap0": 0.0773,
+   "dyz": [
+    -0.0008,
+    0.0031
+   ],
+   "mismatch": {
+    "k_scale": 1.5544,
+    "c_scale": 0.8569,
+    "mu_scale": 1.8995
+   }
+  },
+  {
+   "id": "mm2_train_contact_283",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 852982,
+   "gap0": 0.0723,
+   "dyz": [
+    0.0089,
+    -0.0013
+   ],
+   "mismatch": {
+    "k_scale": 0.61,
+    "c_scale": 0.5782,
+    "mu_scale": 1.6572
+   }
+  },
+  {
+   "id": "mm2_train_contact_284",
+   "family": "contact",
+   "path": "line",
+   "seed": 256887,
+   "gap0": 0.0796,
+   "dyz": [
+    0.0,
+    0.0031
+   ],
+   "mismatch": {
+    "k_scale": 1.5043,
+    "c_scale": 1.6051,
+    "mu_scale": 0.8769
+   }
+  },
+  {
+   "id": "mm2_train_contact_285",
+   "family": "contact",
+   "path": "line",
+   "seed": 536127,
+   "gap0": 0.0681,
+   "dyz": [
+    0.0036,
+    0.004
+   ],
+   "mismatch": {
+    "k_scale": 0.6152,
+    "c_scale": 1.5354,
+    "mu_scale": 0.7927
+   }
+  },
+  {
+   "id": "mm2_train_contact_286",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 144579,
+   "gap0": 0.0714,
+   "dyz": [
+    -0.001,
+    0.0027
+   ],
+   "mismatch": {
+    "k_scale": 1.3512,
+    "c_scale": 1.4038,
+    "mu_scale": 1.9007
+   }
+  },
+  {
+   "id": "mm2_train_contact_287",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 561025,
+   "gap0": 0.0709,
+   "dyz": [
+    0.0096,
+    -0.0043
+   ],
+   "mismatch": {
+    "k_scale": 1.0443,
+    "c_scale": 0.8999,
+    "mu_scale": 0.7718
+   }
+  },
+  {
+   "id": "mm2_train_contact_288",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 105359,
+   "gap0": 0.0651,
+   "dyz": [
+    -0.0069,
+    -0.0001
+   ],
+   "mismatch": {
+    "k_scale": 1.4354,
+    "c_scale": 1.2325,
+    "mu_scale": 0.5737
+   }
+  },
+  {
+   "id": "mm2_train_contact_289",
+   "family": "contact",
+   "path": "circle",
+   "seed": 247273,
+   "gap0": 0.056,
+   "dyz": [
+    0.0017,
+    -0.0052
+   ],
+   "mismatch": {
+    "k_scale": 1.4143,
+    "c_scale": 1.5326,
+    "mu_scale": 0.9419
+   }
+  },
+  {
+   "id": "mm2_train_contact_290",
+   "family": "contact",
+   "path": "circle",
+   "seed": 820062,
+   "gap0": 0.0642,
+   "dyz": [
+    0.0081,
+    0.0014
+   ],
+   "mismatch": {
+    "k_scale": 1.1251,
+    "c_scale": 1.26,
+    "mu_scale": 0.8262
+   }
+  },
+  {
+   "id": "mm2_train_contact_291",
+   "family": "contact",
+   "path": "line",
+   "seed": 73708,
+   "gap0": 0.0621,
+   "dyz": [
+    0.0061,
+    -0.0051
+   ],
+   "mismatch": {
+    "k_scale": 0.7648,
+    "c_scale": 0.6948,
+    "mu_scale": 1.5323
+   }
+  },
+  {
+   "id": "mm2_train_contact_292",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 677052,
+   "gap0": 0.0778,
+   "dyz": [
+    0.0014,
+    -0.0099
+   ],
+   "mismatch": {
+    "k_scale": 0.8468,
+    "c_scale": 0.8689,
+    "mu_scale": 0.8785
+   }
+  },
+  {
+   "id": "mm2_train_contact_293",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 481236,
+   "gap0": 0.0577,
+   "dyz": [
+    0.0084,
+    -0.0087
+   ],
+   "mismatch": {
+    "k_scale": 1.1395,
+    "c_scale": 1.6107,
+    "mu_scale": 1.0184
+   }
+  },
+  {
+   "id": "mm2_train_contact_294",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 167428,
+   "gap0": 0.0795,
+   "dyz": [
+    0.0051,
+    0.0094
+   ],
+   "mismatch": {
+    "k_scale": 1.5642,
+    "c_scale": 1.6086,
+    "mu_scale": 1.8806
+   }
+  },
+  {
+   "id": "mm2_train_contact_295",
+   "family": "contact",
+   "path": "circle",
+   "seed": 853836,
+   "gap0": 0.0585,
+   "dyz": [
+    0.007,
+    0.004
+   ],
+   "mismatch": {
+    "k_scale": 0.8985,
+    "c_scale": 0.5388,
+    "mu_scale": 0.5293
+   }
+  },
+  {
+   "id": "mm2_train_contact_296",
+   "family": "contact",
+   "path": "circle",
+   "seed": 421027,
+   "gap0": 0.0535,
+   "dyz": [
+    -0.0028,
+    0.0083
+   ],
+   "mismatch": {
+    "k_scale": 1.3377,
+    "c_scale": 1.3656,
+    "mu_scale": 0.832
+   }
+  },
+  {
+   "id": "mm2_train_contact_297",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 538130,
+   "gap0": 0.0512,
+   "dyz": [
+    -0.0015,
+    0.0064
+   ],
+   "mismatch": {
+    "k_scale": 0.688,
+    "c_scale": 1.7604,
+    "mu_scale": 0.6355
+   }
+  },
+  {
+   "id": "mm2_train_contact_298",
+   "family": "contact",
+   "path": "line",
+   "seed": 841068,
+   "gap0": 0.072,
+   "dyz": [
+    0.0072,
+    0.0068
+   ],
+   "mismatch": {
+    "k_scale": 1.4122,
+    "c_scale": 0.6703,
+    "mu_scale": 1.4626
+   }
+  },
+  {
+   "id": "mm2_train_contact_299",
+   "family": "contact",
+   "path": "circle",
+   "seed": 795216,
+   "gap0": 0.0594,
+   "dyz": [
+    0.0075,
+    -0.0024
+   ],
+   "mismatch": {
+    "k_scale": 1.0554,
+    "c_scale": 1.1792,
+    "mu_scale": 1.6053
+   }
+  },
+  {
+   "id": "mm2_train_contact_300",
+   "family": "contact",
+   "path": "circle",
+   "seed": 890940,
+   "gap0": 0.0742,
+   "dyz": [
+    0.0062,
+    -0.0054
+   ],
+   "mismatch": {
+    "k_scale": 0.8973,
+    "c_scale": 0.5322,
+    "mu_scale": 1.9809
+   }
+  },
+  {
+   "id": "mm2_train_contact_301",
+   "family": "contact",
+   "path": "line",
+   "seed": 610424,
+   "gap0": 0.0681,
+   "dyz": [
+    -0.0088,
+    0.007
+   ],
+   "mismatch": {
+    "k_scale": 0.9847,
+    "c_scale": 1.9952,
+    "mu_scale": 1.7534
+   }
+  },
+  {
+   "id": "mm2_train_contact_302",
+   "family": "contact",
+   "path": "circle",
+   "seed": 639633,
+   "gap0": 0.0506,
+   "dyz": [
+    0.0016,
+    0.0016
+   ],
+   "mismatch": {
+    "k_scale": 1.0585,
+    "c_scale": 1.4045,
+    "mu_scale": 0.6303
+   }
+  },
+  {
+   "id": "mm2_train_contact_303",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 82324,
+   "gap0": 0.0747,
+   "dyz": [
+    -0.0064,
+    0.003
+   ],
+   "mismatch": {
+    "k_scale": 0.9026,
+    "c_scale": 1.8637,
+    "mu_scale": 1.002
+   }
+  },
+  {
+   "id": "mm2_train_contact_304",
+   "family": "contact",
+   "path": "circle",
+   "seed": 113263,
+   "gap0": 0.0588,
+   "dyz": [
+    0.0007,
+    -0.0073
+   ],
+   "mismatch": {
+    "k_scale": 0.8756,
+    "c_scale": 1.6227,
+    "mu_scale": 1.1645
+   }
+  },
+  {
+   "id": "mm2_train_contact_305",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 715856,
+   "gap0": 0.0556,
+   "dyz": [
+    -0.0065,
+    -0.0037
+   ],
+   "mismatch": {
+    "k_scale": 0.7692,
+    "c_scale": 1.3997,
+    "mu_scale": 1.7731
+   }
+  },
+  {
+   "id": "mm2_train_contact_306",
+   "family": "contact",
+   "path": "line",
+   "seed": 990467,
+   "gap0": 0.0702,
+   "dyz": [
+    -0.006,
+    0.0058
+   ],
+   "mismatch": {
+    "k_scale": 0.7235,
+    "c_scale": 1.338,
+    "mu_scale": 1.6134
+   }
+  },
+  {
+   "id": "mm2_train_contact_307",
+   "family": "contact",
+   "path": "circle",
+   "seed": 352524,
+   "gap0": 0.0566,
+   "dyz": [
+    0.0055,
+    0.0065
+   ],
+   "mismatch": {
+    "k_scale": 1.0351,
+    "c_scale": 1.6292,
+    "mu_scale": 1.1635
+   }
+  },
+  {
+   "id": "mm2_train_contact_308",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 719418,
+   "gap0": 0.0706,
+   "dyz": [
+    -0.0031,
+    0.0012
+   ],
+   "mismatch": {
+    "k_scale": 0.7308,
+    "c_scale": 1.191,
+    "mu_scale": 0.5507
+   }
+  },
+  {
+   "id": "mm2_train_contact_309",
+   "family": "contact",
+   "path": "circle",
+   "seed": 439847,
+   "gap0": 0.0743,
+   "dyz": [
+    -0.0027,
+    -0.0067
+   ],
+   "mismatch": {
+    "k_scale": 0.8836,
+    "c_scale": 1.0584,
+    "mu_scale": 0.6105
+   }
+  },
+  {
+   "id": "mm2_train_contact_310",
+   "family": "contact",
+   "path": "circle",
+   "seed": 507001,
+   "gap0": 0.072,
+   "dyz": [
+    0.0077,
+    -0.0063
+   ],
+   "mismatch": {
+    "k_scale": 0.833,
+    "c_scale": 1.0991,
+    "mu_scale": 1.4224
+   }
+  },
+  {
+   "id": "mm2_train_contact_311",
+   "family": "contact",
+   "path": "line",
+   "seed": 183732,
+   "gap0": 0.0648,
+   "dyz": [
+    -0.0076,
+    0.0061
+   ],
+   "mismatch": {
+    "k_scale": 1.3927,
+    "c_scale": 1.4363,
+    "mu_scale": 0.7466
+   }
+  },
+  {
+   "id": "mm2_train_contact_312",
+   "family": "contact",
+   "path": "line",
+   "seed": 963408,
+   "gap0": 0.0629,
+   "dyz": [
+    -0.0034,
+    -0.0094
+   ],
+   "mismatch": {
+    "k_scale": 0.9342,
+    "c_scale": 1.0222,
+    "mu_scale": 1.1363
+   }
+  },
+  {
+   "id": "mm2_train_contact_313",
+   "family": "contact",
+   "path": "circle",
+   "seed": 358917,
+   "gap0": 0.0611,
+   "dyz": [
+    -0.0064,
+    0.005
+   ],
+   "mismatch": {
+    "k_scale": 0.6028,
+    "c_scale": 1.0953,
+    "mu_scale": 0.7261
+   }
+  },
+  {
+   "id": "mm2_train_contact_314",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 585129,
+   "gap0": 0.0752,
+   "dyz": [
+    0.0022,
+    -0.0074
+   ],
+   "mismatch": {
+    "k_scale": 0.7881,
+    "c_scale": 1.7686,
+    "mu_scale": 1.9929
+   }
+  },
+  {
+   "id": "mm2_train_contact_315",
+   "family": "contact",
+   "path": "circle",
+   "seed": 87881,
+   "gap0": 0.0508,
+   "dyz": [
+    0.0088,
+    0.0032
+   ],
+   "mismatch": {
+    "k_scale": 1.4167,
+    "c_scale": 1.6265,
+    "mu_scale": 1.4381
+   }
+  },
+  {
+   "id": "mm2_train_contact_316",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 952778,
+   "gap0": 0.0798,
+   "dyz": [
+    0.0073,
+    0.0053
+   ],
+   "mismatch": {
+    "k_scale": 1.2037,
+    "c_scale": 1.0339,
+    "mu_scale": 1.5213
+   }
+  },
+  {
+   "id": "mm2_train_contact_317",
+   "family": "contact",
+   "path": "circle",
+   "seed": 355910,
+   "gap0": 0.0504,
+   "dyz": [
+    -0.01,
+    -0.0009
+   ],
+   "mismatch": {
+    "k_scale": 0.9605,
+    "c_scale": 1.1618,
+    "mu_scale": 1.4821
+   }
+  },
+  {
+   "id": "mm2_train_contact_318",
+   "family": "contact",
+   "path": "circle",
+   "seed": 951761,
+   "gap0": 0.0513,
+   "dyz": [
+    -0.001,
+    -0.0071
+   ],
+   "mismatch": {
+    "k_scale": 0.7367,
+    "c_scale": 1.7109,
+    "mu_scale": 1.5073
+   }
+  },
+  {
+   "id": "mm2_train_contact_319",
+   "family": "contact",
+   "path": "circle",
+   "seed": 191544,
+   "gap0": 0.0513,
+   "dyz": [
+    -0.009,
+    0.0004
+   ],
+   "mismatch": {
+    "k_scale": 1.4493,
+    "c_scale": 0.66,
+    "mu_scale": 1.806
+   }
+  },
+  {
+   "id": "mm2_train_contact_320",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 789560,
+   "gap0": 0.0525,
+   "dyz": [
+    -0.0079,
+    0.0046
+   ],
+   "mismatch": {
+    "k_scale": 1.1809,
+    "c_scale": 1.8102,
+    "mu_scale": 1.3812
+   }
+  },
+  {
+   "id": "mm2_train_contact_321",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 503681,
+   "gap0": 0.0553,
+   "dyz": [
+    0.0015,
+    -0.0023
+   ],
+   "mismatch": {
+    "k_scale": 1.1127,
+    "c_scale": 1.3055,
+    "mu_scale": 1.259
+   }
+  },
+  {
+   "id": "mm2_train_contact_322",
+   "family": "contact",
+   "path": "line",
+   "seed": 118324,
+   "gap0": 0.0722,
+   "dyz": [
+    0.0074,
+    -0.0017
+   ],
+   "mismatch": {
+    "k_scale": 1.0665,
+    "c_scale": 1.9568,
+    "mu_scale": 1.4256
+   }
+  },
+  {
+   "id": "mm2_train_contact_323",
+   "family": "contact",
+   "path": "line",
+   "seed": 792199,
+   "gap0": 0.0782,
+   "dyz": [
+    -0.0041,
+    -0.0078
+   ],
+   "mismatch": {
+    "k_scale": 0.6118,
+    "c_scale": 1.1314,
+    "mu_scale": 0.8658
+   }
+  },
+  {
+   "id": "mm2_train_contact_324",
+   "family": "contact",
+   "path": "line",
+   "seed": 236025,
+   "gap0": 0.061,
+   "dyz": [
+    -0.0048,
+    -0.0017
+   ],
+   "mismatch": {
+    "k_scale": 1.5119,
+    "c_scale": 1.7309,
+    "mu_scale": 1.3712
+   }
+  },
+  {
+   "id": "mm2_train_contact_325",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 457159,
+   "gap0": 0.0728,
+   "dyz": [
+    0.0021,
+    -0.0082
+   ],
+   "mismatch": {
+    "k_scale": 0.7187,
+    "c_scale": 0.9771,
+    "mu_scale": 1.514
+   }
+  },
+  {
+   "id": "mm2_train_contact_326",
+   "family": "contact",
+   "path": "line",
+   "seed": 148848,
+   "gap0": 0.0573,
+   "dyz": [
+    -0.009,
+    -0.0002
+   ],
+   "mismatch": {
+    "k_scale": 0.7661,
+    "c_scale": 1.2784,
+    "mu_scale": 1.8541
+   }
+  },
+  {
+   "id": "mm2_train_contact_327",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 673008,
+   "gap0": 0.0684,
+   "dyz": [
+    -0.0058,
+    -0.0073
+   ],
+   "mismatch": {
+    "k_scale": 1.2451,
+    "c_scale": 0.7528,
+    "mu_scale": 1.8982
+   }
+  },
+  {
+   "id": "mm2_train_contact_328",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 244072,
+   "gap0": 0.0531,
+   "dyz": [
+    -0.008,
+    -0.0028
+   ],
+   "mismatch": {
+    "k_scale": 1.0976,
+    "c_scale": 1.7498,
+    "mu_scale": 0.7578
+   }
+  },
+  {
+   "id": "mm2_train_contact_329",
+   "family": "contact",
+   "path": "line",
+   "seed": 168047,
+   "gap0": 0.0658,
+   "dyz": [
+    -0.0075,
+    0.0033
+   ],
+   "mismatch": {
+    "k_scale": 1.2359,
+    "c_scale": 0.7169,
+    "mu_scale": 1.7142
+   }
+  },
+  {
+   "id": "mm2_train_contact_330",
+   "family": "contact",
+   "path": "line",
+   "seed": 41846,
+   "gap0": 0.0581,
+   "dyz": [
+    -0.0073,
+    -0.0073
+   ],
+   "mismatch": {
+    "k_scale": 0.7368,
+    "c_scale": 1.5631,
+    "mu_scale": 1.8542
+   }
+  },
+  {
+   "id": "mm2_train_contact_331",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 729224,
+   "gap0": 0.0704,
+   "dyz": [
+    -0.0065,
+    -0.0036
+   ],
+   "mismatch": {
+    "k_scale": 1.0672,
+    "c_scale": 1.5492,
+    "mu_scale": 1.3269
+   }
+  },
+  {
+   "id": "mm2_train_contact_332",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 257659,
+   "gap0": 0.0733,
+   "dyz": [
+    0.0097,
+    -0.004
+   ],
+   "mismatch": {
+    "k_scale": 1.5573,
+    "c_scale": 1.6168,
+    "mu_scale": 1.688
+   }
+  },
+  {
+   "id": "mm2_train_contact_333",
+   "family": "contact",
+   "path": "line",
+   "seed": 2202,
+   "gap0": 0.0712,
+   "dyz": [
+    -0.0008,
+    0.0054
+   ],
+   "mismatch": {
+    "k_scale": 1.2762,
+    "c_scale": 1.7638,
+    "mu_scale": 0.7718
+   }
+  },
+  {
+   "id": "mm2_train_contact_334",
+   "family": "contact",
+   "path": "line",
+   "seed": 448712,
+   "gap0": 0.0508,
+   "dyz": [
+    0.0061,
+    -0.0061
+   ],
+   "mismatch": {
+    "k_scale": 1.085,
+    "c_scale": 1.0202,
+    "mu_scale": 1.6478
+   }
+  },
+  {
+   "id": "mm2_train_contact_335",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 856691,
+   "gap0": 0.0588,
+   "dyz": [
+    -0.0008,
+    -0.0017
+   ],
+   "mismatch": {
+    "k_scale": 0.9894,
+    "c_scale": 1.3917,
+    "mu_scale": 0.8038
+   }
+  },
+  {
+   "id": "mm2_train_contact_336",
+   "family": "contact",
+   "path": "circle",
+   "seed": 469477,
+   "gap0": 0.0532,
+   "dyz": [
+    0.0023,
+    0.0034
+   ],
+   "mismatch": {
+    "k_scale": 0.7316,
+    "c_scale": 1.677,
+    "mu_scale": 1.1877
+   }
+  },
+  {
+   "id": "mm2_train_contact_337",
+   "family": "contact",
+   "path": "circle",
+   "seed": 260831,
+   "gap0": 0.0587,
+   "dyz": [
+    -0.0066,
+    -0.0095
+   ],
+   "mismatch": {
+    "k_scale": 1.0931,
+    "c_scale": 1.8687,
+    "mu_scale": 1.97
+   }
+  },
+  {
+   "id": "mm2_train_contact_338",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 50543,
+   "gap0": 0.0722,
+   "dyz": [
+    0.0031,
+    0.0053
+   ],
+   "mismatch": {
+    "k_scale": 1.2078,
+    "c_scale": 1.4316,
+    "mu_scale": 1.8836
+   }
+  },
+  {
+   "id": "mm2_train_contact_339",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 900797,
+   "gap0": 0.0767,
+   "dyz": [
+    0.0074,
+    -0.0081
+   ],
+   "mismatch": {
+    "k_scale": 1.043,
+    "c_scale": 0.6009,
+    "mu_scale": 1.6444
+   }
+  },
+  {
+   "id": "mm2_train_contact_340",
+   "family": "contact",
+   "path": "circle",
+   "seed": 288276,
+   "gap0": 0.0662,
+   "dyz": [
+    -0.0043,
+    -0.0091
+   ],
+   "mismatch": {
+    "k_scale": 1.1936,
+    "c_scale": 0.6366,
+    "mu_scale": 1.1968
+   }
+  },
+  {
+   "id": "mm2_train_contact_341",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 712970,
+   "gap0": 0.0798,
+   "dyz": [
+    -0.008,
+    -0.0096
+   ],
+   "mismatch": {
+    "k_scale": 1.5824,
+    "c_scale": 0.5561,
+    "mu_scale": 0.7577
+   }
+  },
+  {
+   "id": "mm2_train_contact_342",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 297727,
+   "gap0": 0.0743,
+   "dyz": [
+    -0.003,
+    -0.0009
+   ],
+   "mismatch": {
+    "k_scale": 1.2878,
+    "c_scale": 1.6407,
+    "mu_scale": 1.7606
+   }
+  },
+  {
+   "id": "mm2_train_contact_343",
+   "family": "contact",
+   "path": "circle",
+   "seed": 611645,
+   "gap0": 0.0575,
+   "dyz": [
+    -0.0014,
+    -0.0009
+   ],
+   "mismatch": {
+    "k_scale": 1.4377,
+    "c_scale": 1.7417,
+    "mu_scale": 1.9129
+   }
+  },
+  {
+   "id": "mm2_train_contact_344",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 365999,
+   "gap0": 0.0667,
+   "dyz": [
+    0.0011,
+    -0.0022
+   ],
+   "mismatch": {
+    "k_scale": 1.5887,
+    "c_scale": 1.8742,
+    "mu_scale": 1.5966
+   }
+  },
+  {
+   "id": "mm2_train_contact_345",
+   "family": "contact",
+   "path": "line",
+   "seed": 285339,
+   "gap0": 0.0607,
+   "dyz": [
+    -0.0001,
+    -0.0042
+   ],
+   "mismatch": {
+    "k_scale": 1.5982,
+    "c_scale": 1.8016,
+    "mu_scale": 1.8525
+   }
+  },
+  {
+   "id": "mm2_train_contact_346",
+   "family": "contact",
+   "path": "circle",
+   "seed": 269625,
+   "gap0": 0.0776,
+   "dyz": [
+    -0.0024,
+    0.0051
+   ],
+   "mismatch": {
+    "k_scale": 1.482,
+    "c_scale": 1.5174,
+    "mu_scale": 0.562
+   }
+  },
+  {
+   "id": "mm2_train_contact_347",
+   "family": "contact",
+   "path": "circle",
+   "seed": 217005,
+   "gap0": 0.0796,
+   "dyz": [
+    0.0082,
+    0.0047
+   ],
+   "mismatch": {
+    "k_scale": 1.3981,
+    "c_scale": 1.9751,
+    "mu_scale": 0.5733
+   }
+  },
+  {
+   "id": "mm2_train_contact_348",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 436394,
+   "gap0": 0.061,
+   "dyz": [
+    0.0028,
+    0.0065
+   ],
+   "mismatch": {
+    "k_scale": 0.8375,
+    "c_scale": 1.8867,
+    "mu_scale": 1.4804
+   }
+  },
+  {
+   "id": "mm2_train_contact_349",
+   "family": "contact",
+   "path": "line",
+   "seed": 657580,
+   "gap0": 0.0648,
+   "dyz": [
+    -0.0002,
+    -0.0093
+   ],
+   "mismatch": {
+    "k_scale": 0.7918,
+    "c_scale": 1.9998,
+    "mu_scale": 1.1454
+   }
+  },
+  {
+   "id": "mm2_train_contact_350",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 310777,
+   "gap0": 0.0519,
+   "dyz": [
+    -0.0054,
+    0.0003
+   ],
+   "mismatch": {
+    "k_scale": 0.8334,
+    "c_scale": 0.7605,
+    "mu_scale": 0.7197
+   }
+  },
+  {
+   "id": "mm2_train_contact_351",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 90978,
+   "gap0": 0.0765,
+   "dyz": [
+    -0.0057,
+    0.0044
+   ],
+   "mismatch": {
+    "k_scale": 1.4958,
+    "c_scale": 0.7826,
+    "mu_scale": 1.9667
+   }
+  },
+  {
+   "id": "mm2_train_contact_352",
+   "family": "contact",
+   "path": "line",
+   "seed": 404371,
+   "gap0": 0.0606,
+   "dyz": [
+    0.0035,
+    0.0024
+   ],
+   "mismatch": {
+    "k_scale": 1.5467,
+    "c_scale": 0.7548,
+    "mu_scale": 1.0024
+   }
+  },
+  {
+   "id": "mm2_train_contact_353",
+   "family": "contact",
+   "path": "circle",
+   "seed": 873513,
+   "gap0": 0.0761,
+   "dyz": [
+    0.0027,
+    0.0067
+   ],
+   "mismatch": {
+    "k_scale": 0.9456,
+    "c_scale": 1.9458,
+    "mu_scale": 1.3786
+   }
+  },
+  {
+   "id": "mm2_train_contact_354",
+   "family": "contact",
+   "path": "circle",
+   "seed": 101828,
+   "gap0": 0.068,
+   "dyz": [
+    0.0032,
+    0.0028
+   ],
+   "mismatch": {
+    "k_scale": 0.8764,
+    "c_scale": 0.7949,
+    "mu_scale": 0.5836
+   }
+  },
+  {
+   "id": "mm2_train_contact_355",
+   "family": "contact",
+   "path": "circle",
+   "seed": 304,
+   "gap0": 0.0564,
+   "dyz": [
+    0.0063,
+    0.0016
+   ],
+   "mismatch": {
+    "k_scale": 0.9951,
+    "c_scale": 0.5826,
+    "mu_scale": 0.9364
+   }
+  },
+  {
+   "id": "mm2_train_contact_356",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 632856,
+   "gap0": 0.0771,
+   "dyz": [
+    -0.0092,
+    -0.0064
+   ],
+   "mismatch": {
+    "k_scale": 0.7464,
+    "c_scale": 1.9477,
+    "mu_scale": 1.9364
+   }
+  },
+  {
+   "id": "mm2_train_contact_357",
+   "family": "contact",
+   "path": "line",
+   "seed": 916946,
+   "gap0": 0.0581,
+   "dyz": [
+    -0.0011,
+    0.0082
+   ],
+   "mismatch": {
+    "k_scale": 1.3484,
+    "c_scale": 1.8403,
+    "mu_scale": 1.933
+   }
+  },
+  {
+   "id": "mm2_train_contact_358",
+   "family": "contact",
+   "path": "circle",
+   "seed": 359540,
+   "gap0": 0.0664,
+   "dyz": [
+    0.0072,
+    -0.0041
+   ],
+   "mismatch": {
+    "k_scale": 0.6951,
+    "c_scale": 0.6877,
+    "mu_scale": 1.0633
+   }
+  },
+  {
+   "id": "mm2_train_contact_359",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 395901,
+   "gap0": 0.0513,
+   "dyz": [
+    0.0061,
+    0.0005
+   ],
+   "mismatch": {
+    "k_scale": 0.6866,
+    "c_scale": 0.9034,
+    "mu_scale": 1.1801
+   }
+  },
+  {
+   "id": "mm2_train_contact_360",
+   "family": "contact",
+   "path": "circle",
+   "seed": 400693,
+   "gap0": 0.0643,
+   "dyz": [
+    0.0008,
+    -0.0074
+   ],
+   "mismatch": {
+    "k_scale": 1.1888,
+    "c_scale": 0.8083,
+    "mu_scale": 1.9121
+   }
+  },
+  {
+   "id": "mm2_train_contact_361",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 414272,
+   "gap0": 0.0702,
+   "dyz": [
+    0.0092,
+    -0.0005
+   ],
+   "mismatch": {
+    "k_scale": 1.2127,
+    "c_scale": 1.9591,
+    "mu_scale": 0.9975
+   }
+  },
+  {
+   "id": "mm2_train_contact_362",
+   "family": "contact",
+   "path": "circle",
+   "seed": 479781,
+   "gap0": 0.0594,
+   "dyz": [
+    -0.0091,
+    -0.0037
+   ],
+   "mismatch": {
+    "k_scale": 1.5672,
+    "c_scale": 1.8189,
+    "mu_scale": 1.9916
+   }
+  },
+  {
+   "id": "mm2_train_contact_363",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 652762,
+   "gap0": 0.0504,
+   "dyz": [
+    -0.0082,
+    -0.0086
+   ],
+   "mismatch": {
+    "k_scale": 1.133,
+    "c_scale": 1.6843,
+    "mu_scale": 0.8834
+   }
+  },
+  {
+   "id": "mm2_train_contact_364",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 641784,
+   "gap0": 0.0778,
+   "dyz": [
+    0.0038,
+    0.0063
+   ],
+   "mismatch": {
+    "k_scale": 0.8229,
+    "c_scale": 1.5324,
+    "mu_scale": 1.0645
+   }
+  },
+  {
+   "id": "mm2_train_contact_365",
+   "family": "contact",
+   "path": "line",
+   "seed": 963612,
+   "gap0": 0.0577,
+   "dyz": [
+    0.0097,
+    -0.0099
+   ],
+   "mismatch": {
+    "k_scale": 0.7604,
+    "c_scale": 1.006,
+    "mu_scale": 1.7409
+   }
+  },
+  {
+   "id": "mm2_train_contact_366",
+   "family": "contact",
+   "path": "line",
+   "seed": 131168,
+   "gap0": 0.0627,
+   "dyz": [
+    0.0082,
+    0.0098
+   ],
+   "mismatch": {
+    "k_scale": 1.3038,
+    "c_scale": 0.5948,
+    "mu_scale": 1.9819
+   }
+  },
+  {
+   "id": "mm2_train_contact_367",
+   "family": "contact",
+   "path": "line",
+   "seed": 490733,
+   "gap0": 0.0628,
+   "dyz": [
+    0.0005,
+    -0.0051
+   ],
+   "mismatch": {
+    "k_scale": 0.7112,
+    "c_scale": 1.1265,
+    "mu_scale": 0.6064
+   }
+  },
+  {
+   "id": "mm2_train_contact_368",
+   "family": "contact",
+   "path": "line",
+   "seed": 186083,
+   "gap0": 0.0529,
+   "dyz": [
+    -0.0043,
+    -0.0085
+   ],
+   "mismatch": {
+    "k_scale": 0.9196,
+    "c_scale": 1.294,
+    "mu_scale": 0.904
+   }
+  },
+  {
+   "id": "mm2_train_contact_369",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 259461,
+   "gap0": 0.0759,
+   "dyz": [
+    0.0064,
+    0.0022
+   ],
+   "mismatch": {
+    "k_scale": 1.4654,
+    "c_scale": 1.5802,
+    "mu_scale": 1.5229
+   }
+  },
+  {
+   "id": "mm2_train_contact_370",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 472781,
+   "gap0": 0.0604,
+   "dyz": [
+    -0.002,
+    0.0016
+   ],
+   "mismatch": {
+    "k_scale": 1.4935,
+    "c_scale": 1.6074,
+    "mu_scale": 1.4129
+   }
+  },
+  {
+   "id": "mm2_train_contact_371",
+   "family": "contact",
+   "path": "line",
+   "seed": 490513,
+   "gap0": 0.0527,
+   "dyz": [
+    -0.0003,
+    0.0071
+   ],
+   "mismatch": {
+    "k_scale": 1.0368,
+    "c_scale": 1.4707,
+    "mu_scale": 1.4112
+   }
+  },
+  {
+   "id": "mm2_train_contact_372",
+   "family": "contact",
+   "path": "circle",
+   "seed": 608976,
+   "gap0": 0.0565,
+   "dyz": [
+    -0.0048,
+    -0.0053
+   ],
+   "mismatch": {
+    "k_scale": 1.4659,
+    "c_scale": 0.7655,
+    "mu_scale": 1.0707
+   }
+  },
+  {
+   "id": "mm2_train_contact_373",
+   "family": "contact",
+   "path": "line",
+   "seed": 445018,
+   "gap0": 0.0563,
+   "dyz": [
+    0.0029,
+    -0.0087
+   ],
+   "mismatch": {
+    "k_scale": 1.5512,
+    "c_scale": 1.7168,
+    "mu_scale": 1.9911
+   }
+  },
+  {
+   "id": "mm2_train_contact_374",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 728621,
+   "gap0": 0.0658,
+   "dyz": [
+    -0.0064,
+    0.0067
+   ],
+   "mismatch": {
+    "k_scale": 0.9823,
+    "c_scale": 1.8707,
+    "mu_scale": 0.8224
+   }
+  },
+  {
+   "id": "mm2_train_contact_375",
+   "family": "contact",
+   "path": "line",
+   "seed": 293914,
+   "gap0": 0.0525,
+   "dyz": [
+    0.0013,
+    -0.0035
+   ],
+   "mismatch": {
+    "k_scale": 0.9014,
+    "c_scale": 1.587,
+    "mu_scale": 0.9219
+   }
+  },
+  {
+   "id": "mm2_train_contact_376",
+   "family": "contact",
+   "path": "line",
+   "seed": 525606,
+   "gap0": 0.0567,
+   "dyz": [
+    -0.0099,
+    -0.0002
+   ],
+   "mismatch": {
+    "k_scale": 0.606,
+    "c_scale": 1.8006,
+    "mu_scale": 1.7857
+   }
+  },
+  {
+   "id": "mm2_train_contact_377",
+   "family": "contact",
+   "path": "line",
+   "seed": 250067,
+   "gap0": 0.0501,
+   "dyz": [
+    -0.0003,
+    -0.0087
+   ],
+   "mismatch": {
+    "k_scale": 0.9193,
+    "c_scale": 0.5695,
+    "mu_scale": 0.6567
+   }
+  },
+  {
+   "id": "mm2_train_contact_378",
+   "family": "contact",
+   "path": "circle",
+   "seed": 692427,
+   "gap0": 0.0539,
+   "dyz": [
+    0.0031,
+    0.0065
+   ],
+   "mismatch": {
+    "k_scale": 1.197,
+    "c_scale": 1.1608,
+    "mu_scale": 1.9213
+   }
+  },
+  {
+   "id": "mm2_train_contact_379",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 872152,
+   "gap0": 0.0715,
+   "dyz": [
+    -0.0081,
+    -0.0066
+   ],
+   "mismatch": {
+    "k_scale": 0.9571,
+    "c_scale": 0.6877,
+    "mu_scale": 1.9393
+   }
+  },
+  {
+   "id": "mm2_train_contact_380",
+   "family": "contact",
+   "path": "circle",
+   "seed": 531033,
+   "gap0": 0.0508,
+   "dyz": [
+    0.0081,
+    -0.0089
+   ],
+   "mismatch": {
+    "k_scale": 0.8159,
+    "c_scale": 0.5531,
+    "mu_scale": 1.3999
+   }
+  },
+  {
+   "id": "mm2_train_contact_381",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 108040,
+   "gap0": 0.0741,
+   "dyz": [
+    -0.0084,
+    -0.0048
+   ],
+   "mismatch": {
+    "k_scale": 0.9558,
+    "c_scale": 0.7235,
+    "mu_scale": 1.3082
+   }
+  },
+  {
+   "id": "mm2_train_contact_382",
+   "family": "contact",
+   "path": "line",
+   "seed": 341605,
+   "gap0": 0.0783,
+   "dyz": [
+    -0.0069,
+    -0.0002
+   ],
+   "mismatch": {
+    "k_scale": 1.1517,
+    "c_scale": 1.0268,
+    "mu_scale": 1.4424
+   }
+  },
+  {
+   "id": "mm2_train_contact_383",
+   "family": "contact",
+   "path": "circle",
+   "seed": 412057,
+   "gap0": 0.0555,
+   "dyz": [
+    -0.0027,
+    0.0081
+   ],
+   "mismatch": {
+    "k_scale": 1.2785,
+    "c_scale": 0.8539,
+    "mu_scale": 0.697
+   }
+  },
+  {
+   "id": "mm2_train_contact_384",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 710340,
+   "gap0": 0.0701,
+   "dyz": [
+    0.0014,
+    -0.0083
+   ],
+   "mismatch": {
+    "k_scale": 1.1163,
+    "c_scale": 1.1858,
+    "mu_scale": 1.0699
+   }
+  },
+  {
+   "id": "mm2_train_contact_385",
+   "family": "contact",
+   "path": "line",
+   "seed": 754288,
+   "gap0": 0.0518,
+   "dyz": [
+    0.0048,
+    -0.0048
+   ],
+   "mismatch": {
+    "k_scale": 0.6737,
+    "c_scale": 0.7333,
+    "mu_scale": 1.0591
+   }
+  },
+  {
+   "id": "mm2_train_contact_386",
+   "family": "contact",
+   "path": "line",
+   "seed": 21447,
+   "gap0": 0.0506,
+   "dyz": [
+    0.005,
+    -0.009
+   ],
+   "mismatch": {
+    "k_scale": 1.5695,
+    "c_scale": 1.418,
+    "mu_scale": 1.476
+   }
+  },
+  {
+   "id": "mm2_train_contact_387",
+   "family": "contact",
+   "path": "circle",
+   "seed": 571131,
+   "gap0": 0.0747,
+   "dyz": [
+    -0.0043,
+    -0.0086
+   ],
+   "mismatch": {
+    "k_scale": 1.3113,
+    "c_scale": 1.9321,
+    "mu_scale": 1.5087
+   }
+  },
+  {
+   "id": "mm2_train_contact_388",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 133533,
+   "gap0": 0.0796,
+   "dyz": [
+    0.0043,
+    0.002
+   ],
+   "mismatch": {
+    "k_scale": 0.8499,
+    "c_scale": 1.529,
+    "mu_scale": 1.8759
+   }
+  },
+  {
+   "id": "mm2_train_contact_389",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 691341,
+   "gap0": 0.0705,
+   "dyz": [
+    -0.002,
+    -0.0069
+   ],
+   "mismatch": {
+    "k_scale": 1.5331,
+    "c_scale": 0.739,
+    "mu_scale": 1.1577
+   }
+  },
+  {
+   "id": "mm2_train_contact_390",
+   "family": "contact",
+   "path": "circle",
+   "seed": 524594,
+   "gap0": 0.0564,
+   "dyz": [
+    -0.0071,
+    -0.0064
+   ],
+   "mismatch": {
+    "k_scale": 1.1973,
+    "c_scale": 1.9653,
+    "mu_scale": 1.8375
+   }
+  },
+  {
+   "id": "mm2_train_contact_391",
+   "family": "contact",
+   "path": "circle",
+   "seed": 643810,
+   "gap0": 0.0732,
+   "dyz": [
+    0.0006,
+    0.0033
+   ],
+   "mismatch": {
+    "k_scale": 1.2959,
+    "c_scale": 1.4802,
+    "mu_scale": 0.9837
+   }
+  },
+  {
+   "id": "mm2_train_contact_392",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 542923,
+   "gap0": 0.0639,
+   "dyz": [
+    -0.0095,
+    0.0014
+   ],
+   "mismatch": {
+    "k_scale": 1.0617,
+    "c_scale": 0.814,
+    "mu_scale": 1.4894
+   }
+  },
+  {
+   "id": "mm2_train_contact_393",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 570742,
+   "gap0": 0.0517,
+   "dyz": [
+    -0.0013,
+    -0.0004
+   ],
+   "mismatch": {
+    "k_scale": 1.5723,
+    "c_scale": 0.6261,
+    "mu_scale": 1.8159
+   }
+  },
+  {
+   "id": "mm2_train_contact_394",
+   "family": "contact",
+   "path": "circle",
+   "seed": 809911,
+   "gap0": 0.0688,
+   "dyz": [
+    -0.0061,
+    -0.0038
+   ],
+   "mismatch": {
+    "k_scale": 1.4762,
+    "c_scale": 0.9504,
+    "mu_scale": 0.9145
+   }
+  },
+  {
+   "id": "mm2_train_contact_395",
+   "family": "contact",
+   "path": "circle",
+   "seed": 295863,
+   "gap0": 0.0591,
+   "dyz": [
+    -0.0094,
+    0.0096
+   ],
+   "mismatch": {
+    "k_scale": 0.8369,
+    "c_scale": 1.6255,
+    "mu_scale": 1.4425
+   }
+  },
+  {
+   "id": "mm2_train_contact_396",
+   "family": "contact",
+   "path": "line",
+   "seed": 102717,
+   "gap0": 0.0529,
+   "dyz": [
+    0.0002,
+    0.0013
+   ],
+   "mismatch": {
+    "k_scale": 0.6078,
+    "c_scale": 1.0261,
+    "mu_scale": 0.869
+   }
+  },
+  {
+   "id": "mm2_train_contact_397",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 850589,
+   "gap0": 0.0651,
+   "dyz": [
+    -0.0001,
+    -0.0076
+   ],
+   "mismatch": {
+    "k_scale": 0.8207,
+    "c_scale": 1.1509,
+    "mu_scale": 0.937
+   }
+  },
+  {
+   "id": "mm2_train_contact_398",
+   "family": "contact",
+   "path": "line",
+   "seed": 226327,
+   "gap0": 0.0752,
+   "dyz": [
+    0.0041,
+    -0.0036
+   ],
+   "mismatch": {
+    "k_scale": 0.6414,
+    "c_scale": 1.2929,
+    "mu_scale": 1.8943
+   }
+  },
+  {
+   "id": "mm2_train_contact_399",
+   "family": "contact",
+   "path": "rounded_triangle",
+   "seed": 462085,
+   "gap0": 0.0792,
+   "dyz": [
+    -0.0083,
+    -0.004
+   ],
+   "mismatch": {
+    "k_scale": 1.2609,
+    "c_scale": 1.0681,
+    "mu_scale": 1.0599
+   }
+  }
+ ]
+}

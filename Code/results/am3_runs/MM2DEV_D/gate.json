@@ -1,0 +1,542 @@
+{
+ "criteria_file": "config/am3_acceptance_v1.json",
+ "stat": {
+  "n": 50,
+  "solver_hang_stubs": 0,
+  "joint_successes": 31,
+  "completed": 41,
+  "failed_criteria": {
+   "path_tracking_rms": 11,
+   "coverage": 5,
+   "endpoint": 4,
+   "no_abort": 9,
+   "base_max": 7,
+   "tilt": 7,
+   "no_unexpected_contact": 7,
+   "rotor_reserve": 7,
+   "contact_fraction": 1,
+   "recovery": 1
+  },
+  "base_max_mm": {
+   "median": 2.9194352956975793,
+   "max": 162.0840778283194
+  },
+  "trace_track_rms_mm": {
+   "median": 0.6701261574301369,
+   "max": 49.08467389168923
+  },
+  "peak_Fn_N_max": 3.1487983094481047,
+  "timing": {
+   "median_ms": 14.006377500209055,
+   "max_ms": 53.02718599887157,
+   "over_period_fraction_mean": 0.023976551042398438
+  }
+ },
+ "scenarios": [
+  {
+   "id": "mm2_dev_000",
+   "path": "rounded_triangle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_001",
+   "path": "circle",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_002",
+   "path": "rounded_triangle",
+   "family": "propulsion",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_003",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_004",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_005",
+   "path": "circle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    11.019999999996992,
+    "no contact acquired"
+   ]
+  },
+  {
+   "id": "mm2_dev_006",
+   "path": "line",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_007",
+   "path": "circle",
+   "family": "propulsion",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_008",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_009",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_010",
+   "path": "circle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    3.019999999999686,
+    "loss of control (failsafe): tilt 42 deg, base error 163 mm"
+   ]
+  },
+  {
+   "id": "mm2_dev_011",
+   "path": "rounded_triangle",
+   "family": "contact",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_012",
+   "path": "line",
+   "family": "propulsion",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_013",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_014",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_015",
+   "path": "circle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort"
+   ],
+   "abort": [
+    11.019999999996992,
+    "no contact acquired"
+   ]
+  },
+  {
+   "id": "mm2_dev_016",
+   "path": "circle",
+   "family": "contact",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_017",
+   "path": "circle",
+   "family": "propulsion",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_018",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_019",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_020",
+   "path": "line",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_021",
+   "path": "rounded_triangle",
+   "family": "contact",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_022",
+   "path": "line",
+   "family": "propulsion",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_023",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_024",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_025",
+   "path": "line",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    2.519999999999963,
+    "loss of control (failsafe): tilt 41 deg, base error 136 mm"
+   ]
+  },
+  {
+   "id": "mm2_dev_026",
+   "path": "line",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "coverage",
+    "endpoint"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_027",
+   "path": "line",
+   "family": "propulsion",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_028",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_029",
+   "path": "line",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_030",
+   "path": "rounded_triangle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    11.019999999996992,
+    "no contact acquired"
+   ]
+  },
+  {
+   "id": "mm2_dev_031",
+   "path": "line",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_032",
+   "path": "line",
+   "family": "propulsion",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_033",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_034",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_035",
+   "path": "circle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    11.019999999996992,
+    "no contact acquired"
+   ]
+  },
+  {
+   "id": "mm2_dev_036",
+   "path": "rounded_triangle",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms",
+    "coverage"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_037",
+   "path": "circle",
+   "family": "propulsion",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "path_tracking_rms",
+    "coverage",
+    "endpoint",
+    "contact_fraction",
+    "no_unexpected_contact",
+    "recovery",
+    "rotor_reserve"
+   ],
+   "abort": [
+    26.800000000036952,
+    "recovery timeout"
+   ]
+  },
+  {
+   "id": "mm2_dev_038",
+   "path": "line",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_039",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_040",
+   "path": "circle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort",
+    "base_max",
+    "tilt",
+    "no_unexpected_contact",
+    "rotor_reserve"
+   ],
+   "abort": [
+    11.019999999996992,
+    "no contact acquired"
+   ]
+  },
+  {
+   "id": "mm2_dev_041",
+   "path": "circle",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_042",
+   "path": "line",
+   "family": "propulsion",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_043",
+   "path": "circle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_044",
+   "path": "rounded_triangle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_045",
+   "path": "rounded_triangle",
+   "family": "payload",
+   "all": false,
+   "failed": [
+    "no_abort"
+   ],
+   "abort": [
+    11.019999999996992,
+    "no contact acquired"
+   ]
+  },
+  {
+   "id": "mm2_dev_046",
+   "path": "line",
+   "family": "contact",
+   "all": false,
+   "failed": [
+    "path_tracking_rms"
+   ],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_047",
+   "path": "rounded_triangle",
+   "family": "propulsion",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_048",
+   "path": "rounded_triangle",
+   "family": "disturbance_slow",
+   "all": true,
+   "failed": [],
+   "abort": null
+  },
+  {
+   "id": "mm2_dev_049",
+   "path": "circle",
+   "family": "disturbance_sudden",
+   "all": true,
+   "failed": [],
+   "abort": null
+  }
+ ]
+}

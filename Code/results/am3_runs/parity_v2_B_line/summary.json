@@ -1,0 +1,95 @@
+{
+ "controller": "B",
+ "path": "line",
+ "seed": 0,
+ "abort": null,
+ "t_end": 15.254999999987122,
+ "wall_s": 7.323931932449341,
+ "base": {
+  "rms_mm": 4.892355593054402,
+  "max_mm": 12.413861063500399,
+  "final_mm": 10.746319576338044,
+  "vel_max": 0.09055766898157541,
+  "settle_s": 15.254999999987122
+ },
+ "com": {
+  "range_mm": [
+   25.86924224849707,
+   29.29999705541988,
+   9.316791321750895
+  ],
+  "rms_dev_mm": 7.865193186883807
+ },
+ "attitude": {
+  "tilt_max_deg": 6.255505494137907,
+  "tilt_rms_deg": 1.9469871739530213,
+  "omega_max": 1.0095437489274857
+ },
+ "pad_vs_reference": {
+  "rms_mm": 10.10949589566425,
+  "max_mm": 38.23540625337401
+ },
+ "trace": {
+  "track_rms_mm": 3.182245010605267,
+  "track_max_mm": 6.864783336847054,
+  "timed_nominal_rms_mm": 6.831280493877109,
+  "timed_nominal_max_mm": 13.351111586415001,
+  "duration_s": 4.244999999996483,
+  "nominal_T": 4.0,
+  "delay_s": 0.24499999999648292,
+  "x_dev_rms_mm": 0.20999856497785147,
+  "coverage_5mm": 1.0,
+  "endpoint_err_mm": 2.384067376419975,
+  "reached_end": true
+ },
+ "contact": {
+  "valid_fraction": 0.9954780642636636,
+  "longest_s": 5.697,
+  "losses": 0,
+  "recovery_s": 0.0,
+  "recoveries": [],
+  "peak_Fn_N": 1.1758393333968198,
+  "impulse_Ns": 3.380871775965461,
+  "peak_ft_N": 0.11981513239030372,
+  "Fn_mean_trace_N": 0.5960846054654791,
+  "Fn_std_trace_N": 0.11539862447063491,
+  "unexpected": [],
+  "unexpected_first": null
+ },
+ "actuation": {
+  "tau_util_max": [
+   0.04969173145771333,
+   0.5297714658754621,
+   0.23570934061349944
+  ],
+  "rotor_force_min_N": 1.442703092359851,
+  "rotor_force_max_N": 5.826270298007785,
+  "rotor_reserve_up_N": 4.173729701992215,
+  "rotor_reserve_down_N": 1.3427030923598509,
+  "qd_max": [
+   0.1878247867879783,
+   1.0376559083811785,
+   0.4847053411736426
+  ],
+  "cmd_clip_fraction": 1.0
+ },
+ "solver": {
+  "failures": 0,
+  "retries": 0,
+  "fallback": 0,
+  "slack_max": 0.0
+ },
+ "timing": {
+  "median_ms": 0.7646080002814415,
+  "p95_ms": 0.8013342001959245,
+  "p99_ms": 0.8516485001473483,
+  "max_ms": 2.306123999915144,
+  "period_ms": 5.0,
+  "over_period_fraction": 0.0,
+  "injected_misses": 0
+ },
+ "completed": true,
+ "command": "scripts/am3_run.py parity_v2_B_line B line",
+ "source_hash": "eef9c45299a9",
+ "miss_p": 0.0
+}

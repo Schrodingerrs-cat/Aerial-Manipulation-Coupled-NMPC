@@ -1,0 +1,300 @@
+{
+ "domain": "mm2_val_contact",
+ "n": 12,
+ "policies": {
+  "zero": [
+   {
+    "scenario": "mm2_val_contact_034",
+    "ret": 804.7102267287707,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_018",
+    "ret": 640.2998652054628,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_033",
+    "ret": 680.592130810259,
+    "steps": 724,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_032",
+    "ret": 627.985527606154,
+    "steps": 722,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_029",
+    "ret": 659.3210512066846,
+    "steps": 721,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_026",
+    "ret": 567.4246628237831,
+    "steps": 722,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_017",
+    "ret": 564.6313904289724,
+    "steps": 720,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_037",
+    "ret": 581.519267316974,
+    "steps": 722,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_028",
+    "ret": 616.2122408505135,
+    "steps": 722,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_016",
+    "ret": 821.9861107788964,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_031",
+    "ret": 664.0490384495956,
+    "steps": 720,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_005",
+    "ret": 846.933861656923,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   }
+  ],
+  "results/am3_rl/PILOT_contact_s0/model_20k.zip": [
+   {
+    "scenario": "mm2_val_contact_034",
+    "ret": 794.1441067984154,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_018",
+    "ret": 668.3724161545151,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_033",
+    "ret": 653.4270123873779,
+    "steps": 720,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_032",
+    "ret": 619.6155696629846,
+    "steps": 720,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_029",
+    "ret": 627.7379483525189,
+    "steps": 721,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_026",
+    "ret": 572.1391449229164,
+    "steps": 722,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_017",
+    "ret": 608.2111752836602,
+    "steps": 721,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_037",
+    "ret": 618.620784364103,
+    "steps": 720,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_028",
+    "ret": 604.6277782657517,
+    "steps": 721,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_016",
+    "ret": 833.0698778103497,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_031",
+    "ret": 670.4760638523695,
+    "steps": 721,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_005",
+    "ret": 851.3593152952311,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   }
+  ],
+  "results/am3_rl/PILOT_contact_s0/model_40k.zip": [
+   {
+    "scenario": "mm2_val_contact_034",
+    "ret": 811.0460158678908,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_018",
+    "ret": 755.7913634111965,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_033",
+    "ret": 671.4492282173917,
+    "steps": 719,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_032",
+    "ret": 663.9534205330918,
+    "steps": 720,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_029",
+    "ret": 666.9927447012257,
+    "steps": 721,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_026",
+    "ret": 709.2609261268482,
+    "steps": 802,
+    "completed": true,
+    "losses": 2,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_017",
+    "ret": 657.0877728825316,
+    "steps": 719,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_037",
+    "ret": 664.561832409039,
+    "steps": 718,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_028",
+    "ret": 650.0640138984165,
+    "steps": 718,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_016",
+    "ret": 838.6467959248563,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_031",
+    "ret": 689.14091466981,
+    "steps": 720,
+    "completed": true,
+    "losses": 0,
+    "failed": null
+   },
+   {
+    "scenario": "mm2_val_contact_005",
+    "ret": 850.3854418265372,
+    "steps": 900,
+    "completed": false,
+    "losses": 0,
+    "failed": null
+   }
+  ]
+ }
+}

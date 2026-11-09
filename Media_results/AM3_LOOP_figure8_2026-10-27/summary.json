@@ -1,0 +1,36 @@
+{
+ "N": {
+  "controller": "N",
+  "abort": null,
+  "completed": true,
+  "t_end": 33.00000000006656,
+  "base_track_rms_mm": 0.127933170788587,
+  "base_track_max_mm": 0.27220732627372896,
+  "base_track_rms_moving_mm": 0.1286756544243548,
+  "pad_track_rms_mm": 0.10921099145126574,
+  "pad_track_max_mm": 0.24945031459820086,
+  "base_ref_speed_max": 0.12356916435424338,
+  "base_travel_m": 0.3162275596669132,
+  "tilt_max_deg": 0.6531982751473202,
+  "qd_max": [
+   0.5530048779830319,
+   0.5165319238183517,
+   0.3532094601574094
+  ],
+  "rotor_force_min_N": 2.6312538088703294,
+  "rotor_force_max_N": 4.763784164186066,
+  "solver_failures": 0,
+  "solver_fallback": 0,
+  "cycle_median_ms": 9.530393999739317,
+  "cycle_max_ms": 12.730432999887853
+ },
+ "_setup": {
+  "mode": "loop",
+  "seed": 0,
+  "scale": 1.0,
+  "duration_s": 30.0,
+  "base_laps": 3,
+  "arm_laps": 10,
+  "r_arm_m": 0.05
+ }
+}

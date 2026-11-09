@@ -68,5 +68,5 @@ class CorrectionEnv(gym.Env):
         if len(task.recoveries) > self.nloss: r -= 2.0 * (len(task.recoveries) - self.nloss); self.nloss = len(task.recoveries)
         success = ph == "done" and not fail
         if fail: r -= 20.0
-        if success: r += 10.0
+        if success: r += 50.0 + float(self.max_steps - self.n)          # credit the UNUSED episode time on completion: without it a stalled episode collects +1/step to the cap and outscores a finished one
         terminated = bool(fail or success); truncated = bool(self.n >= self.max_steps and not terminated); return self._obs(xm, Fm), float(r), terminated, truncated, {"phase": ph}

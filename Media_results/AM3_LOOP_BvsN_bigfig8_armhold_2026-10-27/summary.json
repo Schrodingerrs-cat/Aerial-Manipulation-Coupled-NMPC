@@ -1,0 +1,70 @@
+{
+ "B": {
+  "controller": "B",
+  "abort": [
+   11.939999999994848,
+   "loss of control (failsafe): tilt 41 deg, base error 166 mm"
+  ],
+  "completed": false,
+  "t_end": 11.93499999999486,
+  "base_track_rms_mm": 34.47664485217158,
+  "base_track_max_mm": 165.1950849471573,
+  "base_track_rms_moving_mm": 36.01340153974695,
+  "pad_track_rms_mm": 53.95819227036513,
+  "pad_track_max_mm": 348.8585416440822,
+  "base_ref_speed_max": 0.1894727186765065,
+  "base_travel_m": 0.7139741736978801,
+  "tilt_max_deg": 39.73292490632346,
+  "qd_max": [
+   1.6708634656415293,
+   2.0349005685451402,
+   2.4335009467054554
+  ],
+  "rotor_force_min_N": 0.22165549261765322,
+  "rotor_force_max_N": 8.51863596475558,
+  "solver_failures": 0,
+  "solver_fallback": 0,
+  "cycle_median_ms": 0.7485645000997465,
+  "cycle_max_ms": 2.4494310000591213
+ },
+ "N": {
+  "controller": "N",
+  "abort": null,
+  "completed": true,
+  "t_end": 33.00000000006656,
+  "base_track_rms_mm": 0.12913248865149632,
+  "base_track_max_mm": 0.27251884950883143,
+  "base_track_rms_moving_mm": 0.12997189248959715,
+  "pad_track_rms_mm": 0.10611831248308125,
+  "pad_track_max_mm": 0.24398070494351862,
+  "base_ref_speed_max": 0.1894727186765065,
+  "base_travel_m": 0.7273233872339003,
+  "tilt_max_deg": 0.6636444328814733,
+  "qd_max": [
+   0.2563987578879958,
+   0.2815602838748765,
+   0.1621230999757354
+  ],
+  "rotor_force_min_N": 2.534685284441189,
+  "rotor_force_max_N": 5.000623163096447,
+  "solver_failures": 0,
+  "solver_fallback": 0,
+  "cycle_median_ms": 9.729170999889902,
+  "cycle_max_ms": 17.233250000572298
+ },
+ "_setup": {
+  "mode": "loop",
+  "seed": 0,
+  "scale": 2.3,
+  "controllers": [
+   "B",
+   "N"
+  ],
+  "duration_s": 30.0,
+  "base_laps": 2,
+  "arm_laps": 0,
+  "r_arm_m": 0.08,
+  "amp_y_m": 0.345,
+  "amp_z_m": 0.11499999999999999
+ }
+}

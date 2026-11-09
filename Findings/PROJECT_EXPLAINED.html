@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aerial Manipulation Coupled NMPC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: fixed contents rail on the left, single measured column of running text on the right.
+   Accents encode the two controllers exactly as the result plots do: N = blue, B = amber. */
+:root{
+  --bg:#f7f6f3; --surface:#ffffff; --surface-2:#efede8; --line:#ddd9d0;
+  --ink:#1c1f26; --ink-2:#4e5460; --ink-3:#7c8292;
+  --n:#1f5fa8; --b:#b06a12; --warn:#9c2f2f; --ok:#2f6b4a;
+  --display:"IBM Plex Serif",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14161a; --surface:#1b1e24; --surface-2:#22262e; --line:#323743;
+  --ink:#e8e9ec; --ink-2:#b2b7c2; --ink-3:#848b99;
+  --n:#73aee8; --b:#e0a456; --warn:#e38b8b; --ok:#7fc3a0; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#14161a; --surface:#1b1e24; --surface-2:#22262e; --line:#323743;
+  --ink:#e8e9ec; --ink-2:#b2b7c2; --ink-3:#848b99;
+  --n:#73aee8; --b:#e0a456; --warn:#e38b8b; --ok:#7fc3a0; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{display:grid;grid-template-columns:240px minmax(0,1fr);gap:48px;max-width:1180px;margin:0 auto;padding:0 16px}
+nav{position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;padding:36px 0 36px;font-size:13.5px}
+nav .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+nav a{display:block;padding:4px 10px 4px 11px;color:var(--ink-2);text-decoration:none;border-left:2px solid var(--line);line-height:1.4;margin-bottom:1px}
+nav a:hover{color:var(--ink);border-left-color:var(--n);background:var(--surface-2)}
+nav a:focus-visible{outline:2px solid var(--n);outline-offset:-2px}
+nav a .num{font-family:var(--mono);color:var(--ink-3);margin-right:7px;font-size:11.5px}
+main{padding:40px 0 100px;max-width:72ch}
+header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:12px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,4.2vw,40px);line-height:1.15;margin:0 0 12px;text-wrap:balance;letter-spacing:-.01em}
+.sub{color:var(--ink-2);font-size:17px;margin:0 0 18px;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:11.5px}
+.meta span{background:var(--surface-2);border:1px solid var(--line);border-radius:3px;padding:3px 8px;color:var(--ink-2)}
+h2{font-family:var(--display);font-weight:600;font-size:25px;margin:52px 0 6px;scroll-margin-top:20px;text-wrap:balance;letter-spacing:-.01em}
+h2 .num{font-family:var(--mono);font-size:13px;font-weight:400;color:var(--n);display:block;margin-bottom:5px;letter-spacing:.06em}
+h3{font-family:var(--body);font-weight:600;font-size:17.5px;margin:30px 0 4px;text-wrap:balance}
+h4{font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin:24px 0 4px}
+p{margin:12px 0}
+ul,ol{margin:12px 0;padding-left:22px}
+li{margin:6px 0}
+code{font-family:var(--mono);font-size:.875em;background:var(--surface-2);border:1px solid var(--line);border-radius:3px;padding:1px 5px;word-break:break-word}
+pre{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--n);border-radius:4px;padding:14px 16px;overflow-x:auto;margin:16px 0}
+pre code{background:none;border:none;padding:0;font-size:13px;line-height:1.6;white-space:pre}
+.tw{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);font-weight:500;background:var(--surface-2);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.num,th.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.n{color:var(--n);font-weight:600}
+.b{color:var(--b);font-weight:600}
+.note{border:1px solid var(--line);border-left:3px solid var(--ink-3);background:var(--surface);border-radius:4px;padding:13px 16px;margin:18px 0}
+.note.why{border-left-color:var(--n)}
+.note.warn{border-left-color:var(--warn)}
+.note.ok{border-left-color:var(--ok)}
+.note p:first-child{margin-top:0}
+.note p:last-child{margin-bottom:0}
+.note .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:5px}
+.note.why .tag{color:var(--n)}
+.note.warn .tag{color:var(--warn)}
+.note.ok .tag{color:var(--ok)}
+.eq{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:14px 18px;margin:16px 0;font-family:var(--mono);font-size:13.5px;overflow-x:auto;line-height:1.9}
+.eq .cm{color:var(--ink-3)}
+.path{font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
+hr{border:none;border-top:1px solid var(--line);margin:46px 0 0}
+.lead{font-size:17.5px;color:var(--ink-2)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:14.5px;margin:14px 0}
+.kv dt{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);padding-top:3px}
+.kv dd{margin:0}
+footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--line);color:var(--ink-3);font-size:13.5px}
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  nav{position:static;max-height:none;padding:24px 0 8px;border-bottom:1px solid var(--line)}
+  nav a{display:inline-block;border-left:none;border-bottom:2px solid var(--line);margin:0 6px 4px 0;padding:3px 7px}
+  main{padding-top:28px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Contents">
+  <p class="lbl">Contents</p>
+  <a href="#problem"><span class="num">1</span>The problem</a>
+  <a href="#question"><span class="num">2</span>The research question</a>
+  <a href="#scope"><span class="num">3</span>The scope change</a>
+  <a href="#robot"><span class="num">4</span>The robot</a>
+  <a href="#coupling"><span class="num">5</span>Why coupling is the problem</a>
+  <a href="#twomodels"><span class="num">6</span>Plant vs predictor</a>
+  <a href="#map"><span class="num">7</span>Map of the code</a>
+  <a href="#nmpc"><span class="num">8</span>Controller N: the NMPC</a>
+  <a href="#baseline"><span class="num">9</span>Controller B: the baseline</a>
+  <a href="#task"><span class="num">10</span>The task machine</a>
+  <a href="#corrections"><span class="num">11</span>D and L: corrections</a>
+  <a href="#proof"><span class="num">12</span>How we prove things</a>
+  <a href="#results"><span class="num">13</span>Results so far</a>
+  <a href="#flight"><span class="num">14</span>The flight demos</a>
+  <a href="#open"><span class="num">15</span>What is unfinished</a>
+  <a href="#run"><span class="num">16</span>Running it</a>
+  <a href="#glossary"><span class="num">17</span>Glossary</a>
+</nav>
+
+<main>
+<header>
+  <h1>Aerial Manipulation with Coupled NMPC</h1>
+  <p class="sub">A drone with a robot arm that touches walls — how the controller works, why it is built this way, and what has actually been proven.</p>
+  <div class="meta">
+    <span>RBE 595-F07 · Optimal Control &amp; RL</span>
+    <span>Sahil Gajera · Aryan Shah</span>
+    <span>Status: mid-project</span>
+    <span>30 Oct 2026</span>
+  </div>
+</header>
+
+<p class="lead">This document explains the project from zero. It assumes you know basic control and linear algebra but nothing about drones, manipulators or this codebase. Every claim points at the file that backs it.</p>
+
+<div class="note warn">
+  <span class="tag">Read this first</span>
+  <p>The project is <strong>not finished</strong>. The coupling comparison is done and strong; the part the proposal was actually about — comparing classical and learned model correction — is <strong>incomplete</strong>. Section 15 says exactly what is missing. Nothing here should be read as a final result.</p>
+</div>
+
+<h2 id="problem"><span class="num">Section 1</span>The problem we are solving</h2>
+
+<p>Tanks, pipelines, chimneys and bridges have to be inspected for corrosion and cracks. Many of those inspections need a sensor physically <em>pressed against</em> the structure — an ultrasonic probe held flat on a steel wall, for example. Today that means scaffolding or workers on ropes: slow, expensive and dangerous.</p>
+
+<p>A drone carrying a small arm could do it instead. The hard part is not flying. It is that <strong>the drone and the arm fight each other</strong>:</p>
+
+<ul>
+  <li>When the arm moves, the system's centre of mass shifts, so thrust that used to balance the vehicle now also twists it.</li>
+  <li>When the tool touches the wall, the contact force pushes back into the airframe.</li>
+  <li>A quadrotor cannot push sideways without tilting, because its four rotors only produce thrust along one body axis.</li>
+</ul>
+
+<p>So the vehicle has to tilt to press, and tilting changes where the arm is pointing, which changes the contact force, which disturbs the vehicle. That loop is the whole engineering problem.</p>
+
+<h2 id="question"><span class="num">Section 2</span>The research question</h2>
+
+<p>Nonlinear Model Predictive Control (NMPC) is a natural fit: it plans several steps ahead, handles the drone–arm coupling directly, and respects thrust and tilt limits. But NMPC is only as good as the model inside it, and the real model is always wrong somewhere — payload mass is off, contact stiffness is unknown, friction is unmodelled.</p>
+
+<p>A popular fix is to bolt on a learned (reinforcement-learning) correction. But classical tools — a disturbance observer, an extended Kalman filter — have fixed model error for decades. So the proposal asks a sharper question than "does RL help":</p>
+
+<div class="note why">
+  <span class="tag">The question</span>
+  <p><strong>Which kinds of model error actually need learning, and which are already handled by classical methods?</strong></p>
+</div>
+
+<p>The hypothesis is that it depends on the <em>kind</em> of error. A disturbance observer is reactive — it can only correct an error after it has shown up in the measurements. A learned policy can see the tool approaching the wall and prepare for the impact <em>before</em> it happens. So:</p>
+
+<div class="tw"><table>
+<thead><tr><th></th><th>Parametric (arm mass, inertia)</th><th>Non-parametric (contact, friction)</th></tr></thead>
+<tbody>
+<tr><td><strong>Slow</strong></td><td>classical should be enough</td><td>classical probably enough</td></tr>
+<tr><td><strong>Fast / sudden</strong></td><td>classical mostly OK</td><td><strong>learning should help</strong></td></tr>
+</tbody></table></div>
+
+<p>If learning does <em>not</em> win in some of these cells, that is still a publishable result. The project is designed so that a negative answer is an acceptable outcome, which is why the evaluation discipline in Section 12 matters so much.</p>
+
+<h2 id="scope"><span class="num">Section 3</span>The scope change — read this or you will be confused</h2>
+
+<div class="note warn">
+  <span class="tag">Critical</span>
+  <p>The file <code>proposal.pdf</code> in this repository <strong>describes an older version of the task</strong>. The authoritative specification is <code>Plan.md</code> (25 Oct 2026). If you read only the proposal you will look for features that no longer exist.</p>
+</div>
+
+<div class="tw"><table>
+<thead><tr><th>Original proposal</th><th>Current task (<code>Plan.md</code>)</th></tr></thead>
+<tbody>
+<tr><td>A long probe on the arm</td><td>No probe. Contact is a 12&nbsp;mm rubber pad on the hand itself</td></tr>
+<tr><td>Probe must stay perpendicular to the wall</td><td><strong>No orientation objective at all</strong></td></tr>
+<tr><td>Track a specific normal force setpoint</td><td><strong>No force setpoint.</strong> Force is bounded and logged, not tracked</td></tr>
+<tr><td>Hold still for 3 seconds (a "dwell")</td><td>No dwell. A short settling check instead</td></tr>
+<tr><td>Spot inspection at one point</td><td>Trace a <em>trajectory</em> across the wall while in contact</td></tr>
+</tbody></table></div>
+
+<p>What survived unchanged is the thing the research question needs: the two-channel correction interface <code>d = (F̂ₙ, τ̂_pitch)</code> described in Section 11.</p>
+
+<p>So the current task in one sentence: <strong>the drone holds a fixed position in the air while its arm's own end effector draws a path on a wall, staying in contact the whole time.</strong> The drone must not drift, even though the arm is moving and the wall is pushing back.</p>
+
+<h2 id="robot"><span class="num">Section 4</span>The robot</h2>
+
+<p>Everything runs in <a href="https://mujoco.org">MuJoCo</a>, a physics simulator. There is no hardware. The design lives in one file — <span class="path">Code/config/am3_design_v3.json</span> — and the simulation model is <em>generated</em> from it by <span class="path">Code/scripts/am3_build_model.py</span>, so geometry and inertia can never drift apart.</p>
+
+<h4>Mass budget</h4>
+<div class="tw"><table>
+<thead><tr><th>Body</th><th class="num">Mass</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Airframe</td><td class="num">1.05 kg</td><td>quadrotor, rotors at ±0.1 m</td></tr>
+<tr><td>Link 1 (yaw)</td><td class="num">0.12 kg</td><td>rotates about vertical</td></tr>
+<tr><td>Link 2 (shoulder)</td><td class="num">0.15 kg</td><td>0.16 m upper arm</td></tr>
+<tr><td>Link 3 (elbow)</td><td class="num">0.10 kg</td><td>0.14 m forearm</td></tr>
+<tr><td>Hand + pad</td><td class="num">0.10 kg</td><td>wrist fixed at 20°</td></tr>
+<tr><td><strong>Total</strong></td><td class="num"><strong>1.52 kg</strong></td><td>arm is <strong>0.47 kg = 31%</strong> of it</td></tr>
+</tbody></table></div>
+
+<p>That last number is the reason this project exists. On a typical industrial robot the payload is small relative to the base, which is bolted to the floor anyway. Here nearly a third of the flying mass is a moving linkage, and the base is held up by nothing but thrust.</p>
+
+<h4>Actuation and limits</h4>
+<dl class="kv">
+  <dt>rotors</dt><dd>4, each 0.1–10 N, first-order lag 40 ms spin-up / 60 ms spin-down</dd>
+  <dt>joints</dt><dd>3 active (yaw <code>q1</code>, shoulder <code>q2</code>, elbow <code>q3</code>); wrist fixed. XM430-class servos, 1.0 N·m continuous, 3.0 N·m stall</dd>
+  <dt>joint range</dt><dd>operational <code>q1</code> ±35°, <code>q2</code> −80…−5°, <code>q3</code> −125…−30°</dd>
+  <dt>contact</dt><dd>12 mm pad, wall at <em>x</em> = 0.8 m, stiffness 600 N/m, friction µ = 0.15, force capped at 4 N</dd>
+  <dt>hover point</dt><dd>(0.508, 0, 1.2) m — pad sits 0.28 m in front of and 0.16 m below the base origin</dd>
+</dl>
+
+<div class="note">
+  <span class="tag">Honesty about parameters</span>
+  <p>The rotor numbers are a <strong>declared simulation assumption</strong>, not measured hardware data — there is no published thrust table for this vehicle. The servo continuous torque (1/3 of stall) is also an assumption. Both are labelled as such in the config file, and a ±20% sensitivity sweep is part of the mismatch suite. This matters: a reader should never mistake simulation self-consistency for hardware fidelity.</p>
+</div>
+
+<h4>Why the contact patch is small</h4>
+<p>The usable wall patch is only ±5 cm wide. The reason is <strong>yaw authority</strong>. When the pad presses the wall at a lateral offset <em>y</em>, the friction force acts at the end of a 0.28 m lever, producing a yaw moment on the vehicle. A quadrotor can only generate yaw torque through rotor <em>drag</em>, whose arm here is just 0.016 m — roughly 17× weaker. Push too far off-centre and a rotor would need negative thrust, which is impossible. So the geometry of the task is set by the weakest axis of the vehicle, not by arm reach.</p>
+
+<h2 id="coupling"><span class="num">Section 5</span>Why coupling is the entire problem</h2>
+
+<p>Write the whole system — vehicle and arm — as one rigid-body chain with generalised velocity</p>
+
+<div class="eq">ν = (v, ω, q̇) ∈ ℝ⁹      <span class="cm">— base linear (3), base angular (3), joint rates (3)</span></div>
+
+<p>The equations of motion are</p>
+
+<div class="eq">M(R,q) ν̇ + b(ν) + G = τ_rotors + Sᵀτ_joints + J_cᵀ f_contact</div>
+
+<p><code>M</code> is the 9×9 mass matrix. Split it into blocks:</p>
+
+<div class="eq">M = ⎡ M_bb   <strong>M_bq</strong> ⎤   <span class="cm">M_bb : 6×6, how the base resists acceleration</span>
+    ⎣ <strong>M_qb</strong>   M_qq ⎦   <span class="cm">M_qq : 3×3, how the joints resist acceleration</span>
+                     <span class="cm"><strong>M_bq : the 6×3 cross block — the coupling</strong></span></div>
+
+<p><strong><code>M_bq</code> is the whole argument.</strong> It says that accelerating a joint applies a force and a moment to the airframe, and vice versa. A decoupled controller sets <code>M_bq = 0</code>: it models the drone as a rigid body of the right total mass, and the arm as a separate manipulator, and assumes neither notices the other.</p>
+
+<p>Is <code>M_bq</code> actually big enough to matter? We measured it. Over 50 random states, the smallest value of its largest entry was <strong>0.033</strong> — never anywhere near zero. (<span class="path">Code/scripts/am3_check_pred.py</span>, output in <span class="path">Code/results/am3_predictor/static_checks.json</span>.)</p>
+
+<p>There are three physically distinct effects hiding in that block:</p>
+<ol>
+  <li><strong>Inertial reaction.</strong> Swinging the arm pushes the airframe the other way — conservation of momentum.</li>
+  <li><strong>Centre-of-mass shift.</strong> The system COM is not at the base origin and <em>moves as the arm moves</em>. Thrust is applied at the rotor plane, so it produces a moment about the true COM that changes with arm configuration.</li>
+  <li><strong>Coriolis / gyroscopic terms.</strong> Base rotation and joint motion interact through the velocity bias <code>b(ν)</code>.</li>
+</ol>
+
+<div class="note ok">
+  <span class="tag">Experimental proof</span>
+  <p>Section 14 describes a test where the drone is asked to do <em>nothing</em> — just hover — while the arm moves. The coupled controller holds position to 0.127 mm. The decoupled controller <strong>tips over to 40° and is cut off by the safety monitor after 13.6 seconds</strong>. No trajectory, no contact, no disturbance: that failure is purely <code>M_bq</code>.</p>
+</div>
+
+<h2 id="twomodels"><span class="num">Section 6</span>Two models, deliberately kept apart</h2>
+
+<p>This is the single most important architectural decision in the codebase, and it is easy to miss.</p>
+
+<div class="tw"><table>
+<thead><tr><th></th><th>The plant</th><th>The predictor</th></tr></thead>
+<tbody>
+<tr><td>File</td><td><span class="path">ocrl/am3_plant.py</span></td><td><span class="path">ocrl/am3_pred.py</span></td></tr>
+<tr><td>What it is</td><td>MuJoCo — the "real world"</td><td>CasADi symbolic model — what the controller <em>believes</em></td></tr>
+<tr><td>Built from</td><td>the generated MuJoCo XML</td><td><strong>only</strong> <code>am3_design_v3.json</code></td></tr>
+<tr><td>Role</td><td>ground truth for every controller</td><td>the model inside the NMPC</td></tr>
+</tbody></table></div>
+
+<p><strong>The predictor never queries MuJoCo.</strong> It re-derives the kinematics, the 9×9 mass matrix, the gravity and velocity bias, the rotor model and the contact law from scratch, symbolically, from the design numbers.</p>
+
+<div class="note why">
+  <span class="tag">Why do the work twice?</span>
+  <p>If the controller's model were extracted from the simulator, then "the model matches the plant" would be a tautology and would prove nothing. Because the two are independent derivations, agreement between them is <em>evidence</em>. And it does agree: forward kinematics to 3.3×10⁻¹⁶, Jacobians to 2.8×10⁻¹⁶, the full mass matrix to 1.0×10⁻⁹, accelerations to 5.4×10⁻⁶.</p>
+  <p>It also buys the thing the research question needs: because the predictor is a separate object, you can <strong>deliberately make it wrong</strong> — different payload, different contact stiffness — and study what the controller does about it. That is the entire mismatch experiment.</p>
+</div>
+
+<p>The predictor is also the ablation mechanism. Passing <code>coupling="decoupled"</code> replaces <code>M</code> with its block diagonal and zeroes the cross terms in the bias — producing controller <strong>Nd</strong>, which is identical to N in every other respect. That isolates the modelling choice from everything else.</p>
+
+<h2 id="map"><span class="num">Section 7</span>Map of the code</h2>
+
+<p>The library is <span class="path">Code/ocrl/*.py</span>; runnable experiments are <span class="path">Code/scripts/*.py</span>. The modules are deliberately short and dense — 18 to 110 lines each, written close to the mathematics so they can be audited rather than trusted.</p>
+
+<div class="tw"><table>
+<thead><tr><th>File</th><th>Job</th><th>Key thing inside</th></tr></thead>
+<tbody>
+<tr><td><code>am3_plant.py</code></td><td>MuJoCo ground truth</td><td>rotor lag, servo torque–speed envelope, pad–wall contact, physics-rate force log</td></tr>
+<tr><td><code>am3_pred.py</code></td><td>CasADi model</td><td>builds <code>M</code>, bias, gravity, contact; <code>coupling="full"|"decoupled"</code></td></tr>
+<tr><td><code>am3_nmpc.py</code></td><td>the optimisation problem</td><td>cost residuals, constraints, acados + IPOPT from <em>one</em> formulation</td></tr>
+<tr><td><code>am3_ctrl_n.py</code></td><td>controller N</td><td>delay compensation, reference preview, solver retry/fallback</td></tr>
+<tr><td><code>am3_ctrl_b.py</code></td><td>controller B</td><td>geometric hover + joint-space arm, no coupling</td></tr>
+<tr><td><code>am3_task.py</code></td><td>task state machine</td><td>phases, contact detection with hysteresis, recovery</td></tr>
+<tr><td><code>am3_path.py</code></td><td>wall paths</td><td>lines/arcs, minimum-jerk timing</td></tr>
+<tr><td><code>am3_episode.py</code></td><td>the fair-comparison harness</td><td>sensors, latency, failsafe — shared by <em>every</em> controller</td></tr>
+<tr><td><code>am3_eval.py</code></td><td>metrics &amp; pass criteria</td><td>reads thresholds from a frozen config</td></tr>
+<tr><td><code>am3_ekf.py</code></td><td>controller D</td><td>augmented error-state EKF</td></tr>
+<tr><td><code>am3_rl.py</code></td><td>controller L</td><td>observation, reward, Gymnasium environment</td></tr>
+<tr><td><code>am3_ctrl_corr.py</code></td><td>correction interface</td><td>wraps N; zero correction reproduces N exactly</td></tr>
+<tr><td><code>am3_traj.py</code></td><td>flight demos (new)</td><td>moving-base trajectories, Lissajous shapes</td></tr>
+</tbody></table></div>
+
+<h3>The harness is where fairness is enforced</h3>
+
+<p><span class="path">ocrl/am3_episode.py</span> runs the closed loop. Every controller gets, identically:</p>
+<ul>
+  <li>the same noisy measurements (0.1 mm position, 0.01° attitude, 1 mm/s velocity, 10 mN force);</li>
+  <li>a <strong>one-period computation latency</strong> — the command computed now is applied next period, as on real hardware;</li>
+  <li>the same task logic and contact policy;</li>
+  <li>the same safety monitor (abort at 40° tilt or 250 mm position error).</li>
+</ul>
+
+<p>A controller is just an object with <code>compute(t, xm, Fm, task) → (u, info)</code>. Because there is exactly one place where unfairness could enter and it is shared, the B-vs-N comparison is structurally honest rather than honest-by-inspection.</p>
+
+<h2 id="nmpc"><span class="num">Section 8</span>Controller N — the coupled NMPC</h2>
+
+<h3>What it optimises</h3>
+<p>At every control step (50 Hz) it solves a constrained optimisation over the next 10 steps of 20 ms — a 0.2 s look-ahead:</p>
+
+<div class="eq">minimise   Σⱼ ‖r(xⱼ, uⱼ)‖²  +  ρ‖s‖² + ρ‖s‖₁
+subject to  x_{j+1} = Φ(xⱼ, uⱼ)      <span class="cm">RK4, 4 substeps</span>
+            x₀ = current estimate
+            rotor and torque bounds   <span class="cm">hard</span>
+            tilt, joint, force limits  <span class="cm">soft, with slack s</span></div>
+
+<h4>State and input</h4>
+<p>23 states: position (3), quaternion (4), world velocity (3), body angular rate (3), joint angles (3), joint rates (3), <strong>rotor speeds (4)</strong>. Inputs: 4 commanded rotor speeds + 3 joint torques.</p>
+
+<div class="note why">
+  <span class="tag">Why rotor speeds are states</span>
+  <p>Motors cannot change speed instantly — 40 ms spin-up here, which is <em>two whole control periods</em>. If thrust were treated as directly commandable, the controller would plan manoeuvres the motors physically cannot deliver. Carrying rotor speed as a state with a first-order lag means the optimiser knows it must ask early.</p>
+</div>
+
+<h4>The cost terms</h4>
+<p>All residuals are normalised by a physical tolerance, so the weights are dimensionless and comparable:</p>
+<ul>
+  <li>pad position vs reference (σ = 1–2 mm) and pad velocity</li>
+  <li>base position vs its <em>fixed</em> reference (σ = 5 mm) and base velocity</li>
+  <li>small regularisation on attitude, angular rate, joint rate</li>
+  <li>input variation — penalises jerky commands</li>
+</ul>
+<p>Notice what is <em>absent</em>: no orientation target, no force setpoint, no alignment term. Those were deleted with the scope change.</p>
+
+<h4>Constraints</h4>
+<p>Hard: individual rotor speed bounds, joint torque bounds. Soft (with named, normalised slack variables): 15° tilt, operational joint ranges, joint rate, 4 N contact force cap, closing speed during approach, clearance of elbow and wrist below the rotor plane.</p>
+
+<div class="note why">
+  <span class="tag">Why soft constraints</span>
+  <p>A hard constraint that becomes infeasible makes the solver fail, and a failed solver on a flying vehicle is a crash. Softening with a heavily penalised slack means the optimiser will violate a limit slightly rather than give up — and because every slack is named and logged, any violation is visible afterwards. Soft constraints are <em>not</em> guarantees, and the code says so.</p>
+</div>
+
+<h3>Two solvers, one formulation</h3>
+<p><code>am3_nmpc.py</code> builds the residuals, constraints and dynamics <strong>once</strong>, then hands the same expressions to IPOPT (a reliable reference solver) and to acados (a fast embedded solver using SQP real-time iteration). Cost and constraint parity is therefore true by construction, not by hand-matching two implementations. They were checked to agree to 1×10⁻⁹ relative cost and 1×10⁻⁴ on the first input.</p>
+
+<div class="note why">
+  <span class="tag">Why acados, and what RTI means</span>
+  <p>IPOPT solves the problem properly but takes far too long for a 20 ms budget. acados in SQP-RTI mode performs <em>one</em> Newton-type iteration per control step, reusing the previous solution as a warm start. It is not converged optimisation — and the code is careful never to claim it is. It is the standard trade for real-time nonlinear MPC.</p>
+</div>
+
+<h3>Delay compensation</h3>
+<p>Because the command will not take effect until next period, the controller first propagates the measured state forward one period using the command already in flight, then solves from <em>that</em> predicted state. Without this the controller is always one step behind, which at 50 Hz is enough to destabilise contact.</p>
+
+<h2 id="baseline"><span class="num">Section 9</span>Controller B — the baseline that must not be a straw man</h2>
+
+<p>The whole comparison is worthless if B is weak. <code>Plan.md</code> is explicit: <em>"Do not make the baseline fail on purpose."</em> So B gets every reasonable advantage:</p>
+
+<ul>
+  <li>a geometric (SE(3)) hover controller — the standard, well-respected quadrotor method;</li>
+  <li>the <strong>correct total mass</strong> 1.52 kg and gravity compensation;</li>
+  <li>a declared nominal inertia about the locked-posture COM;</li>
+  <li>moment trim initialised from rotor telemetry;</li>
+  <li>latency compensation and partial inversion of motor lag;</li>
+  <li>joint-space arm control with feedforward from the arm's <em>own</em> model;</li>
+  <li>the contact force implied by the shared policy, fed forward;</li>
+  <li><strong>200 Hz — four times N's rate;</strong></li>
+  <li>a tuning budget at least as large as N's: linearised scans, 56 grid points, 320 random-search samples.</li>
+</ul>
+
+<p>The <em>only</em> structural thing it lacks is <code>M_bq</code> — it does not model that the arm pushes back on the base.</p>
+
+<div class="note">
+  <span class="tag">Why 200 Hz, and the caveat it creates</span>
+  <p>B was first tried at 50 Hz to match N. It was unstable for <em>every</em> gain set tested — a light arm under torque control with 40 ms of effective delay simply cannot be stabilised that slowly, and the linearised closed-loop spectral radius exceeded 1. So B runs at its natural rate. This is the fair choice, but it means <strong>the B-vs-N difference bundles three things: model, architecture and rate.</strong> That is why the NMPC ablation Nd exists — Nd differs from N in the model <em>alone</em>.</p>
+</div>
+
+<h2 id="task"><span class="num">Section 10</span>The task machine and contact policy</h2>
+
+<p><span class="path">ocrl/am3_task.py</span> sequences every run and is shared by all controllers:</p>
+
+<div class="eq">hover → position → approach → settle → trace → endhold → release → retreat → done
+                      ↑                  ↓
+                      └──── recover ←────┘   <span class="cm">on confirmed contact loss</span></div>
+
+<p>Crucially, this module <strong>never reads the simulator</strong>. It only sees the measured normal force and a measured gap — the same information a real system would have.</p>
+
+<h4>Detecting contact</h4>
+<p>Contact is declared with hysteresis: force above 0.15 N for 3 consecutive samples turns it on; below 0.08 N for 5 samples turns it off. Two thresholds instead of one prevents chattering at the boundary.</p>
+
+<h4>Pressing without a force setpoint</h4>
+<p>Since the task has no force target, the controller commands a small <strong>indentation</strong> instead — it asks the pad to be 1 mm <em>inside</em> the wall surface. With a 600 N/m contact stiffness that produces about 0.6 N of preload. The approach creeps in at 2 cm/s, slowing to 1 cm/s near the surface, and continues past zero gap until contact is actually measured.</p>
+
+<div class="note why">
+  <span class="tag">Why indentation and not force</span>
+  <p>You cannot simultaneously demand zero gap and a specific force against a compliant surface — those are two conflicting statements about the same contact. Commanding a small penetration against a known stiffness is self-consistent, and it degrades gracefully: if the surface is stiffer than modelled you get more force, not a controller fighting itself.</p>
+</div>
+
+<h4>Recovery</h4>
+<p>If contact is lost mid-trace, path progress <em>pauses</em> (it does not keep running in the air), the controller re-approaches, re-settles, and resumes. The lost time is counted and reported. Recovery cannot erase impact peaks or let an incomplete path pass as complete.</p>
+
+<h2 id="corrections"><span class="num">Section 11</span>D and L — where the research question lives</h2>
+
+<p>This is the part the proposal was really about, and it is <strong>unfinished</strong>.</p>
+
+<p>The idea: let something learn a correction to the NMPC's <em>model</em>, not to its output. The correction is deliberately tiny — two numbers:</p>
+
+<div class="eq">d = (F̂ₙ, τ̂_pitch)        <span class="cm">normal-force channel, pitch-moment channel</span>
+τ_d = D(x) · d          <span class="cm">injected into the prediction dynamics</span></div>
+
+<div class="note why">
+  <span class="tag">Why correct the model instead of the action</span>
+  <p>The best-known approach (residual RL) adds a learned term to the <em>controller's output</em>. That works, but the learned part bypasses the optimiser entirely — it can violate thrust limits, tilt limits and contact bounds, because nothing checks it.</p>
+  <p>Here the correction goes <em>into the prediction model, before optimisation</em>. The NMPC still produces the final command, so all constraint handling and feasibility reasoning stay intact. The learner can only change what the controller <em>believes</em>, never what it is allowed to do. This is the project's main methodological contribution, and the taxonomy table in <span class="path">Findings/Research/literature_matrix.md</span> records that no prior work was found doing exactly this.</p>
+</div>
+
+<p>Three controllers share this one interface (<span class="path">ocrl/am3_ctrl_corr.py</span>), with identical magnitude and rate limits:</p>
+<ul>
+  <li><strong>Z</strong> — zero correction. Must reproduce N <em>exactly</em>; this is the parity test that proves the interface adds nothing by itself.</li>
+  <li><strong>D</strong> — classical. An augmented error-state EKF estimates the two channels from the residual between predicted and measured behaviour.</li>
+  <li><strong>L</strong> — learned. A SAC policy outputs the two channels from measured state, contact signal, path progress, previous commands and a short force-residual history. Its reward covers hover error, path tracking, contact loss, excessive force and correction effort. It gets <strong>no privileged information</strong> — no true mismatch parameters, nothing D cannot also see.</li>
+</ul>
+
+<div class="note warn">
+  <span class="tag">Current status — and an honest caveat</span>
+  <p>On the 20-scenario mismatch development list: <span class="n">N scores 11/20</span>, <span class="b">D scores 13/20</span>. A modest win for the classical method. <strong>L has never been evaluated</strong> — its training was paused at roughly 100k of 200k steps, and the checkpoints are not in this repository.</p>
+  <p>There is also a known structural limitation: tangential friction and general payload error do not necessarily lie within the span of two channels. The plan requires quantifying that projection error rather than letting an unrepresentable disturbance be mistaken for a failure of learning.</p>
+</div>
+
+<h2 id="proof"><span class="num">Section 12</span>How we prove things — the part that makes the results trustworthy</h2>
+
+<p><code>CLAUDE.md</code> sets rules that the codebase genuinely follows. They are worth understanding, because they are why the numbers can be believed.</p>
+
+<h3>Simulation is the proof, not the metric</h3>
+<p>A controller is not "done" because its numbers look good. It must be <em>seen</em> working in a reproducible run with a real recording. Every result directory contains the command, the config hashes, the seeds, raw logs and video.</p>
+
+<h3>Freeze before you test</h3>
+<p>Before the held-out evaluation, <span class="path">Code/scripts/am3_freeze.py</span> records a SHA-256 of all 22 files that define the controllers and the task, plus library versions. The pass thresholds were written <em>before any held-out run</em> and derived from the task — not from observed performance:</p>
+
+<div class="tw"><table>
+<thead><tr><th>Criterion</th><th class="num">Threshold</th><th>Where it comes from</th></tr></thead>
+<tbody>
+<tr><td>base position error</td><td class="num">≤ 20 mm</td><td>1/15 of arm reach</td></tr>
+<tr><td>pad tracking RMS</td><td class="num">≤ 3 mm</td><td>quarter of pad radius</td></tr>
+<tr><td>endpoint error</td><td class="num">≤ 5 mm</td><td>task tolerance</td></tr>
+<tr><td>path coverage within 5 mm</td><td class="num">≥ 95%</td><td>task completeness</td></tr>
+<tr><td>contact-valid fraction</td><td class="num">≥ 95%</td><td>inspection validity</td></tr>
+<tr><td>peak normal force</td><td class="num">≤ 4 N</td><td>pad compression limit</td></tr>
+<tr><td>tilt</td><td class="num">≤ 15°</td><td>the NMPC's own constraint</td></tr>
+</tbody></table></div>
+
+<p>This ordering is what makes the gate meaningful. Thresholds chosen after seeing results are not thresholds, they are decoration.</p>
+
+<h3>Three separate scenario sets</h3>
+<p>Development (for tuning), validation (for checkpoint choice), held-out (used once). N was tuned on development scenarios with exactly one validation observation, recorded in the findings. Held-out data were not used for tuning.</p>
+
+<h3>Equivalence evidence when a frozen file changes</h3>
+<p>Frozen files cannot be edited casually. When the flight demos in Section 14 required four of them to change, each change was additive and defaulted to the previous behaviour — and that was <em>proven</em> by re-running the benchmark and comparing logs element by element. Result: <strong>maximum absolute difference exactly 0.0</strong> across states, commands, forces and pad positions. Nothing previously validated was disturbed.</p>
+
+<h3>Report failures at equal volume</h3>
+<p>The media log documents failed experiments with the same detail as successes, including a baseline gain set that diverged on 5 of 16 scenarios and nine unsuccessful attempts to stabilise the Nd ablation. When a run aborts, its video panel freezes on the last frame under a red banner stating the time and cause — never looped, never cropped out.</p>
+
+<h2 id="results"><span class="num">Section 13</span>Results so far</h2>
+
+<h3>The nominal gate — 30 held-out scenarios, criteria frozen in advance</h3>
+
+<div class="tw"><table>
+<thead><tr><th>Controller</th><th class="num">Completed</th><th class="num">Passed all criteria</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td><span class="n">N</span> coupled NMPC</td><td class="num">30/30</td><td class="num"><strong>30/30</strong></td><td>base error median 0.62 mm; tracking RMS median 0.43 mm</td></tr>
+<tr><td><span class="b">B</span> decoupled baseline</td><td class="num">30/30</td><td class="num">1/30</td><td>stable everywhere, but base error median 22.7 mm, tracking 10.2 mm</td></tr>
+<tr><td>Nd NMPC, decoupled model</td><td class="num">0/30</td><td class="num">0/30</td><td>27 loss-of-control aborts, 3 solver hangs</td></tr>
+</tbody></table></div>
+
+<p>Read these three rows together, because they say different things. <strong>B is stable but inaccurate</strong> — a well-tuned decoupled controller does not fall out of the sky on the wall task, it just misses by 20–40×. <strong>Nd diverges outright</strong> — give an optimiser a wrong model and let it plan 0.2 s ahead on that wrong model, and it confidently commands the wrong thing. That contrast is more informative than either row alone.</p>
+
+<h3>Independently reproduced</h3>
+<p>On 27 Oct 2026 these results were rebuilt from scratch on a different machine — fresh environment, freshly compiled solver. Baseline B reproduced <strong>bit-for-bit</strong>. N reproduced to within a few percent (base RMS 0.178 → 0.174 mm), the difference being that the solver's generated C is compiled with <code>-march=native</code>, so floating-point results differ in the last bits and feedback amplifies them.</p>
+
+<h3>The real-time problem — the most important caveat</h3>
+<div class="note warn">
+  <span class="tag">N is not real-time compliant as built</span>
+  <p>The control period is 20 ms. On a quiet machine N's median cycle is 15 ms, but <strong>1.3–1.7% of cycles exceed 20 ms</strong>, in a burst during the final approach to the wall. When deadlines are strictly enforced (a late result is discarded), <strong>N loses control at about 5.4 s</strong>.</p>
+  <p>Measured on a faster machine the picture improves markedly — median 9.3 ms, 1.3% over deadline — which shows the limitation is hardware-dependent. Remedies exist but are untried: bounding QP iterations, fewer integration substeps or horizon stages, and an OpenMP build (the current build reports <em>"acados was compiled without OpenMP"</em>).</p>
+  <p>Never compare timing numbers across machines without naming the machine.</p>
+</div>
+
+<h3>Under model mismatch</h3>
+<p>On the 20-scenario development list with deliberately wrong payload, contact stiffness, friction or propulsion: <span class="n">N 11/20</span>, <span class="b">D 13/20</span>. Nominal accuracy is an upper bound — with a predictor that matches the plant by construction, N is at the sensor-noise floor, and that flatters it.</p>
+
+<h2 id="flight"><span class="num">Section 14</span>The flight demonstrations (added 27 Oct)</h2>
+
+<p><code>Plan.md</code> pins the drone to a fixed hover point, because the inspection task is "hold still and move the arm". To show the controller flying, four things were added. All default to the old behaviour, all verified bit-exact (Section 12).</p>
+
+<ol>
+  <li><strong>A moving base reference.</strong> The NMPC already carried the base reference as a per-stage parameter. What was missing was a base <em>velocity</em> reference — velocity was being driven to zero, which fights a moving target and causes lag of roughly 83 ms × speed.</li>
+  <li><strong>An analytic periodic task</strong> (<span class="path">ocrl/am3_traj.py</span>). The base follows a Lissajous figure <code>y = A sin(n_y θ)</code>, <code>z = C sin(n_z θ + φ)</code>; the arm circles the moving base. One smoothstep envelope ramps the rate 0 → 1 → 0 so motion starts and ends at rest while completing exactly the requested number of laps.</li>
+  <li><strong>Free-flight options</strong> — remove the wall from collision and rendering, start with the arm hanging down.</li>
+  <li><strong>A reference-relative failsafe</strong> — see the bug below.</li>
+</ol>
+
+<div class="note warn">
+  <span class="tag">A real bug found this way</span>
+  <p>The shared safety monitor measured position error against the <em>fixed</em> hover point. A drone legitimately flying a 345 mm figure-eight therefore tripped the 250 mm abort <strong>while perfectly on reference</strong> — both controllers reported "loss of control" at 3.7 s with 0–1° of tilt and 0.139 mm of tracking error. Without checking, this would have been reported as "the large trajectory fails". It now measures against the current reference. The same bug would have affected the planned long-line wall test.</p>
+</div>
+
+<h3>What these runs show</h3>
+<p>All 30 s, each pair on the same plant, reference, seed and sensor noise:</p>
+
+<div class="tw"><table>
+<thead><tr><th>Test</th><th class="num"><span class="n">N</span></th><th class="num"><span class="b">B</span></th></tr></thead>
+<tbody>
+<tr><td>Hover, arm only moving</td><td class="num">0.127 mm, tilt 0.32°</td><td class="num">diverged @ 13.6 s</td></tr>
+<tr><td>Figure-eight ×3 + arm circles ×10</td><td class="num">0.128 mm, tilt 0.65°</td><td class="num">diverged @ 15.1 s</td></tr>
+<tr><td>Big figure-eight (±34.5 cm), arm held out</td><td class="num">0.129 mm, tilt 0.66°</td><td class="num">diverged @ 11.9 s</td></tr>
+<tr><td>Open-air Lissajous, arm hanging, uncommanded</td><td class="num">0.126 mm, tilt 1.21°</td><td class="num">diverged @ 4.8 s</td></tr>
+</tbody></table></div>
+
+<p>In free flight B does not merely track worse than on the wall task — it diverges every time, and fastest when the arm simply <em>hangs</em>. A 0.47 kg arm suspended 400 mm below the airframe is a harsher reaction load than the tucked contact posture B was tuned for.</p>
+
+<div class="note">
+  <span class="tag">Two caveats to state before anyone asks</span>
+  <p><strong>It is a modelling failure, not saturation.</strong> When B loses control, N is using about half the thrust envelope and a fifth of the joint-rate limit. The control authority is there; B does not know the arm pushes back.</p>
+  <p><strong>B was never retuned for free flight.</strong> Its gains were searched for the fixed-hover wall task. The defensible claim is "B as tuned for the original task diverges here", never "no decoupled controller could do this". These demos also sit <em>outside</em> the frozen plan and are not covered by the 30-case gate — they are capability demonstrations, not validated evidence.</p>
+</div>
+
+<h2 id="open"><span class="num">Section 15</span>What is unfinished</h2>
+
+<p>Checklist state from <code>TODO.md</code>: items 3, 4, 5, 7, 8 partial; item 9 open.</p>
+
+<h4>The research question is not answered yet</h4>
+<ul>
+  <li><strong>L has never been evaluated.</strong> SAC training paused at ~100k of 200k steps; checkpoints absent from the repository. Until L runs, the headline question has no answer.</li>
+  <li>The N/D/L comparison exists only on a 20-scenario <em>development</em> list. No frozen, paired, held-out comparison has been run.</li>
+  <li>Generalisation outside the training range — a stated goal — is untested.</li>
+</ul>
+
+<h4>Known gaps in validation</h4>
+<ul>
+  <li>Predictor contact validation covers approach and impact, but sliding, reversal and contact loss remain open.</li>
+  <li>N is not real-time compliant; the listed remedies are untried.</li>
+  <li>N's weights were set from a first guess and never tuned — acceptable only because N is at the sensor-noise floor nominally, and not necessarily acceptable under mismatch.</li>
+  <li>A stable decoupled NMPC (Nd) may exist outside the nine weight sets searched.</li>
+</ul>
+
+<h4>Requested demos not yet built</h4>
+<ul>
+  <li>A long line on the wall — needs the moving base, since the patch is capped at ±5 cm by yaw authority.</li>
+  <li>Writing letters on the wall — multi-stroke with pen-up/pen-down sequencing.</li>
+  <li><strong>A curved surface (a ball).</strong> This one is substantial, not a configuration change: the gap and contact normal are hard-coded to a plane with <code>n = (−1,0,0)</code> in <em>both</em> the MuJoCo model and the CasADi predictor. A sphere needs a state-dependent normal and full re-validation of contact onset, sliding and impact.</li>
+</ul>
+
+<h2 id="run"><span class="num">Section 16</span>Running it</h2>
+
+<p>The repository does not run out of the box: the solver, the RL checkpoints and the raw logs are excluded from version control. Full setup is in <code>SESSION_CONTEXT.md</code>. Once built:</p>
+
+<pre><code>cd Code
+export ACADOS_SOURCE_DIR=$PWD/third_party/acados
+export LD_LIBRARY_PATH=$ACADOS_SOURCE_DIR/lib
+P=/path/to/venv/bin/python
+
+$P scripts/am3_check_pred.py              # predictor vs MuJoCo — start here
+$P scripts/am3_run.py demo N line         # one closed-loop run
+$P scripts/am3_compare.py TAG line        # matched B/N run with video
+$P scripts/am3_live.py N line             # interactive viewer, watch it live
+$P scripts/am3_batch.py GATE heldout N --workers 8 &amp;&amp; $P scripts/am3_gate.py GATE config/am3_acceptance_v1.json</code></pre>
+
+<div class="note">
+  <span class="tag">Two traps</span>
+  <p>A second, different acados build may exist elsewhere on the machine and the shell's default environment variables may point at it — always override them. And batch timing measured with parallel workers is <strong>invalid</strong>; the repository's own notes flag this about an earlier run.</p>
+</div>
+
+<h2 id="glossary"><span class="num">Section 17</span>Glossary</h2>
+
+<dl class="kv">
+  <dt>NMPC</dt><dd>Nonlinear Model Predictive Control. Repeatedly solve a short-horizon optimisation using a nonlinear model; apply the first command; repeat.</dd>
+  <dt>SQP-RTI</dt><dd>Sequential Quadratic Programming, Real-Time Iteration. One Newton-type step per control period instead of solving to convergence.</dd>
+  <dt>acados / CasADi</dt><dd>CasADi builds the symbolic model and derivatives; acados generates and runs fast C solver code from it.</dd>
+  <dt>M_bq</dt><dd>The cross block of the mass matrix coupling base and joint accelerations. The thing this project is about.</dd>
+  <dt>Plant / predictor</dt><dd>Ground-truth simulation vs the controller's internal model. Kept independent on purpose.</dd>
+  <dt>N / B / Nd / D / L</dt><dd>Coupled NMPC / decoupled baseline / NMPC with decoupled model / EKF-corrected / learning-corrected.</dd>
+  <dt>Gate</dt><dd>A held-out evaluation against criteria frozen before the run.</dd>
+  <dt>Mismatch</dt><dd>A deliberate difference between plant and predictor — wrong payload, stiffness, friction, thrust.</dd>
+  <dt>Slack</dt><dd>A penalised variable letting a soft constraint be violated slightly rather than making the problem infeasible.</dd>
+  <dt>Minimum jerk</dt><dd>The 10t³−15t⁴+6t⁵ progress profile: starts and stops with zero velocity and acceleration.</dd>
+</dl>
+
+<footer>
+  <p>Sources: <code>Plan.md</code> (specification), <code>CLAUDE.md</code> (working rules), <code>Findings/STATUS.md</code> (gate table), <code>Findings/Codebase/</code> (design, controllers, gate), <code>Media_results/README.md</code> (experiment log), <code>SESSION_CONTEXT.md</code> (environment and handoff).</p>
+  <p>Written 30 October 2026, mid-project. Figures quoted here are reproduced from result files in the repository; where something is an assumption rather than a measurement, it is labelled as one.</p>
+</footer>
+
+</main>
+</div>
+</body>
+</html>

@@ -36,10 +36,11 @@ class BaselineB:
     def _a_ref(self, task): h = task.horizon(1, self.period, self.period); return (h[1]["v"] - h[0]["v"]) / self.period
     def compute(self, t, xm, Fm, task):
         g, T0 = self.g, self.period; dt = T0 if self.t_prev is None else t - self.t_prev; self.t_prev = t; ref = task.ref(); gap = ref["gap"]
+        pB = np.asarray(ref.get("pB", BASE), float); vB = np.asarray(ref.get("vB", 0.0), float)          # moving base reference (equals BASE, 0 for the fixed-hover task)
         F_ff = self.k * max(-gap, 0.0) if gap is not None else 0.0; Fc = np.array([-F_ff, 0, 0])          # wall force implied by the contact policy's indentation reference (spring law), whether or not contact is detected yet
         # ---- base: geometric position/attitude control on the state predicted over the command latency
-        R = Rmat(xm[3:7]) @ expm(xm[10:13] * self.t_lat); ep = xm[0:3] + self.t_lat * xm[7:10] - BASE
-        self.ip = np.clip(self.ip + ep * dt, -g["i_pos_max"], g["i_pos_max"]); a_d = -g["kp_pos"] * ep - g["kd_pos"] * xm[7:10] - g["ki_pos"] * self.ip
+        R = Rmat(xm[3:7]) @ expm(xm[10:13] * self.t_lat); ep = xm[0:3] + self.t_lat * xm[7:10] - pB
+        self.ip = np.clip(self.ip + ep * dt, -g["i_pos_max"], g["i_pos_max"]); a_d = -g["kp_pos"] * ep - g["kd_pos"] * (xm[7:10] - vB) - g["ki_pos"] * self.ip
         Fd = self.m * (a_d + np.array([0, 0, G0])) - Fc; b3 = Fd / np.linalg.norm(Fd); b2 = np.cross(b3, [1.0, 0, 0]); b2 /= np.linalg.norm(b2); Rd = np.column_stack([np.cross(b2, b3), b2, b3])
         eR = 0.5 * vee(Rd.T @ R - R.T @ Rd); self.ia = np.clip(self.ia + eR * dt, -g["i_att_max"], g["i_att_max"]); w = xm[10:13]; J = self.Jn
         Mb = -J @ (g["w_att"] ** 2 * eR + 2 * g["zeta_att"] * g["w_att"] * w + g["ki_att"] * self.ia) + np.cross(w, J @ w); T = Fd @ R[:, 2]; Mb = Mb + np.cross(self.rc, [0, 0, T]) + self.Mbias          # moment about the COM -> about the thrust-plane origin
@@ -48,7 +49,7 @@ class BaselineB:
         om = np.clip(om_des + g["lag_gain"] * gg / (1 - gg) * (om_des - om_next), OM_MIN, OM_MAX); self.om_prev = om.copy()
         # ---- arm: IK references at the nominal base pose, joint PD + feedforward of the arm's own model, slow task-space correction
         th = np.arctan(F_ff / (self.m * G0)); Rn_T = Rmat(quat_from_rp(0.0, th)).T; pad = np.array(self.pr.pad_f(xm)[0]).ravel(); e_pad = ref["p"] - pad
-        self.corr = np.clip(self.corr + g["k_corr"] * e_pad * dt, -g["corr_max"], g["corr_max"]); tgt = Rn_T @ (ref["p"] + self.corr - BASE)
+        self.corr = np.clip(self.corr + g["k_corr"] * e_pad * dt, -g["corr_max"], g["corr_max"]); tgt = Rn_T @ (ref["p"] + self.corr - pB)
         for _ in range(8): self.q_ref = self.q_ref + np.linalg.solve(np.array(self.pr.Jpad_f(self.q_ref)), tgt - np.array(self.pr.fk_f(self.q_ref)).ravel())
         Jb = np.array(self.pr.Jpad_f(self.q_ref)); qd_ref = np.linalg.solve(Jb, Rn_T @ ref["v"]); eps = 1e-5
         dJ = (np.array(self.pr.Jpad_f(self.q_ref + eps * qd_ref)) - np.array(self.pr.Jpad_f(self.q_ref - eps * qd_ref))) / (2 * eps); qdd_ref = np.linalg.solve(Jb, Rn_T @ self._a_ref(task) - dJ @ qd_ref)

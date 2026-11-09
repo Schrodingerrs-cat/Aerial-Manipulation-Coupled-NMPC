@@ -1,0 +1,5 @@
+# Partner repo review (written 2026-11-04 13:54 EST)
+Repo: Yami1106/Capstone_Ashish_Sahil, branch oct4th-updates (private; read via Sahil's SSH key, README/commit messages only, no code run, numbers NOT independently verified).
+Commits on the branch: 2026-11-01 09:54 arm random motions; 11:12 payload/literature/RL tasks; 2026-11-03 18:37 soft arm + 2026 learned-model baseline + RL model correction (task 5); 19:40 slides; 2026-11-04 13:39 seven named videos + 12-slide deck. Earlier (aerial-manipulator-control): 2026-10-20..25 lift-off, SE(3) geometric controller, flying paths, tabular Q-learning model correction, phase-1 deck.
+Approach: NMPC-centric (own coupled NMPC, 50 Hz, 0.5 s horizon), soft-arm model (4 joints, spring-damper), Bayesian/Kalman load-mass estimate, L1-NMPC replication, learned-model baseline (Yadav 2026), SAC policy that corrects the NMPC's *model*. Claims: arm motion 2.4 cm geometric -> 0.13 cm NMPC; 0.4 kg load 22.8 -> 2.1 cm (Bayesian) -> 0.77 cm (+RL), but 0.39 vs 0.16 cm with no load and 2/72 crashes (seed 2).
+Ours: RL replaces the controller (PPO via geometric inner loop), 3-joint arm, no NMPC in the loop; R5 trajectory + moving arm.
