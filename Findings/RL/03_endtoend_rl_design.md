@@ -503,3 +503,19 @@ Track7Env (fixed yaw), final checkpoints, seeds as pre-registered. Files: `Code/
 **Change from R7 (disclosed):** Track8Env limits commanded acceleration to +-1.75 m/s^2. One change only; as planned in the R7 design. PD+ff goes through the same limit, so its baseline is re-measured on track8.
 **Known risk, stated now:** a 4 N sideways push needs about 2.6 m/s^2 to cancel, more than 1.75. R8 may lose 4 N pushes that R7 survives. The push test will report it either way.
 **Pass criteria, unchanged:** 100% survival then lowest RMS, goal <= 5 mm mean. Tests: 50 starts seeds 1000-1049 on four paths; full-length 300 starts on 2000-2299; if both pass, fresh seeds 3000-3299 as the final check (not looked at before). Seeds 1000-1049 and 2000-2299 have now informed the design, so only the 3000 block counts as unseen.
+
+### R8 results (2026-11-09 14:23 EST)
+Track8Env (fixed yaw, acceleration +-1.75 m/s^2), final checkpoints. PD+ff re-measured under the same limit. Files: `eval/r8_eval_*_n50.*`, `r8_surv2000_{0..5}.*`, `push_R8_s{0,1}_final.*`.
+| test | PD+ff | R8 s0 | R8 s1 |
+|---|---|---|---|
+| 50 starts, big_fig8 | 50/50, 18.5 mm | 50/50, 6.8 (median 5.6, worst 31) | 50/50, 6.7 (median 4.2, worst 39) |
+| 50 starts, circle_xy | 50/50, 18.4 | 50/50, 6.6 (5.5, 30) | 50/50, 7.4 (4.1, 68) |
+| 50 starts, fwd_up | 50/50, 18.7 | 50/50, 6.9 (5.6, 33) | 50/50, 8.6 (4.3, 112) |
+| 50 starts, lissa3d | 50/50, 24.0 | 50/50, 7.2 (6.2, 30) | 50/50, 7.0 (4.7, 46) |
+| 300 starts full length, big_fig8 | 300/300, 17.7 | 300/300, 5.7 (5.2, 27) | 300/300, 4.8 (3.9, 67) |
+**Survival: first version with no lost start on either seed. Accuracy: 5 mm mean goal NOT met** on the 50-start tests (R7 s1 was 4.4-4.8 mm). The limit traded accuracy for survival. Joint RMS 0.6-0.7 deg (R7 about 0.8), peak tilt 13 deg (R7 19).
+**Push (one start, seed 1000):** RL survived all 18 on both seeds, so the feared loss at 4 N did not happen, but peak errors are larger than R7 (4 N +y: about 1.3 m vs 0.7-0.8 m). PD+ff under the limit lost 3 of 18 (4 N +x, +y, -y).
+
+### R8 final check on fresh seeds (2026-11-09 14:40 EST)
+Seeds 3000-3299, full length, big_fig8, never used for design (`eval/r8_fresh3000_{0..5}.*`). PD+ff 300/300, 17.0 mm. R8 s0 300/300, 5.65 mm (median 4.95, worst 35.8). R8 s1 300/300, 4.82 mm (median 4.01, p99 26.0, worst 44.2).
+**Verdict.** Survival rule: PASSED. No lost start on either seed in 50 x 4 paths + 300 + 300 fresh runs. Selected by the rule: R8 s1. Accuracy goal (5 mm mean): met on big_fig8 at n=300 (4.8 mm on both blocks), NOT met on the 50-start tests (6.7-8.6 mm on seeds 1000-1049, which include harder starts for this seed); circle_xy, fwd_up and lissa3d have no 300-start test. So the accuracy goal is only partly met; this is not claimed as a full pass. The fresh test covers one path.

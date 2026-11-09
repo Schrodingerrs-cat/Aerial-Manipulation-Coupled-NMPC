@@ -50,3 +50,6 @@ Go ahead with the plan above, or change goals (e.g. accept 95% survival for now 
 The earlier "PD about 300 mm" was mostly a flaw in our inner loop. With that fixed, PD gets 18-24 mm and RL was retrained (R6).
 On 50 fresh starts and 4 big paths: seed 1 survives all, 5.2-6.4 mm mean (under 3 mm median). Seed 0 is more accurate, 3.4-3.6 mm, but loses one start (the same one on every path).
 So RL is 3-5x better than PD and survives pushes better, but neither seed fully meets "100% survival and <= 5 mm". Videos are still to do.
+
+## Update 2026-11-09 14:40 EST: R7 and R8
+R7 fixed the yaw command: more accurate (4.4-4.8 mm on seed 1) but still lost 1-2 starts. R8 also limited acceleration to +-1.75 m/s^2: no lost start on either seed across 50 x 4 paths, 300 starts and 300 fresh starts. Cost: error rose to 4.8 mm on 300-start big_fig8 and 6.7-8.6 mm on the 50-start tests. PD is 17-24 mm. So survival passes, the 5 mm goal is only partly met.
