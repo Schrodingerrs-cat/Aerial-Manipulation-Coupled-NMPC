@@ -1,0 +1,12 @@
+no-offset big_fig8  N  50/50 mean 0.51 med 0.13 worst 6.6 joint 0.59 lost []
+no-offset big_fig8  PD 50/50 mean 17.53 med 16.81 worst 42.2 joint 0.37 lost []
+no-offset big_fig8  RL 50/50 mean 3.87 med 3.47 worst 20.6 joint 0.58 lost []
+no-offset lissa3d   N  50/50 mean 1.18 med 0.14 worst 33.4 joint 2.60 lost []
+no-offset lissa3d   PD 50/50 mean 23.52 med 22.30 worst 44.5 joint 0.60 lost []
+no-offset lissa3d   RL 50/50 mean 4.22 med 3.84 worst 18.1 joint 0.59 lost []
+N on RL starts, big_fig8: crash time s (lost): [0.2  0.22 0.46 0.6  0.72 0.82 0.82 0.82 0.84 1.   1.2  1.28 1.64 2.18]
+  dist_m    survivors median 0.246  lost median 0.267  corr with loss +0.21
+  tilt_deg  survivors median 6.834  lost median 6.865  corr with loss +0.15
+  w         survivors median 0.281  lost median 0.366  corr with loss +0.34
+  v         survivors median 0.375  lost median 0.339  corr with loss -0.03
+  largest surviving dist 0.44  tilt 14.4 ; smallest lost dist 0.084  tilt 1.4

@@ -527,3 +527,12 @@ Seeds 3000-3299, full length, big_fig8, never used for design (`eval/r8_fresh300
 `Code/scripts/am3_rl_vs_nmpc.py`: N unchanged, same plant, starts, noise, paths, arm motion and survival limits as track8; RL = R8 s1. Raw table: `Code/results/am3_rl/eval/vsnmpc_summary.txt`, blocks `vsnmpc_*.json`. Seeds 1000-1049.
 **Harness note (disclosed):** N's model contains the wall and the free-flight plant does not; at RL's nominal pose the pad is at the wall face, so N first crashed in 0.3 s. Fix: N works in a frame shifted 0.5 m in x. N itself not edited. N keeps one control period of latency (Episode convention); RL's inner loop has none. The Episode 25 cm failsafe is not used.
 **Incomplete:** fwd_up block 1030-1039 did not finish (first run ran over 20 min, rerun timed out at 200 s after 4 starts), so fwd_up has 40 of 50 starts. Why it was slow is unknown. Timing under 20 parallel processes is not valid for real-time claims. N's joint error is large on some starts (up to about 10 deg in rerun log): N tracks the pad, not the joints, so this needs checking before calling the arm task equal.
+
+### RL vs NMPC: no-offset starts and videos (2026-11-09 17:45 EST)
+Starts on the reference, no random offset; arm motion still random; seeds 1000-1049. `Code/results/am3_rl/eval/vsnmpc_nooffset_summary.txt`.
+| path | N survive, median / mean / worst | RL (R8 s1) | PD+ff |
+|---|---|---|---|
+| big_fig8 | 50/50, 0.13 / 0.51 / 6.6 mm | 50/50, 3.47 / 3.87 / 20.6 mm | 50/50, 16.8 / 17.5 / 42.2 mm |
+| lissa3d | 50/50, 0.14 / 1.18 / 33.4 mm | 50/50, 3.84 / 4.22 / 18.1 mm | 50/50, 22.3 / 23.5 / 44.5 mm |
+**So N's losses on the RL starts come from the random start error (N loses 22-28% with it, 0% without).** They are not explained by offset size alone: on big_fig8 crashes occur at 0.2-2.2 s; correlation of loss with start distance +0.21, tilt +0.15, body rate +0.34; the smallest lost start is 8 cm off and the largest survivor 44 cm. Mechanism not established. N was designed for near-reference starts, and these random starts are what RL is trained on; both facts matter when reading the comparison.
+Videos: `Media_results/NMPC_vs_RL_{big_fig8,lissa3d,circle_xy}_seed{1000,1006}_2026-11-09` (script `am3_rl_vs_nmpc_video.py`). Seed 1000 is typical; seed 1006 is a start N loses on every path and RL's worst on big_fig8 and lissa3d. Seeds chosen before rendering; 1006 chosen knowing N loses it.

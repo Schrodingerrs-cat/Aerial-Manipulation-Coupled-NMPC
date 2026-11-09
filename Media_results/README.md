@@ -193,3 +193,6 @@ Not established: the mechanism of B's loss of control, N's failure boundary, and
 
 ## RL_R8_{big_fig8,lissa3d,circle_xy}_2026-11-09  (rendered 2026-11-09 14:40 EST)
 Trajectory + moving arm (10-50% of range), fixed yaw, acceleration limit +-1.75 m/s^2, R8_turing_s1 final (15M steps), `--env track8`, start seed 1000 (same seed as R6, chosen beforehand), free flight. Each folder: compare.mp4 (zero | PD+ff | RL) plus zero.mp4, pd.mp4, rl.mp4. RMS after 2 s: RL 4.8 / 5.5 / 4.9 mm, PD+ff 17.3 / 17.4 / 17.3 mm (big_fig8 / lissa3d / circle_xy). One typical start; statistics in Findings/RL/03.
+
+## NMPC_vs_RL_{big_fig8,lissa3d,circle_xy}_seed{1000,1006}_2026-11-09  (rendered 2026-11-09 17:40 EST)
+Coupled NMPC (N, unchanged, frame shifted 0.5 m in x so its internal wall model is clear of free flight) | PD+ff | RL R8_turing_s1, same plant, start, path and arm motion; free flight. Each folder: compare.mp4 plus nmpc.mp4, pd.mp4, rl.mp4; RMS in README.txt. Seed 1000: typical start (N 0.13-0.15 mm, RL 4.8-5.5 mm, PD 17 mm). Seed 1006: chosen as a start N loses on every path (crash at about 0.2 s); RL survives at 39-68 mm, PD 14-20 mm. These are two chosen starts, not statistics; see Findings/RL/03.
