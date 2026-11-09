@@ -333,3 +333,10 @@ class Track6Env(Track5Env):
     def __init__(self, *args, arm_amp=(0.1, 0.5), **kw):                    # 0.5: the sinusoid reaches 2 x amplitude from nominal, so this is the largest swing that stays in the operational range
         super().__init__(*args, arm_amp=arm_amp, **kw); self.inner.aware = True
 
+
+
+class Track7Env(Track6Env):
+    """R7: R6 with the yaw reference fixed at zero; the policy's yaw output is ignored.  No path has a yaw target, and overriding only this channel on trained R6 policies removed all early crashes on 300 starts (Findings/RL/03)."""
+    def _decode(self, a):
+        a_d, w_d, _, q_d = super()._decode(a)
+        return a_d, w_d, 0.0, q_d

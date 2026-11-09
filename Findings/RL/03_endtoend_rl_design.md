@@ -470,3 +470,18 @@ Scripts: `Code/results/am3_rl/eval/diag_r6/`. Path big_fig8, final checkpoints.
 **What happens in the s0 crash:** the acceleration channels are at their limit in the first 0.2 s, yaw action sits at about -1 from 0.24 to 0.42 s, roll rate climbs to 6 rad/s, then the rate actions saturate. Same signature as the R3/R4 crashes (actions pinned, body rate far above commanded).
 **Cause not proven.** Crash starts are mostly not extreme: 4 of 8 have initial speed around or above the 95th percentile, 2 have high tilt, 2 show nothing unusual (2019, 2217). Small sample.
 **Status of the rung:** videos show the intended behaviour on a typical start (RL_R6_*_2026-11-09). The 100% survival rule is still not met once tested on more starts, so R6 is NOT done by the criteria.
+
+### R7 design, written before any result (2026-11-09 08:42 EST)
+**Intervention test on trained R6 (first 2 s, 300 unseen starts 2000-2299, big_fig8; `Code/results/am3_rl/eval/diag_r6/intervene_results.jsonl`).** Crashes s0 / s1:
+| override | crashes | excursions > 0.6 m |
+|---|---|---|
+| none | 5 / 3 | 4 / 4 |
+| yaw action = 0 | 0 / 0 | 3 / 0 |
+| body-rate actions = 0 | 2 / 1 | 1 / 0 |
+| yaw and rate = 0 | 0 / 0 | 0 / 0 |
+| acceleration clipped to +-0.7 of range | 1 / 0 | 0 / 1 |
+| acceleration clipped to +-0.5 of range | 0 / 0 | 0 / 0 |
+Yaw is the strongest single channel. These are overrides of a policy not trained for them, so they show which channels matter, not final performance.
+**Change from R6 (disclosed):** Track7Env fixes the yaw reference at 0 and ignores the policy's yaw output. One change only. No path has a yaw target. PD already flies yaw 0, so its numbers are unchanged (checked: identical to 6 decimals on 2 starts). Everything else is the R6 recipe: 15M steps, 2 seeds, Turing.
+**Pass criteria, fixed now:** same as before: 100% survival, then lowest RMS, goal <= 5 mm mean. Tests: (1) 50 starts, seeds 1000-1049, four paths, against PD 18-24 mm; (2) NEW stricter survival test: full-length runs on 300 starts, seeds 2000-2299, big_fig8, not used in training. R7 passes survival only if test 2 has 0 crashes. Note seeds 1008 and 2000-2299 were used to diagnose R6, so they are no longer untouched for design; a further fresh block (seeds 3000-3299) will be run as the final check.
+**If yaw alone is not enough:** next is R8, adding the tighter acceleration limit (it also removed crashes above).
