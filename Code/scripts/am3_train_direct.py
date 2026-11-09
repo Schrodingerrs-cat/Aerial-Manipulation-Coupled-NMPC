@@ -83,7 +83,7 @@ def baseline_returns(env, n_ep=3):
 
 
 def make_raw(kind, seed, max_steps, fine_w=None, fine_s=0.01, lin_w=None, tilt_w=None, bad_pen=None, p0_sigma=None, v0_sigma=None):
-    from ocrl.am3_rl_direct import HoverEnv, TrackEnv, Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, Track8Env
+    from ocrl.am3_rl_direct import HoverEnv, TrackEnv, Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, Track8Env, Track9Env
     kw = dict(fine_s=fine_s)
     if fine_w is not None: kw["fine_w"] = fine_w
     if lin_w is not None: kw["lin_w"] = lin_w
@@ -91,7 +91,7 @@ def make_raw(kind, seed, max_steps, fine_w=None, fine_s=0.01, lin_w=None, tilt_w
     if bad_pen is not None: kw["bad_pen"] = bad_pen
     if p0_sigma is not None: kw["p0_sigma"] = p0_sigma
     if v0_sigma is not None: kw["v0_sigma"] = v0_sigma
-    return {"track": TrackEnv, "track3": Track3Env, "track4": Track4Env, "track5": Track5Env, "track6": Track6Env, "track7": Track7Env, "track8": Track8Env}.get(kind, HoverEnv)(seed=seed, max_steps=max_steps, **kw)
+    return {"track": TrackEnv, "track3": Track3Env, "track4": Track4Env, "track5": Track5Env, "track6": Track6Env, "track7": Track7Env, "track8": Track8Env, "track9": Track9Env}.get(kind, HoverEnv)(seed=seed, max_steps=max_steps, **kw)
 
 
 def make_env(seed, max_steps, kind="hover", fine_w=None, fine_s=0.01, lin_w=None, tilt_w=None, bad_pen=None, p0_sigma=None, v0_sigma=None):
@@ -182,7 +182,7 @@ if __name__ == "__main__":
     ap.add_argument("--lr", type=float, default=3e-4); ap.add_argument("--lr-decay", action="store_true"); ap.add_argument("--rollout", type=int, default=512); ap.add_argument("--batch", type=int, default=2048)
     ap.add_argument("--epochs", type=int, default=5); ap.add_argument("--gamma", type=float, default=0.99); ap.add_argument("--ent", type=float, default=0.0)
     ap.add_argument("--target-kl", type=float, default=0.02); ap.add_argument("--save-every", type=int, default=100_000)
-    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
+    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
     ap.add_argument("--collapse-after", type=int, default=400_000); ap.add_argument("--collapse-len", type=float, default=60.0); ap.add_argument("--resume", action="store_true"); ap.add_argument("--preflight-only", action="store_true")
     a = ap.parse_args()
     try:

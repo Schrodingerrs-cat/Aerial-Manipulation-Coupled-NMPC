@@ -346,3 +346,9 @@ class Track8Env(Track7Env):
     """R8: R7 with the commanded acceleration limited to +-1.75 m/s^2 (half of R4's +-3.5).  Clipping trained R7 policies to this removed every early crash on 350 starts (Findings/RL/03).  The paths peak at 0.43 m/s^2."""
     def __init__(self, *args, acc_lim=1.75, **kw):
         super().__init__(*args, acc_lim=acc_lim, **kw)
+
+
+class Track9Env(Track8Env):
+    """R9: R8 with the acceleration limit at +-2.5 m/s^2, between R8 (survives, 4.8-8.6 mm) and R7's +-3.5 (4.4-4.8 mm, loses starts)."""
+    def __init__(self, *args, acc_lim=2.5, **kw):
+        super().__init__(*args, acc_lim=acc_lim, **kw)

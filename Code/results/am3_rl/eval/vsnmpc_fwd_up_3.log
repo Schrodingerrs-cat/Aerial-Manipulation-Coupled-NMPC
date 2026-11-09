@@ -1,0 +1,7 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+1030 {'N': (True, 1250, 0.13, 1.46), 'PD': (True, 2500, 14.55, 0.27), 'RL': (True, 2500, 3.4, 0.55)} N fails 0
+1031 {'N': (True, 1250, 0.13, 7.36), 'PD': (True, 2500, 14.39, 0.23), 'RL': (True, 2500, 3.32, 0.5)} N fails 0
+1032 {'N': (True, 1250, 0.13, 10.04), 'PD': (True, 2500, 10.77, 0.3), 'RL': (True, 2500, 5.01, 0.7)} N fails 0
+1033 {'N': (True, 1250, 0.12, 4.1), 'PD': (True, 2500, 12.03, 0.24), 'RL': (True, 2500, 3.9, 0.55)} N fails 0
