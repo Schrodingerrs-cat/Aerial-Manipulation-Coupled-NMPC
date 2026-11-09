@@ -340,3 +340,9 @@ class Track7Env(Track6Env):
     def _decode(self, a):
         a_d, w_d, _, q_d = super()._decode(a)
         return a_d, w_d, 0.0, q_d
+
+
+class Track8Env(Track7Env):
+    """R8: R7 with the commanded acceleration limited to +-1.75 m/s^2 (half of R4's +-3.5).  Clipping trained R7 policies to this removed every early crash on 350 starts (Findings/RL/03).  The paths peak at 0.43 m/s^2."""
+    def __init__(self, *args, acc_lim=1.75, **kw):
+        super().__init__(*args, acc_lim=acc_lim, **kw)

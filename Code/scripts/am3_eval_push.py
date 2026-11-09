@@ -5,7 +5,7 @@ import sys, os, json, argparse
 import numpy as np
 from stable_baselines3 import PPO          # first: torch must load before anything else heavy
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, "..")); sys.path.insert(0, HERE)
-from ocrl.am3_rl_direct import Track3Env, Track4Env, Track5Env, Track6Env, Track7Env
+from ocrl.am3_rl_direct import Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, Track8Env
 from am3_eval_track import REFS
 
 T_PUSH, DUR = 8.0, 0.5
@@ -26,7 +26,7 @@ def run(env, pol, seed, axis, amp):
 
 
 def main(a):
-    Env = dict(track3=Track3Env, track4=Track4Env, track5=Track5Env, track6=Track6Env, track7=Track7Env)[a.env]; env = Env(seed=0, ref=REFS["big_fig8"]); pol = PPO.load(a.model, device="cpu")
+    Env = dict(track3=Track3Env, track4=Track4Env, track5=Track5Env, track6=Track6Env, track7=Track7Env, track8=Track8Env)[a.env]; env = Env(seed=0, ref=REFS["big_fig8"]); pol = PPO.load(a.model, device="cpu")
     out = {}; print(f"{'force':>6s} {'dir':>4s} | {'PD+ff survived / peak mm / recovery s':>40s} | {'RL survived / peak mm / recovery s':>36s}")
     for F in [float(f) for f in a.forces.split(",")]:
         for name, ax, sg in DIRS:

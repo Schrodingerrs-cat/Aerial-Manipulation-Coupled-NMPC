@@ -13,7 +13,7 @@ import numpy as np
 from stable_baselines3 import PPO          # first: torch must load before anything else heavy
 import mujoco, mujoco.viewer
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, "..")); sys.path.insert(0, HERE)
-from ocrl.am3_rl_direct import TrackEnv, Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, HoverEnv
+from ocrl.am3_rl_direct import TrackEnv, Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, Track8Env, HoverEnv
 from am3_eval_track import REFS
 from am3_eval_direct import pd_action
 
@@ -25,12 +25,12 @@ def seg(scn, a, b, rgba, w=0.0015):
 
 
 def main(a):
-    env = {"track": TrackEnv, "track3": Track3Env, "track4": Track4Env, "track5": Track5Env, "track6": Track6Env, "track7": Track7Env, "hover": HoverEnv}[a.env](seed=0, **({} if a.env == "hover" else dict(ref=REFS[a.ref])), max_steps=10 ** 6)
+    env = {"track": TrackEnv, "track3": Track3Env, "track4": Track4Env, "track5": Track5Env, "track6": Track6Env, "track7": Track7Env, "track8": Track8Env, "hover": HoverEnv}[a.env](seed=0, **({} if a.env == "hover" else dict(ref=REFS[a.ref])), max_steps=10 ** 6)
     pol = a.policy if a.policy in ("pd", "zero") else PPO.load(a.policy, device="cpu")
     env.pl._disturb = lambda: None          # the plant zeroes the base force every step; leave it to the viewer so mouse pushes act
     seed = a.seed; obs, _ = env.reset(seed=seed); n_ep = 1; trail = []; t_next = time.time()
     with mujoco.viewer.launch_passive(env.pl.m, env.pl.d, show_left_ui=False, show_right_ui=False) as v:
-        v.cam.lookat[:] = (0.52, 0.0, 1.20); v.cam.distance = 3.2 if a.env in ("track3", "track4", "track5", "track6", "track7") else 1.9; v.cam.azimuth = 0; v.cam.elevation = -6; v.perturb.select = 1
+        v.cam.lookat[:] = (0.52, 0.0, 1.20); v.cam.distance = 3.2 if a.env in ("track3", "track4", "track5", "track6", "track7", "track8") else 1.9; v.cam.azimuth = 0; v.cam.elevation = -6; v.perturb.select = 1
         t_end = time.time() + a.max_seconds if a.max_seconds else None; k = 0
         while v.is_running() and (t_end is None or time.time() < t_end):
             x = env.pl.state()
@@ -52,5 +52,5 @@ def main(a):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("policy", help="model .zip, or pd / zero"); ap.add_argument("--env", default="hover", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7"))
+    ap = argparse.ArgumentParser(); ap.add_argument("policy", help="model .zip, or pd / zero"); ap.add_argument("--env", default="hover", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8"))
     ap.add_argument("--ref", default="fig8_slow"); ap.add_argument("--seed", type=int, default=100); ap.add_argument("--max-seconds", type=float, default=0); main(ap.parse_args())

@@ -13,7 +13,7 @@ import sys, os, json, argparse
 import numpy as np
 from stable_baselines3 import PPO          # first: torch must load before anything else heavy
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, ".."))
-from ocrl.am3_rl_direct import TrackEnv, Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, peak_accel, peak_accel3
+from ocrl.am3_rl_direct import TrackEnv, Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, Track8Env, peak_accel, peak_accel3
 
 REFS = dict(
     fig8_slow=dict(Ay=0.15, Az=0.05, T=30.0, Tr=2.5, laps=3, shape="lemniscate"),     # the NMPC video figure-eight
@@ -48,8 +48,8 @@ def rollout(env, policy, seed):
 
 
 def main(a):
-    a.refs = a.refs or (",".join(REFS3) if a.env in ("track3", "track4", "track5", "track6", "track7") else "fig8_slow,fig8_fast,liss_mid")
-    Env, pa = {"track3": (Track3Env, peak_accel3), "track4": (Track4Env, peak_accel3), "track5": (Track5Env, peak_accel3), "track6": (Track6Env, peak_accel3), "track7": (Track7Env, peak_accel3)}.get(a.env, (TrackEnv, peak_accel))
+    a.refs = a.refs or (",".join(REFS3) if a.env in ("track3", "track4", "track5", "track6", "track7", "track8") else "fig8_slow,fig8_fast,liss_mid")
+    Env, pa = {"track3": (Track3Env, peak_accel3), "track4": (Track4Env, peak_accel3), "track5": (Track5Env, peak_accel3), "track6": (Track6Env, peak_accel3), "track7": (Track7Env, peak_accel3), "track8": (Track8Env, peak_accel3)}.get(a.env, (TrackEnv, peak_accel))
     pols = {"zero": "zero", "PD+ff expert": "pd"}
     for p in a.models: pols[os.path.basename(os.path.dirname(p)) + "/" + os.path.basename(p)] = PPO.load(p, device="cpu")
     out = {}
@@ -69,4 +69,4 @@ def main(a):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("models", nargs="*"); ap.add_argument("--n", type=int, default=8)
-    ap.add_argument("--refs", default=None); ap.add_argument("--start", type=int, default=100); ap.add_argument("--env", default="track", choices=("track", "track3", "track4", "track5", "track6", "track7")); ap.add_argument("--out", default="r2_eval.json"); main(ap.parse_args())
+    ap.add_argument("--refs", default=None); ap.add_argument("--start", type=int, default=100); ap.add_argument("--env", default="track", choices=("track", "track3", "track4", "track5", "track6", "track7", "track8")); ap.add_argument("--out", default="r2_eval.json"); main(ap.parse_args())

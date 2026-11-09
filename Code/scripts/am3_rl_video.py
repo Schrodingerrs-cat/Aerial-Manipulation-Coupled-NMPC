@@ -7,7 +7,7 @@ import numpy as np, mujoco
 from stable_baselines3 import PPO          # first: torch must load before anything else heavy
 from PIL import Image, ImageDraw, ImageFont
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, "..")); sys.path.insert(0, HERE)
-from ocrl.am3_rl_direct import TrackEnv, Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, HoverEnv
+from ocrl.am3_rl_direct import TrackEnv, Track3Env, Track4Env, Track5Env, Track6Env, Track7Env, Track8Env, HoverEnv
 from am3_eval_track import REFS
 from am3_eval_direct import pd_action
 
@@ -45,7 +45,7 @@ def run(env, who, policy, seed, fdir, size, every=4):
 
 def main(a):
     out = os.path.join(OUT, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out); size = (960, 600)
-    pol = PPO.load(a.model, device="cpu"); mk = {"track": lambda: TrackEnv(seed=0, ref=REFS[a.ref]), "track3": lambda: Track3Env(seed=0, ref=REFS[a.ref]), "track4": lambda: Track4Env(seed=0, ref=REFS[a.ref]), "track5": lambda: Track5Env(seed=0, ref=REFS[a.ref]), "track6": lambda: Track6Env(seed=0, ref=REFS[a.ref]), "track7": lambda: Track7Env(seed=0, ref=REFS[a.ref]), "hover": lambda: HoverEnv(seed=0)}[a.env]
+    pol = PPO.load(a.model, device="cpu"); mk = {"track": lambda: TrackEnv(seed=0, ref=REFS[a.ref]), "track3": lambda: Track3Env(seed=0, ref=REFS[a.ref]), "track4": lambda: Track4Env(seed=0, ref=REFS[a.ref]), "track5": lambda: Track5Env(seed=0, ref=REFS[a.ref]), "track6": lambda: Track6Env(seed=0, ref=REFS[a.ref]), "track7": lambda: Track7Env(seed=0, ref=REFS[a.ref]), "track8": lambda: Track8Env(seed=0, ref=REFS[a.ref]), "hover": lambda: HoverEnv(seed=0)}[a.env]
     panels = [("zero action (floor)", "zero"), ("PD + feedforward (scripted)" if a.env != "hover" else "PD (scripted)", "pd" if a.env != "hover" else "pdh"), ("RL policy (end-to-end PPO)", pol)]
     ns, lines = [], []
     for i, (who, p) in enumerate(panels):

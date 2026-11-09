@@ -1,0 +1,10 @@
+{"seed": 0, "var": "acc05", "crash": 0, "big_excursion": 0, "wmax_p50": 1.76, "wmax_p99": 3.09, "crash_seeds": [], "big_seeds": []}
+{"seed": 0, "var": "acc07", "crash": 0, "big_excursion": 0, "wmax_p50": 2.02, "wmax_p99": 4.14, "crash_seeds": [], "big_seeds": []}
+{"seed": 0, "var": "base", "crash": 2, "big_excursion": 1, "wmax_p50": 2.41, "wmax_p99": 5.79, "crash_seeds": [2016, 2174], "big_seeds": [2200]}
+{"seed": 0, "var": "rate05", "crash": 0, "big_excursion": 1, "wmax_p50": 2.25, "wmax_p99": 5.28, "crash_seeds": [], "big_seeds": [2174]}
+{"seed": 0, "var": "rate0", "crash": 0, "big_excursion": 0, "wmax_p50": 2.16, "wmax_p99": 4.8, "crash_seeds": [], "big_seeds": []}
+{"seed": 1, "var": "acc05", "crash": 0, "big_excursion": 0, "wmax_p50": 1.63, "wmax_p99": 2.96, "crash_seeds": [], "big_seeds": []}
+{"seed": 1, "var": "acc07", "crash": 1, "big_excursion": 0, "wmax_p50": 1.93, "wmax_p99": 3.78, "crash_seeds": [1017], "big_seeds": []}
+{"seed": 1, "var": "base", "crash": 1, "big_excursion": 1, "wmax_p50": 2.28, "wmax_p99": 5.29, "crash_seeds": [1017], "big_seeds": [2058]}
+{"seed": 1, "var": "rate05", "crash": 1, "big_excursion": 0, "wmax_p50": 2.15, "wmax_p99": 4.45, "crash_seeds": [1017], "big_seeds": []}
+{"seed": 1, "var": "rate0", "crash": 1, "big_excursion": 0, "wmax_p50": 2.08, "wmax_p99": 4.2, "crash_seeds": [1017], "big_seeds": []}

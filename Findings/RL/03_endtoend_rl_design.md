@@ -485,3 +485,21 @@ Yaw is the strongest single channel. These are overrides of a policy not trained
 **Change from R6 (disclosed):** Track7Env fixes the yaw reference at 0 and ignores the policy's yaw output. One change only. No path has a yaw target. PD already flies yaw 0, so its numbers are unchanged (checked: identical to 6 decimals on 2 starts). Everything else is the R6 recipe: 15M steps, 2 seeds, Turing.
 **Pass criteria, fixed now:** same as before: 100% survival, then lowest RMS, goal <= 5 mm mean. Tests: (1) 50 starts, seeds 1000-1049, four paths, against PD 18-24 mm; (2) NEW stricter survival test: full-length runs on 300 starts, seeds 2000-2299, big_fig8, not used in training. R7 passes survival only if test 2 has 0 crashes. Note seeds 1008 and 2000-2299 were used to diagnose R6, so they are no longer untouched for design; a further fresh block (seeds 3000-3299) will be run as the final check.
 **If yaw alone is not enough:** next is R8, adding the tighter acceleration limit (it also removed crashes above).
+
+### R7 results (2026-11-09 11:24 EST)
+Track7Env (fixed yaw), final checkpoints, seeds as pre-registered. Files: `Code/results/am3_rl/eval/r7_eval_*_n50.*`, `r7_surv2000_{0..5}.*`, `push_R7_s{0,1}_final.*`.
+| test | PD+ff | R7 s0 | R7 s1 |
+|---|---|---|---|
+| 50 starts, big_fig8 | 50/50, 18.4 mm | 50/50, 3.6 mm (worst 21) | 49/50, 4.4 mm (worst 36) |
+| 50 starts, circle_xy | 50/50, 18.3 | 50/50, 5.0 (worst 87) | 49/50, 4.4 (worst 38) |
+| 50 starts, fwd_up | 50/50, 18.6 | 50/50, 10.0 (worst 317) | 49/50, 4.8 (worst 45) |
+| 50 starts, lissa3d | 50/50, 24.0 | 50/50, 3.5 (worst 22) | 49/50, 4.4 (worst 30) |
+| 300 starts full length, big_fig8 | 300/300, 17.7 | 298/300, 2.9 (median 2.4) | 300/300, 3.4 (median 2.2, worst 104) |
+**Verdict: R7 does NOT pass.** The rule was 100% survival. s0 loses seeds 2016 and 2174 (about 0.65 s). s1 passes the 300 starts but loses seed 1017 on all four paths (about 0.9 s). The fresh block 3000-3299 was not run, to keep it unseen for the next round.
+**Better than R6:** s1 mean is 4.4-4.8 mm, inside the 5 mm goal on all 4 paths (R6 s1: 5.2-6.4). First-2 s crashes on seeds 2000-2299 went from 5/3 to 2/0. Push: RL survived all 18 on both seeds; PD lost 4 N +y.
+
+### R8 design, written before any result (2026-11-09 11:28 EST)
+**Override test on trained R7 (first 2 s, 350 starts: seeds 1000-1049 and 2000-2299; `diag_r6/intervene_results_R7.jsonl`). Crashes s0 / s1:** none 2 / 1; body rate 0: 0 / 1; body rate halved: 0 / 1; acceleration clipped to 0.7 of range: 0 / 1; to 0.5 of range: 0 / 0 (and 0 excursions). Only the 0.5 clip clears both seeds.
+**Change from R7 (disclosed):** Track8Env limits commanded acceleration to +-1.75 m/s^2. One change only; as planned in the R7 design. PD+ff goes through the same limit, so its baseline is re-measured on track8.
+**Known risk, stated now:** a 4 N sideways push needs about 2.6 m/s^2 to cancel, more than 1.75. R8 may lose 4 N pushes that R7 survives. The push test will report it either way.
+**Pass criteria, unchanged:** 100% survival then lowest RMS, goal <= 5 mm mean. Tests: 50 starts seeds 1000-1049 on four paths; full-length 300 starts on 2000-2299; if both pass, fresh seeds 3000-3299 as the final check (not looked at before). Seeds 1000-1049 and 2000-2299 have now informed the design, so only the 3000 block counts as unseen.
