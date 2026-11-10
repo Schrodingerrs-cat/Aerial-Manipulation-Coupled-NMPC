@@ -91,6 +91,9 @@ def make_raw(kind, seed, max_steps, fine_w=None, fine_s=0.01, lin_w=None, tilt_w
     if bad_pen is not None: kw["bad_pen"] = bad_pen
     if p0_sigma is not None: kw["p0_sigma"] = p0_sigma
     if v0_sigma is not None: kw["v0_sigma"] = v0_sigma
+    if kind == "wall":
+        from ocrl.am3_rl_wall import WallEnv
+        return WallEnv(seed=seed, max_steps=max_steps, **kw)
     return {"track": TrackEnv, "track3": Track3Env, "track4": Track4Env, "track5": Track5Env, "track6": Track6Env, "track7": Track7Env, "track8": Track8Env, "track9": Track9Env}.get(kind, HoverEnv)(seed=seed, max_steps=max_steps, **kw)
 
 
@@ -124,6 +127,17 @@ def main(a):
         newest = max(ck, key=lambda f: os.path.getmtime(os.path.join(out, f)))
         model = PPO.load(os.path.join(out, newest), env=venv, device=a.device)
         done_steps = model.num_timesteps; log(f"RESUMED from {newest} at {done_steps:,} steps")
+    if model is None and a.init_from and PPO.load(a.init_from, device="cpu").observation_space.shape != venv.observation_space.shape:
+        # the new observation entries are appended at the end: zero first-layer weights for them, so the warm-started policy acts exactly as the source at the start
+        src = PPO.load(a.init_from, device="cpu").policy.state_dict()
+        model = PPO("MlpPolicy", venv, learning_rate=(lambda p: a.lr * max(0.1, p)) if a.lr_decay else a.lr, n_steps=a.rollout, batch_size=a.batch, n_epochs=a.epochs,
+                    gamma=a.gamma, gae_lambda=0.95, clip_range=0.2, ent_coef=a.ent, target_kl=a.target_kl,
+                    policy_kwargs=dict(net_arch=[256, 256], activation_fn=torch.nn.ELU, log_std_init=a.log_std_init), seed=a.seed, verbose=0, device=a.device)
+        sd = model.policy.state_dict()
+        for k, v in src.items():
+            if v.shape == sd[k].shape: sd[k] = v.clone()
+            else: sd[k] = torch.zeros_like(sd[k]); sd[k][:, :v.shape[1]] = v
+        model.policy.load_state_dict(sd); log(f"WARM START (widened input {src['mlp_extractor.policy_net.0.weight'].shape[1]} -> {venv.observation_space.shape[0]}) from {a.init_from}; lr {a.lr}")
     if model is None and a.init_from:
         model = PPO.load(a.init_from, env=venv, device=a.device, custom_objects=dict(learning_rate=a.lr, target_kl=a.target_kl))
         model.set_random_seed(a.seed)      # PPO.load restores the saved seed (0), which would give every warm start identical torch and env streams
@@ -142,7 +156,9 @@ def main(a):
         def _on_step(self):
             for i in self.locals.get("infos", []):
                 if "episode" in i:
-                    self.n_ep += 1; self.lens.append(i['episode']['l']); self.lens = self.lens[-500:]; self.f.write(f"{self.num_timesteps},{i['episode']['r']:.3f},{i['episode']['l']},{time.time() - self.t0:.0f}\n"); self.f.flush()
+                    self.n_ep += 1; self.lens.append(i['episode']['l']); self.lens = self.lens[-500:]
+                    try: self.f.write(f"{self.num_timesteps},{i['episode']['r']:.3f},{i['episode']['l']},{time.time() - self.t0:.0f}\n"); self.f.flush()
+                    except BlockingIOError: pass          # Turing NFS hiccup killed R10_wall_s0 at 4M steps; losing one log line is fine
             if self.num_timesteps - self.last >= a.save_every:
                 self.last = self.num_timesteps
                 p = os.path.join(out, f"model_{self.num_timesteps // 1000}k"); self.model.save(p)
@@ -182,7 +198,7 @@ if __name__ == "__main__":
     ap.add_argument("--lr", type=float, default=3e-4); ap.add_argument("--lr-decay", action="store_true"); ap.add_argument("--rollout", type=int, default=512); ap.add_argument("--batch", type=int, default=2048)
     ap.add_argument("--epochs", type=int, default=5); ap.add_argument("--gamma", type=float, default=0.99); ap.add_argument("--ent", type=float, default=0.0)
     ap.add_argument("--target-kl", type=float, default=0.02); ap.add_argument("--save-every", type=int, default=100_000)
-    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
+    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9", "wall"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
     ap.add_argument("--collapse-after", type=int, default=400_000); ap.add_argument("--collapse-len", type=float, default=60.0); ap.add_argument("--resume", action="store_true"); ap.add_argument("--preflight-only", action="store_true")
     a = ap.parse_args()
     try:

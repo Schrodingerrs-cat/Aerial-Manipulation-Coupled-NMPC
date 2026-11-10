@@ -1,0 +1,94 @@
+[
+ {
+  "id": "heldout_09",
+  "path": "line_fast",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 23.149921575665545,
+  "coverage": 0.1,
+  "endpoint_mm": 9.938077029653066,
+  "base_max_mm": 38.763143234400864,
+  "tilt_max": 1.2375616366155204,
+  "contact": 0.7211983333759362,
+  "losses": 11,
+  "peak_Fn": 0.36103311568495045
+ },
+ {
+  "id": "heldout_25",
+  "path": "line_fast",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 23.182862011804293,
+  "coverage": 0.11666666666666667,
+  "endpoint_mm": 9.982289226196663,
+  "base_max_mm": 38.83209152843284,
+  "tilt_max": 1.401275113730269,
+  "contact": 0.734883958957038,
+  "losses": 11,
+  "peak_Fn": 0.3842978473394944
+ },
+ {
+  "id": "heldout2_09",
+  "path": "line_fast",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 23.033736314483694,
+  "coverage": 0.1,
+  "endpoint_mm": 9.938106438578194,
+  "base_max_mm": 39.19628189191056,
+  "tilt_max": 1.1907030669224108,
+  "contact": 0.7238620756126358,
+  "losses": 12,
+  "peak_Fn": 0.44724088290179964
+ },
+ {
+  "id": "heldout2_25",
+  "path": "line_fast",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 23.19775497219213,
+  "coverage": 0.1,
+  "endpoint_mm": 9.932015750639406,
+  "base_max_mm": 39.07013742352328,
+  "tilt_max": 1.425841402641193,
+  "contact": 0.7476881069524226,
+  "losses": 11,
+  "peak_Fn": 0.39689790016912113
+ }
+]

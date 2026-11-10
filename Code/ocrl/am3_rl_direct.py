@@ -103,7 +103,7 @@ class HoverEnv(gym.Env):
         self.tilt_w = tilt_w                                       # penalty per step per 10 deg of tilt beyond 20 deg (gentler recovery); 0 keeps the reward unchanged
         self.lin_w = lin_w                                         # near-target linear penalty weight (per 1 cm of error, error capped at 3 cm); 0 keeps the original reward
         self.fine_w, self.fine_s = fine_w, fine_s                  # optional third reward scale (fine_s metres, weight fine_w); 0 keeps the original reward
-        self.qdref = np.zeros(3)
+        self.qdref = np.zeros(3); self.latency = False
         self.arm_frac = arm_frac                                   # joint-action authority as a fraction of the operational range; small for hover, larger for the arm rungs
         self.pl = AMPlant3(dt=dt_p); self.pl.m.geom_contype[self.pl.gwall] = 0; self.pl.m.geom_conaffinity[self.pl.gwall] = 0   # free flight: no wall
         self.inner = InnerLoop(); self.sens = Sensors(seed)
@@ -144,6 +144,7 @@ class HoverEnv(gym.Env):
         if seed is not None: self.rng = np.random.default_rng(seed); self.sens = Sensors(seed)
         self.x0 = self._state0(); self.pl.set_state(self.x0); self.pl.reset_log()
         self.a_prev = np.zeros(10); self.n = 0
+        self.u_pend = np.r_[self.x0[19:23], np.asarray(self.inner.eq["u"], float)[4:]]
         self._new_episode(); self._set_ref(0.0)
         self.e_prev = float(np.linalg.norm(self.x0[0:3] - self.pref))
         return self._obs(self.sens(self.x0)), {}
@@ -152,6 +153,7 @@ class HoverEnv(gym.Env):
         a = np.clip(np.asarray(a, float), -1, 1)
         a_d, w_d, psi_d, q_d = self._decode(a)
         x = self.pl.state(); u = self.inner(self.sens(x), a_d, w_d, psi_d, q_d)
+        if self.latency: u, self.u_pend = self.u_pend, u          # one control period of computation latency, as in the NMPC Episode harness (wall rung)
         for _ in range(self.n_sub): self.pl.step(u)
         self.n += 1; x = self.pl.state(); self._set_ref(self.n * self.dt_c)
         e = float(np.linalg.norm(x[0:3] - self.pref)); R = np.array(quat2R(x[3:7]))

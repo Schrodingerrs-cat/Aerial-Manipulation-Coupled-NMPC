@@ -567,3 +567,26 @@ Same protocol as before; seeds 1000-1049, RL = R9_turing_s0 (`eval/vsnmpc9_*`, s
 | fwd_up (40 starts) | 29/40, 0.13 / 0.49 | 40/40, 3.06 / 5.27 | 40/40, 18.6 / 19.5 |
 | lissa3d | 36/50, 0.14 / 1.53 | 50/50, 3.23 / 4.46 | 50/50, 22.6 / 24.0 |
 **fwd_up block 1030-1039 hung again** and timed out after 25 min, the same block as last time, so this is reproducible and not random load. Those 10 starts are missing. Videos: `Media_results/NMPC_vs_RL9_*_2026-11-09` (seeds 1000, 1006).
+
+### R10 wall line: design, written before any result (2026-11-09 19:28 EST)
+**Change of task (requested by the user, 2026-11-09 19:28 EST):** the wall rung uses Aryan's start: exact hover equilibrium, base at the reference, pad 5-8 cm from the wall, no random offset beyond his scenario spread (gap0 0.05-0.08 m, y/z within 8 mm). Random starts from the free-flight rungs are not used here.
+**Why Aryan's N starts cleanly:** that equilibrium start, then 1 s hover. His scenarios vary it only by gap and about 8 mm; our random starts were 20-40 cm off, which N was not designed for.
+**Env (`ocrl/am3_rl_wall.py`):** same plant with the wall, same Task state machine and contact logic as N and B, same 10 ms-period latency convention, base holds the fixed reference, joints follow IK of the Task's pad reference plus a policy residual (+-0.25 rad). Stops mirror the Episode failsafe (tilt 40 deg, base 25 cm, force 4 N, other contacts). Fixed yaw and acceleration +-2.5 m/s^2 kept from R9.
+**Joint gains changed (disclosed):** the free-flight gains 1.57/0.016 oscillate (12 rad/s limit cycle) once the harness latency is on. kp 1.0 / kd 0.05 chosen from a sweep with latency on; scripted PD then reaches the wall with 100% contact on the 3 lines but tracks poorly (40-60 mm pad error) and stops during trace.
+**Score:** same Episode harness and `am3_acceptance_v2` criteria as N and B, on the line scenarios of `am3_domain_heldout/heldout2` (24 scenarios, not used in training). A first 5M-step run checks whether it learns; no claim until scored.
+
+### R10 baselines: N and B on the 24 wall-line scenarios (2026-11-09 19:30 EST)
+`scripts/am3_eval_wall.py N|B --block b --blocks 6`, Episode harness, `am3_acceptance_v2`. Rows: `results/am3_rl/eval/wall_{N,B}_{0..5}.json`.
+| | completed | pass all | track RMS med / worst | base max med | contact med |
+|---|---|---|---|---|---|
+| N | 24/24 | 24/24 | 0.41 / 0.95 mm | 0.6 mm | 1.00 |
+| B | 24/24 | 0/24 | 19.3 / 23.3 mm | 39 mm | 0.73 |
+
+### R10_wall_s0 (from scratch): did not learn to hold the base (2026-11-09 21:05 EST)
+Turing job 2493385 died at 4.0M of 5M steps on an NFS write error in the episode log (`BlockingIOError`; the write is now guarded). Reward/step rose to 3.6 (scripted PD reference 8.9), but mean episode length was about 130 steps.
+Diagnosis (`results/am3_rl/eval/diag_r10/why_end.py`, model_4000k, 8 starts): every episode ends in the "position" phase at about 2 s, base more than 25 cm off, tilt 12-15 deg. Learning base hold and the wall task together from scratch is too much at once; the track rungs were always warm-started.
+Scripted PD for reference: reaches trace on 6/6 but the base drifts 9-12 cm sideways in contact and a finger touches the wall. It has no contact-force compensation, so it is a weak reference, like B.
+
+### R10b: warm start from R9 s0 with a widened input (2026-11-09 21:05 EST)
+The wall observation is the R9 observation (55) with 20 entries appended. The first layer of the policy and value nets gets zero weights for the new entries, so at step 0 the policy flies exactly like R9 (`am3_train_direct.py --init-from`, automatic when the sizes differ). Everything else as R10.
+Check before training: the widened policy survives 8/8 starts for 11 s, tilt 0.5 deg, but holds a steady 40 mm base offset in the wall posture and never reaches the wall ("no contact acquired"). Turing job 2493494, 10M steps, seed 0.

@@ -1,0 +1,4 @@
+N n 24 completed 24 pass all 24 track rms med 0.41 worst 0.95 mm base max med 0.6 contact med 1.000
+  failed: []
+B n 24 completed 24 pass all 0 track rms med 19.34 worst 23.28 mm base max med 39.0 contact med 0.730
+  failed: ['base_max', 'contact_fraction', 'coverage', 'endpoint', 'path_tracking_rms', 'recovery']
