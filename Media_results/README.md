@@ -196,3 +196,6 @@ Trajectory + moving arm (10-50% of range), fixed yaw, acceleration limit +-1.75 
 
 ## NMPC_vs_RL_{big_fig8,lissa3d,circle_xy}_seed{1000,1006}_2026-11-09  (rendered 2026-11-09 17:40 EST)
 Coupled NMPC (N, unchanged, frame shifted 0.5 m in x so its internal wall model is clear of free flight) | PD+ff | RL R8_turing_s1, same plant, start, path and arm motion; free flight. Each folder: compare.mp4 plus nmpc.mp4, pd.mp4, rl.mp4; RMS in README.txt. Seed 1000: typical start (N 0.13-0.15 mm, RL 4.8-5.5 mm, PD 17 mm). Seed 1006: chosen as a start N loses on every path (crash at about 0.2 s); RL survives at 39-68 mm, PD 14-20 mm. These are two chosen starts, not statistics; see Findings/RL/03.
+
+## NMPC_vs_RL9_{big_fig8,lissa3d,circle_xy}_seed{1000,1006}_2026-11-09  (rendered 2026-11-09 18:43 EST)
+Same as NMPC_vs_RL above, with RL = R9_turing_s0 (selected, acceleration limit +-2.5 m/s^2). RMS after 2 s, seed 1000: N 0.13-0.15 mm, RL 2.67-2.92 mm, PD 17.3-17.4 mm. Seed 1006 (chosen as a start N loses on every path): N crashes, RL 2.87-3.04 mm, PD 13.6-19.9 mm. Two chosen starts, not statistics; see Findings/RL/03.

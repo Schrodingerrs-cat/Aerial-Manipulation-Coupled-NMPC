@@ -1,0 +1,9 @@
+
+=== big_fig8: 3D, 2 laps in 30 s, peak ref accel 0.18 m/s^2   (50 starts) ===
+policy                                survived  RMS err mm   median  max err mm  tilt max  roughness        bias x,y,z mm
+zero                                      0/50         nan      nan         nan      6.5°      0.000                     
+PD+ff expert                             50/50        16.7     16.1        39.7      7.9°      0.002        [0.4 0.2 1. ]
+R9_turing_s0/model_final.zip             50/50         3.7      2.9        14.4     14.6°      0.009     [ 0.3  0.2 -2.1]
+R9_turing_s1/model_final.zip             50/50         4.5      2.8        21.3     15.6°      0.011     [-0.1 -0.2 -1.7]
+
+written results/am3_rl/eval/r9_fresh4000_4.json

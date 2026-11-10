@@ -1,0 +1,15 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+1040 {'N': (True, 1800, 0.15, 4.47), 'PD': (True, 3600, 45.41, 0.67), 'RL': (True, 3600, 3.75, 0.53)} N fails 0
+1041 {'N': (True, 1800, 0.69, 3.09), 'PD': (True, 3600, 30.55, 0.57), 'RL': (True, 3600, 4.19, 0.47)} N fails 0
+1042 {'N': (False, 11, 485.79, 0.0), 'PD': (True, 3600, 25.31, 0.66), 'RL': (True, 3600, 5.64, 0.75)} N fails 0
+1043 {'N': (True, 1800, 0.14, 6.05), 'PD': (True, 3600, 26.64, 0.55), 'RL': (True, 3600, 2.69, 0.33)} N fails 0
+1044 {'N': (True, 1800, 0.14, 5.95), 'PD': (True, 3600, 24.87, 0.6), 'RL': (True, 3600, 3.18, 0.77)} N fails 0
+1045 {'N': (False, 671, 33.38, 12.55), 'PD': (True, 3600, 17.38, 0.58), 'RL': (True, 3600, 3.99, 0.49)} N fails 0
+1046 {'N': (True, 1800, 0.14, 2.78), 'PD': (True, 3600, 22.93, 0.68), 'RL': (True, 3600, 2.95, 0.51)} N fails 0
+1047 {'N': (True, 1800, 0.14, 2.81), 'PD': (True, 3600, 21.84, 0.53), 'RL': (True, 3600, 3.12, 0.37)} N fails 0
+1048 {'N': (True, 1800, 3.56, 3.64), 'PD': (True, 3600, 26.2, 1.41), 'RL': (True, 3600, 9.57, 1.38)} N fails 0
+1049 {'N': (True, 1800, 0.14, 3.84), 'PD': (True, 3600, 22.3, 0.63), 'RL': (True, 3600, 2.74, 0.51)} N fails 0
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 59.

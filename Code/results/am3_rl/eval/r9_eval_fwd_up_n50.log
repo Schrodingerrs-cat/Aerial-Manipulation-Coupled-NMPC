@@ -1,0 +1,9 @@
+
+=== fwd_up: 3D, 2 laps in 24 s, peak ref accel 0.12 m/s^2   (50 starts) ===
+policy                                survived  RMS err mm   median  max err mm  tilt max  roughness        bias x,y,z mm
+zero                                      0/50         nan      nan         nan      7.1°      0.000                     
+PD+ff expert                             50/50        18.7     18.2        43.8      9.0°      0.002        [0.7 0.1 0.8]
+R9_turing_s0/model_final.zip             50/50         4.9      3.1        21.3     16.1°      0.012     [ 0.5  0.1 -2. ]
+R9_turing_s1/model_final.zip             49/50         6.3      3.4        30.7     16.4°      0.016     [ 0.1 -0.1 -1.7]
+
+written results/am3_rl/eval/r9_eval_fwd_up_n50.json

@@ -1,0 +1,9 @@
+
+=== lissa3d: 3D, 2 laps in 35 s, peak ref accel 0.43 m/s^2   (50 starts) ===
+policy                                survived  RMS err mm   median  max err mm  tilt max  roughness        bias x,y,z mm
+zero                                      0/50         nan      nan         nan      7.1°      0.000                     
+PD+ff expert                             50/50        24.0     22.6        51.8      9.1°      0.002        [0.3 0.3 0.8]
+R9_turing_s0/model_final.zip             50/50         4.5      3.2        21.0     16.3°      0.010     [ 0.5 -0.  -2.1]
+R9_turing_s1/model_final.zip             49/50         5.6      3.5        32.1     16.9°      0.013     [ 0.1 -0.1 -1.7]
+
+written results/am3_rl/eval/r9_eval_lissa3d_n50.json

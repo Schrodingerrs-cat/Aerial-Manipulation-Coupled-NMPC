@@ -1,0 +1,71 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+1020 {'N': (True, 1550, 0.14, 4.02), 'PD': (True, 3100, 14.41, 0.44), 'RL': (True, 3100, 3.9, 0.61)} N fails 0
+1021 {'N': (True, 1550, 0.13, 6.13), 'PD': (True, 3100, 19.21, 0.3), 'RL': (True, 3100, 3.17, 0.52)} N fails 0
+1022 {'N': (True, 1550, 0.13, 4.22), 'PD': (True, 3100, 17.2, 0.34), 'RL': (True, 3100, 3.23, 0.44)} N fails 0
+1023 {'N': (True, 1550, 0.13, 0.27), 'PD': (True, 3100, 10.15, 0.33), 'RL': (True, 3100, 2.67, 0.48)} N fails 0
+1024 {'N': (True, 1550, 0.14, 0.83), 'PD': (True, 3100, 28.37, 0.34), 'RL': (True, 3100, 4.21, 0.85)} N fails 0
+1025 {'N': (False, 23, 412.3, 0.0), 'PD': (True, 3100, 25.86, 0.5), 'RL': (True, 3100, 3.61, 0.61)} N fails 2
+1026 {'N': (False, 64, 298.65, 0.0), 'PD': (True, 3100, 29.19, 0.38), 'RL': (True, 3100, 2.89, 0.4)} N fails 0
+1027 {'N': (True, 1550, 0.27, 0.48), 'PD': (True, 3100, 14.18, 0.3), 'RL': (True, 3100, 3.04, 0.4)} N fails 0
+1028 {'N': (False, 109, 517.55, 58.36), 'PD': (True, 3100, 12.54, 0.34), 'RL': (True, 3100, 2.71, 0.42)} N fails 1
+1029 {'N': (False, 41, 367.98, 0.0), 'PD': (True, 3100, 14.73, 0.29), 'RL': (True, 3100, 3.0, 0.36)} N fails 2
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 94.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 95.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 94.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 44.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 97.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 57.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 60.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 87.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 56.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 72.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 93.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 50.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 41.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 91.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 58.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 67.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 64.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 97.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 90.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 57.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 84.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 57.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 63.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 81.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 70.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 66.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 98.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 75.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 77.

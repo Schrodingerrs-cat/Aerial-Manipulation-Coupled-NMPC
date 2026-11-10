@@ -536,3 +536,34 @@ Starts on the reference, no random offset; arm motion still random; seeds 1000-1
 | lissa3d | 50/50, 0.14 / 1.18 / 33.4 mm | 50/50, 3.84 / 4.22 / 18.1 mm | 50/50, 22.3 / 23.5 / 44.5 mm |
 **So N's losses on the RL starts come from the random start error (N loses 22-28% with it, 0% without).** They are not explained by offset size alone: on big_fig8 crashes occur at 0.2-2.2 s; correlation of loss with start distance +0.21, tilt +0.15, body rate +0.34; the smallest lost start is 8 cm off and the largest survivor 44 cm. Mechanism not established. N was designed for near-reference starts, and these random starts are what RL is trained on; both facts matter when reading the comparison.
 Videos: `Media_results/NMPC_vs_RL_{big_fig8,lissa3d,circle_xy}_seed{1000,1006}_2026-11-09` (script `am3_rl_vs_nmpc_video.py`). Seed 1000 is typical; seed 1006 is a start N loses on every path and RL's worst on big_fig8 and lissa3d. Seeds chosen before rendering; 1006 chosen knowing N loses it.
+
+### R9 results (2026-11-09 18:20 EST)
+Track9Env (fixed yaw, acceleration +-2.5 m/s^2), final checkpoints, PD+ff re-measured under the same limit. Files: `eval/r9_eval_*_n50.*`, `r9_surv2000_{0..5}.*`, `push_R9_s{0,1}_final.*`.
+| test | PD+ff | R9 s0 | R9 s1 |
+|---|---|---|---|
+| 50 starts, big_fig8 | 50/50, 18.5 mm | 50/50, 4.6 (median 3.2, worst 35) | 49/50, 5.8 (3.4, 38) |
+| 50 starts, circle_xy | 50/50, 18.4 | 50/50, 4.5 (3.0, 34) | 49/50, 5.8 (3.3, 40) |
+| 50 starts, fwd_up | 50/50, 18.7 | 50/50, 4.9 (3.1, 41) | 49/50, 6.3 (3.4, 46) |
+| 50 starts, lissa3d | 50/50, 24.0 | 50/50, 4.5 (3.2, 33) | 49/50, 5.6 (3.5, 36) |
+| 300 starts full length, big_fig8 | 300/300, 17.7 | 300/300, 3.4 (3.1, 27) | 300/300, 4.0 (2.8, 45) |
+s0 meets both rules on these tests. s1 loses seed 1006 on all four paths (1.7-1.9 s), so reliability depends on the training seed. Push: RL lost 0 of 18 on both seeds; PD+ff lost 2. Final check pending on unseen seeds.
+
+### R9 final check on unseen seeds (2026-11-09 18:41 EST)
+Files: `eval/r9_fresh4000_{0..5}.*` (300 starts, big_fig8, seeds 4000-4299), `eval/r9_fresh4300_{circle_xy,fwd_up,lissa3d}.*` (50 starts each, seeds 4300-4349). The 4300 block is an addition beyond the pre-registered check.
+| test | PD+ff | R9 s0 | R9 s1 |
+|---|---|---|---|
+| big_fig8, 300 | 300/300, 17.5 mm | 300/300, 3.51 (median 2.99, worst 36.6) | 300/300, 4.01 (2.90, 54.5) |
+| circle_xy, 50 | 50/50, 19.5 | 50/50, 3.60 (3.05, 9.4) | 50/50, 5.86 (3.45, 42.6) |
+| fwd_up, 50 | 50/50, 19.7 | 50/50, 3.63 (3.03, 8.7) | 50/50, 6.17 (3.48, 45.8) |
+| lissa3d, 50 | 50/50, 24.9 | 50/50, 3.71 (3.24, 9.2) | 50/50, 5.22 (3.51, 27.2) |
+**Verdict: R9 s0 passes survival and the 5 mm mean goal on every test run.** It replaces R8 s1 as selected. **Limit on this claim:** one of two training seeds. s1 lost seed 1006 on all four paths on the earlier block, so the result depends on the training seed; "RL reliably learns this" is not shown. 1/350-type loss rates cannot be excluded for s0 from these samples.
+
+### RL (R9 s0) vs NMPC on the same task (2026-11-09 19:08 EST)
+Same protocol as before; seeds 1000-1049, RL = R9_turing_s0 (`eval/vsnmpc9_*`, summary `vsnmpc9_summary.txt`). N results are identical to the R8 comparison, as expected. Survival, median / mean RMS (survivors only):
+| path | N | RL (R9 s0) | PD+ff |
+|---|---|---|---|
+| big_fig8 | 36/50, 0.13 / 1.26 mm | 50/50, 3.15 / 4.63 | 50/50, 17.6 / 18.5 |
+| circle_xy | 39/50, 0.13 / 0.45 | 50/50, 3.03 / 4.47 | 50/50, 17.6 / 18.4 |
+| fwd_up (40 starts) | 29/40, 0.13 / 0.49 | 40/40, 3.06 / 5.27 | 40/40, 18.6 / 19.5 |
+| lissa3d | 36/50, 0.14 / 1.53 | 50/50, 3.23 / 4.46 | 50/50, 22.6 / 24.0 |
+**fwd_up block 1030-1039 hung again** and timed out after 25 min, the same block as last time, so this is reproducible and not random load. Those 10 starts are missing. Videos: `Media_results/NMPC_vs_RL9_*_2026-11-09` (seeds 1000, 1006).

@@ -53,3 +53,6 @@ So RL is 3-5x better than PD and survives pushes better, but neither seed fully 
 
 ## Update 2026-11-09 14:40 EST: R7 and R8
 R7 fixed the yaw command: more accurate (4.4-4.8 mm on seed 1) but still lost 1-2 starts. R8 also limited acceleration to +-1.75 m/s^2: no lost start on either seed across 50 x 4 paths, 300 starts and 300 fresh starts. Cost: error rose to 4.8 mm on 300-start big_fig8 and 6.7-8.6 mm on the 50-start tests. PD is 17-24 mm. So survival passes, the 5 mm goal is only partly met.
+
+## Update 2026-11-09 19:08 EST: R9
+R9 (acceleration limit +-2.5 m/s^2) seed 0 survives every start and is under 5 mm mean on all four paths, on 650 unseen runs. Seed 1 lost one start on the earlier block, so the result depends on the training seed. Against NMPC on the same task: NMPC is about 25x more accurate when it survives, but loses 22-28% of the random starts (none with no start error).

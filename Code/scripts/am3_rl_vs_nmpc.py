@@ -1,12 +1,12 @@
 """Coupled NMPC (N, 50 Hz, unchanged) on the RL task: same plant, start states, sensor noise, base path, joint motion and survival limits as am3_eval_track.py --env track8.
 The joint reference is given to N as the pad reference pB + FK(qref).  Keeps the Episode convention of one control period of computation latency.  The Episode 25 cm failsafe is NOT used, because RL has none.
-RL (selected R8) and PD+ff are run on the same environment object.  --no-offset starts on the reference (no random position, attitude or velocity error).
+RL (--policy, default R8_turing_s1) and PD+ff are run on the same environment object.  --no-offset starts on the reference (no random position, attitude or velocity error).
 Usage: am3_rl_vs_nmpc.py big_fig8 [--start 1000] [--n 20] [--no-offset] [--out nmpc_same_task.json]"""
 import sys, os, json, time, argparse
 import numpy as np
 from stable_baselines3 import PPO          # first: torch must load before anything else heavy
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, "..")); sys.path.insert(0, HERE)
-from ocrl.am3_rl_direct import Track8Env, ref_point3, Q_NOM, quat2R
+from ocrl.am3_rl_direct import Track8Env, Track9Env, ref_point3, Q_NOM, quat2R
 from ocrl.am3_ctrl_n import NMPC
 from am3_eval_track import REFS, rollout
 
@@ -42,7 +42,7 @@ def run(env, ctrl, seed):
 
 
 def main(a):
-    env = Track8Env(seed=0, ref=REFS[a.ref], randomize=not a.no_offset); ctrl = NMPC("full"); pol = PPO.load(os.path.join(HERE, "..", "results", "am3_rl", "R8_turing_s1", "model_final.zip"), device="cpu"); out = dict(N=[], PD=[], RL=[])
+    env = dict(R8=Track8Env, R9=Track9Env)[a.policy[:2]](seed=0, ref=REFS[a.ref], randomize=not a.no_offset); ctrl = NMPC("full"); pol = PPO.load(os.path.join(HERE, "..", "results", "am3_rl", a.policy, "model_final.zip"), device="cpu"); out = dict(N=[], PD=[], RL=[])
     for k in range(a.n):
         s = a.start + k; out["N"].append(run(env, ctrl, s)); out["PD"].append(rollout(env, "pd", s)); out["RL"].append(rollout(env, pol, s))
         print(s, {c: (v[-1]["survived"], v[-1]["steps"], round(v[-1]["rms_mm"], 2), round(v[-1]["joint_rms_deg"], 2)) for c, v in out.items()}, "N fails", out["N"][-1]["solver_fails"], flush=True)
@@ -50,4 +50,4 @@ def main(a):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("ref"); ap.add_argument("--start", type=int, default=1000); ap.add_argument("--n", type=int, default=20); ap.add_argument("--no-offset", action="store_true"); ap.add_argument("--out", default="nmpc_same_task.json"); main(ap.parse_args())
+    ap = argparse.ArgumentParser(); ap.add_argument("ref"); ap.add_argument("--start", type=int, default=1000); ap.add_argument("--n", type=int, default=20); ap.add_argument("--no-offset", action="store_true"); ap.add_argument("--policy", default="R8_turing_s1"); ap.add_argument("--out", default="nmpc_same_task.json"); main(ap.parse_args())

@@ -1,0 +1,13 @@
+big_fig8  N  36/50 mean 1.26 med 0.13 worst 28.4 joint 3.90 tilt 39.8 lost [1006, 1007, 1008, 1010, 1012, 1016, 1025, 1026]
+big_fig8  PD 50/50 mean 18.47 med 17.58 worst 43.2 joint 0.40 tilt 9.0 lost []
+big_fig8  RL 50/50 mean 4.63 med 3.15 worst 34.6 joint 0.56 tilt 16.2 lost []
+circle_xy N  39/50 mean 0.45 med 0.13 worst 6.6 joint 4.18 tilt 38.1 lost [1006, 1007, 1010, 1015, 1016, 1025, 1026, 1029]
+circle_xy PD 50/50 mean 18.36 med 17.55 worst 43.0 joint 0.34 tilt 9.0 lost []
+circle_xy RL 50/50 mean 4.47 med 3.03 worst 34.3 joint 0.55 tilt 16.2 lost []
+MISSING block fwd_up 3
+fwd_up    N  29/40 mean 0.49 med 0.13 worst 6.5 joint 4.81 tilt 38.7 lost [1006, 1007, 1010, 1012, 1015, 1016, 1025, 1026]
+fwd_up    PD 40/40 mean 19.47 med 18.57 worst 42.5 joint 0.37 tilt 9.2 lost []
+fwd_up    RL 40/40 mean 5.27 med 3.06 worst 41.0 joint 0.60 tilt 16.1 lost []
+lissa3d   N  36/50 mean 1.53 med 0.14 worst 32.6 joint 4.72 tilt 39.5 lost [1006, 1007, 1010, 1015, 1016, 1019, 1025, 1026]
+lissa3d   PD 50/50 mean 24.01 med 22.62 worst 45.4 joint 0.61 tilt 9.1 lost []
+lissa3d   RL 50/50 mean 4.46 med 3.23 worst 32.7 joint 0.56 tilt 16.3 lost []
