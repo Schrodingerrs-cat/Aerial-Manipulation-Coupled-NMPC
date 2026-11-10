@@ -18,7 +18,7 @@ def run(name, s, record=None):
         from ocrl.am3_rl_wall import RLCtrl
         ctrl = RLCtrl(PPO.load(name, device="cpu"))
     else: ctrl = make_ctrl(name)
-    ep = Episode(ctrl, s["path"], seed=s["seed"], T_max=40.0, x0=initial_state(s["gap0"], (s["dyz"][0], 1.04 + s["dyz"][1])), record=record)
+    ep = Episode(ctrl, s["path"], seed=s["seed"], T_max=40.0, x0=initial_state(s["gap0"], (s["dyz"][0], 1.04 + s["dyz"][1])))
     if hasattr(ctrl, "attach"): ctrl.attach(ep)
     if record is not None: record.attach(ep)
     ep.run(); m = metrics(ep); p = passes(m, CRIT); return ep, m, p
