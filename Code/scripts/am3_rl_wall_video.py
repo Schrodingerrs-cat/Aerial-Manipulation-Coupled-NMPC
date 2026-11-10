@@ -15,11 +15,11 @@ CAMS = ("overview", "wallview")
 
 def main(a):
     s = next(x for x in SC if x["id"] == a.scenario); out = os.path.join(MEDIA, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out)
-    who = dict(N=("N", "N: coupled NMPC, 50 Hz"), B=("B", "B: separate drone and arm controllers, 200 Hz"), RL=(a.policy, f"RL: end-to-end PPO ({os.path.basename(os.path.dirname(a.policy))}), 100 Hz"))
+    who = dict(N=("N", "N: coupled NMPC, 50 Hz"), B=("B", "B: separate drone and arm controllers, 200 Hz"), RL=(a.policy, f"RL: end-to-end PPO ({os.path.basename(os.path.dirname(a.policy))}{' + joint vel. feedforward' if a.ff else ''}), 100 Hz"))
     runs, lines = {}, []
     for c, (ctrl, label) in who.items():
         rec = Recorder(os.path.join(out, "frames", c), label, a.tag, TRAJ.get(s["path"], s["path"]), cams=CAMS, path=make_path(s["path"])[0], rate_label=label.split(", ")[-1])
-        ep, m, p = run(ctrl, s, record=rec); runs[c] = (ep, rec); t = m.get("trace", {})
+        ep, m, p = run(ctrl, s, record=rec, ff=a.ff); runs[c] = (ep, rec); t = m.get("trace", {})
         lines.append(f"{c}: completed={m['completed']} abort={ep.abort} pass_all={p['all']} failed={[f for f, v in p.items() if not v and f != 'all']} track_rms_mm={t.get('track_rms_mm')} base_max_mm={m['base']['max_mm']:.1f} contact={m['contact']['valid_fraction']}"); print(lines[-1], flush=True)
     n = max(r.n for _, r in runs.values()); font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 20)
     for c, (ep, rec) in runs.items():                   # a run that ended early holds its last frame with a banner
@@ -32,8 +32,8 @@ def main(a):
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", os.path.join(out, f"{c}_overview.mp4"), "-i", os.path.join(out, f"{c}_wallview.mp4"), "-filter_complex", "[0:v][1:v]vstack=inputs=2[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", os.path.join(out, f"{c}.mp4")], check=True)
         for cam in CAMS: os.remove(os.path.join(out, f"{c}_{cam}.mp4"))
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error"] + sum([["-i", os.path.join(out, f"{c}.mp4")] for c in who], []) + ["-filter_complex", "[0:v][1:v][2:v]hstack=inputs=3,scale=2880:-2[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "20", "-pix_fmt", "yuv420p", os.path.join(out, "compare.mp4")], check=True)
-    shutil.rmtree(os.path.join(out, "frames")); open(os.path.join(out, "README.txt"), "w").write(f"scenario {s['id']} ({s['path']}, gap0 {s['gap0']}, dyz {s['dyz']}, seed {s['seed']})\nRL model {a.policy}\n" + "\n".join(lines) + "\n")
+    shutil.rmtree(os.path.join(out, "frames")); open(os.path.join(out, "README.txt"), "w").write(f"scenario {s['id']} ({s['path']}, gap0 {s['gap0']}, dyz {s['dyz']}, seed {s['seed']})\nRL model {a.policy}  joint velocity feedforward forced: {a.ff}\n" + "\n".join(lines) + "\n")
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("policy"); ap.add_argument("--scenario", required=True); main(ap.parse_args())
+    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("policy"); ap.add_argument("--scenario", required=True); ap.add_argument("--ff", action="store_true"); main(ap.parse_args())

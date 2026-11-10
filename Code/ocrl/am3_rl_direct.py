@@ -41,7 +41,7 @@ class InnerLoop:
         self.J = Jo - self.m * (self.rc @ self.rc * np.eye(3) - np.outer(self.rc, self.rc))
         wrench = self.A @ (KF * np.asarray(e["u"][:4], float) ** 2)
         self.Mbias = wrench[1:4] - np.cross(self.rc, [0.0, 0.0, wrench[0]])            # residual trim the equilibrium rotors deliver
-        self.wn, self.zeta, self.kp_j, self.kd_j, self.aware = wn, zeta, kp_j, kd_j, aware
+        self.wn, self.zeta, self.kp_j, self.kd_j, self.aware = wn, zeta, kp_j, kd_j, aware; self.qd_ref = np.zeros(3)   # joint velocity feedforward; only the wall rung sets it, the free-flight rungs keep 0
 
     def __call__(self, x, a_d, w_d, psi_d, q_d):
         R = np.array(quat2R(x[3:7])); w = x[10:13]
@@ -61,7 +61,7 @@ class InnerLoop:
         f = np.clip(self.Ainv @ np.r_[T, Mb], P["f_min_N"], P["f_max_N"])
         xr = x.copy(); xr[13:16] = q_d; xr[16:19] = 0.0
         g_j = np.array(self.pr.grav_f(xr)).ravel()[6:9]
-        tau = g_j + self.kp_j * (q_d - x[13:16]) - self.kd_j * x[16:19]
+        tau = g_j + self.kp_j * (q_d - x[13:16]) - self.kd_j * (x[16:19] - self.qd_ref)
         return np.r_[np.clip(np.sqrt(f / KF), OM_MIN, OM_MAX), np.clip(tau, -TAU_C, TAU_C)]
 
 

@@ -1,0 +1,68 @@
+[
+ {
+  "id": "heldout_08",
+  "path": "line",
+  "completed": true,
+  "abort": "None",
+  "passed": true,
+  "failed": [],
+  "track_rms_mm": 2.9726695968421426,
+  "coverage": 1.0,
+  "endpoint_mm": 2.273133811495308,
+  "base_max_mm": 5.142233276877017,
+  "tilt_max": 1.0865087060685097,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.2621406557673724
+ },
+ {
+  "id": "heldout_24",
+  "path": "line",
+  "completed": true,
+  "abort": "None",
+  "passed": true,
+  "failed": [],
+  "track_rms_mm": 2.9897424403290436,
+  "coverage": 1.0,
+  "endpoint_mm": 2.2650245874753274,
+  "base_max_mm": 5.129467888293758,
+  "tilt_max": 1.063685405401091,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.26351316334812347
+ },
+ {
+  "id": "heldout2_08",
+  "path": "line",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.0440470839626577,
+  "coverage": 1.0,
+  "endpoint_mm": 2.341166823978266,
+  "base_max_mm": 5.244228161916145,
+  "tilt_max": 1.0721801332552516,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.26849083430692816
+ },
+ {
+  "id": "heldout2_24",
+  "path": "line",
+  "completed": true,
+  "abort": "None",
+  "passed": true,
+  "failed": [],
+  "track_rms_mm": 2.9330615847104218,
+  "coverage": 1.0,
+  "endpoint_mm": 2.253817867651612,
+  "base_max_mm": 5.067315678693317,
+  "tilt_max": 1.1013955648307836,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.26332761353975054
+ }
+]

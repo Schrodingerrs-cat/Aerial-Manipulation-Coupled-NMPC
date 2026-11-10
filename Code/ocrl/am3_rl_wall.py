@@ -13,11 +13,11 @@ HOLD = dict(T=30.0, Tr=2.5, laps=1, Ax=0.0, Ay=0.0, Az=0.0, nx=1, ny=1, nz=1, px
 
 
 class WallEnv(Track9Env):
-    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, **kw):
+    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
         self.pl.m.geom_contype[self.pl.gwall] = 1; self.pl.m.geom_conaffinity[self.pl.gwall] = 1; self.latency = True
         self.inner.kp_j, self.inner.kd_j = 1.0, 0.05          # the track-rung joint gains (1.57, 0.016) go unstable with the harness latency: arm limit cycle at 12 rad/s; chosen from a sweep, see Findings/RL/03
-        self.paths, self.pad_w, self.contact_w, self.done_bonus = paths, pad_w, contact_w, done_bonus; self.drive_task = True; self.Fm = 0.0; self.scenario = None
+        self.paths, self.pad_w, self.contact_w, self.done_bonus = paths, pad_w, contact_w, done_bonus; self.drive_task = True; self.Fm = 0.0; self.scenario = None; self.vel_ff = vel_ff
         self.observation_space = spaces.Box(-np.inf, np.inf, (self.observation_space.shape[0] + 6 + len(PHASES) + 3,), np.float32)
 
     def _state0(self):
@@ -36,6 +36,7 @@ class WallEnv(Track9Env):
         self.pref, self.vref, self.aref = BASE.copy(), np.zeros(3), np.zeros(3); r = self.task.ref(); self.rp, self.rv = r["p"], r["v"]
         for _ in range(8): self.qref = self.qref + np.linalg.solve(np.array(pr.Jpad_f(self.qref)), self.rp - BASE - np.array(pr.fk_f(self.qref)).ravel())
         self.qdref = np.linalg.solve(np.array(pr.Jpad_f(self.qref)), self.rv)
+        if self.vel_ff: self.inner.qd_ref = self.qdref        # R10c: without it the joint D-term makes the pad lag the reference by kd/kp = 0.05 s
 
     def _extra_obs(self):
         ph = np.zeros(len(PHASES)); ph[PHASES.index(self.task.phase)] = 1.0; pad = np.array(self.inner.pr.pad_f(self.pl.state())[0]).ravel()
@@ -59,7 +60,7 @@ class RLCtrl:
     """The trained policy as an Episode controller, so it is scored by the same harness as N and B.  attach(ep) gives it the episode plant (read-only) and task."""
     period = 0.01; name = "RL"; task_uses_state = True
 
-    def __init__(self, policy): self.env = WallEnv(seed=0); self.env.drive_task = False; self.pol = policy
+    def __init__(self, policy, vel_ff=False): self.env = WallEnv(seed=0, vel_ff=vel_ff); self.env.drive_task = False; self.pol = policy
 
     def attach(self, ep): self.env.pl = ep.pl
 
