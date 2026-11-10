@@ -1,0 +1,108 @@
+[
+ {
+  "id": "heldout_12",
+  "path": "circle_T4",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.0149480490833334,
+  "coverage": 1.0,
+  "endpoint_mm": 2.6712701126183283,
+  "base_max_mm": 17.114944371659146,
+  "tilt_max": 1.8349930782061292,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.35679929795447846
+ },
+ {
+  "id": "heldout_22",
+  "path": "rounded_triangle_T5",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.0717941221570784,
+  "coverage": 1.0,
+  "endpoint_mm": 1.8972169383435018,
+  "base_max_mm": 16.641131838591914,
+  "tilt_max": 1.7125678772648685,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.33723145041754043
+ },
+ {
+  "id": "heldout2_05",
+  "path": "rounded_triangle",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.308266408845368,
+  "coverage": 1.0,
+  "endpoint_mm": 2.151356803736325,
+  "base_max_mm": 17.468602682535924,
+  "tilt_max": 1.8471103153585635,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.3279097501421129
+ },
+ {
+  "id": "heldout2_19",
+  "path": "circle",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.08566447969696,
+  "coverage": 1.0,
+  "endpoint_mm": 2.977459673661332,
+  "base_max_mm": 19.63510361755937,
+  "tilt_max": 2.2210614439688627,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.3429039765824776
+ },
+ {
+  "id": "heldout2_29",
+  "path": "rounded_triangle",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.303289193987131,
+  "coverage": 1.0,
+  "endpoint_mm": 2.143116857953816,
+  "base_max_mm": 16.685363725111515,
+  "tilt_max": 1.7803912549782412,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.33542640392587847
+ },
+ {
+  "id": "heldout2_11_M",
+  "path": "M",
+  "completed": true,
+  "abort": "None",
+  "passed": true,
+  "failed": [],
+  "track_rms_mm": 2.689480129805065,
+  "coverage": 1.0,
+  "endpoint_mm": 1.962146824762252,
+  "base_max_mm": 18.470526684609066,
+  "tilt_max": 2.009732871350547,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.3826408384853513
+ }
+]

@@ -1,0 +1,28 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'id': 'heldout_03', 'path': 'circle', 'completed': True, 'abort': 'None', 'passed': True, 'failed': [], 'track_rms_mm': 0.4269271259928949, 'coverage': 1.0, 'endpoint_mm': 0.2184097296997802, 'base_max_mm': 0.5857781039088962, 'tilt_max': 2.6559237743944517, 'contact': 1.0, 'losses': 0, 'peak_Fn': 0.7340700779801177}
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'id': 'heldout_13', 'path': 'rounded_triangle', 'completed': True, 'abort': 'None', 'passed': True, 'failed': [], 'track_rms_mm': 0.4389933249845224, 'coverage': 1.0, 'endpoint_mm': 0.1657766276710234, 'base_max_mm': 0.46702942121146657, 'tilt_max': 2.6237768414615292, 'contact': 1.0, 'losses': 0, 'peak_Fn': 0.695058837674194}
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'id': 'heldout_27', 'path': 'circle', 'completed': True, 'abort': 'None', 'passed': True, 'failed': [], 'track_rms_mm': 0.4066051517185651, 'coverage': 1.0, 'endpoint_mm': 0.17054313528083312, 'base_max_mm': 0.5810450490094421, 'tilt_max': 2.58832602366318, 'contact': 1.0, 'losses': 0, 'peak_Fn': 0.6999978311355236}
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'id': 'heldout2_06', 'path': 'rounded_triangle_T5', 'completed': True, 'abort': 'None', 'passed': True, 'failed': [], 'track_rms_mm': 0.4087703591234689, 'coverage': 1.0, 'endpoint_mm': 0.11314523990241955, 'base_max_mm': 0.6092377501893375, 'tilt_max': 2.577720695363616, 'contact': 1.0, 'losses': 0, 'peak_Fn': 0.6887524628027177}
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'id': 'heldout2_20', 'path': 'circle_T4', 'completed': True, 'abort': 'None', 'passed': True, 'failed': [], 'track_rms_mm': 0.5055013520991468, 'coverage': 1.0, 'endpoint_mm': 0.19499880654569643, 'base_max_mm': 0.6631197117799529, 'tilt_max': 2.3922402502988795, 'contact': 1.0, 'losses': 0, 'peak_Fn': 0.6546798523146269}
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'id': 'heldout_03_M', 'path': 'M', 'completed': True, 'abort': 'None', 'passed': True, 'failed': [], 'track_rms_mm': 0.43720560764867705, 'coverage': 1.0, 'endpoint_mm': 0.1600672558201717, 'base_max_mm': 0.5630151540490981, 'tilt_max': 2.6349348626720412, 'contact': 1.0, 'losses': 0, 'peak_Fn': 0.7340689887197925}
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'id': 'heldout2_19_M', 'path': 'M', 'completed': True, 'abort': 'None', 'passed': True, 'failed': [], 'track_rms_mm': 0.38878746298531813, 'coverage': 1.0, 'endpoint_mm': 0.14480375936255785, 'base_max_mm': 0.4000093362178885, 'tilt_max': 2.733506888957594, 'contact': 1.0, 'losses': 0, 'peak_Fn': 0.72914133596254}
