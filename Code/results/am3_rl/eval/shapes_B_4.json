@@ -1,0 +1,143 @@
+[
+ {
+  "id": "heldout_11",
+  "path": "circle",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "retreat_clear",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 14.852323075166517,
+  "coverage": 0.5333333333333333,
+  "endpoint_mm": 13.99187628892481,
+  "base_max_mm": 22.739860154423337,
+  "tilt_max": 1.3712633255592235,
+  "contact": 0.8552137170498553,
+  "losses": 10,
+  "peak_Fn": 0.3916685529813978
+ },
+ {
+  "id": "heldout_21",
+  "path": "rounded_triangle",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "retreat_clear",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 13.218512859741415,
+  "coverage": 0.2833333333333333,
+  "endpoint_mm": 10.688945368003047,
+  "base_max_mm": 21.84967695828,
+  "tilt_max": 1.5457412411488483,
+  "contact": 0.8721179095642143,
+  "losses": 9,
+  "peak_Fn": 0.4205919266173508
+ },
+ {
+  "id": "heldout2_04",
+  "path": "circle_T4",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 18.31293574466772,
+  "coverage": 0.43333333333333335,
+  "endpoint_mm": 13.341221678741004,
+  "base_max_mm": 29.54837836944561,
+  "tilt_max": 1.7591556693204746,
+  "contact": 0.7741408303924587,
+  "losses": 8,
+  "peak_Fn": 0.43074522330772524
+ },
+ {
+  "id": "heldout2_14",
+  "path": "rounded_triangle_T5",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 18.661296908400157,
+  "coverage": 0.26666666666666666,
+  "endpoint_mm": 11.515595509792254,
+  "base_max_mm": 32.87738917080053,
+  "tilt_max": 1.5555670482343684,
+  "contact": 0.8248170369881981,
+  "losses": 9,
+  "peak_Fn": 0.4276618941489439
+ },
+ {
+  "id": "heldout2_28",
+  "path": "circle_T4",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 18.601154343371938,
+  "coverage": 0.45,
+  "endpoint_mm": 13.63199575747053,
+  "base_max_mm": 29.808512085969625,
+  "tilt_max": 1.8304469535455512,
+  "contact": 0.7895917053351391,
+  "losses": 9,
+  "peak_Fn": 0.4400584322415657
+ },
+ {
+  "id": "heldout2_03_M",
+  "path": "M",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "base_max",
+   "retreat_clear",
+   "path_tracking_rms",
+   "coverage",
+   "endpoint",
+   "contact_fraction",
+   "recovery"
+  ],
+  "track_rms_mm": 14.850274907241442,
+  "coverage": 0.55,
+  "endpoint_mm": 19.805139556542095,
+  "base_max_mm": 27.222965088395597,
+  "tilt_max": 1.3610201660171073,
+  "contact": 0.8845615893320297,
+  "losses": 9,
+  "peak_Fn": 0.39247244490795874
+ }
+]

@@ -10,6 +10,9 @@ from ocrl.am3_episode import initial_state
 PHASES = ["hover", "position", "approach", "settle", "trace", "endhold", "release", "retreat", "settle_resume", "recover", "done"]
 CONTACT = ("settle", "settle_resume", "trace", "endhold")
 HOLD = dict(T=30.0, Tr=2.5, laps=1, Ax=0.0, Ay=0.0, Az=0.0, nx=1, ny=1, nz=1, px=0.0, py=0.0, pz=0.0)
+# Extra wall shape (2026-11-10, user request, outside the frozen task file): letter M as one stroke, same 8 x 6 cm patch as the frozen shapes.
+TASK["paths"].setdefault("M", dict(kind="polygon", vertices=[[-0.04, -0.025], [-0.03, 0.03], [0.0, -0.005], [0.03, 0.03], [0.04, -0.025]], fillet_m=0.006, T_s=12.0))
+SHAPES = ("line", "line_fast", "line_T1", "circle", "circle_T4", "rounded_triangle", "rounded_triangle_T5", "M")
 
 
 class WallEnv(Track9Env):

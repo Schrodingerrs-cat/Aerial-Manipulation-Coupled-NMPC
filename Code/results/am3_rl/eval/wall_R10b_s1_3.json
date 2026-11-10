@@ -1,0 +1,86 @@
+[
+ {
+  "id": "heldout_08",
+  "path": "line",
+  "completed": false,
+  "abort": "(11.009999999997016, 'no contact acquired')",
+  "passed": false,
+  "failed": [
+   "no_abort",
+   "trace_metrics_present",
+   "retreat_clear",
+   "contact_fraction"
+  ],
+  "track_rms_mm": null,
+  "coverage": null,
+  "endpoint_mm": null,
+  "base_max_mm": 6.575208397233295,
+  "tilt_max": 3.266574055506446,
+  "contact": NaN,
+  "losses": 0,
+  "peak_Fn": 2.3694262063528644
+ },
+ {
+  "id": "heldout_24",
+  "path": "line",
+  "completed": false,
+  "abort": "(11.009999999997016, 'no contact acquired')",
+  "passed": false,
+  "failed": [
+   "no_abort",
+   "trace_metrics_present",
+   "retreat_clear",
+   "contact_fraction"
+  ],
+  "track_rms_mm": null,
+  "coverage": null,
+  "endpoint_mm": null,
+  "base_max_mm": 5.767224585836458,
+  "tilt_max": 3.278032603780522,
+  "contact": NaN,
+  "losses": 0,
+  "peak_Fn": 2.3614536922179155
+ },
+ {
+  "id": "heldout2_08",
+  "path": "line",
+  "completed": false,
+  "abort": "(11.009999999997016, 'no contact acquired')",
+  "passed": false,
+  "failed": [
+   "no_abort",
+   "trace_metrics_present",
+   "retreat_clear",
+   "contact_fraction"
+  ],
+  "track_rms_mm": null,
+  "coverage": null,
+  "endpoint_mm": null,
+  "base_max_mm": 6.216494844919059,
+  "tilt_max": 3.285918503328519,
+  "contact": NaN,
+  "losses": 0,
+  "peak_Fn": 2.377150997439644
+ },
+ {
+  "id": "heldout2_24",
+  "path": "line",
+  "completed": false,
+  "abort": "(11.009999999997016, 'no contact acquired')",
+  "passed": false,
+  "failed": [
+   "no_abort",
+   "trace_metrics_present",
+   "retreat_clear",
+   "contact_fraction"
+  ],
+  "track_rms_mm": null,
+  "coverage": null,
+  "endpoint_mm": null,
+  "base_max_mm": 8.176374491761417,
+  "tilt_max": 3.2666195157124167,
+  "contact": NaN,
+  "losses": 0,
+  "peak_Fn": 2.370209368162046
+ }
+]
