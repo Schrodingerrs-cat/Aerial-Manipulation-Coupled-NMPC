@@ -1,0 +1,74 @@
+[
+ {
+  "id": "heldout_00",
+  "path": "line",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.2035608566075235,
+  "coverage": 1.0,
+  "endpoint_mm": 2.9981960765295557,
+  "base_max_mm": 4.587044565539808,
+  "tilt_max": 1.4062994730957652,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.3201106240214077
+ },
+ {
+  "id": "heldout_16",
+  "path": "line",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.211260751702642,
+  "coverage": 1.0,
+  "endpoint_mm": 3.006460432364202,
+  "base_max_mm": 4.5431391501006955,
+  "tilt_max": 1.2680144577498038,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.3184629316957198
+ },
+ {
+  "id": "heldout2_00",
+  "path": "line",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.193590990136647,
+  "coverage": 1.0,
+  "endpoint_mm": 3.029299716388174,
+  "base_max_mm": 4.55941807127417,
+  "tilt_max": 1.3212777900122206,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.31795427253770797
+ },
+ {
+  "id": "heldout2_16",
+  "path": "line",
+  "completed": true,
+  "abort": "None",
+  "passed": false,
+  "failed": [
+   "path_tracking_rms"
+  ],
+  "track_rms_mm": 3.2056763306706237,
+  "coverage": 1.0,
+  "endpoint_mm": 3.008683756260152,
+  "base_max_mm": 4.58932162651253,
+  "tilt_max": 1.2876927606318687,
+  "contact": 1.0,
+  "losses": 0,
+  "peak_Fn": 0.31891677669576535
+ }
+]

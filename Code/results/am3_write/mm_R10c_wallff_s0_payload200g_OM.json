@@ -1,0 +1,17 @@
+{
+ "ctrl": "R10c_wallff_s0",
+ "case": "payload200g",
+ "text": "OM",
+ "completed": false,
+ "abort": "loss of control (failsafe): tilt 31 deg, base error 255 mm",
+ "strokes": "0/2",
+ "trace_rms_mm": NaN,
+ "trace_max_mm": NaN,
+ "coverage": 0.0,
+ "contact": 0.0,
+ "drag": 0.0,
+ "base_max_mm": 246.49,
+ "tilt_max_deg": 38.3,
+ "time_s": 3.2,
+ "wall_s": 3
+}

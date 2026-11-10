@@ -20,7 +20,7 @@ CRIT = json.load(open(os.path.join(CFG, "am3_acceptance_v2.json")))["criteria"]
 def run(name, s, record=None, ff=False):
     if name.endswith(".zip"):
         from ocrl.am3_rl_wall import RLCtrl
-        cfg = os.path.join(os.path.dirname(name), "config.json"); ff = ff or (os.path.exists(cfg) and json.load(open(cfg)).get("env") in ("wall_ff", "wall_shapes"))
+        cfg = os.path.join(os.path.dirname(name), "config.json"); ff = ff or (os.path.exists(cfg) and json.load(open(cfg)).get("env") in ("wall_ff", "wall_shapes", "write", "write_dr"))
         ctrl = RLCtrl(PPO.load(name, device="cpu"), vel_ff=ff)
     else: ctrl = make_ctrl(name)
     ep = Episode(ctrl, s["path"], seed=s["seed"], T_max=40.0, x0=initial_state(s["gap0"], (s["dyz"][0], 1.04 + s["dyz"][1])))

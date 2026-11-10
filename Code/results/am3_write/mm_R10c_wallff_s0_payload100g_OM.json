@@ -1,0 +1,17 @@
+{
+ "ctrl": "R10c_wallff_s0",
+ "case": "payload100g",
+ "text": "OM",
+ "completed": false,
+ "abort": "no contact acquired",
+ "strokes": "0/2",
+ "trace_rms_mm": NaN,
+ "trace_max_mm": NaN,
+ "coverage": 0.0,
+ "contact": 0.0,
+ "drag": 0.0,
+ "base_max_mm": 24.15,
+ "tilt_max_deg": 2.83,
+ "time_s": 11.0,
+ "wall_s": 6
+}

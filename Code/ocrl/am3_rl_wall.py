@@ -9,6 +9,7 @@ from ocrl.am3_episode import initial_state
 
 PHASES = ["hover", "position", "approach", "settle", "trace", "endhold", "release", "retreat", "settle_resume", "recover", "done"]
 CONTACT = ("settle", "settle_resume", "trace", "endhold")
+PH_OBS = dict(lift="retreat", travel="position")              # writing (am3_write) pen-up phases reuse the closest existing one-hot slot, so the observation size is unchanged
 HOLD = dict(T=30.0, Tr=2.5, laps=1, Ax=0.0, Ay=0.0, Az=0.0, nx=1, ny=1, nz=1, px=0.0, py=0.0, pz=0.0)
 # Extra wall shape (2026-11-10, user request, outside the frozen task file): letter M as one stroke, same 8 x 6 cm patch as the frozen shapes.
 TASK["paths"].setdefault("M", dict(kind="polygon", vertices=[[-0.04, -0.025], [-0.03, 0.03], [0.0, -0.005], [0.03, 0.03], [0.04, -0.025]], fillet_m=0.006, T_s=12.0))
@@ -16,11 +17,11 @@ SHAPES = ("line", "line_fast", "line_T1", "circle", "circle_T4", "rounded_triang
 
 
 class WallEnv(Track9Env):
-    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, **kw):
+    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
         self.pl.m.geom_contype[self.pl.gwall] = 1; self.pl.m.geom_conaffinity[self.pl.gwall] = 1; self.latency = True
         self.inner.kp_j, self.inner.kd_j = 1.0, 0.05          # the track-rung joint gains (1.57, 0.016) go unstable with the harness latency: arm limit cycle at 12 rad/s; chosen from a sweep, see Findings/RL/03
-        self.paths, self.pad_w, self.contact_w, self.done_bonus = paths, pad_w, contact_w, done_bonus; self.drive_task = True; self.Fm = 0.0; self.scenario = None; self.vel_ff = vel_ff
+        self.paths, self.pad_w, self.contact_w, self.done_bonus = paths, pad_w, contact_w, done_bonus; self.drive_task = True; self.Fm = 0.0; self.scenario = None; self.vel_ff = vel_ff; self.write_p = write_p; self.dr = dr; self.damp0 = self.pl.m.dof_damping.copy()
         self.observation_space = spaces.Box(-np.inf, np.inf, (self.observation_space.shape[0] + 6 + len(PHASES) + 3,), np.float32)
 
     def _state0(self):
@@ -30,19 +31,36 @@ class WallEnv(Track9Env):
 
     def _new_episode(self):
         self.p = dict(HOLD); self.ei = np.zeros(3); self.max_steps = int(25.0 / self.dt_c); self.path = self.scenario["path"] if self.scenario else str(self.rng.choice(self.paths))
-        self.task = Task(self.path, np.array(self.inner.pr.pad_f(self.x0)[0]).ravel()); self.qref = np.array(self.x0[13:16]); self.qdref = np.zeros(3); self.Fm = 0.0; self.q0 = self.qref.copy()
+        p0 = np.array(self.inner.pr.pad_f(self.x0)[0]).ravel()
+        if self.scenario is None and self.rng.random() < self.write_p:            # writing episode: 1-2 random capital letters, random size, moving base
+            from ocrl.am3_write import WriteTask, text_strokes, FONT
+            text = "".join(self.rng.choice(sorted(FONT), size=1 if self.rng.random() < 0.7 else 2)); h = float(self.rng.uniform(0.03, 0.10))
+            self.task = WriteTask(p0, text_strokes(text, h), h); self.path = "write:" + text
+            self.max_steps = int((sum(self.task.Ts) + 4.0 * len(self.task.Ts) + 6.0) / self.dt_c)
+        else: self.task = Task(self.path, p0)
+        if self.dr: self.domain_rand()
+        self.qref = np.array(self.x0[13:16]); self.qdref = np.zeros(3); self.Fm = 0.0; self.q0 = self.qref.copy()
+
+    def domain_rand(self):
+        """Domain randomization (R13): unknown payload on the hand, thrust and motor-lag error, joint damping, wind and gusts; every episode starts from the nominal model."""
+        g = self.rng; self.pl.m.dof_damping[:] = self.damp0; dist = []
+        if g.random() < 0.6: dist += [dict(kind="sine", axis=ax, amp=float(g.uniform(0, 1.0)), freq=float(g.uniform(0.1, 1.0)), t0=float(g.uniform(0, 5))) for ax in (1, 2)]
+        if g.random() < 0.4: dist.append(dict(kind="step", axis=int(g.integers(0, 3)), amp=float(g.uniform(-1.2, 1.2)), t0=float(g.uniform(2, 15)), dur=float(g.uniform(0.5, 3))))
+        self.mm = dict(payload=dict(kg=float(g.uniform(0, 0.25)) if g.random() < 0.6 else 1e-9, pos_hand_m=[0.0, 0.0, 0.0]), kf_scale=float(g.uniform(0.88, 1.08)), motor_tau_scale=float(g.uniform(1.0, 2.0)),
+                       joint_damping_scale=float(np.exp(g.uniform(np.log(0.5), np.log(4.0)))), disturbance=dist)
+        x = self.pl.state(); self.pl.apply_mismatch(self.mm); self.pl.set_state(x)          # apply_mismatch -> mj_setConst overwrites the simulation state
 
     def _set_ref(self, t):
         pr = self.inner.pr
         if self.drive_task and self.n > 0:
             self.Fm = float(self.pl.pad_force()[0] + 0.01 * self.rng.standard_normal()); self.task.advance(self.dt_c, self.Fm, WALL_X - R_PAD - float(self.pl.pad_pos()[0]))
-        self.pref, self.vref, self.aref = BASE.copy(), np.zeros(3), np.zeros(3); r = self.task.ref(); self.rp, self.rv = r["p"], r["v"]
-        for _ in range(8): self.qref = self.qref + np.linalg.solve(np.array(pr.Jpad_f(self.qref)), self.rp - BASE - np.array(pr.fk_f(self.qref)).ravel())
-        self.qdref = np.linalg.solve(np.array(pr.Jpad_f(self.qref)), self.rv)
+        r = self.task.ref(); self.pref, self.vref, self.aref = np.array(r.get("pB", BASE), float), np.array(r.get("vB", np.zeros(3)), float), np.zeros(3); self.rp, self.rv = r["p"], r["v"]          # moving base (writing) or the fixed hover point
+        for _ in range(8): self.qref = self.qref + np.linalg.solve(np.array(pr.Jpad_f(self.qref)), self.rp - self.pref - np.array(pr.fk_f(self.qref)).ravel())
+        self.qdref = np.linalg.solve(np.array(pr.Jpad_f(self.qref)), self.rv - self.vref)
         if self.vel_ff: self.inner.qd_ref = self.qdref        # R10c: without it the joint D-term makes the pad lag the reference by kd/kp = 0.05 s
 
     def _extra_obs(self):
-        ph = np.zeros(len(PHASES)); ph[PHASES.index(self.task.phase)] = 1.0; pad = np.array(self.inner.pr.pad_f(self.pl.state())[0]).ravel()
+        ph = np.zeros(len(PHASES)); ph[PHASES.index(PH_OBS.get(self.task.phase, self.task.phase))] = 1.0; pad = np.array(self.inner.pr.pad_f(self.pl.state())[0]).ravel()
         return np.concatenate([super()._extra_obs(), np.clip((self.rp - pad) / 0.02, -5, 5), self.rv / 0.1, ph, [self.task.gap_ref / 0.04, np.clip(self.Fm / 2.0, -2, 3), float(self.task.contact)]])
 
     def step(self, a):
@@ -51,7 +69,7 @@ class WallEnv(Track9Env):
         r -= self.pad_w * min(ep, 0.02) / 0.002
         if ph in CONTACT: r += self.contact_w * (1.0 if F > 0.08 else -1.0)
         r -= 0.5 * max(F - 2.0, 0.0)
-        tilt = np.degrees(2 * np.arcsin(min(1.0, np.hypot(x[4], x[5])))); stop = tilt > 40 or np.linalg.norm(x[:3] - BASE) > 0.25 or F > 4.0 or bool(self.task.failed) or len(self.pl.other_contacts()) > 0
+        tilt = np.degrees(2 * np.arcsin(min(1.0, np.hypot(x[4], x[5])))); stop = tilt > 40 or np.linalg.norm(x[:3] - self.pref) > 0.25 or F > 4.0 or bool(self.task.failed) or len(self.pl.other_contacts()) > 0
         if stop and not bad: r -= self.bad_pen; bad = True
         done = ph == "done" and not bad
         if done: r += self.done_bonus
