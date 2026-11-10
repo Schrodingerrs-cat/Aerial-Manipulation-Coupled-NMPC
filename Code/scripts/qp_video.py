@@ -13,12 +13,14 @@ MEDIA = os.path.join(HERE, "..", "..", "Media_results"); FPS = 30; W, H = 960, 5
 F = lambda sz: ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", sz)
 
 
-def record(ctrl, A, B, tsim, label, d):
+def record(ctrl, A, B, tsim, label, d, posts=(), cam=None):
+    """cam: (lookat, distance, azimuth, elevation); default = side view of the A->B line."""
+    cam = cam or ([(A[0] + B[0]) / 2, 0, 1.15], 3.6, 90, -8)
     os.makedirs(d); st = dict(r=None, n=0, next=0.0, trail=[])
     def cb(P, t):
         if t + 1e-9 < st["next"]: return
         st["next"] += 1.0 / FPS
-        if st["r"] is None: st["r"] = mujoco.Renderer(P.m, H, W); st["cam"] = mujoco.MjvCamera(); st["cam"].lookat[:] = [(A[0] + B[0]) / 2, 0, 1.15]; st["cam"].distance = 3.6; st["cam"].azimuth = 90; st["cam"].elevation = -8
+        if st["r"] is None: st["r"] = mujoco.Renderer(P.m, H, W); st["cam"] = mujoco.MjvCamera(); st["cam"].lookat[:], st["cam"].distance, st["cam"].azimuth, st["cam"].elevation = cam
         s = P.state(); st["trail"].append(s["r"].copy()); r = st["r"]; r.update_scene(P.d, st["cam"]); scn = r.scene
         for c, rgba in ((A, (0.1, 0.7, 0.1, 0.6)), (B, (0.9, 0.1, 0.1, 0.6))):
             g = scn.geoms[scn.ngeom]; mujoco.mjv_initGeom(g, mujoco.mjtGeom.mjGEOM_SPHERE, np.full(3, 0.05), np.asarray(c, float), np.eye(3).ravel(), np.array(rgba, np.float32)); scn.ngeom += 1
@@ -28,7 +30,7 @@ def record(ctrl, A, B, tsim, label, d):
         im = Image.fromarray(r.render()); dr = ImageDraw.Draw(im); dr.rectangle([0, 0, W, 70], fill=(20, 20, 30))
         dr.text((12, 6), label, fill=(255, 255, 255), font=F(22)); dr.text((12, 38), f"t = {t:5.2f} s   swing {Plant.swing_deg(s):5.1f} deg   drone to B {np.linalg.norm(s['p'] - B) * 100:5.1f} cm", fill=(255, 220, 120), font=F(18))
         im.save(os.path.join(d, f"{st['n']:05d}.png")); st["n"] += 1
-    rows = fly(ctrl, A, tsim, on_step=cb); return rows, st["n"]
+    rows = fly(ctrl, A, tsim, on_step=cb, posts=posts); return rows, st["n"]
 
 
 def main(a):

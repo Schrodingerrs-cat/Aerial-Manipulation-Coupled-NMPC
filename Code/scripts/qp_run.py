@@ -24,8 +24,8 @@ def pd(pl):
     return ctrl
 
 
-def fly(ctrl, A, tsim, on_step=None):
-    P = Plant(A); att = Attitude(); n = int(round(DT / P.dt)); rows = []; f = None
+def fly(ctrl, A, tsim, on_step=None, posts=()):
+    P = Plant(A, posts); att = Attitude(); n = int(round(DT / P.dt)); rows = []; f = None
     for k in range(int(tsim / P.dt)):
         t = k * P.dt; s = P.state()
         if k % n == 0:

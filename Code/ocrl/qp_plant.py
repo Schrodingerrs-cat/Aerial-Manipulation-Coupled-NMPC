@@ -5,7 +5,8 @@ import os, json, numpy as np, mujoco
 HERE = os.path.dirname(os.path.abspath(__file__)); XML = os.path.join(HERE, "..", "model", "qp_quad_payload.xml")
 P = json.load(open(os.path.join(HERE, "..", "config", "am3_design_v3.json")))["propulsion"]
 KF = P["f_max_N"] / P["omega_max_rad_s"] ** 2; OM_MAX = P["omega_max_rad_s"]; OM_MIN = np.sqrt(P["f_min_N"] / KF)
-MQ, ML, L, G = 1.05, 0.2, 0.6, 9.81
+MQ, L, G = 1.05, 0.6, 9.81
+ML = float(os.environ.get("QP_ML", 0.2))                              # load mass; set QP_ML before import to run the load sweep (plant and models both use it)
 J = np.diag([0.0017969, 0.0017969, 0.003454])
 XY = np.array(P["rotor_xy_m"]); S = np.array(P["spin_reaction_sign"]); KM = P["km_over_kf_m"]
 ALLOC = np.vstack([np.ones(4), XY[:, 1], -XY[:, 0], S * KM])          # [T, tx, ty, tz] = ALLOC @ rotor thrusts
@@ -17,8 +18,10 @@ def quat2R(q):
 
 
 class Plant:
-    def __init__(self, p0=(0.0, 0.0, 1.5)):
-        self.m = mujoco.MjModel.from_xml_path(XML); self.d = mujoco.MjData(self.m); self.dt = self.m.opt.timestep; self.bl = self.m.body("load").id; self.Jc = np.zeros((3, self.m.nv))
+    def __init__(self, p0=(0.0, 0.0, 1.5), posts=()):
+        """posts: (x, y, radius) vertical cylinders, drawn only (no contact); clearance is measured by the scripts."""
+        xml = open(XML).read().replace("</worldbody>", "".join(f'<geom type="cylinder" pos="{x} {y} 1.25" size="{r} 1.25" rgba="0.8 0.25 0.2 0.6" contype="0" conaffinity="0"/>' for x, y, r in posts) + "</worldbody>")
+        self.m = mujoco.MjModel.from_xml_string(xml); self.d = mujoco.MjData(self.m); self.dt = self.m.opt.timestep; self.bl = self.m.body("load").id; self.m.body_mass[self.bl] = ML; self.Jc = np.zeros((3, self.m.nv))
         self.d.qpos[:3] = p0; mujoco.mj_forward(self.m, self.d); self.Omega = np.full(4, np.sqrt((MQ + ML) * G / 4 / KF))
 
     def step(self, om_cmd):

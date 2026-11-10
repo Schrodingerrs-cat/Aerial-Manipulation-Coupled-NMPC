@@ -7,13 +7,17 @@ The input is the commanded thrust vector f_cmd (world).  The applied thrust is T
 attitude loop as designed (qp_plant.Attitude: wn 15, zeta 0.9) behind the motor lag TAU_M, the magnitude T follows |f_cmd| with lag TAU_T.  Fitted on a
 closed-loop flight (2026-11-10): tilt 0.4 deg rms; the earlier single 0.13 s lag was 3.9 deg rms and left about 7 deg of swing at B.
 State x (NX = 17) = [p(3), a, b, pd(3), ad, bd, phi, theta, phid, thetad, angular accel (2), T].
-The command change per node is bounded so it stays smooth.  Same thrust, tilt and altitude limits for all three."""
-import numpy as np, casadi as ca
+The command change per node is bounded so it stays smooth.  Same thrust, tilt and altitude limits for all three.
+String tension >= TEN_MIN at every node for S and E (added 2026-11-10 after the obstacle plan swung the load to 111 deg, which a real string cannot do)."""
+import os, numpy as np, casadi as ca
 from ocrl.qp_plant import MQ, ML, L, G
 
 F_MAX, TILT_MAX, FDOT_MAX, SWING_MAX_S = 30.0, np.radians(35.0), 60.0, np.radians(3.0)
 F_MIN, DZ_MAX = 0.5 * (MQ + ML) * G, 0.25                    # without these the optimizer hops up and coasts in free fall, where the load does not swing
 WN, ZETA, TAU_M, TAU_T, NX = 15.0, 0.9, 0.05, 0.06, 17
+R_DRONE, R_LOAD, MARGIN = 0.19, 0.035, 0.05                   # rotor-tip radius, load sphere radius, clearance kept to every post
+SWING_MAX = np.radians(60.0)                                  # all plans: the swing angles (a, b) are singular at 90 deg (an 87 deg obstacle plan flipped the load in flight)
+TEN_MIN = 0.5 * ML * G                                        # string tension floor: the rigid-string model is only valid while the string is taut
 
 
 def dynamics(lumped):
@@ -25,6 +29,13 @@ def dynamics(lumped):
     M = ca.hessian(T, qd)[0]; dTdqd = ca.gradient(T, qd)
     rhs = ca.vertcat(f, 0, 0) - ca.gradient(V, q) + ca.gradient(T, q) - ca.jtimes(dTdqd, q, qd)
     return ca.Function("dyn", [q, qd, f], [ca.solve(M, rhs)])
+
+
+def tension():
+    """String tension T_c(x) from the load's equation ML r'' = -ML G e_z - T_c d, with q'' from the same dynamics."""
+    x = ca.SX.sym("x", NX); q, qd = x[:5], x[5:10]; f = x[16] * b3(x[10], x[11]); qdd = dynamics(False)(q, qd, f)
+    d = ca.vertcat(ca.sin(q[3]) * ca.cos(q[4]), ca.sin(q[4]), -ca.cos(q[3]) * ca.cos(q[4])); r = q[:3] + L * d; rd = ca.jtimes(r, q, qd)
+    rdd = ca.jtimes(r, q, qdd) + ca.jtimes(rd, q, qd); return ca.Function("tension", [x], [-ML * ca.dot(rdd + ca.DM([0, 0, G]), d)])
 
 
 def b3(phi, th, lib=ca):
@@ -49,7 +60,13 @@ def rest(p):
     return np.r_[p, np.zeros(13), (MQ + ML) * G]
 
 
-def plan(A, B, kind, N=80, T0=2.5):
+def load_pos(x):
+    """Load position from the state, d(a, b) as in dynamics (U's lumped model has zero swing: it predicts the load straight below the drone)."""
+    return x[:3] + L * ca.vertcat(ca.sin(x[3]) * ca.cos(x[4]), ca.sin(x[4]), -ca.cos(x[3]) * ca.cos(x[4]))
+
+
+def plan(A, B, kind, N=80, T0=2.5, posts=(), via=(), T_fix=None):
+    """posts: vertical cylinders (x, y, radius) that drone and load must clear; via: xy points for the initial guess only; T_fix: fixed duration instead of minimum time."""
     ode = model(kind == "U"); opti = ca.Opti()
     X = opti.variable(NX, N + 1); U = opti.variable(3, N); T = opti.variable(); h = T / N; fh = np.array([0, 0, (MQ + ML) * G])
     for k in range(N):
@@ -58,11 +75,17 @@ def plan(A, B, kind, N=80, T0=2.5):
     opti.subject_to(X[:, 0] == rest(A)); opti.subject_to(X[:, N] == rest(B)); opti.subject_to(U[:, N - 1] == fh)
     n2 = ca.sum1(U ** 2); opti.subject_to(opti.bounded(F_MIN ** 2, n2, F_MAX ** 2)); opti.subject_to(U[2, :] >= np.cos(TILT_MAX) * ca.sqrt(n2 + 1e-9))
     opti.subject_to(opti.bounded(-FDOT_MAX * h, ca.vec(ca.diff(ca.horzcat(fh, U), 1, 1)), FDOT_MAX * h))
-    opti.subject_to(opti.bounded(min(A[2], B[2]) - DZ_MAX, X[2, :], max(A[2], B[2]) + DZ_MAX)); opti.subject_to(opti.bounded(0.3, T, 10.0))
+    opti.subject_to(opti.bounded(min(A[2], B[2]) - DZ_MAX, X[2, :], max(A[2], B[2]) + DZ_MAX)); opti.subject_to(opti.bounded(0.3, T, 10.0) if T_fix is None else T == T_fix)
     if kind == "S": opti.subject_to(opti.bounded(-SWING_MAX_S, ca.vec(X[3:5, :]), SWING_MAX_S))
+    if kind != "U":
+        opti.subject_to(opti.bounded(-SWING_MAX, ca.vec(X[3:5, :]), SWING_MAX)); ten = tension(); opti.subject_to(ten.map(N + 1)(X) >= TEN_MIN)
+    for ox, oy, r in posts:
+        for k in range(N + 1):
+            lp = load_pos(X[:, k]); opti.subject_to((X[0, k] - ox) ** 2 + (X[1, k] - oy) ** 2 >= (r + R_DRONE + MARGIN) ** 2); opti.subject_to((lp[0] - ox) ** 2 + (lp[1] - oy) ** 2 >= (r + R_LOAD + MARGIN) ** 2)
     opti.minimize(T + 1e-4 * ca.sumsqr(ca.diff(U, 1, 1)))
-    s = np.linspace(0, 1, N + 1); opti.set_initial(X[:3, :], np.outer(A, 1 - s) + np.outer(B, s)); opti.set_initial(X[16, :], fh[2]); opti.set_initial(U, np.tile(fh[:, None], N)); opti.set_initial(T, T0)
-    opti.solver("ipopt", dict(print_time=False), dict(print_level=0, max_iter=3000, tol=1e-8)); sol = opti.solve()
+    W = np.array([A, *[[*v, A[2]] for v in via], B]); c = np.r_[0, np.cumsum(np.linalg.norm(np.diff(W, axis=0), axis=1))]; s = np.linspace(0, c[-1], N + 1)
+    opti.set_initial(X[:3, :], np.array([np.interp(s, c, W[:, j]) for j in range(3)])); opti.set_initial(X[16, :], fh[2]); opti.set_initial(U, np.tile(fh[:, None], N)); opti.set_initial(T, T0 if T_fix is None else T_fix)
+    opti.solver("ipopt", dict(print_time=False), dict(print_level=int(os.environ.get("QP_IPOPT_PRINT", 0)), max_iter=3000, tol=1e-8)); sol = opti.solve()
     x, u, Tf = sol.value(X), sol.value(U), float(sol.value(T))
     return dict(kind=kind, T=Tf, t=np.linspace(0, Tf, N + 1), p=x[:3].T, v=x[5:8].T, swing=x[3:5].T, swing_d=x[8:10].T, f=np.vstack([u.T, fh]), x=x.T)
 

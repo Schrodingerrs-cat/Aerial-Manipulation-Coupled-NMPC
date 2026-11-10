@@ -1,0 +1,44 @@
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit https://github.com/coin-or/Ipopt
+******************************************************************************
+
+S plan T 3.122 s, solve 12.1 s, plan swing max 3.0 deg
+E plan T 1.580 s, solve 11.8 s, plan swing max 28.2 deg
+min-jerk T 1.50: U settle 9.58  U+LQR settle inf
+min-jerk T 1.75: U settle 8.93  U+LQR settle inf
+min-jerk T 2.00: U settle 8.27  U+LQR settle 4.08
+min-jerk T 2.25: U settle 7.60  U+LQR settle 3.91
+min-jerk T 2.50: U settle 6.23  U+LQR settle 4.02
+min-jerk T 2.75: U settle 4.90  U+LQR settle 3.56
+min-jerk T 3.00: U settle 4.48  U+LQR settle 3.74
+min-jerk T 3.25: U settle 4.78  U+LQR settle 3.90
+min-jerk T 3.50: U settle 4.98  U+LQR settle 3.40
+min-jerk T 3.75: U settle 5.12  U+LQR settle 3.56
+min-jerk T 4.00: U settle 4.51  U+LQR settle 3.69
+min-jerk T 4.25: U settle 3.79  U+LQR settle 3.77
+min-jerk T 4.50: U settle 3.77  U+LQR settle 3.59
+min-jerk T 4.75: U settle 3.83  U+LQR settle 3.80
+min-jerk T 5.00: U settle 4.03  U+LQR settle 4.00
+U {'plan_T': np.float64(4.5), 'settle_s': 3.77, 'overshoot_cm': 0.103, 'swing_max_deg': 2.988, 'swing_after_plan_deg': 1.011, 'thrust_integral_Ns': 46.364}
+ULQR {'plan_T': np.float64(3.5), 'settle_s': 3.4, 'overshoot_cm': 1.879, 'swing_max_deg': 4.309, 'swing_after_plan_deg': 1.89, 'thrust_integral_Ns': 41.845}
+S {'plan_T': 3.122, 'settle_s': 2.88, 'overshoot_cm': 0.053, 'swing_max_deg': 3.88, 'swing_after_plan_deg': 0.346, 'thrust_integral_Ns': 35.755}
+E {'plan_T': 1.58, 'settle_s': 1.41, 'overshoot_cm': 1.102, 'swing_max_deg': 26.375, 'swing_after_plan_deg': 1.397, 'thrust_integral_Ns': 19.839}
+rm -f libacados_ocp_solver_ocp_qp_nmpc_11320d32.so
+rm -f qp_nmpc_constraints/qp_nmpc_constr_h_fun_jac_uxt_zt.o qp_nmpc_constraints/qp_nmpc_constr_h_fun.o acados_solver_ocp_qp_nmpc_11320d32.o
+cc -fPIC -std=c99   -O2 -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/acados -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/blasfeo/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/hpipm/include  -c -o qp_nmpc_constraints/qp_nmpc_constr_h_fun_jac_uxt_zt.o qp_nmpc_constraints/qp_nmpc_constr_h_fun_jac_uxt_zt.c
+cc -fPIC -std=c99   -O2 -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/acados -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/blasfeo/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/hpipm/include  -c -o qp_nmpc_constraints/qp_nmpc_constr_h_fun.o qp_nmpc_constraints/qp_nmpc_constr_h_fun.c
+cc -fPIC -std=c99   -O2 -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/acados -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/blasfeo/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/hpipm/include  -c -o acados_solver_ocp_qp_nmpc_11320d32.o acados_solver_ocp_qp_nmpc_11320d32.c
+cc -fPIC -std=c99   -O2 -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/acados -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/blasfeo/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/hpipm/include  -c -o qp_nmpc_model/qp_nmpc_expl_ode_fun.o qp_nmpc_model/qp_nmpc_expl_ode_fun.c
+cc -fPIC -std=c99   -O2 -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/acados -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/blasfeo/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/hpipm/include  -c -o qp_nmpc_model/qp_nmpc_expl_vde_forw.o qp_nmpc_model/qp_nmpc_expl_vde_forw.c
+cc -fPIC -std=c99   -O2 -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/acados -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/blasfeo/include -I/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/include/hpipm/include  -c -o qp_nmpc_model/qp_nmpc_expl_vde_adj.o qp_nmpc_model/qp_nmpc_expl_vde_adj.c
+cc -shared qp_nmpc_constraints/qp_nmpc_constr_h_fun_jac_uxt_zt.o qp_nmpc_constraints/qp_nmpc_constr_h_fun.o acados_solver_ocp_qp_nmpc_11320d32.o qp_nmpc_model/qp_nmpc_expl_ode_fun.o qp_nmpc_model/qp_nmpc_expl_vde_forw.o qp_nmpc_model/qp_nmpc_expl_vde_adj.o -o libacados_ocp_solver_ocp_qp_nmpc_11320d32.so -L/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/third_party/acados/lib -lacados -lhpipm -lblasfeo -lm \
+-L -l
+External functions generated in 60.672 ms.
+Templated solver code generated in 721.334 ms.
+Build completed in 2141.759 ms.
+acados was compiled without OpenMP.
+ENMPC {'plan_T': 1.58, 'settle_s': 1.43, 'overshoot_cm': 1.339, 'swing_max_deg': 25.717, 'swing_after_plan_deg': 1.661, 'thrust_integral_Ns': 19.806}
+EPD {'plan_T': 1.58, 'settle_s': 2.89, 'overshoot_cm': 0.985, 'swing_max_deg': 25.385, 'swing_after_plan_deg': 2.731, 'thrust_integral_Ns': 37.616}

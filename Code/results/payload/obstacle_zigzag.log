@@ -1,0 +1,22 @@
+
+******************************************************************************
+This program contains Ipopt, a library for large-scale nonlinear optimization.
+ Ipopt is released as open source code under the Eclipse Public License (EPL).
+         For more information visit https://github.com/coin-or/Ipopt
+******************************************************************************
+
+S plan T 6.38 s, solve 6 s
+E plan T 2.95 s, solve 22 s
+U T 2.0: plan failed
+U T 2.5: settle inf  hit True  drone -6.4 cm  load -18.6 cm
+U T 3.0: settle inf  hit True  drone -3.0 cm  load -19.5 cm
+U T 3.5: settle 9.77  hit True  drone -2.9 cm  load -2.8 cm
+U T 4.0: settle 9.18  hit True  drone -0.4 cm  load 13.1 cm
+U T 4.5: settle 7.19  hit False  drone 2.3 cm  load 23.9 cm
+U T 5.0: settle 7.09  hit False  drone 3.9 cm  load 26.2 cm
+U T 5.5: settle 6.72  hit False  drone 4.1 cm  load 23.4 cm
+U T 6.0: settle 5.69  hit False  drone 3.8 cm  load 22.0 cm
+U_fast: Normal drone (load ignored), 3.0 s move: settled inf s, hit True, min clearance drone -3.0 cm load -19.5 cm, max swing 65 deg, thrust None
+U_best: Normal drone (load ignored), best: 6.0 s move: settled 5.69 s, hit False, min clearance drone 3.8 cm load 22.0 cm, max swing 10 deg, thrust 70.07257565379278
+S: Load-aware, swing suppressed, 6.4 s plan: settled 6.00 s, hit False, min clearance drone 4.4 cm load 23.9 cm, max swing 5 deg, thrust 73.65919042666349
+E: Load-aware, swing exploited, 3.0 s plan: settled 2.93 s, hit False, min clearance drone 1.1 cm load 3.8 cm, max swing 68 deg, thrust 41.91200110641343
