@@ -3,6 +3,7 @@
   U+LQR  same move, load-aware LQR feedback (does feedback alone fix it?)
   S      minimum-time plan with swing held under 3 deg, load-aware LQR
   E      minimum-time plan with the swing free (exploited), load-aware LQR
+  E-NMPC E plan, load-aware tracking NMPC (acados) instead of the LQR
   E-PD   E plan with the drone-only PD (shows the plan needs load feedback)
 Settled = from that time to the end, drone within 5 cm of B AND swing under 2 deg.
 Usage: qp_run.py [--dx 2.0] [--tsim 10] [--out results/payload/ab_2m.json]"""
@@ -12,6 +13,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.jo
 from ocrl.qp_plant import Plant, Attitude, MQ, ML
 from ocrl.qp_ocp import plan, minjerk, sample
 from ocrl.qp_lqr import from_plan, DT
+from ocrl.qp_nmpc import from_plan as nmpc_from_plan
 
 KP, KD = 2.5 ** 2, 2 * 2.5          # drone-only position loop, 2.5 rad/s, critically damped
 
@@ -51,9 +53,9 @@ def main(a):
         mj = minjerk(A, B, T); sweep[round(T, 2)] = dict(U=metrics(fly(pd(mj), A, a.tsim), B, T), ULQR=metrics(fly(from_plan(mj), A, a.tsim), B, T))
         print(f"min-jerk T {T:.2f}: U settle {sweep[round(T, 2)]['U']['settle_s']:.2f}  U+LQR settle {sweep[round(T, 2)]['ULQR']['settle_s']:.2f}", flush=True)
     bestU = min(sweep, key=lambda T: sweep[T]["U"]["settle_s"]); bestL = min(sweep, key=lambda T: sweep[T]["ULQR"]["settle_s"])
-    cases = dict(U=minjerk(A, B, bestU), ULQR=minjerk(A, B, bestL), S=plans["S"], E=plans["E"], EPD=plans["E"])
+    cases = dict(U=minjerk(A, B, bestU), ULQR=minjerk(A, B, bestL), S=plans["S"], E=plans["E"], ENMPC=plans["E"], EPD=plans["E"])
     for c, pl in cases.items():
-        rows = fly(pd(pl) if c in ("U", "EPD") else from_plan(pl), A, a.tsim); m = metrics(rows, B, pl["T"])
+        rows = fly(pd(pl) if c in ("U", "EPD") else nmpc_from_plan(pl) if c == "ENMPC" else from_plan(pl), A, a.tsim); m = metrics(rows, B, pl["T"])
         out[c] = dict(metrics=m, plan={k: (v.tolist() if hasattr(v, "tolist") else v) for k, v in pl.items()}, rows=[{k: (v.tolist() if hasattr(v, "tolist") else v) for k, v in r.items()} for r in rows])
         print(c, {k: (round(v, 3) if isinstance(v, float) else v) for k, v in m.items()}, flush=True)
     os.makedirs(os.path.dirname(a.out), exist_ok=True); json.dump(dict(A=A.tolist(), B=B.tolist(), sweep=sweep, **out), open(a.out, "w"))
