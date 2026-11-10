@@ -1,0 +1,17 @@
+{
+ "ctrl": "N",
+ "case": "wind_sine",
+ "text": "OM",
+ "completed": true,
+ "abort": null,
+ "strokes": "2/2",
+ "trace_rms_mm": 1.037,
+ "trace_max_mm": 1.931,
+ "coverage": 1.0,
+ "contact": 1.0,
+ "drag": 0.0,
+ "base_max_mm": 12.27,
+ "tilt_max_deg": 5.36,
+ "time_s": 31.8,
+ "wall_s": 39
+}

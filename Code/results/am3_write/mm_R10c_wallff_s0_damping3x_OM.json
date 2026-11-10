@@ -1,0 +1,17 @@
+{
+ "ctrl": "R10c_wallff_s0",
+ "case": "damping3x",
+ "text": "OM",
+ "completed": true,
+ "abort": null,
+ "strokes": "2/2",
+ "trace_rms_mm": 3.472,
+ "trace_max_mm": 5.937,
+ "coverage": 0.85,
+ "contact": 1.0,
+ "drag": 0.0,
+ "base_max_mm": 24.41,
+ "tilt_max_deg": 3.39,
+ "time_s": 33.4,
+ "wall_s": 16
+}

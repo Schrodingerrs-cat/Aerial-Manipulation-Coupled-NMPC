@@ -1,0 +1,17 @@
+{
+ "ctrl": "R10c_wallff_s0",
+ "case": "wind_sine",
+ "text": "OM",
+ "completed": true,
+ "abort": null,
+ "strokes": "2/2",
+ "trace_rms_mm": 9.421,
+ "trace_max_mm": 14.611,
+ "coverage": 0.421,
+ "contact": 0.889,
+ "drag": 0.0,
+ "base_max_mm": 45.5,
+ "tilt_max_deg": 6.12,
+ "time_s": 73.3,
+ "wall_s": 34
+}
