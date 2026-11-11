@@ -38,3 +38,11 @@ pen-base offset stays within the arm's reach (3.5 cm y, 3 cm z). The base is ind
 | coordinated | 50 mm/s | 20.9 s | 0.54 mm | 1.00 | 48, 64 mm | |
 | coordinated | 75 mm/s | 17.3 s | 0.79 mm | 0.996 | 48, 64 mm | |
 R12/R13 restarted on the coordinated task with pen speed 25-75 mm/s: jobs 2503635 (R12_write_s0) and 2503636 (R13_write_dr_s0). The earlier frozen-arm runs were cancelled after ~25 min.
+
+## NMPC + RL hybrid H1 (2026-11-10 20:15 EST)
+`Code/ocrl/am3_hybrid.py`: u = u_NMPC + residual (rotor speeds +-60 rad/s, about 5 % of hover; joint torques +-25 % of the continuous limit). Zero residual = plain NMPC;
+PPO starts near zero, so training starts from the NMPC. Env steps exactly the Episode.run loop (sensors, failsafe, one-period latency, 50 Hz). Tasks: 70 % random 1-2 letters
+(3-10 cm, 25-75 mm/s, coordinated drone + arm), 30 % fixed-base shapes; mismatch randomized every episode (same sampler as R13: `am3_rl_wall.sample_mismatch`).
+Reward: alive 2, pad error, base error, contact in contact phases, pen drag when up, force over 2 N, action size; -100 on failure, +100 when done. Plain NMPC earns 2.25/step (nominal).
+HybridCtrl is an Episode controller, so H is scored by the same harness as N and RL. acados built on Turing (2026-11-10) so hybrids can also train there.
+Run: H1_hybrid_s0 locally (20 envs, 10M steps, started 20:12 EST).

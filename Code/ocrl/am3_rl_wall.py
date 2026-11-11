@@ -16,6 +16,15 @@ TASK["paths"].setdefault("M", dict(kind="polygon", vertices=[[-0.04, -0.025], [-
 SHAPES = ("line", "line_fast", "line_T1", "circle", "circle_T4", "rounded_triangle", "rounded_triangle_T5", "M")
 
 
+def sample_mismatch(g):
+    """Unknown model mismatch for training (R13, H1): payload on the hand, thrust and motor-lag error, joint damping, wind and gusts."""
+    dist = []
+    if g.random() < 0.6: dist += [dict(kind="sine", axis=ax, amp=float(g.uniform(0, 1.0)), freq=float(g.uniform(0.1, 1.0)), t0=float(g.uniform(0, 5))) for ax in (1, 2)]
+    if g.random() < 0.4: dist.append(dict(kind="step", axis=int(g.integers(0, 3)), amp=float(g.uniform(-1.2, 1.2)), t0=float(g.uniform(2, 15)), dur=float(g.uniform(0.5, 3))))
+    return dict(payload=dict(kg=float(g.uniform(0, 0.25)) if g.random() < 0.6 else 1e-9, pos_hand_m=[0.0, 0.0, 0.0]), kf_scale=float(g.uniform(0.88, 1.08)), motor_tau_scale=float(g.uniform(1.0, 2.0)),
+                joint_damping_scale=float(np.exp(g.uniform(np.log(0.5), np.log(4.0)))), disturbance=dist)
+
+
 class WallEnv(Track9Env):
     def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
@@ -42,12 +51,8 @@ class WallEnv(Track9Env):
         self.qref = np.array(self.x0[13:16]); self.qdref = np.zeros(3); self.Fm = 0.0; self.q0 = self.qref.copy()
 
     def domain_rand(self):
-        """Domain randomization (R13): unknown payload on the hand, thrust and motor-lag error, joint damping, wind and gusts; every episode starts from the nominal model."""
-        g = self.rng; self.pl.m.dof_damping[:] = self.damp0; dist = []
-        if g.random() < 0.6: dist += [dict(kind="sine", axis=ax, amp=float(g.uniform(0, 1.0)), freq=float(g.uniform(0.1, 1.0)), t0=float(g.uniform(0, 5))) for ax in (1, 2)]
-        if g.random() < 0.4: dist.append(dict(kind="step", axis=int(g.integers(0, 3)), amp=float(g.uniform(-1.2, 1.2)), t0=float(g.uniform(2, 15)), dur=float(g.uniform(0.5, 3))))
-        self.mm = dict(payload=dict(kg=float(g.uniform(0, 0.25)) if g.random() < 0.6 else 1e-9, pos_hand_m=[0.0, 0.0, 0.0]), kf_scale=float(g.uniform(0.88, 1.08)), motor_tau_scale=float(g.uniform(1.0, 2.0)),
-                       joint_damping_scale=float(np.exp(g.uniform(np.log(0.5), np.log(4.0)))), disturbance=dist)
+        """Domain randomization (R13); every episode starts from the nominal model."""
+        self.pl.m.dof_damping[:] = self.damp0; self.mm = sample_mismatch(self.rng)
         x = self.pl.state(); self.pl.apply_mismatch(self.mm); self.pl.set_state(x)          # apply_mismatch -> mj_setConst overwrites the simulation state
 
     def _set_ref(self, t):

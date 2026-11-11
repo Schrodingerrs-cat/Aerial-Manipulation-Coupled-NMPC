@@ -59,6 +59,11 @@ def preflight(a):
     env_b = env
     if a.env == "write_dr":                                      # same reward without randomization: the scripted PD cannot fly the randomized plant, so it is no reward check there
         env_b = make_raw("write", 0, 200, a.fine_w, a.fine_s, a.lin_w, a.tilt_w, a.bad_pen, a.p0_sigma, a.v0_sigma); log("  reward check on env 'write' (write_dr = write + domain randomization, same reward)")
+    if a.env == "hybrid":                                        # the reference controller is the plain NMPC (zero residual): it must earn positive reward on the nominal task
+        from ocrl.am3_hybrid import HybridEnv
+        nm = baseline_returns(HybridEnv(seed=0, dr=False), n_ep=2)[0]; log(f"  reference reward/step   plain NMPC (zero residual, nominal) {nm:8.3f}")
+        if nm <= 0.0: raise RuntimeError(f"PREFLIGHT FAIL: plain NMPC earns {nm:.3f}/step")
+        log("PREFLIGHT PASSED"); log("=" * 72); return dict(modules=mods, step_ms=dt * 1e3, ret_zero=nm, ret_pd=nm)
     z, pd = baseline_returns(env_b, n_ep=2)
     log(f"  reference reward/step   zero-action {z:8.3f}   scripted PD {pd:8.3f}")
     if pd <= z: raise RuntimeError(f"PREFLIGHT FAIL: scripted PD ({pd:.3f}/step) does not beat zero action ({z:.3f}/step); the task or reward is mis-specified")
@@ -78,7 +83,7 @@ def baseline_returns(env, n_ep=3):
         for k in range(n_ep):
             env.reset(seed=1000 + k)
             while True:
-                a = np.zeros(10) if policy == "zero" else env.expert_action(env.pl.state())
+                a = np.zeros(env.action_space.shape[0]) if policy == "zero" else env.expert_action(env.pl.state())
                 _, r, term, trunc, _ = env.step(a); R += r; N += 1
                 if term or trunc: break
         out.append(R / max(N, 1))
@@ -94,6 +99,9 @@ def make_raw(kind, seed, max_steps, fine_w=None, fine_s=0.01, lin_w=None, tilt_w
     if bad_pen is not None: kw["bad_pen"] = bad_pen
     if p0_sigma is not None: kw["p0_sigma"] = p0_sigma
     if v0_sigma is not None: kw["v0_sigma"] = v0_sigma
+    if kind == "hybrid":
+        from ocrl.am3_hybrid import HybridEnv
+        return HybridEnv(seed=seed, dr=fine_w != -1.0)                            # NMPC + residual policy, writing/shapes, domain randomization
     if kind in ("wall", "wall_ff", "wall_shapes", "write", "write_dr"):
         from ocrl.am3_rl_wall import WallEnv, SHAPES
         if kind in ("wall_shapes", "write", "write_dr"): kw["paths"] = SHAPES
@@ -204,7 +212,7 @@ if __name__ == "__main__":
     ap.add_argument("--lr", type=float, default=3e-4); ap.add_argument("--lr-decay", action="store_true"); ap.add_argument("--rollout", type=int, default=512); ap.add_argument("--batch", type=int, default=2048)
     ap.add_argument("--epochs", type=int, default=5); ap.add_argument("--gamma", type=float, default=0.99); ap.add_argument("--ent", type=float, default=0.0)
     ap.add_argument("--target-kl", type=float, default=0.02); ap.add_argument("--save-every", type=int, default=100_000)
-    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9", "wall", "wall_ff", "wall_shapes", "write", "write_dr"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
+    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9", "wall", "wall_ff", "wall_shapes", "write", "write_dr", "hybrid"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
     ap.add_argument("--collapse-after", type=int, default=400_000); ap.add_argument("--collapse-len", type=float, default=60.0); ap.add_argument("--resume", action="store_true"); ap.add_argument("--preflight-only", action="store_true")
     a = ap.parse_args()
     try:
