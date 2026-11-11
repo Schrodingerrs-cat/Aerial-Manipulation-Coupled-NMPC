@@ -11,6 +11,7 @@ from am3_compare import ENC, MEDIA
 from ocrl.am3_record import Recorder, CAMS, XW
 from ocrl.am3_write import WriteEpisode, YZ0
 from am3_write_eval import write_metrics, make
+from am3_write_mismatch import CASES
 
 
 class WriteRecorder(Recorder):
@@ -44,11 +45,11 @@ VIEWS = ("w_iso", "w_front")
 
 def main(a):
     out = os.path.join(MEDIA, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out); lines = []
-    names = ["RL" if c.endswith(".zip") else c for c in a.ctrl]                          # file-safe names (a policy is given as a path)
+    names = [os.path.basename(os.path.dirname(c)).split("_")[0] if c.endswith(".zip") else c for c in a.ctrl]                          # file-safe names (a policy is given as a path)
     for c, name in zip(a.ctrl, names):
         label = f"RL ({os.path.basename(os.path.dirname(c))})" if c.endswith(".zip") else {"N": "N: coupled NMPC"}.get(c, c)
-        rec = WriteRecorder(os.path.join(out, "frames", name), f"{label}: writing \"{a.text}\"", a.tag, a.text, cams=VIEWS, path=None, rate_label="")
-        ep = WriteEpisode(make(c), a.text, height=a.height, v_write=a.speed); rec.attach(ep); t0 = time.time(); ep.run(); m = write_metrics(ep)
+        rec = WriteRecorder(os.path.join(out, "frames", name), f"{label}: writing \"{a.text}\"" + ("" if a.case == "nominal" else f" [{a.case}]"), a.tag, a.text, cams=VIEWS, path=None, rate_label="")
+        ep = WriteEpisode(make(c), a.text, height=a.height, v_write=a.speed, mismatch=CASES[a.case]); rec.attach(ep); t0 = time.time(); ep.run(); m = write_metrics(ep)
         lines.append(f"{label}: " + ", ".join(f"{k}={v}" for k, v in m.items()) + f"  (wall {time.time() - t0:.0f} s)"); print(lines[-1], flush=True)
         for v in VIEWS: subprocess.run(ENC(os.path.join(out, "frames", name, v), os.path.join(out, f"{name}_{v}.mp4")), check=True)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", os.path.join(out, f"{name}_{VIEWS[0]}.mp4"), "-i", os.path.join(out, f"{name}_{VIEWS[1]}.mp4"), "-filter_complex", "[0:v][1:v]vstack=inputs=2[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", os.path.join(out, f"{name}.mp4")], check=True)
@@ -56,8 +57,8 @@ def main(a):
     if len(a.ctrl) > 1:
         ins = sum([["-i", os.path.join(out, f"{c}.mp4")] for c in names], []); n = len(names)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error"] + ins + ["-filter_complex", "".join(f"[{i}:v]" for i in range(n)) + f"hstack=inputs={n}[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "20", "-pix_fmt", "yuv420p", os.path.join(out, "compare.mp4")], check=True)
-    shutil.rmtree(os.path.join(out, "frames")); open(os.path.join(out, "README.txt"), "w").write(f"text \"{a.text}\", letter height {a.height} m, moving base (outside the frozen fixed-hover plan). Red = ink (pad pressing), green = reference strokes. Video 1.0x.\n" + "\n".join(lines) + "\n")
+    shutil.rmtree(os.path.join(out, "frames")); open(os.path.join(out, "README.txt"), "w").write(f"text \"{a.text}\", letter height {a.height} m, pen speed {a.speed} m/s, model mismatch: {a.case}, moving base (outside the frozen fixed-hover plan). Red = ink (pad pressing), green = reference strokes. Video 1.0x.\n" + "\n".join(lines) + "\n")
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("text"); ap.add_argument("--height", type=float, default=0.06); ap.add_argument("--speed", type=float, default=0.025); ap.add_argument("--ctrl", nargs="+", default=["N"]); main(ap.parse_args())
+    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("text"); ap.add_argument("--height", type=float, default=0.06); ap.add_argument("--speed", type=float, default=0.025); ap.add_argument("--ctrl", nargs="+", default=["N"]); ap.add_argument("--case", default="nominal", choices=sorted(CASES)); main(ap.parse_args())

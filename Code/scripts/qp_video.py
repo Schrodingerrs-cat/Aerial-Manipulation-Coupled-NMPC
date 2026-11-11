@@ -10,6 +10,7 @@ from ocrl.qp_plant import Plant
 from ocrl.qp_ocp import plan, minjerk
 from ocrl.qp_lqr import from_plan
 MEDIA = os.path.join(HERE, "..", "..", "Media_results"); FPS = 30; W, H = 960, 540
+REAL = None                                                          # set by --noise / --wind: qp_run.fly(real=...) sensing; seed 0
 F = lambda sz: ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", sz)
 
 
@@ -28,12 +29,13 @@ def record(ctrl, A, B, tsim, label, d, posts=(), cam=None):
             if scn.ngeom >= scn.maxgeom: break
             g = scn.geoms[scn.ngeom]; mujoco.mjv_initGeom(g, mujoco.mjtGeom.mjGEOM_SPHERE, np.full(3, 0.008), p, np.eye(3).ravel(), np.array((0.2, 0.4, 0.9, 0.5), np.float32)); scn.ngeom += 1
         im = Image.fromarray(r.render()); dr = ImageDraw.Draw(im); dr.rectangle([0, 0, W, 70], fill=(20, 20, 30))
-        dr.text((12, 6), label, fill=(255, 255, 255), font=F(22)); dr.text((12, 38), f"t = {t:5.2f} s   swing {Plant.swing_deg(s):5.1f} deg   drone to B {np.linalg.norm(s['p'] - B) * 100:5.1f} cm", fill=(255, 220, 120), font=F(18))
+        dr.text((12, 6), label + ("" if REAL is None else ("   [noise+delay+wind]" if REAL.get("wind") else "   [noise+delay]")), fill=(255, 255, 255), font=F(22)); dr.text((12, 38), f"t = {t:5.2f} s   swing {Plant.swing_deg(s):5.1f} deg   drone to B {np.linalg.norm(s['p'] - B) * 100:5.1f} cm", fill=(255, 220, 120), font=F(18))
         im.save(os.path.join(d, f"{st['n']:05d}.png")); st["n"] += 1
-    rows = fly(ctrl, A, tsim, on_step=cb, posts=posts); return rows, st["n"]
+    rows = fly(ctrl, A, tsim, on_step=cb, posts=posts, real=REAL); return rows, st["n"]
 
 
 def main(a):
+    global REAL; REAL = dict(seed=0, wind=a.wind) if a.noise or a.wind else None
     A = np.array([0.0, 0.0, 1.5]); B = A + [a.dx, 0.0, 0.0]; out = os.path.join(MEDIA, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out)
     E = plan(A, B, "E"); S = plan(A, B, "S"); res = json.load(open(os.path.join(HERE, "..", "results", "payload", "ab_2m.json"))); Tbest = res["U"]["metrics"]["plan_T"]
     cases = [("U_fast", f"Normal drone (load ignored), {E['T']:.1f} s move", pd(minjerk(A, B, round(E["T"], 2))), round(E["T"], 2)),
@@ -47,8 +49,8 @@ def main(a):
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(FPS), "-i", os.path.join(out, "frames", name, "%05d.png"), "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", os.path.join(out, f"{name}.mp4")], check=True)
     ins = sum([["-i", os.path.join(out, f"{c[0]}.mp4")] for c in cases], [])
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error"] + ins + ["-filter_complex", "[0:v][1:v]hstack[t];[2:v][3:v]hstack[b];[t][b]vstack[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "20", "-pix_fmt", "yuv420p", os.path.join(out, "compare.mp4")], check=True)
-    shutil.rmtree(os.path.join(out, "frames")); open(os.path.join(out, "README.txt"), "w").write(f"A {A.tolist()} -> B {B.tolist()}, 0.2 kg load on 0.6 m string, quad 1.05 kg. Video = simulation time 1.0x. Green = A, red = B, blue dots = load trail.\n" + "\n".join(lines) + "\n")
+    shutil.rmtree(os.path.join(out, "frames")); open(os.path.join(out, "README.txt"), "w").write(f"A {A.tolist()} -> B {B.tolist()}, 0.2 kg load on 0.6 m string, quad 1.05 kg. Video = simulation time 1.0x. Sensing: {REAL or 'exact state'} (qp_run.SIG). Green = A, red = B, blue dots = load trail.\n" + "\n".join(lines) + "\n")
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("--dx", type=float, default=2.0); ap.add_argument("--tsim", type=float, default=10.0); main(ap.parse_args())
+    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("--dx", type=float, default=2.0); ap.add_argument("--tsim", type=float, default=10.0); ap.add_argument("--noise", action="store_true"); ap.add_argument("--wind", action="store_true"); main(ap.parse_args())
