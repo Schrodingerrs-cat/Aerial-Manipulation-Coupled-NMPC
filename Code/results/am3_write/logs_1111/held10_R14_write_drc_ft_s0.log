@@ -1,0 +1,10 @@
+{'text': 'OM', 'height': 0.1, 'completed': True, 'abort': None, 'strokes': '2/2', 'trace_rms_mm': 4.143, 'trace_max_mm': 9.569, 'coverage': 0.658, 'contact': 0.995, 'drag': 0.064, 'base_max_mm': 9.87, 'tilt_max_deg': 3.03, 'time_s': 20.5, 'arm_rel_range_mm': [51.4, 65.1], 'joint_range_deg': [10.8, 30.6, 37.9], 'wall_s': 12}
+{'text': 'HI', 'height': 0.1, 'completed': True, 'abort': None, 'strokes': '4/4', 'trace_rms_mm': 4.582, 'trace_max_mm': 9.214, 'coverage': 0.511, 'contact': 1.0, 'drag': 0.059, 'base_max_mm': 9.87, 'tilt_max_deg': 3.96, 'time_s': 25.0, 'arm_rel_range_mm': [75.5, 74.6], 'joint_range_deg': [16.7, 31.5, 38.2], 'wall_s': 15}
+{'text': 'WPI', 'height': 0.1, 'completed': True, 'abort': None, 'strokes': '3/3', 'trace_rms_mm': 4.169, 'trace_max_mm': 9.961, 'coverage': 0.478, 'contact': 0.979, 'drag': 0.049, 'base_max_mm': 9.87, 'tilt_max_deg': 3.32, 'time_s': 28.1, 'arm_rel_range_mm': [73.4, 70.6], 'joint_range_deg': [14.8, 31.2, 38.4], 'wall_s': 15}
+{'text': 'ZEN', 'height': 0.1, 'completed': True, 'abort': None, 'strokes': '4/4', 'trace_rms_mm': 4.432, 'trace_max_mm': 9.327, 'coverage': 0.513, 'contact': 0.99, 'drag': 0.055, 'base_max_mm': 9.87, 'tilt_max_deg': 3.33, 'time_s': 32.5, 'arm_rel_range_mm': [79.2, 67.4], 'joint_range_deg': [17.5, 31.1, 38.2], 'wall_s': 17}
+Traceback (most recent call last):
+  File "/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/scripts/am3_write_eval.py", line 43, in <module>
+    ap = argparse.ArgumentParser(); ap.add_argument("ctrl"); ap.add_argument("text", nargs="+"); ap.add_argument("--height", type=float, default=0.06); ap.add_argument("--speed", type=float, default=0.025); ap.add_argument("--out", default=None); main(ap.parse_args())
+  File "/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/scripts/am3_write_eval.py", line 39, in main
+    if a.out: json.dump(rows, open(os.path.join(HERE, "..", "results", "am3_write", a.out), "w"), indent=1)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/scripts/../results/am3_write/results/am3_write/heldout10_R14_write_drc_ft_s0.json'

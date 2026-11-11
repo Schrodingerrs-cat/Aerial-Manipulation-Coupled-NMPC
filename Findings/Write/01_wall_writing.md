@@ -88,3 +88,19 @@ recoverable episodes to learn from. H1b (smaller exploration noise) behaved the 
 - R14_write_drc_ft_s0: fine-tune R12 with DR ramped in over the first 300 episodes per env (`write_drc`), lr 1e-4, 20M. Goal: R12 accuracy + R13 robustness.
 - H2_hybrid_s0: hybrid with (1) episode cap = stroke time + margin, (2) same DR ramp, (3) joint residual 0.25 -> 0.5 tau_c
   (0.25 kg on the hand needs ~0.6 N m the NMPC does not model), log_std -2.5, 10M.
+
+## R14 and H2 results (2026-11-11 17:40 EST)
+R14 = R12 fine-tuned with DR ramped over 300 episodes (write_drc, lr 1e-4, 20M steps, Turing job 2507364; final train reward 8.38/step).
+Scored with the same tests as R12/R13 (logs in `Code/results/am3_write/logs_1111/*R14*`):
+
+| Test (trace RMS, mm) | N | R12 | R13 | R14 |
+|---|---|---|---|---|
+| Held-out OM/HI/WPI/ZEN, 10 cm | 0.54-0.67 | 1.38-2.07 | 3.74-5.84 | 4.14-4.58 |
+| HI 20 cm | 0.72 | 1.38 | 4.34 | 4.54 |
+| payload 100 g | fail | fail | 4.50 | 5.54 |
+| motor_slow | fail | fail | 4.00 | 3.94 |
+| payload 200 g | fail | fail | fail | fail |
+| other 5 mismatch cases | ok | ok | 3.3-4.8 | 3.9-4.4 |
+
+Result: R14 ends up in the same place as R13 (robust, about 4 mm). Fine-tuning from R12 did not keep R12's accuracy once DR was on.
+H2 check (16 identical full-DR episodes, seed 7): plain NMPC completes 7/16, H2 at 5M completes 8/16; both lose control on the same heavy-payload episodes within about 100 steps. The residual does not yet prevent the early loss of control.

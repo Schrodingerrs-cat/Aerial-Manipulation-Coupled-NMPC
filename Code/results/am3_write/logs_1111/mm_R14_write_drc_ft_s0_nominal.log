@@ -1,0 +1,1 @@
+{'ctrl': 'R14_write_drc_ft_s0', 'case': 'nominal', 'text': 'OM', 'completed': True, 'abort': None, 'strokes': '2/2', 'trace_rms_mm': 3.907, 'trace_max_mm': 6.584, 'coverage': 0.733, 'contact': 1.0, 'drag': 0.037, 'base_max_mm': 9.87, 'tilt_max_deg': 2.29, 'time_s': 31.2, 'arm_rel_range_mm': [51.8, 67.3], 'joint_range_deg': [11.0, 30.0, 38.0], 'wall_s': 21}

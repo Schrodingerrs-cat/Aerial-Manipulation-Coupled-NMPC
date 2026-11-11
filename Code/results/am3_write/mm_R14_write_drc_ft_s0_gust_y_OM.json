@@ -1,0 +1,26 @@
+{
+ "ctrl": "R14_write_drc_ft_s0",
+ "case": "gust_y",
+ "text": "OM",
+ "completed": true,
+ "abort": null,
+ "strokes": "2/2",
+ "trace_rms_mm": 4.212,
+ "trace_max_mm": 7.106,
+ "coverage": 0.754,
+ "contact": 1.0,
+ "drag": 0.04,
+ "base_max_mm": 28.54,
+ "tilt_max_deg": 8.71,
+ "time_s": 31.3,
+ "arm_rel_range_mm": [
+  67.6,
+  65.9
+ ],
+ "joint_range_deg": [
+  16.9,
+  30.0,
+  38.0
+ ],
+ "wall_s": 19
+}

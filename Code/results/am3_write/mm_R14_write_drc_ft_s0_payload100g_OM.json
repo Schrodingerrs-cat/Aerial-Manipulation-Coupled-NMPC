@@ -1,0 +1,26 @@
+{
+ "ctrl": "R14_write_drc_ft_s0",
+ "case": "payload100g",
+ "text": "OM",
+ "completed": true,
+ "abort": null,
+ "strokes": "2/2",
+ "trace_rms_mm": 5.54,
+ "trace_max_mm": 7.809,
+ "coverage": 0.504,
+ "contact": 0.996,
+ "drag": 0.0,
+ "base_max_mm": 9.17,
+ "tilt_max_deg": 1.18,
+ "time_s": 32.7,
+ "arm_rel_range_mm": [
+  46.0,
+  63.4
+ ],
+ "joint_range_deg": [
+  7.5,
+  27.1,
+  35.5
+ ],
+ "wall_s": 19
+}

@@ -1,0 +1,1 @@
+{'ctrl': 'R14_write_drc_ft_s0', 'case': 'damping3x', 'text': 'OM', 'completed': True, 'abort': None, 'strokes': '2/2', 'trace_rms_mm': 4.007, 'trace_max_mm': 6.624, 'coverage': 0.721, 'contact': 1.0, 'drag': 0.037, 'base_max_mm': 9.7, 'tilt_max_deg': 2.35, 'time_s': 31.2, 'arm_rel_range_mm': [51.4, 66.8], 'joint_range_deg': [11.0, 30.0, 37.9], 'wall_s': 18}

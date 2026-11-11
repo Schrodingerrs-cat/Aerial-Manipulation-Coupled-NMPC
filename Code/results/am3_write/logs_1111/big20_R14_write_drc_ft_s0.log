@@ -1,0 +1,7 @@
+{'text': 'HI', 'height': 0.2, 'completed': True, 'abort': None, 'strokes': '4/4', 'trace_rms_mm': 4.544, 'trace_max_mm': 9.318, 'coverage': 0.489, 'contact': 0.975, 'drag': 0.037, 'base_max_mm': 12.47, 'tilt_max_deg': 4.26, 'time_s': 35.2, 'arm_rel_range_mm': [76.3, 73.4], 'joint_range_deg': [17.1, 31.2, 38.9], 'wall_s': 20}
+Traceback (most recent call last):
+  File "/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/scripts/am3_write_eval.py", line 43, in <module>
+    ap = argparse.ArgumentParser(); ap.add_argument("ctrl"); ap.add_argument("text", nargs="+"); ap.add_argument("--height", type=float, default=0.06); ap.add_argument("--speed", type=float, default=0.025); ap.add_argument("--out", default=None); main(ap.parse_args())
+  File "/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/scripts/am3_write_eval.py", line 39, in main
+    if a.out: json.dump(rows, open(os.path.join(HERE, "..", "results", "am3_write", a.out), "w"), indent=1)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/pinaka/arm_optimal/Aerial-Manipulation-Coupled-NMPC/Code/scripts/../results/am3_write/results/am3_write/big20_R14_write_drc_ft_s0.json'
