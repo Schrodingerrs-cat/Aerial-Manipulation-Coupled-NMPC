@@ -4,6 +4,7 @@ contact (pressing share of trace time), drag (pressing share of pen-up time, sho
 Usage: am3_write_eval.py CTRL TEXT [TEXT ...] [--height 0.06] [--out NAME.json]"""
 import sys, os, json, argparse, time
 import numpy as np
+from stable_baselines3 import PPO          # torch must load before acados and the renderer (a later import crashes the process silently)
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, ".."))
 from ocrl.am3_write import WriteEpisode
 

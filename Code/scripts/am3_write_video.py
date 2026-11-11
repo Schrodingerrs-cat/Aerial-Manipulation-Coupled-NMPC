@@ -4,6 +4,7 @@ Ink = red (pad pressing), reference strokes = thin green.  Writes Media_results/
 Usage: am3_write_video.py TAG TEXT [--height 0.06] [--ctrl N ...]"""
 import sys, os, shutil, subprocess, argparse, time
 import numpy as np, mujoco
+from stable_baselines3 import PPO          # torch must load before acados and the renderer (a later import crashes the process silently)
 from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, ".."))
 from am3_compare import ENC, MEDIA
@@ -37,21 +38,23 @@ class WriteRecorder(Recorder):
 
 
 CAMS["w_iso"] = dict(lookat=(0.76, 0.0, 1.06), distance=0.7, azimuth=40, elevation=-18)
-CAMS["w_front"] = dict(lookat=(0.85, 0.0, 1.06), distance=0.85, azimuth=0, elevation=24)
+CAMS["w_front"] = dict(lookat=(0.85, 0.0, 1.06), distance=0.85, azimuth=-25, elevation=20)          # turned 25 deg so the arm does not hide the letter being written
 VIEWS = ("w_iso", "w_front")
 
 
 def main(a):
     out = os.path.join(MEDIA, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out); lines = []
-    for c in a.ctrl:
-        rec = WriteRecorder(os.path.join(out, "frames", c), f"{c}: writing \"{a.text}\"", a.tag, a.text, cams=VIEWS, path=None, rate_label="")
+    names = ["RL" if c.endswith(".zip") else c for c in a.ctrl]                          # file-safe names (a policy is given as a path)
+    for c, name in zip(a.ctrl, names):
+        label = f"RL ({os.path.basename(os.path.dirname(c))})" if c.endswith(".zip") else {"N": "N: coupled NMPC"}.get(c, c)
+        rec = WriteRecorder(os.path.join(out, "frames", name), f"{label}: writing \"{a.text}\"", a.tag, a.text, cams=VIEWS, path=None, rate_label="")
         ep = WriteEpisode(make(c), a.text, height=a.height, v_write=a.speed); rec.attach(ep); t0 = time.time(); ep.run(); m = write_metrics(ep)
-        lines.append(f"{c}: " + ", ".join(f"{k}={v}" for k, v in m.items()) + f"  (wall {time.time() - t0:.0f} s)"); print(lines[-1], flush=True)
-        for v in VIEWS: subprocess.run(ENC(os.path.join(out, "frames", c, v), os.path.join(out, f"{c}_{v}.mp4")), check=True)
-        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", os.path.join(out, f"{c}_{VIEWS[0]}.mp4"), "-i", os.path.join(out, f"{c}_{VIEWS[1]}.mp4"), "-filter_complex", "[0:v][1:v]vstack=inputs=2[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", os.path.join(out, f"{c}.mp4")], check=True)
-        for v in VIEWS: os.remove(os.path.join(out, f"{c}_{v}.mp4"))
+        lines.append(f"{label}: " + ", ".join(f"{k}={v}" for k, v in m.items()) + f"  (wall {time.time() - t0:.0f} s)"); print(lines[-1], flush=True)
+        for v in VIEWS: subprocess.run(ENC(os.path.join(out, "frames", name, v), os.path.join(out, f"{name}_{v}.mp4")), check=True)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", os.path.join(out, f"{name}_{VIEWS[0]}.mp4"), "-i", os.path.join(out, f"{name}_{VIEWS[1]}.mp4"), "-filter_complex", "[0:v][1:v]vstack=inputs=2[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", os.path.join(out, f"{name}.mp4")], check=True)
+        for v in VIEWS: os.remove(os.path.join(out, f"{name}_{v}.mp4"))
     if len(a.ctrl) > 1:
-        ins = sum([["-i", os.path.join(out, f"{c}.mp4")] for c in a.ctrl], []); n = len(a.ctrl)
+        ins = sum([["-i", os.path.join(out, f"{c}.mp4")] for c in names], []); n = len(names)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error"] + ins + ["-filter_complex", "".join(f"[{i}:v]" for i in range(n)) + f"hstack=inputs={n}[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "20", "-pix_fmt", "yuv420p", os.path.join(out, "compare.mp4")], check=True)
     shutil.rmtree(os.path.join(out, "frames")); open(os.path.join(out, "README.txt"), "w").write(f"text \"{a.text}\", letter height {a.height} m, moving base (outside the frozen fixed-hover plan). Red = ink (pad pressing), green = reference strokes. Video 1.0x.\n" + "\n".join(lines) + "\n")
 

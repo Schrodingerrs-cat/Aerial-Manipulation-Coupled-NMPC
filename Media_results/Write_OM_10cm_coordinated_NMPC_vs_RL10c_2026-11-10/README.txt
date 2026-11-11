@@ -1,0 +1,3 @@
+text "OM", letter height 0.1 m, moving base (outside the frozen fixed-hover plan). Red = ink (pad pressing), green = reference strokes. Video 1.0x.
+N: coupled NMPC: completed=True, abort=None, strokes=2/2, trace_rms_mm=0.536, trace_max_mm=1.163, coverage=1.0, contact=1.0, drag=0.0, base_max_mm=0.91, tilt_max_deg=2.49, time_s=20.9, arm_rel_range_mm=[48.1, 63.9], joint_range_deg=[9.7, 28.6, 35.3]  (wall 50 s)
+RL (R10c_wallff_s0): completed=True, abort=None, strokes=2/2, trace_rms_mm=3.866, trace_max_mm=11.128, coverage=0.825, contact=0.998, drag=0.0, base_max_mm=17.56, tilt_max_deg=1.95, time_s=22.7, arm_rel_range_mm=[64.9, 69.0], joint_range_deg=[11.7, 28.7, 34.5]  (wall 45 s)
