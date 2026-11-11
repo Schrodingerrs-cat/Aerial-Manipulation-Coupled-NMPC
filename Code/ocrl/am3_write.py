@@ -1,7 +1,9 @@
 """Writing on the wall (2026-11-10, user request; outside the frozen plan, which holds the base at one hover point).
 Text -> pen strokes (single-stroke capital font) -> WriteTask: for every stroke  position/travel (pen up) -> approach -> settle -> trace -> release -> lift,
 with the same contact detection, settle, recovery and limits as am3_task.Task.  The base reference follows the pen across the wall with the hover offset
-(pB = BASE + pen displacement in y, z), so letters can be any size; the arm keeps the contact and the fine detail.
+along a smoothed, look-ahead version of the pen path, so the drone (hand) and the arm (fingers) move together: the drone heads for where the writing is
+going (already moving to the next letter while the arm finishes the current one), the arm draws the detail and keeps the contact; the pen-base offset is
+kept inside the arm's reach.  (First version, 2026-11-10 18:45: base copied the pen exactly, arm static - replaced at the user's correction.)
 Wall frame: the drone faces +x, so reading direction (left to right for a viewer behind the drone) is -y.  Glyph units: width 0.6, height 1."""
 import copy, numpy as np
 from ocrl.am3_task import Task, CP, TASK, BASE, YZ0, DELTA, SMOOTH, wall_x
@@ -14,6 +16,9 @@ G_UP = 0.012            # pen-up gap (m)
 V_WRITE = 0.025         # mean pen speed along a stroke (m/s); a min-jerk stroke peaks at 1.9x this
 V_TRAVEL = 0.05         # mean pen-up travel speed between strokes (m/s)
 LIFT_S = 0.4            # release gap -> pen-up gap
+SIGMA_B = 0.10          # base path = pen path smoothed with a Gaussian of this width in arclength (m); larger = drone moves less, arm more
+REACH = (0.035, 0.03)   # largest pen-base offset (y, z) the arm takes from its nominal pose (the frozen shapes use +-4 cm y, -2..+3 cm z)
+DS = 0.002
 
 
 def _ell(c, r, a0, a1, n=14):
@@ -64,11 +69,41 @@ def text_strokes(text, height=0.06, pitch=1.0, space=0.7):
 
 class WriteTask(Task):
     """Multi-stroke contact writing with a moving base.  Phases: hover, position, approach, settle, trace, release, lift, travel, (recover, settle_resume), done."""
-    def __init__(self, p0, strokes, height=0.06, z0=0.0):
+    def __init__(self, p0, strokes, height=0.06, z0=0.0, v_write=V_WRITE):
         super().__init__("free", p0, free_waypoints=[p0], segment_s=1.0)            # parent only supplies the contact-detection state; everything else is set here
         self.free = False; fil = 0.08 * height; self.strokes = strokes; self.paths = [rounded_polygon(s, fil) for s in strokes]
-        self.Ts = [max(1.0, p.length / V_WRITE) for p in self.paths]; self.i = 0; self.yz0 = YZ0 + np.array([0.0, z0])
+        self.v = v_write; self.Ts = [max(0.6, p.length / v_write) for p in self.paths]; self.i = 0; self.yz0 = YZ0 + np.array([0.0, z0])
         self.set_stroke(0); self.pre = np.r_[wall_x(G_UP), self.yz0 + self.path.at(0)[0]]; self.gap_ref = G_UP; self.tr_from = self.tr_to = None; self.T_tr = 1.0; self.written = []
+        self.plan_base()
+
+    def plan_base(self):
+        """Base path over the global pen arclength S (strokes and pen-up travels in order): Gaussian-smoothed pen path, then pushed so |pen - base| <= REACH."""
+        P, self.S0, s = [], [], 0.0
+        for i, p in enumerate(self.paths):
+            self.S0.append(s); P += [p.at(x)[0] for x in np.arange(0, p.length, DS)]; s += p.length
+            if i + 1 < len(self.paths):
+                a, b = p.at(p.length)[0], self.paths[i + 1].at(0)[0]; n = max(1, int(np.linalg.norm(b - a) / DS)); P += [a + (b - a) * k / n for k in range(n)]; s += np.linalg.norm(b - a)
+        P.append(self.paths[-1].at(self.paths[-1].length)[0]); P = np.array(P); S = np.linspace(0, s, len(P)); self.S_end = s
+        def smooth(Y, sig):
+            k = np.exp(-0.5 * (np.arange(-int(4 * sig / DS), int(4 * sig / DS) + 1) * DS / sig) ** 2); k /= k.sum(); m = len(k) // 2
+            Yp = np.vstack([np.repeat(Y[:1], m, 0), Y, np.repeat(Y[-1:], m, 0)]); return np.column_stack([np.convolve(Yp[:, j], k, "valid") for j in range(2)])
+        B = smooth(P, SIGMA_B); r = np.array(REACH)
+        for _ in range(5): e = P - B; B = smooth(B + e - np.clip(e, -0.9 * r, 0.9 * r), 0.01)        # push the base where the arm would over-reach, keep it smooth
+        self.S_tab, self.P_tab, self.B_tab = S, P, B; self.dB = np.gradient(B, S, axis=0); self.offset_max = np.abs(P - B).max(0)
+
+    def s_global(self):
+        """Global pen arclength and its rate (the base path is indexed by it, so the base waits if contact takes longer than planned)."""
+        ph, L = self.phase, self.path.length
+        if ph in ("hover", "position"): return 0.0, 0.0
+        if ph == "done": return self.S_end, 0.0
+        if ph == "travel":
+            Ltr = np.linalg.norm(self.tr_to - self.tr_from); f, f1, _ = min_jerk(min(self.tph / self.T_tr, 1.0)); return self.S0[self.i] - Ltr + Ltr * f, Ltr * f1 / self.T_tr
+        if ph in ("release", "lift"): return self.S0[self.i] + L, 0.0
+        f, f1, _ = min_jerk(min(self.tau_p, self.T) / self.T); return self.S0[self.i] + L * f, (L * f1 / self.T * self.rho if ph == "trace" else 0.0)
+
+    def base(self):
+        s, sd = self.s_global(); b = np.array([np.interp(s, self.S_tab, self.B_tab[:, j]) for j in range(2)]); db = np.array([np.interp(s, self.S_tab, self.dB[:, j]) for j in range(2)])
+        return BASE + np.r_[0.0, b - self.P_tab[0] + self.yz0 - YZ0], np.r_[0.0, db * sd]
 
     def set_stroke(self, i): self.i = i; self.path, self.T = self.paths[i], self.Ts[i]; self.tau_p = 0.0
 
@@ -97,7 +132,7 @@ class WriteTask(Task):
                 if self.i + 1 >= len(self.paths): self._enter("done"); self.t_done = self.t
                 else:
                     self.tr_from = self.path.at(self.path.length)[0]; self.set_stroke(self.i + 1); self.tr_to = self.path.at(0)[0]
-                    self.T_tr = max(0.8, np.linalg.norm(self.tr_to - self.tr_from) / V_TRAVEL); self._enter("travel")
+                    self.T_tr = max(0.5, np.linalg.norm(self.tr_to - self.tr_from) / (V_TRAVEL / V_WRITE * self.v)); self._enter("travel")
         elif ph == "travel":
             if self.tph >= self.T_tr: self._enter("approach")
         self.gap_rate = (self.gap_ref - g0) / dt if dt > 0 else 0.0
@@ -112,8 +147,7 @@ class WriteTask(Task):
         yz, vyz, _ = reference(self.path, self.T, min(self.tau_p, self.T)); return yz, vyz * (self.rho if ph == "trace" else 0.0)
 
     def ref(self):
-        ph = self.phase; yz, vyz = self.pen(); d = yz - self.paths[0].at(0)[0]
-        pB = BASE + np.r_[0.0, d] + np.r_[0.0, self.yz0 - YZ0]; vB = np.r_[0.0, vyz]
+        ph = self.phase; yz, vyz = self.pen(); pB, vB = self.base()
         if ph == "hover": p, v = self.p0, np.zeros(3); pB, vB = BASE.copy(), np.zeros(3)
         elif ph == "position":
             f, f1, _ = min_jerk(min(self.tph / TASK["position_s"], 1.0)); p = self.p0 + (self.pre - self.p0) * f; v = (self.pre - self.p0) * f1 / TASK["position_s"]
@@ -125,8 +159,8 @@ class WriteTask(Task):
 
 class WriteEpisode(Episode):
     """Episode whose task is a WriteTask (the parent's placeholder task is replaced before the run, as in am3_traj.TrajEpisode)."""
-    def __init__(self, controller, text, height=0.06, z0=0.0, **kw):
+    def __init__(self, controller, text, height=0.06, z0=0.0, v_write=V_WRITE, **kw):
         kw.setdefault("T_max", 600.0); super().__init__(controller, "write", free_waypoints=[[0.0, 0.0, 0.0]], segment_s=1.0, **kw)
-        self.text = text; self.task = WriteTask(self.p0, text_strokes(text, height), height, z0)
+        self.text = text; self.task = WriteTask(self.p0, text_strokes(text, height), height, z0, v_write)
         if hasattr(controller, "attach"): controller.attach(self)                       # RL controller reads the episode plant (as in am3_eval_wall.run)
         if hasattr(controller, "reset"): controller.reset(self.x0, self.u0, self.task)

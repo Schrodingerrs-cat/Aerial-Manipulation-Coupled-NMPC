@@ -35,7 +35,7 @@ class WallEnv(Track9Env):
         if self.scenario is None and self.rng.random() < self.write_p:            # writing episode: 1-2 random capital letters, random size, moving base
             from ocrl.am3_write import WriteTask, text_strokes, FONT
             text = "".join(self.rng.choice(sorted(FONT), size=1 if self.rng.random() < 0.7 else 2)); h = float(self.rng.uniform(0.03, 0.10))
-            self.task = WriteTask(p0, text_strokes(text, h), h); self.path = "write:" + text
+            self.task = WriteTask(p0, text_strokes(text, h), h, v_write=float(self.rng.uniform(0.025, 0.075))); self.path = "write:" + text          # pen speed 25-75 mm/s
             self.max_steps = int((sum(self.task.Ts) + 4.0 * len(self.task.Ts) + 6.0) / self.dt_c)
         else: self.task = Task(self.path, p0)
         if self.dr: self.domain_rand()

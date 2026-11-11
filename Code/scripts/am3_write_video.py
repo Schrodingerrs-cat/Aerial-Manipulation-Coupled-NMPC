@@ -45,7 +45,7 @@ def main(a):
     out = os.path.join(MEDIA, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out); lines = []
     for c in a.ctrl:
         rec = WriteRecorder(os.path.join(out, "frames", c), f"{c}: writing \"{a.text}\"", a.tag, a.text, cams=VIEWS, path=None, rate_label="")
-        ep = WriteEpisode(make(c), a.text, height=a.height); rec.attach(ep); t0 = time.time(); ep.run(); m = write_metrics(ep)
+        ep = WriteEpisode(make(c), a.text, height=a.height, v_write=a.speed); rec.attach(ep); t0 = time.time(); ep.run(); m = write_metrics(ep)
         lines.append(f"{c}: " + ", ".join(f"{k}={v}" for k, v in m.items()) + f"  (wall {time.time() - t0:.0f} s)"); print(lines[-1], flush=True)
         for v in VIEWS: subprocess.run(ENC(os.path.join(out, "frames", c, v), os.path.join(out, f"{c}_{v}.mp4")), check=True)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", os.path.join(out, f"{c}_{VIEWS[0]}.mp4"), "-i", os.path.join(out, f"{c}_{VIEWS[1]}.mp4"), "-filter_complex", "[0:v][1:v]vstack=inputs=2[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", os.path.join(out, f"{c}.mp4")], check=True)
@@ -57,4 +57,4 @@ def main(a):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("text"); ap.add_argument("--height", type=float, default=0.06); ap.add_argument("--ctrl", nargs="+", default=["N"]); main(ap.parse_args())
+    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("text"); ap.add_argument("--height", type=float, default=0.06); ap.add_argument("--speed", type=float, default=0.025); ap.add_argument("--ctrl", nargs="+", default=["N"]); main(ap.parse_args())

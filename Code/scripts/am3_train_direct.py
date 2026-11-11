@@ -56,7 +56,10 @@ def preflight(a):
         if term or trunc: env.reset()
     dt = (time.perf_counter() - t0) / 200
     log(f"  random rollout OK: {dt * 1e3:.2f} ms/step")
-    z, pd = baseline_returns(env, n_ep=2)
+    env_b = env
+    if a.env == "write_dr":                                      # same reward without randomization: the scripted PD cannot fly the randomized plant, so it is no reward check there
+        env_b = make_raw("write", 0, 200, a.fine_w, a.fine_s, a.lin_w, a.tilt_w, a.bad_pen, a.p0_sigma, a.v0_sigma); log("  reward check on env 'write' (write_dr = write + domain randomization, same reward)")
+    z, pd = baseline_returns(env_b, n_ep=2)
     log(f"  reference reward/step   zero-action {z:8.3f}   scripted PD {pd:8.3f}")
     if pd <= z: raise RuntimeError(f"PREFLIGHT FAIL: scripted PD ({pd:.3f}/step) does not beat zero action ({z:.3f}/step); the task or reward is mis-specified")
     if pd <= 0.0: raise RuntimeError(f"PREFLIGHT FAIL: a competent controller earns {pd:.3f} reward/step. Surviving must pay: otherwise the agent learns to terminate the episode")

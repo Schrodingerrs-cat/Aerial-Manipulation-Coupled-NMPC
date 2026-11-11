@@ -26,3 +26,15 @@ Bugs found and fixed: glyph arcs joined with a repeated point gave zero-length f
 1. RL: R12_write_s0 on Turing (job 2503426, 30M, warm from R10c). Score on held-out texts and the fixed-base shapes.
 2. NMPC: longer text (sentence), and mismatch suite to find where it degrades.
 3. NMPC + RL: residual policy on top of NMPC trained under randomized mismatch, only if step 2 shows NMPC failing.
+
+## Correction: drone and arm must write together (2026-11-10 19:40 EST)
+Sahil's review of the first OM video: the base copied the pen exactly, so the arm stayed still ("moving the hand with a frozen finger"). Wanted: hand and fingers together -
+the drone keeps moving while the arm writes, heads for the next letter while the arm finishes the current one, and either can move when the other does.
+Change (`WriteTask.plan_base`): base path = pen path over global arclength (strokes + pen-up travels), Gaussian-smoothed (SIGMA_B 0.10 m) so it looks ahead, then pushed so the
+pen-base offset stays within the arm's reach (3.5 cm y, 3 cm z). The base is indexed by pen progress, so it waits if contact takes longer than planned. Pen speed is now a parameter.
+| N, OM 10 cm | pen speed | time | trace rms | coverage | arm motion relative to base (y, z) | joint ranges |
+|---|---|---|---|---|---|---|
+| coordinated | 25 mm/s | 31.7 s | 0.36 mm | 1.00 | 48, 64 mm | 10, 29, 36 deg |
+| coordinated | 50 mm/s | 20.9 s | 0.54 mm | 1.00 | 48, 64 mm | |
+| coordinated | 75 mm/s | 17.3 s | 0.79 mm | 0.996 | 48, 64 mm | |
+R12/R13 restarted on the coordinated task with pen speed 25-75 mm/s: jobs 2503635 (R12_write_s0) and 2503636 (R13_write_dr_s0). The earlier frozen-arm runs were cancelled after ~25 min.
