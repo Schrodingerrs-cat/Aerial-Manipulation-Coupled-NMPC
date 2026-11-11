@@ -27,7 +27,7 @@ Bugs found and fixed: glyph arcs joined with a repeated point gave zero-length f
 2. NMPC: longer text (sentence), and mismatch suite to find where it degrades.
 3. NMPC + RL: residual policy on top of NMPC trained under randomized mismatch, only if step 2 shows NMPC failing.
 
-## Correction: drone and arm must write together (2026-11-10 19:40 EST)
+## Correction: drone and arm must write together (2026-11-10 19:11 EST)
 Sahil's review of the first OM video: the base copied the pen exactly, so the arm stayed still ("moving the hand with a frozen finger"). Wanted: hand and fingers together -
 the drone keeps moving while the arm writes, heads for the next letter while the arm finishes the current one, and either can move when the other does.
 Change (`WriteTask.plan_base`): base path = pen path over global arclength (strokes + pen-up travels), Gaussian-smoothed (SIGMA_B 0.10 m) so it looks ahead, then pushed so the
