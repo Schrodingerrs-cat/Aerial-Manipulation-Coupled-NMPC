@@ -1,0 +1,786 @@
+{
+ "sig": {
+  "p": 0.01,
+  "v": 0.05,
+  "att": 0.017453292519943295,
+  "w": 0.05,
+  "swing": 0.017453292519943295,
+  "rv": 0.05,
+  "att_imu": 0.008726646259971648,
+  "w_imu": 0.03
+ },
+ "seeds": 10,
+ "results": {
+  "ab/exact": {
+   "U_best": "U4.75",
+   "cases": {
+    "E": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 1.62,
+     "settle_max": 1.62,
+     "swing_max": 40.96857895980319
+    },
+    "ENMPC": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 1.6600000000000001,
+     "settle_max": 1.6600000000000001,
+     "swing_max": 40.2831454043281
+    },
+    "S": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 4.05,
+     "settle_max": 4.05,
+     "swing_max": 3.7119482454095243
+    },
+    "U4.75": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 4.3500000000000005,
+     "settle_max": 4.3500000000000005,
+     "swing_max": 5.24429508025163
+    }
+   },
+   "U_sweep": {
+    "U1.50": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 9.83,
+     "settle_max": 9.83,
+     "swing_max": 98.32123177710591
+    },
+    "U1.75": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 9.82,
+     "settle_max": 9.82,
+     "swing_max": 69.71254740001594
+    },
+    "U2.00": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 9.86,
+     "settle_max": 9.86,
+     "swing_max": 49.78824561979375
+    },
+    "U2.25": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 9.18,
+     "settle_max": 9.18,
+     "swing_max": 35.28557126255155
+    },
+    "U2.50": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 7.83,
+     "settle_max": 7.83,
+     "swing_max": 24.788766184441965
+    },
+    "U2.75": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 6.51,
+     "settle_max": 6.51,
+     "swing_max": 18.062516889633876
+    },
+    "U3.00": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 6.08,
+     "settle_max": 6.08,
+     "swing_max": 15.021432426087662
+    },
+    "U3.25": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 6.37,
+     "settle_max": 6.37,
+     "swing_max": 12.619599094649478
+    },
+    "U3.50": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 6.58,
+     "settle_max": 6.58,
+     "swing_max": 10.699820927990249
+    },
+    "U3.75": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 6.73,
+     "settle_max": 6.73,
+     "swing_max": 9.149197390452981
+    },
+    "U4.00": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 6.16,
+     "settle_max": 6.16,
+     "swing_max": 7.883071582964026
+    },
+    "U4.25": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 5.59,
+     "settle_max": 5.59,
+     "swing_max": 6.8393139813082
+    },
+    "U4.50": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 5.0200000000000005,
+     "settle_max": 5.0200000000000005,
+     "swing_max": 5.971423406774092
+    },
+    "U4.75": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 4.3500000000000005,
+     "settle_max": 4.3500000000000005,
+     "swing_max": 5.24429508025163
+    },
+    "U5.00": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 4.63,
+     "settle_max": 4.63,
+     "swing_max": 4.630769189990249
+    }
+   }
+  },
+  "ab/noise": {
+   "U_best": "U4.50",
+   "cases": {
+    "E": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 1.73,
+     "settle_max": 2.05,
+     "swing_max": 42.600203568744085
+    },
+    "ENMPC": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 1.83,
+     "settle_max": 2.09,
+     "swing_max": 41.81821615828219
+    },
+    "S": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 4.043,
+     "settle_max": 4.05,
+     "swing_max": 4.3345959726537435
+    },
+    "U4.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.05,
+     "settle_max": 9.47,
+     "swing_max": 7.1012041526573455
+    }
+   },
+   "U_sweep": {
+    "U1.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 9.870000000000001,
+     "settle_max": 9.950000000000001,
+     "swing_max": 102.84907423456013
+    },
+    "U1.75": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 9.861,
+     "settle_max": 9.96,
+     "swing_max": 72.2791743740284
+    },
+    "U2.00": {
+     "n": 10,
+     "settled": 9,
+     "settle_mean": 9.742222222222223,
+     "settle_max": Infinity,
+     "swing_max": 51.47220322111952
+    },
+    "U2.25": {
+     "n": 10,
+     "settled": 8,
+     "settle_mean": 9.14,
+     "settle_max": Infinity,
+     "swing_max": 36.90520957693673
+    },
+    "U2.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 8.474,
+     "settle_max": 9.540000000000001,
+     "swing_max": 26.323727210439767
+    },
+    "U2.75": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.4719999999999995,
+     "settle_max": 9.51,
+     "swing_max": 18.958383842176044
+    },
+    "U3.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.091000000000001,
+     "settle_max": 9.09,
+     "swing_max": 15.95860577454258
+    },
+    "U3.25": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.220000000000001,
+     "settle_max": 8.5,
+     "swing_max": 13.600548082781179
+    },
+    "U3.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.675999999999999,
+     "settle_max": 8.950000000000001,
+     "swing_max": 11.721896857685834
+    },
+    "U3.75": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.602000000000001,
+     "settle_max": 9.43,
+     "swing_max": 10.207047107819895
+    },
+    "U4.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.0680000000000005,
+     "settle_max": 9.48,
+     "swing_max": 8.971424568690084
+    },
+    "U4.25": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.457000000000001,
+     "settle_max": 9.49,
+     "swing_max": 7.950237590699928
+    },
+    "U4.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.05,
+     "settle_max": 9.47,
+     "swing_max": 7.1012041526573455
+    },
+    "U4.75": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.084999999999999,
+     "settle_max": 9.05,
+     "swing_max": 6.387303699567541
+    },
+    "U5.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.164,
+     "settle_max": 8.08,
+     "swing_max": 5.782809454008164
+    }
+   }
+  },
+  "ab/noise_wind": {
+   "U_best": "U5.00",
+   "cases": {
+    "E": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 2.777,
+     "settle_max": 3.84,
+     "swing_max": 42.23220963195482
+    },
+    "ENMPC": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 4.337000000000001,
+     "settle_max": 9.33,
+     "swing_max": 41.42337189699454
+    },
+    "S": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 4.071000000000001,
+     "settle_max": 4.09,
+     "swing_max": 9.21199322456944
+    },
+    "U5.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.1739999999999995,
+     "settle_max": 9.35,
+     "swing_max": 11.032431817140582
+    }
+   },
+   "U_sweep": {
+    "U1.50": {
+     "n": 10,
+     "settled": 9,
+     "settle_mean": 9.860000000000001,
+     "settle_max": Infinity,
+     "swing_max": 103.45556041381354
+    },
+    "U1.75": {
+     "n": 10,
+     "settled": 9,
+     "settle_mean": 9.846666666666668,
+     "settle_max": Infinity,
+     "swing_max": 73.3389043383076
+    },
+    "U2.00": {
+     "n": 10,
+     "settled": 8,
+     "settle_mean": 9.6925,
+     "settle_max": Infinity,
+     "swing_max": 53.13689636675602
+    },
+    "U2.25": {
+     "n": 10,
+     "settled": 6,
+     "settle_mean": 8.746666666666668,
+     "settle_max": Infinity,
+     "swing_max": 38.3663832695707
+    },
+    "U2.50": {
+     "n": 10,
+     "settled": 8,
+     "settle_mean": 8.27,
+     "settle_max": Infinity,
+     "swing_max": 27.568870925585678
+    },
+    "U2.75": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.549000000000001,
+     "settle_max": 9.41,
+     "swing_max": 21.342601294197074
+    },
+    "U3.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.519,
+     "settle_max": 9.41,
+     "swing_max": 17.130584501772418
+    },
+    "U3.25": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.243,
+     "settle_max": 9.36,
+     "swing_max": 14.377131323131803
+    },
+    "U3.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.216999999999999,
+     "settle_max": 9.13,
+     "swing_max": 12.565404492200754
+    },
+    "U3.75": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.712000000000001,
+     "settle_max": 9.98,
+     "swing_max": 11.105518586030042
+    },
+    "U4.00": {
+     "n": 10,
+     "settled": 9,
+     "settle_mean": 6.956666666666667,
+     "settle_max": Infinity,
+     "swing_max": 10.673731574649834
+    },
+    "U4.25": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.8100000000000005,
+     "settle_max": 9.4,
+     "swing_max": 10.7763021897299
+    },
+    "U4.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.759,
+     "settle_max": 9.4,
+     "swing_max": 10.881764084409994
+    },
+    "U4.75": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.480000000000001,
+     "settle_max": 9.39,
+     "swing_max": 10.968575752305798
+    },
+    "U5.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.1739999999999995,
+     "settle_max": 9.35,
+     "swing_max": 11.032431817140582
+    }
+   }
+  },
+  "obstacle/exact": {
+   "U_best": "U6.00",
+   "cases": {
+    "E": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 2.93,
+     "settle_max": 2.93,
+     "swing_max": 68.3205592071324,
+     "hits": 0,
+     "drone_clear_min_cm": 1.0558292346259934,
+     "load_clear_min_cm": 3.7528116445728816
+    },
+    "S": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 6.0,
+     "settle_max": 6.0,
+     "swing_max": 4.993941221030308,
+     "hits": 0,
+     "drone_clear_min_cm": 4.386913861286024,
+     "load_clear_min_cm": 23.903649945652948
+    },
+    "U6.00": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 5.69,
+     "settle_max": 5.69,
+     "swing_max": 10.29831847080324,
+     "hits": 0,
+     "drone_clear_min_cm": 3.764463379930155,
+     "load_clear_min_cm": 22.0368722839799
+    }
+   },
+   "U_sweep": {
+    "U2.50": {
+     "n": 1,
+     "settled": 0,
+     "settle_mean": null,
+     "settle_max": Infinity,
+     "swing_max": 65.6273654104219,
+     "hits": 1,
+     "drone_clear_min_cm": -6.373353206984694,
+     "load_clear_min_cm": -18.636952134001547
+    },
+    "U3.00": {
+     "n": 1,
+     "settled": 0,
+     "settle_mean": null,
+     "settle_max": Infinity,
+     "swing_max": 64.6790484613982,
+     "hits": 1,
+     "drone_clear_min_cm": -3.036195341184078,
+     "load_clear_min_cm": -19.48015161012097
+    },
+    "U3.50": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 9.77,
+     "settle_max": 9.77,
+     "swing_max": 46.79002379670385,
+     "hits": 1,
+     "drone_clear_min_cm": -2.890765834387893,
+     "load_clear_min_cm": -2.817243899360644
+    },
+    "U4.00": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 9.18,
+     "settle_max": 9.18,
+     "swing_max": 31.57125657707862,
+     "hits": 1,
+     "drone_clear_min_cm": -0.42037615296129927,
+     "load_clear_min_cm": 13.13842891437231
+    },
+    "U4.50": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 7.19,
+     "settle_max": 7.19,
+     "swing_max": 21.399726196753864,
+     "hits": 0,
+     "drone_clear_min_cm": 2.33786313610711,
+     "load_clear_min_cm": 23.919765228955473
+    },
+    "U5.00": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 7.09,
+     "settle_max": 7.09,
+     "swing_max": 16.166210514736072,
+     "hits": 0,
+     "drone_clear_min_cm": 3.900638152031055,
+     "load_clear_min_cm": 26.166776015155524
+    },
+    "U5.50": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 6.72,
+     "settle_max": 6.72,
+     "swing_max": 12.074731630715263,
+     "hits": 0,
+     "drone_clear_min_cm": 4.073519043049112,
+     "load_clear_min_cm": 23.414774464047124
+    },
+    "U6.00": {
+     "n": 1,
+     "settled": 1,
+     "settle_mean": 5.69,
+     "settle_max": 5.69,
+     "swing_max": 10.29831847080324,
+     "hits": 0,
+     "drone_clear_min_cm": 3.764463379930155,
+     "load_clear_min_cm": 22.0368722839799
+    }
+   }
+  },
+  "obstacle/noise": {
+   "U_best": "U6.00",
+   "cases": {
+    "E": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 2.857,
+     "settle_max": 3.42,
+     "swing_max": 68.75756531317712,
+     "hits": 0,
+     "drone_clear_min_cm": 2.050044376439486,
+     "load_clear_min_cm": 1.9160296960848116
+    },
+    "S": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.002000000000001,
+     "settle_max": 6.0200000000000005,
+     "swing_max": 5.439633164444902,
+     "hits": 0,
+     "drone_clear_min_cm": 3.7006419860804995,
+     "load_clear_min_cm": 22.800952327300486
+    },
+    "U6.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.2170000000000005,
+     "settle_max": 9.58,
+     "swing_max": 10.865294073011313,
+     "hits": 0,
+     "drone_clear_min_cm": 3.1387693666748095,
+     "load_clear_min_cm": 21.276220767270274
+    }
+   },
+   "U_sweep": {
+    "U2.50": {
+     "n": 10,
+     "settled": 1,
+     "settle_mean": 9.94,
+     "settle_max": Infinity,
+     "swing_max": 68.19290195592879,
+     "hits": 10,
+     "drone_clear_min_cm": -5.471137608031695,
+     "load_clear_min_cm": -18.08689782832712
+    },
+    "U3.00": {
+     "n": 10,
+     "settled": 1,
+     "settle_mean": 9.540000000000001,
+     "settle_max": Infinity,
+     "swing_max": 67.05912034879552,
+     "hits": 10,
+     "drone_clear_min_cm": -3.013273911263925,
+     "load_clear_min_cm": -21.85734615843541
+    },
+    "U3.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 9.726,
+     "settle_max": 9.870000000000001,
+     "swing_max": 47.91370408589117,
+     "hits": 10,
+     "drone_clear_min_cm": -2.9602489475500207,
+     "load_clear_min_cm": -4.031225960108184
+    },
+    "U4.00": {
+     "n": 10,
+     "settled": 7,
+     "settle_mean": 8.974285714285715,
+     "settle_max": Infinity,
+     "swing_max": 33.19335643680852,
+     "hits": 8,
+     "drone_clear_min_cm": -0.6458769756312988,
+     "load_clear_min_cm": 12.201527378999497
+    },
+    "U4.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 8.225000000000001,
+     "settle_max": 9.69,
+     "swing_max": 22.93367691171367,
+     "hits": 0,
+     "drone_clear_min_cm": 2.208365200853979,
+     "load_clear_min_cm": 23.080313692981793
+    },
+    "U5.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.728999999999999,
+     "settle_max": 9.1,
+     "swing_max": 17.58215794275406,
+     "hits": 0,
+     "drone_clear_min_cm": 3.2727206413954324,
+     "load_clear_min_cm": 24.43082698062767
+    },
+    "U5.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.735000000000001,
+     "settle_max": 9.38,
+     "swing_max": 13.383850586842563,
+     "hits": 0,
+     "drone_clear_min_cm": 3.521795288750784,
+     "load_clear_min_cm": 22.02747358339396
+    },
+    "U6.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.2170000000000005,
+     "settle_max": 9.58,
+     "swing_max": 10.865294073011313,
+     "hits": 0,
+     "drone_clear_min_cm": 3.1387693666748095,
+     "load_clear_min_cm": 21.276220767270274
+    }
+   }
+  },
+  "obstacle/noise_wind": {
+   "U_best": "U5.00",
+   "cases": {
+    "E": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 3.344,
+     "settle_max": 3.85,
+     "swing_max": 68.68717581758126,
+     "hits": 5,
+     "drone_clear_min_cm": -1.8838058536650715,
+     "load_clear_min_cm": -8.59043211025484
+    },
+    "S": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 6.050000000000001,
+     "settle_max": 6.17,
+     "swing_max": 9.717774998174791,
+     "hits": 1,
+     "drone_clear_min_cm": -0.227522837384192,
+     "load_clear_min_cm": 18.01109930725478
+    },
+    "U5.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.753,
+     "settle_max": 9.38,
+     "swing_max": 17.852501335357143,
+     "hits": 0,
+     "drone_clear_min_cm": 0.1284350113562427,
+     "load_clear_min_cm": 16.769139900090494
+    }
+   },
+   "U_sweep": {
+    "U2.50": {
+     "n": 10,
+     "settled": 2,
+     "settle_mean": 9.54,
+     "settle_max": Infinity,
+     "swing_max": 72.58165485197944,
+     "hits": 10,
+     "drone_clear_min_cm": -9.576960759783171,
+     "load_clear_min_cm": -21.981689396067953
+    },
+    "U3.00": {
+     "n": 10,
+     "settled": 2,
+     "settle_mean": 9.645,
+     "settle_max": Infinity,
+     "swing_max": 66.8016971717347,
+     "hits": 10,
+     "drone_clear_min_cm": -8.280365892321845,
+     "load_clear_min_cm": -22.466112957911545
+    },
+    "U3.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 9.843,
+     "settle_max": 9.93,
+     "swing_max": 47.96213046648936,
+     "hits": 10,
+     "drone_clear_min_cm": -8.797574606241799,
+     "load_clear_min_cm": -10.331508926896168
+    },
+    "U4.00": {
+     "n": 10,
+     "settled": 5,
+     "settle_mean": 9.478,
+     "settle_max": Infinity,
+     "swing_max": 33.0117765740505,
+     "hits": 6,
+     "drone_clear_min_cm": -5.219113997520807,
+     "load_clear_min_cm": 2.4997462312485093
+    },
+    "U4.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.8549999999999995,
+     "settle_max": 9.44,
+     "swing_max": 23.432963294190316,
+     "hits": 3,
+     "drone_clear_min_cm": -1.4591617881029861,
+     "load_clear_min_cm": 10.871481588279394
+    },
+    "U5.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.753,
+     "settle_max": 9.38,
+     "swing_max": 17.852501335357143,
+     "hits": 0,
+     "drone_clear_min_cm": 0.1284350113562427,
+     "load_clear_min_cm": 16.769139900090494
+    },
+    "U5.50": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 8.027000000000001,
+     "settle_max": 9.94,
+     "swing_max": 13.79413808452656,
+     "hits": 1,
+     "drone_clear_min_cm": -0.04138965340598211,
+     "load_clear_min_cm": 17.838872619892314
+    },
+    "U6.00": {
+     "n": 10,
+     "settled": 10,
+     "settle_mean": 7.206,
+     "settle_max": 9.41,
+     "swing_max": 11.696637987656691,
+     "hits": 4,
+     "drone_clear_min_cm": -1.238425891346412,
+     "load_clear_min_cm": 15.4502402344497
+    }
+   }
+  }
+ }
+}

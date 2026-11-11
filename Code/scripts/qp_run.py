@@ -10,7 +10,7 @@ Usage: qp_run.py [--dx 2.0] [--tsim 10] [--out results/payload/ab_2m.json]"""
 import sys, os, json, time, argparse
 import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, ".."))
-from ocrl.qp_plant import Plant, Attitude, MQ, ML
+from ocrl.qp_plant import Plant, Attitude, MQ, ML, L
 from ocrl.qp_ocp import plan, minjerk, sample
 from ocrl.qp_lqr import from_plan, DT
 from ocrl.qp_nmpc import from_plan as nmpc_from_plan
@@ -24,14 +24,38 @@ def pd(pl):
     return ctrl
 
 
-def fly(ctrl, A, tsim, on_step=None, posts=()):
-    P = Plant(A, posts); att = Attitude(); n = int(round(DT / P.dt)); rows = []; f = None
+# Realistic sensing (2026-11-11, added after review: the first runs gave every controller the exact simulator state).
+# Outer loop (100 Hz): drone position / velocity / attitude / gyro noise, load direction measured to 1 deg (string-angle sensor), load velocity noise,
+# command applied one period late.  Attitude loop (every plant step): its own IMU noise.  Optional wind on the drone: steady + one gust.
+SIG = dict(p=0.01, v=0.05, att=np.radians(1.0), w=0.05, swing=np.radians(1.0), rv=0.05, att_imu=np.radians(0.5), w_imu=0.03)
+
+
+def _rot(R, rng, sig):
+    w = rng.normal(0, sig, 3); K = np.array([[0, -w[2], w[1]], [w[2], 0, -w[0]], [-w[1], w[0], 0]]); U, _, Vt = np.linalg.svd(R @ (np.eye(3) + K)); return U @ Vt
+
+
+def noisy(s, rng):
+    """Measured state for the outer controller; truth stays in the plant and in the logged rows."""
+    p = s["p"] + rng.normal(0, SIG["p"], 3); d = (s["r"] - s["p"]) / L; d = _rot(np.eye(3), rng, SIG["swing"]) @ d
+    return dict(p=p, R=_rot(s["R"], rng, SIG["att"]), v=s["v"] + rng.normal(0, SIG["v"], 3), w=s["w"] + rng.normal(0, SIG["w"], 3), r=p + L * d, rv=s["rv"] + rng.normal(0, SIG["rv"], 3))
+
+
+def fly(ctrl, A, tsim, on_step=None, posts=(), real=None):
+    """real = None: exact state, no delay (the original runs).  real = dict(seed=k, wind=bool): noise and one-period delay as above, wind if asked."""
+    P = Plant(A, posts); att = Attitude(); n = int(round(DT / P.dt)); rows = []; f = None; f_next = None; rng = np.random.default_rng(real["seed"]) if real else None
+    if real and real.get("wind"):
+        ang = rng.uniform(0, 2 * np.pi); steady = 0.3 * np.array([np.cos(ang), np.sin(ang), 0.0]); g_t0 = rng.uniform(0.3, 2.0); gust = rng.normal(0, 0.5, 3) * [1, 1, 0.3]   # N, on the drone (weight ~12 N)
+    bd = P.m.body("drone").id
     for k in range(int(tsim / P.dt)):
         t = k * P.dt; s = P.state()
         if k % n == 0:
-            f = np.asarray(ctrl(t, s), float).copy(); f[2] = max(f[2], 1.0)          # never command downward thrust
+            sm = noisy(s, rng) if real else s
+            u = np.asarray(ctrl(t, sm), float).copy(); u[2] = max(u[2], 1.0)          # never command downward thrust
+            if real: f, f_next = (u if f_next is None else f_next), u                  # one-period computation delay
+            else: f = u
             rows.append(dict(t=t, p=s["p"], r=s["r"], swing=Plant.swing_deg(s), f=f, thrust=float(np.linalg.norm(f))))
-        P.step(att(s, f))
+        if real and real.get("wind"): P.d.xfrc_applied[bd, :3] = steady + (gust if g_t0 <= t < g_t0 + 0.5 else 0.0)
+        P.step(att(dict(s, R=_rot(s["R"], rng, SIG["att_imu"]), w=s["w"] + rng.normal(0, SIG["w_imu"], 3)) if real else s, f))
         if on_step: on_step(P, (k + 1) * P.dt)
     return rows
 
