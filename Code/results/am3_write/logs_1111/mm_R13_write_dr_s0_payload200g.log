@@ -1,0 +1,1 @@
+{'ctrl': 'R13_write_dr_s0', 'case': 'payload200g', 'text': 'OM', 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/2', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'contact': 0.0, 'drag': 0.0, 'base_max_mm': 14.87, 'tilt_max_deg': 2.23, 'time_s': 18.9, 'arm_rel_range_mm': None, 'joint_range_deg': [3.6, 26.1, 32.0], 'wall_s': 15}

@@ -1,0 +1,26 @@
+{
+ "ctrl": "R13_write_dr_s0",
+ "case": "payload100g",
+ "text": "OM",
+ "completed": true,
+ "abort": null,
+ "strokes": "2/2",
+ "trace_rms_mm": 4.498,
+ "trace_max_mm": 9.409,
+ "coverage": 0.621,
+ "contact": 1.0,
+ "drag": 0.0,
+ "base_max_mm": 5.72,
+ "tilt_max_deg": 2.04,
+ "time_s": 31.3,
+ "arm_rel_range_mm": [
+  48.4,
+  69.9
+ ],
+ "joint_range_deg": [
+  8.4,
+  29.0,
+  37.8
+ ],
+ "wall_s": 30
+}

@@ -235,3 +235,13 @@ From `TODO.md` / `Findings/STATUS.md`: items 3, 4, 5, 7, 8 partial; item 9 open.
 - Found and fixed the fixed-`BASE` failsafe bug, which was producing false "loss of control" reports.
 - Produced six demo media sets; logged every one in `Media_results/README.md` labelled as outside the frozen plan.
 - **Not done:** long line on the wall, "OM" writing, curved surface, aggressive-trajectory variant, anything involving L.
+
+## 2026-11-10 22:35 EST — handoff (PC shutting down)
+- Local H1_hybrid_s0 stopped at ~2.6M steps (model_interrupt.zip saved). It was not learning: reward/step -7 to -9 vs plain NMPC (zero residual, nominal) ~2.3 on 8/8 completed episodes. Likely cause: exploration noise log_std -1.5 (~13 rad/s rotor noise) crashes episodes. DR-on NMPC baseline check timed out (not measured).
+- Turing: R12_write_s0 (2503635, 12M/30M, 20.2/step, ETA ~02:30 EST), R13_write_dr_s0 (2503636, 16.5M/30M, 10.0/step, ETA ~00:30 EST), H1b_hybrid_s0 (2505671, PENDING; log_std -3.0, 10M steps).
+- Next: copy R12/R13/H1b back, score with am3_write_eval.py + am3_write_mismatch.py (add HybridCtrl loader to make()), render NMPC vs RL vs hybrid sentence video.
+
+## 2026-11-11 11:25 EST
+- R12, R13 scored (table in Findings/Write/01_wall_writing.md). R12 1.1-2 mm not robust; R13 ~4 mm, only one surviving payload 100 g + motor_slow.
+- H1/H1b dead: plain NMPC under DR loses control on payload >= 0.15 kg; H1b stalled. Code: scale_mismatch + dr_ramp (am3_rl_wall), write_drc env, hybrid episode cap + D_TAU 0.5 tau_c.
+- Turing: R14_write_drc_ft_s0 (2507364), H2_hybrid_s0 (2507365), both PENDING (priority) at 11:20.

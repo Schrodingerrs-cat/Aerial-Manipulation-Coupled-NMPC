@@ -1,0 +1,1 @@
+{'ctrl': 'R13_write_dr_s0', 'case': 'wind_sine', 'text': 'OM', 'completed': True, 'abort': None, 'strokes': '2/2', 'trace_rms_mm': 4.03, 'trace_max_mm': 9.193, 'coverage': 0.575, 'contact': 1.0, 'drag': 0.062, 'base_max_mm': 14.17, 'tilt_max_deg': 5.57, 'time_s': 30.8, 'arm_rel_range_mm': [66.5, 71.5], 'joint_range_deg': [15.5, 28.8, 38.6], 'wall_s': 22}

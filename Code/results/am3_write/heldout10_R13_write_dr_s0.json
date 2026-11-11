@@ -1,0 +1,102 @@
+[
+ {
+  "text": "OM",
+  "height": 0.1,
+  "completed": true,
+  "abort": null,
+  "strokes": "2/2",
+  "trace_rms_mm": 3.998,
+  "trace_max_mm": 10.899,
+  "coverage": 0.717,
+  "contact": 1.0,
+  "drag": 0.099,
+  "base_max_mm": 5.67,
+  "tilt_max_deg": 3.1,
+  "time_s": 20.0,
+  "arm_rel_range_mm": [
+   52.6,
+   65.5
+  ],
+  "joint_range_deg": [
+   11.1,
+   28.7,
+   38.5
+  ],
+  "wall_s": 20
+ },
+ {
+  "text": "HI",
+  "height": 0.1,
+  "completed": true,
+  "abort": null,
+  "strokes": "4/4",
+  "trace_rms_mm": 4.06,
+  "trace_max_mm": 17.295,
+  "coverage": 0.833,
+  "contact": 1.0,
+  "drag": 0.086,
+  "base_max_mm": 9.6,
+  "tilt_max_deg": 6.03,
+  "time_s": 23.7,
+  "arm_rel_range_mm": [
+   78.6,
+   71.5
+  ],
+  "joint_range_deg": [
+   17.8,
+   30.1,
+   38.8
+  ],
+  "wall_s": 16
+ },
+ {
+  "text": "WPI",
+  "height": 0.1,
+  "completed": true,
+  "abort": null,
+  "strokes": "3/3",
+  "trace_rms_mm": 3.737,
+  "trace_max_mm": 9.7,
+  "coverage": 0.601,
+  "contact": 0.98,
+  "drag": 0.079,
+  "base_max_mm": 6.64,
+  "tilt_max_deg": 3.93,
+  "time_s": 25.9,
+  "arm_rel_range_mm": [
+   71.2,
+   68.6
+  ],
+  "joint_range_deg": [
+   15.3,
+   28.9,
+   38.8
+  ],
+  "wall_s": 15
+ },
+ {
+  "text": "ZEN",
+  "height": 0.1,
+  "completed": true,
+  "abort": null,
+  "strokes": "4/4",
+  "trace_rms_mm": 5.835,
+  "trace_max_mm": 14.737,
+  "coverage": 0.572,
+  "contact": 1.0,
+  "drag": 0.083,
+  "base_max_mm": 6.91,
+  "tilt_max_deg": 4.28,
+  "time_s": 31.3,
+  "arm_rel_range_mm": [
+   80.4,
+   66.1
+  ],
+  "joint_range_deg": [
+   17.4,
+   29.5,
+   38.6
+  ],
+  "wall_s": 17
+ }
+]

@@ -1,0 +1,26 @@
+{
+ "ctrl": "R13_write_dr_s0",
+ "case": "kf90",
+ "text": "OM",
+ "completed": true,
+ "abort": null,
+ "strokes": "2/2",
+ "trace_rms_mm": 4.669,
+ "trace_max_mm": 10.625,
+ "coverage": 0.45,
+ "contact": 1.0,
+ "drag": 0.058,
+ "base_max_mm": 7.84,
+ "tilt_max_deg": 2.76,
+ "time_s": 30.7,
+ "arm_rel_range_mm": [
+  50.0,
+  70.0
+ ],
+ "joint_range_deg": [
+  11.0,
+  28.8,
+  38.2
+ ],
+ "wall_s": 21
+}

@@ -8,11 +8,11 @@ from gymnasium import spaces
 from ocrl.am3_ctrl_n import NMPC
 from ocrl.am3_episode import Episode, initial_state, BASE
 from ocrl.am3_write import WriteEpisode, FONT
-from ocrl.am3_rl_wall import PHASES, PH_OBS, CONTACT, SHAPES, sample_mismatch
+from ocrl.am3_rl_wall import PHASES, PH_OBS, CONTACT, SHAPES, sample_mismatch, scale_mismatch
 from ocrl.am3_pred import AMPred3
 from ocrl.am3_pred import quat2R
 
-PR = AMPred3(); D_OM, D_TAU = 60.0, 0.25 * float(np.max(PR.tau_c)); OM_H = 1100.0
+PR = AMPred3(); D_OM, D_TAU = 60.0, 0.5 * float(np.max(PR.tau_c)); OM_H = 1100.0          # H2: joint residual 0.25 -> 0.5 tau_c (a 0.25 kg hand payload needs ~0.6 N m the NMPC does not know about)
 NOBS = 3 + 3 + 3 + 3 + 6 + 3 + 3 + 3 + 4 + 3 + 7 + len(PHASES) + 3
 
 
@@ -44,8 +44,8 @@ class HybridCtrl:
 
 class HybridEnv(gym.Env):
     """One step = one 50 Hz control period of Episode.run, with u = u_N + residual(action)."""
-    def __init__(self, seed=0, write_p=0.7, dr=True, bad_pen=100.0, done_bonus=100.0):
-        self.rng = np.random.default_rng(seed); self.write_p, self.dr, self.bad_pen, self.done_bonus = write_p, dr, bad_pen, done_bonus
+    def __init__(self, seed=0, write_p=0.7, dr=True, bad_pen=100.0, done_bonus=100.0, dr_ramp=300):
+        self.rng = np.random.default_rng(seed); self.write_p, self.dr, self.bad_pen, self.done_bonus, self.dr_ramp, self.n_ep = write_p, dr, bad_pen, done_bonus, dr_ramp, 0
         self.ctrl = HybridCtrl(); self.observation_space = spaces.Box(-10, 10, (NOBS,), np.float32); self.action_space = spaces.Box(-1, 1, (7,), np.float32)
 
     @property
@@ -54,9 +54,10 @@ class HybridEnv(gym.Env):
     def expert_action(self, x): return np.zeros(7)                              # reference controller = plain NMPC (zero residual)
 
     def reset(self, seed=None, options=None):
-        g = self.rng; mm = sample_mismatch(g) if self.dr else None; x0 = initial_state(float(g.uniform(0.05, 0.08)), (float(g.uniform(-0.008, 0.008)), 1.04 + float(g.uniform(-0.008, 0.008))))
+        g = self.rng; self.n_ep += 1; mm = scale_mismatch(sample_mismatch(g), min(1.0, self.n_ep / self.dr_ramp) if self.dr_ramp else 1.0) if self.dr else None; x0 = initial_state(float(g.uniform(0.05, 0.08)), (float(g.uniform(-0.008, 0.008)), 1.04 + float(g.uniform(-0.008, 0.008))))
         if g.random() < self.write_p:
             text = "".join(g.choice(sorted(FONT), size=1 if g.random() < 0.7 else 2)); self.ep = WriteEpisode(self.ctrl, text, height=float(g.uniform(0.03, 0.10)), v_write=float(g.uniform(0.025, 0.075)), mismatch=mm, x0=x0, seed=int(g.integers(1 << 30)))
+            self.ep.T_max = sum(self.ep.task.Ts) + 4.0 * len(self.ep.task.Ts) + 6.0          # same cap as WallEnv (H1 let a stuck episode run 600 s)
         else: self.ep = Episode(self.ctrl, str(g.choice(SHAPES)), mismatch=mm, x0=x0, seed=int(g.integers(1 << 30)))
         self.u_pend = self.ep.u0.copy(); self.u_app = self.ep.u0.copy(); self.k = 0; self.n_sub = int(round(self.ctrl.period / self.ep.pl.dt))
         return self._observe()[0], {}

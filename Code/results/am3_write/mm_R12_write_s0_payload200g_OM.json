@@ -1,0 +1,23 @@
+{
+ "ctrl": "R12_write_s0",
+ "case": "payload200g",
+ "text": "OM",
+ "completed": false,
+ "abort": "loss of control (failsafe): tilt 33 deg, base error 252 mm",
+ "strokes": "0/2",
+ "trace_rms_mm": NaN,
+ "trace_max_mm": NaN,
+ "coverage": 0.0,
+ "contact": 0.0,
+ "drag": 0.0,
+ "base_max_mm": 248.7,
+ "tilt_max_deg": 31.75,
+ "time_s": 2.6,
+ "arm_rel_range_mm": null,
+ "joint_range_deg": [
+  37.8,
+  30.3,
+  24.1
+ ],
+ "wall_s": 3
+}

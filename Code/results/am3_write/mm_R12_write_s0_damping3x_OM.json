@@ -1,0 +1,26 @@
+{
+ "ctrl": "R12_write_s0",
+ "case": "damping3x",
+ "text": "OM",
+ "completed": true,
+ "abort": null,
+ "strokes": "2/2",
+ "trace_rms_mm": 1.191,
+ "trace_max_mm": 2.697,
+ "coverage": 1.0,
+ "contact": 1.0,
+ "drag": 0.0,
+ "base_max_mm": 6.91,
+ "tilt_max_deg": 1.45,
+ "time_s": 31.9,
+ "arm_rel_range_mm": [
+  50.7,
+  64.3
+ ],
+ "joint_range_deg": [
+  10.2,
+  26.8,
+  35.2
+ ],
+ "wall_s": 23
+}

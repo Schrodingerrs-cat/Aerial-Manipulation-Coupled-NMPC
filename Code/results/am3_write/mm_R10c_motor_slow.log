@@ -1,0 +1,1 @@
+{'ctrl': 'R10c_wallff_s0', 'case': 'motor_slow', 'text': 'OM', 'completed': False, 'abort': 'loss of control (failsafe): tilt 36 deg, base error 251 mm', 'strokes': '0/2', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.008, 'contact': 0.0, 'drag': 0.0, 'base_max_mm': 246.82, 'tilt_max_deg': 33.49, 'time_s': 3.8, 'wall_s': 3}

@@ -1,0 +1,27 @@
+[
+ {
+  "text": "HI",
+  "height": 0.2,
+  "completed": true,
+  "abort": null,
+  "strokes": "4/4",
+  "trace_rms_mm": 0.718,
+  "trace_max_mm": 1.496,
+  "coverage": 1.0,
+  "contact": 1.0,
+  "drag": 0.0,
+  "base_max_mm": 1.17,
+  "tilt_max_deg": 2.78,
+  "time_s": 36.1,
+  "arm_rel_range_mm": [
+   71.7,
+   69.0
+  ],
+  "joint_range_deg": [
+   15.1,
+   29.4,
+   35.8
+  ],
+  "wall_s": 49
+ }
+]

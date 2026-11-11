@@ -1,0 +1,4 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'ctrl': 'N', 'case': 'payload200g', 'text': 'OM', 'completed': False, 'abort': 'loss of control (failsafe): tilt 33 deg, base error 263 mm', 'strokes': '0/2', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'contact': 0.0, 'drag': 0.0, 'base_max_mm': 249.85, 'tilt_max_deg': 34.32, 'time_s': 1.7, 'wall_s': 3}

@@ -46,3 +46,45 @@ PPO starts near zero, so training starts from the NMPC. Env steps exactly the Ep
 Reward: alive 2, pad error, base error, contact in contact phases, pen drag when up, force over 2 N, action size; -100 on failure, +100 when done. Plain NMPC earns 2.25/step (nominal).
 HybridCtrl is an Episode controller, so H is scored by the same harness as N and RL. acados built on Turing (2026-11-10) so hybrids can also train there.
 Run: H1_hybrid_s0 locally (20 envs, 10M steps, started 20:12 EST).
+
+## 2026-11-11 11:25 EST — R12 / R13 scored, H1 diagnosed, next runs (R14, H2)
+
+R12 = PPO, writing + shapes, nominal model, 30M steps. R13 = same plus domain randomization (DR), 30M steps. Both on Turing.
+Held-out words never trained on as words (training sees 1-2 random letters, 3-10 cm). Results in `Code/results/am3_write/`.
+
+**Held-out words, 10 cm letters, 50 mm/s (trace RMS mm / coverage), all completed**
+
+| word | N | R12 | R13 |
+|---|---|---|---|
+| OM | 0.54 / 1.00 | 1.77 / 0.88 | 4.00 / 0.72 |
+| HI | 0.67 / 1.00 | 1.38 / 1.00 | 4.06 / 0.83 |
+| WPI | 0.55 / 1.00 | 1.83 / 0.87 | 3.74 / 0.60 |
+| ZEN | 0.60 / 1.00 | 2.07 / 0.86 | 5.84 / 0.57 |
+| HI at 20 cm | 0.72 / 1.00 | 1.38 / 1.00 | 4.34 / 0.94 |
+
+20 cm is outside the training range (3-10 cm); all three complete it.
+
+**Model mismatch, OM 10 cm, 25 mm/s**
+
+| case | N | R12 | R13 |
+|---|---|---|---|
+| nominal | 0.36 | 1.13 | 4.10 |
+| payload 100 g | FAIL | FAIL | **4.50 OK** |
+| payload 200 g | FAIL | FAIL | FAIL |
+| thrust -10 % | 1.42 | 2.00 | 4.67 |
+| motor lag x2 | FAIL | FAIL | **4.00 OK** |
+| damping x3 | 0.38 | 1.19 | 3.33 |
+| gust y | 0.40 | 1.50 | 4.76 |
+| wind sine | 1.04 | 4.96 (cov 0.44) | 4.03 |
+
+Reading: N is the most accurate wherever its model holds. R12 is a big step up from R10c (1.1-2 mm vs 3.9 mm) but not robust.
+R13 is the only controller that survives payload 100 g and slow motors, at the cost of ~4 mm error and 5-10 % pen drag.
+
+**H1 (hybrid NMPC + residual) failed to learn; cause found.** Zero-residual NMPC under the training DR: 5/12 episodes lose control within ~1.5 s
+(every payload >= 0.15 kg), one ran the full 600 s cap. So H1's -8 reward/step is the randomized plant, not the residual; PPO had almost no
+recoverable episodes to learn from. H1b (smaller exploration noise) behaved the same and stalled on Turing (long episodes); cancelled.
+
+**Next runs (Turing, submitted 11:20 EST):**
+- R14_write_drc_ft_s0: fine-tune R12 with DR ramped in over the first 300 episodes per env (`write_drc`), lr 1e-4, 20M. Goal: R12 accuracy + R13 robustness.
+- H2_hybrid_s0: hybrid with (1) episode cap = stroke time + margin, (2) same DR ramp, (3) joint residual 0.25 -> 0.5 tau_c
+  (0.25 kg on the hand needs ~0.6 N m the NMPC does not model), log_std -2.5, 10M.

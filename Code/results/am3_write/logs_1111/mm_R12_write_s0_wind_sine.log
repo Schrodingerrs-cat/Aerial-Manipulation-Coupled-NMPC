@@ -1,0 +1,1 @@
+{'ctrl': 'R12_write_s0', 'case': 'wind_sine', 'text': 'OM', 'completed': True, 'abort': None, 'strokes': '2/2', 'trace_rms_mm': 4.957, 'trace_max_mm': 8.204, 'coverage': 0.438, 'contact': 0.945, 'drag': 0.0, 'base_max_mm': 33.41, 'tilt_max_deg': 6.01, 'time_s': 45.5, 'arm_rel_range_mm': [99.9, 78.4], 'joint_range_deg': [26.4, 30.8, 36.9], 'wall_s': 34}

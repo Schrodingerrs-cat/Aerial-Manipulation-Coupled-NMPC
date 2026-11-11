@@ -25,12 +25,18 @@ def sample_mismatch(g):
                 joint_damping_scale=float(np.exp(g.uniform(np.log(0.5), np.log(4.0)))), disturbance=dist)
 
 
+def scale_mismatch(mm, s):
+    """Curriculum (2026-11-11): s = 0 is the nominal model, s = 1 the full sample from sample_mismatch."""
+    return dict(payload=dict(kg=max(1e-9, s * mm["payload"]["kg"]), pos_hand_m=mm["payload"]["pos_hand_m"]), kf_scale=1 + s * (mm["kf_scale"] - 1), motor_tau_scale=1 + s * (mm["motor_tau_scale"] - 1),
+                joint_damping_scale=float(mm["joint_damping_scale"] ** s), disturbance=[dict(d, amp=s * d["amp"]) for d in mm["disturbance"]])
+
+
 class WallEnv(Track9Env):
-    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, **kw):
+    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
         self.pl.m.geom_contype[self.pl.gwall] = 1; self.pl.m.geom_conaffinity[self.pl.gwall] = 1; self.latency = True
         self.inner.kp_j, self.inner.kd_j = 1.0, 0.05          # the track-rung joint gains (1.57, 0.016) go unstable with the harness latency: arm limit cycle at 12 rad/s; chosen from a sweep, see Findings/RL/03
-        self.paths, self.pad_w, self.contact_w, self.done_bonus = paths, pad_w, contact_w, done_bonus; self.drive_task = True; self.Fm = 0.0; self.scenario = None; self.vel_ff = vel_ff; self.write_p = write_p; self.dr = dr; self.damp0 = self.pl.m.dof_damping.copy()
+        self.paths, self.pad_w, self.contact_w, self.done_bonus = paths, pad_w, contact_w, done_bonus; self.drive_task = True; self.Fm = 0.0; self.scenario = None; self.vel_ff = vel_ff; self.write_p = write_p; self.dr = dr; self.dr_ramp, self.n_dr = dr_ramp, 0; self.damp0 = self.pl.m.dof_damping.copy()
         self.observation_space = spaces.Box(-np.inf, np.inf, (self.observation_space.shape[0] + 6 + len(PHASES) + 3,), np.float32)
 
     def _state0(self):
@@ -52,7 +58,8 @@ class WallEnv(Track9Env):
 
     def domain_rand(self):
         """Domain randomization (R13); every episode starts from the nominal model."""
-        self.pl.m.dof_damping[:] = self.damp0; self.mm = sample_mismatch(self.rng)
+        self.pl.m.dof_damping[:] = self.damp0; self.mm = sample_mismatch(self.rng); self.n_dr += 1
+        if self.dr_ramp: self.mm = scale_mismatch(self.mm, min(1.0, self.n_dr / self.dr_ramp))          # ramp over the first dr_ramp episodes of this env
         x = self.pl.state(); self.pl.apply_mismatch(self.mm); self.pl.set_state(x)          # apply_mismatch -> mj_setConst overwrites the simulation state
 
     def _set_ref(self, t):
