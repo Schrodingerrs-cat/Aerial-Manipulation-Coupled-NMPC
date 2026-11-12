@@ -41,11 +41,16 @@ class InnerLoop:
         self.J = Jo - self.m * (self.rc @ self.rc * np.eye(3) - np.outer(self.rc, self.rc))
         wrench = self.A @ (KF * np.asarray(e["u"][:4], float) ** 2)
         self.Mbias = wrench[1:4] - np.cross(self.rc, [0.0, 0.0, wrench[0]])            # residual trim the equilibrium rotors deliver
+        self.Mq = np.diag(np.array(self.pr.M_f(e["x"]))[6:9, 6:9]).copy()             # joint inertias at the nominal posture (for the disturbance observer)
+        self.dob, self.k_dob, self.dt, self.lag, self.dob_state = False, np.array([10.0] * 6 + [0.0] * 3), 0.01, 2, None   # gains (1/s): base force, body moment, joints; sweep in Findings/RL/04 (joint part off: oscillates)
         self.wn, self.zeta, self.kp_j, self.kd_j, self.aware = wn, zeta, kp_j, kd_j, aware; self.qd_ref = np.zeros(3)   # joint velocity feedforward; only the wall rung sets it, the free-flight rungs keep 0
 
     def __call__(self, x, a_d, w_d, psi_d, q_d):
         R = np.array(quat2R(x[3:7])); w = x[10:13]
-        Fd = self.m * (a_d + np.array([0.0, 0.0, G0]))
+        rc = self.rc
+        if self.aware: xc = self.eq["x"].copy(); xc[13:16] = x[13:16]; rc = np.array(self.pr.com_f(xc)).ravel() - BASE          # COM offset at the measured posture (R6)
+        d = self.observe(x, R, w, rc) if self.dob else np.zeros(9)
+        Fd = self.m * (a_d + np.array([0.0, 0.0, G0])) - d[0:3]
         nF = np.linalg.norm(Fd)
         b3 = Fd / nF if nF > 1e-6 else np.array([0.0, 0.0, 1.0])
         b1c = np.array([np.cos(psi_d), np.sin(psi_d), 0.0])
@@ -55,20 +60,35 @@ class InnerLoop:
         eR = 0.5 * vee(Rd.T @ R - R.T @ Rd); ew = w - R.T @ Rd @ w_d
         Mb = -self.J @ (self.wn ** 2 * eR + 2 * self.zeta * self.wn * ew) + np.cross(w, self.J @ w)
         T = float(Fd @ R[:, 2])
-        rc = self.rc
-        if self.aware: xc = self.eq["x"].copy(); xc[13:16] = x[13:16]; rc = np.array(self.pr.com_f(xc)).ravel() - BASE          # COM offset at the measured posture (R6)
         Mb = Mb + np.cross(rc, [0.0, 0.0, T]) + self.Mbias                        # moment about the COM -> about the thrust-plane origin
-        f = np.clip(self.Ainv @ np.r_[T, Mb], P["f_min_N"], P["f_max_N"])
         xr = x.copy(); xr[13:16] = q_d; xr[16:19] = 0.0
         g_j = np.array(self.pr.grav_f(xr)).ravel()[6:9]
         tau = g_j + self.kp_j * (q_d - x[13:16]) - self.kd_j * (x[16:19] - self.qd_ref)
-        return np.r_[np.clip(np.sqrt(f / KF), OM_MIN, OM_MAX), np.clip(tau, -TAU_C, TAU_C)]
+        Mb = Mb - d[3:6]; tau = tau - d[6:9]
+        f = np.clip(self.Ainv @ np.r_[T, Mb], P["f_min_N"], P["f_max_N"])
+        tau = np.clip(tau, -TAU_C, TAU_C)
+        if self.dob: self.dob_state["tau"] = self.dob_state["tau"][1:] + [tau]
+        return np.r_[np.clip(np.sqrt(f / KF), OM_MIN, OM_MAX), tau]
+
+    def observe(self, x, R, w, rc):
+        """Generalized-momentum disturbance observer on the full coupled model (2026-11-11; the TDE idea of Singh et al., without differentiating noisy rates).
+        M(x) nu' + b(x, nu) + G(x) = tau_rot(x) + [0, tau_j - D qd] + d,  nu = [v (world), w (body), qd].  With p = M nu:  p' = (rhs above) + M' nu.
+        Each call integrates the interval that just ended (trapezoid; rotor wrench from the measured rotor speeds, so motor lag and latency are inside; the joint command
+        that acted on it is `lag` calls old), then d_hat = K (p - p0 - integral(rhs + M' nu + d_hat)).  Arm-base coupling is in M, so d is only what the model lacks:
+        contact, payload, thrust/lag/damping error, wind.  d[0:3] world force, d[3:6] body moment about the base origin, d[6:9] joint torques."""
+        nu = np.r_[x[7:13], x[16:19]].astype(float); Mx = np.array(self.pr.M_f(x)); pmom = Mx @ nu
+        f = np.array(self.pr.tau_rot_f(x)).ravel() - np.array(self.pr.bias_f(x)).ravel() - np.array(self.pr.grav_f(x)).ravel(); f[6:9] -= self.pr.D * nu[6:9]
+        if self.dob_state is None: self.dob_state = dict(p0=pmom, I=np.zeros(9), d=np.zeros(9), f=f, M=Mx, nu=nu, tau=[np.array(self.pr.grav_f(x)).ravel()[6:9] for _ in range(self.lag)]); return self.dob_state["d"]
+        S = self.dob_state; fa = 0.5 * (f + S["f"]); fa[6:9] += S["tau"][0]
+        S["I"] = S["I"] + (fa + S["d"]) * self.dt + (Mx - S["M"]) @ (0.5 * (nu + S["nu"])); S["f"], S["M"], S["nu"] = f, Mx, nu
+        S["d"] = self.k_dob * (pmom - S["p0"] - S["I"]); return S["d"]
 
 
 class Sensors:
     """Same noise model as the NMPC harness (ocrl/am3_episode.Sensors), so RL and NMPC see measurements of equal quality."""
     SIG = dict(p=1e-4, att=np.radians(0.01), v=1e-3, w=5e-4, q=5e-5, qd=1e-3)
-    def __init__(self, seed=0): self.rng = np.random.default_rng(seed)
+    REAL = dict(p=1e-3, att=np.radians(0.5), v=0.01, w=0.02, q=1e-3, qd=0.02, Om=5.0)      # mocap + IMU class (Phase 1, 2026-11-11; same as scripts/am3_write_bench.SIG_REAL)
+    def __init__(self, seed=0, sig=None): self.rng = np.random.default_rng(seed); self.SIG = sig or Sensors.SIG
     def __call__(self, x):
         s, r = self.SIG, self.rng.standard_normal; xm = x.copy()
         xm[0:3] += s["p"] * r(3); dth = s["att"] * r(3); Q = x[3:7]
@@ -76,6 +96,7 @@ class Sensors:
                              Q[0] * dth[1] - Q[1] * dth[2] + Q[3] * dth[0], Q[0] * dth[2] + Q[1] * dth[1] - Q[2] * dth[0]])
         xm[3:7] = (Q + dq) / np.linalg.norm(Q + dq)
         xm[7:10] += s["v"] * r(3); xm[10:13] += s["w"] * r(3); xm[13:16] += s["q"] * r(3); xm[16:19] += s["qd"] * r(3)
+        if "Om" in s: xm[19:23] += s["Om"] * r(4)
         return xm
 
 
@@ -141,9 +162,9 @@ class HoverEnv(gym.Env):
 
     # ---- gym API
     def reset(self, seed=None, options=None):
-        if seed is not None: self.rng = np.random.default_rng(seed); self.sens = Sensors(seed)
+        if seed is not None: self.rng = np.random.default_rng(seed); self.sens = Sensors(seed, self.sens.SIG)
         self.x0 = self._state0(); self.pl.set_state(self.x0); self.pl.reset_log()
-        self.a_prev = np.zeros(10); self.n = 0
+        self.a_prev = np.zeros(10); self.n = 0; self.inner.dob_state = None
         self.u_pend = np.r_[self.x0[19:23], np.asarray(self.inner.eq["u"], float)[4:]]
         self._new_episode(); self._set_ref(0.0)
         self.e_prev = float(np.linalg.norm(self.x0[0:3] - self.pref))

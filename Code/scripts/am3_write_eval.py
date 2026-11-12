@@ -26,8 +26,9 @@ def write_metrics(ep):
 def make(ctrl):
     if ctrl.endswith(".zip"):
         from stable_baselines3 import PPO
-        from ocrl.am3_rl_wall import RLCtrl
-        return RLCtrl(PPO.load(ctrl, device="cpu"), vel_ff=True)
+        from ocrl.am3_rl_wall import RLCtrl, KIND_KW
+        cfg = os.path.join(os.path.dirname(ctrl), "config.json"); kind = json.load(open(cfg)).get("env") if os.path.exists(cfg) else None
+        return RLCtrl(PPO.load(ctrl, device="cpu"), vel_ff=True, **KIND_KW.get(kind, {}))           # same env options the policy was trained with
     from am3_run import make_ctrl
     return make_ctrl(ctrl)
 

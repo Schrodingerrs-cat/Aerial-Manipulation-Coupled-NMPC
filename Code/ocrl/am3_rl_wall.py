@@ -2,7 +2,7 @@
 The base holds its fixed hover reference; the joint reference is the IK of the Task's pad reference, plus the policy's residual.  Limits mirror the Episode failsafe."""
 import numpy as np
 from gymnasium import spaces
-from ocrl.am3_rl_direct import Track9Env, BASE, Q_NOM
+from ocrl.am3_rl_direct import Track9Env, BASE, Q_NOM, Sensors
 from ocrl.am3_plant import WALL_X, R_PAD
 from ocrl.am3_task import Task, TASK
 from ocrl.am3_episode import initial_state
@@ -32,12 +32,20 @@ def scale_mismatch(mm, s):
 
 
 class WallEnv(Track9Env):
-    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, **kw):
+    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, real_sens=False, pad_fine_w=0.0, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
+        self.hist, self.H, self.pad_fine_w = hist, None, pad_fine_w; self.inner.dob = dob          # R15 (Phase 1): observation history, disturbance observer, fine pad reward
+        if real_sens: self.sens = Sensors(kw.get("seed", 0), Sensors.REAL)
         self.pl.m.geom_contype[self.pl.gwall] = 1; self.pl.m.geom_conaffinity[self.pl.gwall] = 1; self.latency = True
         self.inner.kp_j, self.inner.kd_j = 1.0, 0.05          # the track-rung joint gains (1.57, 0.016) go unstable with the harness latency: arm limit cycle at 12 rad/s; chosen from a sweep, see Findings/RL/03
         self.paths, self.pad_w, self.contact_w, self.done_bonus = paths, pad_w, contact_w, done_bonus; self.drive_task = True; self.Fm = 0.0; self.scenario = None; self.vel_ff = vel_ff; self.write_p = write_p; self.dr = dr; self.dr_ramp, self.n_dr = dr_ramp, 0; self.damp0 = self.pl.m.dof_damping.copy()
-        self.observation_space = spaces.Box(-np.inf, np.inf, (self.observation_space.shape[0] + 6 + len(PHASES) + 3,), np.float32)
+        self.observation_space = spaces.Box(-np.inf, np.inf, ((self.observation_space.shape[0] + 6 + len(PHASES) + 3) * hist,), np.float32)
+
+    def _obs(self, xm):
+        o = super()._obs(xm)
+        if self.hist == 1: return o
+        self.H = [o] * self.hist if self.H is None else [o] + self.H[:-1]                       # newest first, so a widened warm start keeps the old input in place
+        return np.concatenate(self.H)
 
     def _state0(self):
         s = self.scenario
@@ -45,7 +53,7 @@ class WallEnv(Track9Env):
         return initial_state(gap0, (dyz[0], 1.04 + dyz[1]))[0]
 
     def _new_episode(self):
-        self.p = dict(HOLD); self.ei = np.zeros(3); self.max_steps = int(25.0 / self.dt_c); self.path = self.scenario["path"] if self.scenario else str(self.rng.choice(self.paths))
+        self.H = None; self.p = dict(HOLD); self.ei = np.zeros(3); self.max_steps = int(25.0 / self.dt_c); self.path = self.scenario["path"] if self.scenario else str(self.rng.choice(self.paths))
         p0 = np.array(self.inner.pr.pad_f(self.x0)[0]).ravel()
         if self.scenario is None and self.rng.random() < self.write_p:            # writing episode: 1-2 random capital letters, random size, moving base
             from ocrl.am3_write import WriteTask, text_strokes, FONT
@@ -79,6 +87,7 @@ class WallEnv(Track9Env):
         obs, r, bad, trunc, info = super().step(a)
         x = self.pl.state(); pad = np.array(self.inner.pr.pad_f(x)[0]).ravel(); ep = float(np.linalg.norm(pad - self.rp)); F = self.Fm; ph = self.task.phase
         r -= self.pad_w * min(ep, 0.02) / 0.002
+        if ph == "trace": r += self.pad_fine_w * np.exp(-(ep / 0.001) ** 2)              # R15: sharp term at the mm scale, only while writing
         if ph in CONTACT: r += self.contact_w * (1.0 if F > 0.08 else -1.0)
         r -= 0.5 * max(F - 2.0, 0.0)
         tilt = np.degrees(2 * np.arcsin(min(1.0, np.hypot(x[4], x[5])))); stop = tilt > 40 or np.linalg.norm(x[:3] - self.pref) > 0.25 or F > 4.0 or bool(self.task.failed) or len(self.pl.other_contacts()) > 0
@@ -89,16 +98,19 @@ class WallEnv(Track9Env):
         return obs, float(r), bool(bad), bool((trunc or done) and not bad), info
 
 
+KIND_KW = dict(write15=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0))         # env options a policy was trained with, by training env kind (Phase 1)
+
+
 class RLCtrl:
     """The trained policy as an Episode controller, so it is scored by the same harness as N and B.  attach(ep) gives it the episode plant (read-only) and task."""
     period = 0.01; name = "RL"; task_uses_state = True
 
-    def __init__(self, policy, vel_ff=False): self.env = WallEnv(seed=0, vel_ff=vel_ff); self.env.drive_task = False; self.pol = policy
+    def __init__(self, policy, vel_ff=False, **kw): self.env = WallEnv(seed=0, vel_ff=vel_ff, **kw); self.env.drive_task = False; self.pol = policy
 
     def attach(self, ep): self.env.pl = ep.pl
 
     def reset(self, x0, u0, task):
-        e = self.env; e.x0 = np.array(x0); e.task = task; e.a_prev = np.zeros(10); e.ei = np.zeros(3); e.p = dict(HOLD); e.qref = np.array(x0[13:16]); e.Fm = 0.0; e.n = 0
+        e = self.env; e.x0 = np.array(x0); e.task = task; e.a_prev = np.zeros(10); e.ei = np.zeros(3); e.p = dict(HOLD); e.qref = np.array(x0[13:16]); e.Fm = 0.0; e.n = 0; e.inner.dob_state = None; e.H = None
 
     def compute(self, t, xm, Fm, task):
         e = self.env; e.n = int(round(t / self.period)); e.Fm = float(Fm); e._set_ref(t); obs = e._obs(xm); a = self.pol.predict(obs, deterministic=True)[0] if self.pol != "pd" else e.expert_action(xm)

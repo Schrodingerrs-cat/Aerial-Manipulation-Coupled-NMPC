@@ -102,11 +102,12 @@ def make_raw(kind, seed, max_steps, fine_w=None, fine_s=0.01, lin_w=None, tilt_w
     if kind == "hybrid":
         from ocrl.am3_hybrid import HybridEnv
         return HybridEnv(seed=seed, dr=fine_w != -1.0)                            # NMPC + residual policy, writing/shapes, domain randomization
-    if kind in ("wall", "wall_ff", "wall_shapes", "write", "write_dr", "write_drc"):
-        from ocrl.am3_rl_wall import WallEnv, SHAPES
-        if kind in ("wall_shapes", "write", "write_dr", "write_drc"): kw["paths"] = SHAPES
+    if kind in ("wall", "wall_ff", "wall_shapes", "write", "write_dr", "write_drc", "write15"):
+        from ocrl.am3_rl_wall import WallEnv, SHAPES, KIND_KW
+        if kind in ("wall_shapes", "write", "write_dr", "write_drc", "write15"): kw["paths"] = SHAPES
+        kw.update(KIND_KW.get(kind, {}))                                          # R15 (Phase 1): history 4, disturbance observer, realistic sensing, fine pad reward
         if kind == "write_drc": kw["dr_ramp"] = 300                               # R14: randomization ramped in over the first 300 episodes per env
-        if kind in ("write", "write_dr", "write_drc"): kw["write_p"] = 0.7                     # 70 % writing episodes (moving base), 30 % fixed-base shapes
+        if kind in ("write", "write_dr", "write_drc", "write15"): kw["write_p"] = 0.7                     # 70 % writing episodes (moving base), 30 % fixed-base shapes
         if kind in ("write_dr", "write_drc"): kw["dr"] = True                                    # plus domain randomization (payload, thrust, motor lag, damping, wind)
         return WallEnv(seed=seed, max_steps=max_steps, vel_ff=kind != "wall", **kw)
     return {"track": TrackEnv, "track3": Track3Env, "track4": Track4Env, "track5": Track5Env, "track6": Track6Env, "track7": Track7Env, "track8": Track8Env, "track9": Track9Env}.get(kind, HoverEnv)(seed=seed, max_steps=max_steps, **kw)
@@ -157,6 +158,11 @@ def main(a):
         model = PPO.load(a.init_from, env=venv, device=a.device, custom_objects=dict(learning_rate=a.lr, target_kl=a.target_kl))
         model.set_random_seed(a.seed)      # PPO.load restores the saved seed (0), which would give every warm start identical torch and env streams
         log(f"WARM START from {a.init_from} (counting steps from 0; lr {a.lr})")
+    if model is None and a.algo == "sac":                                         # Phase 1 algorithm comparison (2026-11-11): off-policy SAC on the same env, from scratch
+        from stable_baselines3 import SAC
+        model = SAC("MlpPolicy", venv, learning_rate=a.lr, buffer_size=1_000_000, batch_size=512, train_freq=1, gradient_steps=8, gamma=a.gamma, learning_starts=20_000,
+                    policy_kwargs=dict(net_arch=[256, 256], activation_fn=torch.nn.ELU), seed=a.seed, verbose=0, device=a.device)
+        log(f"new SAC model: net [256,256] ELU, lr {a.lr}, batch 512, {a.envs} envs x 8 gradient steps per vec step, device {a.device}")
     if model is None:
         model = PPO("MlpPolicy", venv, learning_rate=(lambda p: a.lr * max(0.1, p)) if a.lr_decay else a.lr, n_steps=a.rollout, batch_size=a.batch, n_epochs=a.epochs,
                     gamma=a.gamma, gae_lambda=0.95, clip_range=0.2, ent_coef=a.ent, target_kl=a.target_kl,
@@ -208,12 +214,12 @@ def main(a):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("tag"); ap.add_argument("--steps", type=int, default=3_000_000); ap.add_argument("--envs", type=int, default=8)
+    ap.add_argument("tag"); ap.add_argument("--steps", type=int, default=3_000_000); ap.add_argument("--algo", choices=("ppo", "sac"), default="ppo"); ap.add_argument("--envs", type=int, default=8)
     ap.add_argument("--seed", type=int, default=0); ap.add_argument("--max-steps", type=int, default=1000)
     ap.add_argument("--lr", type=float, default=3e-4); ap.add_argument("--lr-decay", action="store_true"); ap.add_argument("--rollout", type=int, default=512); ap.add_argument("--batch", type=int, default=2048)
     ap.add_argument("--epochs", type=int, default=5); ap.add_argument("--gamma", type=float, default=0.99); ap.add_argument("--ent", type=float, default=0.0)
     ap.add_argument("--target-kl", type=float, default=0.02); ap.add_argument("--save-every", type=int, default=100_000)
-    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9", "wall", "wall_ff", "wall_shapes", "write", "write_dr", "write_drc", "hybrid"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
+    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9", "wall", "wall_ff", "wall_shapes", "write", "write_dr", "write_drc", "write15", "hybrid"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
     ap.add_argument("--collapse-after", type=int, default=400_000); ap.add_argument("--collapse-len", type=float, default=60.0); ap.add_argument("--resume", action="store_true"); ap.add_argument("--preflight-only", action="store_true")
     a = ap.parse_args()
     try:
