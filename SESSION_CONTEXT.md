@@ -247,3 +247,6 @@ From `TODO.md` / `Findings/STATUS.md`: items 3, 4, 5, 7, 8 partial; item 9 open.
 - R12, R13 scored (table in Findings/Write/01_wall_writing.md). R12 1.1-2 mm not robust; R13 ~4 mm, only one surviving payload 100 g + motor_slow.
 - H1/H1b dead: plain NMPC under DR loses control on payload >= 0.15 kg; H1b stalled. Code: scale_mismatch + dr_ramp (am3_rl_wall), write_drc env, hybrid episode cap + D_TAU 0.5 tau_c.
 - Turing: R14_write_drc_ft_s0 (2507364), H2_hybrid_s0 (2507365), both PENDING (priority) at 11:20.
+
+## 2026-11-11 20:45 EST
+- NMPC bench done: 15/15, 2.07 mm (R12 2.32). Neither passes 2 mm yet. Nothing running locally; R15 (2510960) and S15 SAC (2510984) on Turing.

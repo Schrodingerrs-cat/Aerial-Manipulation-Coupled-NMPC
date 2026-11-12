@@ -72,3 +72,12 @@ R12 already completes every sentence, and realistic noise barely changes it. It 
   - Cost note: about 25 ms per gradient step on one CPU thread, so the replay ratio is low (0.27).
 
 Next, when they finish: score both on the test, render the sentence video, and run NMPC (N) on the same test (running locally now, `results/am3_write/bench/N_real.log`).
+
+## NMPC (N) on the test (2026-11-11 20:43 EST)
+
+| run | completed | trace RMS mean / max (mm) | coverage | drag |
+|---|---|---|---|---|
+| N, real noise | 15/15 | 2.07 / 2.22 | 0.87 | 0.005 |
+| R12, real noise | 15/15 | 2.32 / 2.50 | 0.80 | 0.001 |
+
+NMPC is slightly better than R12 (0.25 mm, higher coverage), and also just misses 2 mm. Neither passes yet. Log: `Code/results/am3_write/bench/N_real.log`.
