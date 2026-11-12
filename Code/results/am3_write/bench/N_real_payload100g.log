@@ -1,0 +1,73 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'text': 'HELLO WPI', 'seed': 0, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/11', 'trace_rms_mm': 73.524, 'trace_max_mm': 78.346, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 27.65, 'wall_s': 17}
+{'text': 'HELLO WPI', 'seed': 1, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/11', 'trace_rms_mm': 73.914, 'trace_max_mm': 80.794, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 36.44, 'wall_s': 34}
+{'text': 'HELLO WPI', 'seed': 2, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/11', 'trace_rms_mm': 74.445, 'trace_max_mm': 79.552, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 6.45, 'wall_s': 20}
+{'text': 'AERIAL ROBOT', 'seed': 0, 'completed': False, 'abort': 'no contact acquired', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 31.81, 'wall_s': 15}
+{'text': 'AERIAL ROBOT', 'seed': 1, 'completed': False, 'abort': 'no contact acquired', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 31.24, 'wall_s': 26}
+{'text': 'AERIAL ROBOT', 'seed': 2, 'completed': False, 'abort': 'no contact acquired', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 3.58, 'wall_s': 25}
+{'text': 'THE QUICK BROWN', 'seed': 0, 'completed': False, 'abort': 'recovery timeout', 'strokes': '1/20', 'trace_rms_mm': 74.576, 'trace_max_mm': 82.843, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 26.68, 'wall_s': 56}
+{'text': 'THE QUICK BROWN', 'seed': 1, 'completed': False, 'abort': 'recovery timeout', 'strokes': '1/20', 'trace_rms_mm': 75.925, 'trace_max_mm': 81.462, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 32.99, 'wall_s': 38}
+{'text': 'THE QUICK BROWN', 'seed': 2, 'completed': False, 'abort': 'recovery timeout', 'strokes': '1/20', 'trace_rms_mm': 73.351, 'trace_max_mm': 85.128, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 29.08, 'wall_s': 54}
+{'text': 'FOX JUMPS OVER', 'seed': 0, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/15', 'trace_rms_mm': 73.556, 'trace_max_mm': 81.652, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 24.93, 'wall_s': 51}
+{'text': 'FOX JUMPS OVER', 'seed': 1, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/15', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 38.14, 'wall_s': 10}
+{'text': 'FOX JUMPS OVER', 'seed': 2, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/15', 'trace_rms_mm': 75.061, 'trace_max_mm': 82.14, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 8.61, 'wall_s': 42}
+{'text': 'THE LAZY DOG', 'seed': 0, 'completed': False, 'abort': 'recovery timeout', 'strokes': '1/16', 'trace_rms_mm': 73.839, 'trace_max_mm': 81.213, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 26.68, 'wall_s': 82}
+{'text': 'THE LAZY DOG', 'seed': 1, 'completed': False, 'abort': 'recovery timeout', 'strokes': '1/16', 'trace_rms_mm': 75.175, 'trace_max_mm': 86.825, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 32.99, 'wall_s': 56}
+{'text': 'THE LAZY DOG', 'seed': 2, 'completed': False, 'abort': 'recovery timeout', 'strokes': '1/16', 'trace_rms_mm': 75.369, 'trace_max_mm': 85.533, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 6.94, 'wall_s': 51}
+SUMMARY {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['no contact acquired', 'recovery timeout']}
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 8.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 11.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 10.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 44.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 11.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 10.

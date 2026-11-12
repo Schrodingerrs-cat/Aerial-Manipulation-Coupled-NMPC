@@ -81,3 +81,45 @@ Next, when they finish: score both on the test, render the sentence video, and r
 | R12, real noise | 15/15 | 2.32 / 2.50 | 0.80 | 0.001 |
 
 NMPC is slightly better than R12 (0.25 mm, higher coverage), and also just misses 2 mm. Neither passes yet. Log: `Code/results/am3_write/bench/N_real.log`.
+
+## R15 on the test (2026-11-12 18:20 EST): first Phase-1 pass
+
+R15 finished on Turing (30M steps, 5.3 h, reward/step 22.3, flat for the last ~5M steps).
+
+| run | completed | trace RMS mean / max (mm) | coverage | drag | max tilt |
+|---|---|---|---|---|---|
+| **R15 final, real noise** | **15/15** | **1.74 / 1.86** | 0.83 | 0.000 | 4.2-5.9 deg |
+| N (NMPC), real noise | 15/15 | 2.07 / 2.22 | 0.87 | 0.005 | 7.4-9.6 deg |
+| R12, real noise | 15/15 | 2.32 / 2.50 | 0.80 | 0.001 | |
+
+- R15 meets every pass condition (15/15, mean <= 2 mm, drag 0). It is 25% better than R12 and 16% better than NMPC, with a calmer base (tilt 4-6 deg vs 7-10 deg).
+- What changed from R12: 4-step observation history, inner-loop observer (force/moment), realistic sensor noise in training, a sharp 1 mm reward term. Not separated yet (one ablation each would be needed to say which part helps).
+- Log: `Code/results/am3_write/bench/R15_final_real.log`. Checkpoints 10M and 20M are being scored.
+- Video under the same conditions (HELLO WPI, seed 0, real noise; N vs R12 vs R15): rendering, `Media_results/Write_bench_HELLO_WPI_NMPC_vs_R12_vs_R15_2026-11-12/`.
+- Phase 3 started: the same test with each mismatch case (payload 100/200 g, kf -10%, slow motors, 3x joint damping, gust, wind) for N and R15. Logs `bench/{N,R15}_real_<case>.log`.
+
+### R15 checkpoints (2026-11-12 18:30 EST)
+10M 2.24 mm, 20M 1.89 mm, 30M 1.74 mm (all 15/15). Still improving at the end, so **R16** continues R15 on Turing (job 2514759, warm start from R15 final, lr 5e-5 with decay, 30M).
+
+### SAC (S15) at 6M steps (2026-11-12 18:35 EST)
+0/15: "no contact acquired" or loss of control in every episode. Reward/step 10.7 vs PPO-from-R12 22.3. From scratch it has not learned the contact task, the same as from-scratch PPO (R10). It is slow on Turing (0.5M steps per 86 min) and the 24 h limit will stop it near 8M; its last checkpoint will be scored for the record. `am3_write_eval.make` now loads SAC zips (reads `algo` from config.json).
+
+### Video (2026-11-12 19:05 EST)
+`Media_results/Write_bench_HELLO_WPI_NMPC_vs_R12_vs_R15_2026-11-12/`: compare.mp4 (N | R12 | R15) plus one file per controller. HELLO WPI, letter height 5 cm, 50 mm/s, real sensor noise, seed 0. All three write the full text; R15 1.61 mm, R12 2.00 mm, N 2.05 mm on this run. The first R15 clip went black after 47 s (an OpenGL context left open by the earlier clips, not the controller); it was re-rendered alone with identical metrics, and the script now closes each renderer.
+
+## Phase 3: same test under model mismatch (real noise, 15 episodes each)
+
+| case | N completed / RMS (mm) | R15 completed / RMS (mm) |
+|---|---|---|
+| nominal | 15/15, 2.07 | **15/15, 1.74** |
+| payload 100 g | 0/15 | 0/15 |
+| payload 200 g | 0/15 | 0/15 |
+| thrust -10% (kf90) | **15/15, 2.70** | 1/15 |
+| motor lag x2 | 0/15 | 0/15 |
+| joint damping x3 | running | 15/15, 1.84 |
+| gust 1 N (y) | running | 15/15, 1.80 |
+| sine wind | running | 15/15, 2.32 |
+
+First read (N rows still filling in):
+- Both known-model controllers break on payload and slow motors. That is the Phase-4 robustness target, as planned.
+- R15 handles disturbances it can see (damping, gust, wind) but not a thrust loss. NMPC's model-based feedforward tolerates -10% thrust; R15's does not, even with the force observer on (it never makes contact). That is the first concrete place where the model helps and RL fails.

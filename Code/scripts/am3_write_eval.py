@@ -25,10 +25,11 @@ def write_metrics(ep):
 
 def make(ctrl):
     if ctrl.endswith(".zip"):
-        from stable_baselines3 import PPO
+        from stable_baselines3 import PPO, SAC
         from ocrl.am3_rl_wall import RLCtrl, KIND_KW
-        cfg = os.path.join(os.path.dirname(ctrl), "config.json"); kind = json.load(open(cfg)).get("env") if os.path.exists(cfg) else None
-        return RLCtrl(PPO.load(ctrl, device="cpu"), vel_ff=True, **KIND_KW.get(kind, {}))           # same env options the policy was trained with
+        cfg = os.path.join(os.path.dirname(ctrl), "config.json"); cfg = json.load(open(cfg)) if os.path.exists(cfg) else {}
+        algo = SAC if cfg.get("algo") == "sac" else PPO
+        return RLCtrl(algo.load(ctrl, device="cpu"), vel_ff=True, **KIND_KW.get(cfg.get("env"), {}))           # same env options the policy was trained with
     from am3_run import make_ctrl
     return make_ctrl(ctrl)
 

@@ -250,3 +250,8 @@ From `TODO.md` / `Findings/STATUS.md`: items 3, 4, 5, 7, 8 partial; item 9 open.
 
 ## 2026-11-11 20:45 EST
 - NMPC bench done: 15/15, 2.07 mm (R12 2.32). Neither passes 2 mm yet. Nothing running locally; R15 (2510960) and S15 SAC (2510984) on Turing.
+
+## 2026-11-12 19:10 EST
+- R15 PASSES the Phase-1 test: 15/15, 1.74 mm (N 2.07, R12 2.32). Video Media_results/Write_bench_HELLO_WPI_NMPC_vs_R12_vs_R15_2026-11-12.
+- R16 (job 2514759) continues R15. S15 SAC fails at 6M (0/15).
+- Phase 3 mismatch benches running locally (scratchpad phase3.sh; logs bench/{N,R15}_real_<case>.log). Both fail payload and slow motors; R15 fails kf90, N passes it.

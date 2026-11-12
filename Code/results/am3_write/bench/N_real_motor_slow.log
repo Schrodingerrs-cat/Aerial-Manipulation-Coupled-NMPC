@@ -1,0 +1,61 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'text': 'HELLO WPI', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 20 mm', 'strokes': '0/11', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.82, 'wall_s': 1}
+{'text': 'HELLO WPI', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 28 mm', 'strokes': '0/11', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.16, 'wall_s': 1}
+{'text': 'HELLO WPI', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 49 deg, base error 73 mm', 'strokes': '0/11', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.03, 'wall_s': 1}
+{'text': 'AERIAL ROBOT', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 20 mm', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.82, 'wall_s': 1}
+{'text': 'AERIAL ROBOT', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 28 mm', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.15, 'wall_s': 1}
+{'text': 'AERIAL ROBOT', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 49 deg, base error 73 mm', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.03, 'wall_s': 1}
+{'text': 'THE QUICK BROWN', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 20 mm', 'strokes': '0/20', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.81, 'wall_s': 1}
+{'text': 'THE QUICK BROWN', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 28 mm', 'strokes': '0/20', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.1, 'wall_s': 1}
+{'text': 'THE QUICK BROWN', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 49 deg, base error 73 mm', 'strokes': '0/20', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.03, 'wall_s': 1}
+{'text': 'FOX JUMPS OVER', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 20 mm', 'strokes': '0/15', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.82, 'wall_s': 1}
+{'text': 'FOX JUMPS OVER', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 28 mm', 'strokes': '0/15', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.3, 'wall_s': 1}
+{'text': 'FOX JUMPS OVER', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 49 deg, base error 73 mm', 'strokes': '0/15', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.03, 'wall_s': 1}
+{'text': 'THE LAZY DOG', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 20 mm', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.81, 'wall_s': 1}
+{'text': 'THE LAZY DOG', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 28 mm', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.1, 'wall_s': 1}
+{'text': 'THE LAZY DOG', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 49 deg, base error 73 mm', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.03, 'wall_s': 1}
+SUMMARY {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['loss of control (failsafe): tilt 41 deg, base error 20 mm', 'loss of control (failsafe): tilt 41 deg, base error 28 mm', 'loss of control (failsafe): tilt 49 deg, base error 73 mm']}
