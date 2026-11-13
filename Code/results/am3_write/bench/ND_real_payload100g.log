@@ -1,0 +1,97 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'text': 'HELLO WPI', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/11', 'trace_rms_mm': 2.459, 'trace_max_mm': 6.237, 'coverage': 0.514, 'drag': 0.0, 'tilt_max_deg': 8.12, 'wall_s': 400}
+{'text': 'HELLO WPI', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/11', 'trace_rms_mm': 2.522, 'trace_max_mm': 6.879, 'coverage': 0.577, 'drag': 0.0, 'tilt_max_deg': 10.21, 'wall_s': 400}
+{'text': 'HELLO WPI', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '6/11', 'trace_rms_mm': 2.572, 'trace_max_mm': 7.389, 'coverage': 0.44, 'drag': 0.0, 'tilt_max_deg': 7.63, 'wall_s': 400}
+{'text': 'AERIAL ROBOT', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '4/16', 'trace_rms_mm': 2.278, 'trace_max_mm': 5.902, 'coverage': 0.203, 'drag': 0.0, 'tilt_max_deg': 11.15, 'wall_s': 400}
+{'text': 'AERIAL ROBOT', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '4/16', 'trace_rms_mm': 2.713, 'trace_max_mm': 7.961, 'coverage': 0.237, 'drag': 0.0, 'tilt_max_deg': 8.56, 'wall_s': 400}
+{'text': 'AERIAL ROBOT', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '6/16', 'trace_rms_mm': 2.791, 'trace_max_mm': 7.263, 'coverage': 0.353, 'drag': 0.0, 'tilt_max_deg': 6.09, 'wall_s': 400}
+{'text': 'THE QUICK BROWN', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '5/20', 'trace_rms_mm': 2.604, 'trace_max_mm': 7.67, 'coverage': 0.19, 'drag': 0.0, 'tilt_max_deg': 7.98, 'wall_s': 400}
+{'text': 'THE QUICK BROWN', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/20', 'trace_rms_mm': 2.53, 'trace_max_mm': 6.882, 'coverage': 0.199, 'drag': 0.0, 'tilt_max_deg': 10.54, 'wall_s': 400}
+{'text': 'THE QUICK BROWN', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/20', 'trace_rms_mm': 2.731, 'trace_max_mm': 8.278, 'coverage': 0.199, 'drag': 0.0, 'tilt_max_deg': 12.68, 'wall_s': 400}
+{'text': 'FOX JUMPS OVER', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '6/15', 'trace_rms_mm': 2.343, 'trace_max_mm': 8.177, 'coverage': 0.265, 'drag': 0.0, 'tilt_max_deg': 7.51, 'wall_s': 400}
+{'text': 'FOX JUMPS OVER', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '5/15', 'trace_rms_mm': 2.652, 'trace_max_mm': 5.903, 'coverage': 0.234, 'drag': 0.0, 'tilt_max_deg': 8.63, 'wall_s': 400}
+{'text': 'FOX JUMPS OVER', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '5/15', 'trace_rms_mm': 2.407, 'trace_max_mm': 7.628, 'coverage': 0.272, 'drag': 0.0, 'tilt_max_deg': 12.2, 'wall_s': 400}
+{'text': 'THE LAZY DOG', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '8/16', 'trace_rms_mm': 2.418, 'trace_max_mm': 8.1, 'coverage': 0.37, 'drag': 0.0, 'tilt_max_deg': 9.97, 'wall_s': 400}
+{'text': 'THE LAZY DOG', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '8/16', 'trace_rms_mm': 2.672, 'trace_max_mm': 8.363, 'coverage': 0.34, 'drag': 0.0, 'tilt_max_deg': 9.44, 'wall_s': 400}
+{'text': 'THE LAZY DOG', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '8/16', 'trace_rms_mm': 2.561, 'trace_max_mm': 6.415, 'coverage': 0.336, 'drag': 0.0, 'tilt_max_deg': 7.02, 'wall_s': 400}
+SUMMARY {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 11.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 8.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 57.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 95.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 54.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 41.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 49.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 91.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 10.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 54.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 58.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 86.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 89.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 9.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 9.
+
+SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 11.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 54.
+
+SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 89.

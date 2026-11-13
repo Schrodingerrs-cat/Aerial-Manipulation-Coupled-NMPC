@@ -255,3 +255,9 @@ From `TODO.md` / `Findings/STATUS.md`: items 3, 4, 5, 7, 8 partial; item 9 open.
 - R15 PASSES the Phase-1 test: 15/15, 1.74 mm (N 2.07, R12 2.32). Video Media_results/Write_bench_HELLO_WPI_NMPC_vs_R12_vs_R15_2026-11-12.
 - R16 (job 2514759) continues R15. S15 SAC fails at 6M (0/15).
 - Phase 3 mismatch benches running locally (scratchpad phase3.sh; logs bench/{N,R15}_real_<case>.log). Both fail payload and slow motors; R15 fails kf90, N passes it.
+
+### 2026-11-12 22:50 EST — ND test stopped (too slow, not a control failure)
+- ND:10,10 real noise, nominal and payload 100 g: all 15 sentences hit the 400 s wall-clock limit at about 7–8 of 11 strokes, 2.4–2.6 mm trace error, drag 0, tilt 8–10°. It writes well but runs about 5× slower than N (N: ~90 s per sentence). Bench stopped; nothing is running locally.
+- Next: profile ND per step (python casadi calls for M_f/rhs_f/step_g versus failed-QP retries), fix the speed, rerun the bench.
+- N with sine wind (real noise): 15/15, 2.23 mm. Phase 3 wind row done.
+- Turing at 20:53: R16 8.5M/30M (reward ~22 per step), R17 7.5M/30M (reward falling as randomization ramps in). Both still running.
