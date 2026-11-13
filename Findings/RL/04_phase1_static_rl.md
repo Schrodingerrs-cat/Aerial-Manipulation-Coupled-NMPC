@@ -123,3 +123,38 @@ R15 finished on Turing (30M steps, 5.3 h, reward/step 22.3, flat for the last ~5
 First read (N rows still filling in):
 - Both known-model controllers break on payload and slow motors. That is the Phase-4 robustness target, as planned.
 - R15 handles disturbances it can see (damping, gust, wind) but not a thrust loss. NMPC's model-based feedforward tolerates -10% thrust; R15's does not, even with the force observer on (it never makes contact). That is the first concrete place where the model helps and RL fails.
+
+### R15 with the observer switched off (2026-11-12 19:00 EST): ablation and the kf90 cause
+
+| case | R15 observer on (as trained) | R15 observer off |
+|---|---|---|
+| nominal | 15/15, 1.74 mm | 15/15, 2.55 mm |
+| kf90 | 1/15 | 15/15, 4.52 mm, drag 0.075 |
+| payload 100 g | 0/15 | 12/15, 25 mm (not writing) |
+| payload 200 g | 0/15 | 0/15 |
+| motor lag x2 | 0/15 | 0/15 |
+
+- The observer is worth about 0.8 mm of R15's nominal accuracy.
+- Under kf90 with the observer on, R15 backs off from the wall: base -6 mm in x, pad 2.9 mm short of the reference, pad force 0.09 N (contact needs > 0.15 N for 60 ms), so contact is never declared. With it off the base sags 6 mm in z instead and contact is made. The observer itself reads the thrust loss correctly (d_z = -1.6 N); the policy has never seen an episode where the observer carries a large bias, so its behaviour there is untrained. Phase 4 training (R17) includes this.
+- `am3_write_bench.py --dob on|off` now overrides the observer (default: as trained). The old `--dob` flag became `--dob on`.
+
+## Phase 4 started (2026-11-12 19:20 EST)
+
+### RL: R17 (Turing job 2514876)
+R15 + domain randomization, ramped in over the first 300 episodes per env. The ranges are R13's (payload 0-250 g, thrust 0.88-1.08, motor lag 1-2x, joint damping 0.5-4x, sine wind, steps), so they cover every bench case. Everything else is R15's (history 4, observer, real noise, 1 mm reward). Warm start from R15, lr 1e-4 with decay, 30M. Env kind `write15_dr`.
+S15 (SAC) was cancelled to free the slot: 0/15 at 6M, the last checkpoint.
+
+### NMPC: offset-free NMPC "ND" (`ocrl/am3_nmpc_dob.py`, new; N's frozen files unchanged)
+- **What:** N plus the generalized-momentum observer, but with N's own predictor (contact model included) as the model, so d is exactly what N's prediction lacks. d (world force, body moment, joint torques) enters the prediction as a constant over the horizon: `M(x) nu' = rhs(x, u) + d`. Costs, constraints, weights and solver settings are N's. The acados build is N's with the parameter vector extended by 9.
+- **Timing:** the command that acted on the period that just ended is the previous pending command (one-period latency), so the observer uses that, not the current one.
+- **Parity:** `ND:0` (all gains 0) reproduces N exactly on HELLO WPI seed 0 (2.048 / 6.855 mm, coverage 0.897).
+- **First checks (HELLO WPI seed 0, real noise):**
+
+  | ND variant | nominal | payload 100 g | kf90 |
+  |---|---|---|---|
+  | base gains 10, joints 0 | 2.23 mm | loss of control in 1 s | 2.29 mm |
+  | base 10, joints 10 | 2.29 mm on 6/11 strokes* | survives, 2.50 mm on 6/11 strokes* | 2.39 mm on 7/11* |
+
+  \* These stopped at the harness's 400 s wall-clock guard because 7 acados processes ran at once. Run alone, `ND:10,10` solves in 9 ms mean, 0 failed QPs over 70 s. The full test is now running one process per chain.
+- **Joint channel is required for payload:** without it the arm sags under the payload (q3 -1.87 -> -1.50 rad in 0.5 s), N's prediction is wrong, the rotor commands chatter 180-1800 rad/s and control is lost. With it, the observer reads the payload correctly: d_z = -1.0 N (0.1 kg x g), joint torques 0.20 / 0.13 N m.
+- N itself under payload 100 g: the arm drifts (q2 -0.23 -> -0.45, q3 -1.87 -> -1.10 rad) and ends in "recovery timeout".

@@ -30,6 +30,11 @@ def make(ctrl):
         cfg = os.path.join(os.path.dirname(ctrl), "config.json"); cfg = json.load(open(cfg)) if os.path.exists(cfg) else {}
         algo = SAC if cfg.get("algo") == "sac" else PPO
         return RLCtrl(algo.load(ctrl, device="cpu"), vel_ff=True, **KIND_KW.get(cfg.get("env"), {}))           # same env options the policy was trained with
+    if ctrl.startswith("ND"):                                                              # offset-free NMPC; "ND:kb,kj" sets the base (6) and joint (3) observer gains (1/s)
+        from ocrl.am3_nmpc_dob import NMPCD, K_DOB
+        k = K_DOB.copy()
+        if ":" in ctrl: g = [float(v) for v in ctrl.split(":")[1].split(",")]; k[0:6] = g[0]; k[6:9] = g[1] if len(g) > 1 else 0.0       # "ND:base[,joint]"
+        return NMPCD(k)
     from am3_run import make_ctrl
     return make_ctrl(ctrl)
 

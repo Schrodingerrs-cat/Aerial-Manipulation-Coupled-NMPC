@@ -98,7 +98,7 @@ class WallEnv(Track9Env):
         return obs, float(r), bool(bad), bool((trunc or done) and not bad), info
 
 
-KIND_KW = dict(write15=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0))         # env options a policy was trained with, by training env kind (Phase 1)
+KIND_KW = dict(write15=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0), write15_dr=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0))         # env options a policy was trained with, by training env kind (Phase 1)
 
 
 class RLCtrl:
