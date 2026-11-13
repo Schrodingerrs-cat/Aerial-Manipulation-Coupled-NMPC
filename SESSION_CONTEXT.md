@@ -261,3 +261,8 @@ From `TODO.md` / `Findings/STATUS.md`: items 3, 4, 5, 7, 8 partial; item 9 open.
 - Next: profile ND per step (python casadi calls for M_f/rhs_f/step_g versus failed-QP retries), fix the speed, rerun the bench.
 - N with sine wind (real noise): 15/15, 2.23 mm. Phase 3 wind row done.
 - Turing at 20:53: R16 8.5M/30M (reward ~22 per step), R17 7.5M/30M (reward falling as randomization ramps in). Both still running.
+
+### 2026-11-12 23:05 EST — ND slowdown explained; ND bench moved to Turing
+- Timed ND alone (HELLO WPI, 40 s): 39 s wall with nominal noise, 38 s with real noise; solve 9 ms, 0 failed QPs. ND is real-time. The 400 s timeouts came from CPU sharing (2 ND runs plus N wind on this PC).
+- New `slurm/am3_bench_turing.sh`: builds the solver once, then all 8 cases in parallel, 3 procs each. Submitted as job 2515310 (CTRL=ND:10,10 NAME=ND); pending behind R16/R17. Output am3bench_2515310.out; results in Code/results/am3_write/bench/ND_real*.
+- Nothing runs locally.
