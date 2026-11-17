@@ -266,3 +266,14 @@ From `TODO.md` / `Findings/STATUS.md`: items 3, 4, 5, 7, 8 partial; item 9 open.
 - Timed ND alone (HELLO WPI, 40 s): 39 s wall with nominal noise, 38 s with real noise; solve 9 ms, 0 failed QPs. ND is real-time. The 400 s timeouts came from CPU sharing (2 ND runs plus N wind on this PC).
 - New `slurm/am3_bench_turing.sh`: builds the solver once, then all 8 cases in parallel, 3 procs each. Submitted as job 2515310 (CTRL=ND:10,10 NAME=ND); pending behind R16/R17. Output am3bench_2515310.out; results in Code/results/am3_write/bench/ND_real*.
 - Nothing runs locally.
+
+### 2026-11-17 14:45 EST — ND fixed; full robustness table; R18/R19 retraining on Turing
+- ND timeouts (Turing job 2515310 too) were not CPU: ND looped trace/recover because its observer absorbed pen-force error. Fixed in am3_nmpc_dob.observe (measured normal force via d[0]).
+- Bench (real noise, 15 each), full table in Findings/RL/04 "Phase 4 results":
+  - ND writes with payload 100/200 g (2.65 / 3.05 mm) and kf90; nominal 2.62.
+  - R17 (DR) survives motor lag x2 (15/15, 2.93) but fails payloads; nominal 2.40.
+  - R16 = R15 (1.76 mm); kf90 1/15.
+- R17 payload failure: the RL inner observer's joint channel was off. Gain 2 makes it complete without retraining (2.84 mm).
+- New env `write15_drj` (joint gain 2). Turing: R18 (from R17, job 2532420), R19 (from R16, job 2532421), 20M each.
+- Videos: Media_results/Write_HELLO_WPI_payload100g_N_vs_ND_vs_R17_2026-11-17 and ..._motor_slow_... (compare + per controller).
+- Next: bench R18/R19; hybrid NMPC+RL (ND handles payload/thrust, RL handles motor lag); ND motor_slow.

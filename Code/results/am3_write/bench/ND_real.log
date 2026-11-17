@@ -43,59 +43,19 @@ acados was compiled without OpenMP.
 OCP formulation matches previous via hash, code reuse possible.
 Code reuse possible, skipping code generation.
 acados was compiled without OpenMP.
-{'text': 'HELLO WPI', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '8/11', 'trace_rms_mm': 2.414, 'trace_max_mm': 7.27, 'coverage': 0.558, 'drag': 0.0, 'tilt_max_deg': 8.22, 'wall_s': 400}
-{'text': 'HELLO WPI', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '8/11', 'trace_rms_mm': 2.626, 'trace_max_mm': 8.365, 'coverage': 0.717, 'drag': 0.0, 'tilt_max_deg': 8.2, 'wall_s': 400}
-{'text': 'HELLO WPI', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/11', 'trace_rms_mm': 2.599, 'trace_max_mm': 8.511, 'coverage': 0.553, 'drag': 0.0, 'tilt_max_deg': 10.42, 'wall_s': 400}
-{'text': 'AERIAL ROBOT', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '6/16', 'trace_rms_mm': 2.542, 'trace_max_mm': 6.717, 'coverage': 0.279, 'drag': 0.0, 'tilt_max_deg': 10.74, 'wall_s': 400}
-{'text': 'AERIAL ROBOT', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '6/16', 'trace_rms_mm': 2.594, 'trace_max_mm': 7.168, 'coverage': 0.318, 'drag': 0.0, 'tilt_max_deg': 9.71, 'wall_s': 400}
-{'text': 'AERIAL ROBOT', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '5/16', 'trace_rms_mm': 2.709, 'trace_max_mm': 6.25, 'coverage': 0.279, 'drag': 0.0, 'tilt_max_deg': 7.27, 'wall_s': 400}
-{'text': 'THE QUICK BROWN', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '9/20', 'trace_rms_mm': 2.278, 'trace_max_mm': 7.633, 'coverage': 0.276, 'drag': 0.0, 'tilt_max_deg': 11.89, 'wall_s': 400}
-{'text': 'THE QUICK BROWN', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '8/20', 'trace_rms_mm': 2.814, 'trace_max_mm': 9.072, 'coverage': 0.27, 'drag': 0.0, 'tilt_max_deg': 12.91, 'wall_s': 400}
-{'text': 'THE QUICK BROWN', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '10/20', 'trace_rms_mm': 2.462, 'trace_max_mm': 7.929, 'coverage': 0.337, 'drag': 0.0, 'tilt_max_deg': 7.72, 'wall_s': 400}
-{'text': 'FOX JUMPS OVER', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/15', 'trace_rms_mm': 2.506, 'trace_max_mm': 6.171, 'coverage': 0.317, 'drag': 0.0, 'tilt_max_deg': 7.72, 'wall_s': 400}
-{'text': 'FOX JUMPS OVER', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/15', 'trace_rms_mm': 2.699, 'trace_max_mm': 7.766, 'coverage': 0.342, 'drag': 0.0, 'tilt_max_deg': 10.57, 'wall_s': 400}
-{'text': 'FOX JUMPS OVER', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/15', 'trace_rms_mm': 2.467, 'trace_max_mm': 6.82, 'coverage': 0.366, 'drag': 0.0, 'tilt_max_deg': 9.63, 'wall_s': 400}
-{'text': 'THE LAZY DOG', 'seed': 0, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '10/16', 'trace_rms_mm': 2.291, 'trace_max_mm': 6.661, 'coverage': 0.49, 'drag': 0.0, 'tilt_max_deg': 12.7, 'wall_s': 400}
-{'text': 'THE LAZY DOG', 'seed': 1, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '7/16', 'trace_rms_mm': 2.688, 'trace_max_mm': 6.703, 'coverage': 0.283, 'drag': 0.0, 'tilt_max_deg': 6.57, 'wall_s': 400}
-{'text': 'THE LAZY DOG', 'seed': 2, 'completed': False, 'abort': 'wall-clock limit (stuck solver or plant)', 'strokes': '10/16', 'trace_rms_mm': 2.414, 'trace_max_mm': 6.186, 'coverage': 0.47, 'drag': 0.0, 'tilt_max_deg': 11.8, 'wall_s': 400}
-SUMMARY {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}
-
-SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 44.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 40.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 76.
-
-SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 10.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 46.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 62.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 45.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 82.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 86.
-
-SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 7.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 55.
-
-SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 20.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 67.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 61.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 80.
-
-SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 9.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 63.
-
-SQP_RTI: QP solver returned error status 1 (ACADOS_NAN_DETECTED) QP iteration 85.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 64.
-
-SQP_RTI: QP solver returned error status 3 (ACADOS_MINSTEP) QP iteration 75.
+{'text': 'HELLO WPI', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '11/11', 'trace_rms_mm': 2.752, 'trace_max_mm': 8.316, 'coverage': 0.803, 'drag': 0.0, 'tilt_max_deg': 8.8, 'wall_s': 100}
+{'text': 'HELLO WPI', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '11/11', 'trace_rms_mm': 2.659, 'trace_max_mm': 7.896, 'coverage': 0.722, 'drag': 0.0, 'tilt_max_deg': 8.96, 'wall_s': 101}
+{'text': 'HELLO WPI', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '11/11', 'trace_rms_mm': 2.484, 'trace_max_mm': 6.26, 'coverage': 0.735, 'drag': 0.0, 'tilt_max_deg': 7.9, 'wall_s': 153}
+{'text': 'AERIAL ROBOT', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 2.734, 'trace_max_mm': 7.149, 'coverage': 0.702, 'drag': 0.0, 'tilt_max_deg': 8.98, 'wall_s': 187}
+{'text': 'AERIAL ROBOT', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 2.453, 'trace_max_mm': 7.114, 'coverage': 0.794, 'drag': 0.001, 'tilt_max_deg': 8.43, 'wall_s': 220}
+{'text': 'AERIAL ROBOT', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 2.589, 'trace_max_mm': 9.123, 'coverage': 0.755, 'drag': 0.001, 'tilt_max_deg': 7.64, 'wall_s': 226}
+{'text': 'THE QUICK BROWN', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '20/20', 'trace_rms_mm': 2.512, 'trace_max_mm': 8.938, 'coverage': 0.792, 'drag': 0.0, 'tilt_max_deg': 8.89, 'wall_s': 174}
+{'text': 'THE QUICK BROWN', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '20/20', 'trace_rms_mm': 2.57, 'trace_max_mm': 9.574, 'coverage': 0.817, 'drag': 0.0, 'tilt_max_deg': 7.21, 'wall_s': 191}
+{'text': 'THE QUICK BROWN', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '20/20', 'trace_rms_mm': 2.662, 'trace_max_mm': 9.887, 'coverage': 0.757, 'drag': 0.002, 'tilt_max_deg': 8.69, 'wall_s': 247}
+{'text': 'FOX JUMPS OVER', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '15/15', 'trace_rms_mm': 2.904, 'trace_max_mm': 9.105, 'coverage': 0.664, 'drag': 0.0, 'tilt_max_deg': 8.18, 'wall_s': 174}
+{'text': 'FOX JUMPS OVER', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '15/15', 'trace_rms_mm': 2.621, 'trace_max_mm': 8.523, 'coverage': 0.708, 'drag': 0.0, 'tilt_max_deg': 7.82, 'wall_s': 140}
+{'text': 'FOX JUMPS OVER', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '15/15', 'trace_rms_mm': 2.655, 'trace_max_mm': 7.591, 'coverage': 0.773, 'drag': 0.0, 'tilt_max_deg': 10.68, 'wall_s': 140}
+{'text': 'THE LAZY DOG', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 2.559, 'trace_max_mm': 6.822, 'coverage': 0.745, 'drag': 0.0, 'tilt_max_deg': 7.83, 'wall_s': 132}
+{'text': 'THE LAZY DOG', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 2.467, 'trace_max_mm': 6.029, 'coverage': 0.791, 'drag': 0.004, 'tilt_max_deg': 7.54, 'wall_s': 192}
+{'text': 'THE LAZY DOG', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 2.657, 'trace_max_mm': 11.003, 'coverage': 0.806, 'drag': 0.0, 'tilt_max_deg': 7.56, 'wall_s': 129}
+SUMMARY {'n': 15, 'completed': 15, 'trace_rms_mean': 2.619, 'trace_rms_max': 2.904, 'drag_max': 0.004, 'coverage_mean': 0.758, 'aborts': []}

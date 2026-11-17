@@ -158,3 +158,47 @@ S15 (SAC) was cancelled to free the slot: 0/15 at 6M, the last checkpoint.
   \* These stopped at the harness's 400 s wall-clock guard because 7 acados processes ran at once. Run alone, `ND:10,10` solves in 9 ms mean, 0 failed QPs over 70 s. The full test is now running one process per chain.
 - **Joint channel is required for payload:** without it the arm sags under the payload (q3 -1.87 -> -1.50 rad in 0.5 s), N's prediction is wrong, the rotor commands chatter 180-1800 rad/s and control is lost. With it, the observer reads the payload correctly: d_z = -1.0 N (0.1 kg x g), joint torques 0.20 / 0.13 N m.
 - N itself under payload 100 g: the arm drifts (q2 -0.23 -> -0.45, q3 -1.87 -> -1.10 rad) and ends in "recovery timeout".
+
+## Phase 4 results (2026-11-17 14:30 EST)
+
+### ND fix: the observer was cancelling the pen force
+- **Symptom:** every ND sentence hit the 400 s wall-clock guard, locally and on Turing (job 2515310, one core per process), after 1-8 of 11 strokes. Timing alone showed ND is real-time (9 ms solve, 0 failed QPs). So simulated time was the problem: a 410 s sim run wrote 3 strokes.
+- **Cause:** a phase trace showed ND looping trace -> recover -> settle_resume about 15 times on stroke 0 (N: one pass). The observer used N's contact model inside rhs, so every error in predicted pen force went into d. The offset-free prediction then cancelled it and the pen eased off below the 0.15 N contact threshold.
+- **Fix** (`am3_nmpc_dob.py`, `observe`): the wall-normal force in rhs is now the measured one, through the predictor's existing normal-force input d[0] = Fm - Fn_model. d then holds only non-contact error. After the fix, stroke 0 runs approach -> settle -> trace -> end, as N does.
+
+### Writing test, real noise, 15 sentences per cell (completed / mean trace RMS mm)
+
+| case | N | R15 | R16 | ND (fixed) | R17 (DR) |
+|---|---|---|---|---|---|
+| nominal | 15, 2.07 | 15, 1.74 | 15, 1.76 | 15, 2.62 | 15, 2.40 |
+| payload 100 g | 0 | 0 | | **15, 2.65** | 0 (no contact) |
+| payload 200 g | 0 | 0 | | **15, 3.05** | 0 (loss of control) |
+| motor lag x2 | 0 | 0 | | 0 (loss of control < 4 s) | **15, 2.93** |
+| damping 3x | 15, 2.31 | 15, 1.84 | | 15, 2.77 | 15, 2.43 |
+| kf90 | 15, 2.70 | 1 | 1 (others time out) | 15, 2.59 | 9, 2.23 |
+| gust | 15, 2.03 | 15, 1.80 | | 15, 2.66 | 15, 2.43 |
+| sine wind | 15, 2.23 | 15, 2.32 | | 15, 2.70 | 15, 2.99 |
+
+Drag is at most 0.008 everywhere. Logs: `Code/results/am3_write/bench/*_real*.log`. The Turing ND logs (before the fix) are in `bench_turing_1113/`.
+
+Reading:
+- **R16** (R15 plus 30M steps at lr 5e-5) gives no gain: 1.76 vs 1.74 mm. R15 is converged on the known model.
+- **ND** is the first controller to write with a payload (100 g and 200 g) and keeps N's thrust tolerance. It costs 0.55 mm on nominal (2.62 vs 2.07): the observer passes sensor noise into the prediction. It still fails slow motors.
+- **R17** is the first controller to survive motor lag x2 (15/15). It is worse than R15 on nominal (2.40 vs 1.74) and fails both payloads. Its training reward fell from 19 to about 7-10, below the scripted PD's 10.6.
+- **ND and R17 fail on different cases.** This is the concrete case for the hybrid NMPC+RL step.
+
+### Why R17 fails on payload: the joint channel of the RL observer
+The RL inner loop's observer had its joint channel off: it oscillated at gain 3 under noise in the R15 sweep. ND showed the arm sags under payload without that channel. Test, with no retraining (R17, HELLO WPI seed 0, payload 100 g, real noise):
+
+| joint gain (1/s) | result |
+|---|---|
+| 0 (as trained) | no contact acquired, 4/11 strokes; joint 1 mean 2.6 deg off, joint 2 sags 3 deg |
+| 2 | **completed 11/11, 2.84 mm**, tilt 5.3 deg |
+| 5 | completed 11/11, 3.10 mm |
+
+No oscillation at 2 or 5 here.
+
+### Retraining (Turing, submitted 2026-11-17 14:15 EST)
+New env kind `write15_drj` is `write15_dr` with the joint gain at 2 (`dob_kj`, `KIND_KW`). 20M steps, lr 1e-4 with decay, target_kl 0.02.
+- R18_write15drj_s0 (job 2532420): warm start from R17.
+- R19_write15drj_fromR16_s0 (job 2532421): warm start from R16, the best nominal writer.

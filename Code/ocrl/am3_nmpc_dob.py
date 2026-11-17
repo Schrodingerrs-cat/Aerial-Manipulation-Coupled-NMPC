@@ -68,16 +68,19 @@ class NMPCD(NMPC):
     def params(self, task):
         P = super().params(task); return np.r_[P, np.tile(self.dg[:, None], (1, P.shape[1]))]
 
-    def observe(self, xm, u_applied):
-        """p = M nu;  p' = rhs(x, u) + M' nu + d.  Trapezoid over the period that just ended; u_applied is the command that acted on it."""
+    def observe(self, xm, u_applied, Fm):
+        """p = M nu;  p' = rhs(x, u) + M' nu + d.  Trapezoid over the period that just ended; u_applied is the command that acted on it.
+        The wall-normal force in rhs is the measured one (predictor input d[0] = Fm - Fn_model), so d holds only non-contact error and
+        does not cancel the contact model (without this, d absorbed the pen force and ND kept losing contact, 2026-11-17)."""
         nu = np.r_[xm[7:13], xm[16:19]].astype(float); Mx = np.array(self.pr.M_f(xm)); pm = Mx @ nu
-        f = np.array(self.pr.rhs_f(xm, u_applied, np.zeros(2))).ravel()
+        Fn = float(self.pr.contact_f(xm, u_applied, np.zeros(2))[2])
+        f = np.array(self.pr.rhs_f(xm, u_applied, np.r_[Fm - Fn, 0.0])).ravel()
         if self.obs is None: self.obs = dict(p0=pm, I=np.zeros(ND), f=f, M=Mx, nu=nu); return
         S = self.obs; S["I"] = S["I"] + (0.5 * (f + S["f"]) + self.dg) * self.period + (Mx - S["M"]) @ (0.5 * (nu + S["nu"])); S["f"], S["M"], S["nu"] = f, Mx, nu
         self.dg = self.k * (pm - S["p0"] - S["I"])
 
     def compute(self, t, xm, Fm, task):
-        self.observe(xm, self.u_act); self.u_act = self.u_pend.copy()                   # one-period latency: u_pend acts on the coming period, u_act acted on the one that ended
+        self.observe(xm, self.u_act, float(Fm)); self.u_act = self.u_pend.copy()                   # one-period latency: u_pend acts on the coming period, u_act acted on the one that ended
         xh = np.array(self.form.step_g(xm, self.u_pend, self.dg)).ravel(); P = self.params(task); Xg = self.Xg.copy(); Xg[:, 0] = xh
         r = self.solver.solve(xh, self.u_pend, P, Xg, self.Ug); info = dict(solve_s=r["solve_s"], status=r["status"], ok=r["ok"], slack=r.get("slack_max", 0.0), fallback=False, iters=r.get("iters", -1), d=self.dg.copy())
         if not r["ok"]:

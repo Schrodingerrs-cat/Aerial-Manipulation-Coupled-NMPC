@@ -1,0 +1,11 @@
+job 2515310 on gpu-4-22.int.turing.wpi.edu at Fri Nov 13 07:29:16 UTC 2026   ctrl ND:10,10   name ND   procs/case 3
+solver built
+finished Fri Nov 13 08:04:37 UTC 2026
+results/am3_write/bench/ND_real.log  {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}
+results/am3_write/bench/ND_real_damping3x.log  {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}
+results/am3_write/bench/ND_real_gust_y.log  {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}
+results/am3_write/bench/ND_real_kf90.log  {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}
+results/am3_write/bench/ND_real_motor_slow.log  {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['loss of control (failsafe): tilt 40 deg, base error 81 mm', 'loss of control (failsafe)
+results/am3_write/bench/ND_real_payload100g.log  {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}
+results/am3_write/bench/ND_real_payload200g.log  {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}
+results/am3_write/bench/ND_real_wind_sine.log  {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['wall-clock limit (stuck solver or plant)']}

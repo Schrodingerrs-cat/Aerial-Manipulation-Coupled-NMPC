@@ -1,0 +1,16 @@
+{'text': 'HELLO WPI', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '11/11', 'trace_rms_mm': 1.55, 'trace_max_mm': 5.588, 'coverage': 0.88, 'drag': 0.0, 'tilt_max_deg': 4.62, 'wall_s': 75}
+{'text': 'HELLO WPI', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '11/11', 'trace_rms_mm': 1.55, 'trace_max_mm': 5.092, 'coverage': 0.872, 'drag': 0.0, 'tilt_max_deg': 4.51, 'wall_s': 57}
+{'text': 'HELLO WPI', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '11/11', 'trace_rms_mm': 1.582, 'trace_max_mm': 5.483, 'coverage': 0.865, 'drag': 0.0, 'tilt_max_deg': 4.76, 'wall_s': 52}
+{'text': 'AERIAL ROBOT', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 1.721, 'trace_max_mm': 5.536, 'coverage': 0.822, 'drag': 0.0, 'tilt_max_deg': 5.34, 'wall_s': 91}
+{'text': 'AERIAL ROBOT', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 1.782, 'trace_max_mm': 6.032, 'coverage': 0.805, 'drag': 0.0, 'tilt_max_deg': 5.66, 'wall_s': 89}
+{'text': 'AERIAL ROBOT', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 1.781, 'trace_max_mm': 6.026, 'coverage': 0.807, 'drag': 0.0, 'tilt_max_deg': 5.42, 'wall_s': 75}
+{'text': 'THE QUICK BROWN', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '20/20', 'trace_rms_mm': 1.909, 'trace_max_mm': 7.308, 'coverage': 0.801, 'drag': 0.0, 'tilt_max_deg': 4.42, 'wall_s': 101}
+{'text': 'THE QUICK BROWN', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '20/20', 'trace_rms_mm': 1.887, 'trace_max_mm': 7.377, 'coverage': 0.792, 'drag': 0.0, 'tilt_max_deg': 4.5, 'wall_s': 84}
+{'text': 'THE QUICK BROWN', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '20/20', 'trace_rms_mm': 1.918, 'trace_max_mm': 6.918, 'coverage': 0.785, 'drag': 0.0, 'tilt_max_deg': 4.58, 'wall_s': 87}
+{'text': 'FOX JUMPS OVER', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '15/15', 'trace_rms_mm': 1.805, 'trace_max_mm': 7.867, 'coverage': 0.799, 'drag': 0.0, 'tilt_max_deg': 4.03, 'wall_s': 73}
+{'text': 'FOX JUMPS OVER', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '15/15', 'trace_rms_mm': 1.825, 'trace_max_mm': 7.902, 'coverage': 0.779, 'drag': 0.0, 'tilt_max_deg': 3.87, 'wall_s': 79}
+{'text': 'FOX JUMPS OVER', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '15/15', 'trace_rms_mm': 1.833, 'trace_max_mm': 8.314, 'coverage': 0.785, 'drag': 0.0, 'tilt_max_deg': 3.96, 'wall_s': 73}
+{'text': 'THE LAZY DOG', 'seed': 0, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 1.758, 'trace_max_mm': 5.896, 'coverage': 0.823, 'drag': 0.0, 'tilt_max_deg': 4.41, 'wall_s': 66}
+{'text': 'THE LAZY DOG', 'seed': 1, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 1.771, 'trace_max_mm': 6.316, 'coverage': 0.802, 'drag': 0.0, 'tilt_max_deg': 4.48, 'wall_s': 66}
+{'text': 'THE LAZY DOG', 'seed': 2, 'completed': True, 'abort': None, 'strokes': '16/16', 'trace_rms_mm': 1.784, 'trace_max_mm': 6.636, 'coverage': 0.826, 'drag': 0.0, 'tilt_max_deg': 5.0, 'wall_s': 60}
+SUMMARY {'n': 15, 'completed': 15, 'trace_rms_mean': 1.764, 'trace_rms_max': 1.918, 'drag_max': 0.0, 'coverage_mean': 0.816, 'aborts': []}

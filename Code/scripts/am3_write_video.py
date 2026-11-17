@@ -46,9 +46,9 @@ VIEWS = ("w_iso", "w_front")
 
 def main(a):
     out = os.path.join(MEDIA, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out); lines = []
-    names = [os.path.basename(os.path.dirname(c)).split("_")[0] if c.endswith(".zip") else c for c in a.ctrl]                          # file-safe names (a policy is given as a path)
+    names = [os.path.basename(os.path.dirname(c)).split("_")[0] if c.endswith(".zip") else c.split(":")[0] for c in a.ctrl]                          # file-safe names (a policy is given as a path)
     for c, name in zip(a.ctrl, names):
-        label = f"RL ({os.path.basename(os.path.dirname(c))})" if c.endswith(".zip") else {"N": "N: coupled NMPC"}.get(c, c)
+        label = f"RL ({os.path.basename(os.path.dirname(c))})" if c.endswith(".zip") else {"N": "N: coupled NMPC", "ND:10,10": "ND: NMPC + disturbance observer"}.get(c, c)
         rec = WriteRecorder(os.path.join(out, "frames", name), f"{label}: writing \"{a.text}\"" + ("" if a.case == "nominal" else f" [{a.case}]"), a.tag, a.text, cams=VIEWS, path=None, rate_label="")
         ep = WriteEpisode(make(c), a.text, height=a.height, v_write=a.speed, mismatch=CASES[a.case])
         if a.noise == "real": ep.sens = RealSensors(0)                                                    # same sensing as the Phase-1 test, seed 0

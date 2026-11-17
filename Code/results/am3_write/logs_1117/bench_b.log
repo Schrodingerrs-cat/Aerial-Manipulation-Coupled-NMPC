@@ -1,0 +1,6 @@
+14:00 R17 nominal {'n': 15, 'completed': 15, 'trace_rms_mean': 2.4, 'trace_rms_max': 2.689, 'drag_max': 0.0, 'coverage_mean': 0.761, 'aborts': []}
+14:02 ND nominal {'n': 15, 'completed': 15, 'trace_rms_mean': 2.619, 'trace_rms_max': 2.904, 'drag_max': 0.004, 'coverage_mean': 0.758, 'aborts': []}
+14:02 ND payload100g {'n': 15, 'completed': 15, 'trace_rms_mean': 2.648, 'trace_rms_max': 2.808, 'drag_max': 0.004, 'coverage_mean': 0.762, 'aborts': []}
+14:03 R16 nominal {'n': 15, 'completed': 15, 'trace_rms_mean': 1.764, 'trace_rms_max': 1.918, 'drag_max': 0.0, 'coverage_mean': 0.816, 'aborts': []}
+14:20 R16 kf90 {'n': 15, 'completed': 1, 'trace_rms_mean': 1.442, 'trace_rms_max': 1.442, 'drag_max': 0.0, 'coverage_mean': 0.871, 'aborts': ['wall-clock limit (stuck solver or plant)']}
+BENCH1117B DONE

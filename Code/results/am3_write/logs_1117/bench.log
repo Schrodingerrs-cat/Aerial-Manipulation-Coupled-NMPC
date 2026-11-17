@@ -1,0 +1,20 @@
+ND:10,10: line 1: results/am3_write/bench/ND_real_results/am3_rl/R17_write15dr_s0/model_final.zip.log: No such file or directory
+grep: results/am3_write/bench/ND_real_results/am3_rl/R17_write15dr_s0/model_final.zip.log: No such file or directory
+13:33 ND results/am3_rl/R17_write15dr_s0/model_final.zip 
+13:33 R17 payload200g {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['loss of control (failsafe): tilt 14 deg, base error 253 mm', 'loss 
+13:33 ND motor_slow {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['loss of control (failsafe): tilt 43 deg, base error 18 mm', 'loss o
+13:36 R17 payload100g {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['no contact acquired']}
+13:38 R17 motor_slow {'n': 15, 'completed': 15, 'trace_rms_mean': 2.928, 'trace_rms_max': 3.163, 'drag_max': 0.0, 'coverage_mean': 0.739, 'aborts': []}
+13:41 ND payload200g {'n': 15, 'completed': 15, 'trace_rms_mean': 3.049, 'trace_rms_max': 3.327, 'drag_max': 0.002, 'coverage_mean': 0.671, 'aborts': []}
+13:42 R17 damping3x {'n': 15, 'completed': 15, 'trace_rms_mean': 2.43, 'trace_rms_max': 2.706, 'drag_max': 0.0, 'coverage_mean': 0.754, 'aborts': []}
+13:43 ND damping3x {'n': 15, 'completed': 15, 'trace_rms_mean': 2.77, 'trace_rms_max': 3.198, 'drag_max': 0.008, 'coverage_mean': 0.738, 'aborts': []}
+13:47 R17 kf90 {'n': 15, 'completed': 9, 'trace_rms_mean': 2.226, 'trace_rms_max': 2.318, 'drag_max': 0.0, 'coverage_mean': 0.789, 'aborts': ['no contact acquired']}
+13:47 ND kf90 {'n': 15, 'completed': 15, 'trace_rms_mean': 2.589, 'trace_rms_max': 2.797, 'drag_max': 0.004, 'coverage_mean': 0.737, 'aborts': []}
+13:50 ND gust_y {'n': 15, 'completed': 15, 'trace_rms_mean': 2.664, 'trace_rms_max': 2.825, 'drag_max': 0.003, 'coverage_mean': 0.744, 'aborts': []}
+13:52 R17 gust_y {'n': 15, 'completed': 15, 'trace_rms_mean': 2.425, 'trace_rms_max': 2.661, 'drag_max': 0.0, 'coverage_mean': 0.759, 'aborts': []}
+results/am3_rl/R16_write15_s0/model_final.zip: line 1: results/am3_write/bench/R16_real_results/am3_rl/R16_write15_s0/model_final.zip.log: No such file or directory
+grep: results/am3_write/bench/R16_real_results/am3_rl/R16_write15_s0/model_final.zip.log: No such file or directory
+13:52 R16 results/am3_rl/R16_write15_s0/model_final.zip 
+13:54 ND wind_sine {'n': 15, 'completed': 15, 'trace_rms_mean': 2.704, 'trace_rms_max': 2.965, 'drag_max': 0.006, 'coverage_mean': 0.74, 'aborts': []}
+13:54 R17 wind_sine {'n': 15, 'completed': 15, 'trace_rms_mean': 2.994, 'trace_rms_max': 3.324, 'drag_max': 0.001, 'coverage_mean': 0.604, 'aborts': []}
+BENCH1117 DONE
