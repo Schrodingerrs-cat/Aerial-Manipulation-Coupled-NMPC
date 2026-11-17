@@ -277,3 +277,16 @@ From `TODO.md` / `Findings/STATUS.md`: items 3, 4, 5, 7, 8 partial; item 9 open.
 - New env `write15_drj` (joint gain 2). Turing: R18 (from R17, job 2532420), R19 (from R16, job 2532421), 20M each.
 - Videos: Media_results/Write_HELLO_WPI_payload100g_N_vs_ND_vs_R17_2026-11-17 and ..._motor_slow_... (compare + per controller).
 - Next: bench R18/R19; hybrid NMPC+RL (ND handles payload/thrust, RL handles motor lag); ND motor_slow.
+
+### 2026-11-17 16:30 EST — Final presentation requirement (professor)
+Do not cherry-pick. Show where each method fails, push the algorithms to their limits (breaking-point sweeps, not one value), say what we learned, and give next steps. Keep failure evidence (logs, failure videos) as carefully as successes. Failures collected so far:
+- ND contact stall (observer absorbed pen force; fixed).
+- ND loses control with motor lag ×2.
+- N and R15 fail payload; R15/R16 fail thrust −10%.
+- R17 failed payload (joint observer channel off).
+- SAC 0/15.
+
+### 2026-11-17 18:05 EST — R18 benched; R20 launched
+- R18: payload 100 g 13/15 and motor lag 14/15 (first policy with both). But it fails late in long sentences (no contact; force fades 0.4 -> 0.26 N with slow drift). Nominal 8/15.
+- Cause: training texts are 1-2 letters (10-20 s); the test is about 100 s. New env `write15_drjl` (1-5 letters). R20 (from R18), job 2533832.
+- R19 (job 2532421) ends about 19:10; benchone.sh then benches it automatically (logs_1117/final_R19.log).

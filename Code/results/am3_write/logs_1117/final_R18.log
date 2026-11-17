@@ -1,0 +1,13 @@
+Loading slurm/current
+  Loading requirement: wpi-scripts/stable
+Loading slurm/current
+  Loading requirement: wpi-scripts/stable
+17:44 R18 payload200g {'n': 15, 'completed': 1, 'trace_rms_mean': 3.684, 'trace_rms_max': 3.684, 'drag_max': 0.0, 'coverage_mean': 0.752, 'aborts': ['loss of control (failsafe): tilt 17 deg, base error 261 mm', 'lo
+17:46 R18 payload100g {'n': 15, 'completed': 13, 'trace_rms_mean': 3.24, 'trace_rms_max': 3.469, 'drag_max': 0.0, 'coverage_mean': 0.706, 'aborts': ['no contact acquired']}
+17:47 R18 nominal {'n': 15, 'completed': 8, 'trace_rms_mean': 2.823, 'trace_rms_max': 2.988, 'drag_max': 0.0, 'coverage_mean': 0.706, 'aborts': ['no contact acquired']}
+17:48 R18 motor_slow {'n': 15, 'completed': 14, 'trace_rms_mean': 3.522, 'trace_rms_max': 3.953, 'drag_max': 0.0, 'coverage_mean': 0.676, 'aborts': ['no contact acquired']}
+17:50 R18 damping3x {'n': 15, 'completed': 8, 'trace_rms_mean': 2.965, 'trace_rms_max': 3.147, 'drag_max': 0.0, 'coverage_mean': 0.704, 'aborts': ['no contact acquired']}
+17:51 R18 kf90 {'n': 15, 'completed': 10, 'trace_rms_mean': 2.834, 'trace_rms_max': 3.104, 'drag_max': 0.0, 'coverage_mean': 0.739, 'aborts': ['no contact acquired']}
+17:52 R18 gust_y {'n': 15, 'completed': 8, 'trace_rms_mean': 2.905, 'trace_rms_max': 3.107, 'drag_max': 0.0, 'coverage_mean': 0.712, 'aborts': ['no contact acquired']}
+17:54 R18 wind_sine {'n': 15, 'completed': 7, 'trace_rms_mean': 3.48, 'trace_rms_max': 3.684, 'drag_max': 0.0, 'coverage_mean': 0.604, 'aborts': ['no contact acquired', 'recovery timeout']}
+R18 DONE

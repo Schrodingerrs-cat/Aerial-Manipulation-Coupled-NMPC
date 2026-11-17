@@ -32,9 +32,9 @@ def scale_mismatch(mm, s):
 
 
 class WallEnv(Track9Env):
-    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, dob_kj=0.0, real_sens=False, pad_fine_w=0.0, **kw):
+    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, dob_kj=0.0, write_max=2, real_sens=False, pad_fine_w=0.0, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
-        self.hist, self.H, self.pad_fine_w = hist, None, pad_fine_w; self.inner.dob = dob; self.inner.k_dob[6:9] = dob_kj          # dob_kj: joint channel of the observer (R18: 2/s; off before, arm sagged under payload); R15 (Phase 1): observation history, disturbance observer, fine pad reward
+        self.hist, self.H, self.pad_fine_w = hist, None, pad_fine_w; self.inner.dob = dob; self.inner.k_dob[6:9] = dob_kj; self.write_max = write_max          # dob_kj: joint channel of the observer (R18: 2/s; off before, arm sagged under payload); R15 (Phase 1): observation history, disturbance observer, fine pad reward
         if real_sens: self.sens = Sensors(kw.get("seed", 0), Sensors.REAL)
         self.pl.m.geom_contype[self.pl.gwall] = 1; self.pl.m.geom_conaffinity[self.pl.gwall] = 1; self.latency = True
         self.inner.kp_j, self.inner.kd_j = 1.0, 0.05          # the track-rung joint gains (1.57, 0.016) go unstable with the harness latency: arm limit cycle at 12 rad/s; chosen from a sweep, see Findings/RL/03
@@ -57,7 +57,8 @@ class WallEnv(Track9Env):
         p0 = np.array(self.inner.pr.pad_f(self.x0)[0]).ravel()
         if self.scenario is None and self.rng.random() < self.write_p:            # writing episode: 1-2 random capital letters, random size, moving base
             from ocrl.am3_write import WriteTask, text_strokes, FONT
-            text = "".join(self.rng.choice(sorted(FONT), size=1 if self.rng.random() < 0.7 else 2)); h = float(self.rng.uniform(0.03, 0.10))
+            n = (1 if self.rng.random() < 0.7 else 2) if self.write_max <= 2 else int(self.rng.integers(1, self.write_max + 1))          # R20: up to write_max letters (long sentences drift; 1-2 letters never showed it)
+            text = "".join(self.rng.choice(sorted(FONT), size=n)); h = float(self.rng.uniform(0.03, 0.10))
             self.task = WriteTask(p0, text_strokes(text, h), h, v_write=float(self.rng.uniform(0.025, 0.075))); self.path = "write:" + text          # pen speed 25-75 mm/s
             self.max_steps = int((sum(self.task.Ts) + 4.0 * len(self.task.Ts) + 6.0) / self.dt_c)
         else: self.task = Task(self.path, p0)
@@ -99,7 +100,8 @@ class WallEnv(Track9Env):
 
 
 KIND_KW = dict(write15=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0), write15_dr=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0),
-              write15_drj=dict(hist=4, dob=True, dob_kj=2.0, real_sens=True, pad_fine_w=1.0))         # env options a policy was trained with, by training env kind (Phase 1)
+              write15_drj=dict(hist=4, dob=True, dob_kj=2.0, real_sens=True, pad_fine_w=1.0),
+              write15_drjl=dict(hist=4, dob=True, dob_kj=2.0, write_max=5, real_sens=True, pad_fine_w=1.0))         # env options a policy was trained with, by training env kind (Phase 1)
 
 
 class RLCtrl:

@@ -202,3 +202,38 @@ No oscillation at 2 or 5 here.
 New env kind `write15_drj` is `write15_dr` with the joint gain at 2 (`dob_kj`, `KIND_KW`). 20M steps, lr 1e-4 with decay, target_kl 0.02.
 - R18_write15drj_s0 (job 2532420): warm start from R17.
 - R19_write15drj_fromR16_s0 (job 2532421): warm start from R16, the best nominal writer.
+
+### R18/R19 mid-training check (2026-11-17 16:18 EST; real noise, 15 each)
+
+| checkpoint | nominal | payload 100 g | motor lag x2 |
+|---|---|---|---|
+| R18 at 11.5M (from R17) | 6/15, 3.42 (no contact) | 8/15, 3.46 | 3/15, 4.13 |
+| R19 at 8M (from R16) | 15/15, 2.41 | **13/15, 2.77** | 0/15 |
+
+Mid-run only: the randomization is still ramping and lr is still high, so these are not results. R19 now writes with payload, which R16 could not do (0/15). R18 has lost nominal contact reliability for now. Final checkpoints are benched on all 8 cases.
+
+### R18 final (2026-11-17 17:55 EST; real noise, 15 each)
+
+| case | R18 (from R17, joint gain 2, DR) |
+|---|---|
+| nominal | 8/15, 2.82 |
+| payload 100 g | **13/15, 3.24** |
+| payload 200 g | 1/15 |
+| motor lag x2 | **14/15, 3.52** |
+| damping 3x | 8/15, 2.97 |
+| kf90 | 10/15, 2.83 |
+| gust | 8/15, 2.91 |
+| sine wind | 7/15, 3.48 |
+
+All failures except payload 200 g end with "no contact acquired".
+- **Payload and motor lag together:** R18 is the first policy to handle both. The joint-channel fix works.
+- **Fails late in long sentences:** HELLO WPI and THE LAZY DOG complete on every seed. THE QUICK BROWN and FOX JUMPS OVER fail on every seed, at stroke 11-19.
+
+**Cause** (THE QUICK BROWN, seed 0, nominal; per approach):
+- **Fading force:** R18's peak approach force falls from 0.36-0.41 N at the start to 0.26 N at stroke 16. Approach time grows from 2-3 s to 8 s, and then the no-contact timeout fires.
+- **R15 shows the same drift and survives:** base x 507.7 -> 506.0 mm, z -10 mm over the sentence. But R15 presses at 0.30-0.42 N throughout and finishes 20/20. DR made R18 press more gently, so the same drift costs it contact.
+- **Training never shows this:** training writing episodes are 1-2 letters, 10-20 s (`am3_rl_wall.py` reset). Test sentences are 9-15 letters, about 100 s.
+
+**Retrain R20** (Turing job 2533832, submitted 2026-11-17 18:00 EST):
+- New env `write15_drjl` = `write15_drj` with `write_max=5`: writing episodes have 1-5 letters, 13-64 s.
+- Warm start from R18, 20M, lr 1e-4 with decay, target_kl 0.02.
