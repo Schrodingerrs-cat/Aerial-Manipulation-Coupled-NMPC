@@ -290,3 +290,11 @@ Do not cherry-pick. Show where each method fails, push the algorithms to their l
 - R18: payload 100 g 13/15 and motor lag 14/15 (first policy with both). But it fails late in long sentences (no contact; force fades 0.4 -> 0.26 N with slow drift). Nominal 8/15.
 - Cause: training texts are 1-2 letters (10-20 s); the test is about 100 s. New env `write15_drjl` (1-5 letters). R20 (from R18), job 2533832.
 - R19 (job 2532421) ends about 19:10; benchone.sh then benches it automatically (logs_1117/final_R19.log).
+
+### 2026-11-17 19:05 EST — [capstone] analytical kinematics + closed-form mass; course split recorded
+- Two courses, one project. Capstone (advisor Ashis): analytical PoE kinematics, no Bayesian mass. RBE595 optimal (with Aryan): the show-failures presentation rule. Tag work [capstone] / [optimal]; don't mix.
+- New `ocrl/am3_kin_poe.py`:
+  - FK exact vs predictor; closed-form IK 18x faster than the numerical one.
+  - Payload mass from the joint torques: 0.0994 / 0.1996 kg for 100 / 200 g, and 0 under kf90 (the base-force reading says 0.17).
+  - See Findings/Capstone/01_analytical_kinematics_mass.md.
+- Skills installed in ~/.claude/skills: grill-with-docs (+ grilling, domain-modeling) and teach (Matt Pocock, MIT, commit 5863806).

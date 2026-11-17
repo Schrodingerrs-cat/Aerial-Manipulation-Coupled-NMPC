@@ -1,0 +1,11 @@
+{
+ "n": 1000,
+ "fk_vs_AMPred3_max_m": 4.318311786627896e-16,
+ "ik_roundtrip_max_rad": 3.552713678800501e-15,
+ "ik_pad_err_max_m": 4.536359934548582e-16,
+ "ik_reachable": 1000,
+ "ik_us": 65.8867359161377,
+ "jac_vs_fd_max": 1.3189604963770307e-10,
+ "numeric_ik_ms": 1.1672353744506836,
+ "numeric_vs_analytic_max_rad": 0.0007039914703279582
+}
