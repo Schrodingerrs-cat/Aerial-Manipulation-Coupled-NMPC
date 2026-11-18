@@ -237,3 +237,49 @@ All failures except payload 200 g end with "no contact acquired".
 **Retrain R20** (Turing job 2533832, submitted 2026-11-17 18:00 EST):
 - New env `write15_drjl` = `write15_drj` with `write_max=5`: writing episodes have 1-5 letters, 13-64 s.
 - Warm start from R18, 20M, lr 1e-4 with decay, target_kl 0.02.
+
+### R19 final (2026-11-17 19:18 EST; real noise, 15 each) [optimal]
+
+| case | R19 (from R16, write15_drj, 20M) |
+|---|---|
+| nominal | 15/15, 2.70 |
+| payload 100 g | 15/15, 3.18 |
+| payload 200 g | **0/15** (flips in 2-3 s) |
+| motor lag x2 | 15/15, 3.09 |
+| damping 3x | 15/15, 2.79 |
+| kf90 | 15/15, 3.04 |
+| gust | 15/15, 2.70 |
+| sine wind | 15/15, 2.84 |
+
+- **Most robust controller so far:** 7 of 8 cases complete on every run. N, ND and R17 each fail at least one of payload or motor lag.
+- **Accuracy cost:** RMS is 2.7-3.2 mm, above the 2 mm pass line. R15 was 1.74 mm nominal with no robustness. So R19 is robust but not yet accurate.
+
+**Why 200 g fails** (HELLO WPI, seed 0; scratchpad traces `pl_sweep.py`, `pl_trace.py`):
+- **Sweep:** 120-180 g all complete (RMS 2.89-3.13 mm). Max tilt grows 5 -> 6 -> 9 deg. 200 g and 220 g flip before the first stroke.
+- **Nominal (0 g):** smooth, tilt < 2 deg, shoulder torque -0.4 N m.
+- **With payload:** at 180 g the arm and base oscillate during the approach (shoulder angle swings -13 to -39 deg, tilt 3-10 deg). The payload alone takes the static shoulder torque to about -0.8 N m, against a 1.0 N m servo limit. At 200 g the oscillation pushes the shoulder into saturation (-1.00 N m), the arm drops, and the base flips (40 deg).
+- **The observer's joint gain sets the oscillation:** R19 was trained with gain 2. With gain 1 it flips even at 180 g. With gain 4, 180 g and 200 g both complete HELLO WPI. Full 8-case bench at gain 4 below.
+- **Mass feedforward would not help here:** the observer already reads the payload correctly (d_Fz = -1.8 N for 180 g). The limit is servo torque margin, not estimation.
+
+**R19 with joint gain 4, no retraining** (`am3_write_bench.py ... --kj 4 --name R19kj4`, 2026-11-17 19:35 EST):
+
+| case | R19 (gain 2, as trained) | R19 gain 4 |
+|---|---|---|
+| nominal | 15/15, 2.70 | 15/15, 2.70 |
+| payload 100 g | 15/15, 3.18 | 15/15, 3.22 |
+| payload 200 g | 0/15 | **1/15**, 3.29 |
+| motor lag x2 | 15/15, 3.09 | 14/15, 3.12 |
+| damping 3x | 15/15, 2.79 | 15/15, 2.79 |
+| kf90 | 15/15, 3.04 | 15/15, 3.05 |
+| gust | 15/15, 2.70 | 15/15, 2.71 |
+| sine wind | 15/15, 2.84 | 15/15, 2.91 |
+
+- **Only a partial fix:** at 200 g, gain 4 gets the drone writing (2-16 strokes instead of 0) but it still flips mid-sentence (tilt 40 deg) or drifts off the base (255 mm).
+- **Other cases:** unchanged except motor lag, which drops to 14/15.
+- **Conclusion:** 200 g sits at the shoulder torque margin, and the policy has never learned to keep away from it.
+
+**Retrain R21** (Turing job 2534328, submitted 2026-11-17 19:55 EST):
+- New env `write15_drjt` = `write15_drjl` (writing of up to 5 letters) + joint gain 4 + `tau_w=1`.
+- `tau_w` adds a reward penalty on the largest joint torque command above 80 % of the 1.0 N m servo limit, so the policy learns to keep torque margin.
+- Warm start from R19, 20M steps, lr 1e-4 with decay, target_kl 0.02.
+- **Reward change, disclosed:** the task, metrics and pass criteria are unchanged.

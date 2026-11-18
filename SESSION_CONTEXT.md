@@ -298,3 +298,13 @@ Do not cherry-pick. Show where each method fails, push the algorithms to their l
   - Payload mass from the joint torques: 0.0994 / 0.1996 kg for 100 / 200 g, and 0 under kf90 (the base-force reading says 0.17).
   - See Findings/Capstone/01_analytical_kinematics_mass.md.
 - Skills installed in ~/.claude/skills: grill-with-docs (+ grilling, domain-modeling) and teach (Matt Pocock, MIT, commit 5863806).
+
+## 2026-11-17 19:45 EST [optimal]
+- **R19 final:** 7/8 cases complete 15/15. RMS 2.7-3.2 mm. Payload 200 g 0/15 (flips in 2 s).
+- **Cause of the 200 g flip:** arm-base oscillation under payload, on top of a static shoulder torque of about 0.8 of the 1.0 N m servo limit, saturates the shoulder.
+  - Joint observer gain 4 (trained with 2) completes 200 g on HELLO WPI.
+  - Full bench running locally: `--kj 4` (new bench option), name R19kj4.
+- **R20** (Turing 2533832, write15_drjl from R18) is still training.
+- Findings/RL/04 updated.
+- 19:55 R19 gain 4 bench: 200 g 1/15 (was 0), others unchanged, motor lag 14/15. Partial fix.
+  - **R21** submitted (Turing 2534328): write15_drjt = up to 5 letters + joint gain 4 + torque-margin penalty, from R19, 20M.

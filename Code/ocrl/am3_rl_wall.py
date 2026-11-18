@@ -2,7 +2,7 @@
 The base holds its fixed hover reference; the joint reference is the IK of the Task's pad reference, plus the policy's residual.  Limits mirror the Episode failsafe."""
 import numpy as np
 from gymnasium import spaces
-from ocrl.am3_rl_direct import Track9Env, BASE, Q_NOM, Sensors
+from ocrl.am3_rl_direct import Track9Env, BASE, Q_NOM, Sensors, TAU_C
 from ocrl.am3_plant import WALL_X, R_PAD
 from ocrl.am3_task import Task, TASK
 from ocrl.am3_episode import initial_state
@@ -32,9 +32,9 @@ def scale_mismatch(mm, s):
 
 
 class WallEnv(Track9Env):
-    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, dob_kj=0.0, write_max=2, real_sens=False, pad_fine_w=0.0, **kw):
+    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, dob_kj=0.0, write_max=2, tau_w=0.0, real_sens=False, pad_fine_w=0.0, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
-        self.hist, self.H, self.pad_fine_w = hist, None, pad_fine_w; self.inner.dob = dob; self.inner.k_dob[6:9] = dob_kj; self.write_max = write_max          # dob_kj: joint channel of the observer (R18: 2/s; off before, arm sagged under payload); R15 (Phase 1): observation history, disturbance observer, fine pad reward
+        self.hist, self.H, self.pad_fine_w = hist, None, pad_fine_w; self.inner.dob = dob; self.inner.k_dob[6:9] = dob_kj; self.write_max, self.tau_w = write_max, tau_w          # tau_w (R21): penalty on joint torque above 80 % of the servo limit; dob_kj: joint channel of the observer (R18: 2/s; off before, arm sagged under payload); R15 (Phase 1): observation history, disturbance observer, fine pad reward
         if real_sens: self.sens = Sensors(kw.get("seed", 0), Sensors.REAL)
         self.pl.m.geom_contype[self.pl.gwall] = 1; self.pl.m.geom_conaffinity[self.pl.gwall] = 1; self.latency = True
         self.inner.kp_j, self.inner.kd_j = 1.0, 0.05          # the track-rung joint gains (1.57, 0.016) go unstable with the harness latency: arm limit cycle at 12 rad/s; chosen from a sweep, see Findings/RL/03
@@ -91,6 +91,7 @@ class WallEnv(Track9Env):
         if ph == "trace": r += self.pad_fine_w * np.exp(-(ep / 0.001) ** 2)              # R15: sharp term at the mm scale, only while writing
         if ph in CONTACT: r += self.contact_w * (1.0 if F > 0.08 else -1.0)
         r -= 0.5 * max(F - 2.0, 0.0)
+        r -= self.tau_w * max(np.abs(self.u_pend[4:7]).max() / TAU_C - 0.8, 0.0) / 0.2           # R21: shoulder saturation flipped R19 at 200 g (Findings/RL/04)
         tilt = np.degrees(2 * np.arcsin(min(1.0, np.hypot(x[4], x[5])))); stop = tilt > 40 or np.linalg.norm(x[:3] - self.pref) > 0.25 or F > 4.0 or bool(self.task.failed) or len(self.pl.other_contacts()) > 0
         if stop and not bad: r -= self.bad_pen; bad = True
         done = ph == "done" and not bad
@@ -101,7 +102,8 @@ class WallEnv(Track9Env):
 
 KIND_KW = dict(write15=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0), write15_dr=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0),
               write15_drj=dict(hist=4, dob=True, dob_kj=2.0, real_sens=True, pad_fine_w=1.0),
-              write15_drjl=dict(hist=4, dob=True, dob_kj=2.0, write_max=5, real_sens=True, pad_fine_w=1.0))         # env options a policy was trained with, by training env kind (Phase 1)
+              write15_drjl=dict(hist=4, dob=True, dob_kj=2.0, write_max=5, real_sens=True, pad_fine_w=1.0),
+              write15_drjt=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0))         # env options a policy was trained with, by training env kind (Phase 1)
 
 
 class RLCtrl:

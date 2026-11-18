@@ -3,7 +3,7 @@
 Sensing: 'real' = mocap + IMU class noise (SIG_REAL below); 'nominal' = the frozen harness noise (0.1 mm, 0.01 deg).  Latency is the Episode's one control period.
 Pass (Phase 1): every episode completed, mean trace RMS <= 2 mm, no pen drag (drag <= 0.02).
 CTRL: an RL .zip, 'pd' (the scripted outer loop through the same inner loop), or an NMPC name.  --dob on|off overrides the inner-loop disturbance observer (default: as the policy was trained); --case adds a model mismatch.
-Usage: am3_write_bench.py CTRL [--noise real] [--seeds 3] [--procs 15] [--dob on|off] [--case NAME] --name NAME"""
+Usage: am3_write_bench.py CTRL [--noise real] [--seeds 3] [--procs 15] [--dob on|off] [--case NAME] [--kj GAIN] --name NAME"""
 import sys, os, json, argparse, time
 import numpy as np
 from stable_baselines3 import PPO          # torch must load before acados and the renderer
@@ -24,10 +24,11 @@ class RealSensors(Sensors):
 
 
 def run(job):
-    ctrl, text, seed, noise, dob, case = job; t0 = time.time()
+    ctrl, text, seed, noise, dob, case, kj = job; t0 = time.time()
     if ctrl == "pd": from ocrl.am3_rl_wall import RLCtrl; c = RLCtrl("pd", vel_ff=True)
     else: c = make(ctrl)
     if dob is not None: c.env.inner.dob = dob                                                     # None: as trained
+    if kj is not None: c.env.inner.k_dob[6:9] = kj                                                # joint-channel observer gain override (2026-11-17)
     ep = WriteEpisode(c, text, height=HEIGHT, v_write=SPEED, seed=seed, mismatch=CASES[case] if case else None)
     if noise == "real": ep.sens = RealSensors(seed)
     ep.run(); return dict(text=text, seed=seed, **write_metrics(ep), wall_s=round(time.time() - t0))
@@ -41,7 +42,7 @@ def summary(rows):
 
 
 def main(a):
-    dob = None if a.dob is None else a.dob == "on"; jobs = [(a.ctrl, s, seed, a.noise, dob, a.case) for s in SENTENCES for seed in range(a.seeds)]
+    dob = None if a.dob is None else a.dob == "on"; jobs = [(a.ctrl, s, seed, a.noise, dob, a.case, a.kj) for s in SENTENCES for seed in range(a.seeds)]
     if a.procs > 1:
         with Pool(a.procs) as pool: rows = pool.map(run, jobs, chunksize=1)
     else: rows = [run(j) for j in jobs]
@@ -54,4 +55,4 @@ def main(a):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("ctrl"); ap.add_argument("--noise", choices=("real", "nominal"), default="real"); ap.add_argument("--seeds", type=int, default=3)
-    ap.add_argument("--procs", type=int, default=15); ap.add_argument("--name", required=True); ap.add_argument("--dob", choices=("on", "off"), default=None); ap.add_argument("--case", default=None); main(ap.parse_args())
+    ap.add_argument("--procs", type=int, default=15); ap.add_argument("--name", required=True); ap.add_argument("--dob", choices=("on", "off"), default=None); ap.add_argument("--kj", type=float, default=None); ap.add_argument("--case", default=None); main(ap.parse_args())
