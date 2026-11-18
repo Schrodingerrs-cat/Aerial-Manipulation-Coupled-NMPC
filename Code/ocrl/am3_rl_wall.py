@@ -16,12 +16,12 @@ TASK["paths"].setdefault("M", dict(kind="polygon", vertices=[[-0.04, -0.025], [-
 SHAPES = ("line", "line_fast", "line_T1", "circle", "circle_T4", "rounded_triangle", "rounded_triangle_T5", "M")
 
 
-def sample_mismatch(g):
+def sample_mismatch(g, pl_max=0.25, lag_max=2.0):
     """Unknown model mismatch for training (R13, H1): payload on the hand, thrust and motor-lag error, joint damping, wind and gusts."""
     dist = []
     if g.random() < 0.6: dist += [dict(kind="sine", axis=ax, amp=float(g.uniform(0, 1.0)), freq=float(g.uniform(0.1, 1.0)), t0=float(g.uniform(0, 5))) for ax in (1, 2)]
     if g.random() < 0.4: dist.append(dict(kind="step", axis=int(g.integers(0, 3)), amp=float(g.uniform(-1.2, 1.2)), t0=float(g.uniform(2, 15)), dur=float(g.uniform(0.5, 3))))
-    return dict(payload=dict(kg=float(g.uniform(0, 0.25)) if g.random() < 0.6 else 1e-9, pos_hand_m=[0.0, 0.0, 0.0]), kf_scale=float(g.uniform(0.88, 1.08)), motor_tau_scale=float(g.uniform(1.0, 2.0)),
+    return dict(payload=dict(kg=float(g.uniform(0, pl_max)) if g.random() < 0.6 else 1e-9, pos_hand_m=[0.0, 0.0, 0.0]), kf_scale=float(g.uniform(0.88, 1.08)), motor_tau_scale=float(g.uniform(1.0, lag_max)),
                 joint_damping_scale=float(np.exp(g.uniform(np.log(0.5), np.log(4.0)))), disturbance=dist)
 
 
@@ -32,9 +32,9 @@ def scale_mismatch(mm, s):
 
 
 class WallEnv(Track9Env):
-    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, dob_kj=0.0, write_max=2, tau_w=0.0, real_sens=False, pad_fine_w=0.0, **kw):
+    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, dob_kj=0.0, write_max=2, tau_w=0.0, dr_wide=None, real_sens=False, pad_fine_w=0.0, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
-        self.hist, self.H, self.pad_fine_w = hist, None, pad_fine_w; self.inner.dob = dob; self.inner.k_dob[6:9] = dob_kj; self.write_max, self.tau_w = write_max, tau_w          # tau_w (R21): penalty on joint torque above 80 % of the servo limit; dob_kj: joint channel of the observer (R18: 2/s; off before, arm sagged under payload); R15 (Phase 1): observation history, disturbance observer, fine pad reward
+        self.hist, self.H, self.pad_fine_w = hist, None, pad_fine_w; self.inner.dob = dob; self.inner.k_dob[6:9] = dob_kj; self.write_max, self.tau_w, self.dr_wide = write_max, tau_w, dr_wide or {}          # tau_w (R21): penalty on joint torque above 80 % of the servo limit; dob_kj: joint channel of the observer (R18: 2/s; off before, arm sagged under payload); R15 (Phase 1): observation history, disturbance observer, fine pad reward
         if real_sens: self.sens = Sensors(kw.get("seed", 0), Sensors.REAL)
         self.pl.m.geom_contype[self.pl.gwall] = 1; self.pl.m.geom_conaffinity[self.pl.gwall] = 1; self.latency = True
         self.inner.kp_j, self.inner.kd_j = 1.0, 0.05          # the track-rung joint gains (1.57, 0.016) go unstable with the harness latency: arm limit cycle at 12 rad/s; chosen from a sweep, see Findings/RL/03
@@ -67,7 +67,7 @@ class WallEnv(Track9Env):
 
     def domain_rand(self):
         """Domain randomization (R13); every episode starts from the nominal model."""
-        self.pl.m.dof_damping[:] = self.damp0; self.mm = sample_mismatch(self.rng); self.n_dr += 1
+        self.pl.m.dof_damping[:] = self.damp0; self.mm = sample_mismatch(self.rng, **self.dr_wide); self.n_dr += 1
         if self.dr_ramp: self.mm = scale_mismatch(self.mm, min(1.0, self.n_dr / self.dr_ramp))          # ramp over the first dr_ramp episodes of this env
         x = self.pl.state(); self.pl.apply_mismatch(self.mm); self.pl.set_state(x)          # apply_mismatch -> mj_setConst overwrites the simulation state
 
@@ -103,7 +103,8 @@ class WallEnv(Track9Env):
 KIND_KW = dict(write15=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0), write15_dr=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0),
               write15_drj=dict(hist=4, dob=True, dob_kj=2.0, real_sens=True, pad_fine_w=1.0),
               write15_drjl=dict(hist=4, dob=True, dob_kj=2.0, write_max=5, real_sens=True, pad_fine_w=1.0),
-              write15_drjt=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0))         # env options a policy was trained with, by training env kind (Phase 1)
+              write15_drjt=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0),
+              write15_drjtw=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, dr_wide=dict(pl_max=0.28, lag_max=2.5), real_sens=True, pad_fine_w=1.0))     # R22: test cases (200 g, lag x2) inside the training range, not at its edge; 280 g keeps static shoulder torque about 0.9 of the servo limit         # env options a policy was trained with, by training env kind (Phase 1)
 
 
 class RLCtrl:

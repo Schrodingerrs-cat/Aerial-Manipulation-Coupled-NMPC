@@ -314,3 +314,44 @@ All failures except payload 200 g end with "no contact acquired".
   - R20 flips at stroke 9/11.
   - ND flips at 1.6 s.
 - Each video matches its bench row for seed 0.
+
+### R21 final (2026-11-18 12:05 EST; from R19, write15_drjt = up to 5 letters + joint gain 4 + torque-margin penalty; real noise, 15 each) [optimal]
+
+Bench ran on Turing (job 2535274, after training job 2534328). Logs are `Code/results/am3_write/bench/2026-11-17_2230_R21_real*`. Turing's clock wrote 1720 in the names; they were renamed to the submit time, 22:30 EST.
+
+| case | N | ND | R19 | R20 | **R21** |
+|---|---|---|---|---|---|
+| nominal | 15/15, 2.07 | 15/15, 2.62 | 15/15, 2.70 | 15/15, 2.53 | **15/15, 1.87** |
+| payload 100 g | 0/15 | 15/15, 2.65 | 15/15, 3.18 | 15/15, 2.94 | **15/15, 2.32** |
+| payload 200 g | 0/15 | **15/15, 3.05** | 0/15 | 5/15, 3.71 | 5/15, 2.75 |
+| motor lag x2 | 0/15 | 0/15 | **15/15, 3.09** | 0/15 | 11/15, 2.47 |
+| damping 3x | 15/15, 2.31 | 15/15, 2.77 | 15/15, 2.79 | 15/15, 2.67 | **15/15, 1.94** |
+| kf90 | 15/15, 2.70 | 15/15, 2.59 | 15/15, 3.04 | 15/15, 2.65 | **15/15, 1.97** |
+| gust | 15/15, 2.03 | 15/15, 2.66 | 15/15, 2.70 | 15/15, 2.54 | **15/15, 1.90** |
+| sine wind | 15/15, 2.23 | 15/15, 2.70 | 15/15, 2.84 | 15/15, 3.21 | **15/15, 2.64** |
+
+- **First policy under the 2 mm pass line while staying robust:**
+  - nominal 1.87, damping 1.94, kf90 1.97, gust 1.90 (max 1.95-2.04).
+  - Most accurate controller on 6 of 8 cases, N and ND included.
+- **Torque margin and longer texts together:** they cut RMS by about 0.8 mm against R19 on every case. Holding torque margin also keeps the arm steadier while tracing.
+- **Still failing:**
+  - 200 g: 5/15 (ND 15/15).
+  - Motor lag: 11/15 (R19 15/15).
+  - Every failure is a flip (tilt 40 deg) or base drift (250 mm) mid-sentence.
+- **No single controller passes all 8 cases.** ND fails motor lag, and every RL policy fails part of 200 g.
+
+**Videos** (2026-11-18 11:59 EST; HELLO WPI, seed 0, real noise; compare.mp4 + ND, R19, R20, R21 each), in `Media_results/2026-11-18_1159_Write_HELLO_WPI_{nominal,payload200g,motor_slow}_ND_R19_R20_R21/`:
+
+| case | ND | R19 | R20 | R21 |
+|---|---|---|---|---|
+| nominal | done, 2.75 | done, 2.36 | done, 2.36 | **done, 1.85** |
+| 200 g | **done, 2.88** | flips at 0/11 | done, 3.60 | drifts off at 9/11 |
+| motor lag | flips at 0/11 | **done, 2.80** | flips at 9/11 | flips at 9/11 |
+
+- **Common breaking point:** every mid-sentence RL failure in these videos happens at stroke 9 of 11, the final "PI". The base is at its furthest travel there.
+- **Next diagnosis target:** that stroke.
+
+**Retrain R22** (Turing job 2536573, bench job 2536574 chained; TAG `2026-11-18_1200_R22_write15drjtw_fromR21_s0`):
+- New env `write15_drjtw` = R21's env with a wider randomization range: payload 0-280 g (was 250), motor lag x1-2.5 (was x2).
+- Reason: the test cases (200 g, lag x2) sat at or near the edge of the training range. 280 g keeps the static shoulder torque at about 0.9 of the servo limit.
+- Warm start from R21, 20M steps.

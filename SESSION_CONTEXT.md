@@ -321,3 +321,4 @@ Do not cherry-pick. Show where each method fails, push the algorithms to their l
   1. rsync the R21 model and bench logs from Turing.
   2. Render videos: ND vs R19 vs R20 vs R21 on payload200g, motor_slow and nominal (see the vid_after.sh command), into folders named `YYYY-MM-DD_HHMM_...`.
   3. Then diagnose R20's motor-lag failure, and plan R22 if no single policy passes all cases.
+- 2026-11-18 12:10 EST: R21 final (nominal 1.87 mm, first robust policy under 2 mm; 200 g 5/15, motor lag 11/15); videos in Media_results/2026-11-18_1159_*; R22 (wider randomization, from R21) on Turing 2536573, bench chained 2536574.
