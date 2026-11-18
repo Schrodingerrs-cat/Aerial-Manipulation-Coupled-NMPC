@@ -303,3 +303,14 @@ All failures except payload 200 g end with "no contact acquired".
 - **Motor lag regressed, 14/15 -> 0/15:** the drone flips (tilt 40 deg) mid-sentence, after 4-9 strokes. Not yet diagnosed.
   - Hypothesis: training samples motor lag x1-2 uniformly, and x2 is the edge of that range. Longer episodes give more time for a slow-motor instability to grow.
 - **No single policy passes every case yet.** R19 fails 200 g; R20 fails motor lag and is 5/15 at 200 g. R21 (from R19, torque-margin penalty) is still training.
+
+**Videos** (2026-11-17 22:10 EST; HELLO WPI, seed 0, real noise; combined compare.mp4 + ND.mp4, R19.mp4, R20.mp4):
+- `Media_results/2026-11-17_2210_Write_HELLO_WPI_payload200g_ND_vs_R19_vs_R20/`:
+  - ND completes (2.88 mm, tilt 7.5 deg).
+  - R20 completes (3.60 mm).
+  - R19 flips at 2.6 s, before writing.
+- `Media_results/2026-11-17_2210_Write_HELLO_WPI_motor_slow_ND_vs_R19_vs_R20/`:
+  - R19 completes (2.80 mm).
+  - R20 flips at stroke 9/11.
+  - ND flips at 1.6 s.
+- Each video matches its bench row for seed 0.

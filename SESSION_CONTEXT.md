@@ -309,3 +309,4 @@ Do not cherry-pick. Show where each method fails, push the algorithms to their l
 - 19:55 R19 gain 4 bench: 200 g 1/15 (was 0), others unchanged, motor lag 14/15. Partial fix.
   - **R21** submitted (Turing 2534328): write15_drjt = up to 5 letters + joint gain 4 + torque-margin penalty, from R19, 20M.
 - 21:40 R20 final: 15/15 on 6 cases (nominal 2.53 mm), 200 g 5/15, motor lag 0/15 (regressed from R18's 14/15). R21 training, about 3 h left.
+- 22:20 videos: Media_results/2026-11-17_2210_Write_HELLO_WPI_{payload200g,motor_slow}_ND_vs_R19_vs_R20. New naming rule: outputs start with YYYY-MM-DD_HHMM.
