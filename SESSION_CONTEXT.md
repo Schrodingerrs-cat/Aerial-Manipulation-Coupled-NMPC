@@ -310,3 +310,14 @@ Do not cherry-pick. Show where each method fails, push the algorithms to their l
   - **R21** submitted (Turing 2534328): write15_drjt = up to 5 letters + joint gain 4 + torque-margin penalty, from R19, 20M.
 - 21:40 R20 final: 15/15 on 6 cases (nominal 2.53 mm), 200 g 5/15, motor lag 0/15 (regressed from R18's 14/15). R21 training, about 3 h left.
 - 22:20 videos: Media_results/2026-11-17_2210_Write_HELLO_WPI_{payload200g,motor_slow}_ND_vs_R19_vs_R20. New naming rule: outputs start with YYYY-MM-DD_HHMM.
+
+## 2026-11-17 22:30 EST [optimal] handoff (PC may be turned off)
+- **Turing:**
+  - R21 training (job 2534328), done about 01:00 EST.
+  - R21 bench (job 2535274) runs after it (afterok), all 8 cases.
+  - Logs: `Code/results/am3_write/bench/2026-11-17_22xx_R21_real*.log` on Turing.
+- **Local scratchpad jobs** (benchone.sh R21, vid_after.sh R21) die if the PC is off.
+- **On resume:**
+  1. rsync the R21 model and bench logs from Turing.
+  2. Render videos: ND vs R19 vs R20 vs R21 on payload200g, motor_slow and nominal (see the vid_after.sh command), into folders named `YYYY-MM-DD_HHMM_...`.
+  3. Then diagnose R20's motor-lag failure, and plan R22 if no single policy passes all cases.
