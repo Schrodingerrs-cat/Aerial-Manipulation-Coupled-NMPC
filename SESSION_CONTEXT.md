@@ -323,3 +323,4 @@ Do not cherry-pick. Show where each method fails, push the algorithms to their l
   3. Then diagnose R20's motor-lag failure, and plan R22 if no single policy passes all cases.
 - 2026-11-18 12:10 EST: R21 final (nominal 1.87 mm, first robust policy under 2 mm; 200 g 5/15, motor lag 11/15); videos in Media_results/2026-11-18_1159_*; R22 (wider randomization, from R21) on Turing 2536573, bench chained 2536574.
 - 2026-11-18 13:30 EST [capstone] combined deck with Ashish: Presentations/2026-11-18_1330_Capstone_Combined_Ashish_Sahil.pptx (8 slides; also the earlier 11-slide 1300 deck). Analytic shoulder torque: 0.47 + 2.19 m N m, servo limit at 242 g.
+- 2026-11-18 14:30 EST [capstone] simpler deck v3 (Times, explained numbers, max 2 videos/slide): Presentations/2026-11-18_1430_Capstone_Analytical_Load_Mass.pptx
