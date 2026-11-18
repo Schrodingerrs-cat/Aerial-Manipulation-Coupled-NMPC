@@ -283,3 +283,23 @@ All failures except payload 200 g end with "no contact acquired".
 - `tau_w` adds a reward penalty on the largest joint torque command above 80 % of the 1.0 N m servo limit, so the policy learns to keep torque margin.
 - Warm start from R19, 20M steps, lr 1e-4 with decay, target_kl 0.02.
 - **Reward change, disclosed:** the task, metrics and pass criteria are unchanged.
+
+### R20 final (2026-11-17 21:34 EST; from R18, write15_drjl, up to 5 letters; real noise, 15 each) [optimal]
+
+| case | R18 (parent) | R20 | R19 |
+|---|---|---|---|
+| nominal | 8/15, 2.82 | **15/15, 2.53** | 15/15, 2.70 |
+| payload 100 g | 13/15, 3.24 | 15/15, 2.94 | 15/15, 3.18 |
+| payload 200 g | 1/15 | **5/15, 3.71** | 0/15 |
+| motor lag x2 | 14/15, 3.52 | **0/15** | 15/15, 3.09 |
+| damping 3x | 8/15, 2.97 | 15/15, 2.67 | 15/15, 2.79 |
+| kf90 | 10/15, 2.83 | 15/15, 2.65 | 15/15, 3.04 |
+| gust | 8/15, 2.91 | 15/15, 2.54 | 15/15, 2.70 |
+| sine wind | 7/15, 3.48 | 15/15, 3.21 | 15/15, 2.84 |
+
+- **Longer training texts fixed the late-sentence contact loss:** every case except 200 g and motor lag is now 15/15. This confirms the R18 diagnosis.
+- **Best RL accuracy with robustness so far:** nominal 2.53 mm.
+- **200 g:** best RL result so far (5/15). The failures are mid-sentence flips (tilt 40 deg) or base drift (255 mm).
+- **Motor lag regressed, 14/15 -> 0/15:** the drone flips (tilt 40 deg) mid-sentence, after 4-9 strokes. Not yet diagnosed.
+  - Hypothesis: training samples motor lag x1-2 uniformly, and x2 is the edge of that range. Longer episodes give more time for a slow-motor instability to grow.
+- **No single policy passes every case yet.** R19 fails 200 g; R20 fails motor lag and is 5/15 at 200 g. R21 (from R19, torque-margin penalty) is still training.
