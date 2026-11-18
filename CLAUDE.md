@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+**Start with `CONTEXT.md`** (current state, results, course split, how to run; branch `payload-swing`). `SESSION_CONTEXT.md` is the long history log.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 

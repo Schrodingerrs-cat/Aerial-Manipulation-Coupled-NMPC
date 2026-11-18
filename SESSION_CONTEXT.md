@@ -2,7 +2,7 @@
 
 **Purpose.** Working context for this repository so a session can be resumed after an interruption, or handed to another person or model without re-deriving everything. Keep appending to the session log at the bottom; correct the state sections in place when they go stale. Last updated: **2026-10-27**.
 
-**Read this first, then `Plan.md`.** This file says where things stand; `Plan.md` says what the project is required to do.
+**2026-11-18: the current summary is `CONTEXT.md`; this file is the history log.** Read this first, then `Plan.md`. This file says where things stand; `Plan.md` says what the project is required to do.
 
 ---
 

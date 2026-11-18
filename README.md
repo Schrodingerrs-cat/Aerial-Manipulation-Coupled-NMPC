@@ -1,5 +1,7 @@
 # Aerial Manipulation: coupled NMPC for hover under arm motion and wall-contact trajectories
 
+> **Current state (2026-11-18): read [`CONTEXT.md`](CONTEXT.md)**: wall writing with NMPC vs RL, robustness benchmark, capstone analytical kinematics. Active branch: `payload-swing`. The text below is the 30 Oct NMPC-only snapshot.
+
 A 1.52 kg quadrotor with a three-joint arm (yaw, shoulder, elbow; wrist fixed) holds a **fixed hover-position reference** while the arm's own end effector (a compact pad on the hand, no probe) follows trajectories on a wall in sustained contact. Everything runs in MuJoCo with a full floating-base plant; controllers are compared on the same plant.
 
 * **N** - coupled NMPC (CasADi model, acados SQP-RTI, 50 Hz): full 9x9 mass matrix, rotor lag, pad-wall contact in the prediction.
