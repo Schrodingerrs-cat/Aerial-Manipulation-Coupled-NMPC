@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-18 15:10 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-18 16:50 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -42,7 +42,7 @@ Code, results and videos are shared. Framing and claims stay per course. New not
 - R18/R19: observer joint channel on, so it holds payloads.
 - R20: trained on up to 5 letters, which fixes contact loss late in long sentences.
 - **R21**: adds a torque-margin penalty; best so far.
-- **R22**: training now on a wider randomization range.
+- **R22** (2026-11-18): wider randomization range. More robust (finishes all sentences in 7 of 8 conditions, incl. slow motors) but ~0.5 mm less accurate, and 200 g got worse (0/15, falls before writing starts).
 
 Every round's design, cause and evidence: `Findings/RL/04_phase1_static_rl.md`.
 Plain-language RL story up to R10: `Findings/RL/00_RL_story.md`.
@@ -58,20 +58,21 @@ Plain-language RL story up to R10: `Findings/RL/00_RL_story.md`.
 
 Each cell is completed/15 and mean tracing RMS in mm:
 
-| condition | N | ND | R19 | R20 | **R21 (best RL)** |
-|---|---|---|---|---|---|
-| nominal | 15, 2.07 | 15, 2.62 | 15, 2.70 | 15, 2.53 | **15, 1.87** |
-| payload 100 g | 0 | 15, 2.65 | 15, 3.18 | 15, 2.94 | 15, 2.32 |
-| payload 200 g | 0 | **15, 3.05** | 0 | 5, 3.71 | 5, 2.75 |
-| motor lag ×2 | 0 | 0 | **15, 3.09** | 0 | 11, 2.47 |
-| damping ×3 | 15, 2.31 | 15, 2.77 | 15, 2.79 | 15, 2.67 | 15, 1.94 |
-| thrust −10 % | 15, 2.70 | 15, 2.59 | 15, 3.04 | 15, 2.65 | 15, 1.97 |
-| gust | 15, 2.03 | 15, 2.66 | 15, 2.70 | 15, 2.54 | 15, 1.90 |
-| sine wind | 15, 2.23 | 15, 2.70 | 15, 2.84 | 15, 3.21 | 15, 2.64 |
+| condition | N | ND | R19 | R20 | **R21 (best RL)** | R22 |
+|---|---|---|---|---|---|---|
+| nominal | 15, 2.07 | 15, 2.62 | 15, 2.70 | 15, 2.53 | **15, 1.87** | 15, 2.47 |
+| payload 100 g | 0 | 15, 2.65 | 15, 3.18 | 15, 2.94 | 15, 2.32 | 15, 2.77 |
+| payload 200 g | 0 | **15, 3.05** | 0 | 5, 3.71 | 5, 2.75 | 0 |
+| motor lag ×2 | 0 | 0 | **15, 3.09** | 0 | 11, 2.47 | **15, 2.97** |
+| damping ×3 | 15, 2.31 | 15, 2.77 | 15, 2.79 | 15, 2.67 | 15, 1.94 | 15, 2.55 |
+| thrust −10 % | 15, 2.70 | 15, 2.59 | 15, 3.04 | 15, 2.65 | 15, 1.97 | 15, 2.28 |
+| gust | 15, 2.03 | 15, 2.66 | 15, 2.70 | 15, 2.54 | 15, 1.90 | 15, 2.53 |
+| sine wind | 15, 2.23 | 15, 2.70 | 15, 2.84 | 15, 3.21 | 15, 2.64 | 15, 2.81 |
 
 **Honest summary:**
 - RL (R21) is the most accurate controller and is under 2 mm on 4 conditions.
 - ND is the only controller that handles 200 g; it fails slow motors.
+- R22 (wider training) trades accuracy for robustness: completes 7/8 conditions, but none under 2 mm, and 0/15 at 200 g.
 - **No controller passes all 8 conditions yet.**
 
 **Why 200 g is hard:** the shoulder servo limit is 1.0 N·m. From the analytical model, the static shoulder torque is 0.47 N·m plus 2.19 N·m per kg of load, so the limit is 242 g and 200 g already uses 91 %. The RL policies' arm swing then saturates the shoulder and the drone flips. NMPC plans within the torque limit.
@@ -97,6 +98,7 @@ Each cell is completed/15 and mean tracing RMS in mm:
 
 | Folder | What it shows |
 |---|---|
+| `2026-11-18_1639_Write_HELLO_WPI_{motor_slow,payload200g}_ND_R21_R22/` | ND, R21, R22: R22 finishes slow motors (ND, R21 fail); at 200 g only ND finishes, R22 falls at 5 s |
 | `2026-11-18_1159_Write_HELLO_WPI_{nominal,payload200g,motor_slow}_ND_R19_R20_R21/` | ND, R19, R20, R21 on the same sentence |
 | `2026-11-17_2210_Write_HELLO_WPI_{payload200g,motor_slow}_ND_vs_R19_vs_R20/` | ND, R19, R20 on the two hard cases |
 | `Write_HELLO_WPI_payload100g_N_vs_ND_vs_R17_2026-11-17/`, `..._motor_slow_...` | N, ND, R17 under payload and motor lag |
@@ -118,7 +120,7 @@ Each folder has `compare.mp4` (all controllers side by side) plus one mp4 per co
   python scripts/am3_write_video.py MY_TAG "HELLO WPI" --height 0.05 --speed 0.05 --noise real --case payload200g --ctrl ND:10,10 checkpoints/R21_write15drjt_fromR19_s0/model_final.zip
   python scripts/am3_kin_check.py && python scripts/am3_mass_check.py
   ```
-- **Training:** runs on the WPI Turing cluster (CPU, academic partition): `slurm/am3_rl_turing.sh`, bench `slurm/am3_bench_turing.sh`. It runs under Sahil's account. Running now: R22 (job 2536573), with its bench chained (job 2536574).
+- **Training:** runs on the WPI Turing cluster (CPU, academic partition): `slurm/am3_rl_turing.sh`, bench `slurm/am3_bench_turing.sh`. It runs under Sahil's account. Nothing running on Turing (R22 finished 2026-11-18 15:39). R22 model: `Code/results/am3_rl/2026-11-18_1200_R22_write15drjtw_fromR21_s0/` (local + Turing, not committed).
 
 ## 8. Rules (from `CLAUDE.md`, non-negotiable)
 
@@ -132,4 +134,4 @@ Each folder has `compare.mp4` (all controllers side by side) plus one mp4 per co
 
 - Merge Ashish's analytic-mass results and video into the deck (his video file is not in this repo).
 - Decide how much RL/NMPC writing material the capstone talk needs (slides 10–11 of the latest deck).
-- R22 results (wider training range) are expected about 2026-11-18 17:00 EST, then they get benched and videos are rendered.
+- R22 done (see table). Next RL step: make 200 g work within the shoulder torque limit.

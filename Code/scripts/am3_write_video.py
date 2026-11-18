@@ -2,7 +2,7 @@
 iso = isometric (drone, arm and writing together), front = facing the wall from below the pad line (the written text, readable).
 Ink = red (pad pressing), reference strokes = thin green.  Writes Media_results/<TAG>/<CTRL>.mp4 (iso over front) and, for several controllers, compare.mp4.
 Usage: am3_write_video.py TAG TEXT [--height 0.06] [--speed 0.025] [--noise real] [--ctrl N ...]"""
-import sys, os, shutil, subprocess, argparse, time
+import sys, os, re, shutil, subprocess, argparse, time
 import numpy as np, mujoco
 from stable_baselines3 import PPO          # torch must load before acados and the renderer (a later import crashes the process silently)
 from PIL import Image
@@ -46,7 +46,7 @@ VIEWS = ("w_iso", "w_front")
 
 def main(a):
     out = os.path.join(MEDIA, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out); lines = []
-    names = [os.path.basename(os.path.dirname(c)).split("_")[0] if c.endswith(".zip") else c.split(":")[0] for c in a.ctrl]                          # file-safe names (a policy is given as a path)
+    names = [re.sub(r"^\d{4}-\d{2}-\d{2}_\d{4}_", "", os.path.basename(os.path.dirname(c))).split("_")[0] if c.endswith(".zip") else c.split(":")[0] for c in a.ctrl]                          # file-safe names (a policy is given as a path)
     for c, name in zip(a.ctrl, names):
         label = f"RL ({os.path.basename(os.path.dirname(c))})" if c.endswith(".zip") else {"N": "N: coupled NMPC", "ND:10,10": "ND: NMPC + disturbance observer"}.get(c, c)
         rec = WriteRecorder(os.path.join(out, "frames", name), f"{label}: writing \"{a.text}\"" + ("" if a.case == "nominal" else f" [{a.case}]"), a.tag, a.text, cams=VIEWS, path=None, rate_label="")

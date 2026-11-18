@@ -355,3 +355,24 @@ Bench ran on Turing (job 2535274, after training job 2534328). Logs are `Code/re
 - New env `write15_drjtw` = R21's env with a wider randomization range: payload 0-280 g (was 250), motor lag x1-2.5 (was x2).
 - Reason: the test cases (200 g, lag x2) sat at or near the edge of the training range. 280 g keeps the static shoulder torque at about 0.9 of the servo limit.
 - Warm start from R21, 20M steps.
+
+## R22 final (2026-11-18 16:50 EST)
+
+`2026-11-18_1200_R22_write15drjtw_fromR21_s0`: R21 fine-tuned with wider randomization (`dr_wide`: payload up to 0.28 kg, motor lag up to 2.5×). Turing jobs 2536573 (train, 3 h 22 min) and 2536574 (bench). Logs: `Code/results/am3_write/bench/2026-11-18_1200_R22_*`.
+
+| condition | R21 | R22 |
+|---|---|---|
+| nominal | 15, 1.87 | 15, 2.47 |
+| payload 100 g | 15, 2.32 | 15, 2.77 |
+| payload 200 g | 5, 2.75 | **0** (12 failsafe aborts by tilt, base error up to 264 mm) |
+| motor lag ×2 | 11, 2.47 | **15, 2.97** |
+| damping ×3 | 15, 1.94 | 15, 2.55 |
+| thrust −10 % | 15, 1.97 | 15, 2.28 |
+| gust | 15, 1.90 | 15, 2.53 |
+| sine wind | 15, 2.64 | 15, 2.81 |
+
+- Gain: first RL policy to complete slow motors 15/15 (ND 0/15, R21 11/15).
+- Cost: tracing RMS up ~0.5 mm everywhere; no condition under the 2 mm bar.
+- 200 g regressed: in the video the drone falls at t = 5.3 s, during approach, before writing (R21 failed late, at stroke 9/11). Wider payload range did not teach a torque-feasible posture; consistent with the 242 g static shoulder limit (91 % used at 200 g).
+- Conclusion: more randomization alone does not fix 200 g. Next step needs the torque limit addressed directly (posture / feasibility), not wider DR.
+- Videos: `Media_results/2026-11-18_1639_Write_HELLO_WPI_{motor_slow,payload200g}_ND_R21_R22/`.
