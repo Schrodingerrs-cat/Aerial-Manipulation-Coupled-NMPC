@@ -1,0 +1,13 @@
+Loading slurm/current
+  Loading requirement: wpi-scripts/stable
+Loading slurm/current
+  Loading requirement: wpi-scripts/stable
+19:08 R19 payload200g {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['loss of control (failsafe): tilt 40 deg, base error 127 mm', 'loss 
+19:11 R19 payload100g {'n': 15, 'completed': 15, 'trace_rms_mean': 3.18, 'trace_rms_max': 3.492, 'drag_max': 0.0, 'coverage_mean': 0.686, 'aborts': []}
+19:11 R19 nominal {'n': 15, 'completed': 15, 'trace_rms_mean': 2.695, 'trace_rms_max': 2.915, 'drag_max': 0.002, 'coverage_mean': 0.742, 'aborts': []}
+19:12 R19 motor_slow {'n': 15, 'completed': 15, 'trace_rms_mean': 3.092, 'trace_rms_max': 3.353, 'drag_max': 0.008, 'coverage_mean': 0.741, 'aborts': []}
+19:15 R19 damping3x {'n': 15, 'completed': 15, 'trace_rms_mean': 2.794, 'trace_rms_max': 3.008, 'drag_max': 0.001, 'coverage_mean': 0.733, 'aborts': []}
+19:15 R19 kf90 {'n': 15, 'completed': 15, 'trace_rms_mean': 3.037, 'trace_rms_max': 3.265, 'drag_max': 0.0, 'coverage_mean': 0.697, 'aborts': []}
+19:16 R19 gust_y {'n': 15, 'completed': 15, 'trace_rms_mean': 2.702, 'trace_rms_max': 2.931, 'drag_max': 0.003, 'coverage_mean': 0.74, 'aborts': []}
+19:18 R19 wind_sine {'n': 15, 'completed': 15, 'trace_rms_mean': 2.843, 'trace_rms_max': 3.053, 'drag_max': 0.003, 'coverage_mean': 0.689, 'aborts': []}
+R19 DONE

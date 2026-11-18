@@ -371,7 +371,7 @@ Bench ran on Turing (job 2535274, after training job 2534328). Logs are `Code/re
 | gust | 15, 1.90 | 15, 2.53 |
 | sine wind | 15, 2.64 | 15, 2.81 |
 
-- Gain: first RL policy to complete slow motors 15/15 (ND 0/15, R21 11/15).
+- Gain: slow motors back to 15/15 (as R19; ND 0/15, R20 0/15, R21 11/15) while keeping the other 6 conditions at 15/15.
 - Cost: tracing RMS up ~0.5 mm everywhere; no condition under the 2 mm bar.
 - 200 g regressed: in the video the drone falls at t = 5.3 s, during approach, before writing (R21 failed late, at stroke 9/11). Wider payload range did not teach a torque-feasible posture; consistent with the 242 g static shoulder limit (91 % used at 200 g).
 - Conclusion: more randomization alone does not fix 200 g. Next step needs the torque limit addressed directly (posture / feasibility), not wider DR.
