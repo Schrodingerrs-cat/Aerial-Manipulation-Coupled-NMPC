@@ -16,6 +16,7 @@ from am3_write_mismatch import CASES
 
 SENTENCES = ["HELLO WPI", "AERIAL ROBOT", "THE QUICK BROWN", "FOX JUMPS OVER", "THE LAZY DOG"]
 HEIGHT, SPEED = 0.05, 0.05
+SMOOTH = ("rotor_tv", "tau_tv", "angacc_rms", "jointacc_rms", "pen_vel_err_rms")          # smoothness metrics (am3_write_eval.smooth_metrics), averaged over completed episodes (2026-11-19)
 SIG_REAL = dict(p=1e-3, att=np.radians(0.5), v=0.01, w=0.02, q=1e-3, qd=0.02, Om=5.0, F=0.02)   # 1 mm / 0.5 deg pose, gyro 0.02 rad/s, 12-bit encoder, rotor telemetry, force
 
 
@@ -38,7 +39,8 @@ def summary(rows):
     ok = [r for r in rows if r["completed"]]; rms = [r["trace_rms_mm"] for r in ok]
     return dict(n=len(rows), completed=len(ok), trace_rms_mean=round(float(np.mean(rms)), 3) if rms else None, trace_rms_max=round(float(np.max(rms)), 3) if rms else None,
                 drag_max=max(r["drag"] for r in rows), coverage_mean=round(float(np.mean([r["coverage"] for r in ok])), 3) if ok else None,
-                aborts=sorted({r["abort"] for r in rows if r["abort"]}))
+                aborts=sorted({r["abort"] for r in rows if r["abort"]}),
+                **{k: round(float(np.mean([r[k] for r in ok if r.get(k) is not None])), 3) if ok and any(r.get(k) is not None for r in ok) else None for k in SMOOTH})
 
 
 def main(a):
@@ -46,7 +48,7 @@ def main(a):
     if a.procs > 1:
         with Pool(a.procs) as pool: rows = pool.map(run, jobs, chunksize=1)
     else: rows = [run(j) for j in jobs]
-    for r in rows: print({k: r[k] for k in ("text", "seed", "completed", "abort", "strokes", "trace_rms_mm", "trace_max_mm", "coverage", "drag", "tilt_max_deg", "wall_s")}, flush=True)
+    for r in rows: print({k: r[k] for k in ("text", "seed", "completed", "abort", "strokes", "trace_rms_mm", "trace_max_mm", "coverage", "drag", "tilt_max_deg", "wall_s") + SMOOTH if k in r}, flush=True)
     s = summary(rows); print("SUMMARY", s, flush=True)
     out = os.path.join(HERE, "..", "results", "am3_write", "bench"); os.makedirs(out, exist_ok=True)
     json.dump(dict(ctrl=a.ctrl, noise=a.noise, dob=a.dob, case=a.case, height=HEIGHT, speed=SPEED, sig=SIG_REAL if a.noise == "real" else Sensors.SIG, summary=s, rows=rows),

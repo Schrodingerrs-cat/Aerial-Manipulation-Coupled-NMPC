@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-18 16:50 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-19 09:00 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -77,6 +77,9 @@ Each cell is completed/15 and mean tracing RMS in mm:
 
 **Why 200 g is hard:** the shoulder servo limit is 1.0 N·m. From the analytical model, the static shoulder torque is 0.47 N·m plus 2.19 N·m per kg of load, so the limit is 242 g and 200 g already uses 91 %. The RL policies' arm swing then saturates the shoulder and the drone flips. NMPC plans within the torque limit.
 
+### Smoothness (2026-11-19)
+With realistic sensor noise, RL is 6-8x smoother than NMPC (rotor command change 3.5 vs 21 krad/s per s; drone angular accel 6.8 vs 38 rad/s²). NMPC chatters because it re-plans from raw noisy measurements (smooth only with near-perfect sensing). Details: `Findings/RL/04_phase1_static_rl.md` (Smoothness), figure `Media_results/2026-11-19_0850_smoothness_N_vs_R21_signals.png`.
+
 ## 5. Capstone analytical work in this repo [capstone]
 
 - **`Code/ocrl/am3_kin_poe.py`:** product of exponentials with the space frame on the drone body.
@@ -134,4 +137,4 @@ Each folder has `compare.mp4` (all controllers side by side) plus one mp4 per co
 
 - Merge Ashish's analytic-mass results and video into the deck (his video file is not in this repo).
 - Decide how much RL/NMPC writing material the capstone talk needs (slides 10–11 of the latest deck).
-- R22 done (see table). Next RL step: make 200 g work within the shoulder torque limit.
+- R22 done (see table). 200 g deprioritized (near the 242 g hardware limit). Current focus: smoothness; next is an NMPC with a state filter.

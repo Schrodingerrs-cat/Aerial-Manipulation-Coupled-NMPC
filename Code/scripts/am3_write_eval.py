@@ -20,7 +20,26 @@ def write_metrics(ep):
     return dict(completed=bool(ep.abort is None and task.phase == "done"), abort=None if ep.abort is None else str(ep.abort[1]), strokes=f"{len(task.written)}/{len(task.paths)}",
                 trace_rms_mm=round(float(1e3 * np.sqrt(np.mean(e ** 2))), 3), trace_max_mm=round(float(1e3 * e.max()), 3), coverage=round(cov, 3),
                 contact=round(float(np.mean([r["F"] > 0.08 for r in tr])), 3) if tr else 0.0, drag=round(float(np.mean([r["F"] > 0.08 for r in up])), 3) if up else 0.0,
-                base_max_mm=round(float(1e3 * max(np.linalg.norm(r["x"][:3] - r["ref"]["pB"]) for r in R)), 2), tilt_max_deg=round(float(tilt), 2), time_s=round(float(R[-1]["t"]), 1), **arm)
+                base_max_mm=round(float(1e3 * max(np.linalg.norm(r["x"][:3] - r["ref"]["pB"]) for r in R)), 2), tilt_max_deg=round(float(tilt), 2), time_s=round(float(R[-1]["t"]), 1), **arm, **smooth_metrics(ep))
+
+
+def smooth_metrics(ep):
+    """Smoothness over the writing part (first trace sample to the end), comparable across control rates (NMPC 50 Hz, RL 100 Hz).
+    Commands are piecewise constant, so total variation per second (sum |du| / time) does not depend on the sampling rate.
+    rotor_tv: rotor speed commands, krad/s per s (mean of 4); tau_tv: joint torque commands, N m per s (mean of 3);
+    angacc_rms: body angular acceleration, rad/s^2; jointacc_rms: joint acceleration, rad/s^2; pen_vel_err_rms: pad yz velocity minus reference velocity in trace, mm/s."""
+    R = ep.rows; i0 = next((i for i, r in enumerate(R) if r["phase"] == "trace"), None)
+    if i0 is None or len(R) - i0 < 3: return dict(rotor_tv=None, tau_tv=None, angacc_rms=None, jointacc_rms=None, pen_vel_err_rms=None)
+    R = R[i0:]; t = np.array([r["t"] for r in R]); T = t[-1] - t[0]; dt = np.diff(t)[:, None]
+    u = np.array([r["u_app"] for r in R]); x = np.array([r["x"] for r in R])
+    tv = np.abs(np.diff(u, axis=0)).sum(axis=0) / T
+    g = np.searchsorted(t, t[0] + np.arange(0, T, 0.02) - 1e-9); g = g[g < len(R)]; R, x, dt = [R[i] for i in g], x[g], np.diff(t[g])[:, None]      # states on a common 50 Hz grid
+    wdot = np.diff(x[:, 10:13], axis=0) / dt; qdd = np.diff(x[:, 16:19], axis=0) / dt
+    tr = np.array([r["phase"] == "trace" for r in R]); pv = np.diff(np.array([r["pad"][1:] for r in R]), axis=0) / dt
+    vref = np.array([r["ref"]["v"][1:] for r in R])[:-1]; m = tr[:-1] & tr[1:]
+    return dict(rotor_tv=round(float(tv[:4].mean() / 1e3), 3), tau_tv=round(float(tv[4:7].mean()), 3),
+                angacc_rms=round(float(np.sqrt(np.mean(np.sum(wdot ** 2, axis=1)))), 2), jointacc_rms=round(float(np.sqrt(np.mean(np.sum(qdd ** 2, axis=1)))), 2),
+                pen_vel_err_rms=round(float(1e3 * np.sqrt(np.mean(np.sum((pv[m] - vref[m]) ** 2, axis=1)))), 2) if m.any() else None)
 
 
 def make(ctrl):

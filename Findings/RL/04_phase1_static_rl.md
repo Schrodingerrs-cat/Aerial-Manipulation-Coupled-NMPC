@@ -376,3 +376,26 @@ Bench ran on Turing (job 2535274, after training job 2534328). Logs are `Code/re
 - 200 g regressed: in the video the drone falls at t = 5.3 s, during approach, before writing (R21 failed late, at stroke 9/11). Wider payload range did not teach a torque-feasible posture; consistent with the 242 g static shoulder limit (91 % used at 200 g).
 - Conclusion: more randomization alone does not fix 200 g. Next step needs the torque limit addressed directly (posture / feasibility), not wider DR.
 - Videos: `Media_results/2026-11-18_1639_Write_HELLO_WPI_{motor_slow,payload200g}_ND_R21_R22/`.
+
+## Smoothness: NMPC vs RL (2026-11-19 09:00 EST) [optimal]
+
+Question (Sahil): the goal was an RL controller as smooth as NMPC, but the bench never measured smoothness. Added `smooth_metrics` to `scripts/am3_write_eval.py` (reported by the bench, averaged over completed episodes). Writing part only (first trace sample to the end). Command measures are total variation per second (commands are piecewise constant, so this does not depend on the control rate: N 50 Hz, RL 100 Hz); state measures use a common 50 Hz grid.
+
+Bench, no mismatch, real sensor noise, 15 episodes each (`bench/2026-11-19_0846_smooth_*`). Lower = smoother.
+
+| | trace RMS mm | rotor cmd change, krad/s per s | joint torque cmd change, N m per s | body angular accel RMS, rad/s² | joint accel RMS, rad/s² | pen velocity error RMS, mm/s |
+|---|---|---|---|---|---|---|
+| N | 2.07 | 21.1 | 2.76 | 38.0 | 71.8 | 27.4 |
+| ND | 2.62 | 27.2 | 3.72 | 54.1 | 95.9 | 34.5 |
+| R15 | **1.74** | **3.3** | **0.55** | **5.5** | **9.4** | 21.7 |
+| R21 | 1.87 | 3.5 | 0.70 | 6.8 | 12.5 | **19.6** |
+| R22 | 2.47 | 3.5 | 0.69 | 7.0 | 12.5 | 20.1 |
+
+(Accuracy columns reproduce the earlier bench runs exactly, so the new metrics did not change the episodes.)
+
+- RL is 6-8x smoother than NMPC in commands and 5-7x in drone/arm accelerations under realistic sensing. ND (observer) is rougher than N.
+- Cause, NMPC on HELLO WPI seed 0, median rotor-command jump per 20 ms step: zero sensor noise 1.2 rad/s, old harness noise (0.1 mm) 28 rad/s, realistic noise (1 mm, 0.5 deg) **360 rad/s** (mean command 1030 rad/s). N re-solves from raw noisy measurements with no state filter or input-rate cost strong enough to reject it; motor lag filters most of it, so it still writes. RL was trained with realistic noise and has an observer + 4-step history: 29 rad/s.
+- So "NMPC is the smooth reference" held only for near-perfect sensing. With realistic sensors RL already meets and exceeds NMPC smoothness.
+- Pen velocity error is large for all (20-35 mm/s on a 50 mm/s pen). Not yet checked whether it is pad vibration or how the reference velocity is defined (min-jerk timing); compare across controllers only.
+- Figure: `Media_results/2026-11-19_0850_smoothness_N_vs_R21_signals.png` (rotor 1 command, shoulder torque, roll rate; 3 s while writing).
+- Open: give NMPC a state estimator (e.g. EKF/low-pass on the measured state) or stronger input-rate cost, as a new variant (N is frozen), and re-measure.
