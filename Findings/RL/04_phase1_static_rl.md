@@ -399,3 +399,34 @@ Bench, no mismatch, real sensor noise, 15 episodes each (`bench/2026-11-19_0846_
 - Pen velocity error is large for all (20-35 mm/s on a 50 mm/s pen). Not yet checked whether it is pad vibration or how the reference velocity is defined (min-jerk timing); compare across controllers only.
 - Figure: `Media_results/2026-11-19_0850_smoothness_N_vs_R21_signals.png` (rotor 1 command, shoulder torque, roll rate; 3 s while writing).
 - Open: give NMPC a state estimator (e.g. EKF/low-pass on the measured state) or stronger input-rate cost, as a new variant (N is frozen), and re-measure.
+
+## NF: NMPC with a state filter (2026-11-19 10:20 EST) [optimal]
+
+Why: N's roughness comes from re-solving on raw noisy measurements (previous section). Fix on the NMPC side, so the RL-vs-NMPC comparison is fair.
+What: `ocrl/am3_nmpc_filt.py` (new; N's frozen files unchanged). Fixed-gain predictor-corrector, steady-state Kalman form, N's own predictor as the model:
+`x_pred = step(x_hat, u_applied)`, `x_hat = x_pred + alpha (x_meas - x_pred)`. One scalar alpha for all states. Bench name `NF:alpha`.
+
+Tuning on a held-out sentence ("ROBOTS WRITE", seed 7; not in the bench), real noise:
+
+| alpha | completed | trace RMS mm | rotor cmd change krad/s per s | angular accel rad/s² |
+|---|---|---|---|---|
+| N | yes | 2.09 | 20.9 | 38.0 |
+| 1.0 (= N, parity) | yes | 2.07 | 20.9 | 38.2 |
+| 0.5 | yes | 1.56 | 8.3 | 17.9 |
+| 0.3 | yes | 1.39 | 4.6 | 10.9 |
+| 0.15 | yes | 1.97 | 2.1 | 5.7 |
+| 0.08 | no (loss of control: estimate lags) | | | |
+
+Full bench, no mismatch, real noise, 15 episodes (`bench/2026-11-19_1010_smooth_NF03`, `_NF015`):
+
+| | trace RMS mean / max mm | coverage | rotor cmd change | joint torque cmd change N m/s | angular accel | joint accel | pen vel err mm/s |
+|---|---|---|---|---|---|---|---|
+| N | 2.07 / 2.22 | 0.87 | 21.1 | 2.76 | 38.0 | 71.8 | 27.4 |
+| **NF 0.3** | **1.43 / 1.74** | **0.94** | 4.6 | 0.67 | 10.8 | 19.5 | 11.9 |
+| NF 0.15 | 2.31 / 2.72 | 0.78 | **2.1** | **0.34** | **5.5** | **9.9** | **9.6** |
+| R15 | 1.74 / 1.86 | 0.83 | 3.3 | 0.55 | 5.5 | 9.4 | 21.7 |
+| R21 | 1.87 / 1.95 | 0.81 | 3.5 | 0.70 | 6.8 | 12.5 | 19.6 |
+
+- NF 0.3 passes the Phase-1 bench (15/15, mean <= 2 mm, no drag) and is the most accurate controller so far (18 % better than R15). It is ~4.5x smoother than N; RL (R15) is still ~1.4x smoother in commands and ~2x in accelerations.
+- NF 0.15 is as smooth as R15 but less accurate (2.31 mm): the usual filter trade-off, lag vs noise.
+- Consequence for the comparison: most of RL's smoothness advantage over NMPC came from NMPC not filtering its measurements. RL's remaining case rests on the mismatch conditions (next).
