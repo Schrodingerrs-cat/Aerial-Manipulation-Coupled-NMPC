@@ -430,3 +430,21 @@ Full bench, no mismatch, real noise, 15 episodes (`bench/2026-11-19_1010_smooth_
 - NF 0.3 passes the Phase-1 bench (15/15, mean <= 2 mm, no drag) and is the most accurate controller so far (18 % better than R15). It is ~4.5x smoother than N; RL (R15) is still ~1.4x smoother in commands and ~2x in accelerations.
 - NF 0.15 is as smooth as R15 but less accurate (2.31 mm): the usual filter trade-off, lag vs noise.
 - Consequence for the comparison: most of RL's smoothness advantage over NMPC came from NMPC not filtering its measurements. RL's remaining case rests on the mismatch conditions (next).
+
+### NF under model mismatch (2026-11-19 10:45 EST)
+`bench/2026-11-19_1016_NF03_real_<case>`: NF 0.3 completes damping ×3 (15, 2.87), gust (15, 1.59), sine wind (15, 2.57), but **0/15** on payload 100 g, payload 200 g, motor lag ×2 and thrust −10 % (N completed thrust −10 % 15/15). Cause: the filter predicts with the nominal model, so a constant model error biases the estimate (it trusts the measurement only 30 % per step) and N acts on a wrong state.
+
+### NDF: ND + filter, predicting with the observer's disturbance estimate (`ocrl/am3_nmpc_filt.py`, `NDF:alpha[,f]`)
+Held-out sentence ("ROBOTS WRITE", seed 7), real noise; cells are trace RMS mm (rotor cmd change krad/s per s); x = loss of control:
+
+| | none | thrust −10 % | 100 g | 200 g | motor lag |
+|---|---|---|---|---|---|
+| ND | 2.50 (27.1) | 2.59 | 2.42 | 3.05 | x |
+| NDF 0.3, observer on raw | 4.07 (13.8) | 3.93 | 4.22 | 4.82 | x |
+| NDF 0.5, observer on raw | 2.75 (16.9) | 3.19 | 3.00 | 3.52 | x |
+| NDF 0.3, observer on filtered | 2.54 (6.1) | 2.61 | 3.77 | x | x |
+| NDF 0.5, observer on filtered | 2.29 (11.2) | 2.09 | 2.74 | 3.85 | x |
+
+- Observer on the raw measurement feeds noise into d and the prediction; on the filtered state it is cleaner.
+- Trade-off within NMPC: more filtering = smoother but less robust to model error. No NMPC variant survives motor lag ×2 (unmodelled actuator dynamics; the observer cannot represent a lag as a constant disturbance).
+- NDF 0.5,f full 8-condition bench running (`bench/2026-11-19_*_NDF05f*`).

@@ -49,6 +49,12 @@ def make(ctrl):
         cfg = os.path.join(os.path.dirname(ctrl), "config.json"); cfg = json.load(open(cfg)) if os.path.exists(cfg) else {}
         algo = SAC if cfg.get("algo") == "sac" else PPO
         return RLCtrl(algo.load(ctrl, device="cpu"), vel_ff=True, **KIND_KW.get(cfg.get("env"), {}))           # same env options the policy was trained with
+    if ctrl.startswith("NDF"):                                                             # ND + state filter; "NDF:alpha" (observer gains as ND:10,10)
+        from ocrl.am3_nmpc_filt import NMPCDF
+        from ocrl.am3_nmpc_dob import K_DOB
+        k = K_DOB.copy(); k[6:9] = 10.0
+        a = ctrl.split(":")[1].split(",") if ":" in ctrl else ["0.3"]                           # "NDF:alpha[,f]": f = observer on the filtered state
+        return NMPCDF(float(a[0]), k, obs_on_filtered=len(a) > 1 and a[1] == "f")
     if ctrl.startswith("NF"):                                                              # NMPC with a state filter; "NF:alpha" (default 0.3)
         from ocrl.am3_nmpc_filt import NMPCF
         return NMPCF(float(ctrl.split(":")[1])) if ":" in ctrl else NMPCF()
