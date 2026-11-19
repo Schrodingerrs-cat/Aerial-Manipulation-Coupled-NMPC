@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-19 11:00 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-19 12:00 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -153,6 +153,17 @@ Each folder has `compare.mp4` (all controllers side by side) plus one mp4 per co
 - Frozen files (`Code/config/am3_freeze_v2.json`) are not edited.
 - Keep code simple.
 - Timestamp every note; name new outputs `YYYY-MM-DD_HHMM_...`.
+
+## 8b. RBE595 pipeline status vs the proposal (2026-11-19 12:00 EST) [optimal]
+
+Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC + learned model correction** (RL outputs a correction to the NMPC prediction; NMPC computes the commands), tested on payload, contact stiffness, approach speed (peak impact force) and outside the training range.
+- (1) N, NF done. (2) ND, NDF done. Pure RL (R15-R22) done as an extra baseline.
+- (3) **L, training on Turing since 2026-11-19 ~11:45 EST**: base NDF, PPO, motor-lag curriculum 1.4 -> 2.5x. Both variants (Sahil's choice):
+  L2 = the proposal's 2 channels (normal force, pitch torque), job 2539092, TAG `2026-11-19_1142_L2_hybrid_s0`;
+  L9 = all 9 observer channels (stated deviation), job 2539093, TAG `2026-11-19_1142_L9_hybrid_s0`. ~4-5 h each.
+  Code: `Code/ocrl/am3_hybrid_l.py`, `Code/scripts/am3_train_hybrid.py`, `slurm/am3_hybrid_turing.sh`. Zero action reproduces NDF exactly (checked). Bench name `NDFL:<zip>`.
+- Stress tests (new cases in `Code/scripts/am3_write_mismatch.py`): wall_soft/stiff (contact stiffness 0.5x/3x), wall_slippery/grippy (friction 0.5x/2x), approach_fast (3x touch-down speed), motor_lag15, motor_lag3 (outside training), kf85 (outside training), combo (100 g + lag 1.5x + gust). Bench reports `F_peak_N`. Running on Turing for N, NDF, R21, R22 (jobs 2539098-2539101, names `2026-11-19_1150_stress_*`).
+- Still open: NF/NDF/L timing vs the 20 ms real-time budget; final table + videos; report.
 
 ## 9. Open items before Monday 2026-11-23 (capstone)
 

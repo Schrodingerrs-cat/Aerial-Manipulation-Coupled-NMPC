@@ -1,6 +1,6 @@
 """Score a controller on writing text (am3_write).  Metrics per episode:
 completed (all strokes, no abort), trace_rms_mm / trace_max_mm (pad yz vs reference during trace), coverage (share of reference points within 2 mm of ink),
-contact (pressing share of trace time), drag (pressing share of pen-up time, should be 0), base_max_mm (vs the moving base reference), tilt_max_deg, time_s.
+contact (pressing share of trace time), F_peak_N (largest pad force, impact included), drag (pressing share of pen-up time, should be 0), base_max_mm (vs the moving base reference), tilt_max_deg, time_s.
 Usage: am3_write_eval.py CTRL TEXT [TEXT ...] [--height 0.06] [--out NAME.json]"""
 import sys, os, json, argparse, time
 import numpy as np
@@ -20,7 +20,7 @@ def write_metrics(ep):
     return dict(completed=bool(ep.abort is None and task.phase == "done"), abort=None if ep.abort is None else str(ep.abort[1]), strokes=f"{len(task.written)}/{len(task.paths)}",
                 trace_rms_mm=round(float(1e3 * np.sqrt(np.mean(e ** 2))), 3), trace_max_mm=round(float(1e3 * e.max()), 3), coverage=round(cov, 3),
                 contact=round(float(np.mean([r["F"] > 0.08 for r in tr])), 3) if tr else 0.0, drag=round(float(np.mean([r["F"] > 0.08 for r in up])), 3) if up else 0.0,
-                base_max_mm=round(float(1e3 * max(np.linalg.norm(r["x"][:3] - r["ref"]["pB"]) for r in R)), 2), tilt_max_deg=round(float(tilt), 2), time_s=round(float(R[-1]["t"]), 1), **arm, **smooth_metrics(ep))
+                F_peak_N=round(float(max(ep.pl.log["Fn"])), 3) if ep.pl.log["Fn"] else 0.0, base_max_mm=round(float(1e3 * max(np.linalg.norm(r["x"][:3] - r["ref"]["pB"]) for r in R)), 2), tilt_max_deg=round(float(tilt), 2), time_s=round(float(R[-1]["t"]), 1), **arm, **smooth_metrics(ep))
 
 
 def smooth_metrics(ep):

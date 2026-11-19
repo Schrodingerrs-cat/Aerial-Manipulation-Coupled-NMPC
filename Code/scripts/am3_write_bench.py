@@ -30,7 +30,9 @@ def run(job):
     else: c = make(ctrl)
     if dob is not None: c.env.inner.dob = dob                                                     # None: as trained
     if kj is not None: c.env.inner.k_dob[6:9] = kj                                                # joint-channel observer gain override (2026-11-17)
-    ep = WriteEpisode(c, text, height=HEIGHT, v_write=SPEED, seed=seed, mismatch=CASES[case] if case else None)
+    mm = dict(CASES[case]) if case else {}
+    if "v_approach" in mm: from ocrl.am3_task import CP; CP["v_approach_m_s"] = mm.pop("v_approach"); CP["v_final_m_s"] = mm.pop("v_final", CP["v_final_m_s"])          # stress case: faster approach and touch-down (impact), this process only
+    ep = WriteEpisode(c, text, height=HEIGHT, v_write=SPEED, seed=seed, mismatch=mm or None)
     if noise == "real": ep.sens = RealSensors(seed)
     ep.run(); return dict(text=text, seed=seed, **write_metrics(ep), wall_s=round(time.time() - t0))
 
@@ -39,7 +41,7 @@ def summary(rows):
     ok = [r for r in rows if r["completed"]]; rms = [r["trace_rms_mm"] for r in ok]
     return dict(n=len(rows), completed=len(ok), trace_rms_mean=round(float(np.mean(rms)), 3) if rms else None, trace_rms_max=round(float(np.max(rms)), 3) if rms else None,
                 drag_max=max(r["drag"] for r in rows), coverage_mean=round(float(np.mean([r["coverage"] for r in ok])), 3) if ok else None,
-                aborts=sorted({r["abort"] for r in rows if r["abort"]}),
+                aborts=sorted({r["abort"] for r in rows if r["abort"]}), F_peak_max=round(max(r.get("F_peak_N", 0.0) for r in rows), 3),
                 **{k: round(float(np.mean([r[k] for r in ok if r.get(k) is not None])), 3) if ok and any(r.get(k) is not None for r in ok) else None for k in SMOOTH})
 
 
@@ -48,7 +50,7 @@ def main(a):
     if a.procs > 1:
         with Pool(a.procs) as pool: rows = pool.map(run, jobs, chunksize=1)
     else: rows = [run(j) for j in jobs]
-    for r in rows: print({k: r[k] for k in ("text", "seed", "completed", "abort", "strokes", "trace_rms_mm", "trace_max_mm", "coverage", "drag", "tilt_max_deg", "wall_s") + SMOOTH if k in r}, flush=True)
+    for r in rows: print({k: r[k] for k in ("text", "seed", "completed", "abort", "strokes", "trace_rms_mm", "trace_max_mm", "coverage", "drag", "tilt_max_deg", "F_peak_N", "wall_s") + SMOOTH if k in r}, flush=True)
     s = summary(rows); print("SUMMARY", s, flush=True)
     out = os.path.join(HERE, "..", "results", "am3_write", "bench"); os.makedirs(out, exist_ok=True)
     json.dump(dict(ctrl=a.ctrl, noise=a.noise, dob=a.dob, case=a.case, height=HEIGHT, speed=SPEED, sig=SIG_REAL if a.noise == "real" else Sensors.SIG, summary=s, rows=rows),

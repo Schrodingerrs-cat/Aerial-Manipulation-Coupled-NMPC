@@ -19,6 +19,7 @@ REPO=$(cd "${SLURM_SUBMIT_DIR:-$(dirname "$0")/..}" && pwd); cd "$REPO/Code" || 
 type module >/dev/null 2>&1 || { source /etc/profile.d/modules.sh 2>/dev/null; source /etc/profile.d/30-set_modulepath.sh 2>/dev/null; }
 module load slurm; eval "$($HOME/miniconda3/bin/conda shell.bash hook)"; conda activate am3rl || exit 1
 unset MUJOCO_GL; export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=.:scripts
+FL=acados_job${SLURM_JOB_ID:-local}; ln -sfn acados third_party/$FL; export OCRL_ACADOS=$FL          # per-job solver build (-march=native), see am3_hybrid_turing.sh
 echo "job ${SLURM_JOB_ID:-local} on $(hostname) at $(date)   ctrl $CTRL   name $NAME   procs/case $PROCS"
 
 # build the solver once, before the parallel runs
@@ -30,5 +31,6 @@ for c in $CASES; do
   python scripts/am3_write_bench.py "$CTRL" --noise real --procs "$PROCS" $arg --name "$NAME" > "results/am3_write/bench/$log.log" 2>&1 &
 done
 wait
+rm -f third_party/$FL
 echo "finished $(date)"
 for f in results/am3_write/bench/${NAME}_real*.log; do echo "$f  $(grep SUMMARY "$f" | cut -c9-220)"; done
