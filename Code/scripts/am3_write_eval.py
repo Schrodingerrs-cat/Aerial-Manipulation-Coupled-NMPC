@@ -43,6 +43,11 @@ def smooth_metrics(ep):
 
 
 def make(ctrl):
+    if ctrl.startswith("NDFL:"):                                                           # NMPC + learned model correction: "NDFL:<run dir>/model_final.zip" (config.json gives nch)
+        from stable_baselines3 import PPO
+        from ocrl.am3_hybrid_l import NMPCDFL
+        z = ctrl[5:]; cfg = json.load(open(os.path.join(os.path.dirname(z), "config.json")))
+        return NMPCDFL(cfg["nch"], PPO.load(z, device="cpu"))
     if ctrl.endswith(".zip"):
         from stable_baselines3 import PPO, SAC
         from ocrl.am3_rl_wall import RLCtrl, KIND_KW
