@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-19 09:00 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-19 11:00 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -77,8 +77,29 @@ Each cell is completed/15 and mean tracing RMS in mm:
 
 **Why 200 g is hard:** the shoulder servo limit is 1.0 N·m. From the analytical model, the static shoulder torque is 0.47 N·m plus 2.19 N·m per kg of load, so the limit is 242 g and 200 g already uses 91 %. The RL policies' arm swing then saturates the shoulder and the drone flips. NMPC plans within the torque limit.
 
-### Smoothness (2026-11-19)
-With realistic sensor noise, RL is 6-8x smoother than NMPC (rotor command change 3.5 vs 21 krad/s per s; drone angular accel 6.8 vs 38 rad/s²). NMPC chatters because it re-plans from raw noisy measurements (smooth only with near-perfect sensing). Details: `Findings/RL/04_phase1_static_rl.md` (Smoothness), figure `Media_results/2026-11-19_0850_smoothness_N_vs_R21_signals.png`.
+### Smoothness and the filtered NMPCs (2026-11-19)
+
+The bench now also measures smoothness (`smooth_metrics` in `Code/scripts/am3_write_eval.py`). With realistic sensor noise, plain N/ND re-plan from raw noisy measurements and their rotor commands chatter (median jump 360 rad/s per step); RL had been 6-8x smoother. Two new NMPC variants (`Code/ocrl/am3_nmpc_filt.py`, N's frozen files untouched):
+- **NF** (`NF:0.3`): N + fixed-gain state filter (predict with N's model, blend 30 % of each measurement).
+- **NDF** (`NDF:0.5,f`): ND + the same filter, predicting with the observer's disturbance estimate; observer runs on the filtered state.
+
+Completed/15, trace RMS mm; last row = rotor command change (krad/s per s, no mismatch; lower = smoother):
+
+| condition | N | ND | NF | **NDF** | R15 | R21 | R22 |
+|---|---|---|---|---|---|---|---|
+| nominal | 15, 2.07 | 15, 2.62 | **15, 1.43** | 15, 2.32 | 15, 1.74 | 15, 1.87 | 15, 2.47 |
+| payload 100 g | 0 | 15, 2.65 | 0 | 15, 2.64 | | 15, 2.32 | 15, 2.77 |
+| payload 200 g | 0 | 15, 3.05 | 0 | 15, 3.40 | | 5, 2.75 | 0 |
+| motor lag ×2 | 0 | 0 | 0 | 0 | | 11, 2.47 | **15, 2.97** |
+| damping ×3 | 15, 2.31 | 15, 2.77 | 15, 2.87 | 15, 2.52 | | 15, 1.94 | 15, 2.55 |
+| thrust −10 % | 15, 2.70 | 15, 2.59 | 0 | 15, 2.31 | | 15, 1.97 | 15, 2.28 |
+| gust | 15, 2.03 | 15, 2.66 | 15, 1.59 | 15, 2.33 | | 15, 1.90 | 15, 2.53 |
+| sine wind | 15, 2.23 | 15, 2.70 | 15, 2.57 | 15, 2.33 | | 15, 2.64 | 15, 2.81 |
+| rotor cmd change | 21.1 | 27.2 | 4.6 | 11.3 | **3.3** | 3.5 | 3.5 |
+
+- Filtering makes NMPC smooth and (on the known model) the most accurate, but the nominal-model filter breaks under model error (NF). Adding the observer (NDF) restores robustness to 7/8 at 2.4x less chatter than ND, still ~3x rougher than RL.
+- **No NMPC variant survives motor lag ×2** (a lag is not a constant disturbance the observer can learn). RL handles it (R22 15/15). This is the clearest case for RL / NMPC+RL.
+- Details: `Findings/RL/04_phase1_static_rl.md` (sections Smoothness, NF, NDF). Figure `Media_results/2026-11-19_0850_smoothness_N_vs_R21_signals.png`.
 
 ## 5. Capstone analytical work in this repo [capstone]
 
@@ -137,4 +158,4 @@ Each folder has `compare.mp4` (all controllers side by side) plus one mp4 per co
 
 - Merge Ashish's analytic-mass results and video into the deck (his video file is not in this repo).
 - Decide how much RL/NMPC writing material the capstone talk needs (slides 10–11 of the latest deck).
-- R22 done (see table). 200 g deprioritized (near the 242 g hardware limit). Current focus: smoothness; next is an NMPC with a state filter.
+- R22 done (see table). 200 g deprioritized (near the 242 g hardware limit). Smoothness study done (NF, NDF). Next candidate: NMPC+RL hybrid aimed at motor lag, NDF as the NMPC base.

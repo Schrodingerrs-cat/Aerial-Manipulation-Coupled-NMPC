@@ -448,3 +448,9 @@ Held-out sentence ("ROBOTS WRITE", seed 7), real noise; cells are trace RMS mm (
 - Observer on the raw measurement feeds noise into d and the prediction; on the filtered state it is cleaner.
 - Trade-off within NMPC: more filtering = smoother but less robust to model error. No NMPC variant survives motor lag ×2 (unmodelled actuator dynamics; the observer cannot represent a lag as a constant disturbance).
 - NDF 0.5,f full 8-condition bench running (`bench/2026-11-19_*_NDF05f*`).
+
+### NDF 0.5,f full bench (2026-11-19 10:56 EST)
+`bench/2026-11-19_1032_NDF05f*`, real noise, 15 episodes per condition (completed, trace RMS mm; rotor cmd change krad/s per s):
+nominal 15, 2.32 (11.3) · 100 g 15, 2.64 · 200 g 15, 3.40 · motor lag ×2 **0** (tilt failsafe) · damping ×3 15, 2.52 · thrust −10 % 15, 2.31 · gust 15, 2.33 · sine wind 15, 2.33.
+- 7/8 like ND, more accurate than ND in 6 of 7 (worse only at 200 g: 3.40 vs 3.05), 2.4x smoother (11.3 vs 27.2). Still ~3x rougher than RL (3.5), and no condition under 2 mm.
+- Motor lag remains the NMPC failure for every variant (N, ND, NF, NDF).
