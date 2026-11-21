@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-20 22:20 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-21 16:50 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -194,7 +194,16 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   Nominal case: N 15/15 1.17 mm (best accuracy), NDF 13/15 1.92, R21 15/15 1.86. Rotor-command change: N 5.6, NDF 3.2, R21 1.0. Motor lag: N and NDF fail, R21 14/15 (motor_slow) and 15/15 (lag 1.5x).
 - **L2W_lab submitted (22:17)**: job 2543462, TAG `2026-11-20_2217_L2W_lab_hybrid_s0`: L2 + wall randomization + lag cap 1.4 + lab noise (justified: soft wall is a model error, not noise).
   The 10 nominal-noise bench jobs (2543108-2543117) are HELD so L2W starts first; release them (`scontrol release`) once it runs.
-- L9 resume running (job 2542974), past 2.0M steps, no wall-clock truncations.
+- **2026-11-21 16:50 EST.**
+  - L2W_lab finished (10M steps, training completion 0.97 at the end). Bench at lab noise: jobs 2567364/2567365, names `2026-11-21_1645_[stress_]L2W_lab*`.
+  - **L9 froze again** at 4M (one worker at 100 % CPU inside a single step for 19 h; py-spy not permitted on Turing). Cancelled; it also used the dropped settings ('real' noise, lag to 2.5).
+    Fix: step watchdog in HybridEnv (faulthandler, 120 s: dumps the stuck stack to the job .err and kills the worker) + auto-resume loop in `slurm/am3_hybrid_turing.sh`. Tested locally.
+    Replacement **L9W_lab** (same settings as L2W_lab, 9 channels): job 2567363, TAG `2026-11-21_1645_L9W_lab_hybrid_s0`.
+  - **Bench harness bug found**: the Episode's 400 s wall-clock guard aborted NMPC sentences that were simply slow on Turing (completed ones take 350-440 s). Most NMPC/L2 "12-14/15" counts at lab noise
+    (and some at 'real' noise, e.g. NDF wall_stiff 10/15) were this guard, not control failures. Guard raised to 1500 s in `am3_write_bench.py`. Lab re-runs of the affected cases: jobs 2567370-2567373 (`2026-11-21_1646_rerun_*`).
+    Low-noise level re-submitted with the fix, all 17 conditions: jobs 2567374-2567377 (`2026-11-21_1646_lownoise_{NDF,N,R21,R22}`); the earlier `2026-11-20_1959_*_nominal*` jobs were cancelled and their partial logs deleted.
+  - Genuine failures at lab noise (loss of control): N payload 100/200 g, motor_slow; NDF motor_slow, lag 1.5x, combo; all motor_lag3; R21 payload200g 8/15, combo 7/15. Soft wall: N 13.4 mm, NDF 17.8, L2 17.1, R21 1.75.
+  - Videos rendering: `Media_results/2026-11-21_1646_Write_HELLO_WPI_{nominal,wall_soft}_lab_*`., past 2.0M steps, no wall-clock truncations.
 - Turing project dir `~/sem3/Aerial-Manipulation-Coupled-NMPC` is NOT a git clone: sync changed files with rsync.
 - Still open: NF/NDF/L timing vs the 20 ms real-time budget; final table + videos; report.
 
