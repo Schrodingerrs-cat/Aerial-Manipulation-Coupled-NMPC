@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-20 19:15 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-20 20:05 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -183,6 +183,14 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   (nominal 12/15 2.80 mm vs NDF 15/15 2.32; payload200g 15, 4.58; motor_slow fail) and on the stress set (above). Several runs hit the 400 s wall-clock guard. Likely cause: most training episodes were at motor lag NDF cannot survive and a model correction cannot fix, so the policy learned a harmful correction. Not yet checked: an earlier checkpoint (1000k, completion 0.71).
 - **L9 froze** at 1.5M steps (no log for 22 h, killed at 24 h). Fix: HybridEnv truncates episodes past the 400 s guard (commit 5d18aeb). Resumed from model_1500k: job 2542974 (curriculum restarts at lag 1.4).
 - **New run L2W_lag14**: L2 + wall stiffness 0.4-3.5x / friction 0.4-2.5x randomization, motor lag capped at 1.4x (`WALL=1 LAGMAX=1.4`), job 2542977, TAG `2026-11-20_1911_L2W_lag14_hybrid_s0`. Note: the wall_soft/stiff stress cases are inside its training range.
+- **Noise finding (2026-11-20 19:30 EST).** The shaking and hard-pressing look in the videos since 2026-11-12 come from the 'real' sensor noise (1 mm, 0.5 deg, white): with the old harness noise
+  NDF writes HELLO WPI at 0.81 mm (vs 2.21), coverage 100 %, peak force 0.65 N, rotor-command change 1.1 vs 11.4 (video `Media_results/2026-11-20_1921_*`). Sahil approved benchmarking at three levels:
+  nominal (0.1 mm, 0.01 deg), **lab** (spec-based, main result: 0.3 mm, 0.1 deg, pose error correlated tau 50 ms; `LabSensors` in `Code/scripts/am3_write_bench.py`, sources in its comments), real (stress).
+  Noise generator checked: std and autocorrelation match, identical noise at 50 and 100 Hz sampling. One-sentence check at lab noise: N 1.22 mm, NDF 1.86, R21 1.89, all complete.
+- **Benches running (2026-11-20 19:59)**: N, NDF, R21, R22, L2 x {lab, nominal} x 17 conditions, jobs 2543098-2543117 (9 CPUs each, PROCS=1), names `2026-11-20_1959_[stress_]<ctrl>_<noise>[_case]`.
+  Account cs551 is DENIED on partition short (course accounts): only academic, 64 CPUs per user.
+- **L2W_lag14 stopped** at 500k (job 2542977 cancelled; it trained at 'real' noise). Restart only if NDF still fails the soft wall at lab noise, and then train at lab noise.
+- L9 resume running (job 2542974), past 2.0M steps, no wall-clock truncations.
 - Turing project dir `~/sem3/Aerial-Manipulation-Coupled-NMPC` is NOT a git clone: sync changed files with rsync.
 - Still open: NF/NDF/L timing vs the 20 ms real-time budget; final table + videos; report.
 
