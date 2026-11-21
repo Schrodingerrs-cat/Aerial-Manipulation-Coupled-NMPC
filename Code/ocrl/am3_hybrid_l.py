@@ -77,26 +77,27 @@ class WriteStepEpisode(WriteEpisode):
 
 
 class HybridEnv(gym.Env):
-    """One NMPC cycle (20 ms) per step.  Episodes: 1-3 random capital letters, letter height 4-6 cm, pen speed 40-60 mm/s, realistic sensor noise,
+    """One NMPC cycle (20 ms) per step.  Episodes: 1-3 random capital letters, letter height 4-6 cm, pen speed 40-60 mm/s, sensor noise (see noise),
     unknown mismatch from sample_mismatch (payload <= 250 g, motor lag 1-2.5x, thrust, damping, wind, gusts).
     Curriculum: the motor-lag upper bound starts at lag0 = 1.4 (NDF still writes; it fails from 1.5) and reaches lag_max over the first `ramp` episodes of each env.
     wall=True (2026-11-20): also randomize wall stiffness (0.4-3.5x, log-uniform) and friction (0.4-2.5x); the soft wall broke N and NDF (12-15 mm) in the stress bench.
+    noise: sensor level, 'real' (stress, L2/L9) or 'lab' (spec-based, Code/scripts/am3_write_bench.py; 2026-11-20).
     An episode slower than the bench's 400 s wall-clock guard is truncated: one stuck episode froze all 30 envs of L9 for 22 h (2026-11-19)."""
     metadata = {}
 
-    def __init__(self, nch=2, seed=0, lag_max=2.5, pl_max=0.25, lag0=1.4, ramp=300, wall=False):
-        super().__init__(); self.nch, self.rng, self.lag_max, self.pl_max, self.lag0, self.ramp, self.n_ep, self.wall = nch, np.random.default_rng(seed), lag_max, pl_max, lag0, ramp, 0, wall; self.ctrl = NMPCDFL(nch)
+    def __init__(self, nch=2, seed=0, lag_max=2.5, pl_max=0.25, lag0=1.4, ramp=300, wall=False, noise="real"):
+        super().__init__(); self.nch, self.rng, self.lag_max, self.pl_max, self.lag0, self.ramp, self.n_ep, self.wall, self.noise = nch, np.random.default_rng(seed), lag_max, pl_max, lag0, ramp, 0, wall, noise; self.ctrl = NMPCDFL(nch)
         self.observation_space = spaces.Box(-10, 10, ((NF1 + nch) * HIST,), np.float32); self.action_space = spaces.Box(-1, 1, (nch,), np.float32)
 
     def reset(self, seed=None, options=None):
-        from am3_write_bench import RealSensors
+        from am3_write_bench import RealSensors, LabSensors
         if seed is not None: self.rng = np.random.default_rng(seed)
         g = self.rng; text = "".join(g.choice(sorted(FONT), size=int(g.integers(1, 4)))); h = float(g.uniform(0.04, 0.06))
         mm = sample_mismatch(g, pl_max=self.pl_max, lag_max=self.lag0 + (self.lag_max - self.lag0) * min(1.0, self.n_ep / max(self.ramp, 1)))
         if self.wall: mm.update(k_scale=float(np.exp(g.uniform(np.log(0.4), np.log(3.5)))), mu_scale=float(g.uniform(0.4, 2.5)))
         ep = WriteStepEpisode(self.ctrl, text, height=h, v_write=float(g.uniform(0.04, 0.06)), seed=int(g.integers(0, 2 ** 30)), mismatch=mm); self.t_wall0 = time.time()
         self.n_ep += 1
-        ep.sens = RealSensors(int(g.integers(0, 2 ** 30))); self.ep = ep; self.n = 0; self.a_prev = np.zeros(self.nch); self.nrec = 0
+        ep.sens = (LabSensors if self.noise == "lab" else RealSensors)(int(g.integers(0, 2 ** 30))); self.ep = ep; self.n = 0; self.a_prev = np.zeros(self.nch); self.nrec = 0
         self.max_steps = int((sum(ep.task.Ts) + 4.0 * len(ep.task.Ts) + 10.0) / self.ctrl.period); xm, Fm = ep.start()
         return self.ctrl.make_obs(xm, Fm, ep.task), dict(text=text)
 
