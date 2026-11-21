@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-20 20:05 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-20 22:20 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -190,6 +190,10 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
 - **Benches running (2026-11-20 19:59)**: N, NDF, R21, R22, L2 x {lab, nominal} x 17 conditions, jobs 2543098-2543117 (9 CPUs each, PROCS=1), names `2026-11-20_1959_[stress_]<ctrl>_<noise>[_case]`.
   Account cs551 is DENIED on partition short (course accounts): only academic, 64 CPUs per user.
 - **L2W_lag14 stopped** at 500k (job 2542977 cancelled; it trained at 'real' noise). Restart only if NDF still fails the soft wall at lab noise, and then train at lab noise.
+- **Lab-noise results so far (22:15)**: N, NDF, R21 done; R22, L2 running. Soft wall still breaks NMPC at lab noise: N 15/15 13.4 mm, NDF 15/15 17.8 mm (peak 4.5-4.7 N); R21 1.75 mm.
+  Nominal case: N 15/15 1.17 mm (best accuracy), NDF 13/15 1.92, R21 15/15 1.86. Rotor-command change: N 5.6, NDF 3.2, R21 1.0. Motor lag: N and NDF fail, R21 14/15 (motor_slow) and 15/15 (lag 1.5x).
+- **L2W_lab submitted (22:17)**: job 2543462, TAG `2026-11-20_2217_L2W_lab_hybrid_s0`: L2 + wall randomization + lag cap 1.4 + lab noise (justified: soft wall is a model error, not noise).
+  The 10 nominal-noise bench jobs (2543108-2543117) are HELD so L2W starts first; release them (`scontrol release`) once it runs.
 - L9 resume running (job 2542974), past 2.0M steps, no wall-clock truncations.
 - Turing project dir `~/sem3/Aerial-Manipulation-Coupled-NMPC` is NOT a git clone: sync changed files with rsync.
 - Still open: NF/NDF/L timing vs the 20 ms real-time budget; final table + videos; report.
