@@ -1,9 +1,10 @@
 """Phase-1 writing benchmark (fixed 2026-11-11, before any Phase-1 result): sentences that together use all 26 letters, letter height 5 cm
 (about 20 cm per 4-letter word), pen speed 50 mm/s, each written with several sensor-noise seeds.
-Sensing: 'real' = mocap + IMU class noise (SIG_REAL below); 'nominal' = the frozen harness noise (0.1 mm, 0.01 deg).  Latency is the Episode's one control period.
+Sensing: 'real' = mocap + IMU class noise (SIG_REAL below, white; the stress level since 2026-11-12); 'lab' = spec-based level (SIG_LAB, pose-estimate error
+correlated, 2026-11-20); 'nominal' = the frozen harness noise (0.1 mm, 0.01 deg).  Latency is the Episode's one control period.
 Pass (Phase 1): every episode completed, mean trace RMS <= 2 mm, no pen drag (drag <= 0.02).
 CTRL: an RL .zip, 'pd' (the scripted outer loop through the same inner loop), or an NMPC name.  --dob on|off overrides the inner-loop disturbance observer (default: as the policy was trained); --case adds a model mismatch.
-Usage: am3_write_bench.py CTRL [--noise real] [--seeds 3] [--procs 15] [--dob on|off] [--case NAME] [--kj GAIN] --name NAME"""
+Usage: am3_write_bench.py CTRL [--noise real|lab|nominal] [--seeds 3] [--procs 15] [--dob on|off] [--case NAME] [--kj GAIN] --name NAME"""
 import sys, os, json, argparse, time
 import numpy as np
 from stable_baselines3 import PPO          # torch must load before acados and the renderer
@@ -20,8 +21,32 @@ SMOOTH = ("rotor_tv", "tau_tv", "angacc_rms", "jointacc_rms", "pen_vel_err_rms")
 SIG_REAL = dict(p=1e-3, att=np.radians(0.5), v=0.01, w=0.02, q=1e-3, qd=0.02, Om=5.0, F=0.02)   # 1 mm / 0.5 deg pose, gyro 0.02 rad/s, 12-bit encoder, rotor telemetry, force
 
 
+# 'lab' (2026-11-20).  Sources: OptiTrack <= 0.3 mm / <= 0.05 deg (vendor), third-party +-0.2-0.3 mm, 0.13-0.16 deg -> p 0.3 mm, att 0.1 deg;
+# BMI088 gyro 0.014 deg/s/sqrt(Hz) x sqrt(1.22 x 100 Hz) = 0.15 deg/s -> w 0.003 rad/s; 12-bit encoder quantization 2pi/4096/sqrt(12) -> q 4.4e-4 rad.
+# Assumed (no datasheet): estimator velocity 5 mm/s, joint speed 0.01 rad/s, rotor telemetry 5 rad/s (~0.5 %), force 0.02 N.
+SIG_LAB = dict(p=3e-4, att=np.radians(0.1), v=5e-3, w=3e-3, q=4.4e-4, qd=0.01, Om=5.0, F=0.02)
+TAU_LAB = 0.05          # s; pose-estimate error (p, att, v) is first-order Gauss-Markov: an estimator output drifts, it does not jump every 5 ms
+
+
 class RealSensors(Sensors):
     SIG = SIG_REAL
+
+
+class LabSensors(Sensors):
+    """SIG_LAB; p/att/v errors correlated (TAU_LAB), gyro/encoders/rotor/force white.  Deterministic in (seed, 5 ms grid index) like Sensors: every controller sees the same noise."""
+    SIG = SIG_LAB
+
+    def __init__(self, seed=0):
+        super().__init__(seed); self.k, self.e = -1, np.zeros(9)
+
+    def measure(self, x, F, t=0.0):
+        s, k, a = self.SIG, int(round(t / 0.005)), np.exp(-0.005 / TAU_LAB); sd = np.repeat([s["p"], s["att"], s["v"]], 3)
+        if self.k < 0: self.k, self.e = k, sd * np.random.default_rng([self.seed, k, 1]).standard_normal(9)          # stationary start
+        while self.k < k: self.k += 1; self.e = a * self.e + np.sqrt(1 - a * a) * sd * np.random.default_rng([self.seed, self.k, 1]).standard_normal(9)
+        r = np.random.default_rng([self.seed, k]).standard_normal; xm = x.copy(); xm[0:3] += self.e[0:3]; dth = self.e[3:6]; Q = x[3:7]
+        dq = 0.5 * np.array([-Q[1] * dth[0] - Q[2] * dth[1] - Q[3] * dth[2], Q[0] * dth[0] + Q[2] * dth[2] - Q[3] * dth[1], Q[0] * dth[1] - Q[1] * dth[2] + Q[3] * dth[0], Q[0] * dth[2] + Q[1] * dth[1] - Q[2] * dth[0]])
+        xm[3:7] = (Q + dq) / np.linalg.norm(Q + dq); xm[7:10] += self.e[6:9]; xm[10:13] += s["w"] * r(3); xm[13:16] += s["q"] * r(3); xm[16:19] += s["qd"] * r(3); xm[19:23] += s["Om"] * r(4)
+        return xm, F + s["F"] * r()
 
 
 def run(job):
@@ -34,6 +59,7 @@ def run(job):
     if "v_approach" in mm: from ocrl.am3_task import CP; CP["v_approach_m_s"] = mm.pop("v_approach"); CP["v_final_m_s"] = mm.pop("v_final", CP["v_final_m_s"])          # stress case: faster approach and touch-down (impact), this process only
     ep = WriteEpisode(c, text, height=HEIGHT, v_write=SPEED, seed=seed, mismatch=mm or None)
     if noise == "real": ep.sens = RealSensors(seed)
+    if noise == "lab": ep.sens = LabSensors(seed)
     ep.run(); return dict(text=text, seed=seed, **write_metrics(ep), wall_s=round(time.time() - t0))
 
 
@@ -53,10 +79,10 @@ def main(a):
     for r in rows: print({k: r[k] for k in ("text", "seed", "completed", "abort", "strokes", "trace_rms_mm", "trace_max_mm", "coverage", "drag", "tilt_max_deg", "F_peak_N", "wall_s") + SMOOTH if k in r}, flush=True)
     s = summary(rows); print("SUMMARY", s, flush=True)
     out = os.path.join(HERE, "..", "results", "am3_write", "bench"); os.makedirs(out, exist_ok=True)
-    json.dump(dict(ctrl=a.ctrl, noise=a.noise, dob=a.dob, case=a.case, height=HEIGHT, speed=SPEED, sig=SIG_REAL if a.noise == "real" else Sensors.SIG, summary=s, rows=rows),
+    json.dump(dict(ctrl=a.ctrl, noise=a.noise, dob=a.dob, case=a.case, height=HEIGHT, speed=SPEED, sig=dict(real=SIG_REAL, lab=SIG_LAB).get(a.noise, Sensors.SIG), tau_lab=TAU_LAB if a.noise == "lab" else None, summary=s, rows=rows),
               open(os.path.join(out, f"{a.name}{'_dob' + a.dob if a.dob else ''}_{a.noise}{'_' + a.case if a.case else ''}.json"), "w"), indent=1, default=float)
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("ctrl"); ap.add_argument("--noise", choices=("real", "nominal"), default="real"); ap.add_argument("--seeds", type=int, default=3)
+    ap = argparse.ArgumentParser(); ap.add_argument("ctrl"); ap.add_argument("--noise", choices=("real", "lab", "nominal"), default="real"); ap.add_argument("--seeds", type=int, default=3)
     ap.add_argument("--procs", type=int, default=15); ap.add_argument("--name", required=True); ap.add_argument("--dob", choices=("on", "off"), default=None); ap.add_argument("--kj", type=float, default=None); ap.add_argument("--case", default=None); main(ap.parse_args())

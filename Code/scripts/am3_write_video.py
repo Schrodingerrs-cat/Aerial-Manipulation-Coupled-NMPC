@@ -12,7 +12,7 @@ from ocrl.am3_record import Recorder, CAMS, XW
 from ocrl.am3_write import WriteEpisode, YZ0
 from am3_write_eval import write_metrics, make
 from am3_write_mismatch import CASES
-from am3_write_bench import RealSensors
+from am3_write_bench import RealSensors, LabSensors
 
 
 class WriteRecorder(Recorder):
@@ -51,7 +51,8 @@ def main(a):
         label = f"RL ({os.path.basename(os.path.dirname(c))})" if c.endswith(".zip") else {"N": "N: coupled NMPC", "ND:10,10": "ND: NMPC + disturbance observer"}.get(c, c)
         rec = WriteRecorder(os.path.join(out, "frames", name), f"{label}: writing \"{a.text}\"" + ("" if a.case == "nominal" else f" [{a.case}]"), a.tag, a.text, cams=VIEWS, path=None, rate_label="")
         ep = WriteEpisode(make(c), a.text, height=a.height, v_write=a.speed, mismatch=CASES[a.case])
-        if a.noise == "real": ep.sens = RealSensors(0)                                                    # same sensing as the Phase-1 test, seed 0
+        if a.noise == "real": ep.sens = RealSensors(0)
+        if a.noise == "lab": ep.sens = LabSensors(0)                                                    # same sensing as the Phase-1 test, seed 0
         rec.attach(ep); t0 = time.time(); ep.run(); m = write_metrics(ep); rec.renderer.close()                      # an open GL context per controller blacked out the 3rd clip after ~47 s
         lines.append(f"{label}: " + ", ".join(f"{k}={v}" for k, v in m.items()) + f"  (wall {time.time() - t0:.0f} s)"); print(lines[-1], flush=True)
         for v in VIEWS: subprocess.run(ENC(os.path.join(out, "frames", name, v), os.path.join(out, f"{name}_{v}.mp4")), check=True)
@@ -64,4 +65,4 @@ def main(a):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("text"); ap.add_argument("--height", type=float, default=0.06); ap.add_argument("--speed", type=float, default=0.025); ap.add_argument("--ctrl", nargs="+", default=["N"]); ap.add_argument("--case", default="nominal", choices=sorted(CASES)); ap.add_argument("--noise", choices=("real", "nominal"), default="nominal"); main(ap.parse_args())
+    ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("text"); ap.add_argument("--height", type=float, default=0.06); ap.add_argument("--speed", type=float, default=0.025); ap.add_argument("--ctrl", nargs="+", default=["N"]); ap.add_argument("--case", default="nominal", choices=sorted(CASES)); ap.add_argument("--noise", choices=("real", "lab", "nominal"), default="nominal"); main(ap.parse_args())
