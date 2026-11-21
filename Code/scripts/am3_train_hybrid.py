@@ -1,6 +1,6 @@
 """Train the learned model correction L (ocrl/am3_hybrid_l.py) with PPO.  2026-11-19.
 Preflight (imports, solver build, zero-correction rollout) runs before training; checkpoints every --save-every steps; SIGTERM saves model_interrupt.zip; --resume continues.
-Usage: am3_train_hybrid.py TAG --nch 2|9 [--steps 10000000] [--envs 30] [--seed 0] [--ramp 300] [--wall] [--resume] [--preflight-only]"""
+Usage: am3_train_hybrid.py TAG --nch 2|9 [--steps 10000000] [--envs 30] [--seed 0] [--ramp 300] [--wall] [--lag-max 2.5] [--resume] [--preflight-only]"""
 import sys, os, json, time, signal, argparse, glob, datetime
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, ".."))
 import numpy as np
@@ -16,10 +16,10 @@ def log(msg):
     if OUT: open(os.path.join(OUT, "train.log"), "a").write(line + "\n")
 
 
-def make_env(nch, seed, ramp, wall):
+def make_env(nch, seed, ramp, wall, lag_max):
     def f():
         from ocrl.am3_hybrid_l import HybridEnv
-        return HybridEnv(nch, seed=seed, ramp=ramp, wall=wall)
+        return HybridEnv(nch, seed=seed, ramp=ramp, wall=wall, lag_max=lag_max)
     return f
 
 
@@ -52,8 +52,8 @@ def main(a):
     global OUT
     OUT = os.path.join(HERE, "..", "results", "am3_rl", a.tag); os.makedirs(OUT, exist_ok=True); preflight(a)
     if a.preflight_only: return
-    json.dump(dict(env="hybrid", nch=a.nch, algo="ppo", steps=a.steps, envs=a.envs, seed=a.seed, ramp=a.ramp, wall=a.wall, base="NDF:0.5,f", started=f"{datetime.datetime.now():%Y-%m-%d %H:%M}"), open(os.path.join(OUT, "config.json"), "w"), indent=1)
-    venv = VecMonitor(SubprocVecEnv([make_env(a.nch, a.seed * 1000 + i, a.ramp, a.wall) for i in range(a.envs)], start_method="forkserver"), info_keywords=("completed", "wall_timeout"))
+    json.dump(dict(env="hybrid", nch=a.nch, algo="ppo", steps=a.steps, envs=a.envs, seed=a.seed, ramp=a.ramp, wall=a.wall, lag_max=a.lag_max, base="NDF:0.5,f", started=f"{datetime.datetime.now():%Y-%m-%d %H:%M}"), open(os.path.join(OUT, "config.json"), "w"), indent=1)
+    venv = VecMonitor(SubprocVecEnv([make_env(a.nch, a.seed * 1000 + i, a.ramp, a.wall, a.lag_max) for i in range(a.envs)], start_method="forkserver"), info_keywords=("completed", "wall_timeout"))
     ck = sorted(glob.glob(os.path.join(OUT, "model_*k.zip")), key=os.path.getmtime) + glob.glob(os.path.join(OUT, "model_interrupt.zip"))
     if a.resume and ck:
         last = max(ck, key=os.path.getmtime); model = PPO.load(last, env=venv, device="cpu"); log(f"resumed from {last} at {model.num_timesteps}")
@@ -68,4 +68,4 @@ def main(a):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("--nch", type=int, choices=(2, 9), required=True); ap.add_argument("--steps", type=int, default=10_000_000)
     ap.add_argument("--envs", type=int, default=30); ap.add_argument("--seed", type=int, default=0); ap.add_argument("--ramp", type=int, default=300); ap.add_argument("--save-every", type=int, default=500_000)
-    ap.add_argument("--wall", action="store_true"); ap.add_argument("--resume", action="store_true"); ap.add_argument("--preflight-only", action="store_true"); main(ap.parse_args())
+    ap.add_argument("--wall", action="store_true"); ap.add_argument("--lag-max", type=float, default=2.5); ap.add_argument("--resume", action="store_true"); ap.add_argument("--preflight-only", action="store_true"); main(ap.parse_args())
