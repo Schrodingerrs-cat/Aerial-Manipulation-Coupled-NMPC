@@ -1,0 +1,46 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'text': 'HELLO WPI', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 42 deg, base error 22 mm', 'strokes': '0/11', 'trace_rms_mm': 7.689, 'trace_max_mm': 12.801, 'coverage': 0.015, 'drag': 0.0, 'tilt_max_deg': 35.27, 'F_peak_N': 1.625, 'wall_s': 28, 'rotor_tv': 15.566, 'tau_tv': 2.573, 'angacc_rms': 105.26, 'jointacc_rms': 94.09, 'pen_vel_err_rms': 75.86}
+{'text': 'HELLO WPI', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 42 deg, base error 25 mm', 'strokes': '1/11', 'trace_rms_mm': 4.376, 'trace_max_mm': 7.317, 'coverage': 0.049, 'drag': 0.0, 'tilt_max_deg': 34.78, 'F_peak_N': 3.737, 'wall_s': 61, 'rotor_tv': 13.747, 'tau_tv': 2.19, 'angacc_rms': 74.55, 'jointacc_rms': 79.33, 'pen_vel_err_rms': 24.94}
+{'text': 'HELLO WPI', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 44 deg, base error 23 mm', 'strokes': '1/11', 'trace_rms_mm': 4.926, 'trace_max_mm': 9.134, 'coverage': 0.054, 'drag': 0.0, 'tilt_max_deg': 36.25, 'F_peak_N': 1.775, 'wall_s': 31, 'rotor_tv': 13.744, 'tau_tv': 2.336, 'angacc_rms': 88.95, 'jointacc_rms': 91.32, 'pen_vel_err_rms': 38.57}
+{'text': 'AERIAL ROBOT', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 40 deg, base error 30 mm', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 38.46, 'F_peak_N': 1.541, 'wall_s': 25, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'AERIAL ROBOT', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 25 mm', 'strokes': '0/16', 'trace_rms_mm': 5.366, 'trace_max_mm': 9.396, 'coverage': 0.003, 'drag': 0.0, 'tilt_max_deg': 40.08, 'F_peak_N': 2.01, 'wall_s': 16, 'rotor_tv': 15.234, 'tau_tv': 2.499, 'angacc_rms': 104.16, 'jointacc_rms': 95.13, 'pen_vel_err_rms': 65.94}
+{'text': 'AERIAL ROBOT', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 42 deg, base error 27 mm', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.97, 'F_peak_N': 0.0, 'wall_s': 12, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'THE QUICK BROWN', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 42 deg, base error 25 mm', 'strokes': '0/20', 'trace_rms_mm': 7.033, 'trace_max_mm': 11.971, 'coverage': 0.004, 'drag': 0.0, 'tilt_max_deg': 35.83, 'F_peak_N': 1.684, 'wall_s': 38, 'rotor_tv': 15.493, 'tau_tv': 2.573, 'angacc_rms': 88.4, 'jointacc_rms': 82.58, 'pen_vel_err_rms': 67.74}
+{'text': 'THE QUICK BROWN', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 43 deg, base error 47 mm', 'strokes': '1/20', 'trace_rms_mm': 5.561, 'trace_max_mm': 12.075, 'coverage': 0.039, 'drag': 0.0, 'tilt_max_deg': 40.19, 'F_peak_N': 2.03, 'wall_s': 27, 'rotor_tv': 12.464, 'tau_tv': 2.035, 'angacc_rms': 56.74, 'jointacc_rms': 64.21, 'pen_vel_err_rms': 37.76}
+{'text': 'THE QUICK BROWN', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 45 deg, base error 38 mm', 'strokes': '2/20', 'trace_rms_mm': 5.603, 'trace_max_mm': 12.726, 'coverage': 0.055, 'drag': 0.0, 'tilt_max_deg': 38.61, 'F_peak_N': 1.849, 'wall_s': 102, 'rotor_tv': 13.641, 'tau_tv': 2.181, 'angacc_rms': 72.83, 'jointacc_rms': 79.77, 'pen_vel_err_rms': 37.9}
+{'text': 'FOX JUMPS OVER', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 25 mm', 'strokes': '0/15', 'trace_rms_mm': 9.872, 'trace_max_mm': 14.743, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.63, 'F_peak_N': 1.777, 'wall_s': 15, 'rotor_tv': 13.525, 'tau_tv': 2.463, 'angacc_rms': 113.98, 'jointacc_rms': 96.63, 'pen_vel_err_rms': 75.52}
+{'text': 'FOX JUMPS OVER', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 42 deg, base error 24 mm', 'strokes': '1/15', 'trace_rms_mm': 4.201, 'trace_max_mm': 7.917, 'coverage': 0.033, 'drag': 0.0, 'tilt_max_deg': 34.25, 'F_peak_N': 2.15, 'wall_s': 43, 'rotor_tv': 13.157, 'tau_tv': 2.102, 'angacc_rms': 77.48, 'jointacc_rms': 81.68, 'pen_vel_err_rms': 28.73}
+{'text': 'FOX JUMPS OVER', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 42 deg, base error 20 mm', 'strokes': '0/15', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 39.16, 'F_peak_N': 1.23, 'wall_s': 20, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'THE LAZY DOG', 'seed': 0, 'completed': False, 'abort': 'loss of control (failsafe): tilt 44 deg, base error 22 mm', 'strokes': '0/16', 'trace_rms_mm': 7.486, 'trace_max_mm': 11.971, 'coverage': 0.006, 'drag': 0.0, 'tilt_max_deg': 39.39, 'F_peak_N': 1.684, 'wall_s': 21, 'rotor_tv': 15.359, 'tau_tv': 2.475, 'angacc_rms': 89.21, 'jointacc_rms': 81.58, 'pen_vel_err_rms': 69.9}
+{'text': 'THE LAZY DOG', 'seed': 1, 'completed': False, 'abort': 'loss of control (failsafe): tilt 41 deg, base error 35 mm', 'strokes': '1/16', 'trace_rms_mm': 5.8, 'trace_max_mm': 13.123, 'coverage': 0.05, 'drag': 0.0, 'tilt_max_deg': 36.82, 'F_peak_N': 2.03, 'wall_s': 45, 'rotor_tv': 12.77, 'tau_tv': 2.014, 'angacc_rms': 55.62, 'jointacc_rms': 66.05, 'pen_vel_err_rms': 45.03}
+{'text': 'THE LAZY DOG', 'seed': 2, 'completed': False, 'abort': 'loss of control (failsafe): tilt 43 deg, base error 17 mm', 'strokes': '1/16', 'trace_rms_mm': 4.227, 'trace_max_mm': 9.698, 'coverage': 0.059, 'drag': 0.0, 'tilt_max_deg': 38.78, 'F_peak_N': 2.243, 'wall_s': 67, 'rotor_tv': 13.048, 'tau_tv': 2.223, 'angacc_rms': 69.83, 'jointacc_rms': 76.95, 'pen_vel_err_rms': 44.49}
+SUMMARY {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['loss of control (failsafe): tilt 40 deg, base error 30 mm', 'loss of control (failsafe): tilt 41 deg, base error 25 mm', 'loss of control (failsafe): tilt 41 deg, base error 35 mm', 'loss of control (failsafe): tilt 42 deg, base error 20 mm', 'loss of control (failsafe): tilt 42 deg, base error 22 mm', 'loss of control (failsafe): tilt 42 deg, base error 24 mm', 'loss of control (failsafe): tilt 42 deg, base error 25 mm', 'loss of control (failsafe): tilt 42 deg, base error 27 mm', 'loss of control (failsafe): tilt 43 deg, base error 17 mm', 'loss of control (failsafe): tilt 43 deg, base error 47 mm', 'loss of control (failsafe): tilt 44 deg, base error 22 mm', 'loss of control (failsafe): tilt 44 deg, base error 23 mm', 'loss of control (failsafe): tilt 45 deg, base error 38 mm'], 'F_peak_max': 3.737, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
