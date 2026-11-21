@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-21 16:50 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-21 18:45 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -203,7 +203,16 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
     (and some at 'real' noise, e.g. NDF wall_stiff 10/15) were this guard, not control failures. Guard raised to 1500 s in `am3_write_bench.py`. Lab re-runs of the affected cases: jobs 2567370-2567373 (`2026-11-21_1646_rerun_*`).
     Low-noise level re-submitted with the fix, all 17 conditions: jobs 2567374-2567377 (`2026-11-21_1646_lownoise_{NDF,N,R21,R22}`); the earlier `2026-11-20_1959_*_nominal*` jobs were cancelled and their partial logs deleted.
   - Genuine failures at lab noise (loss of control): N payload 100/200 g, motor_slow; NDF motor_slow, lag 1.5x, combo; all motor_lag3; R21 payload200g 8/15, combo 7/15. Soft wall: N 13.4 mm, NDF 17.8, L2 17.1, R21 1.75.
-  - Videos rendering: `Media_results/2026-11-21_1646_Write_HELLO_WPI_{nominal,wall_soft}_lab_*`., past 2.0M steps, no wall-clock truncations.
+  - Videos done: `Media_results/2026-11-21_1646_Write_HELLO_WPI_{nominal,wall_soft}_lab_*` (SUMMARY lines in the READMEs).
+- **2026-11-21 18:45 EST. L2W_lab benchmark (lab noise, 15 runs per condition) — L2W FIXES THE SOFT WALL:**
+  - wall_soft 15/15, 2.11 mm (NDF 17.8 mm, N 13.4 mm, R21 1.75 mm). Also 15/15: nominal 1.79, gust 1.78, wind 1.84, kf90 1.82, kf85 1.82, damping3x 1.99, approach_fast 1.77,
+    slippery 1.91, stiff 2.52, grippy 3.18, payload100g 2.39, payload200g 3.78 (N loses control on both payloads). Peak force <= 1.75 N everywhere.
+  - L2W FAILS every motor-dynamics case (0/15, loss of control): motor_slow, motor_lag15, motor_lag3, combo. The 2 channels (extra normal force + 1 more) cannot represent rotor lag.
+    This is the question for L9W (9 channels, all generalized forces).
+  - Cost: arm joint acceleration ~30 (NDF 15, R21 8): the learned correction makes the arm busier.
+  - L9W_lab (job 2567363): watchdog fired once at ~1.2M steps (an acados `solve()` hung > 120 s inside HPIPM, stack in `am3L_2567363.err`); auto-resume restarted from the 1M checkpoint. Works as designed.
+  - Lab re-runs with the 1500 s guard so far: N kf85 15/15 3.49 mm, N motor_lag15 15/15 1.95 mm (was a guard abort, not a failure), N grippy 15/15 5.90, N slippery 15/15 3.31; R22 kf85 6/15 (genuine).
+  - Timing + prediction-at-contact study running locally: `Code/scripts/am3_write_timing.py` -> `Code/results/am3_timing/2026-11-21_*_write_timing_pred_lab.json`.
 - Turing project dir `~/sem3/Aerial-Manipulation-Coupled-NMPC` is NOT a git clone: sync changed files with rsync.
 - Still open: NF/NDF/L timing vs the 20 ms real-time budget; final table + videos; report.
 
