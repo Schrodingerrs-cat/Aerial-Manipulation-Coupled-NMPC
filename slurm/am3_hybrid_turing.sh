@@ -26,6 +26,10 @@ FL=acados_job${SLURM_JOB_ID:-local}; ln -sfn acados third_party/$FL; export OCRL
 unset MUJOCO_GL; export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=.:scripts
 python scripts/am3_train_hybrid.py "$TAG" --nch "$NCH" --steps "$STEPS" --envs "$ENVS" --seed "$SEED" --noise "$NOISE" --preflight-only || fail "preflight failed, training not started"
 EXTRA=""; [ "$RESUME" = "1" ] && EXTRA="--resume"; [ "$WALL" = "1" ] && EXTRA="$EXTRA --wall"; EXTRA="$EXTRA --lag-max $LAGMAX --noise $NOISE"
-python scripts/am3_train_hybrid.py "$TAG" --nch "$NCH" --steps "$STEPS" --envs "$ENVS" --seed "$SEED" $EXTRA; RC=$?
+for TRY in 1 2 3 4 5 6; do                                     # a worker killed by the step watchdog (ocrl/am3_hybrid_l.py) ends the run: resume from the last checkpoint
+  python scripts/am3_train_hybrid.py "$TAG" --nch "$NCH" --steps "$STEPS" --envs "$ENVS" --seed "$SEED" $EXTRA; RC=$?
+  [ -f "results/am3_rl/$TAG/model_final.zip" ] && break
+  echo "training exited ($RC) without model_final.zip at $(date): restart $TRY from the last checkpoint"; [[ "$EXTRA" == *--resume* ]] || EXTRA="$EXTRA --resume"
+done
 rm -f third_party/$FL
 echo "finished $(date) exit $RC"; tail -5 "results/am3_rl/$TAG/train.log" 2>/dev/null; exit $RC

@@ -4,7 +4,7 @@ Base controller: NDF (ND + state filter, observer on the filtered state; ocrl/am
   n = 9 ("L9", stated deviation): a * S9 is added to the observer estimate (base force, body moment, joint torques) in the prediction.
 The correction enters only the NMPC prediction over the horizon (never the plant, never the motor commands); a = 0 reproduces NDF exactly.
 Observations are measured quantities and controller internals only (no plant parameters)."""
-import time, numpy as np, gymnasium as gym
+import time, faulthandler, numpy as np, gymnasium as gym
 from gymnasium import spaces
 from ocrl.am3_nmpc_filt import NMPCDF
 from ocrl.am3_nmpc_dob import K_DOB
@@ -13,6 +13,7 @@ from ocrl.am3_nmpc import D_MAX
 from ocrl.am3_write import WriteEpisode, WriteTask, text_strokes, FONT
 from ocrl.am3_rl_wall import PHASES, PH_OBS, sample_mismatch
 
+STEP_LIMIT_S = 120.0          # a step normally takes ~45 ms; a step that never returns (L9 froze twice inside one step, 2026-11-19/21) dumps its stack and kills the worker so the job resumes
 S9 = np.array([1.5, 1.5, 1.5, 0.15, 0.15, 0.15, 0.3, 0.3, 0.3])          # 9-channel correction scale: N, N m (about a 150 g payload, its moment, joint torque)
 S_DG = np.array([2.0, 2.0, 2.0, 0.1, 0.1, 0.1, 0.3, 0.3, 0.3])
 HIST = 4
@@ -90,6 +91,16 @@ class HybridEnv(gym.Env):
         self.observation_space = spaces.Box(-10, 10, ((NF1 + nch) * HIST,), np.float32); self.action_space = spaces.Box(-1, 1, (nch,), np.float32)
 
     def reset(self, seed=None, options=None):
+        faulthandler.dump_traceback_later(STEP_LIMIT_S, exit=True)
+        out = self._reset(seed)
+        faulthandler.cancel_dump_traceback_later(); return out
+
+    def step(self, a):
+        faulthandler.dump_traceback_later(STEP_LIMIT_S, exit=True)
+        out = self._step(a)
+        faulthandler.cancel_dump_traceback_later(); return out
+
+    def _reset(self, seed=None):
         from am3_write_bench import RealSensors, LabSensors
         if seed is not None: self.rng = np.random.default_rng(seed)
         g = self.rng; text = "".join(g.choice(sorted(FONT), size=int(g.integers(1, 4)))); h = float(g.uniform(0.04, 0.06))
@@ -101,7 +112,7 @@ class HybridEnv(gym.Env):
         self.max_steps = int((sum(ep.task.Ts) + 4.0 * len(ep.task.Ts) + 10.0) / self.ctrl.period); xm, Fm = ep.start()
         return self.ctrl.make_obs(xm, Fm, ep.task), dict(text=text)
 
-    def step(self, a):
+    def _step(self, a):
         ep, c = self.ep, self.ctrl; a = np.clip(np.asarray(a, float), -1, 1); c.ext_action = a; ep.commit(); self.n += 1; xm, Fm = ep.observe(); task = ep.task
         x = ep.x; ref = task.ref(); pad = np.array(c.pr.pad_f(x)[0]).ravel(); e_pad = float(np.linalg.norm(pad - ref["p"])); e_base = float(np.linalg.norm(x[0:3] - np.asarray(ref["pB"], float)))
         r = 0.5 - 0.3 * min(e_pad / 0.003, 3.0) - 0.1 * min(e_base / 0.01, 3.0) - 0.02 * float(a @ a) - 0.1 * float((a - self.a_prev) @ (a - self.a_prev)) - 0.5 * max(ep.F - 2.0, 0.0)
