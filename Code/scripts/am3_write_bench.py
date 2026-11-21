@@ -17,6 +17,7 @@ from am3_write_mismatch import CASES
 
 SENTENCES = ["HELLO WPI", "AERIAL ROBOT", "THE QUICK BROWN", "FOX JUMPS OVER", "THE LAZY DOG"]
 HEIGHT, SPEED = 0.05, 0.05
+WALL_LIMIT_S = 1500.0          # stuck-solver guard (the Episode default 400 s aborted completed-looking NMPC runs on slow Turing nodes: 350-440 s per sentence; 2026-11-21)
 SMOOTH = ("rotor_tv", "tau_tv", "angacc_rms", "jointacc_rms", "pen_vel_err_rms")          # smoothness metrics (am3_write_eval.smooth_metrics), averaged over completed episodes (2026-11-19)
 SIG_REAL = dict(p=1e-3, att=np.radians(0.5), v=0.01, w=0.02, q=1e-3, qd=0.02, Om=5.0, F=0.02)   # 1 mm / 0.5 deg pose, gyro 0.02 rad/s, 12-bit encoder, rotor telemetry, force
 
@@ -58,6 +59,7 @@ def run(job):
     mm = dict(CASES[case]) if case else {}
     if "v_approach" in mm: from ocrl.am3_task import CP; CP["v_approach_m_s"] = mm.pop("v_approach"); CP["v_final_m_s"] = mm.pop("v_final", CP["v_final_m_s"])          # stress case: faster approach and touch-down (impact), this process only
     ep = WriteEpisode(c, text, height=HEIGHT, v_write=SPEED, seed=seed, mismatch=mm or None)
+    ep.wall_limit = WALL_LIMIT_S
     if noise == "real": ep.sens = RealSensors(seed)
     if noise == "lab": ep.sens = LabSensors(seed)
     ep.run(); return dict(text=text, seed=seed, **write_metrics(ep), wall_s=round(time.time() - t0))
