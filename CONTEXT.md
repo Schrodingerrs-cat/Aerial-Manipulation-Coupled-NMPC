@@ -212,9 +212,17 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   - Cost: arm joint acceleration ~30 (NDF 15, R21 8): the learned correction makes the arm busier.
   - L9W_lab (job 2567363): watchdog fired once at ~1.2M steps (an acados `solve()` hung > 120 s inside HPIPM, stack in `am3L_2567363.err`); auto-resume restarted from the 1M checkpoint. Works as designed.
   - Lab re-runs with the 1500 s guard so far: N kf85 15/15 3.49 mm, N motor_lag15 15/15 1.95 mm (was a guard abort, not a failure), N grippy 15/15 5.90, N slippery 15/15 3.31; R22 kf85 6/15 (genuine).
-  - Timing + prediction-at-contact study running locally: `Code/scripts/am3_write_timing.py` -> `Code/results/am3_timing/2026-11-21_*_write_timing_pred_lab.json`.
+- **2026-11-21 18:55 EST. Timing + prediction at contact** (`Code/scripts/am3_write_timing.py`, `Code/results/am3_timing/2026-11-21_1831_write_timing_pred_lab.json`;
+  "HELLO WPI", lab noise, seed 0, one process, Intel Ultra 9 275HX single thread; not comparable to Turing or to Aryan's machine):
+  - Real time: N / NDF / L2W median cycle 9.6 / 10.9 / 12.0 ms, p99 28-34 ms; **~3.5 % of cycles exceed the 20 ms budget** for all three (L2W's policy adds ~1-2 ms).
+    No solver failures, retries or fallbacks here. R21: 1.1 ms median, max 7.4 ms, never over its 10 ms period. (One acados solve hung > 120 s during L9W training on Turing: rare, but a real-time hazard.)
+  - Prediction at contact (pen writing phase; model's predicted pad depth and normal force vs the plant, 20/100/200 ms ahead):
+    normal wall: N errors <= 0.44 mm, <= 0.24 N (true force ~0.47 N). NDF/L2W similar.
+    **soft wall: N's model predicts the pad 6.9 mm shallower and 1.2 N less force than reality at 200 ms (true force ~3.0 N: it presses 6x harder than on the normal wall).**
+    NDF's observer fixes the 20 ms force error (0.19 N) but not the horizon (6.9 mm, 1.4 N at 200 ms): a constant disturbance cannot represent a stiffness error that grows with depth.
+    **L2W: <= 0.35 mm, <= 0.13 N bias over the whole horizon, true force 0.36 N.** This is the mechanism behind L2W fixing the soft wall.
 - Turing project dir `~/sem3/Aerial-Manipulation-Coupled-NMPC` is NOT a git clone: sync changed files with rsync.
-- Still open: NF/NDF/L timing vs the 20 ms real-time budget; final table + videos; report.
+- Still open: final table + videos; report; optional deadline-enforced timing run for the writing task.
 
 ## 9. Open items before Monday 2026-11-23 (capstone)
 
