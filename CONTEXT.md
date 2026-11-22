@@ -1,6 +1,6 @@
 # CONTEXT.md — start here (people and AI agents)
 
-Last updated: **2026-11-21 18:45 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
+Last updated: **2026-11-21 19:30 EST** (Sahil + Claude). Branch: **`payload-swing`**; all recent work is there, and `main` is old.
 
 This file is the short, current picture. Read it first, then `CLAUDE.md` (rules), then the files it points to.
 `SESSION_CONTEXT.md` is the long chronological log; use it only for history.
@@ -222,6 +222,20 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
     NDF's observer fixes the 20 ms force error (0.19 N) but not the horizon (6.9 mm, 1.4 N at 200 ms): a constant disturbance cannot represent a stiffness error that grows with depth.
     **L2W: <= 0.35 mm, <= 0.13 N bias over the whole horizon, true force 0.36 N.** This is the mechanism behind L2W fixing the soft wall.
 - Turing project dir `~/sem3/Aerial-Manipulation-Coupled-NMPC` is NOT a git clone: sync changed files with rsync.
+- **2026-11-21 19:30 EST. User approved (a) force-controlled writing as an extra variant, (b) RL retraining at lab noise, (c) L2W at all 3 noise levels.**
+  - **Force-controlled writing** (`ocrl/am3_write.py`, `--force F` in the bench, `FORCE=` in `slurm/am3_bench_turing.sh`; default off = depth task, unchanged:
+    N nominal reproduces 1.216 mm exactly). While tracing, d(gap_ref)/dt = K_F (F_meas - f_ref); f_ref 0.6 N (= model wall 600 N/m x 1 mm depth ref), K_F 3e-3 m/(N s), gap_ref in +-8 mm.
+    Local check (HELLO WPI, lab, seed 0): neutral on the normal wall (N 1.26, NDF 1.85, L2W 1.60, R21 2.06 mm); soft wall N 14.5 -> 6.4 mm, NDF 19.1 -> 9.6 mm (still FAIL, peaks 3-4 N);
+    L2W 2.5, R21 1.9. Why it cannot fix N: on the soft wall N's real pad depth stays ~8.5 mm whatever the reference (gap_ref raised by up to +7 mm, no clipping): the arm drifts to another posture
+    (shoulder 76 % of its torque limit, 9 % saturated; joints 2/3 moved ~28 deg), base pitched 13 deg and 14 mm off. The model error is inside the NMPC; a task-level force loop cannot reach it.
+    Full force benches at lab noise (17 conditions): N, NDF, L2W, R21: jobs 2568337-2568344, names `2026-11-21_1927_force06_[stress_]{N,NDF,L2W,R21}_lab*`.
+  - **RL at lab noise**: `LabSensors` in `ocrl/am3_rl_direct.py` (same SIG_LAB/TAU_LAB; correlated error advances 5 ms per call, the env measures twice per 10 ms step; checked: 0.30 mm std, 10 ms autocorr 0.82),
+    env kinds `write15_drjt_lab` / `write15_drjtw_lab` (identical to R21/R22 otherwise; checked). Fine-tunes, 20M steps, lr 1e-4 decay, as R21/R22:
+    R23 = R21 settings from R21 (job 2568255, TAG `2026-11-21_1920_R23_write15drjt_lab_fromR21_s0`), R24 = R22 settings from R22 (job 2568256, TAG `2026-11-21_1920_R24_write15drjtw_lab_fromR22_s0`).
+    Fixed on the way: `reset(seed)` rebuilt a plain `Sensors`, it now keeps the sensor class.
+  - L2W at nominal and 'real' noise: jobs 2568251-2568254, names `2026-11-21_1920_[stress_]L2W_{nominal,real}*`.
+  - Queue order (64-CPU cap): low-noise benches, L2W benches, force benches; R23/R24 (32 CPUs each) likely start when L9W finishes (~07:00 11-22).
+  - When done: bench R23/R24 at lab (17 conditions) + videos; L9W bench + videos; force-mode videos (soft wall N vs L2W).
 - Still open: final table + videos; report; optional deadline-enforced timing run for the writing task.
 
 ## 9. Open items before Monday 2026-11-23 (capstone)

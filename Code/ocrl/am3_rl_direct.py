@@ -100,6 +100,22 @@ class Sensors:
         return xm
 
 
+class LabSensors(Sensors):
+    """'lab' level (scripts/am3_write_bench.SIG_LAB/TAU_LAB, 2026-11-21): pose-estimate error (p, att, v) first-order Gauss-Markov, the rest white.
+    The env measures twice per 10 ms step (inner loop, then observation), so the correlated error advances 5 ms per call."""
+    LAB = dict(p=3e-4, att=np.radians(0.1), v=5e-3, w=3e-3, q=4.4e-4, qd=0.01, Om=5.0); TAU = 0.05
+    def __init__(self, seed=0, sig=None): super().__init__(seed, sig or LabSensors.LAB); self.e = None
+    def __call__(self, x):
+        s, r = self.SIG, self.rng.standard_normal; sd = np.repeat([s["p"], s["att"], s["v"]], 3); a = np.exp(-0.005 / self.TAU)
+        self.e = sd * r(9) if self.e is None else a * self.e + np.sqrt(1 - a * a) * sd * r(9)
+        xm = x.copy(); xm[0:3] += self.e[0:3]; dth = self.e[3:6]; Q = x[3:7]
+        dq = 0.5 * np.array([-Q[1] * dth[0] - Q[2] * dth[1] - Q[3] * dth[2], Q[0] * dth[0] + Q[2] * dth[2] - Q[3] * dth[1],
+                             Q[0] * dth[1] - Q[1] * dth[2] + Q[3] * dth[0], Q[0] * dth[2] + Q[1] * dth[1] - Q[2] * dth[0]])
+        xm[3:7] = (Q + dq) / np.linalg.norm(Q + dq); xm[7:10] += self.e[6:9]
+        xm[10:13] += s["w"] * r(3); xm[13:16] += s["q"] * r(3); xm[16:19] += s["qd"] * r(3); xm[19:23] += s["Om"] * r(4)
+        return xm
+
+
 # ---- reward shaping (paper eqs 4-6): two scales so the gradient survives far away and sharpens near the goal
 def rw(x, r1, r2, r3, r4): return r1 * np.exp(-r2 * x * x) + r3 * np.exp(-r4 * x * x)
 def pen(x, p1, p2): return p1 * (np.exp(-p2 * x * x) - 1.0)                    # always <= 0
@@ -162,7 +178,7 @@ class HoverEnv(gym.Env):
 
     # ---- gym API
     def reset(self, seed=None, options=None):
-        if seed is not None: self.rng = np.random.default_rng(seed); self.sens = Sensors(seed, self.sens.SIG)
+        if seed is not None: self.rng = np.random.default_rng(seed); self.sens = type(self.sens)(seed, self.sens.SIG)          # keeps the sensor class (LabSensors)
         self.x0 = self._state0(); self.pl.set_state(self.x0); self.pl.reset_log()
         self.a_prev = np.zeros(10); self.n = 0; self.inner.dob_state = None
         self.u_pend = np.r_[self.x0[19:23], np.asarray(self.inner.eq["u"], float)[4:]]

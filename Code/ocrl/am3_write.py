@@ -19,6 +19,12 @@ LIFT_S = 0.4            # release gap -> pen-up gap
 SIGMA_B = 0.10          # base path = pen path smoothed with a Gaussian of this width in arclength (m); larger = drone moves less, arm more
 REACH = (0.035, 0.03)   # largest pen-base offset (y, z) the arm takes from its nominal pose (the frozen shapes use +-4 cm y, -2..+3 cm z)
 DS = 0.002
+# Force-controlled writing (2026-11-21, user-approved variant; default off = the depth-controlled task): while tracing, the depth reference integrates the
+# measured-force error,  d(gap_ref)/dt = K_F (F_meas - f_ref),  so the pen holds f_ref whatever the wall stiffness.  f_ref default 0.6 N = the model wall
+# stiffness (600 N/m) x the depth reference DELTA (1 mm), i.e. the force the depth task was designed for.  K_F gives a 0.55 s time constant on the model wall.
+F_REF = 0.6
+K_F = 3e-3              # m/(N s)
+G_F = (-0.008, 0.008)   # depth-reference range under force control (m)
 
 
 def _ell(c, r, a0, a1, n=14):
@@ -69,12 +75,12 @@ def text_strokes(text, height=0.06, pitch=1.0, space=0.7):
 
 class WriteTask(Task):
     """Multi-stroke contact writing with a moving base.  Phases: hover, position, approach, settle, trace, release, lift, travel, (recover, settle_resume), done."""
-    def __init__(self, p0, strokes, height=0.06, z0=0.0, v_write=V_WRITE):
+    def __init__(self, p0, strokes, height=0.06, z0=0.0, v_write=V_WRITE, f_ref=None):
         super().__init__("free", p0, free_waypoints=[p0], segment_s=1.0)            # parent only supplies the contact-detection state; everything else is set here
         self.free = False; fil = 0.08 * height; self.strokes = strokes; self.paths = [rounded_polygon(s, fil) for s in strokes]
         self.v = v_write; self.Ts = [max(0.6, p.length / v_write) for p in self.paths]; self.i = 0; self.yz0 = YZ0 + np.array([0.0, z0])
         self.set_stroke(0); self.pre = np.r_[wall_x(G_UP), self.yz0 + self.path.at(0)[0]]; self.gap_ref = G_UP; self.tr_from = self.tr_to = None; self.T_tr = 1.0; self.written = []
-        self.plan_base()
+        self.f_ref, self.g_rel = f_ref, -DELTA; self.plan_base()
 
     def plan_base(self):
         """Base path over the global pen arclength S (strokes and pen-up travels in order): Gaussian-smoothed pen path, then pushed so |pen - base| <= REACH."""
@@ -115,7 +121,11 @@ class WriteTask(Task):
                 if self.tph >= TASK["position_s"]: self.gap_ref = G_UP; self._enter("approach")
                 return
             super().advance(dt, F_meas, gap_meas, nominal)
-            if self.phase == "endhold": self._enter("release")                       # no dwell at a stroke end
+            if self.f_ref is not None and self.phase == "trace" and not nominal:
+                g = self.gap_ref; self.gap_ref = float(np.clip(g + K_F * (F_meas - self.f_ref) * dt, *G_F)); self.gap_rate += (self.gap_ref - g) / dt
+            if self.phase == "endhold":                                             # no dwell at a stroke end
+                if self.f_ref is not None: self.g_rel = self.gap_ref                # release starts from where force control left the depth
+                self._enter("release")
             return
         self.t += dt; self.tph += dt; g0 = self.gap_ref
         if not nominal:                                                             # keep the contact detector running while the pen is up (drag check uses it)
@@ -123,7 +133,7 @@ class WriteTask(Task):
             if not self.contact and self.n_on >= max(1, round(CP["T_on_s"] / dt)): self.contact = True
             if self.contact and self.n_off >= max(1, round(CP["T_off_s"] / dt)): self.contact = False
         if ph == "release":
-            self.gap_ref = -DELTA + (CP["release_gap_m"] + DELTA) * SMOOTH(self.tph / CP["release_s"])
+            self.gap_ref = self.g_rel + (CP["release_gap_m"] - self.g_rel) * SMOOTH(self.tph / CP["release_s"])
             if self.tph >= CP["release_s"]: self._enter("lift")
         elif ph == "lift":
             self.gap_ref = CP["release_gap_m"] + (G_UP - CP["release_gap_m"]) * SMOOTH(self.tph / LIFT_S)
@@ -159,8 +169,8 @@ class WriteTask(Task):
 
 class WriteEpisode(Episode):
     """Episode whose task is a WriteTask (the parent's placeholder task is replaced before the run, as in am3_traj.TrajEpisode)."""
-    def __init__(self, controller, text, height=0.06, z0=0.0, v_write=V_WRITE, **kw):
+    def __init__(self, controller, text, height=0.06, z0=0.0, v_write=V_WRITE, f_ref=None, **kw):
         kw.setdefault("T_max", 600.0); super().__init__(controller, "write", free_waypoints=[[0.0, 0.0, 0.0]], segment_s=1.0, **kw)
-        self.text = text; self.task = WriteTask(self.p0, text_strokes(text, height), height, z0, v_write)
+        self.text = text; self.task = WriteTask(self.p0, text_strokes(text, height), height, z0, v_write, f_ref)
         if hasattr(controller, "attach"): controller.attach(self)                       # RL controller reads the episode plant (as in am3_eval_wall.run)
         if hasattr(controller, "reset"): controller.reset(self.x0, self.u0, self.task)

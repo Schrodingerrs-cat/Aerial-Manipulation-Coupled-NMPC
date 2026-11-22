@@ -4,7 +4,7 @@ Sensing: 'real' = mocap + IMU class noise (SIG_REAL below, white; the stress lev
 correlated, 2026-11-20); 'nominal' = the frozen harness noise (0.1 mm, 0.01 deg).  Latency is the Episode's one control period.
 Pass (Phase 1): every episode completed, mean trace RMS <= 2 mm, no pen drag (drag <= 0.02).
 CTRL: an RL .zip, 'pd' (the scripted outer loop through the same inner loop), or an NMPC name.  --dob on|off overrides the inner-loop disturbance observer (default: as the policy was trained); --case adds a model mismatch.
-Usage: am3_write_bench.py CTRL [--noise real|lab|nominal] [--seeds 3] [--procs 15] [--dob on|off] [--case NAME] [--kj GAIN] --name NAME"""
+Usage: am3_write_bench.py CTRL [--noise real|lab|nominal] [--seeds 3] [--procs 15] [--dob on|off] [--case NAME] [--kj GAIN] [--force F_REF] --name NAME"""
 import sys, os, json, argparse, time
 import numpy as np
 from stable_baselines3 import PPO          # torch must load before acados and the renderer
@@ -51,14 +51,14 @@ class LabSensors(Sensors):
 
 
 def run(job):
-    ctrl, text, seed, noise, dob, case, kj = job; t0 = time.time()
+    ctrl, text, seed, noise, dob, case, kj, force = job; t0 = time.time()
     if ctrl == "pd": from ocrl.am3_rl_wall import RLCtrl; c = RLCtrl("pd", vel_ff=True)
     else: c = make(ctrl)
     if dob is not None: c.env.inner.dob = dob                                                     # None: as trained
     if kj is not None: c.env.inner.k_dob[6:9] = kj                                                # joint-channel observer gain override (2026-11-17)
     mm = dict(CASES[case]) if case else {}
     if "v_approach" in mm: from ocrl.am3_task import CP; CP["v_approach_m_s"] = mm.pop("v_approach"); CP["v_final_m_s"] = mm.pop("v_final", CP["v_final_m_s"])          # stress case: faster approach and touch-down (impact), this process only
-    ep = WriteEpisode(c, text, height=HEIGHT, v_write=SPEED, seed=seed, mismatch=mm or None)
+    ep = WriteEpisode(c, text, height=HEIGHT, v_write=SPEED, seed=seed, mismatch=mm or None, f_ref=force)
     ep.wall_limit = WALL_LIMIT_S
     if noise == "real": ep.sens = RealSensors(seed)
     if noise == "lab": ep.sens = LabSensors(seed)
@@ -74,17 +74,18 @@ def summary(rows):
 
 
 def main(a):
-    dob = None if a.dob is None else a.dob == "on"; jobs = [(a.ctrl, s, seed, a.noise, dob, a.case, a.kj) for s in SENTENCES for seed in range(a.seeds)]
+    dob = None if a.dob is None else a.dob == "on"; jobs = [(a.ctrl, s, seed, a.noise, dob, a.case, a.kj, a.force) for s in SENTENCES for seed in range(a.seeds)]
     if a.procs > 1:
         with Pool(a.procs) as pool: rows = pool.map(run, jobs, chunksize=1)
     else: rows = [run(j) for j in jobs]
     for r in rows: print({k: r[k] for k in ("text", "seed", "completed", "abort", "strokes", "trace_rms_mm", "trace_max_mm", "coverage", "drag", "tilt_max_deg", "F_peak_N", "wall_s") + SMOOTH if k in r}, flush=True)
     s = summary(rows); print("SUMMARY", s, flush=True)
     out = os.path.join(HERE, "..", "results", "am3_write", "bench"); os.makedirs(out, exist_ok=True)
-    json.dump(dict(ctrl=a.ctrl, noise=a.noise, dob=a.dob, case=a.case, height=HEIGHT, speed=SPEED, sig=dict(real=SIG_REAL, lab=SIG_LAB).get(a.noise, Sensors.SIG), tau_lab=TAU_LAB if a.noise == "lab" else None, summary=s, rows=rows),
+    json.dump(dict(ctrl=a.ctrl, noise=a.noise, dob=a.dob, case=a.case, force_ref=a.force, height=HEIGHT, speed=SPEED, sig=dict(real=SIG_REAL, lab=SIG_LAB).get(a.noise, Sensors.SIG), tau_lab=TAU_LAB if a.noise == "lab" else None, summary=s, rows=rows),
               open(os.path.join(out, f"{a.name}{'_dob' + a.dob if a.dob else ''}_{a.noise}{'_' + a.case if a.case else ''}.json"), "w"), indent=1, default=float)
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("ctrl"); ap.add_argument("--noise", choices=("real", "lab", "nominal"), default="real"); ap.add_argument("--seeds", type=int, default=3)
-    ap.add_argument("--procs", type=int, default=15); ap.add_argument("--name", required=True); ap.add_argument("--dob", choices=("on", "off"), default=None); ap.add_argument("--kj", type=float, default=None); ap.add_argument("--case", default=None); main(ap.parse_args())
+    ap.add_argument("--procs", type=int, default=15); ap.add_argument("--name", required=True); ap.add_argument("--dob", choices=("on", "off"), default=None); ap.add_argument("--kj", type=float, default=None); ap.add_argument("--case", default=None)
+    ap.add_argument("--force", type=float, default=None, help="force-controlled writing with this setpoint (N); default: depth-controlled"); main(ap.parse_args())
