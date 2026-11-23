@@ -1,0 +1,64 @@
+{
+ "window_s": 5.0,
+ "note": "Energy check for the hanging-load A->B move (2026-11-23, professor's question: does using the swing cost more power?).",
+ "U": {
+  "exact": {
+   "settle_s": 4.3500000000000005,
+   "energy_rel_hover": 1.0011173310206354,
+   "impulse_Ns": 61.358156215166176,
+   "energy_to_settle_rel": 4.355302429481147,
+   "peak_total_N": 12.282359936312792,
+   "peak_rotor_N": 3.0717682590372215,
+   "hover_rotor_N": 3.0656250000000003
+  },
+  "noise_mean": {
+   "settle_s": 6.084999999999999,
+   "energy_rel_hover": 1.0014505771169395,
+   "impulse_Ns": 61.36986538585721,
+   "energy_to_settle_rel": 6.091442471367365,
+   "peak_total_N": 12.61950176384591,
+   "peak_rotor_N": 3.190767334465436,
+   "hover_rotor_N": 3.0656250000000003
+  }
+ },
+ "S": {
+  "exact": {
+   "settle_s": 4.05,
+   "energy_rel_hover": 1.011952354407741,
+   "impulse_Ns": 61.40529256212002,
+   "energy_to_settle_rel": 4.177653262341225,
+   "peak_total_N": 17.388823244218006,
+   "peak_rotor_N": 4.376397336046522,
+   "hover_rotor_N": 3.0656250000000003
+  },
+  "noise_mean": {
+   "settle_s": 4.043,
+   "energy_rel_hover": 1.0139986557153005,
+   "impulse_Ns": 61.436088547568474,
+   "energy_to_settle_rel": 4.185932328281863,
+   "peak_total_N": 17.69547232211026,
+   "peak_rotor_N": 4.49254164704144,
+   "hover_rotor_N": 3.0656250000000003
+  }
+ },
+ "E": {
+  "exact": {
+   "settle_s": 1.62,
+   "energy_rel_hover": 1.0648676629951892,
+   "impulse_Ns": 63.26548206471153,
+   "energy_to_settle_rel": 1.9577103395720665,
+   "peak_total_N": 18.765740204637435,
+   "peak_rotor_N": 5.046928106495164,
+   "hover_rotor_N": 3.0656250000000003
+  },
+  "noise_mean": {
+   "settle_s": 1.73,
+   "energy_rel_hover": 1.073101737476105,
+   "impulse_Ns": 63.49227330201868,
+   "energy_to_settle_rel": 2.1034305612377286,
+   "peak_total_N": 19.285955934444633,
+   "peak_rotor_N": 5.240594315319937,
+   "hover_rotor_N": 3.0656250000000003
+  }
+ }
+}
