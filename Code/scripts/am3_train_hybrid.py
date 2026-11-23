@@ -1,6 +1,6 @@
 """Train the learned model correction L (ocrl/am3_hybrid_l.py) with PPO.  2026-11-19.
 Preflight (imports, solver build, zero-correction rollout) runs before training; checkpoints every --save-every steps; SIGTERM saves model_interrupt.zip; --resume continues.
-Usage: am3_train_hybrid.py TAG --nch 2|9 [--steps 10000000] [--envs 30] [--seed 0] [--ramp 300] [--wall] [--lag-max 2.5] [--noise real|lab] [--resume] [--preflight-only]"""
+Usage: am3_train_hybrid.py TAG --nch 2|9 [--steps 10000000] [--envs 30] [--seed 0] [--ramp 300] [--wall] [--lag-max 2.5] [--noise real|lab] [--resume] [--init ZIP] [--preflight-only]"""
 import sys, os, json, time, signal, argparse, glob, datetime
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, ".."))
 import numpy as np
@@ -52,11 +52,13 @@ def main(a):
     global OUT
     OUT = os.path.join(HERE, "..", "results", "am3_rl", a.tag); os.makedirs(OUT, exist_ok=True); preflight(a)
     if a.preflight_only: return
-    json.dump(dict(env="hybrid", nch=a.nch, algo="ppo", steps=a.steps, envs=a.envs, seed=a.seed, ramp=a.ramp, wall=a.wall, lag_max=a.lag_max, noise=a.noise, base="NDF:0.5,f", started=f"{datetime.datetime.now():%Y-%m-%d %H:%M}"), open(os.path.join(OUT, "config.json"), "w"), indent=1)
+    json.dump(dict(env="hybrid", nch=a.nch, algo="ppo", steps=a.steps, envs=a.envs, seed=a.seed, ramp=a.ramp, wall=a.wall, lag_max=a.lag_max, noise=a.noise, base="NDF:0.5,f", init=a.init, started=f"{datetime.datetime.now():%Y-%m-%d %H:%M}"), open(os.path.join(OUT, "config.json"), "w"), indent=1)
     venv = VecMonitor(SubprocVecEnv([make_env(a.nch, a.seed * 1000 + i, a.ramp, a.wall, a.lag_max, a.noise) for i in range(a.envs)], start_method="forkserver"), info_keywords=("completed", "wall_timeout"))
     ck = sorted(glob.glob(os.path.join(OUT, "model_*k.zip")), key=os.path.getmtime) + glob.glob(os.path.join(OUT, "model_interrupt.zip"))
     if a.resume and ck:
         last = max(ck, key=os.path.getmtime); model = PPO.load(last, env=venv, device="cpu"); log(f"resumed from {last} at {model.num_timesteps}")
+    elif a.init:                                  # fine-tune a trained policy under a new tag (step count restarts)
+        model = PPO.load(a.init, env=venv, device="cpu"); model.num_timesteps = 0; log(f"initialised from {a.init}")
     else:
         model = PPO("MlpPolicy", venv, n_steps=256, batch_size=1920, n_epochs=5, learning_rate=1e-4, gamma=0.995, gae_lambda=0.95, clip_range=0.2, target_kl=0.03, ent_coef=0.0,
                     policy_kwargs=dict(net_arch=[256, 256], log_std_init=-1.5), seed=a.seed, device="cpu", verbose=0)
@@ -68,4 +70,4 @@ def main(a):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("tag"); ap.add_argument("--nch", type=int, choices=(2, 9), required=True); ap.add_argument("--steps", type=int, default=10_000_000)
     ap.add_argument("--envs", type=int, default=30); ap.add_argument("--seed", type=int, default=0); ap.add_argument("--ramp", type=int, default=300); ap.add_argument("--save-every", type=int, default=500_000)
-    ap.add_argument("--wall", action="store_true"); ap.add_argument("--lag-max", type=float, default=2.5); ap.add_argument("--noise", choices=("real", "lab"), default="real"); ap.add_argument("--resume", action="store_true"); ap.add_argument("--preflight-only", action="store_true"); main(ap.parse_args())
+    ap.add_argument("--wall", action="store_true"); ap.add_argument("--lag-max", type=float, default=2.5); ap.add_argument("--noise", choices=("real", "lab"), default="real"); ap.add_argument("--resume", action="store_true"); ap.add_argument("--init", default=None); ap.add_argument("--preflight-only", action="store_true"); main(ap.parse_args())

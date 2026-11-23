@@ -243,3 +243,7 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
 - Merge Ashish's analytic-mass results and video into the deck (his video file is not in this repo).
 - Decide how much RL/NMPC writing material the capstone talk needs (slides 10–11 of the latest deck).
 - R22 done (see table). 200 g deprioritized (near the 242 g hardware limit). Smoothness study done (NF, NDF). Next candidate: NMPC+RL hybrid aimed at motor lag, NDF as the NMPC base.
+- **2026-11-23 18:28 EST. Next step after the capstone: slow motors [optimal].** At lab noise, L9W finishes all 17 conditions at 1.2-1.6 mm except motor_slow (2x lag) and motor_lag3 (0/15). R23 (lab-noise R21) is worse than R21 (kf90 5/15, kf85 0/15, payload200g 0/15). R24 was trained (20M steps) but not yet benchmarked.
+  - **L9W_lag22** (job 2587660): fine-tune of L9W final (`--init`, new option in `am3_train_hybrid.py` / `INIT=` in `slurm/am3_hybrid_turing.sh`), same settings (9 channels, wall randomisation, lab noise), motor-lag curriculum 1.4 -> 2.2x, 6M steps.
+    Question it tests: can a 9-channel model correction cover a 2x motor lag that NDF cannot survive (L2 with lag up to 2.5x from scratch failed)? motor_lag3 stays outside training as an out-of-range test.
+  - R24 lab benches: jobs 2587661 (8 main conditions) and 2587662 (9 stress conditions).
