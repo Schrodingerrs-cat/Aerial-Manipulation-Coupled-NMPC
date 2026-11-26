@@ -1,0 +1,501 @@
+{
+ "ctrl": "NDFL:results/am3_rl/2026-11-20_2217_L2W_lab_hybrid_s0/model_final.zip",
+ "noise": "lab",
+ "dob": null,
+ "case": "wall_slippery",
+ "height": 0.05,
+ "speed": 0.05,
+ "sig": {
+  "p": 0.0003,
+  "att": 0.0017453292519943296,
+  "v": 0.005,
+  "w": 0.003,
+  "q": 0.00044,
+  "qd": 0.01,
+  "Om": 5.0,
+  "F": 0.02
+ },
+ "tau_lab": 0.05,
+ "summary": {
+  "n": 15,
+  "completed": 15,
+  "trace_rms_mean": 1.913,
+  "trace_rms_max": 2.268,
+  "drag_max": 0.0,
+  "coverage_mean": 0.925,
+  "aborts": [],
+  "F_peak_max": 0.994,
+  "rotor_tv": 4.111,
+  "tau_tv": 0.643,
+  "angacc_rms": 17.037,
+  "jointacc_rms": 30.263,
+  "pen_vel_err_rms": 16.133
+ },
+ "rows": [
+  {
+   "text": "HELLO WPI",
+   "seed": 0,
+   "completed": true,
+   "abort": null,
+   "strokes": "11/11",
+   "trace_rms_mm": 1.57,
+   "trace_max_mm": 4.767,
+   "coverage": 0.971,
+   "contact": 1.0,
+   "drag": 0.0,
+   "F_peak_N": 0.945,
+   "base_max_mm": 7.39,
+   "tilt_max_deg": 4.44,
+   "time_s": 58.3,
+   "arm_rel_range_mm": [
+    67.2,
+    60.8
+   ],
+   "joint_range_deg": [
+    15.6,
+    32.9,
+    37.1
+   ],
+   "rotor_tv": 4.141,
+   "tau_tv": 0.657,
+   "angacc_rms": 17.17,
+   "jointacc_rms": 30.96,
+   "pen_vel_err_rms": 16.11,
+   "wall_s": 235
+  },
+  {
+   "text": "HELLO WPI",
+   "seed": 1,
+   "completed": true,
+   "abort": null,
+   "strokes": "11/11",
+   "trace_rms_mm": 2.007,
+   "trace_max_mm": 5.672,
+   "coverage": 0.936,
+   "contact": 0.999,
+   "drag": 0.0,
+   "F_peak_N": 0.835,
+   "base_max_mm": 6.75,
+   "tilt_max_deg": 4.05,
+   "time_s": 58.8,
+   "arm_rel_range_mm": [
+    66.3,
+    59.9
+   ],
+   "joint_range_deg": [
+    16.7,
+    33.2,
+    37.5
+   ],
+   "rotor_tv": 4.158,
+   "tau_tv": 0.661,
+   "angacc_rms": 17.31,
+   "jointacc_rms": 30.82,
+   "pen_vel_err_rms": 16.99,
+   "wall_s": 190
+  },
+  {
+   "text": "HELLO WPI",
+   "seed": 2,
+   "completed": true,
+   "abort": null,
+   "strokes": "11/11",
+   "trace_rms_mm": 1.863,
+   "trace_max_mm": 5.32,
+   "coverage": 0.907,
+   "contact": 0.993,
+   "drag": 0.0,
+   "F_peak_N": 0.832,
+   "base_max_mm": 6.69,
+   "tilt_max_deg": 3.98,
+   "time_s": 58.8,
+   "arm_rel_range_mm": [
+    65.7,
+    60.7
+   ],
+   "joint_range_deg": [
+    15.7,
+    32.4,
+    37.6
+   ],
+   "rotor_tv": 4.103,
+   "tau_tv": 0.638,
+   "angacc_rms": 17.04,
+   "jointacc_rms": 29.79,
+   "pen_vel_err_rms": 17.12,
+   "wall_s": 139
+  },
+  {
+   "text": "AERIAL ROBOT",
+   "seed": 0,
+   "completed": true,
+   "abort": null,
+   "strokes": "16/16",
+   "trace_rms_mm": 2.103,
+   "trace_max_mm": 6.942,
+   "coverage": 0.922,
+   "contact": 0.999,
+   "drag": 0.0,
+   "F_peak_N": 0.899,
+   "base_max_mm": 7.39,
+   "tilt_max_deg": 4.8,
+   "time_s": 86.1,
+   "arm_rel_range_mm": [
+    63.3,
+    58.5
+   ],
+   "joint_range_deg": [
+    15.7,
+    32.3,
+    36.8
+   ],
+   "rotor_tv": 4.074,
+   "tau_tv": 0.633,
+   "angacc_rms": 17.01,
+   "jointacc_rms": 30.22,
+   "pen_vel_err_rms": 15.38,
+   "wall_s": 207
+  },
+  {
+   "text": "AERIAL ROBOT",
+   "seed": 1,
+   "completed": true,
+   "abort": null,
+   "strokes": "16/16",
+   "trace_rms_mm": 1.88,
+   "trace_max_mm": 4.974,
+   "coverage": 0.955,
+   "contact": 0.999,
+   "drag": 0.0,
+   "F_peak_N": 0.828,
+   "base_max_mm": 6.75,
+   "tilt_max_deg": 4.97,
+   "time_s": 85.8,
+   "arm_rel_range_mm": [
+    64.5,
+    58.0
+   ],
+   "joint_range_deg": [
+    16.5,
+    32.8,
+    37.4
+   ],
+   "rotor_tv": 4.109,
+   "tau_tv": 0.636,
+   "angacc_rms": 16.87,
+   "jointacc_rms": 29.91,
+   "pen_vel_err_rms": 15.68,
+   "wall_s": 207
+  },
+  {
+   "text": "AERIAL ROBOT",
+   "seed": 2,
+   "completed": true,
+   "abort": null,
+   "strokes": "16/16",
+   "trace_rms_mm": 1.937,
+   "trace_max_mm": 5.9,
+   "coverage": 0.928,
+   "contact": 0.999,
+   "drag": 0.0,
+   "F_peak_N": 0.905,
+   "base_max_mm": 6.69,
+   "tilt_max_deg": 5.15,
+   "time_s": 86.0,
+   "arm_rel_range_mm": [
+    63.9,
+    58.6
+   ],
+   "joint_range_deg": [
+    17.2,
+    35.0,
+    37.5
+   ],
+   "rotor_tv": 4.074,
+   "tau_tv": 0.629,
+   "angacc_rms": 16.76,
+   "jointacc_rms": 29.75,
+   "pen_vel_err_rms": 15.81,
+   "wall_s": 207
+  },
+  {
+   "text": "THE QUICK BROWN",
+   "seed": 0,
+   "completed": true,
+   "abort": null,
+   "strokes": "20/20",
+   "trace_rms_mm": 1.748,
+   "trace_max_mm": 5.841,
+   "coverage": 0.947,
+   "contact": 0.998,
+   "drag": 0.0,
+   "F_peak_N": 0.859,
+   "base_max_mm": 7.39,
+   "tilt_max_deg": 4.3,
+   "time_s": 105.2,
+   "arm_rel_range_mm": [
+    68.7,
+    59.5
+   ],
+   "joint_range_deg": [
+    17.0,
+    31.8,
+    37.4
+   ],
+   "rotor_tv": 4.15,
+   "tau_tv": 0.658,
+   "angacc_rms": 17.08,
+   "jointacc_rms": 30.51,
+   "pen_vel_err_rms": 16.02,
+   "wall_s": 254
+  },
+  {
+   "text": "THE QUICK BROWN",
+   "seed": 1,
+   "completed": true,
+   "abort": null,
+   "strokes": "20/20",
+   "trace_rms_mm": 1.905,
+   "trace_max_mm": 5.361,
+   "coverage": 0.925,
+   "contact": 0.998,
+   "drag": 0.0,
+   "F_peak_N": 0.843,
+   "base_max_mm": 6.75,
+   "tilt_max_deg": 5.01,
+   "time_s": 105.3,
+   "arm_rel_range_mm": [
+    68.4,
+    59.0
+   ],
+   "joint_range_deg": [
+    16.2,
+    32.7,
+    37.6
+   ],
+   "rotor_tv": 4.166,
+   "tau_tv": 0.659,
+   "angacc_rms": 17.2,
+   "jointacc_rms": 30.46,
+   "pen_vel_err_rms": 16.72,
+   "wall_s": 255
+  },
+  {
+   "text": "THE QUICK BROWN",
+   "seed": 2,
+   "completed": true,
+   "abort": null,
+   "strokes": "20/20",
+   "trace_rms_mm": 1.984,
+   "trace_max_mm": 5.816,
+   "coverage": 0.901,
+   "contact": 0.999,
+   "drag": 0.0,
+   "F_peak_N": 0.878,
+   "base_max_mm": 6.69,
+   "tilt_max_deg": 4.52,
+   "time_s": 104.5,
+   "arm_rel_range_mm": [
+    70.1,
+    60.2
+   ],
+   "joint_range_deg": [
+    16.8,
+    33.1,
+    37.7
+   ],
+   "rotor_tv": 4.048,
+   "tau_tv": 0.63,
+   "angacc_rms": 17.01,
+   "jointacc_rms": 29.97,
+   "pen_vel_err_rms": 15.97,
+   "wall_s": 253
+  },
+  {
+   "text": "FOX JUMPS OVER",
+   "seed": 0,
+   "completed": true,
+   "abort": null,
+   "strokes": "15/15",
+   "trace_rms_mm": 2.198,
+   "trace_max_mm": 6.528,
+   "coverage": 0.897,
+   "contact": 0.999,
+   "drag": 0.0,
+   "F_peak_N": 0.994,
+   "base_max_mm": 7.39,
+   "tilt_max_deg": 4.26,
+   "time_s": 84.8,
+   "arm_rel_range_mm": [
+    72.2,
+    59.5
+   ],
+   "joint_range_deg": [
+    17.5,
+    31.8,
+    37.7
+   ],
+   "rotor_tv": 4.121,
+   "tau_tv": 0.642,
+   "angacc_rms": 16.77,
+   "jointacc_rms": 29.93,
+   "pen_vel_err_rms": 16.57,
+   "wall_s": 205
+  },
+  {
+   "text": "FOX JUMPS OVER",
+   "seed": 1,
+   "completed": true,
+   "abort": null,
+   "strokes": "15/15",
+   "trace_rms_mm": 2.025,
+   "trace_max_mm": 5.721,
+   "coverage": 0.924,
+   "contact": 0.998,
+   "drag": 0.0,
+   "F_peak_N": 0.967,
+   "base_max_mm": 6.75,
+   "tilt_max_deg": 4.47,
+   "time_s": 84.9,
+   "arm_rel_range_mm": [
+    72.4,
+    59.1
+   ],
+   "joint_range_deg": [
+    17.7,
+    32.6,
+    38.1
+   ],
+   "rotor_tv": 4.13,
+   "tau_tv": 0.654,
+   "angacc_rms": 16.89,
+   "jointacc_rms": 29.93,
+   "pen_vel_err_rms": 16.4,
+   "wall_s": 205
+  },
+  {
+   "text": "FOX JUMPS OVER",
+   "seed": 2,
+   "completed": true,
+   "abort": null,
+   "strokes": "15/15",
+   "trace_rms_mm": 2.268,
+   "trace_max_mm": 6.335,
+   "coverage": 0.901,
+   "contact": 1.0,
+   "drag": 0.0,
+   "F_peak_N": 0.906,
+   "base_max_mm": 6.69,
+   "tilt_max_deg": 4.6,
+   "time_s": 84.9,
+   "arm_rel_range_mm": [
+    70.3,
+    58.4
+   ],
+   "joint_range_deg": [
+    18.1,
+    32.9,
+    38.3
+   ],
+   "rotor_tv": 4.068,
+   "tau_tv": 0.624,
+   "angacc_rms": 16.88,
+   "jointacc_rms": 29.77,
+   "pen_vel_err_rms": 15.69,
+   "wall_s": 205
+  },
+  {
+   "text": "THE LAZY DOG",
+   "seed": 0,
+   "completed": true,
+   "abort": null,
+   "strokes": "16/16",
+   "trace_rms_mm": 1.703,
+   "trace_max_mm": 5.841,
+   "coverage": 0.937,
+   "contact": 0.998,
+   "drag": 0.0,
+   "F_peak_N": 0.92,
+   "base_max_mm": 7.39,
+   "tilt_max_deg": 4.35,
+   "time_s": 81.5,
+   "arm_rel_range_mm": [
+    69.3,
+    59.0
+   ],
+   "joint_range_deg": [
+    17.8,
+    31.8,
+    37.4
+   ],
+   "rotor_tv": 4.138,
+   "tau_tv": 0.654,
+   "angacc_rms": 17.2,
+   "jointacc_rms": 30.87,
+   "pen_vel_err_rms": 15.8,
+   "wall_s": 194
+  },
+  {
+   "text": "THE LAZY DOG",
+   "seed": 1,
+   "completed": true,
+   "abort": null,
+   "strokes": "16/16",
+   "trace_rms_mm": 1.877,
+   "trace_max_mm": 4.671,
+   "coverage": 0.887,
+   "contact": 0.996,
+   "drag": 0.0,
+   "F_peak_N": 0.841,
+   "base_max_mm": 6.75,
+   "tilt_max_deg": 4.71,
+   "time_s": 82.0,
+   "arm_rel_range_mm": [
+    68.6,
+    60.6
+   ],
+   "joint_range_deg": [
+    16.4,
+    33.1,
+    37.6
+   ],
+   "rotor_tv": 4.147,
+   "tau_tv": 0.65,
+   "angacc_rms": 17.35,
+   "jointacc_rms": 30.94,
+   "pen_vel_err_rms": 16.04,
+   "wall_s": 195
+  },
+  {
+   "text": "THE LAZY DOG",
+   "seed": 2,
+   "completed": true,
+   "abort": null,
+   "strokes": "16/16",
+   "trace_rms_mm": 1.625,
+   "trace_max_mm": 3.9,
+   "coverage": 0.935,
+   "contact": 0.998,
+   "drag": 0.0,
+   "F_peak_N": 0.928,
+   "base_max_mm": 6.69,
+   "tilt_max_deg": 4.51,
+   "time_s": 81.2,
+   "arm_rel_range_mm": [
+    71.6,
+    59.1
+   ],
+   "joint_range_deg": [
+    17.5,
+    33.3,
+    37.1
+   ],
+   "rotor_tv": 4.044,
+   "tau_tv": 0.62,
+   "angacc_rms": 17.02,
+   "jointacc_rms": 30.11,
+   "pen_vel_err_rms": 15.69,
+   "wall_s": 193
+  }
+ ]
+}
