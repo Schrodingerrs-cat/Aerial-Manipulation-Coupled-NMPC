@@ -47,6 +47,7 @@ VIEWS = ("w_iso", "w_front")
 def main(a):
     out = os.path.join(MEDIA, a.tag); shutil.rmtree(out, ignore_errors=True); os.makedirs(out); lines = []
     names = [re.sub(r"^\d{4}-\d{2}-\d{2}_\d{4}_", "", os.path.basename(os.path.dirname(c))).split("_")[0] if c.endswith(".zip") else c.split(":")[0] for c in a.ctrl]                          # file-safe names (a policy is given as a path)
+    names = [n if names.count(n) == 1 else f"{n}_{i}" for i, n in enumerate(names)]                   # two policies from one series (e.g. L9W, L9W_lag22) must not share files
     for c, name in zip(a.ctrl, names):
         label = f"RL ({os.path.basename(os.path.dirname(c))})" if c.endswith(".zip") else {"N": "N: coupled NMPC", "ND:10,10": "ND: NMPC + disturbance observer"}.get(c, c)
         rec = WriteRecorder(os.path.join(out, "frames", name), f"{label}: writing \"{a.text}\"" + ("" if a.case == "nominal" else f" [{a.case}]"), a.tag, a.text, cams=VIEWS, path=None, rate_label="")

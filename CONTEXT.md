@@ -254,3 +254,4 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
 - **2026-11-25 20:49 EST. L9W_lag22 on motor_slow (2x motor lag), local, lab noise, 15 runs** (`Code/results/am3_write/bench/2026-11-25_2049_local_L9W22_lab_motor_slow.json`):
   **12/15, 1.34 mm** (old L9W 0/15; R21 14/15, 2.49 mm; NDF 0/15). The 3 failures are loss of control (tilt 42-47 deg). Costs: peak normal force up to 7.2 N (old L9W nominal 3.9 N, R21 3.5 N),
   tilt up to 18 deg, rotor-command change 17.6 (R21 1.6, NDF 3.2, old L9W nominal 15.2). It no longer fails, but it flies harder. Full 17-condition Turing bench pending (does it lose anything on the other cases?).
+- **2026-11-25 21:10 EST.** Video `Media_results/2026-11-25_2059_Write_HELLO_WPI_motor_slow_lab_L9W_vs_L9W22_vs_R21/` (old L9W fails at 1 s; L9W_lag22 1.43 mm; R21 2.73 mm). Fixed `am3_write_video.py`: two policies of one series got the same file name (the first render showed L9W_lag22 twice; deleted).
