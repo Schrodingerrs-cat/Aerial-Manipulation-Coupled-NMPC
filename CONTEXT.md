@@ -270,3 +270,11 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   - **R25 training (job 2598256)**: R21 settings + half the writing episodes start on the stand (env kind `write15_drjt_to`, `takeoff_p=0.5`), fine-tune from R21, 20M steps, TAG `2026-11-26_1104_R25_write15drjt_to_fromR21_s0`.
     In training the spin-up is done in reset (as `GroundStart`), the policy acts from take-off on; rotor-arm/stand-pad contact is allowed only in ground/takeoff, any other contact ends the episode.
   - Tools: `am3_write_video.py --takeoff` (cameras follow the drone back to the stand).
+- **2026-11-26 18:10 EST. R25 FAILED to learn take-off; cause found; R26 submitted.**
+  - R25 (20M steps, 6.5 h): ~50 % of episodes ended at ~0.6 s for the whole run (= every take-off episode), no improvement; full-length episodes fell 48 % -> 33 % (hover writing also got worse).
+  - Cause (diagnosed in the env): every R25 take-off ended with a finger of the hand touching the prop1 disc. The (-45, -120) fold left 0.5 cm to the propeller discs once the joints move by a few degrees
+    (the policy's joint residual); the NMPC holds the fold exactly, so it never touched. The scripted PD reached the writing phases from the stand, so env and task were fine.
+  - Fix: fold searched over the operational range for clearance under +-8 deg joint and +-10 deg yaw wiggle: **(0, -35, -110)**, 6.1 cm to the discs, 8.5 cm above the floor, shoulder 0.72 N m with 200 g (only pose meeting all).
+    Re-checked ("HI", lab): N 0.99 mm, NDF + 200 g 3.68 mm, L9W_lag22 1.28 mm; R21 still fails (drifts, tilt 30 deg, failsafe at 3.5 s, no contact).
+  - **R26** (job 2599953): same as R25 with the new fold, TAG `2026-11-26_1810_R26_write15drjt_to_fromR21_s0`. Check script: `Code/scripts/am3_takeoff_check.py CTRL [TEXT] [CASE]`.
+  - The take-off video `Media_results/2026-11-26_1104_Takeoff_*` used the old (-45, -120) fold; re-render with R26.

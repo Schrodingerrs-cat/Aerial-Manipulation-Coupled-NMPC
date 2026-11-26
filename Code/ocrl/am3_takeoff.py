@@ -16,8 +16,9 @@ from ocrl.am3_pred import AMPred3
 PH_W.setdefault("ground", "free"); PH_W.setdefault("takeoff", "free"); PH_W.setdefault("unfold", "free")
 STAND_TOP = 0.33                                     # m, post tops (rotor-arm undersides rest here)
 START = np.array([BASE[0] - 0.45, 0.0, STAND_TOP + 0.0025])    # base on the stand, 0.45 m behind the hover point (folded arm stays clear of the wall)
-Q_FOLD = np.radians([0.0, -45.0, -120.0])            # yaw, shoulder, elbow: compact fold inside the operational range (q2 -80..-5, q3 -125..-30), same elbow branch as writing;
-                                                     # shoulder holds 0.37 N m (0.67 with 200 g; the straight L at q2 -90 needed 1.2 N m with 200 g, over the 1 N m servo)
+Q_FOLD = np.radians([0.0, -35.0, -110.0])            # yaw, shoulder, elbow: fold inside the operational range (q2 -80..-5, q3 -125..-30), same elbow branch as writing; 6 cm from the propeller discs
+                                                     # under +-8 deg joint and +-10 deg yaw wiggle, 8.5 cm above the floor, shoulder 0.72 N m with 200 g. (-45, -120) left 0.5 cm: R25 hit prop1 with a finger in
+                                                     # every take-off episode. The straight L (q2 -90) is outside the range and needs 1.2 N m with 200 g, over the 1 N m servo.
 T_GROUND, T_TAKEOFF, T_UNFOLD = 1.5, 3.0, 3.0        # s
 
 POSTS = "".join(f'<geom name="stand_post{i}" type="cylinder" fromto="{START[0] + sx * 0.071:.4f} {sy * 0.071:.4f} 0 {START[0] + sx * 0.071:.4f} {sy * 0.071:.4f} {STAND_TOP - 0.004:.4f}" size="0.008" rgba="0.3 0.3 0.32 1"/>'
