@@ -247,3 +247,10 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   - **L9W_lag22** (job 2587660): fine-tune of L9W final (`--init`, new option in `am3_train_hybrid.py` / `INIT=` in `slurm/am3_hybrid_turing.sh`), same settings (9 channels, wall randomisation, lab noise), motor-lag curriculum 1.4 -> 2.2x, 6M steps.
     Question it tests: can a 9-channel model correction cover a 2x motor lag that NDF cannot survive (L2 with lag up to 2.5x from scratch failed)? motor_lag3 stays outside training as an out-of-range test.
   - R24 lab benches: jobs 2587661 (8 main conditions) and 2587662 (9 stress conditions).
+- **2026-11-25 20:49 EST.** L9W_lag22 finished (6M steps; training completion stayed 0.92-0.95 while the lag curriculum went to 2.2x; no collapse as with L2). Lab benches: jobs 2595430/2595431, names `2026-11-25_*_[stress_]L9W22_lab*`. Local motor_slow check running.
+  - **R24 lab bench (done, completed/15, mm):** nominal 15, 2.22; payload100g 15, 2.69; payload200g 0; motor_slow 15, 2.63; damping3x 15, 2.33; kf90 13, 2.41; gust 15, 2.25; wind 15, 2.59;
+    wall_soft 15, 2.12; stiff 15, 2.29; slippery 15, 1.98; grippy 15, 2.90; approach_fast 15, 2.26; lag15 15, 2.36; lag3 0; kf85 0; combo 7, 3.00.
+    Lab-noise retraining did not help: R24 is ~0.4 mm less accurate than R21 and still fails 200 g, kf85, lag3. R21 stays the pure-RL reference.
+- **2026-11-25 20:49 EST. L9W_lag22 on motor_slow (2x motor lag), local, lab noise, 15 runs** (`Code/results/am3_write/bench/2026-11-25_2049_local_L9W22_lab_motor_slow.json`):
+  **12/15, 1.34 mm** (old L9W 0/15; R21 14/15, 2.49 mm; NDF 0/15). The 3 failures are loss of control (tilt 42-47 deg). Costs: peak normal force up to 7.2 N (old L9W nominal 3.9 N, R21 3.5 N),
+  tilt up to 18 deg, rotor-command change 17.6 (R21 1.6, NDF 3.2, old L9W nominal 15.2). It no longer fails, but it flies harder. Full 17-condition Turing bench pending (does it lose anything on the other cases?).
