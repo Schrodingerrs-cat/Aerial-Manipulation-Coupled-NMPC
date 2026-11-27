@@ -6,7 +6,7 @@ import sys, os, json, argparse, time
 import numpy as np
 from stable_baselines3 import PPO          # torch must load before acados and the renderer (a later import crashes the process silently)
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, ".."))
-from ocrl.am3_write import WriteEpisode
+from ocrl.am3_write import WriteEpisode, F_REF
 
 
 def write_metrics(ep):
@@ -20,7 +20,15 @@ def write_metrics(ep):
     return dict(completed=bool(ep.abort is None and task.phase == "done"), abort=None if ep.abort is None else str(ep.abort[1]), strokes=f"{len(task.written)}/{len(task.paths)}",
                 trace_rms_mm=round(float(1e3 * np.sqrt(np.mean(e ** 2))), 3), trace_max_mm=round(float(1e3 * e.max()), 3), coverage=round(cov, 3),
                 contact=round(float(np.mean([r["F"] > 0.08 for r in tr])), 3) if tr else 0.0, drag=round(float(np.mean([r["F"] > 0.08 for r in up])), 3) if up else 0.0,
-                F_peak_N=round(float(max(ep.pl.log["Fn"])), 3) if ep.pl.log["Fn"] else 0.0, base_max_mm=round(float(1e3 * max(np.linalg.norm(r["x"][:3] - r["ref"]["pB"]) for r in R)), 2), tilt_max_deg=round(float(tilt), 2), time_s=round(float(R[-1]["t"]), 1), **arm, **smooth_metrics(ep))
+                F_peak_N=round(float(max(ep.pl.log["Fn"])), 3) if ep.pl.log["Fn"] else 0.0, **force_metrics(tr), base_max_mm=round(float(1e3 * max(np.linalg.norm(r["x"][:3] - r["ref"]["pB"]) for r in R)), 2), tilt_max_deg=round(float(tilt), 2), time_s=round(float(R[-1]["t"]), 1), **arm, **smooth_metrics(ep))
+
+
+def force_metrics(tr):
+    """Proposal metrics (2026-11-27) over the trace phase: normal-force RMS error vs the design force F_REF (0.6 N = model wall x 1 mm depth), mean force while pressing,
+    and contact losses (pressing -> not pressing transitions; the 0.08 N threshold as for ink)."""
+    if not tr: return dict(F_rms_err_N=None, F_mean_N=None, contact_losses=None)
+    F = np.array([r["F"] for r in tr]); on = F > 0.08
+    return dict(F_rms_err_N=round(float(np.sqrt(np.mean((F - F_REF) ** 2))), 3), F_mean_N=round(float(F[on].mean()), 3) if on.any() else 0.0, contact_losses=int(np.sum(on[:-1] & ~on[1:])))
 
 
 def smooth_metrics(ep):
