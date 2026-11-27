@@ -374,7 +374,7 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
 - **2026-11-27 13:48 EST. Proposal force metrics added [optimal]:** `am3_write_eval.force_metrics` (trace phase): F_rms_err_N vs F_REF 0.6 N (design force: model wall x 1 mm depth), F_mean_N while pressing, contact_losses.
   Every bench from now on records them; older bench files do not (rerun needed for the final table). Check: N "HI" on wall_soft: F_mean 3.06 N, F_rms_err 2.49 N, 0 contact losses (N pushes too deep on a soft wall).
   The stiffness bench processes started after 13:48 include them; the N/NDF wall_k02 files from before do not.
-- **2026-11-27 14:30 EST. Laptop off; everything moved to Turing. HANDOFF.**
+- **2026-11-27 14:25 EST. Laptop off; everything moved to Turing. HANDOFF.**
   - Stiffness bench (local, stopped): done locally `Code/results/am3_write/bench/2026-11-27_1322_stress_{N,NDF,L2W,L9W22,R21}_lab_wall_k02.json` + N/NDF wall_k6.
     x0.2: N 15/15 but 28 mm, coverage 0.14, drag 0.97 (not writing); NDF 0/15; L2W 0/15 (loss of control); **L9W22 15/15, 2.25 mm, F_rms_err 0.22 N**; R21 3/15 with 12 wall-clock aborts on the overloaded laptop (INVALID, rerun on Turing).
     x6: N 15/15 1.52 mm (F err 0.40 N); NDF 15/15 2.27 mm (0.31 N).
