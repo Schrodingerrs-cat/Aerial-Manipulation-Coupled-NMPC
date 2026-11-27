@@ -358,3 +358,5 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   - The RL "rigid" arm is servo-held (50-90 deg of joint travel under load), a weaker baseline than the NMPC rigid mode.
   - Video `Media_results/2026-11-27_1311_Tail_square_T1.0_150g_NMPCtail_vs_RLrigid_vs_RLfree/`.
   - R29 take-off bench: nominal 15/15 1.84 mm, gust 15, wall_soft 15, motor_slow 0, payload200g 0 (6 from hover); payload100g still running on Turing.
+- **2026-11-27 13:15 EST. Tail spring fine sweep, 250 g [capstone]** (`Code/results/tail/2026-11-27_1313_tail_spring_fine_mb0.25.jsonl`): springs 0.2, 0.3 and 0.5 all fly 0.9 s (3/3), 0.15 manages 1/3, none flies 0.8 s.
+  The optimum is broad; 0.5 matches 0.3's error with less joint travel (137 vs 205 deg). Not a tuned-to-death result.

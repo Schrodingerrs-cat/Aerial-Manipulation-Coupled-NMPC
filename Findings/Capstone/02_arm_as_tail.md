@@ -46,6 +46,9 @@ Cells give runs completed, tracking error (mm RMS) and peak tilt (°).
 - **Too stiff (1.0):** the arm behaves almost like "hold" and does worse than rigid.
 - **Moderate (0.3):** best in every row, and the only mode that completes all 24 runs per mass.
 
+Finer spring sweep at 250 g (`Code/results/tail/2026-11-27_1313_tail_spring_fine_mb0.25.jsonl`): every spring from 0.2 to 0.5 reaches 0.9 s per side (3/3); 0.15 manages 1/3; no spring reaches 0.8 s.
+Between 0.3 and 0.5 the error is the same (9.2–9.5 mm at 0.9 s), and 0.5 does it with less joint travel (137° vs 205°) and 1 % less energy. The optimum is broad, so the result does not depend on a finely tuned weight. The tail0.3 rows reproduce the earlier sweep exactly (deterministic per seed).
+
 ### 2. The tail extends the speed limit
 
 Fastest move time with 3 of 3 runs completed:
