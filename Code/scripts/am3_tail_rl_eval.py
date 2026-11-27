@@ -14,7 +14,7 @@ def run(job):
     from stable_baselines3 import PPO
     model, arm, T, mb, seed = job
     pol = PPO.load(model, device="cpu")
-    env = TailEnv(seed=seed, max_steps=1000, arm=arm, fixed=dict(route=ROUTE, T=T, dwell=DWELL, mb=mb)); env.sens = LabSensors(seed)
+    env = TailEnv(seed=seed, max_steps=1000, arm=arm, fixed=dict(route=ROUTE, T=T, dwell=DWELL, mb=mb), randomize=False); env.sens = LabSensors(seed)          # start level and at rest, as the NMPC runs (training starts perturbed)
     o, _ = env.reset(); X, P, bad = [env.pl.state()], [env.pref.copy()], False
     for _ in range(env.max_steps):
         o, r, bad, trunc, info = env.step(pol.predict(o, deterministic=True)[0]); X.append(env.pl.state()); P.append(env.pref.copy())

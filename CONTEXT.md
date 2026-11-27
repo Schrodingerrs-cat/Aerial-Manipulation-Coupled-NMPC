@@ -351,3 +351,10 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
     | R21 | 15, 1.86 | 15, 2.33 | **0 (14)** | 15, 1.91 | 15, 1.78 | **0 (7)** |
     | R29 | running | running | 0 | running | running | 0 |
     - For N, NDF and L9W22 the take-off adds nothing measurable (same counts and RMS as starting in hover; they fail where they fail from hover). The learned-only R21 loses its stress cases when it must also take off.
+- **2026-11-27 13:15 EST. Learned tail evaluated [capstone].** Write-up: `Findings/Capstone/02_arm_as_tail.md` (NMPC and RL, with failures).
+  - RL free vs rigid (final 10M, square route from rest, lab noise, 3 seeds; `Code/results/tail/2026-11-27_1311_tail_rl_final_rest.jsonl`). Fastest T at 3/3: none 0.9/0.9, 150 g 1.2/**0.9**, 200 g 1.2/**1.0**, 250 g (outside training) 1.5/1.5;
+    the free arm has about a third of rigid's error with a block (150 g, 1.2 s: 10.5 vs 31.2 mm). The NMPC tail 0.3 is still 3-10x more accurate and slightly faster. With no block, free is worse at speed (it swings the arm for nothing).
+  - Eval bug fixed: the first RL eval (13:10, kept as `..._tail_rl_final.jsonl`) used the training start state (random tilt up to 17 deg); now starts at rest like the NMPC (`randomize=False`).
+  - The RL "rigid" arm is servo-held (50-90 deg of joint travel under load), a weaker baseline than the NMPC rigid mode.
+  - Video `Media_results/2026-11-27_1311_Tail_square_T1.0_150g_NMPCtail_vs_RLrigid_vs_RLfree/`.
+  - R29 take-off bench: nominal 15/15 1.84 mm, gust 15, wall_soft 15, motor_slow 0, payload200g 0 (6 from hover); payload100g still running on Turing.

@@ -49,7 +49,7 @@ def fly(ctrl, T, mb, out, sub, seed=0):
     """Runs one controller with the recorder attached; returns (name, failure reason or None)."""
     if ctrl.endswith((":free", ":rigid")):
         model, arm = ctrl.rsplit(":", 1); pol = PPO.load(model, device="cpu"); name = f"RL_{arm}"
-        env = TailEnv(seed=seed, max_steps=1000, arm=arm, fixed=dict(route=ROUTE, T=T, dwell=DWELL, mb=mb)); env.sens = EnvLab(seed)
+        env = TailEnv(seed=seed, max_steps=1000, arm=arm, fixed=dict(route=ROUTE, T=T, dwell=DWELL, mb=mb), randomize=False); env.sens = EnvLab(seed)
         o, _ = env.reset(); rec = TailRecorder(os.path.join(out, "frames", name), f"RL policy, arm {arm} ({os.path.basename(os.path.dirname(model))})", sub, env.pl, lambda: (env.pref, ""))
         for _ in range(env.max_steps):
             o, r, bad, trunc, _ = env.step(pol.predict(o, deterministic=True)[0])
@@ -71,7 +71,7 @@ def main(a):
     for c in a.ctrl: res.append(fly(c, a.T, a.mb, out, sub, a.seed)); print(res[-1], flush=True)
     if len(res) > 1:
         ins = sum([["-i", os.path.join(out, n + ".mp4")] for n, _ in res], []); k = len(res)
-        f = f"hstack=inputs={k}" if k <= 2 else f"xstack=inputs={k}:layout=0_0|w0_0|0_h0|w0_h0:fill=black"
+        f = f"hstack=inputs={k}" if k <= 3 else f"xstack=inputs={k}:layout=0_0|w0_0|0_h0|w0_h0:fill=black"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error"] + ins + ["-filter_complex", "".join(f"[{i}:v]" for i in range(k)) + f + "[v]", "-map", "[v]", "-c:v", "libx264", "-crf", "24", "-pix_fmt", "yuv420p", os.path.join(out, "compare.mp4")], check=True)
     shutil.rmtree(os.path.join(out, "frames"))
     open(os.path.join(out, "README.txt"), "w").write(f"Tail study (capstone): {sub}, dwell {DWELL} s, seed {a.seed}. Green = route, blue = base path, orange = block path. Video 1.0x.\n" + "\n".join(f"{n}: {'completed' if f is None else 'FAILED: ' + f}" for n, f in res) + "\n")
