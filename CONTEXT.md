@@ -278,3 +278,10 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
     Re-checked ("HI", lab): N 0.99 mm, NDF + 200 g 3.68 mm, L9W_lag22 1.28 mm; R21 still fails (drifts, tilt 30 deg, failsafe at 3.5 s, no contact).
   - **R26** (job 2599953): same as R25 with the new fold, TAG `2026-11-26_1810_R26_write15drjt_to_fromR21_s0`. Check script: `Code/scripts/am3_takeoff_check.py CTRL [TEXT] [CASE]`.
   - The take-off video `Media_results/2026-11-26_1104_Takeoff_*` used the old (-45, -120) fold; re-render with R26.
+- **2026-11-26 19:15 EST. R26/R27 stopped (not learning take-off); R28 with mid-take-off starts.**
+  - R26 (Turing, 50 % take-off) at 3M: ~50 % of episodes still end < 1.2 s, flat. R27 (laptop, 30 %, seed 7) at 4.6M: climbed ~2.8 s at 2.5M, then regressed (arm link hits a stand pad again).
+    Trace: on the stand R21-based policies tilt 6-10 deg and drift sideways while rising slowly, then saturate the acceleration commands; every episode dies near the stand, so the climb itself is never learned.
+  - **R28**: env kind `write15_drjt_tomid` (`mid_p=0.5`): half the take-off episodes start part-way along the climb/unfold (random time, base on the reference with its velocity, arm at the IK of the pen reference),
+    half on the stand as before. Scripted PD passes from every start; R21 passes some. Runs: Turing job 2600210 (20M, seed 3, TAG `2026-11-26_1912_R28_write15drjt_tomid_fromR21_s3`),
+    laptop (8M, 16 envs, seed 7, `Code/results/am3_rl/2026-11-26_1912_R28_write15drjt_tomid_fromR21_s7_local`).
+  - Take-off test of a checkpoint (from the stand only): `Code/scripts/am3_takeoff_env_eval.py MODEL [N]`.

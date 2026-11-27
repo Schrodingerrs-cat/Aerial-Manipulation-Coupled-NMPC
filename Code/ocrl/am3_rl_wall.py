@@ -37,12 +37,13 @@ def bad_contact(pairs, phase):
 
 
 class WallEnv(Track9Env):
-    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, dob_kj=0.0, write_max=2, tau_w=0.0, dr_wide=None, real_sens=False, lab_sens=False, pad_fine_w=0.0, takeoff_p=0.0, **kw):
+    def __init__(self, *args, paths=("line", "line_fast", "line_T1"), arm_res=0.25, dt_p=0.0005, pad_w=1.0, contact_w=1.0, done_bonus=100.0, vel_ff=False, write_p=0.0, dr=False, dr_ramp=0, hist=1, dob=False, dob_kj=0.0, write_max=2, tau_w=0.0, dr_wide=None, real_sens=False, lab_sens=False, pad_fine_w=0.0, takeoff_p=0.0, mid_p=0.0, **kw):
         super().__init__(*args, ref=HOLD, arm_res=arm_res, dt_p=dt_p, **kw)
         self.hist, self.H, self.pad_fine_w = hist, None, pad_fine_w; self.inner.dob = dob; self.inner.k_dob[6:9] = dob_kj; self.write_max, self.tau_w, self.dr_wide = write_max, tau_w, dr_wide or {}          # tau_w (R21): penalty on joint torque above 80 % of the servo limit; dob_kj: joint channel of the observer (R18: 2/s; off before, arm sagged under payload); R15 (Phase 1): observation history, disturbance observer, fine pad reward
         if real_sens: self.sens = Sensors(kw.get("seed", 0), Sensors.REAL)
         if lab_sens: self.sens = LabSensors(kw.get("seed", 0))
-        self.takeoff_p, self.to_ep = takeoff_p, False          # R25 (2026-11-26): fraction of writing episodes that start on the launch stand (ocrl/am3_takeoff.py)
+        self.takeoff_p, self.to_ep, self.mid_p = takeoff_p, False, mid_p          # R28: fraction of take-off episodes that start part-way along the climb/unfold
+                 # R25 (2026-11-26): fraction of writing episodes that start on the launch stand (ocrl/am3_takeoff.py)
         if takeoff_p > 0:
             from ocrl.am3_takeoff import stand_xml, start_state, rotor_share; xml = stand_xml(); self.pl = AMPlant3(dt=dt_p, xml=xml); self.to_x0, self.to_u0 = start_state(xml); self.to_om = rotor_share(xml, self.to_x0)
         self.pl.m.geom_contype[self.pl.gwall] = 1; self.pl.m.geom_conaffinity[self.pl.gwall] = 1; self.latency = True
@@ -83,6 +84,12 @@ class WallEnv(Track9Env):
     def reset(self, seed=None, options=None):
         obs, info = super().reset(seed, options)
         if not self.to_ep: return obs, info
+        from ocrl.am3_takeoff import spinup_cmd, T_GROUND, T_TAKEOFF, T_UNFOLD, Q_FOLD
+        if self.rng.random() < self.mid_p:                                          # R28: start part-way along the take-off reference, on it (position, velocity, arm at the IK of the pen reference)
+            tau = float(self.rng.uniform(0.0, T_TAKEOFF + T_UNFOLD - 0.5)); self.task.phase, self.task.tph = ("takeoff", tau) if tau < T_TAKEOFF else ("unfold", tau - T_TAKEOFF)
+            self.qref = Q_FOLD.copy(); self._set_ref(0.0); r = self.task.ref(); x = np.zeros(23); x[0:3], x[3], x[7:10] = r["pB"], 1.0, r["vB"]; x[13:16], x[16:19] = self.qref, self.qdref; x[19:23] = self.hover_om
+            self.pl.set_state(x); self.u_pend = np.r_[self.hover_om, np.asarray(self.inner.eq["u"], float)[4:]]; self.inner.dob_state = None; self.H = None; self.e_prev = 0.0
+            return self._obs(self.sens(x)), info
         from ocrl.am3_takeoff import spinup_cmd, T_GROUND                         # rotors spin up open-loop on the stand (as GroundStart in the Episode harness); the policy acts from take-off on
         for k in range(int(round(T_GROUND / self.dt_c))):
             u = spinup_cmd(self.to_u0, self.to_om, (k + 1) * self.dt_c, self.sens(self.pl.state()))
@@ -133,6 +140,8 @@ KIND_KW = dict(write15=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0), w
               write15_drjtw=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, dr_wide=dict(pl_max=0.28, lag_max=2.5), real_sens=True, pad_fine_w=1.0),
               write15_drjt_lab=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, lab_sens=True, pad_fine_w=1.0),          # R23/R24 (2026-11-21): R21/R22 settings at the 'lab' noise level
               write15_drjt_to=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0, takeoff_p=0.5),        # R25 (2026-11-26): R21 settings + half the writing episodes start on the launch stand
+              write15_drjt_to30=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0, takeoff_p=0.3),      # R27 (2026-11-26, laptop): 30 % take-off episodes, to keep the hover writing skill
+              write15_drjt_tomid=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0, takeoff_p=0.5, mid_p=0.5),        # R28 (2026-11-26): half the take-off episodes start part-way along the climb (R25-R27 died on the stand and never saw the climb)
               write15_drjtw_lab=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, dr_wide=dict(pl_max=0.28, lag_max=2.5), lab_sens=True, pad_fine_w=1.0))     # R22: test cases (200 g, lag x2) inside the training range, not at its edge; 280 g keeps static shoulder torque about 0.9 of the servo limit         # env options a policy was trained with, by training env kind (Phase 1)
 
 
