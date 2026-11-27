@@ -10,7 +10,8 @@ CASES = dict(nominal={}, payload100g=dict(payload=dict(kg=0.10, pos_hand_m=[0.0,
              gust_y=dict(disturbance=[dict(kind="step", axis=1, amp=1.0, t0=12.0, dur=3.0)]), wind_sine=dict(disturbance=[dict(kind="sine", axis=1, amp=0.8, freq=0.5, t0=3.0), dict(kind="sine", axis=2, amp=0.5, freq=0.3, t0=3.0)]),
              # Stress set (2026-11-19, the proposal's untested conditions): wall contact model, approach (impact) speed, and outside the RL/L training ranges
              # (training: motor lag <= 2.5x, thrust 0.88-1.08, payload <= 250-280 g).  v_approach (m/s) and v_final (m/s; task 0.02 and 0.01) override the approach and the final touch-down speed for that run only.
-             wall_soft=dict(k_scale=0.5), wall_stiff=dict(k_scale=3.0), wall_slippery=dict(mu_scale=0.5), wall_grippy=dict(mu_scale=2.0),
+             wall_soft=dict(k_scale=0.5), wall_stiff=dict(k_scale=3.0), wall_k02=dict(k_scale=0.2), wall_k6=dict(k_scale=6.0), wall_k10=dict(k_scale=10.0),          # 2026-11-27: outside the L2W/L9W wall training range (k x0.4-3.5); R-series never randomised the wall
+             wall_slippery=dict(mu_scale=0.5), wall_grippy=dict(mu_scale=2.0),
              approach_fast=dict(v_approach=0.06, v_final=0.03), motor_lag15=dict(motor_tau_scale=1.5), motor_lag3=dict(motor_tau_scale=3.0), kf85=dict(kf_scale=0.85),
              combo=dict(payload=dict(kg=0.10, pos_hand_m=[0.0, 0.0, 0.0]), motor_tau_scale=1.5, disturbance=[dict(kind="step", axis=1, amp=1.0, t0=12.0, dur=3.0)]))
 

@@ -364,3 +364,6 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   - [optimal] job 2602297 `2026-11-27_1320_R30_write15drjt_to30mid_fromR21_s4` (20M): R21 + take-off with fewer take-off episodes (kind `write15_drjt_to30mid`: takeoff_p 0.3, mid_p 0.5). Goal: keep R21's thrust-deficit robustness that R29 lost.
   - [capstone] jobs 2602298/9 `2026-11-27_1320_T2_tail_{free,rigid}_w_fromT1_s6` (10M): T1 tail policies with blocks up to 300 g (kinds `tail_*_w`), so 250 g is inside training.
   - When done: rsync, `am3_tail_rl_eval.py` (T2) and R30 lab bench + take-off bench as for R29.
+- **2026-11-27 13:22 EST. Proposal gap: wall stiffness outside the training range [optimal].** New cases in `Code/scripts/am3_write_mismatch.py`: wall_k02 / wall_k6 / wall_k10 (k x0.2, x6, x10;
+  L2W/L9W trained on x0.4-3.5, the R-series never randomised the wall). Local bench (lab noise, 5 sentences x 3 seeds) for N, NDF, R21, L2W, L9W22:
+  `Code/results/am3_write/bench/2026-11-27_1322_stress_<ctrl>_lab_<case>.json`. Smoke test N "HI": x10 1.30 mm, coverage 0.99; x0.2 completes but 26.6 mm, drag 0.84 (pen sinks and drags).
