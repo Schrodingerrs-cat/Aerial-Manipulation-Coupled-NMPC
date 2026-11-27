@@ -360,3 +360,7 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   - R29 take-off bench: nominal 15/15 1.84 mm, gust 15, wall_soft 15, motor_slow 0, payload200g 0 (6 from hover); payload100g still running on Turing.
 - **2026-11-27 13:15 EST. Tail spring fine sweep, 250 g [capstone]** (`Code/results/tail/2026-11-27_1313_tail_spring_fine_mb0.25.jsonl`): springs 0.2, 0.3 and 0.5 all fly 0.9 s (3/3), 0.15 manages 1/3, none flies 0.8 s.
   The optimum is broad; 0.5 matches 0.3's error with less joint travel (137 vs 205 deg). Not a tuned-to-death result.
+- **2026-11-27 13:20 EST. Turing trainings submitted** (20 CPUs each, `slurm/am3_rl_turing.sh`, `--init-from` warm starts):
+  - [optimal] job 2602297 `2026-11-27_1320_R30_write15drjt_to30mid_fromR21_s4` (20M): R21 + take-off with fewer take-off episodes (kind `write15_drjt_to30mid`: takeoff_p 0.3, mid_p 0.5). Goal: keep R21's thrust-deficit robustness that R29 lost.
+  - [capstone] jobs 2602298/9 `2026-11-27_1320_T2_tail_{free,rigid}_w_fromT1_s6` (10M): T1 tail policies with blocks up to 300 g (kinds `tail_*_w`), so 250 g is inside training.
+  - When done: rsync, `am3_tail_rl_eval.py` (T2) and R30 lab bench + take-off bench as for R29.

@@ -144,7 +144,8 @@ KIND_KW = dict(write15=dict(hist=4, dob=True, real_sens=True, pad_fine_w=1.0), w
               write15_drjt_lab=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, lab_sens=True, pad_fine_w=1.0),          # R23/R24 (2026-11-21): R21/R22 settings at the 'lab' noise level
               write15_drjt_to=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0, takeoff_p=0.5),        # R25 (2026-11-26): R21 settings + half the writing episodes start on the launch stand
               write15_drjt_to30=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0, takeoff_p=0.3),      # R27 (2026-11-26, laptop): 30 % take-off episodes, to keep the hover writing skill
-              write15_drjt_tomid=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0, takeoff_p=0.5, mid_p=0.5),        # R28 (2026-11-26): half the take-off episodes start part-way along the climb (R25-R27 died on the stand and never saw the climb)
+              write15_drjt_tomid=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0, takeoff_p=0.5, mid_p=0.5),
+              write15_drjt_to30mid=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, real_sens=True, pad_fine_w=1.0, takeoff_p=0.3, mid_p=0.5),     # R30 (2026-11-27): fewer take-off episodes than R29, which lost R21's thrust-deficit robustness        # R28 (2026-11-26): half the take-off episodes start part-way along the climb (R25-R27 died on the stand and never saw the climb)
               write15_drjtw_lab=dict(hist=4, dob=True, dob_kj=4.0, write_max=5, tau_w=1.0, dr_wide=dict(pl_max=0.28, lag_max=2.5), lab_sens=True, pad_fine_w=1.0))     # R22: test cases (200 g, lag x2) inside the training range, not at its edge; 280 g keeps static shoulder torque about 0.9 of the servo limit         # env options a policy was trained with, by training env kind (Phase 1)
 
 
