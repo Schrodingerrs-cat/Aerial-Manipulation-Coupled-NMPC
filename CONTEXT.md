@@ -312,6 +312,27 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
       - A moderate arm spring (0.3) is best everywhere: the only mode that completes all 12 runs, lower error, tilt and jerk than rigid, same rotor energy (within 1 %).
         Too weak (0.05) wanders (206-234 deg of joint travel), costs 7-10 % energy and saturates the servos; too strong (1.0, approaching 'hold') is worse than rigid. Hold -> rigid -> tail 0.3 <- tail 0.05: an optimum, not 'more freedom is better'.
       - Cost: at T <= 1.0 s tail 0.3 runs the servos at their torque limit (tau_max 1.0 N m) - the margin is the servo.
+    - **2026-11-27 12:33 EST, v2 250 g done** (`Code/results/tail/2026-11-27_1226_tail_sweep_v2b_mb0.25.jsonl`):
+      | T s | rigid | tail 0.05 | tail 0.3 | tail 1.0 |
+      |---|---|---|---|---|
+      | 1.5 | 3/3, 3.2, 21 | 3/3, 3.5, 18 | 3/3, **1.1, 13** | 3/3, 4.8, 22 |
+      | 1.2 | 3/3, 3.1, 18 | 3/3, 6.1, 20 | 3/3, **2.1, 17** | 3/3, 5.4, 23 |
+      | 1.0 | 3/3, 9.2, 28 | 0/3 | 3/3, **5.8, 26** | 2/3, 8.5, 29 |
+      | 0.9 | **0/3** | 0/3 | **3/3**, 9.5, 29 | 0/3 |
+      - With the heavier block the tail 0.3 arm is the ONLY mode that flies 0.9 s per side: here the tail does extend the speed limit (v1 compared the weak 0.05 spring, which does not).
+        Same energy as rigid at each T (1.06-1.16 x hover); servos at the torque limit from 1.2 s on. 5 runs hit the 300 s stall guard, all in modes/speeds whose other seeds lost control.
+    - Video (seed 0, 150 g, 0.9 s per side): `Media_results/2026-11-27_1227_Tail_square_T0.9_150g_NMPC_rigid_vs_tail0.3/` (rigid tips past 30 deg on the 3rd side and the failsafe stops it; the tail swings joint 1 by about 35 deg and completes, 0.6 mm at the dwell).
+      Renderer `Code/scripts/am3_tail_video.py` (NMPC modes or RL checkpoints; green route, blue base path, orange block path).
+    - **2026-11-27 12:50 EST, speed limit and no-block control** (`Code/results/tail/2026-11-27_1233_tail_{limit_mb0.15,limit_mb0.25,noblock}.jsonl`, 3 seeds each).
+      Fastest move time (s per 0.6 m side) with 3/3 completed:
+      | block | rigid | tail 0.3 |
+      |---|---|---|
+      | none | 0.9 | 0.8 (0.7 not run) |
+      | 150 g | 1.0 (0.9: 2/3) | 0.8 (0.7: 2/3) |
+      | 250 g | 1.0 | 0.9 (0.8: 1/3) |
+      - The arm-as-tail buys one to two speed steps at every mass, and with 250 g it flies as fast as the rigid arm with NO block. It helps even without a block: the arm itself is 0.47 kg of the 1.52 kg vehicle, already a tail.
+      - Energy stays within 1-2 % of rigid at equal T; the price is servo torque (at the 1 N m limit in every fast run) and 90-230 deg of joint travel.
+    - Video 250 g, 0.9 s per side, seed 1: `Media_results/2026-11-27_1240_Tail_square_T0.9_250g_NMPC_rigid_vs_tail0.3/` (rigid loses control, tail completes; seed 1 because rigid seeds 0 and 2 stall inside acados after losing control - noted in its README).
       - Bug found: the v2 run (10:15) hit its timeout with no output; one run (tail 0.05, T 0.9, seed 2) stalls inside acados after the drone has lost control (tilt 45 deg and rising, warm start blown up).
         `am3_tail_run.py` now runs each run in its own process with a 300 s wall-clock limit (a stall is recorded as a failure with that reason) and writes rows as they finish (.jsonl).
     - Learned tail (`Code/ocrl/am3_rl_tail.py`, kinds `tail_free` / `tail_rigid`): R9-rung interface, random waypoint routes (1-2 s hops), random block 0-200 g with its mass as an input, inner-loop observer on, acceleration limit 4 m/s^2.
