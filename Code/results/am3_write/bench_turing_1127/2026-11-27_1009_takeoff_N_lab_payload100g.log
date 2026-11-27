@@ -1,0 +1,61 @@
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+OCP formulation matches previous via hash, code reuse possible.
+Code reuse possible, skipping code generation.
+acados was compiled without OpenMP.
+{'text': 'HELLO WPI', 'seed': 0, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/11', 'trace_rms_mm': 74.194, 'trace_max_mm': 78.178, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.68, 'F_peak_N': 1.08, 'wall_s': 236, 'rotor_tv': 8.128, 'tau_tv': 1.153, 'angacc_rms': 17.37, 'jointacc_rms': 32.31, 'pen_vel_err_rms': 25.63}
+{'text': 'HELLO WPI', 'seed': 1, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/11', 'trace_rms_mm': 72.454, 'trace_max_mm': 76.918, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.01, 'F_peak_N': 1.274, 'wall_s': 126, 'rotor_tv': 8.344, 'tau_tv': 1.153, 'angacc_rms': 17.14, 'jointacc_rms': 31.59, 'pen_vel_err_rms': 26.02}
+{'text': 'HELLO WPI', 'seed': 2, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/11', 'trace_rms_mm': 74.564, 'trace_max_mm': 77.962, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.16, 'F_peak_N': 1.174, 'wall_s': 58, 'rotor_tv': 8.341, 'tau_tv': 1.168, 'angacc_rms': 17.42, 'jointacc_rms': 31.62, 'pen_vel_err_rms': 20.47}
+{'text': 'AERIAL ROBOT', 'seed': 0, 'completed': False, 'abort': 'no contact acquired', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.68, 'F_peak_N': 0.0, 'wall_s': 32, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'AERIAL ROBOT', 'seed': 1, 'completed': False, 'abort': 'no contact acquired', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.01, 'F_peak_N': 0.0, 'wall_s': 32, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'AERIAL ROBOT', 'seed': 2, 'completed': False, 'abort': 'no contact acquired', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.89, 'F_peak_N': 0.0, 'wall_s': 32, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'THE QUICK BROWN', 'seed': 0, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/20', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.68, 'F_peak_N': 0.661, 'wall_s': 33, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'THE QUICK BROWN', 'seed': 1, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/20', 'trace_rms_mm': 72.703, 'trace_max_mm': 74.975, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.01, 'F_peak_N': 1.221, 'wall_s': 64, 'rotor_tv': 8.65, 'tau_tv': 1.147, 'angacc_rms': 18.28, 'jointacc_rms': 34.48, 'pen_vel_err_rms': 35.95}
+{'text': 'THE QUICK BROWN', 'seed': 2, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/20', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.21, 'F_peak_N': 0.628, 'wall_s': 33, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'FOX JUMPS OVER', 'seed': 0, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/15', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.68, 'F_peak_N': 1.013, 'wall_s': 38, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'FOX JUMPS OVER', 'seed': 1, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/15', 'trace_rms_mm': 72.21, 'trace_max_mm': 74.873, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.01, 'F_peak_N': 1.169, 'wall_s': 121, 'rotor_tv': 8.08, 'tau_tv': 1.113, 'angacc_rms': 17.4, 'jointacc_rms': 32.41, 'pen_vel_err_rms': 25.34}
+{'text': 'FOX JUMPS OVER', 'seed': 2, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/15', 'trace_rms_mm': 72.821, 'trace_max_mm': 78.094, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.66, 'F_peak_N': 0.951, 'wall_s': 87, 'rotor_tv': 8.012, 'tau_tv': 1.129, 'angacc_rms': 17.3, 'jointacc_rms': 31.97, 'pen_vel_err_rms': 38.99}
+{'text': 'THE LAZY DOG', 'seed': 0, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.68, 'F_peak_N': 0.661, 'wall_s': 32, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+{'text': 'THE LAZY DOG', 'seed': 1, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/16', 'trace_rms_mm': 72.703, 'trace_max_mm': 74.975, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 33.01, 'F_peak_N': 1.208, 'wall_s': 81, 'rotor_tv': 8.221, 'tau_tv': 1.12, 'angacc_rms': 18.18, 'jointacc_rms': 34.41, 'pen_vel_err_rms': 35.95}
+{'text': 'THE LAZY DOG', 'seed': 2, 'completed': False, 'abort': 'recovery timeout', 'strokes': '0/16', 'trace_rms_mm': nan, 'trace_max_mm': nan, 'coverage': 0.0, 'drag': 0.0, 'tilt_max_deg': 34.21, 'F_peak_N': 0.628, 'wall_s': 32, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}
+SUMMARY {'n': 15, 'completed': 0, 'trace_rms_mean': None, 'trace_rms_max': None, 'drag_max': 0.0, 'coverage_mean': None, 'aborts': ['no contact acquired', 'recovery timeout'], 'F_peak_max': 1.274, 'rotor_tv': None, 'tau_tv': None, 'angacc_rms': None, 'jointacc_rms': None, 'pen_vel_err_rms': None}

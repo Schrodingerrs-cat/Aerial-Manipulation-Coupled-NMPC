@@ -337,3 +337,17 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
         `am3_tail_run.py` now runs each run in its own process with a 300 s wall-clock limit (a stall is recorded as a failure with that reason) and writes rows as they finish (.jsonl).
     - Learned tail (`Code/ocrl/am3_rl_tail.py`, kinds `tail_free` / `tail_rigid`): R9-rung interface, random waypoint routes (1-2 s hops), random block 0-200 g with its mass as an input, inner-loop observer on, acceleration limit 4 m/s^2.
       Training both locally from R9 s0 (10M steps, 8 envs each): `Code/results/am3_rl/2026-11-27_1039_T1_tail_{free,rigid}_fromR9_s5_local`.
+- **2026-11-27 13:05 EST. Turing benches back (R29 lab, take-off) [optimal].** Files `Code/results/am3_write/bench_turing_1127/` (R29 lab copied into `bench_turing_1126/` for the table);
+  final table regenerated with R29: `Code/results/am3_write/2026-11-27_1300_final_table_lab.{md,json}` (`am3_final_table.py` now lists R29).
+  - R29 (R21 fine-tuned with take-off): 11 conditions 15/15, 3 at 0/15. Same or better accuracy than R21 where both finish (payload100g 1.98 vs 2.32 mm, wall_grippy 2.08 vs 2.56),
+    but it LOST thrust-deficit robustness: motor_slow 14 -> 0, kf85 15 -> 0, kf90 15 -> 9, combo 8 -> 5. Failures are mostly not crashes but unfinished writing (kf85 coverage 8-48 %); motor_slow ends in loss of control.
+    Likely forgetting during the take-off fine-tune (to check: thrust-deficit share in the take-off env). Do not present R29 as a strict upgrade of R21.
+  - Take-off from the stand (6 conditions, 15 runs each; completed / RMS mm; hover-start value in brackets where different):
+    | | nominal | payload100g | motor_slow | gust_y | wall_soft | payload200g |
+    |---|---|---|---|---|---|---|
+    | N | 15, 1.11 | 0 | 0 | 15, 1.16 | 15, 13.7 | 0 |
+    | NDF | 15, 1.84 | 15, 2.72 | 0 | 15, 1.83 | 15, 17.9 | 15, 4.00 |
+    | L9W22 | 15, 1.30 | 15, 1.32 | 8 (11), 1.27 | 15, 1.33 | 15, 1.41 | 15, 1.90 |
+    | R21 | 15, 1.86 | 15, 2.33 | **0 (14)** | 15, 1.91 | 15, 1.78 | **0 (7)** |
+    | R29 | running | running | 0 | running | running | 0 |
+    - For N, NDF and L9W22 the take-off adds nothing measurable (same counts and RMS as starting in hover; they fail where they fail from hover). The learned-only R21 loses its stress cases when it must also take off.

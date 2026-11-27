@@ -11,7 +11,8 @@ CTRLS = [("N", "2026-11-20_1959", "NMPC"), ("NDF", "2026-11-20_1959", "NMPC + di
          ("R22", "2026-11-20_1959", "learned controller, wider randomisation (R22)"), ("R23", "2026-11-22_0849", "R21 retrained at lab noise (R23)"),
          ("R24", "2026-11-23_1827", "R22 retrained at lab noise (R24)"), ("L2", "2026-11-20_1959", "NMPC + 2-channel correction, lag to 2.5x (L2)"),
          ("L2W", "2026-11-21_1645", "NMPC + 2-channel correction, wall rand. (L2W)"), ("L9W", "2026-11-22_0849", "NMPC + 9-channel correction (L9W)"),
-         ("L9W22", "2026-11-25_1548", "L9W fine-tuned to 2.2x motor lag (L9W_lag22)")]
+         ("L9W22", "2026-11-25_1548", "L9W fine-tuned to 2.2x motor lag (L9W_lag22)"),
+         ("R29", "2026-11-27_1009", "learned controller trained with take-off (R29)")]
 
 
 def path(stamp, ctrl, case):
