@@ -115,7 +115,10 @@ class WallEnv(Track9Env):
 
     def _extra_obs(self):
         ph = np.zeros(len(PHASES)); ph[PHASES.index(PH_OBS.get(self.task.phase, self.task.phase))] = 1.0; pad = np.array(self.inner.pr.pad_f(self.pl.state())[0]).ravel()
-        return np.concatenate([super()._extra_obs(), np.clip((self.rp - pad) / 0.02, -5, 5), self.rv / 0.1, ph, [self.task.gap_ref / 0.04, np.clip(self.Fm / 2.0, -2, 3), float(self.task.contact)]])
+        base = super()._extra_obs()
+        if self.task.phase in ("takeoff", "unfold"):                                # R29 fix: Track9's look-ahead points come from the fixed HOLD reference (the hover point); during take-off they must follow the take-off path
+            base = base.copy(); base[3:3 + 3 * len(self.LOOK)] = np.concatenate([(self.task.base_ahead(h) - self.pref) / 0.5 for h in self.LOOK])
+        return np.concatenate([base, np.clip((self.rp - pad) / 0.02, -5, 5), self.rv / 0.1, ph, [self.task.gap_ref / 0.04, np.clip(self.Fm / 2.0, -2, 3), float(self.task.contact)]])
 
     def step(self, a):
         obs, r, bad, trunc, info = super().step(a)

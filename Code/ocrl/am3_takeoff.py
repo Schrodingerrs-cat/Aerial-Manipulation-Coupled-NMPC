@@ -86,6 +86,12 @@ class TakeoffWriteTask(WriteTask):
             return
         super().advance(dt, F_meas, gap_meas, nominal)
 
+    def base_ahead(self, h):
+        """Base reference h seconds ahead along take-off -> unfold -> hover point (look-ahead input of the learned controllers)."""
+        s = self.tph + (T_TAKEOFF if self.phase == "unfold" else 0.0) + h
+        if s < T_TAKEOFF: return START + (self.top - START) * min_jerk(s / T_TAKEOFF)[0]
+        return self.top + (BASE - self.top) * min_jerk(min((s - T_TAKEOFF) / T_UNFOLD, 1.0))[0]
+
     def ref(self):
         ph = self.phase
         if ph not in ("ground", "takeoff", "unfold"): return super().ref()

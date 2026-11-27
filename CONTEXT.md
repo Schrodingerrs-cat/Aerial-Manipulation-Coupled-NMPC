@@ -285,3 +285,10 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
     half on the stand as before. Scripted PD passes from every start; R21 passes some. Runs: Turing job 2600210 (20M, seed 3, TAG `2026-11-26_1912_R28_write15drjt_tomid_fromR21_s3`),
     laptop (8M, 16 envs, seed 7, `Code/results/am3_rl/2026-11-26_1912_R28_write15drjt_tomid_fromR21_s7_local`).
   - Take-off test of a checkpoint (from the stand only): `Code/scripts/am3_takeoff_env_eval.py MODEL [N]`.
+- **2026-11-26 19:51 EST. Real cause of every RL take-off failure: an observation bug. Fixed; R29 submitted.**
+  - Track9's look-ahead inputs (reference 0.25 s and 0.5 s ahead) were computed from the fixed HOLD reference (the hover point), not the task. While writing the base stays within cm of the hover point, so it never mattered;
+    on the stand it told the policy the target was 0.45 m ahead and 0.87 m up -> it accelerated forward, drifted ~7 cm and the arm hit a stand pad (R25-R28: 0/10 from the stand at R28 3M).
+  - Fix (`am3_rl_wall.WallEnv._extra_obs` + `TakeoffWriteTask.base_ahead`): during takeoff/unfold the look-ahead follows the take-off path. Writing phases unchanged.
+  - **With the fix, plain R21 (no take-off training) takes off and writes** ("HI", lab, Episode harness): 4/4 strokes, 1.89 mm, coverage 0.63; tracking during climb <= 19 mm, unfold <= 39 mm (N: ~2 mm).
+  - R28 runs (both trained with the bug) stopped. **R29** = R28 settings with the fix: Turing job above, TAG `2026-11-26_1951_R29_write15drjt_tomid_lookfix_fromR21_s3`, 20M steps.
+  - Next: `scripts/am3_takeoff_env_eval.py` on R29 checkpoints (from the stand), check its hover writing vs R21, lab bench, take-off video R21 vs R29 vs NMPC controllers.
