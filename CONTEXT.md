@@ -367,10 +367,10 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
 - **2026-11-27 13:22 EST. Proposal gap: wall stiffness outside the training range [optimal].** New cases in `Code/scripts/am3_write_mismatch.py`: wall_k02 / wall_k6 / wall_k10 (k x0.2, x6, x10;
   L2W/L9W trained on x0.4-3.5, the R-series never randomised the wall). Local bench (lab noise, 5 sentences x 3 seeds) for N, NDF, R21, L2W, L9W22:
   `Code/results/am3_write/bench/2026-11-27_1322_stress_<ctrl>_lab_<case>.json`. Smoke test N "HI": x10 1.30 mm, coverage 0.99; x0.2 completes but 26.6 mm, drag 0.84 (pen sinks and drags).
-- **2026-11-27 13:50 EST. Proposal 2x2 answered [optimal]:** `Findings/RL/05_research_question_2x2.md` (from the final lab table).
+- **2026-11-27 13:42 EST. Proposal 2x2 answered [optimal]:** `Findings/RL/05_research_question_2x2.md` (from the final lab table).
   Parametric-slow: classical rescues every run (NDF 75/75); learning only adds accuracy (2-3x). Parametric-fast (motor lag): classical FAILS (NDF 0/45, worse than plain N), only lag-trained L9W22 and R21 survive.
   Non-parametric-slow (soft wall): classical FAILS on accuracy (NDF 17.8 mm), only wall-randomised corrections fix it. Non-parametric-fast (gust, fast approach): plain N is best, no learning needed; only the combo case needs L9W.
   The proposal's 2-channel L2 is no better than the observer; the gain needs 9 channels + wall/lag randomisation. Still owed: mean force error metric.
-- **2026-11-27 14:10 EST. Proposal force metrics added [optimal]:** `am3_write_eval.force_metrics` (trace phase): F_rms_err_N vs F_REF 0.6 N (design force: model wall x 1 mm depth), F_mean_N while pressing, contact_losses.
+- **2026-11-27 13:48 EST. Proposal force metrics added [optimal]:** `am3_write_eval.force_metrics` (trace phase): F_rms_err_N vs F_REF 0.6 N (design force: model wall x 1 mm depth), F_mean_N while pressing, contact_losses.
   Every bench from now on records them; older bench files do not (rerun needed for the final table). Check: N "HI" on wall_soft: F_mean 3.06 N, F_rms_err 2.49 N, 0 contact losses (N pushes too deep on a soft wall).
-  The stiffness bench files written after 14:05 include them; the N/NDF wall_k02 files from before do not.
+  The stiffness bench processes started after 13:48 include them; the N/NDF wall_k02 files from before do not.
