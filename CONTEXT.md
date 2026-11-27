@@ -349,7 +349,7 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
     | NDF | 15, 1.84 | 15, 2.72 | 0 | 15, 1.83 | 15, 17.9 | 15, 4.00 |
     | L9W22 | 15, 1.30 | 15, 1.32 | 8 (11), 1.27 | 15, 1.33 | 15, 1.41 | 15, 1.90 |
     | R21 | 15, 1.86 | 15, 2.33 | **0 (14)** | 15, 1.91 | 15, 1.78 | **0 (7)** |
-    | R29 | running | running | 0 | running | running | 0 |
+    | R29 | 15, 1.84 | 15, 1.98 | 0 | 15, 1.86 | 15, 1.78 | **0 (6)** |
     - For N, NDF and L9W22 the take-off adds nothing measurable (same counts and RMS as starting in hover; they fail where they fail from hover). The learned-only R21 loses its stress cases when it must also take off.
 - **2026-11-27 13:15 EST. Learned tail evaluated [capstone].** Write-up: `Findings/Capstone/02_arm_as_tail.md` (NMPC and RL, with failures).
   - RL free vs rigid (final 10M, square route from rest, lab noise, 3 seeds; `Code/results/tail/2026-11-27_1311_tail_rl_final_rest.jsonl`). Fastest T at 3/3: none 0.9/0.9, 150 g 1.2/**0.9**, 200 g 1.2/**1.0**, 250 g (outside training) 1.5/1.5;
