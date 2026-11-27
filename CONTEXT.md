@@ -292,3 +292,15 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
   - **With the fix, plain R21 (no take-off training) takes off and writes** ("HI", lab, Episode harness): 4/4 strokes, 1.89 mm, coverage 0.63; tracking during climb <= 19 mm, unfold <= 39 mm (N: ~2 mm).
   - R28 runs (both trained with the bug) stopped. **R29** = R28 settings with the fix: Turing job above, TAG `2026-11-26_1951_R29_write15drjt_tomid_lookfix_fromR21_s3`, 20M steps.
   - Next: `scripts/am3_takeoff_env_eval.py` on R29 checkpoints (from the stand), check its hover writing vs R21, lab bench, take-off video R21 vs R29 vs NMPC controllers.
+- **2026-11-27 10:40 EST. R29 works; capstone 'cheetah tail' study started.**
+  - **R29** (take-off-trained R21, look-ahead fix): take-off from the stand 10/10 (`am3_takeoff_env_eval.py`), base error at the approach 2-3 mm (R21 with the fix: also 10/10, 6-9 mm). Training: <=1 % early terminations throughout.
+    Turing: R29 lab bench (17 conditions, jobs 2601835/6) and a take-off bench for N, NDF, L9W22, R21, R29 (6 conditions, jobs 2601837-41; `--takeoff` / `TAKEOFF=1` new in the bench). Take-off video with 5 controllers rendering locally.
+  - **Tail study (capstone; professor: use the load like a cheetah's tail; arm holds a block, no swing)** [capstone]
+    - Model-based (`Code/ocrl/am3_tail.py`, `Code/scripts/am3_tail_run.py`, results `Code/results/tail/`): coupled NMPC with the block in its model (mass added to the hand at solver build; frozen files untouched),
+      square route (0.6 m sides) at decreasing move times, lab noise. Modes: rigid (joints frozen by a joint-rate penalty), hold (block still in the world), tail (arm free, weak home spring), unaware (rigid, no block in the model).
+    - v1 (150 g, 1 seed): rigid and tail both complete down to 1.0 s per 0.6 m and both fail at 0.8 s (the tail does NOT extend the speed limit); at 1.5 s the tail halves the tracking error (2.2 vs 4.6 mm rms) and the peak tilt (16 vs 25 deg);
+      at 1.0 s the tail tilts more (32 vs 24 deg). Tail costs 5-8 % more rotor energy and runs the servos at their torque limit; with a weak home spring the arm wanders 60-95 deg even on slow moves.
+      'hold' fails from 2.0 s (keeping the block still in the world rotates the arm against the body's pitch: an anti-tail). 'unaware' is 10x less accurate (13.7 vs 1.2 mm) and fails from 1.5 s: load awareness matters most.
+    - v2 running: 3 seeds, tail spring 0.05/0.3/1.0, blocks 150 and 250 g.
+    - Learned tail (`Code/ocrl/am3_rl_tail.py`, kinds `tail_free` / `tail_rigid`): R9-rung interface, random waypoint routes (1-2 s hops), random block 0-200 g with its mass as an input, inner-loop observer on, acceleration limit 4 m/s^2.
+      Training both locally from R9 s0 (10M steps, 8 envs each): `Code/results/am3_rl/2026-11-27_1039_T1_tail_{free,rigid}_fromR9_s5_local`.

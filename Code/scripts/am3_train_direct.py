@@ -99,6 +99,9 @@ def make_raw(kind, seed, max_steps, fine_w=None, fine_s=0.01, lin_w=None, tilt_w
     if bad_pen is not None: kw["bad_pen"] = bad_pen
     if p0_sigma is not None: kw["p0_sigma"] = p0_sigma
     if v0_sigma is not None: kw["v0_sigma"] = v0_sigma
+    if kind in ("tail_free", "tail_rigid"):                                       # capstone tail study (2026-11-27): block in the hand, arm free or held
+        from ocrl.am3_rl_tail import TailEnv
+        return TailEnv(seed=seed, max_steps=max_steps, arm=kind[5:], **kw)
     if kind == "hybrid":
         from ocrl.am3_hybrid import HybridEnv
         return HybridEnv(seed=seed, dr=fine_w != -1.0)                            # NMPC + residual policy, writing/shapes, domain randomization
@@ -219,7 +222,7 @@ if __name__ == "__main__":
     ap.add_argument("--lr", type=float, default=3e-4); ap.add_argument("--lr-decay", action="store_true"); ap.add_argument("--rollout", type=int, default=512); ap.add_argument("--batch", type=int, default=2048)
     ap.add_argument("--epochs", type=int, default=5); ap.add_argument("--gamma", type=float, default=0.99); ap.add_argument("--ent", type=float, default=0.0)
     ap.add_argument("--target-kl", type=float, default=0.02); ap.add_argument("--save-every", type=int, default=100_000)
-    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9", "wall", "wall_ff", "wall_shapes", "write", "write_dr", "write_drc", "write15", "write15_dr", "write15_drj", "write15_drjl", "write15_drjt", "write15_drjtw", "write15_drjt_lab", "write15_drjtw_lab", "write15_drjt_to", "write15_drjt_to30", "write15_drjt_tomid", "hybrid"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
+    ap.add_argument("--log-std-init", type=float, default=-1.5); ap.add_argument("--fine-w", type=float, default=None); ap.add_argument("--env", choices=("hover", "track", "track3", "track4", "track5", "track6", "track7", "track8", "track9", "wall", "wall_ff", "wall_shapes", "write", "write_dr", "write_drc", "write15", "write15_dr", "write15_drj", "write15_drjl", "write15_drjt", "write15_drjtw", "write15_drjt_lab", "write15_drjtw_lab", "write15_drjt_to", "write15_drjt_to30", "write15_drjt_tomid", "tail_free", "tail_rigid", "hybrid"), default="hover"); ap.add_argument("--fine-s", type=float, default=0.01); ap.add_argument("--lin-w", type=float, default=None); ap.add_argument("--tilt-w", type=float, default=None); ap.add_argument("--bad-pen", type=float, default=None); ap.add_argument("--p0-sigma", type=float, default=None); ap.add_argument("--v0-sigma", type=float, default=None); ap.add_argument("--init-from", default=None); ap.add_argument("--device", default="cpu"); ap.add_argument("--torch-threads", type=int, default=2)
     ap.add_argument("--collapse-after", type=int, default=400_000); ap.add_argument("--collapse-len", type=float, default=60.0); ap.add_argument("--resume", action="store_true"); ap.add_argument("--preflight-only", action="store_true")
     a = ap.parse_args()
     try:

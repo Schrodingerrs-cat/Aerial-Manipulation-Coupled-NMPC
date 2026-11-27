@@ -1,0 +1,122 @@
+{
+ "route": [
+  [
+   0.358,
+   0.0,
+   1.2
+  ],
+  [
+   -0.242,
+   0.0,
+   1.2
+  ],
+  [
+   -0.242,
+   0.6,
+   1.2
+  ],
+  [
+   0.358,
+   0.6,
+   1.2
+  ],
+  [
+   0.358,
+   0.0,
+   1.2
+  ]
+ ],
+ "dwell": 1.5,
+ "block_offset": [
+  0.2,
+  0.0,
+  -0.15
+ ],
+ "noise": "lab",
+ "rows": [
+  {
+   "mode": "locked",
+   "T": 1.5,
+   "mb": 0.15,
+   "seed": 0,
+   "completed": false,
+   "abort": "loss of control (failsafe): tilt 41 deg, base error 215 mm",
+   "t_end": 1.780000000000178,
+   "base_rms_mm": 54.07747367221125,
+   "base_max_mm": 203.70640074420814,
+   "settle_s": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "settle_mean_s": null,
+   "tilt_max_deg": 36.27395587460244,
+   "jerk_rms": 37.040821303439685,
+   "energy_rel_hover": 1.0487452462709248,
+   "tau_max_frac": 0.5807062869709557,
+   "joint_range_deg": [
+    29.6,
+    9.7,
+    9.7
+   ],
+   "solve_fail": 0
+  },
+  {
+   "mode": "tail",
+   "T": 1.5,
+   "mb": 0.15,
+   "seed": 0,
+   "completed": true,
+   "abort": null,
+   "t_end": 14.01999999999,
+   "base_rms_mm": 2.2420125415363295,
+   "base_max_mm": 14.967044715403096,
+   "settle_s": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "settle_mean_s": 0.0,
+   "tilt_max_deg": 15.668014623797431,
+   "jerk_rms": 13.106247821794113,
+   "energy_rel_hover": 1.1221375344013647,
+   "tau_max_frac": 1.0,
+   "joint_range_deg": [
+    70.3,
+    47.1,
+    95.1
+   ],
+   "solve_fail": 0
+  },
+  {
+   "mode": "unaware",
+   "T": 1.5,
+   "mb": 0.15,
+   "seed": 0,
+   "completed": false,
+   "abort": "loss of control (failsafe): tilt 45 deg, base error 253 mm",
+   "t_end": 0.7799999999999419,
+   "base_rms_mm": 79.37573420250719,
+   "base_max_mm": 233.69304842596733,
+   "settle_s": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "settle_mean_s": null,
+   "tilt_max_deg": 39.2266120331387,
+   "jerk_rms": 43.92994926995206,
+   "energy_rel_hover": 1.0502056391378052,
+   "tau_max_frac": 0.537037699494605,
+   "joint_range_deg": [
+    26.5,
+    8.9,
+    26.5
+   ],
+   "solve_fail": 0
+  }
+ ]
+}
