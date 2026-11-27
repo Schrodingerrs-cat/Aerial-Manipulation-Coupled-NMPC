@@ -302,5 +302,17 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
       at 1.0 s the tail tilts more (32 vs 24 deg). Tail costs 5-8 % more rotor energy and runs the servos at their torque limit; with a weak home spring the arm wanders 60-95 deg even on slow moves.
       'hold' fails from 2.0 s (keeping the block still in the world rotates the arm against the body's pitch: an anti-tail). 'unaware' is 10x less accurate (13.7 vs 1.2 mm) and fails from 1.5 s: load awareness matters most.
     - v2 running: 3 seeds, tail spring 0.05/0.3/1.0, blocks 150 and 250 g.
+    - **2026-11-27 12:30 EST, v2 150 g done** (`Code/results/tail/2026-11-27_1217_tail_sweep_v2b_mb0.15.jsonl`, 3 seeds, lab noise; completed / rms mm / peak tilt deg):
+      | T s | rigid | tail 0.05 | tail 0.3 | tail 1.0 |
+      |---|---|---|---|---|
+      | 1.5 | 3/3, 4.3, 22 | 3/3, 1.5, 15 | 3/3, **1.1, 12.5** | 3/3, 6.6, 25 |
+      | 1.2 | 3/3, 2.8, 17 | 3/3, 2.4, 18 | 3/3, **2.0, 17** | 3/3, 5.8, 24 |
+      | 1.0 | 3/3, 7.5, 24 | 2/3, 6.5, 29 | 3/3, **5.4, 23** | 3/3, 9.6, 32 |
+      | 0.9 | 2/3, 12.5, 32 | 0/3 | **3/3, 7.6, 28** | 1/3, 12.9, 38 |
+      - A moderate arm spring (0.3) is best everywhere: the only mode that completes all 12 runs, lower error, tilt and jerk than rigid, same rotor energy (within 1 %).
+        Too weak (0.05) wanders (206-234 deg of joint travel), costs 7-10 % energy and saturates the servos; too strong (1.0, approaching 'hold') is worse than rigid. Hold -> rigid -> tail 0.3 <- tail 0.05: an optimum, not 'more freedom is better'.
+      - Cost: at T <= 1.0 s tail 0.3 runs the servos at their torque limit (tau_max 1.0 N m) - the margin is the servo.
+      - Bug found: the v2 run (10:15) hit its timeout with no output; one run (tail 0.05, T 0.9, seed 2) stalls inside acados after the drone has lost control (tilt 45 deg and rising, warm start blown up).
+        `am3_tail_run.py` now runs each run in its own process with a 300 s wall-clock limit (a stall is recorded as a failure with that reason) and writes rows as they finish (.jsonl).
     - Learned tail (`Code/ocrl/am3_rl_tail.py`, kinds `tail_free` / `tail_rigid`): R9-rung interface, random waypoint routes (1-2 s hops), random block 0-200 g with its mass as an input, inner-loop observer on, acceleration limit 4 m/s^2.
       Training both locally from R9 s0 (10M steps, 8 envs each): `Code/results/am3_rl/2026-11-27_1039_T1_tail_{free,rigid}_fromR9_s5_local`.

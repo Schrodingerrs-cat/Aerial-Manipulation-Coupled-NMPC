@@ -3,7 +3,7 @@ Usage: am3_tail_run.py NAME [--mb 0.15] [--T 2.0 1.5 1.2 1.0 0.8] [--modes rigid
 Writes Code/results/tail/NAME.json.  Metrics per run: completed, base tracking RMS/max (mm), settle time after each move (within 2 cm and 5 cm/s, s), max tilt, base jerk RMS,
 rotor energy over the route relative to hovering (momentum theory, P ~ T^1.5), max joint torque / servo limit, joint range used."""
 import sys, os, json, argparse, numpy as np
-from multiprocessing import Pool
+import time, queue, multiprocessing as mp
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(HERE, "..")); sys.path.insert(0, HERE)
 from ocrl.am3_tail import TailNMPC, WaypointTask, start_state
 from ocrl.am3_episode import Episode
@@ -15,6 +15,7 @@ OFF = np.array([0.20, 0.0, -0.15])                   # block (pad point) offset 
 W0 = BASE + np.array([-0.15, 0.0, 0.0])
 ROUTE = [W0, W0 + [-0.6, 0, 0], W0 + [-0.6, 0.6, 0], W0 + [0, 0.6, 0], W0]      # square, 0.6 m sides: fore-aft (arm pitch plane) and sideways moves
 DWELL = 1.5
+HANG_S = 300                                         # a 14 s route takes ~20 s; acados SQP-RTI can stall after the drone has lost control (2026-11-27: tail, T 0.9, seed 2)
 
 
 def run(job):
@@ -42,9 +43,19 @@ def run(job):
 def main(a):
     for m in sorted({0.0 if x == "unaware" else a.mb for x in a.modes}): TailNMPC("rigid", mb=m)      # build the solvers once before the workers start
     jobs = [(m, T, a.mb, s) for T in a.T for m in a.modes for s in range(a.seeds)]
-    with Pool(a.procs) as pool: rows = pool.map(run, jobs, chunksize=1)
-    for r in rows: print({k: (round(v, 3) if isinstance(v, float) else v) for k, v in r.items() if k not in ("settle_s",)}, flush=True)
-    out = os.path.join(HERE, "..", "results", "tail"); os.makedirs(out, exist_ok=True)
+    out = os.path.join(HERE, "..", "results", "tail"); os.makedirs(out, exist_ok=True); rows, todo, live = [], list(jobs), []
+    with open(os.path.join(out, a.name + ".jsonl"), "w") as f:          # one process per run with a wall-clock limit, rows written as they finish
+        while todo or live:
+            while todo and len(live) < a.procs:
+                q = mp.Queue(); j = todo.pop(0); pr = mp.Process(target=lambda j=j, q=q: q.put(run(j))); pr.start(); live.append((pr, q, j, time.time()))
+            for it in list(live):
+                pr, q, j, t0 = it
+                try: r = q.get(timeout=0.2)
+                except queue.Empty:
+                    if time.time() - t0 < HANG_S: continue
+                    pr.kill(); r = dict(mode=j[0], T=j[1], mb=j[2], seed=j[3], completed=False, abort=f"solver hang: no return within {HANG_S} s (seen only after loss of control)", settle_mean_s=None)
+                pr.join(); live.remove(it); rows.append(r); f.write(json.dumps(r, default=float) + "\n"); f.flush()
+                print(len(rows), "/", len(jobs), {k: (round(v, 3) if isinstance(v, float) else v) for k, v in r.items() if k not in ("settle_s",)}, flush=True)
     json.dump(dict(route=[list(w) for w in ROUTE], dwell=DWELL, block_offset=list(OFF), noise="lab", rows=rows), open(os.path.join(out, a.name + ".json"), "w"), indent=1, default=float)
 
 
