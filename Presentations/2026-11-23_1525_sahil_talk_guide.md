@@ -84,17 +84,17 @@ The rest is correct as written:
 
 ## Part B. Your slides: what to say, and the questions to expect
 
-Aim for about 45 to 60 s per slide. **Say** is the script. **If asked** is for questions.
+
 
 ### Slide 1. Title (about 20 s)
 
 **Say:**
-> Good morning, we are Ashish and Sahil. Our project is a drone with a robot arm, an aerial manipulator, that has to carry objects and touch surfaces. We'll show how we made it aware of its load and of the surface it touches: first the carrying, then the touching, where we compare a model-based controller, a learned controller, and a mix of the two.
+>  Our project is a drone with a robot arm, an aerial manipulator, that has to carry objects and touch surfaces. We'll show how we made it aware of its load and of the surface it touches: first the carrying, then the touching, where we compare a model-based controller, a learned controller, and a mix of the two.
 
 ### Slide 2. Why (about 50 s)
 
 **Say:**
-> Drones are good at looking. Many real jobs need touching: inspecting a bridge with a probe, marking or cleaning a wall, picking up a package. So we put an arm on the drone, and four things then push it off course.
+> Drones are good at accessing space/location. Many real jobs need touching: inspecting a bridge with a probe, marking or cleaning a wall, picking up a package. So we put an arm on the drone, and four things then push it off course.
 >
 > First, drone and arm are coupled: every motion of one moves the other.
 > Second, a load makes the drone heavier and shifts its balance forward.
@@ -103,18 +103,17 @@ Aim for about 45 to 60 s per slide. **Say** is the script. **If asked** is for q
 >
 > Our goal is a controller that knows the load and the contact. Our test is tracing letters on a wall. It needs millimetre accuracy while touching, which is the same skill an inspection probe or a marking tool needs.
 
-**If asked:**
-- **"Is there a real pen?"** No. The tip is a small rubber pad. It presses about 1 mm into the wall, and the red trace shows where it touched. Writing is just a demanding, easy-to-see contact task.
-- **"Real robot?"** No, simulation (MuJoCo). The arm geometry is the same as Ashish's arm, with the wrist locked.
 
 ### Slide 3. Plan (about 40 s)
 
-**Say:**
-> Two halves, five steps. Carry, which Ashish leads: can a hanging load's swing help the motion, can the drone weigh its load with its own arm, and can it carry an object through gusts. Touch, which I lead: is one model of drone plus arm enough to control contact, and what can learning add.
->
-> Every number you'll see comes from test runs that were never used for tuning.
+> Two halves for the whole system and with total five steps. 
 
-**Say only if time:**
+1st Carry, can a hanging load's swing help the motion, 
+2n can the drone weigh its load with its own arm, and can it carry an object through gusts. 
+4th Touch, is one model of drone plus arm enough to control contact, and 5th what can learning add.
+>
+
+--------------------**Say only if time:**
 > The touch test is 5 sentences that together use all 26 letters, under 17 conditions, 15 tries each, with realistic sensor noise.
 
 ### Slide 4. Step 1, hanging load (about 60 s)
@@ -162,11 +161,11 @@ Aim for about 45 to 60 s per slide. **Say** is the script. **If asked** is for q
 ### Slide 13. Step 4, why one model (NMPC) (about 70 s)
 
 **Say:**
-> Now the touch half. Here the drone flies a figure-eight while the arm draws small circles. Both controllers get the same drone, the same path, the same sensors.
+>  Here the drone flies a figure-eight while the arm draws small circles. Both controllers get the same drone, the same path, the same sensors.
 >
 > On the left is the usual approach: a drone controller and a separate arm controller, each ignoring the other. It even runs 4 times faster. But every arm motion pushes the drone, the drone controller doesn't expect it, and you can see the error grow lap after lap until it tilts past 40 degrees and crashes at 15 seconds.
 >
-> On the right is our NMPC, with one model of drone and arm together. It knows each arm motion will push the drone and counters it before it happens: it stays within 0.3 millimetres.
+> On the right is our NMPC, with one model of drone and arm together. It knows each arm motion will push the drone and counters it before it happens:
 >
 > How it works: every 20 milliseconds it measures the state, predicts the next 0.2 seconds with the model, finds the best commands for the 4 rotors and 3 joints within all their limits, applies the first command, and repeats.
 
@@ -209,7 +208,7 @@ Aim for about 45 to 60 s per slide. **Say** is the script. **If asked** is for q
 **Say:**
 > The first learning approach throws the model away: a neural network flies the drone directly. 100 times a second it reads the errors, speeds, joint angles and contact force, and outputs where the drone should accelerate and where the joints should go. It learned by trial and error in simulation, reinforcement learning, while we randomly changed the load, motor speed, wind and thrust, so it learned to cope without being told.
 >
-> With slow motors, the NMPC with a disturbance estimate, on the left, loses control. The learned controller, on the right, writes the sentence, and finishes 14 of 15 in the test.
+> With slow motors, the NMPC with a disturbance estimate, on the left, loses control. while The learned controller, on the right, writes the sentence, and finishes 14 of 15 in the test.
 >
 > The price: it is less precise, about 1.9 instead of 1.2 mm, it gives no guarantees, and it struggles near the arm's torque limit.
 
@@ -244,7 +243,7 @@ Aim for about 45 to 60 s per slide. **Say** is the script. **If asked** is for q
 - 3-joint arm:
   - yaw, shoulder, elbow;
   - the wrist is fixed at 20°;
-  - links 5 / 16 / 14 cm, the same geometry as Ashish's arm.
+  - links 5 / 16 / 14 cm,
 - At the tip: a 12 mm rubber pad.
 - Rotors:
   - up to 10 N each;

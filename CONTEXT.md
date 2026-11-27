@@ -337,7 +337,7 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
         `am3_tail_run.py` now runs each run in its own process with a 300 s wall-clock limit (a stall is recorded as a failure with that reason) and writes rows as they finish (.jsonl).
     - Learned tail (`Code/ocrl/am3_rl_tail.py`, kinds `tail_free` / `tail_rigid`): R9-rung interface, random waypoint routes (1-2 s hops), random block 0-200 g with its mass as an input, inner-loop observer on, acceleration limit 4 m/s^2.
       Training both locally from R9 s0 (10M steps, 8 envs each): `Code/results/am3_rl/2026-11-27_1039_T1_tail_{free,rigid}_fromR9_s5_local`.
-- **2026-11-27 13:05 EST. Turing benches back (R29 lab, take-off) [optimal].** Files `Code/results/am3_write/bench_turing_1127/` (R29 lab copied into `bench_turing_1126/` for the table);
+- **2026-11-27 12:53 EST. Turing benches back (R29 lab, take-off) [optimal].** Files `Code/results/am3_write/bench_turing_1127/` (R29 lab copied into `bench_turing_1126/` for the table);
   final table regenerated with R29: `Code/results/am3_write/2026-11-27_1300_final_table_lab.{md,json}` (`am3_final_table.py` now lists R29).
   - R29 (R21 fine-tuned with take-off): 11 conditions 15/15, 3 at 0/15. Same or better accuracy than R21 where both finish (payload100g 1.98 vs 2.32 mm, wall_grippy 2.08 vs 2.56),
     but it LOST thrust-deficit robustness: motor_slow 14 -> 0, kf85 15 -> 0, kf90 15 -> 9, combo 8 -> 5. Failures are mostly not crashes but unfinished writing (kf85 coverage 8-48 %); motor_slow ends in loss of control.
