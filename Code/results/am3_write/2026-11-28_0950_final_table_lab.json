@@ -1,0 +1,1454 @@
+{
+ "N": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.17,
+   "F_peak_N": 1.525,
+   "rotor_tv": 5.603
+  },
+  "payload100g": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 1.145,
+   "rotor_tv": null
+  },
+  "payload200g": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "motor_slow": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.947,
+   "F_peak_N": 1.803,
+   "rotor_tv": 55.516
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.95,
+   "F_peak_N": 2.229,
+   "rotor_tv": 7.816
+  },
+  "kf85": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.488,
+   "F_peak_N": 4.168,
+   "rotor_tv": 8.776
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.644,
+   "F_peak_N": 1.375,
+   "rotor_tv": 5.638
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.216,
+   "F_peak_N": 1.524,
+   "rotor_tv": 5.647
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.512,
+   "F_peak_N": 1.413,
+   "rotor_tv": 5.811
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 13.382,
+   "F_peak_N": 4.717,
+   "rotor_tv": 10.057
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.471,
+   "F_peak_N": 1.12,
+   "rotor_tv": 5.683
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.314,
+   "F_peak_N": 1.481,
+   "rotor_tv": 5.688
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 5.897,
+   "F_peak_N": 1.654,
+   "rotor_tv": 5.764
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.143,
+   "F_peak_N": 1.551,
+   "rotor_tv": 5.636
+  },
+  "combo": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  }
+ },
+ "NDF": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.912,
+   "F_peak_N": 1.164,
+   "rotor_tv": 3.179
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.761,
+   "F_peak_N": 1.138,
+   "rotor_tv": 3.16
+  },
+  "payload200g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 4.05,
+   "F_peak_N": 1.196,
+   "rotor_tv": 3.218
+  },
+  "motor_slow": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "motor_lag15": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.833,
+   "rotor_tv": null
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.951,
+   "F_peak_N": 1.212,
+   "rotor_tv": 3.091
+  },
+  "kf85": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.993,
+   "F_peak_N": 1.215,
+   "rotor_tv": 3.059
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.019,
+   "F_peak_N": 1.452,
+   "rotor_tv": 3.216
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.909,
+   "F_peak_N": 1.164,
+   "rotor_tv": 3.19
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.971,
+   "F_peak_N": 1.168,
+   "rotor_tv": 3.255
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 17.789,
+   "F_peak_N": 4.515,
+   "rotor_tv": 7.045
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.192,
+   "F_peak_N": 1.929,
+   "rotor_tv": 3.165
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.065,
+   "F_peak_N": 1.175,
+   "rotor_tv": 3.208
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.608,
+   "F_peak_N": 1.097,
+   "rotor_tv": 3.211
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.95,
+   "F_peak_N": 1.201,
+   "rotor_tv": 3.222
+  },
+  "combo": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 2.261,
+   "rotor_tv": null
+  }
+ },
+ "R21": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.859,
+   "F_peak_N": 1.53,
+   "rotor_tv": 1.046
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.318,
+   "F_peak_N": 1.278,
+   "rotor_tv": 1.249
+  },
+  "payload200g": {
+   "completed": 7,
+   "n": 15,
+   "rms_mm": 2.793,
+   "F_peak_N": 2.192,
+   "rotor_tv": 1.635
+  },
+  "motor_slow": {
+   "completed": 14,
+   "n": 15,
+   "rms_mm": 2.493,
+   "F_peak_N": 3.47,
+   "rotor_tv": 1.649
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.032,
+   "F_peak_N": 1.586,
+   "rotor_tv": 1.105
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.99,
+   "F_peak_N": 1.507,
+   "rotor_tv": 0.998
+  },
+  "kf85": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.054,
+   "F_peak_N": 1.139,
+   "rotor_tv": 1.024
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.932,
+   "F_peak_N": 1.35,
+   "rotor_tv": 0.912
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.904,
+   "F_peak_N": 1.529,
+   "rotor_tv": 1.101
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.657,
+   "F_peak_N": 1.593,
+   "rotor_tv": 1.081
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.746,
+   "F_peak_N": 1.246,
+   "rotor_tv": 1.023
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.953,
+   "F_peak_N": 2.354,
+   "rotor_tv": 1.067
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.633,
+   "F_peak_N": 1.563,
+   "rotor_tv": 1.023
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.565,
+   "F_peak_N": 1.598,
+   "rotor_tv": 1.134
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.887,
+   "F_peak_N": 1.532,
+   "rotor_tv": 1.116
+  },
+  "combo": {
+   "completed": 8,
+   "n": 15,
+   "rms_mm": 2.592,
+   "F_peak_N": 2.668,
+   "rotor_tv": 1.433
+  }
+ },
+ "R22": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.473,
+   "F_peak_N": 1.685,
+   "rotor_tv": 1.088
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.804,
+   "F_peak_N": 1.308,
+   "rotor_tv": 1.301
+  },
+  "payload200g": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 3.141,
+   "rotor_tv": null
+  },
+  "motor_slow": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.939,
+   "F_peak_N": 1.677,
+   "rotor_tv": 1.41
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.64,
+   "F_peak_N": 1.623,
+   "rotor_tv": 1.132
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 2.431,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.257,
+   "F_peak_N": 1.512,
+   "rotor_tv": 1.01
+  },
+  "kf85": {
+   "completed": 6,
+   "n": 15,
+   "rms_mm": 2.158,
+   "F_peak_N": 8.263,
+   "rotor_tv": 0.996
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.535,
+   "F_peak_N": 1.362,
+   "rotor_tv": 0.942
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.535,
+   "F_peak_N": 1.669,
+   "rotor_tv": 1.133
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.774,
+   "F_peak_N": 1.794,
+   "rotor_tv": 1.106
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.402,
+   "F_peak_N": 1.471,
+   "rotor_tv": 1.075
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.52,
+   "F_peak_N": 2.574,
+   "rotor_tv": 1.107
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.288,
+   "F_peak_N": 1.652,
+   "rotor_tv": 1.058
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.092,
+   "F_peak_N": 1.716,
+   "rotor_tv": 1.184
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.486,
+   "F_peak_N": 1.725,
+   "rotor_tv": 1.184
+  },
+  "combo": {
+   "completed": 4,
+   "n": 15,
+   "rms_mm": 3.273,
+   "F_peak_N": 2.793,
+   "rotor_tv": 1.497
+  }
+ },
+ "R23": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.73,
+   "F_peak_N": 1.245,
+   "rotor_tv": 1.169
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.146,
+   "F_peak_N": 0.824,
+   "rotor_tv": 1.429
+  },
+  "payload200g": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 3.698,
+   "rotor_tv": null
+  },
+  "motor_slow": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.895,
+   "F_peak_N": 1.397,
+   "rotor_tv": 1.239
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 5,
+   "n": 15,
+   "rms_mm": 2.087,
+   "F_peak_N": 5.926,
+   "rotor_tv": 1.16
+  },
+  "kf85": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 7.554,
+   "rotor_tv": null
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.758,
+   "F_peak_N": 1.359,
+   "rotor_tv": 1.019
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.803,
+   "F_peak_N": 1.245,
+   "rotor_tv": 1.202
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.944,
+   "F_peak_N": 1.305,
+   "rotor_tv": 1.221
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.712,
+   "F_peak_N": 1.396,
+   "rotor_tv": 1.16
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.782,
+   "F_peak_N": 2.05,
+   "rotor_tv": 1.184
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.634,
+   "F_peak_N": 1.234,
+   "rotor_tv": 1.153
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.124,
+   "F_peak_N": 1.515,
+   "rotor_tv": 1.288
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.816,
+   "F_peak_N": 1.447,
+   "rotor_tv": 1.277
+  },
+  "combo": {
+   "completed": 6,
+   "n": 15,
+   "rms_mm": 2.336,
+   "F_peak_N": 2.682,
+   "rotor_tv": 1.627
+  }
+ },
+ "R24": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.217,
+   "F_peak_N": 1.742,
+   "rotor_tv": 1.185
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.692,
+   "F_peak_N": 1.172,
+   "rotor_tv": 1.413
+  },
+  "payload200g": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 3.308,
+   "rotor_tv": null
+  },
+  "motor_slow": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.634,
+   "F_peak_N": 1.464,
+   "rotor_tv": 1.36
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.355,
+   "F_peak_N": 1.372,
+   "rotor_tv": 1.164
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 13,
+   "n": 15,
+   "rms_mm": 2.408,
+   "F_peak_N": 3.727,
+   "rotor_tv": 1.179
+  },
+  "kf85": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 8.24,
+   "rotor_tv": null
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.333,
+   "F_peak_N": 1.371,
+   "rotor_tv": 1.007
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.249,
+   "F_peak_N": 1.742,
+   "rotor_tv": 1.2
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.585,
+   "F_peak_N": 1.706,
+   "rotor_tv": 1.21
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.121,
+   "F_peak_N": 1.436,
+   "rotor_tv": 1.163
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.291,
+   "F_peak_N": 2.446,
+   "rotor_tv": 1.208
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.983,
+   "F_peak_N": 1.682,
+   "rotor_tv": 1.132
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.895,
+   "F_peak_N": 1.771,
+   "rotor_tv": 1.287
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.259,
+   "F_peak_N": 1.692,
+   "rotor_tv": 1.279
+  },
+  "combo": {
+   "completed": 7,
+   "n": 15,
+   "rms_mm": 2.997,
+   "F_peak_N": 4.58,
+   "rotor_tv": 1.651
+  }
+ },
+ "L2": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.161,
+   "F_peak_N": 4.453,
+   "rotor_tv": 5.289
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.107,
+   "F_peak_N": 1.819,
+   "rotor_tv": 4.596
+  },
+  "payload200g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 4.49,
+   "F_peak_N": 1.879,
+   "rotor_tv": 4.011
+  },
+  "motor_slow": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "motor_lag15": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 1.647,
+   "rotor_tv": null
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.281,
+   "F_peak_N": 2.178,
+   "rotor_tv": 4.839
+  },
+  "kf85": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.465,
+   "F_peak_N": 2.117,
+   "rotor_tv": 4.519
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.305,
+   "F_peak_N": 2.876,
+   "rotor_tv": 6.17
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.179,
+   "F_peak_N": 1.951,
+   "rotor_tv": 5.272
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.354,
+   "F_peak_N": 2.982,
+   "rotor_tv": 5.291
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 17.117,
+   "F_peak_N": 4.275,
+   "rotor_tv": 7.546
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 4.123,
+   "F_peak_N": 2.988,
+   "rotor_tv": 5.307
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.376,
+   "F_peak_N": 2.176,
+   "rotor_tv": 5.274
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 6.158,
+   "F_peak_N": 2.53,
+   "rotor_tv": 5.403
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.179,
+   "F_peak_N": 7.196,
+   "rotor_tv": 5.259
+  },
+  "combo": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 1.944,
+   "rotor_tv": null
+  }
+ },
+ "L2W": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.794,
+   "F_peak_N": 1.145,
+   "rotor_tv": 4.09
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.388,
+   "F_peak_N": 1.216,
+   "rotor_tv": 3.832
+  },
+  "payload200g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.781,
+   "F_peak_N": 1.328,
+   "rotor_tv": 3.81
+  },
+  "motor_slow": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "motor_lag15": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 1.802,
+   "rotor_tv": null
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.815,
+   "F_peak_N": 0.941,
+   "rotor_tv": 3.957
+  },
+  "kf85": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.816,
+   "F_peak_N": 1.002,
+   "rotor_tv": 3.907
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.99,
+   "F_peak_N": 1.747,
+   "rotor_tv": 4.089
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.777,
+   "F_peak_N": 1.02,
+   "rotor_tv": 4.088
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.837,
+   "F_peak_N": 1.213,
+   "rotor_tv": 4.195
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.108,
+   "F_peak_N": 1.014,
+   "rotor_tv": 4.113
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.521,
+   "F_peak_N": 1.63,
+   "rotor_tv": 4.127
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.913,
+   "F_peak_N": 0.994,
+   "rotor_tv": 4.111
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.175,
+   "F_peak_N": 1.148,
+   "rotor_tv": 4.129
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.774,
+   "F_peak_N": 1.161,
+   "rotor_tv": 4.12
+  },
+  "combo": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 1.996,
+   "rotor_tv": null
+  }
+ },
+ "L9W": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.331,
+   "F_peak_N": 3.892,
+   "rotor_tv": 15.19
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.231,
+   "F_peak_N": 3.293,
+   "rotor_tv": 11.825
+  },
+  "payload200g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.199,
+   "F_peak_N": 1.408,
+   "rotor_tv": 9.234
+  },
+  "motor_slow": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.337,
+   "F_peak_N": 6.609,
+   "rotor_tv": 15.189
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.285,
+   "F_peak_N": 6.708,
+   "rotor_tv": 14.761
+  },
+  "kf85": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.245,
+   "F_peak_N": 7.222,
+   "rotor_tv": 14.572
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.316,
+   "F_peak_N": 6.501,
+   "rotor_tv": 14.742
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.324,
+   "F_peak_N": 7.107,
+   "rotor_tv": 15.109
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.373,
+   "F_peak_N": 6.633,
+   "rotor_tv": 15.028
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.429,
+   "F_peak_N": 5.399,
+   "rotor_tv": 15.046
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.448,
+   "F_peak_N": 12.551,
+   "rotor_tv": 15.364
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.646,
+   "F_peak_N": 5.107,
+   "rotor_tv": 15.641
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.631,
+   "F_peak_N": 5.981,
+   "rotor_tv": 14.897
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.324,
+   "F_peak_N": 6.494,
+   "rotor_tv": 15.19
+  },
+  "combo": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.278,
+   "F_peak_N": 5.942,
+   "rotor_tv": 12.272
+  }
+ },
+ "L9W22": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.32,
+   "F_peak_N": 6.439,
+   "rotor_tv": 17.632
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.336,
+   "F_peak_N": 1.203,
+   "rotor_tv": 14.36
+  },
+  "payload200g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.909,
+   "F_peak_N": 2.061,
+   "rotor_tv": 13.031
+  },
+  "motor_slow": {
+   "completed": 11,
+   "n": 15,
+   "rms_mm": 1.305,
+   "F_peak_N": 4.68,
+   "rotor_tv": 17.526
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.133,
+   "F_peak_N": 7.113,
+   "rotor_tv": 16.545
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.221,
+   "F_peak_N": 6.059,
+   "rotor_tv": 16.672
+  },
+  "kf85": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.223,
+   "F_peak_N": 4.552,
+   "rotor_tv": 16.352
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.249,
+   "F_peak_N": 6.528,
+   "rotor_tv": 18.333
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.35,
+   "F_peak_N": 7.785,
+   "rotor_tv": 17.66
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.4,
+   "F_peak_N": 3.662,
+   "rotor_tv": 17.643
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.415,
+   "F_peak_N": 2.797,
+   "rotor_tv": 17.625
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.383,
+   "F_peak_N": 4.196,
+   "rotor_tv": 17.691
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.651,
+   "F_peak_N": 6.992,
+   "rotor_tv": 18.043
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.398,
+   "F_peak_N": 6.942,
+   "rotor_tv": 16.952
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.329,
+   "F_peak_N": 6.327,
+   "rotor_tv": 17.72
+  },
+  "combo": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.261,
+   "F_peak_N": 1.174,
+   "rotor_tv": 13.124
+  }
+ },
+ "R29": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.855,
+   "F_peak_N": 1.114,
+   "rotor_tv": 1.019
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.976,
+   "F_peak_N": 0.834,
+   "rotor_tv": 1.258
+  },
+  "payload200g": {
+   "completed": 6,
+   "n": 15,
+   "rms_mm": 2.154,
+   "F_peak_N": 2.898,
+   "rotor_tv": 1.909
+  },
+  "motor_slow": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 5.047,
+   "rotor_tv": null
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.933,
+   "F_peak_N": 1.205,
+   "rotor_tv": 1.083
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 9,
+   "n": 15,
+   "rms_mm": 1.685,
+   "F_peak_N": 1.062,
+   "rotor_tv": 1.057
+  },
+  "kf85": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 9.238,
+   "rotor_tv": null
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.883,
+   "F_peak_N": 1.045,
+   "rotor_tv": 0.91
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.856,
+   "F_peak_N": 1.021,
+   "rotor_tv": 1.04
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.318,
+   "F_peak_N": 1.124,
+   "rotor_tv": 1.089
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.798,
+   "F_peak_N": 1.001,
+   "rotor_tv": 1.005
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.893,
+   "F_peak_N": 1.585,
+   "rotor_tv": 1.017
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.775,
+   "F_peak_N": 1.147,
+   "rotor_tv": 1.002
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.075,
+   "F_peak_N": 1.326,
+   "rotor_tv": 1.076
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.919,
+   "F_peak_N": 1.187,
+   "rotor_tv": 1.099
+  },
+  "combo": {
+   "completed": 5,
+   "n": 15,
+   "rms_mm": 2.078,
+   "F_peak_N": 2.793,
+   "rotor_tv": 1.491
+  }
+ },
+ "R30": {
+  "nominal": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.371,
+   "F_peak_N": 1.56,
+   "rotor_tv": 1.117
+  },
+  "payload100g": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.213,
+   "F_peak_N": 1.467,
+   "rotor_tv": 1.31
+  },
+  "payload200g": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 3.949,
+   "rotor_tv": null
+  },
+  "motor_slow": {
+   "completed": 14,
+   "n": 15,
+   "rms_mm": 3.126,
+   "F_peak_N": 1.695,
+   "rotor_tv": 1.461
+  },
+  "motor_lag15": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.651,
+   "F_peak_N": 1.626,
+   "rotor_tv": 1.143
+  },
+  "motor_lag3": {
+   "completed": 0,
+   "n": 15,
+   "rms_mm": null,
+   "F_peak_N": 0.0,
+   "rotor_tv": null
+  },
+  "kf90": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.64,
+   "F_peak_N": 1.524,
+   "rotor_tv": 1.032
+  },
+  "kf85": {
+   "completed": 13,
+   "n": 15,
+   "rms_mm": 2.969,
+   "F_peak_N": 3.993,
+   "rotor_tv": 1.044
+  },
+  "damping3x": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.509,
+   "F_peak_N": 1.389,
+   "rotor_tv": 0.954
+  },
+  "gust_y": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.438,
+   "F_peak_N": 1.637,
+   "rotor_tv": 1.131
+  },
+  "wind_sine": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.679,
+   "F_peak_N": 1.556,
+   "rotor_tv": 1.117
+  },
+  "wall_soft": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.281,
+   "F_peak_N": 1.295,
+   "rotor_tv": 1.094
+  },
+  "wall_stiff": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.469,
+   "F_peak_N": 2.479,
+   "rotor_tv": 1.139
+  },
+  "wall_slippery": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 1.925,
+   "F_peak_N": 1.666,
+   "rotor_tv": 1.072
+  },
+  "wall_grippy": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 3.718,
+   "F_peak_N": 1.628,
+   "rotor_tv": 1.212
+  },
+  "approach_fast": {
+   "completed": 15,
+   "n": 15,
+   "rms_mm": 2.459,
+   "F_peak_N": 1.78,
+   "rotor_tv": 1.192
+  },
+  "combo": {
+   "completed": 1,
+   "n": 15,
+   "rms_mm": 3.455,
+   "F_peak_N": 5.027,
+   "rotor_tv": 1.516
+  }
+ }
+}

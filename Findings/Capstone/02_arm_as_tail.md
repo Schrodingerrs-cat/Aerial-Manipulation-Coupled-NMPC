@@ -117,6 +117,24 @@ The table gives the fastest move time with 3 of 3 runs completed, and the tracki
 - **Evaluation bug found and fixed.** The first evaluation used the training start state (random tilt and rates). Seed 2 began tilted 17° and crashed in every slow case. Starting from rest, as the NMPC does, removed every slow-speed failure.
 - **Video:** `Media_results/2026-11-27_1311_Tail_square_T1.0_150g_NMPCtail_vs_RLrigid_vs_RLfree/` (150 g, 1.0 s per side, seed 0). The NMPC tail completes at about 10 mm; RL rigid flips (60° tilt) on the third side; RL free completes with larger excursions.
 
+### T2: trained with blocks up to 300 g (2026-11-28)
+
+The T1 policies, fine-tuned for 10M steps with the block range widened to 0–300 g (Turing; `Code/results/am3_rl/2026-11-27_1320_T2_tail_{free,rigid}_w_fromT1_s6`). Evaluated on the same route from rest, 3 seeds (`Code/results/tail/2026-11-27_1430_tail_rl_T2.jsonl`). Cells give runs completed and RMS error (mm):
+
+| block, T | T1 rigid | T1 free | T2 rigid | T2 free |
+|---|---|---|---|---|
+| 150 g, 1.2 s | 3/3, 31.2 | 3/3, 10.5 | 2/3, 78.5 | 3/3, **8.6** |
+| 150 g, 0.9 s | 0/3 | **3/3**, 72.0 | 0/3 | 0/3 |
+| 200 g, 1.0 s | 2/3 | **3/3**, 51.6 | 2/3 | 0/3 |
+| 250 g, 1.5 s | 3/3, 27.8 | 3/3, 14.2 | 3/3, 17.3 | 3/3, **6.4** |
+| 250 g, 1.2 s | 1/3 | 0/3 | 1/3 | **3/3, 13.3** |
+| 300 g, 1.5 s | - | - | 1/3 | **3/3, 8.0** |
+
+- **What the wider mass range bought:** heavier blocks at moderate speed (250 g at 1.2 s, 300 g at 1.5 s), and better accuracy at every slow and medium setting.
+- **What it cost:** T1's top speed with light blocks (150 g at 0.9 s and 200 g at 1.0 s are gone). The policy became more conservative.
+- **The tail advantage holds:** where both T2 policies are tested with a heavy block, the free arm completes and the rigid one mostly does not.
+- **Video:** `Media_results/2026-11-28_0951_Tail_square_T1.2_250g_RL_T2_rigid_vs_free/` (seed 0; rigid loses control, as in 2 of its 3 seeds; free completes).
+
 ## Bottom line
 
 Using the arm and block as a tail works in both the model-based and the learned controller. It lets the drone carry 150–250 g as fast as, or faster than, the rigid arm carries nothing, at the same rotor energy, paid for in servo torque. The model-based version, with a moderate spring, is the better one.

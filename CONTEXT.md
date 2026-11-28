@@ -385,3 +385,10 @@ Proposal promised: (1) nominal NMPC, (2) NMPC + disturbance observer, (3) **NMPC
     - after R30: 2602429 lab bench, 2602430 stress bench, 2602431 take-off bench (names `2026-11-27_1430_{,stress_,takeoff_}R30_lab*`).
   - Next session: rsync results; stiffness table into `Findings/RL/05_research_question_2x2.md`; T2 vs T1 tail comparison + video locally (`am3_tail_video.py`);
     R30 vs R21/R29 (did it keep motor_slow / kf85?); add R30 to `am3_final_table.py`; rerun older benches with the force metrics if the report needs them.
+- **2026-11-28 09:52 EST. All Turing jobs from 11-27 done and pulled.**
+  - [optimal] **Stiffness outside training** (full table in `Findings/RL/05_research_question_2x2.md`): wall x0.2: only R21 (15, 1.64 mm) and L9W22 (15, 2.25 mm, F err 0.22 N) write; NDF and L2W 0/15 (loss of control); N 15/15 but 28.6 mm, coverage 0.14 (not writing).
+    x6 and x10: everyone 15/15 (N 1.5 mm, L9W22 1.5 mm best). The laptop R21 x0.2 result (3/15) was a CPU-overload artifact: 15/15 on Turing.
+  - [optimal] **R30** (R21 + 30 % take-off): final table regenerated `Code/results/am3_write/2026-11-28_0950_final_table_lab.{md,json}` (R30 added to `am3_final_table.py`).
+    Regained what R29 lost (motor_slow 14, kf85 13) but ~30 % less accurate than R21 everywhere (nominal 2.37 vs 1.86 mm) and lost payload200g (0 vs 7) and combo (1 vs 8). 12 conditions 15/15, 2 at 0/15.
+    Take-off bench: the only pure-RL controller that takes off with slow motors (9/15; R21 and R29 0/15). Conclusion: no take-off fine-tune dominates R21; present R21 (it takes off without take-off training since the look-ahead fix) and R29/R30 as the trade-off.
+  - [capstone] **T2 tail** (blocks to 300 g): better accuracy and heavier blocks (300 g at 1.5 s: free 3/3 8 mm, rigid 1/3), but lost T1's top speed with light blocks. Tail advantage holds. Findings section added; video `Media_results/2026-11-28_0951_Tail_square_T1.2_250g_RL_T2_rigid_vs_free/`.

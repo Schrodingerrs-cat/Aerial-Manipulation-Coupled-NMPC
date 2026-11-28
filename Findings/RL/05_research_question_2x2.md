@@ -62,7 +62,25 @@
    - Pure RL (R21) survives slow motors best but is the least accurate.
    - Its take-off fine-tune (R29) lost that robustness (see CONTEXT 2026-11-27 12:53).
 
+## Contact stiffness outside the training range (2026-11-28)
+
+The wall-randomised corrections (L2W, L9W) were trained on stiffness 0.4–3.5× nominal; R21 and N/NDF never saw stiffness changes.
+Benchmark at lab noise, 15 runs each, run on Turing (`Code/results/am3_write/bench/2026-11-27_1322_stress_<ctrl>_lab_wall_k{02,6,10}.json`).
+Each cell gives runs completed, trace RMS (mm), share of the letters inked (coverage), and normal-force RMS error against the 0.6 N design force.
+
+| Controller | wall k × 0.2 | wall k × 6 | wall k × 10 |
+|---|---|---|---|
+| N | 15, **28.6**, 0.14, 0.83 N (pen sinks and drags: not writing) | 15, 1.52, 0.88, 0.40 N | 15, 1.53, 0.87, 0.42 N |
+| NDF | **0** (loss of control) | 15, 2.27, 0.73, 0.31 N | 15, 2.25, 0.75, 0.32 N |
+| R21 (pure RL) | 15, **1.64**, 0.86, 0.39 N | 15, 2.00, 0.76, 0.27 N | 15, 1.99, 0.76, 0.28 N |
+| L2W | **0** (loss of control) | 15, 2.81, 0.71, 0.20 N | 15, 2.90, 0.69, 0.21 N |
+| L9W22 | 15, 2.25, 0.86, **0.22 N** | 15, **1.47, 0.91**, 0.51 N | 15, **1.48, 0.90**, 0.55 N |
+
+- **Very soft wall (outside every range):** only the two controllers that react to the measured force keep writing, R21 and L9W22. The observer (NDF) and the 2-channel correction (L2W) lose control; plain N stays up but does not write.
+- **Stiff walls:** every controller completes, so stiffness above the training range is harmless here. L9W22 traces best but presses lightly with the largest force error (0.5 N, mean 0.8 N); L2W holds force best (0.2 N) but traces worst.
+- **Contact losses** (pressing-to-not-pressing transitions) are in the files but on stiff walls they count micro-bounces around the 0.08 N threshold (hundreds per run for N and L9W22), so they are not reported as a headline number.
+- **The proposal's guess** that contact error needs learning is right only for a soft wall, and only for controllers with enough channels or pure RL.
+
 ## Not yet covered
 
-- **Contact stiffness far outside the training range** (0.2×, 6×, 10×): running locally, `bench/2026-11-27_1322_stress_*`.
-- **Force error, probe tilt and contact losses**, the proposal's metrics: the benchmark records peak force (F_peak) and drag but not mean force error. That metric is still owed.
+- Force error for the older 17-condition bench (it predates the force metrics); a rerun is needed if the report wants it for every condition.
